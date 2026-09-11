@@ -174,6 +174,19 @@
   border-radius: 50%;
 }
 
+.map-vitruvian {
+  position: absolute;
+  z-index: 0;
+  width: 360px;
+  height: 360px;
+  left: 50%;
+  top: 49%;
+  transform: translate(-50%, -50%);
+  color: var(--ink);
+  opacity: 0.09;
+  filter: blur(0.35px);
+}
+
 .map-centre,
 .factor {
   position: absolute;
@@ -209,7 +222,7 @@
 .factor-three { right: 11%; bottom: 8%; }
 .factor-four { left: 10%; bottom: 8%; }
 .factor-five { left: 2%; top: 26%; }
-.map-rule { position: absolute; width: 30%; height: 1px; left: 50%; top: 49%; background: rgba(163, 58, 43, 0.55); transform-origin: left center; }
+.map-rule { position: absolute; z-index: 1; width: 30%; height: 1px; left: 50%; top: 49%; background: rgba(163, 58, 43, 0.55); transform-origin: left center; }
 .map-rule-one { transform: rotate(-90deg); }
 .map-rule-two { transform: rotate(-28deg); }
 .map-rule-three { transform: rotate(44deg); }
@@ -271,6 +284,7 @@
   .paper-sheet::before { display: none; }
   .interaction-map { min-height: 650px; }
   .interaction-map::before { width: 280px; height: 280px; top: 43%; }
+  .map-vitruvian { width: 260px; height: 260px; top: 43%; }
   .map-centre { top: 43%; width: 128px; height: 128px; }
   .factor { width: 118px; }
   .factor-one { top: 3%; }

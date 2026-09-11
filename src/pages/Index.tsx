@@ -195,7 +195,7 @@ const Index = () => {
                 </div>
                 <aside className="press-note mt-12 max-w-sm rotate-[-1deg] p-5">
                   <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-ink/50">Working note / not a verdict</span>
-                  <p className="handwritten mt-2 text-xl leading-tight text-primary">The food did not arrive alone. The day came with it.</p>
+                  <p className="handwritten mt-2 text-xl leading-tight text-primary">The food did not arrive alone. The day and its demands came with it.</p>
                 </aside>
               </div>
               <InteractionMap />
