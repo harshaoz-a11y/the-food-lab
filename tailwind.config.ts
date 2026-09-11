@@ -24,6 +24,9 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        ink: "rgb(23 59 48 / <alpha-value>)",
+        paper: "rgb(238 231 216 / <alpha-value>)",
+        charcoal: "rgb(41 72 62 / <alpha-value>)",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
