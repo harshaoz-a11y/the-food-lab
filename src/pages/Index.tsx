@@ -210,7 +210,7 @@ const Index = () => {
           <div className="mx-auto max-w-[1400px] border-x border-b border-ink/15 bg-[#e4dac5] px-6 py-14 sm:px-12 lg:px-20 lg:py-20">
             <span className="lab-label">The working hypothesis</span>
             <p id="map-heading" className="mt-6 max-w-6xl font-serif text-4xl font-normal leading-[1.02] tracking-[-0.035em] text-ink sm:text-5xl lg:text-6xl">
-              An ingredient is only the beginning of the story. <span className="text-ink/55">The food needs to be had in a way that gives you the fuel, outcome and joy you expect it to!</span>
+              Ingredients are just the raw material. <span className="text-ink/55">The real magic is understanding how to get them to collaborate—turning food into the energy, outcome, and yumminess you deserve!</span>
             </p>
           </div>
         </section>
