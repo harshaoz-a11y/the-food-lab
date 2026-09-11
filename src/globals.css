@@ -177,14 +177,15 @@
 .map-vitruvian {
   position: absolute;
   z-index: 0;
-  width: 360px;
-  height: 360px;
+  width: 388px;
+  height: 388px;
   left: 50%;
   top: 49%;
   transform: translate(-50%, -50%);
-  color: var(--ink);
-  opacity: 0.09;
-  filter: blur(0.35px);
+  object-fit: contain;
+  opacity: 0.14;
+  filter: sepia(0.35) saturate(0.7) contrast(1.12);
+  mix-blend-mode: multiply;
 }
 
 .map-centre,
@@ -284,7 +285,7 @@
   .paper-sheet::before { display: none; }
   .interaction-map { min-height: 650px; }
   .interaction-map::before { width: 280px; height: 280px; top: 43%; }
-  .map-vitruvian { width: 260px; height: 260px; top: 43%; }
+  .map-vitruvian { width: 276px; height: 276px; top: 43%; }
   .map-centre { top: 43%; width: 128px; height: 128px; }
   .factor { width: 118px; }
   .factor-one { top: 3%; }

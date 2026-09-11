@@ -6,6 +6,7 @@ import {
   Smile,
   UtensilsCrossed,
 } from "lucide-react";
+import vitruvianClean from "@/assets/maestro/vitruvian-clean.svg";
 
 const factors = [
   { label: "the food", note: "what is there", icon: Salad, className: "factor-one" },
@@ -18,17 +19,7 @@ const factors = [
 export function InteractionMap() {
   return (
     <figure className="interaction-map" aria-labelledby="map-caption">
-      <svg className="map-vitruvian" viewBox="0 0 360 360" aria-hidden="true">
-        <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="180" cy="75" r="18" fill="currentColor" stroke="none" />
-          <path d="M180 94 C164 113 162 149 166 190 C168 220 160 253 145 298" strokeWidth="18" />
-          <path d="M180 94 C196 113 198 149 194 190 C192 220 200 253 215 298" strokeWidth="18" />
-          <path d="M169 123 L94 184 M191 123 L266 184" strokeWidth="15" />
-          <path d="M168 132 L68 132 M192 132 L292 132" strokeWidth="11" opacity=".75" />
-          <path d="M168 190 L105 275 M192 190 L255 275" strokeWidth="12" opacity=".72" />
-          <path d="M174 99 C177 142 177 180 180 218 C183 180 183 142 186 99" strokeWidth="3" opacity=".7" />
-        </g>
-      </svg>
+      <img className="map-vitruvian" src={vitruvianClean} alt="" aria-hidden="true" />
 
       <div className="map-rule map-rule-one" />
       <div className="map-rule map-rule-two" />
