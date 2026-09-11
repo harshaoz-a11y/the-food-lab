@@ -193,9 +193,12 @@ const Index = () => {
                     Show me <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-1" />
                   </a>
                 </div>
-                <aside className="press-note mt-12 max-w-sm rotate-[-1deg] p-5">
+                <aside className="press-note mt-12 w-fit max-w-full rotate-[-1deg] px-5 py-4 sm:px-6">
                   <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-ink/50">Working note / not a verdict</span>
-                  <p className="handwritten mt-2 text-xl leading-tight text-primary">The food did not arrive alone. The day and its demands came with it.</p>
+                  <p className="handwritten mt-2 text-[clamp(.72rem,3vw,1.25rem)] leading-tight text-primary">
+                    <span className="block whitespace-nowrap">The food did not arrive alone.</span>
+                    <span className="block whitespace-nowrap">The day and its demands came with it.</span>
+                  </p>
                 </aside>
               </div>
               <InteractionMap />
@@ -206,8 +209,8 @@ const Index = () => {
         <section className="px-4 sm:px-6 lg:px-8" aria-labelledby="map-heading">
           <div className="mx-auto max-w-[1400px] border-x border-b border-ink/15 bg-[#e4dac5] px-6 py-14 sm:px-12 lg:px-20 lg:py-20">
             <span className="lab-label">The working hypothesis</span>
-            <p id="map-heading" className="mt-6 max-w-5xl font-serif text-4xl font-normal leading-[1.02] tracking-[-0.035em] text-ink sm:text-5xl lg:text-6xl">
-              An ingredient is only the beginning of the story. <span className="text-ink/55">Preparation, timing, combination, digestion and the shape of a day all get a turn.</span>
+            <p id="map-heading" className="mt-6 max-w-6xl font-serif text-4xl font-normal leading-[1.02] tracking-[-0.035em] text-ink sm:text-5xl lg:text-6xl">
+              An ingredient is only the beginning of the story. <span className="text-ink/55">The food needs to be had in a way that gives you the fuel, outcome and joy you expect it to!</span>
             </p>
           </div>
         </section>

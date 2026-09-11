@@ -157,7 +157,7 @@
 
 .interaction-map {
   position: relative;
-  min-height: 570px;
+  min-height: 650px;
   margin: 0;
   overflow: hidden;
 }
@@ -214,15 +214,20 @@
 .map-centre svg { width: 30px; margin-bottom: 0.65rem; }
 .map-centre span { font-family: Georgia, serif; font-size: 1.35rem; }
 .map-centre small { margin-top: 0.15rem; font: 0.58rem ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; }
-.factor { width: 135px; }
-.factor svg { width: 24px; height: 24px; margin-bottom: 0.4rem; color: var(--brick); stroke-width: 1.5; }
-.factor strong { font-family: Georgia, serif; font-size: 1.08rem; font-weight: 400; }
-.factor span { margin-top: 0.1rem; font: 0.58rem ui-monospace, monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
-.factor-one { left: 50%; top: 3%; transform: translateX(-50%); }
-.factor-two { right: 3%; top: 26%; }
-.factor-three { right: 11%; bottom: 8%; }
-.factor-four { left: 10%; bottom: 8%; }
-.factor-five { left: 2%; top: 26%; }
+.factor {
+  width: 190px;
+  padding: 0.5rem 0.65rem;
+  border-radius: 0.85rem;
+  background: rgba(248, 242, 229, 0.94);
+}
+.factor svg { width: 24px; height: 24px; margin-bottom: 0.35rem; color: var(--brick); stroke-width: 1.5; }
+.factor strong { white-space: nowrap; font-family: Georgia, serif; font-size: 1.05rem; font-weight: 400; }
+.factor span { margin-top: 0.1rem; font: 0.55rem ui-monospace, monospace; letter-spacing: 0.06em; line-height: 1.4; text-transform: uppercase; color: var(--ink-soft); }
+.factor-one { left: 50%; top: 0; transform: translateX(-50%); }
+.factor-two { right: 0; top: 8%; }
+.factor-three { right: 0; bottom: 4%; }
+.factor-four { left: 0; bottom: 4%; }
+.factor-five { left: 0; top: 8%; }
 .map-rule { position: absolute; z-index: 1; width: 30%; height: 1px; left: 50%; top: 49%; background: rgba(163, 58, 43, 0.55); transform-origin: left center; }
 .map-rule-one { transform: rotate(-90deg); }
 .map-rule-two { transform: rotate(-28deg); }
@@ -283,17 +288,20 @@
 
 @media (max-width: 767px) {
   .paper-sheet::before { display: none; }
-  .interaction-map { min-height: 650px; }
-  .interaction-map::before { width: 280px; height: 280px; top: 43%; }
-  .map-vitruvian { width: 276px; height: 276px; top: 43%; }
-  .map-centre { top: 43%; width: 128px; height: 128px; }
-  .factor { width: 118px; }
-  .factor-one { top: 3%; }
-  .factor-two { right: 0; top: 22%; }
-  .factor-three { right: 4%; bottom: 15%; }
-  .factor-four { left: 4%; bottom: 15%; }
-  .factor-five { left: 0; top: 22%; }
-  .map-rule { top: 43%; width: 36%; }
+  .interaction-map { min-height: 760px; }
+  .interaction-map::before { width: 280px; height: 280px; top: 44%; }
+  .map-vitruvian { width: 276px; height: 276px; top: 44%; }
+  .map-centre { top: 44%; width: 128px; height: 128px; }
+  .factor { width: 142px; padding-inline: 0.35rem; }
+  .factor strong { font-size: 0.95rem; }
+  .factor span { font-size: 0.5rem; }
+  .factor-one { top: 0; }
+  .factor-two { right: 0; top: 10%; }
+  .factor-three { right: 0; bottom: 14%; }
+  .factor-four { left: 0; bottom: 14%; }
+  .factor-five { left: 0; top: 10%; width: 168px; }
+  .map-rule { top: 44%; width: 36%; }
+  .interaction-map figcaption { font-size: 0.85rem; }
   .experiment-panel { border-left: 0; border-top: 1px dashed rgba(23, 59, 48, 0.3); padding: 2rem 0 0; }
 }
 
