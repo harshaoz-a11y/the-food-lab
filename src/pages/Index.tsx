@@ -3,8 +3,10 @@ import {
   ArrowDown,
   ArrowRight,
   BriefcaseBusiness,
+  Clock3,
   Coffee,
   FlaskConical,
+  ForkKnife,
   Menu,
   Moon,
   NotebookPen,
@@ -60,7 +62,7 @@ function Brand() {
       <img src={maestroAssets.foodLabMark} alt="" className="h-11 w-11 object-contain mix-blend-multiply" />
       <span className="flex flex-col leading-none">
         <strong className="font-serif text-lg font-normal tracking-[-0.02em] text-ink">The Food Lab</strong>
-        <small className="mt-1 font-mono text-[8px] tracking-[0.1em] text-ink/55">Invisible diets. Visible results!</small>
+        <small className="mt-1 font-mono text-[8px] uppercase tracking-[0.18em] text-ink/55">Observe · question · test</small>
       </span>
     </a>
   );
@@ -106,6 +108,25 @@ function Header() {
         </nav>
       )}
     </header>
+  );
+}
+
+function HeroArtefact() {
+  return (
+    <figure className="hero-artefact" aria-label="Annotated breakfast scene showing the interactions around one meal">
+      <div className="hero-plate" />
+      <div className="hero-object hero-coffee"><Coffee aria-hidden="true" /></div>
+      <div className="hero-object hero-clock"><Clock3 aria-hidden="true" /></div>
+      <div className="hero-object hero-fork"><ForkKnife aria-hidden="true" /></div>
+      <div className="hero-thread thread-one" />
+      <div className="hero-thread thread-two" />
+      <div className="hero-thread thread-three" />
+      <div className="press-note hero-note hero-note-one handwritten text-primary">late meeting → ate faster</div>
+      <div className="press-note hero-note hero-note-two handwritten text-primary">same breakfast tomorrow?</div>
+      <figcaption className="absolute bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-[9px] uppercase tracking-[0.16em] text-ink/50">
+        Field setup 001 / an ordinary breakfast
+      </figcaption>
+    </figure>
   );
 }
 
@@ -198,17 +219,23 @@ const Index = () => {
                   <p className="handwritten mt-2 text-xl leading-tight text-primary">The food did not arrive alone. The day came with it.</p>
                 </aside>
               </div>
-              <InteractionMap />
+              <HeroArtefact />
             </div>
           </div>
         </section>
 
-        <section className="px-4 sm:px-6 lg:px-8" aria-label="The working hypothesis">
-          <div className="mx-auto max-w-[1400px] border-x border-b border-ink/15 bg-[#e4dac5] px-6 py-12 sm:px-12 lg:px-20 lg:py-16">
-            <span className="lab-label">The working hypothesis</span>
-            <p className="mt-6 max-w-5xl font-serif text-3xl font-normal leading-tight tracking-[-0.025em] text-ink/85 sm:text-4xl">
-              An ingredient is only the beginning of the story. <span className="text-ink/60">Preparation, timing, combination, digestion and the shape of a day all get a turn.</span>
-            </p>
+        <section className="px-4 sm:px-6 lg:px-8" aria-labelledby="map-heading">
+          <div className="mx-auto grid max-w-[1400px] gap-10 border-x border-b border-ink/15 bg-[#e4dac5] px-6 py-16 sm:px-12 lg:grid-cols-[.84fr_1.16fr] lg:px-20 lg:py-24">
+            <div className="self-center">
+              <span className="lab-label">The working hypothesis</span>
+              <h2 id="map-heading" className="mt-6 max-w-xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">
+                An ingredient is only the beginning of the story.
+              </h2>
+              <p className="mt-7 max-w-md text-lg leading-relaxed text-ink/65">
+                Preparation, timing, combination, digestion and the shape of a day all get a turn.
+              </p>
+            </div>
+            <InteractionMap />
           </div>
         </section>
 
