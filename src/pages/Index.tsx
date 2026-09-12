@@ -14,6 +14,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { EggExperiment } from "@/components/food-lab/EggExperiment";
 import { InteractionMap } from "@/components/food-lab/InteractionMap";
+import { RiceExperiment } from "@/components/food-lab/RiceExperiment";
 import { maestroAssets } from "@/lib/maestro-assets";
 
 const navigation = [
@@ -221,12 +222,13 @@ const Index = () => {
               <div>
                 <span className="lab-label">Observation 002 / change one condition</span>
                 <h2 className="mt-6 max-w-4xl font-serif text-5xl font-normal leading-[0.92] tracking-[-0.045em] sm:text-6xl lg:text-7xl">
-                  Same egg. Different <span className="red-underline">interaction.</span>
+                  Same food. Different <span className="red-underline">interaction.</span>
                 </h2>
               </div>
-              <p className="handwritten max-w-xs rotate-[-2deg] text-xl leading-tight text-primary lg:text-right">Try the preparation switch. Watch what changes.</p>
+              <p className="handwritten max-w-xs rotate-[-2deg] text-xl leading-tight text-primary lg:text-right">Try the preparation switches. Watch what changes.</p>
             </div>
             <EggExperiment />
+            <RiceExperiment />
           </div>
         </section>
 

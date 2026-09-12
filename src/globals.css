@@ -248,6 +248,55 @@
 .measure-track { width: 100%; height: 8px; background: rgba(23, 59, 48, 0.14); overflow: hidden; border-radius: 999px; }
 .measure-track span { display: block; height: 100%; border-radius: inherit; background: var(--brick); transition: width 500ms cubic-bezier(.2,.8,.2,1); }
 
+.rice-panel {
+  border-left: 1px dashed rgba(23, 59, 48, 0.3);
+  padding-left: clamp(1.5rem, 3vw, 2.5rem);
+}
+.rice-choice {
+  display: flex;
+  min-height: 92px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  border: 1px solid rgba(23, 59, 48, 0.22);
+  border-radius: 1rem;
+  padding: 0.8rem;
+  text-align: left;
+  color: var(--ink);
+  background: rgba(248, 242, 229, 0.5);
+  transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+.rice-choice:hover { border-color: var(--brick); transform: translateY(-2px); }
+.rice-choice.is-active { border-color: var(--brick); background: var(--brick); color: #fff9ed; }
+.rice-choice svg { width: 18px; height: 18px; stroke-width: 1.5; }
+.rice-choice span { margin-top: 0.6rem; font-family: Georgia, serif; font-size: 0.95rem; }
+.rice-choice small { margin-top: 0.15rem; font: 0.45rem ui-monospace, monospace; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.68; }
+.rice-curve {
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  align-items: center;
+  gap: 1rem;
+  min-height: 124px;
+  border: 1px solid rgba(23, 59, 48, 0.16);
+  border-radius: 1rem;
+  padding: 0.9rem 1rem;
+  background: rgba(248, 242, 229, 0.54);
+}
+.rice-curve svg { width: 100%; height: 100px; overflow: visible; }
+.rice-curve path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.rice-curve-reference { stroke: rgba(23, 59, 48, 0.2); stroke-width: 2; stroke-dasharray: 3 5; }
+.rice-curve-current { stroke: var(--brick); stroke-width: 3; animation: draw-rice-curve 650ms ease both; }
+.rice-metrics { animation: rice-metrics-in 360ms ease both; }
+.rice-metric {
+  min-height: 132px;
+  border: 1px solid rgba(23, 59, 48, 0.16);
+  border-radius: 1rem;
+  padding: 1rem;
+  background: rgba(248, 242, 229, 0.64);
+}
+@keyframes draw-rice-curve { from { stroke-dasharray: 180; stroke-dashoffset: 180; } to { stroke-dasharray: 180; stroke-dashoffset: 0; } }
+@keyframes rice-metrics-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
 .field-frame {
   position: relative;
   min-height: 310px;
@@ -296,6 +345,8 @@
   .factor-five { left: 25%; top: 30%; transform: translate(-50%, -50%); }
   .interaction-map figcaption { font-size: 0.85rem; }
   .experiment-panel { border-left: 0; border-top: 1px dashed rgba(23, 59, 48, 0.3); padding: 2rem 0 0; }
+  .rice-panel { border-left: 0; border-top: 1px dashed rgba(23, 59, 48, 0.3); padding: 2rem 0 0; }
+  .rice-curve { grid-template-columns: 1fr 112px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
