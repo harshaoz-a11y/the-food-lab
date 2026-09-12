@@ -180,7 +180,7 @@ const Index = () => {
       <main>
         <section id="question" className="px-4 pb-4 pt-6 sm:px-6 lg:px-8 lg:pt-8">
           <div className="paper-sheet mx-auto max-w-[1400px] px-6 py-12 sm:px-12 sm:py-16 lg:px-20 lg:py-24">
-            <div className="grid items-center gap-8 lg:grid-cols-[1.03fr_.97fr] lg:gap-12">
+            <div className="grid items-center gap-8 lg:gap-12 xl:grid-cols-[.82fr_1.18fr]">
               <div className="relative z-10 lg:pl-3">
                 <span className="lab-label">Observation 001</span>
                 <h1 className="mt-7 max-w-[790px] font-serif text-[clamp(3.6rem,8.2vw,8.5rem)] font-normal leading-[0.82] tracking-[-0.065em] text-ink">
@@ -217,18 +217,20 @@ const Index = () => {
         </section>
 
         <section id="demonstration" className="px-4 sm:px-6 lg:px-8">
-          <div className="paper-sheet mx-auto max-w-[1400px] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
-            <div className="mb-12 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
-              <div>
-                <span className="lab-label">Observation 002 / change one condition</span>
-                <h2 className="mt-6 max-w-4xl font-serif text-5xl font-normal leading-[0.92] tracking-[-0.045em] sm:text-6xl lg:text-7xl">
-                  Same food. Different <span className="red-underline">interaction.</span>
-                </h2>
+          <div className="paper-sheet mx-auto max-w-[1400px] px-6 py-12 sm:px-10 lg:px-10 lg:py-14">
+            <div className="experiment-spread grid gap-14 lg:grid-cols-2 lg:gap-0">
+              <div className="experiment-column lg:pr-8 xl:pr-10">
+                <div className="mb-7">
+                  <span className="lab-label">Observation 002A / change one condition</span>
+                  <h2 className="mt-5 max-w-xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-[2.75rem] xl:text-[3.1rem]">
+                    Same food. Different <span className="red-underline">interaction.</span>
+                  </h2>
+                  <p className="handwritten mt-3 rotate-[-1deg] text-lg leading-tight text-primary">Try the preparation switch. Watch what changes.</p>
+                </div>
+                <EggExperiment />
               </div>
-              <p className="handwritten max-w-xs rotate-[-2deg] text-xl leading-tight text-primary lg:text-right">Try the preparation switches. Watch what changes.</p>
+              <RiceExperiment />
             </div>
-            <EggExperiment />
-            <RiceExperiment />
           </div>
         </section>
 

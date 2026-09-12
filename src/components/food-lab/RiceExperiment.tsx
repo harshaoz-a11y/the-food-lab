@@ -57,20 +57,18 @@ export function RiceExperiment() {
   const current = preparations[active];
 
   return (
-    <div className="mt-16 border-t border-dashed border-ink/25 pt-14">
-      <div className="mb-9 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-end">
-        <div>
-          <span className="lab-label">Experiment 002B / one grain, three preparations</span>
-          <h3 className="mt-5 max-w-3xl font-serif text-4xl font-normal leading-[0.96] tracking-[-0.035em] text-ink sm:text-5xl">
-            Rice, after the fridge.
-          </h3>
-        </div>
-        <p className="handwritten max-w-xs rotate-[1deg] text-lg leading-tight text-primary lg:text-right">
+    <div className="experiment-column border-t border-dashed border-ink/25 pt-12 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0 xl:pl-10">
+      <div className="mb-7">
+        <span className="lab-label">Experiment 002B / one grain, three preparations</span>
+        <h3 className="mt-5 max-w-xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] text-ink sm:text-5xl lg:text-[2.75rem] xl:text-[3.1rem]">
+          Rice, after the fridge.
+        </h3>
+        <p className="handwritten mt-3 rotate-[1deg] text-lg leading-tight text-primary">
           Switch the method. Follow the curve.
         </p>
       </div>
 
-      <div className="grid gap-8 xl:grid-cols-[1.08fr_.92fr] xl:items-start">
+      <div className="grid gap-6">
         <figure className="evidence-photo rotate-[0.35deg]">
           <span className="tape tape-left" />
           <img

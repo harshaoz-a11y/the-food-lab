@@ -157,9 +157,11 @@
 
 .interaction-map {
   position: relative;
+  width: 100%;
+  max-width: 680px;
   min-height: 650px;
-  margin: 0;
-  overflow: hidden;
+  margin-inline: auto;
+  overflow: visible;
 }
 
 .interaction-map::before {
@@ -215,19 +217,19 @@
 .map-centre span { font-family: Georgia, serif; font-size: 1.35rem; }
 .map-centre small { margin-top: 0.15rem; font: 0.58rem ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; }
 .factor {
-  width: 190px;
+  width: 200px;
   padding: 0.5rem 0.65rem;
   border-radius: 0.85rem;
   background: rgba(248, 242, 229, 0.94);
 }
 .factor svg { width: 24px; height: 24px; margin-bottom: 0.35rem; color: var(--brick); stroke-width: 1.5; }
-.factor strong { white-space: nowrap; font-family: Georgia, serif; font-size: 1.05rem; font-weight: 400; }
+.factor strong { white-space: nowrap; font-family: Georgia, serif; font-size: 1rem; font-weight: 400; }
 .factor span { margin-top: 0.1rem; font: 0.55rem ui-monospace, monospace; letter-spacing: 0.06em; line-height: 1.4; text-transform: uppercase; color: var(--ink-soft); }
-.factor-one { left: 50%; top: 49%; transform: translate(-50%, -50%) translateY(-270px); }
-.factor-two { left: 50%; top: 49%; transform: translate(-50%, -50%) rotate(72deg) translateY(-270px) rotate(-72deg); }
-.factor-three { left: 50%; top: 49%; transform: translate(-50%, -50%) rotate(144deg) translateY(-270px) rotate(-144deg); }
-.factor-four { left: 50%; top: 49%; transform: translate(-50%, -50%) rotate(216deg) translateY(-270px) rotate(-216deg); }
-.factor-five { left: 50%; top: 49%; transform: translate(-50%, -50%) rotate(288deg) translateY(-270px) rotate(-288deg); }
+.factor-one { left: 50%; top: 49%; transform: translate(-50%, -50%) translateY(-245px); }
+.factor-two { left: 50%; top: 49%; transform: translate(-50%, -50%) rotate(72deg) translateY(-245px) rotate(-72deg); }
+.factor-three { left: 50%; top: 49%; transform: translate(-50%, -50%) rotate(144deg) translateY(-245px) rotate(-144deg); }
+.factor-four { left: 50%; top: 49%; transform: translate(-50%, -50%) rotate(216deg) translateY(-245px) rotate(-216deg); }
+.factor-five { left: 50%; top: 49%; transform: translate(-50%, -50%) rotate(288deg) translateY(-245px) rotate(-288deg); }
 .interaction-map figcaption { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%) rotate(-1deg); white-space: nowrap; font-family: "Segoe Print", cursive; color: var(--brick); }
 
 .evidence-photo {
@@ -294,6 +296,22 @@
   padding: 1rem;
   background: rgba(248, 242, 229, 0.64);
 }
+.experiment-column { min-width: 0; }
+.experiment-spread .experiment-panel,
+.experiment-spread .rice-panel { border-left: 0; padding-left: 0; }
+@media (min-width: 1024px) {
+  .experiment-spread .evidence-photo { padding: 0.5rem; }
+  .experiment-spread .evidence-photo img { width: 100%; height: 210px; object-fit: contain; }
+  .experiment-spread .evidence-photo figcaption { padding: 0.45rem 0.3rem 0.1rem; font-size: 0.48rem; }
+  .experiment-spread .experiment-choice { padding: 0.45rem 0.75rem; font-size: 0.7rem; }
+  .experiment-spread .rice-choice { min-height: 68px; padding: 0.55rem; }
+  .experiment-spread .rice-choice svg { width: 14px; height: 14px; }
+  .experiment-spread .rice-choice span { margin-top: 0.3rem; font-size: 0.76rem; }
+  .experiment-spread .rice-choice small { font-size: 0.38rem; }
+  .experiment-spread .rice-curve { min-height: 90px; grid-template-columns: 1fr 102px; padding: 0.6rem 0.75rem; }
+  .experiment-spread .rice-curve svg { height: 68px; }
+  .experiment-spread .rice-metric { min-height: 98px; padding: 0.7rem; }
+}
 @keyframes draw-rice-curve { from { stroke-dasharray: 180; stroke-dashoffset: 180; } to { stroke-dasharray: 180; stroke-dashoffset: 0; } }
 @keyframes rice-metrics-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -335,14 +353,14 @@
   .interaction-map::before { width: 220px; height: 220px; top: 48%; }
   .map-vitruvian { width: 216px; height: 216px; top: 48%; }
   .map-centre { top: 48%; width: 110px; height: 110px; }
-  .factor { width: 142px; padding-inline: 0.35rem; }
+  .factor { width: 160px; padding-inline: 0.35rem; }
   .factor strong { font-size: 0.9rem; }
   .factor span { font-size: 0.48rem; }
   .factor-one { left: 50%; top: 10%; transform: translate(-50%, -50%); }
-  .factor-two { left: 75%; top: 30%; transform: translate(-50%, -50%); }
-  .factor-three { left: 70%; top: 68%; transform: translate(-50%, -50%); }
-  .factor-four { left: 30%; top: 68%; transform: translate(-50%, -50%); }
-  .factor-five { left: 25%; top: 30%; transform: translate(-50%, -50%); }
+  .factor-two { left: 68%; top: 30%; transform: translate(-50%, -50%); }
+  .factor-three { left: 67%; top: 68%; transform: translate(-50%, -50%); }
+  .factor-four { left: 33%; top: 68%; transform: translate(-50%, -50%); }
+  .factor-five { left: 32%; top: 30%; transform: translate(-50%, -50%); }
   .interaction-map figcaption { font-size: 0.85rem; }
   .experiment-panel { border-left: 0; border-top: 1px dashed rgba(23, 59, 48, 0.3); padding: 2rem 0 0; }
   .rice-panel { border-left: 0; border-top: 1px dashed rgba(23, 59, 48, 0.3); padding: 2rem 0 0; }
