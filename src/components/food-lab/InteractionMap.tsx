@@ -21,12 +21,6 @@ export function InteractionMap() {
     <figure className="interaction-map" aria-labelledby="map-caption">
       <img className="map-vitruvian" src={vitruvianClean} alt="" aria-hidden="true" />
 
-      <div className="map-rule map-rule-one" />
-      <div className="map-rule map-rule-two" />
-      <div className="map-rule map-rule-three" />
-      <div className="map-rule map-rule-four" />
-      <div className="map-rule map-rule-five" />
-
       {factors.map(({ label, note, icon: Icon, className }) => (
         <div className={`factor ${className}`} key={label}>
           <Icon aria-hidden="true" />

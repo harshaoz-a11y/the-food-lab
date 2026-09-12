@@ -223,17 +223,11 @@
 .factor svg { width: 24px; height: 24px; margin-bottom: 0.35rem; color: var(--brick); stroke-width: 1.5; }
 .factor strong { white-space: nowrap; font-family: Georgia, serif; font-size: 1.05rem; font-weight: 400; }
 .factor span { margin-top: 0.1rem; font: 0.55rem ui-monospace, monospace; letter-spacing: 0.06em; line-height: 1.4; text-transform: uppercase; color: var(--ink-soft); }
-.factor-one { left: 50%; top: 0; transform: translateX(-50%); }
-.factor-two { right: 0; top: 8%; }
-.factor-three { right: 0; bottom: 4%; }
-.factor-four { left: 0; bottom: 4%; }
-.factor-five { left: 0; top: 8%; }
-.map-rule { position: absolute; z-index: 1; width: 30%; height: 1px; left: 50%; top: 49%; background: rgba(163, 58, 43, 0.55); transform-origin: left center; }
-.map-rule-one { transform: rotate(-90deg); }
-.map-rule-two { transform: rotate(-28deg); }
-.map-rule-three { transform: rotate(44deg); }
-.map-rule-four { transform: rotate(136deg); }
-.map-rule-five { transform: rotate(207deg); }
+.factor-one { left: 50%; top: 49%; transform: translate(-50%, -50%) translateY(-270px); }
+.factor-two { left: 50%; top: 49%; transform: translate(-50%, -50%) rotate(72deg) translateY(-270px) rotate(-72deg); }
+.factor-three { left: 50%; top: 49%; transform: translate(-50%, -50%) rotate(144deg) translateY(-270px) rotate(-144deg); }
+.factor-four { left: 50%; top: 49%; transform: translate(-50%, -50%) rotate(216deg) translateY(-270px) rotate(-216deg); }
+.factor-five { left: 50%; top: 49%; transform: translate(-50%, -50%) rotate(288deg) translateY(-270px) rotate(-288deg); }
 .interaction-map figcaption { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%) rotate(-1deg); white-space: nowrap; font-family: "Segoe Print", cursive; color: var(--brick); }
 
 .evidence-photo {
@@ -288,19 +282,18 @@
 
 @media (max-width: 767px) {
   .paper-sheet::before { display: none; }
-  .interaction-map { min-height: 760px; }
-  .interaction-map::before { width: 280px; height: 280px; top: 44%; }
-  .map-vitruvian { width: 276px; height: 276px; top: 44%; }
-  .map-centre { top: 44%; width: 128px; height: 128px; }
+  .interaction-map { min-height: 680px; }
+  .interaction-map::before { width: 220px; height: 220px; top: 48%; }
+  .map-vitruvian { width: 216px; height: 216px; top: 48%; }
+  .map-centre { top: 48%; width: 110px; height: 110px; }
   .factor { width: 142px; padding-inline: 0.35rem; }
-  .factor strong { font-size: 0.95rem; }
-  .factor span { font-size: 0.5rem; }
-  .factor-one { top: 0; }
-  .factor-two { right: 0; top: 10%; }
-  .factor-three { right: 0; bottom: 14%; }
-  .factor-four { left: 0; bottom: 14%; }
-  .factor-five { left: 0; top: 10%; width: 168px; }
-  .map-rule { top: 44%; width: 36%; }
+  .factor strong { font-size: 0.9rem; }
+  .factor span { font-size: 0.48rem; }
+  .factor-one { left: 50%; top: 10%; transform: translate(-50%, -50%); }
+  .factor-two { left: 75%; top: 30%; transform: translate(-50%, -50%); }
+  .factor-three { left: 70%; top: 68%; transform: translate(-50%, -50%); }
+  .factor-four { left: 30%; top: 68%; transform: translate(-50%, -50%); }
+  .factor-five { left: 25%; top: 30%; transform: translate(-50%, -50%); }
   .interaction-map figcaption { font-size: 0.85rem; }
   .experiment-panel { border-left: 0; border-top: 1px dashed rgba(23, 59, 48, 0.3); padding: 2rem 0 0; }
 }
