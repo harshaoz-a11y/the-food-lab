@@ -321,35 +321,30 @@ const Index = () => {
             <main>
                 <section id="question" className="px-4 pb-4 pt-6 sm:px-6 lg:px-8 lg:pt-8">
                     <div
-                        className="paper-sheet mx-auto max-w-[1400px] px-6 py-12 sm:px-12 sm:py-16 lg:px-20 lg:py-24">
-                        <div className="grid items-center gap-8 lg:gap-12 xl:grid-cols-[.82fr_1.18fr]">
-                            <div className="relative z-10 lg:pl-3">
+                        className="paper-sheet mx-auto max-w-[1400px] px-6 py-12 sm:px-12 sm:py-16 lg:px-20 lg:py-20">
+                        <div className="grid min-w-0 items-center gap-10 xl:grid-cols-[minmax(0,.92fr)_minmax(0,1.08fr)] xl:gap-14">
+                            <div className="relative z-10 min-w-0 lg:pl-3">
                                 <span className="lab-label">Observation 001</span>
                                 <h1
-                                    className="mt-7 max-w-[790px] font-serif text-[clamp(3.6rem,8.2vw,8.5rem)] font-normal leading-[0.82] tracking-[-0.065em] text-ink">Could <span className="red-underline">interactions</span>matter more than ingredients?
-                                                    </h1>
+                                    className="mt-7 max-w-[650px] font-serif text-[clamp(3rem,9vw,5.8rem)] font-normal leading-[0.88] tracking-[-0.055em] text-ink">Could <span className="red-underline">interactions</span> matter more than ingredients?</h1>
                                 <div
-                                    className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between lg:max-w-2xl">
+                                    className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between lg:max-w-xl">
                                     <p
-                                        className="max-w-lg font-serif text-xl leading-snug text-ink/75 sm:text-2xl">Most of us keep changing the list. We study what happens around it.
-                                                          </p>
+                                        className="max-w-lg font-serif text-xl leading-snug text-ink/75 sm:text-2xl">Most of us keep changing the list. We study what happens around it.</p>
                                     <a
                                         href="#demonstration"
                                         className="group flex shrink-0 items-center gap-2 font-mono text-[10px] uppercase tracking-[0.15em] text-primary">Show me <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-1" />
                                     </a>
                                 </div>
-                                <aside
-                                    className="press-note mt-12 w-fit max-w-full rotate-[-1deg] px-5 py-4 sm:px-6">
-                                    <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-ink/50">Working note / not a verdict</span>
-                                    <p
-                                        className="handwritten mt-2 text-[clamp(.72rem,3vw,1.25rem)] leading-tight text-primary">
-                                        <span className="block whitespace-nowrap">The food did not arrive alone.</span>
-                                        <span className="block whitespace-nowrap">The day and its demands came with it.</span>
-                                    </p>
-                                </aside>
                             </div>
                             <InteractionMap />
                         </div>
+                        <aside
+                            className="press-note mx-auto mt-10 w-full max-w-4xl rotate-[-1deg] px-5 py-4 text-center sm:px-8">
+                            <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-ink/50">Working note / not a verdict</span>
+                            <p
+                                className="handwritten mt-2 text-[clamp(.95rem,2vw,1.3rem)] leading-tight text-primary lg:whitespace-nowrap">The food does not arrive alone. The day and its demands come with it.</p>
+                        </aside>
                     </div>
                 </section>
                 <section className="px-4 sm:px-6 lg:px-8" aria-labelledby="map-heading">
