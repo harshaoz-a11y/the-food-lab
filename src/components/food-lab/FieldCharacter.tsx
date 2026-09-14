@@ -51,22 +51,25 @@ export function FieldCharacter({ scene }: FieldCharacterProps) {
 
   return (
     <svg viewBox="0 0 240 170" aria-hidden="true" className="field-character-svg">
-      <path d="M13 142C21 76 61 30 123 25c61-4 99 44 104 117Z" fill="#cbd0b6" />
-      <circle cx="199" cy="38" r="22" fill="#fff4df" />
-      <path d="M205 18a22 22 0 1 0 13 32 25 25 0 0 1-13-32Z" fill="#9a433b" />
-      <path d="M72 152c3-35 22-53 55-53 34 0 56 18 59 53Z" fill="#4b5c56" stroke="#173b30" strokeWidth="2.5" />
-      <path d="m115 108 13 17 14-17 5 44h-39Z" fill="#e9dfca" />
-      <path d="m128 124-7 28h17Z" fill="#9a433b" />
-      <path d="M92 57c0-28 14-43 35-43 22 0 37 16 37 44v19c0 25-15 39-37 39-21 0-35-14-35-39Z" fill="#bd805f" stroke="#173b30" strokeWidth="2.5" />
-      <path d="M89 58c2-31 17-47 40-47 23 0 37 17 38 43-20 0-35-7-44-20-7 12-18 20-34 24Z" fill="#2f302d" />
-      <path d="M101 72c5-3 10-3 15 0M138 72c5-3 10-3 14 0M111 98c11-2 20-2 29 1" fill="none" stroke="#173b30" strokeLinecap="round" strokeWidth="2.5" />
-      <path d="M101 83h16M137 83h16" stroke="#785044" strokeLinecap="round" strokeWidth="3" opacity=".6" />
-      <circle cx="109" cy="76" r="2" fill="#173b30" /><circle cx="145" cy="76" r="2" fill="#173b30" />
-      <path d="M166 113c13 5 20 16 21 33M160 118l-16 20" fill="none" stroke="#bd805f" strokeLinecap="round" strokeWidth="9" />
-      <rect x="18" y="111" width="74" height="42" rx="5" fill="#fff4df" stroke="#173b30" strokeWidth="2.5" />
-      <path d="M30 124h47M30 134h36M30 144h42" stroke="#9a433b" strokeLinecap="round" strokeWidth="2.5" />
-      <path d="M194 111h27v31h-27zM197 104h21" fill="#fff4df" stroke="#173b30" strokeLinejoin="round" strokeWidth="2.5" />
-      <path d="M202 120h11M202 129h7" stroke="#9a433b" strokeLinecap="round" strokeWidth="2.5" />
+      <path d="M12 144C19 78 63 30 124 26c59-4 97 45 104 118Z" fill="#cbd0b6" />
+      <circle cx="202" cy="36" r="22" fill="#fff4df" />
+      <path d="M208 16a22 22 0 1 0 13 32 25 25 0 0 1-13-32Z" fill="#9a433b" />
+      <path d="M74 153c4-34 22-51 54-51 33 0 53 17 57 51Z" fill="#203f51" stroke="#173b30" strokeWidth="2.5" />
+      <path d="m104 116 24 18 25-18-8 37h-34Z" fill="#f2e7d4" />
+      <path d="m95 111 18 42H78c2-22 7-35 17-42Zm66 0-18 42h43c-3-22-11-35-25-42Z" fill="#2d5368" />
+      <path d="M96 61c0-27 13-43 34-43 22 0 36 17 36 44v17c0 24-15 38-36 38-20 0-34-14-34-38Z" fill="#c98664" stroke="#173b30" strokeWidth="2.5" />
+      <path d="M93 61c2-24 8-38 25-46 17-8 34-3 46 10-11-2-18 1-23 7 15-3 25 3 29 15-18 2-35-3-49-15-5 13-14 23-28 29Z" fill="#202f32" />
+      <path d="M105 73c5-3 10-3 15 0M140 73c5-3 9-3 14 0M116 98c8-1 15-1 22 1" fill="none" stroke="#173b30" strokeLinecap="round" strokeWidth="2.5" />
+      <path d="M106 83h14M139 83h14" stroke="#785044" strokeLinecap="round" strokeWidth="3" opacity=".55" />
+      <circle cx="113" cy="77" r="2" fill="#173b30" /><circle cx="147" cy="77" r="2" fill="#173b30" />
+      <circle cx="163" cy="72" r="4" fill="#f2e7d4" stroke="#173b30" strokeWidth="2" />
+      <path d="M166 76v12" stroke="#173b30" strokeLinecap="round" strokeWidth="2" />
+      <rect x="17" y="112" width="73" height="42" rx="6" fill="#fff4df" stroke="#173b30" strokeWidth="2.5" />
+      <path d="M29 125h48M29 135h34M29 145h43" stroke="#9a433b" strokeLinecap="round" strokeWidth="2.5" />
+      <path d="M176 119c12 5 18 15 19 29" fill="none" stroke="#c98664" strokeLinecap="round" strokeWidth="9" />
+      <rect x="190" y="120" width="30" height="22" rx="5" fill="#173b30" />
+      <path d="M198 131h14" stroke="#fff4df" strokeLinecap="round" strokeWidth="2" />
+      <path d="M51 98h28M58 90h21M65 82h14" stroke="#9a433b" strokeLinecap="round" strokeWidth="3" />
     </svg>
   );
 }

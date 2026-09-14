@@ -1,22 +1,28 @@
 import { FormEvent, useState } from "react";
 
 import {
+    Activity,
     AlarmClock,
     ArrowDown,
     ArrowRight,
     BatteryLow,
+    CalendarDays,
     CarFront,
     Clock3,
     CookingPot,
     Files,
     FlaskConical,
+    Heart,
     House,
     Mail,
     Menu,
     NotebookPen,
     Presentation,
+    RefreshCcw,
+    Salad,
     School,
     Smartphone,
+    Target,
     UsersRound,
     UtensilsCrossed,
     X,
@@ -112,6 +118,17 @@ const notes = [{
     copy: "Could enjoyment be part of consistency rather than its opposite?",
     status: "unresolved"
 }];
+
+const bioNutritionProcess = ["Understand", "Experiment", "Observe", "Adapt"];
+
+const helpAreas = [
+    { title: "Your biology", copy: "What your body is telling us.", icon: Activity },
+    { title: "Your goals", copy: "What you actually want to change.", icon: Target },
+    { title: "Your food", copy: "What you eat, how much, how often — what you enjoy and what you don’t.", icon: Salad },
+    { title: "Your life", copy: "Work, routines, time, travel, family, social life.", icon: CalendarDays },
+    { title: "Your preferences", copy: "Taste, satiety, habits, culture, convenience, affordability.", icon: Heart },
+    { title: "Your response", copy: "What changes when we change something.", icon: RefreshCcw }
+];
 
 function Brand() {
     return (
@@ -394,47 +411,66 @@ const Index = () => {
                         </aside>
                     </div>
                 </section>
-                <section className="px-4 sm:px-6 lg:px-8" aria-labelledby="lens-heading">
+                <section id="how-we-help" className="px-4 sm:px-6 lg:px-8" aria-labelledby="help-heading">
                     <div
                         className="paper-sheet mx-auto max-w-[1400px] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
-                        <div className="grid gap-12 lg:grid-cols-[.92fr_1.08fr] lg:items-center">
-                            <div className="relative">
-                                <div
-                                    className="rounded-[1.25rem] border border-ink/15 bg-[#e5dac3] p-5 shadow-[7px_8px_0_rgba(65,50,28,.06)] sm:p-8">
-                                    <div
-                                        className="grid aspect-[4/3] place-items-center rounded-[1rem] border border-dashed border-ink/25 bg-[#f4ecdc] p-6">
-                                        <UtensilsCrossed className="h-16 w-16 stroke-[1] text-primary" />
-                                        <div
-                                            className="grid w-full grid-cols-3 gap-2 text-center font-mono text-[8px] uppercase tracking-[0.1em] text-ink/55">
-                                            <span>what?</span><span>when?</span><span>with what?</span>
-                                            <span>how made?</span><span>for whom?</span><span>what day?</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <span className="absolute -bottom-5 right-5 handwritten text-xl text-primary">question the whole event →</span>
-                            </div>
+                        <div className="grid gap-12 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:gap-20">
                             <div>
-                                <span className="lab-label">The Food Lab lens</span>
+                                <span className="lab-label">The Food Lab approach</span>
                                 <h2
-                                    id="lens-heading"
-                                    className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">We look between the ingredients.</h2>
-                                <div className="mt-9 grid gap-x-8 sm:grid-cols-2">
-                                    {[
-                                        ["Preparation", "changes what becomes available."],
-                                        ["Timing", "changes what is useful now."],
-                                        ["Combination", "changes each ingredient’s job."],
-                                        ["Digestion", "changes what the body receives."],
-                                        ["Real life", "changes what can happen again."]
-                                    ].map(
-                                        ([title, copy]) => (<div key={title} className="border-t border-dashed border-ink/25 py-5">
-                                            <strong className="font-serif text-xl font-normal">{title}</strong>
-                                            <p className="mt-1 text-sm leading-relaxed text-ink/60">{copy}</p>
-                                        </div>)
-                                    )}
+                                    id="help-heading"
+                                    className="mt-6 max-w-3xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">How we can help you</h2>
+                                <p className="mt-7 font-mono text-[11px] uppercase tracking-[0.18em] text-primary">1. Precision Bio-Nutrition</p>
+                                <blockquote className="mt-6 max-w-2xl border-l-4 border-primary pl-5 font-serif text-2xl leading-snug text-ink/80 sm:text-3xl">
+                                    The right nutritional solution isn’t the one that looks best on paper.
+                                    <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
+                                </blockquote>
+                                <a
+                                    href="#your-experiment"
+                                    className="mt-8 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">First 30min free consult — Get in touch <ArrowRight className="h-4 w-4" />
+                                </a>
+                            </div>
+
+                            <div className="rounded-[2rem] bg-charcoal p-6 text-[#f8f2e5] shadow-[8px_10px_0_rgba(23,59,48,.12)] sm:p-9">
+                                <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#f8f2e5]/55">Our working loop</span>
+                                <div className="mt-7 flex flex-col items-center">
+                                    {bioNutritionProcess.map((stage, index) => (
+                                        <div className="flex w-full flex-col items-center" key={stage}>
+                                            <div className="flex w-full max-w-sm items-center gap-4 rounded-full border border-[#f8f2e5]/20 bg-[#f8f2e5]/[0.07] px-5 py-4">
+                                                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#f8f2e5] font-mono text-[10px] text-primary">0{index + 1}</span>
+                                                <strong className="font-mono text-sm font-medium uppercase tracking-[0.18em]">{stage}</strong>
+                                            </div>
+                                            {index < bioNutritionProcess.length - 1 && <ArrowDown className="my-2 h-5 w-5 text-[#d68b7f]" aria-hidden="true" />}
+                                        </div>
+                                    ))}
                                 </div>
-                                <p className="handwritten mt-7 text-xl text-primary">Which interaction have we assumed does not matter?</p>
                             </div>
                         </div>
+
+                        <div className="mt-16 border-t border-ink/15 pt-12 lg:mt-20 lg:pt-16">
+                            <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+                                <div>
+                                    <span className="lab-label">Six signals / one useful plan</span>
+                                    <h3 className="mt-5 font-serif text-4xl font-normal tracking-[-0.035em] sm:text-5xl">What we look at!</h3>
+                                </div>
+                                <p className="max-w-sm text-sm leading-relaxed text-ink/60">Not isolated data points. A connected picture of what your body, food and days are doing together.</p>
+                            </div>
+
+                            <div className="mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                                {helpAreas.map(({ title, copy, icon: Icon }, index) => (
+                                    <article key={title} className="rounded-[1.35rem] border border-ink/15 bg-[#e7dcc5] p-5 shadow-[4px_5px_0_rgba(65,50,28,.05)]">
+                                        <div className="flex items-start justify-between gap-4">
+                                            <Icon className="h-8 w-8 stroke-[1.35] text-primary" aria-hidden="true" />
+                                            <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-ink/40">Signal 0{index + 1}</span>
+                                        </div>
+                                        <h4 className="mt-6 font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-ink">{title}</h4>
+                                        <p className="mt-2 text-sm leading-relaxed text-ink/65">{copy}</p>
+                                    </article>
+                                ))}
+                            </div>
+                        </div>
+
+                        <p className="handwritten mt-12 border-t border-dashed border-ink/25 pt-8 text-center text-xl text-primary sm:text-2xl">Which interaction have we assumed does not matter?</p>
                     </div>
                 </section>
                 <section id="protein-11" className="px-4 sm:px-6 lg:px-8">
