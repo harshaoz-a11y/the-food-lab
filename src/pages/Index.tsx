@@ -24,6 +24,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { EggExperiment } from "@/components/food-lab/EggExperiment";
+import { FieldCharacter, type FieldScene } from "@/components/food-lab/FieldCharacter";
 import { HypothesisExperiment } from "@/components/food-lab/HypothesisExperiment";
 import { InteractionMap } from "@/components/food-lab/InteractionMap";
 import { RiceExperiment } from "@/components/food-lab/RiceExperiment";
@@ -45,39 +46,48 @@ const navigation = [{
 
 const fieldStudies = [{
     time: "07:42 / weekday",
-    scene: "morning",
+    scene: "morning" as FieldScene,
+    storyLabel: "Weekday",
+    persona: "The Working Mom",
+    personaNote: "Morning logistics / everyone needs her at once",
     title: "The morning moved first",
-    copy: "Breakfast did not fail. A late alarm, a school run and the first meeting rearranged it.",
+    copy: "Breakfast did not fail. It was interrupted by the next urgent thing, then the next.",
     note: "timing × appetite",
     steps: [
-        { label: "Woke up late", icons: [AlarmClock] },
-        { label: "Breakfast rush", icons: [CookingPot] },
-        { label: "Meeting alert", icons: [Smartphone, Presentation] },
-        { label: "Kids late too", icons: [CarFront, School] }
+        { title: "The alarm is missed", detail: "She wakes up already behind the clock.", icons: [AlarmClock] },
+        { title: "Breakfast becomes a race", detail: "She rushes to get something on the table.", icons: [CookingPot] },
+        { title: "Her phone interrupts", detail: "The moment she sits, a meeting reminder flashes.", icons: [Smartphone, Presentation] },
+        { title: "School cannot wait", detail: "Before the first bite, the kids need to leave.", icons: [CarFront, School] }
     ]
 }, {
     time: "13:18 / desk",
-    scene: "desk",
+    scene: "desk" as FieldScene,
+    storyLabel: "Lunch",
+    persona: "The “Too Busy for Lunch” CEO",
+    personaNote: "Decisions, calls and an untouched meal",
     title: "Lunch got outnumbered",
-    copy: "The meal was sensible. A conference, a climbing inbox and unfinished work made it disappear.",
+    copy: "The meal arrived on time. Everything competing for his attention did too.",
     note: "attention × overload",
     steps: [
-        { label: "Lunch arrives", icons: [UtensilsCrossed] },
-        { label: "Conference starts", icons: [Presentation, UsersRound] },
-        { label: "Work stacks up", icons: [Mail, Files] },
-        { label: "Lunch is forgotten", icons: [Clock3] }
+        { title: "The calendar closes in", detail: "Back-to-back calls swallow the morning.", icons: [Clock3] },
+        { title: "Lunch reaches the desk", detail: "A meal lands beside the laptop.", icons: [UtensilsCrossed] },
+        { title: "One more conference", detail: "A quick decision pulls everyone into another call.", icons: [Presentation, UsersRound] },
+        { title: "Work wins the foreground", detail: "The inbox climbs; lunch goes cold and unnoticed.", icons: [Mail, Files] }
     ]
 }, {
     time: "21:36 / home",
-    scene: "evening",
+    scene: "evening" as FieldScene,
+    storyLabel: "Home",
+    persona: "The 15-Hour Hot-Shot Analyst",
+    personaNote: "Home hungry / too depleted to make dinner",
     title: "Hunger met an empty battery",
-    copy: "She got home ready to eat. The day had already spent the energy needed to make dinner.",
+    copy: "He made it home ready to eat. The workday had spent the energy needed to make dinner.",
     note: "hunger × fatigue",
     steps: [
-        { label: "Home, finally", icons: [House] },
-        { label: "Very hungry", icons: [UtensilsCrossed] },
-        { label: "Nothing left", icons: [BatteryLow] },
-        { label: "Cooking feels huge", icons: [CookingPot] }
+        { title: "Fifteen hours later", detail: "The final spreadsheet is finally closed.", icons: [Files, Clock3] },
+        { title: "He reaches home hungry", detail: "Hunger arrives before he has even put his bag down.", icons: [House, UtensilsCrossed] },
+        { title: "The kitchen asks again", detail: "Dinner still needs choices, chopping and time.", icons: [CookingPot] },
+        { title: "His battery is empty", detail: "Exhaustion makes even eating feel like work.", icons: [BatteryLow] }
     ]
 }];
 
@@ -175,34 +185,64 @@ function Header() {
 }
 
 function FieldStudies() {
+    const [activeScene, setActiveScene] = useState<FieldScene>("morning");
+    const activeStudy = fieldStudies.find(({ scene }) => scene === activeScene) ?? fieldStudies[0];
+
     return (
-        <div className="field-studies-grid">
-            {fieldStudies.map((
-                {
-                    time,
-                    scene,
-                    title,
-                    copy,
-                    note,
-                    steps
-                }
-            ) => (<article key={title} className={`field-frame field-frame-${scene}`} data-time={time}>
-                <div className="field-story" role="list" aria-label={`${title} visual sequence`}>
-                    {steps.map(({ label, icons }, stepIndex) => (
-                        <span className="field-story-step" role="listitem" data-step={stepIndex + 1} key={label}>
+        <div className="field-studies">
+            <div className="field-personas" aria-label="Choose a real-life story">
+                {fieldStudies.map(({ scene, storyLabel, persona, personaNote }, index) => {
+                    const isActive = scene === activeScene;
+
+                    return (
+                        <button
+                            key={scene}
+                            type="button"
+                            className={`field-persona field-persona-${scene}`}
+                            aria-pressed={isActive}
+                            onClick={() => setActiveScene(scene)}>
+                            <span className="field-persona-art">
+                                <FieldCharacter scene={scene} />
+                            </span>
+                            <span className="field-persona-copy">
+                                <small>Character 0{index + 1}</small>
+                                <strong>{persona}</strong>
+                                <span>{personaNote}</span>
+                            </span>
+                            <span className="field-persona-action">
+                                {isActive ? `${storyLabel} loaded` : `Load ${storyLabel}`}
+                                <ArrowRight aria-hidden="true" />
+                            </span>
+                        </button>
+                    );
+                })}
+            </div>
+
+            <article
+                key={activeStudy.scene}
+                className={`field-frame field-frame-${activeStudy.scene}`}
+                aria-live="polite">
+                <header className="field-panel-heading">
+                    <span className="field-time">{activeStudy.time}</span>
+                    <h3>{activeStudy.title}</h3>
+                    <p>{activeStudy.copy}</p>
+                    <span className="field-note">{activeStudy.note}</span>
+                </header>
+                <div className="field-story" role="list" aria-label={`${activeStudy.title} visual sequence`}>
+                    {activeStudy.steps.map(({ title, detail, icons }, stepIndex) => (
+                        <div className="field-story-step" role="listitem" data-step={stepIndex + 1} key={title}>
                             <span className="field-story-icons" aria-hidden="true">
                                 {icons.map((StoryIcon, iconIndex) => <StoryIcon key={iconIndex} />)}
                             </span>
-                            <small>{label}</small>
-                        </span>
+                            <span className="field-story-copy">
+                                <small>Step 0{stepIndex + 1}</small>
+                                <strong>{title}</strong>
+                                <p>{detail}</p>
+                            </span>
+                        </div>
                     ))}
                 </div>
-                <div className="field-copy">
-                    <h3>{title}</h3>
-                    <p>{copy}</p>
-                    <span className="field-note">{note}</span>
-                </div>
-            </article>))}
+            </article>
         </div>
     );
 }
