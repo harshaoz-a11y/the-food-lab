@@ -344,15 +344,8 @@ const Index = () => {
                                 <span className="lab-label">Observation 001</span>
                                 <h1
                                     className="mt-7 max-w-[650px] font-serif text-[clamp(3rem,9vw,5.8rem)] font-normal leading-[0.88] tracking-[-0.055em] text-ink">Could <span className="red-underline">interactions</span> matter more than ingredients?</h1>
-                                <div
-                                    className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between lg:max-w-xl">
-                                    <p
-                                        className="max-w-lg font-serif text-xl leading-snug text-ink/75 sm:text-2xl">Most of us keep changing the list. We study what happens around it.</p>
-                                    <a
-                                        href="#demonstration"
-                                        className="group flex shrink-0 items-center gap-2 font-mono text-[10px] uppercase tracking-[0.15em] text-primary">Show me <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-1" />
-                                    </a>
-                                </div>
+                                <p
+                                    className="mt-10 max-w-lg font-serif text-xl leading-snug text-ink/75 sm:text-2xl">Most of us keep changing the list. We study what happens around it.</p>
                             </div>
                             <InteractionMap />
                         </div>
@@ -419,9 +412,8 @@ const Index = () => {
                                 <span className="lab-label">The Food Lab approach</span>
                                 <h2
                                     id="help-heading"
-                                    className="mt-6 max-w-3xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">How we can help you</h2>
-                                <p className="mt-7 font-mono text-[11px] uppercase tracking-[0.18em] text-primary">1. Precision Bio-Nutrition</p>
-                                <blockquote className="mt-6 max-w-2xl border-l-4 border-primary pl-5 font-serif text-2xl leading-snug text-ink/80 sm:text-3xl">
+                                    className="mt-6 max-w-4xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">1. Precision Bio-Nutrition</h2>
+                                <blockquote className="mt-7 max-w-2xl border-l-4 border-primary pl-5 font-serif text-2xl leading-snug text-ink/80 sm:text-3xl">
                                     The right nutritional solution isn’t the one that looks best on paper.
                                     <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
                                 </blockquote>
@@ -470,7 +462,7 @@ const Index = () => {
                             </div>
                         </div>
 
-                        <p className="handwritten mt-12 border-t border-dashed border-ink/25 pt-8 text-center text-xl text-primary sm:text-2xl">Which interaction have we assumed does not matter?</p>
+                        <p className="handwritten mt-12 border-t border-dashed border-ink/25 pt-8 text-center text-xl text-primary sm:text-2xl">What if DIETS could be DELICIOUS?</p>
                     </div>
                 </section>
                 <section id="protein-11" className="px-4 sm:px-6 lg:px-8">
