@@ -559,34 +559,36 @@ const Index = () => {
                     </div>
                 </section>
                 <section id="alchemy-bar" className="px-4 sm:px-6 lg:px-8">
-                    <div
-                        className="mx-auto max-w-[1400px] border-x border-ink/15 bg-[#dfd4be] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
-                        <div className="grid gap-12 lg:grid-cols-[1fr_.9fr] lg:items-center">
-                            <figure className="evidence-photo rotate-[-1deg]">
-                                <span className="tape tape-left" />
-                                <img
-                                    src={maestroAssets.alchemyBar}
-                                    alt="Alchemy Bar cut open to reveal its whole-food texture"
-                                    className="min-h-[340px] w-full object-cover sm:min-h-[480px]" />
-                                <figcaption>Alchemy Bar / first practical experiment</figcaption>
-                            </figure>
-                            <div>
-                                <span className="lab-label">An experiment that became food</span>
-                                <h2
-                                    className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Introducing ALCHEMY Bar — because protein was never meant to work alone.</h2>
-                                <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink/68">Seven deliberate partnerships balance rapid and sustained protein, steady energy, bright flavour, texture-led satiety and clean sweetness — without making enjoyment the compromise.</p>
-                                <div className="mt-8 flex flex-wrap items-center gap-4">
-                                    <a
-                                        href="mailto:harsha@thefoodlab.in?subject=Alchemy%20Bar%20experiment"
-                                        className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">Ask about Alchemy Bar <ArrowRight className="h-4 w-4" />
-                                    </a>
-                                    <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-ink/50">Precision interactions. One enjoyable result.</span>
-                                </div>
-                            </div>
-                        </div>
-                        <AlchemyPartnerships />
-                    </div>
-                </section>
+                                    <div
+                                        className="mx-auto max-w-[1200px] border-x border-ink/15 bg-[#dfd4be] px-4 py-12 sm:px-8 lg:px-16 lg:py-20">
+                                        <div className="grid gap-8 lg:grid-cols-[1fr_.8fr] lg:items-center">
+                                            <figure className="evidence-photo rotate-[-1deg]">
+                                                <span className="tape tape-left" />
+                                                <img
+                                                    src={maestroAssets.alchemyBar}
+                                                    alt="Alchemy Bar cut open to reveal its whole-food texture"
+                                                    className="min-h-[280px] w-full object-cover sm:min-h-[380px]" />
+                                                <figcaption>Alchemy Bar / first practical experiment</figcaption>
+                                            </figure>
+                                            <div>
+                                                <span className="lab-label">An experiment that became food</span>
+                                                <h2
+                                                    className="mt-4 max-w-xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl italic"><em>Introducing ALCHEMY Bar — because protein was never meant to work alone.</em></h2>
+                                                <div className="mt-5 max-w-lg text-base leading-relaxed text-ink/68 italic">
+                                                    <em>Seven deliberate partnerships balance rapid and sustained protein, steady energy, bright flavour, texture-led satiety and clean sweetness — without making enjoyment the compromise.</em>
+                                                </div>
+                                                <div className="mt-6 flex flex-wrap items-center gap-3">
+                                                    <a
+                                                        href="mailto:harsha@thefoodlab.in?subject=Alchemy%20Bar%20experiment"
+                                                        className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">Ask about Alchemy Bar <ArrowRight className="h-4 w-4" />
+                                                    </a>
+                                                    <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-ink/50">Precision interactions. One enjoyable result.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <AlchemyPartnerships />
+                                    </div>
+                                </section>
                 <section className="px-4 sm:px-6 lg:px-8" aria-labelledby="notes-heading">
                     <div
                         className="paper-sheet mx-auto max-w-[1400px] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
