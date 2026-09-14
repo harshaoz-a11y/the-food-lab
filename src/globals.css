@@ -370,6 +370,32 @@
 .hypothesis-observation span { font: 0.55rem ui-monospace, monospace; letter-spacing: 0.13em; text-transform: uppercase; color: var(--brick); }
 .hypothesis-observation p { font-family: Georgia, serif; font-size: clamp(1rem, 1.6vw, 1.25rem); color: rgba(23, 59, 48, 0.7); animation: hypothesis-note-in 300ms ease; }
 
+.happiness-thesis {
+  position: relative;
+  max-width: 760px;
+  margin: 1.4rem auto 0;
+  padding-top: 1.25rem;
+  text-align: center;
+  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  line-height: 1.35;
+  color: var(--brick);
+}
+.happiness-thesis::before {
+  content: "";
+  position: absolute;
+  width: 86px;
+  height: 2px;
+  left: 50%;
+  top: 0;
+  background: rgba(163, 58, 43, 0.42);
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+@keyframes happiness-beat {
+  0%, 100% { transform: scale(1.08) rotate(-8deg); }
+  45% { transform: scale(1.35) rotate(-4deg); }
+}
 @keyframes hypothesis-result-pulse {
   0% { transform: scale(0.94) rotate(-2deg); }
   65% { transform: scale(1.07) rotate(1deg); }
