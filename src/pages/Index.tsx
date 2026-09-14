@@ -60,12 +60,24 @@ const fieldStudies = [{
     title: "The morning moved first",
     copy: "Breakfast did not fail. It was interrupted by the next urgent thing, then the next.",
     note: "timing × appetite",
-    steps: [
-        { title: "The alarm is missed", detail: "She wakes up already behind the clock.", icons: [AlarmClock] },
-        { title: "Breakfast becomes a race", detail: "She rushes to get something on the table.", icons: [CookingPot] },
-        { title: "Her phone interrupts", detail: "The moment she sits, a meeting reminder flashes.", icons: [Smartphone, Presentation] },
-        { title: "School cannot wait", detail: "Before the first bite, the kids need to leave.", icons: [CarFront, School] }
-    ]
+
+    steps: [{
+        title: "The alarm is missed",
+        detail: "She wakes up already behind the clock.",
+        icons: [AlarmClock]
+    }, {
+        title: "Breakfast becomes a race",
+        detail: "She rushes to get something on the table.",
+        icons: [CookingPot]
+    }, {
+        title: "Her phone interrupts",
+        detail: "The moment she sits, a meeting reminder flashes.",
+        icons: [Smartphone, Presentation]
+    }, {
+        title: "School cannot wait",
+        detail: "Before the first bite, the kids need to leave.",
+        icons: [CarFront, School]
+    }]
 }, {
     time: "13:18 / desk",
     scene: "desk" as FieldScene,
@@ -75,12 +87,24 @@ const fieldStudies = [{
     title: "Lunch got outnumbered",
     copy: "The meal arrived on time. Everything competing for his attention did too.",
     note: "attention × overload",
-    steps: [
-        { title: "The calendar closes in", detail: "Back-to-back calls swallow the morning.", icons: [Clock3] },
-        { title: "Lunch reaches the desk", detail: "A meal lands beside the laptop.", icons: [UtensilsCrossed] },
-        { title: "One more conference", detail: "A quick decision pulls everyone into another call.", icons: [Presentation, UsersRound] },
-        { title: "Work wins the foreground", detail: "The inbox climbs; lunch goes cold and unnoticed.", icons: [Mail, Files] }
-    ]
+
+    steps: [{
+        title: "The calendar closes in",
+        detail: "Back-to-back calls swallow the morning.",
+        icons: [Clock3]
+    }, {
+        title: "Lunch reaches the desk",
+        detail: "A meal lands beside the laptop.",
+        icons: [UtensilsCrossed]
+    }, {
+        title: "One more conference",
+        detail: "A quick decision pulls everyone into another call.",
+        icons: [Presentation, UsersRound]
+    }, {
+        title: "Work wins the foreground",
+        detail: "The inbox climbs; lunch goes cold and unnoticed.",
+        icons: [Mail, Files]
+    }]
 }, {
     time: "21:36 / home",
     scene: "evening" as FieldScene,
@@ -90,12 +114,24 @@ const fieldStudies = [{
     title: "Hunger met an empty battery",
     copy: "He made it home ready to eat. The workday had spent the energy needed to make dinner.",
     note: "hunger × fatigue",
-    steps: [
-        { title: "Fifteen hours later", detail: "The final spreadsheet is finally closed.", icons: [Files, Clock3] },
-        { title: "He reaches home hungry", detail: "Hunger arrives before he has even put his bag down.", icons: [House, UtensilsCrossed] },
-        { title: "The kitchen asks again", detail: "Dinner still needs choices, chopping and time.", icons: [CookingPot] },
-        { title: "His battery is empty", detail: "Exhaustion makes even eating feel like work.", icons: [BatteryLow] }
-    ]
+
+    steps: [{
+        title: "Fifteen hours later",
+        detail: "The final spreadsheet is finally closed.",
+        icons: [Files, Clock3]
+    }, {
+        title: "He reaches home hungry",
+        detail: "Hunger arrives before he has even put his bag down.",
+        icons: [House, UtensilsCrossed]
+    }, {
+        title: "The kitchen asks again",
+        detail: "Dinner still needs choices, chopping and time.",
+        icons: [CookingPot]
+    }, {
+        title: "His battery is empty",
+        detail: "Exhaustion makes even eating feel like work.",
+        icons: [BatteryLow]
+    }]
 }];
 
 const notes = [{
@@ -122,14 +158,31 @@ const notes = [{
 
 const bioNutritionProcess = ["Understand", "Experiment", "Observe", "Adapt"];
 
-const helpAreas = [
-    { title: "Your biology", copy: "What your body is telling us.", icon: Activity },
-    { title: "Your goals", copy: "What you actually want to change.", icon: Target },
-    { title: "Your food", copy: "What you eat, how much, how often — what you enjoy and what you don’t.", icon: Salad },
-    { title: "Your life", copy: "Work, routines, time, travel, family, social life.", icon: CalendarDays },
-    { title: "Your preferences", copy: "Taste, satiety, habits, culture, convenience, affordability.", icon: Heart },
-    { title: "Your response", copy: "What changes when we change something.", icon: RefreshCcw }
-];
+const helpAreas = [{
+    title: "Your biology",
+    copy: "What your body is telling us.",
+    icon: Activity
+}, {
+    title: "Your goals",
+    copy: "What you actually want to change.",
+    icon: Target
+}, {
+    title: "Your food",
+    copy: "What you eat, how much, how often — what you enjoy and what you don’t.",
+    icon: Salad
+}, {
+    title: "Your life",
+    copy: "Work, routines, time, travel, family, social life.",
+    icon: CalendarDays
+}, {
+    title: "Your preferences",
+    copy: "Taste, satiety, habits, culture, convenience, affordability.",
+    icon: Heart
+}, {
+    title: "Your response",
+    copy: "What changes when we change something.",
+    icon: RefreshCcw
+}];
 
 function Brand() {
     return (
@@ -204,12 +257,25 @@ function Header() {
 
 function FieldStudies() {
     const [activeScene, setActiveScene] = useState<FieldScene>("morning");
-    const activeStudy = fieldStudies.find(({ scene }) => scene === activeScene) ?? fieldStudies[0];
+
+    const activeStudy = fieldStudies.find((
+        {
+            scene
+        }
+    ) => scene === activeScene) ?? fieldStudies[0];
 
     return (
         <div className="field-studies">
             <div className="field-personas" aria-label="Choose a real-life story">
-                {fieldStudies.map(({ scene, storyLabel, persona, personaNote }, index) => {
+                {fieldStudies.map((
+                    {
+                        scene,
+                        storyLabel,
+                        persona,
+                        personaNote
+                    },
+                    index
+                ) => {
                     const isActive = scene === activeScene;
 
                     return (
@@ -235,7 +301,6 @@ function FieldStudies() {
                     );
                 })}
             </div>
-
             <article
                 key={activeStudy.scene}
                 className={`field-frame field-frame-${activeStudy.scene}`}
@@ -246,19 +311,31 @@ function FieldStudies() {
                     <p>{activeStudy.copy}</p>
                     <span className="field-note">{activeStudy.note}</span>
                 </header>
-                <div className="field-story" role="list" aria-label={`${activeStudy.title} visual sequence`}>
-                    {activeStudy.steps.map(({ title, detail, icons }, stepIndex) => (
-                        <div className="field-story-step" role="listitem" data-step={stepIndex + 1} key={title}>
-                            <span className="field-story-icons" aria-hidden="true">
-                                {icons.map((StoryIcon, iconIndex) => <StoryIcon key={iconIndex} />)}
-                            </span>
-                            <span className="field-story-copy">
-                                <small>Step 0{stepIndex + 1}</small>
-                                <strong>{title}</strong>
-                                <p>{detail}</p>
-                            </span>
-                        </div>
-                    ))}
+                <div
+                    className="field-story"
+                    role="list"
+                    aria-label={`${activeStudy.title} visual sequence`}>
+                    {activeStudy.steps.map((
+                        {
+                            title,
+                            detail,
+                            icons
+                        },
+                        stepIndex
+                    ) => (<div
+                        className="field-story-step"
+                        role="listitem"
+                        data-step={stepIndex + 1}
+                        key={title}>
+                        <span className="field-story-icons" aria-hidden="true">
+                            {icons.map((StoryIcon, iconIndex) => <StoryIcon key={iconIndex} />)}
+                        </span>
+                        <span className="field-story-copy">
+                            <small>Step 0{stepIndex + 1}</small>
+                            <strong>{title}</strong>
+                            <p>{detail}</p>
+                        </span>
+                    </div>))}
                 </div>
             </article>
         </div>
@@ -340,11 +417,12 @@ const Index = () => {
                 <section id="question" className="px-4 pb-4 pt-6 sm:px-6 lg:px-8 lg:pt-8">
                     <div
                         className="paper-sheet mx-auto max-w-[1400px] px-6 py-12 sm:px-12 sm:py-16 lg:px-20 lg:py-20">
-                        <div className="grid min-w-0 items-center gap-10 xl:grid-cols-[minmax(0,.92fr)_minmax(0,1.08fr)] xl:gap-14">
+                        <div
+                            className="grid min-w-0 items-center gap-10 xl:grid-cols-[minmax(0,.92fr)_minmax(0,1.08fr)] xl:gap-14">
                             <div className="relative z-10 min-w-0 lg:pl-3">
                                 <span className="lab-label">Observation 001</span>
                                 <h1
-                                    className="mt-7 max-w-[650px] font-serif text-[clamp(3rem,9vw,5.8rem)] font-normal leading-[0.88] tracking-[-0.055em] text-ink">Could <span className="red-underline">interactions</span> matter more than ingredients?</h1>
+                                    className="mt-7 max-w-[650px] font-serif text-[clamp(3rem,9vw,5.8rem)] font-normal leading-[0.88] tracking-[-0.055em] text-ink">Could <span className="red-underline">interactions</span>matter more than ingredients?</h1>
                                 <p
                                     className="mt-10 max-w-lg font-serif text-xl leading-snug text-ink/75 sm:text-2xl">Most of us keep changing the list. We study what happens around it.</p>
                             </div>
@@ -365,7 +443,7 @@ const Index = () => {
                             <h2 id="map-heading" className="lab-label">The working hypothesis</h2>
                             <p
                                 className="mx-auto mt-4 max-w-xl font-serif text-xl leading-snug text-ink/65">Don’t just read the formula. Put it to work.
-                                              </p>
+                                                                              </p>
                         </div>
                         <HypothesisExperiment />
                     </div>
@@ -405,65 +483,79 @@ const Index = () => {
                         </aside>
                     </div>
                 </section>
-                <section id="how-we-help" className="px-4 sm:px-6 lg:px-8" aria-labelledby="help-heading">
+                <section
+                    id="how-we-help"
+                    className="px-4 sm:px-6 lg:px-8"
+                    aria-labelledby="help-heading">
                     <div
                         className="paper-sheet mx-auto max-w-[1400px] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
-                        <div className="grid gap-12 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:gap-20">
+                        <div
+                            className="grid gap-12 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:gap-20">
                             <div>
                                 <span className="lab-label">The Food Lab approach</span>
                                 <h2
                                     id="help-heading"
                                     className="mt-6 max-w-4xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">1. Precision Bio-Nutrition</h2>
-                                <blockquote className="mt-7 max-w-2xl border-l-4 border-primary pl-5 font-serif text-2xl leading-snug text-ink/80 sm:text-3xl">
-                                    The right nutritional solution isn’t the one that looks best on paper.
-                                    <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
+                                <blockquote
+                                    className="mt-7 max-w-2xl border-l-4 border-primary pl-5 font-serif text-2xl leading-snug text-ink/80 sm:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
+                                                                        <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
                                 </blockquote>
                                 <a
                                     href="#your-experiment"
                                     className="mt-8 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">First 30min free consult — Get in touch <ArrowRight className="h-4 w-4" />
                                 </a>
                             </div>
-
-                            <div className="rounded-[2rem] bg-charcoal p-6 text-[#f8f2e5] shadow-[8px_10px_0_rgba(23,59,48,.12)] sm:p-9">
-                                <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#f8f2e5]/55">Our working loop</span>
+                            <div
+                                className="rounded-[2rem] bg-charcoal p-6 text-[#f8f2e5] shadow-[8px_10px_0_rgba(23,59,48,.12)] sm:p-9">
+                                <span
+                                    className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#f8f2e5]/55">Our working loop</span>
                                 <div className="mt-7 flex flex-col items-center">
-                                    {bioNutritionProcess.map((stage, index) => (
-                                        <div className="flex w-full flex-col items-center" key={stage}>
-                                            <div className="flex w-full max-w-sm items-center gap-4 rounded-full border border-[#f8f2e5]/20 bg-[#f8f2e5]/[0.07] px-5 py-4">
-                                                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#f8f2e5] font-mono text-[10px] text-primary">0{index + 1}</span>
+                                    {bioNutritionProcess.map(
+                                        (stage, index) => (<div className="flex w-full flex-col items-center" key={stage}>
+                                            <div
+                                                className="flex w-full max-w-sm items-center gap-4 rounded-full border border-[#f8f2e5]/20 bg-[#f8f2e5]/[0.07] px-5 py-4">
+                                                <span
+                                                    className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#f8f2e5] font-mono text-[10px] text-primary">0{index + 1}</span>
                                                 <strong className="font-mono text-sm font-medium uppercase tracking-[0.18em]">{stage}</strong>
                                             </div>
                                             {index < bioNutritionProcess.length - 1 && <ArrowDown className="my-2 h-5 w-5 text-[#d68b7f]" aria-hidden="true" />}
-                                        </div>
-                                    ))}
+                                        </div>)
+                                    )}
                                 </div>
                             </div>
                         </div>
-
                         <div className="mt-16 border-t border-ink/15 pt-12 lg:mt-20 lg:pt-16">
                             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
                                 <div>
                                     <span className="lab-label">Six signals / one useful plan</span>
-                                    <h3 className="mt-5 font-serif text-4xl font-normal tracking-[-0.035em] sm:text-5xl">What we look at!</h3>
+                                    <h3
+                                        className="mt-5 font-serif text-4xl font-normal tracking-[-0.035em] sm:text-5xl">What we look at!</h3>
                                 </div>
                                 <p className="max-w-sm text-sm leading-relaxed text-ink/60">Not isolated data points. A connected picture of what your body, food and days are doing together.</p>
                             </div>
-
                             <div className="mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                                {helpAreas.map(({ title, copy, icon: Icon }, index) => (
-                                    <article key={title} className="rounded-[1.35rem] border border-ink/15 bg-[#e7dcc5] p-5 shadow-[4px_5px_0_rgba(65,50,28,.05)]">
-                                        <div className="flex items-start justify-between gap-4">
-                                            <Icon className="h-8 w-8 stroke-[1.35] text-primary" aria-hidden="true" />
-                                            <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-ink/40">Signal 0{index + 1}</span>
-                                        </div>
-                                        <h4 className="mt-6 font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-ink">{title}</h4>
-                                        <p className="mt-2 text-sm leading-relaxed text-ink/65">{copy}</p>
-                                    </article>
-                                ))}
+                                {helpAreas.map((
+                                    {
+                                        title,
+                                        copy,
+                                        icon: Icon
+                                    },
+                                    index
+                                ) => (<article
+                                    key={title}
+                                    className="rounded-[1.35rem] border border-ink/15 bg-[#e7dcc5] p-5 shadow-[4px_5px_0_rgba(65,50,28,.05)]">
+                                    <div className="flex items-start justify-between gap-4">
+                                        <Icon className="h-8 w-8 stroke-[1.35] text-primary" aria-hidden="true" />
+                                        <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-ink/40">Signal 0{index + 1}</span>
+                                    </div>
+                                    <h4
+                                        className="mt-6 font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-ink">{title}</h4>
+                                    <p className="mt-2 text-sm leading-relaxed text-ink/65">{copy}</p>
+                                </article>))}
                             </div>
                         </div>
-
-                        <p className="handwritten mt-12 border-t border-dashed border-ink/25 pt-8 text-center text-xl text-primary sm:text-2xl">What if DIETS could be DELICIOUS?</p>
+                        <p
+                            className="handwritten mt-12 border-t border-dashed border-ink/25 pt-8 text-center text-xl text-primary sm:text-2xl">What if DIETS could be DELICIOUS?</p>
                     </div>
                 </section>
                 <section id="alchemy-bar" className="px-4 sm:px-6 lg:px-8">
@@ -492,7 +584,6 @@ const Index = () => {
                                 </div>
                             </div>
                         </div>
-
                         <AlchemyPartnerships />
                     </div>
                 </section>
@@ -532,7 +623,7 @@ const Index = () => {
                                 <h2
                                     className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
                                 <p className="mt-7 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Tell us what you have tried and where real life keeps entering the picture. We begin with questions, not a perfect plan.
-                                                    </p>
+                                                                                        </p>
                                 <div className="mt-10 flex items-center gap-4 text-[#d68b7f]">
                                     <FlaskConical className="h-8 w-8 stroke-[1.2]" />
                                     <span className="handwritten max-w-xs text-xl leading-tight">No judgement. No gold stars for an ideal food diary.</span>
