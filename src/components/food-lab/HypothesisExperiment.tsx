@@ -133,7 +133,7 @@ export function HypothesisExperiment() {
       </div>
 
       <div key={active} className="hypothesis-observation" aria-live="polite">
-        <span>Observation 0{active + 1}</span>
+        <span>Observation-0{active + 1}</span>
         <p>{stages[active].insight}</p>
       </div>
 

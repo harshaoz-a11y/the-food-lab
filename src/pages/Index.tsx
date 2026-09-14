@@ -420,9 +420,9 @@ const Index = () => {
                         <div
                             className="grid min-w-0 items-center gap-10 xl:grid-cols-[minmax(0,.92fr)_minmax(0,1.08fr)] xl:gap-14">
                             <div className="relative z-10 min-w-0 lg:pl-3">
-                                <span className="lab-label">Observation 001</span>
+                                <span className="lab-label">Observation 002</span>
                                 <h1
-                                    className="mt-7 max-w-[650px] font-serif text-[clamp(3rem,9vw,5.8rem)] font-normal leading-[0.88] tracking-[-0.055em] text-ink">Could <span className="red-underline">interactions</span>matter more than ingredients?</h1>
+                                    className="mt-7 max-w-[650px] font-serif text-[clamp(3rem,9vw,5.8rem)] font-normal leading-[0.88] tracking-[-0.055em] text-ink">Could <span className="red-underline">interactions</span> <span className="red-underline">matter</span> more than ingredients?</h1>
                                 <p
                                     className="mt-10 max-w-lg font-serif text-xl leading-snug text-ink/75 sm:text-2xl">Most of us keep changing the list. We study what happens around it.</p>
                             </div>
