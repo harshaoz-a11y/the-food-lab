@@ -20,7 +20,7 @@ export function InteractionMap() {
           <span>one meal</span>
           <small>many outcomes</small>
         </div>
-        <div className="map-factors" aria-label="Factors interacting with a meal" style={{ --stack-step: "55px" }}>
+        <div className="map-factors" aria-label="Factors interacting with a meal" style={{ '--stack-step': '55px' } as React.CSSProperties}>
           {factors.map(({ label, note, icon: Icon }, index) => (
             <div
               key={label}
