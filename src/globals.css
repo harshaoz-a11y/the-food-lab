@@ -447,6 +447,17 @@
   filter: sepia(0.35) saturate(0.7) contrast(1.12);
   mix-blend-mode: multiply;
 }
+.map-axis {
+  position: absolute;
+  z-index: 1;
+  width: min(310px, 88%);
+  left: 50%;
+  top: 50%;
+  border-top: 3px solid rgba(23, 59, 48, 0.58);
+  transform: translate(-50%, -50%) scaleX(0);
+  transform-origin: center;
+  animation: map-axis-draw 1s cubic-bezier(.3,.7,.2,1) 1.1s forwards;
+}
 .map-centre {
   position: absolute;
   z-index: 3;
@@ -464,100 +475,94 @@
   background: var(--ink);
   box-shadow: 5px 6px 0 rgba(23, 59, 48, 0.12);
   text-align: center;
-  animation: map-meal-shift 650ms cubic-bezier(.2,.75,.25,1) 1s forwards;
-}
-.map-centre::after {
-  content: "";
-  position: absolute;
-  left: 92%;
-  top: 50%;
-  z-index: -1;
-  width: 0;
-  border-top: 2px solid rgba(23, 59, 48, 0.38);
-  animation: map-link-grow 350ms ease 1.45s forwards;
+  animation: map-meal-arrive 750ms cubic-bezier(.2,.8,.2,1) 200ms both;
 }
 .map-centre svg { width: 16px; height: 16px; margin-bottom: 0.25rem; }
 .map-centre span { font-family: Georgia, serif; font-size: 0.86rem; line-height: 1; }
 .map-centre small { margin-top: 0.15rem; font: 0.34rem ui-monospace, monospace; letter-spacing: 0.09em; text-transform: uppercase; opacity: 0.72; }
-.map-factors { position: absolute; z-index: 4; inset: 0; pointer-events: none; }
+.map-factors { --stack-step: 61px; position: absolute; z-index: 4; inset: 0; pointer-events: none; }
 .factor {
   position: absolute;
-  left: 50%;
+  left: 73%;
   top: 50%;
   display: grid;
-  width: min(180px, 49%);
-  min-height: 92px;
-  grid-template-columns: 27px minmax(0, 1fr);
+  width: min(168px, 43%);
+  min-height: 54px;
+  grid-template-columns: 23px minmax(0, 1fr);
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.45rem;
   border: 1px solid rgba(23, 59, 48, 0.18);
-  border-radius: 0.9rem;
-  padding: 0.65rem;
+  border-radius: 0.75rem;
+  padding: 0.42rem 0.5rem;
   background: rgba(248, 242, 229, 0.97);
-  box-shadow: 5px 6px 0 rgba(23, 59, 48, 0.08);
+  box-shadow: 4px 4px 0 rgba(23, 59, 48, 0.07);
   opacity: 0;
-  transform: translate(-50%, -42%);
+  transform: translate(-50%, -50%);
   text-align: left;
 }
-.factor:nth-child(1) { animation: map-factor-cycle 1s ease 1.65s both; }
-.factor:nth-child(2) { animation: map-factor-cycle 1s ease 2.65s both; }
-.factor:nth-child(3) { animation: map-factor-cycle 1s ease 3.65s both; }
-.factor:nth-child(4) { animation: map-factor-cycle 1s ease 4.65s both; }
-.factor:nth-child(5) { animation: map-factor-final 450ms ease 5.65s forwards; }
-.factor svg { width: 22px; height: 22px; color: var(--brick); stroke-width: 1.5; }
+.factor:nth-child(1) { animation: map-food-stack 3s ease 2.2s forwards; }
+.factor:nth-child(2) { animation: map-preparation-stack 3s ease 3.2s forwards; }
+.factor:nth-child(3) { animation: map-timing-stack 1s ease 4.2s forwards; }
+.factor:nth-child(4) { animation: map-distraction-stack 1s ease 5.2s forwards; }
+.factor:nth-child(5) { animation: map-preference-arrive 420ms ease 6.2s forwards; }
+.factor svg { width: 19px; height: 19px; color: var(--brick); stroke-width: 1.5; }
 .factor-copy { display: flex; min-width: 0; flex-direction: column; }
-.factor-copy strong { font-family: Georgia, serif; font-size: 0.88rem; font-weight: 400; line-height: 1.05; }
-.factor-copy small { margin-top: 0.2rem; font: 0.42rem ui-monospace, monospace; letter-spacing: 0.035em; line-height: 1.35; text-transform: uppercase; color: var(--ink-soft); }
+.factor-copy strong { font-family: Georgia, serif; font-size: 0.76rem; font-weight: 400; line-height: 1.02; }
+.factor-copy small { margin-top: 0.13rem; font: 0.34rem ui-monospace, monospace; letter-spacing: 0.025em; line-height: 1.25; text-transform: uppercase; color: var(--ink-soft); }
 .interaction-map figcaption { text-align: center; font-family: "Segoe Print", cursive; font-size: 0.88rem; color: var(--brick); transform: rotate(-1deg); }
 
-@keyframes map-meal-shift {
-  to { left: 29%; transform: translate(-50%, -50%) scale(0.9); }
+@keyframes map-meal-arrive {
+  from { opacity: 0; transform: translate(-50%, -18%) scale(0.58); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
-@keyframes map-link-grow {
-  to { width: 82px; }
+@keyframes map-axis-draw {
+  to { transform: translate(-50%, -50%) scaleX(1); }
 }
-@keyframes map-factor-cycle {
-  0% { opacity: 0; transform: translate(-50%, -38%); }
-  18%, 80% { opacity: 1; transform: translate(-50%, -50%); }
-  100% { opacity: 0; transform: translate(-50%, -58%); }
+@keyframes map-food-stack {
+  0% { opacity: 0; transform: translate(-50%, -50%); }
+  7%, 27% { opacity: 1; transform: translate(-50%, -50%); }
+  37%, 63% { opacity: 1; transform: translate(-50%, -50%) translateY(calc(var(--stack-step) * -1)); }
+  73%, 100% { opacity: 1; transform: translate(-50%, -50%) translateY(calc(var(--stack-step) * -2)); }
 }
-@keyframes map-factor-final {
-  from { opacity: 0; transform: translate(-50%, -38%); }
-  to { opacity: 1; transform: translate(-50%, -50%); }
+@keyframes map-preparation-stack {
+  0% { opacity: 0; transform: translate(-50%, -50%); }
+  7%, 27% { opacity: 1; transform: translate(-50%, -50%); }
+  37%, 63% { opacity: 1; transform: translate(-50%, -50%) translateY(var(--stack-step)); }
+  73%, 100% { opacity: 1; transform: translate(-50%, -50%) translateY(calc(var(--stack-step) * 2)); }
+}
+@keyframes map-timing-stack {
+  0% { opacity: 0; transform: translate(-50%, -50%); }
+  15% { opacity: 1; transform: translate(-50%, -50%); }
+  100% { opacity: 1; transform: translate(-50%, -50%) translateY(calc(var(--stack-step) * -1)); }
+}
+@keyframes map-distraction-stack {
+  0% { opacity: 0; transform: translate(-50%, -50%); }
+  15% { opacity: 1; transform: translate(-50%, -50%); }
+  100% { opacity: 1; transform: translate(-50%, -50%) translateY(var(--stack-step)); }
+}
+@keyframes map-preference-arrive {
+  from { opacity: 0; transform: translate(-50%, -42%) scale(0.95); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
-@media (max-width: 767px) {
-  .map-centre { animation-name: map-meal-shift-compact; }
-  .map-centre::after { animation-name: map-link-grow-compact; }
-  .factor { left: 60%; }
-}
-@keyframes map-meal-shift-compact {
-  to { left: 27%; transform: translate(-50%, -50%) scale(0.86); }
-}
-@keyframes map-link-grow-compact {
-  to { width: 78px; }
-}
-
-@media (max-width: 420px) {
-  .map-stage { min-height: 330px; }
-  .map-centre { width: 70px; height: 70px; animation-name: map-meal-shift-phone; }
-  .map-centre::after { animation-name: map-link-grow-phone; }
-  .factor { left: 62%; width: 52%; min-height: 88px; padding: 0.5rem; }
-  .factor-copy strong { font-size: 0.78rem; }
-  .factor-copy small { font-size: 0.36rem; }
-}
-@keyframes map-meal-shift-phone {
-  to { left: 24%; transform: translate(-50%, -50%) scale(0.82); }
-}
-@keyframes map-link-grow-phone {
-  to { width: 56px; }
+@media (max-width: 520px) {
+  .map-stage { min-height: 350px; }
+  .map-centre { width: 68px; height: 68px; }
+  .map-factors { --stack-step: 55px; }
+  .factor { left: 78%; width: 124px; min-height: 49px; padding: 0.34rem 0.4rem; }
+  .factor-copy strong { font-size: 0.68rem; }
+  .factor-copy small { font-size: 0.29rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .map-centre { left: 29%; transform: translate(-50%, -50%) scale(0.9); animation: none; }
-  .map-centre::after { width: 82px; animation: none; }
-  .factor { opacity: 0; animation: none !important; }
-  .factor:last-child { opacity: 1; transform: translate(-50%, -50%); }
+  .map-centre { opacity: 1; transform: translate(-50%, -50%); animation: none; }
+  .map-axis { transform: translate(-50%, -50%) scaleX(1); animation: none; }
+  .factor { opacity: 1; animation: none !important; }
+  .factor:nth-child(1) { transform: translate(-50%, -50%) translateY(calc(var(--stack-step) * -2)); }
+  .factor:nth-child(2) { transform: translate(-50%, -50%) translateY(calc(var(--stack-step) * 2)); }
+  .factor:nth-child(3) { transform: translate(-50%, -50%) translateY(calc(var(--stack-step) * -1)); }
+  .factor:nth-child(4) { transform: translate(-50%, -50%) translateY(var(--stack-step)); }
+  .factor:nth-child(5) { transform: translate(-50%, -50%); }
 }
 
 .evidence-photo {

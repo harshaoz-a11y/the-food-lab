@@ -21,6 +21,7 @@ export function InteractionMap() {
     <figure className="interaction-map" aria-labelledby="map-caption">
       <div className="map-stage">
         <img className="map-vitruvian" src={vitruvianClean} alt="" aria-hidden="true" />
+        <span className="map-axis" aria-hidden="true" />
         <div className="map-centre" aria-label="One meal, many outcomes">
           <UtensilsCrossed aria-hidden="true" />
           <span>one meal</span>

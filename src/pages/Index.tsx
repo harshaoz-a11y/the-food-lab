@@ -29,6 +29,7 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { AlchemyPartnerships } from "@/components/food-lab/AlchemyPartnerships";
 import { EggExperiment } from "@/components/food-lab/EggExperiment";
 import { FieldCharacter, type FieldScene } from "@/components/food-lab/FieldCharacter";
 import { HypothesisExperiment } from "@/components/food-lab/HypothesisExperiment";
@@ -46,8 +47,8 @@ const navigation = [{
     label: "Real life",
     href: "#real-life"
 }, {
-    label: "Protein 11",
-    href: "#protein-11"
+    label: "Alchemy Bar",
+    href: "#alchemy-bar"
 }];
 
 const fieldStudies = [{
@@ -465,46 +466,34 @@ const Index = () => {
                         <p className="handwritten mt-12 border-t border-dashed border-ink/25 pt-8 text-center text-xl text-primary sm:text-2xl">What if DIETS could be DELICIOUS?</p>
                     </div>
                 </section>
-                <section id="protein-11" className="px-4 sm:px-6 lg:px-8">
+                <section id="alchemy-bar" className="px-4 sm:px-6 lg:px-8">
                     <div
                         className="mx-auto max-w-[1400px] border-x border-ink/15 bg-[#dfd4be] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
                         <div className="grid gap-12 lg:grid-cols-[1fr_.9fr] lg:items-center">
                             <figure className="evidence-photo rotate-[-1deg]">
                                 <span className="tape tape-left" />
                                 <img
-                                    src={maestroAssets.protein11}
-                                    alt="Protein 11 bar cut open to show its ingredients"
+                                    src={maestroAssets.alchemyBar}
+                                    alt="Alchemy Bar cut open to reveal its whole-food texture"
                                     className="min-h-[340px] w-full object-cover sm:min-h-[480px]" />
-                                <figcaption>Specimen 011 / first practical experiment</figcaption>
+                                <figcaption>Alchemy Bar / first practical experiment</figcaption>
                             </figure>
                             <div>
                                 <span className="lab-label">An experiment that became food</span>
                                 <h2
-                                    className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Protein was never meant to work alone.</h2>
-                                <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink/68">Protein 11 came out of the lens: eleven ingredients, each with a job, arranged to work as a meal rather than a macro.
-                                                    </p>
-                                <div
-                                    className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink/15 bg-ink/15 sm:grid-cols-4">
-                                    {[
-                                        ["Whey + casein", "fast × slow"],
-                                        ["Oats + psyllium", "structure × fibre"],
-                                        ["Nuts + seeds", "texture × fats"],
-                                        ["Raisins + monk fruit", "taste × balance"]
-                                    ].map(([title, note]) => (<div key={title} className="bg-[#eee5d2] p-4">
-                                        <strong className="font-serif text-base font-normal">{title}</strong>
-                                        <span
-                                            className="mt-2 block font-mono text-[8px] uppercase tracking-[0.12em] text-ink/50">{note}</span>
-                                    </div>))}
-                                </div>
+                                    className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Introducing ALCHEMY Bar — because protein was never meant to work alone.</h2>
+                                <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink/68">Seven deliberate partnerships balance rapid and sustained protein, steady energy, bright flavour, texture-led satiety and clean sweetness — without making enjoyment the compromise.</p>
                                 <div className="mt-8 flex flex-wrap items-center gap-4">
                                     <a
-                                        href="mailto:harsha@thefoodlab.in?subject=Protein%2011%20experiment"
-                                        className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">Ask about Protein 11 <ArrowRight className="h-4 w-4" />
+                                        href="mailto:harsha@thefoodlab.in?subject=Alchemy%20Bar%20experiment"
+                                        className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">Ask about Alchemy Bar <ArrowRight className="h-4 w-4" />
                                     </a>
-                                    <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-ink/50">Not the philosophy. One result of it.</span>
+                                    <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-ink/50">Precision interactions. One enjoyable result.</span>
                                 </div>
                             </div>
                         </div>
+
+                        <AlchemyPartnerships />
                     </div>
                 </section>
                 <section className="px-4 sm:px-6 lg:px-8" aria-labelledby="notes-heading">
