@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EggExperiment } from "@/components/food-lab/EggExperiment";
+import { HypothesisExperiment } from "@/components/food-lab/HypothesisExperiment";
 import { InteractionMap } from "@/components/food-lab/InteractionMap";
 import { RiceExperiment } from "@/components/food-lab/RiceExperiment";
 import { maestroAssets } from "@/lib/maestro-assets";
@@ -211,28 +212,11 @@ const Index = () => {
           <div className="mx-auto max-w-[1400px] border-x border-b border-ink/15 bg-[#e4dac5] px-6 py-14 sm:px-12 lg:px-16 lg:py-20">
             <div className="text-center">
               <h2 id="map-heading" className="lab-label">The working hypothesis</h2>
-              <div className="hypothesis-equation mt-9" aria-label="Ingredients plus collaboration plus optimization equals energy, outcome, and yumminess">
-                <div className="hypothesis-term">
-                  <strong>Ingredients</strong>
-                  <span>Raw material</span>
-                </div>
-                <span className="hypothesis-operator" aria-hidden="true">+</span>
-                <div className="hypothesis-term hypothesis-term-accent">
-                  <strong>Collaboration</strong>
-                  <span>The real magic</span>
-                </div>
-                <span className="hypothesis-operator" aria-hidden="true">+</span>
-                <div className="hypothesis-term hypothesis-term-accent">
-                  <strong>Optimization</strong>
-                  <span>Maximize synergy</span>
-                </div>
-                <span className="hypothesis-operator" aria-hidden="true">=</span>
-                <div className="hypothesis-term hypothesis-result">
-                  <strong>Energy · Outcome · Yumminess!</strong>
-                  <span>What you deserve</span>
-                </div>
-              </div>
+              <p className="mx-auto mt-4 max-w-xl font-serif text-xl leading-snug text-ink/65">
+                Don’t just read the formula. Put it to work.
+              </p>
             </div>
+            <HypothesisExperiment />
           </div>
         </section>
 
