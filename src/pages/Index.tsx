@@ -5,13 +5,15 @@ import {
     ArrowDown,
     ArrowRight,
     BatteryLow,
-    BriefcaseBusiness,
-    Coffee,
+    CarFront,
+    Files,
     FlaskConical,
-    Laptop,
+    House,
     Menu,
-    Moon,
     NotebookPen,
+    Presentation,
+    School,
+    UsersRound,
     UtensilsCrossed,
     X,
 } from "lucide-react";
@@ -39,24 +41,21 @@ const navigation = [{
 
 const fieldStudies = [{
     time: "07:42 / weekday",
-    icon: Coffee,
-    orbitIcon: AlarmClock,
+    sceneIcons: [AlarmClock, CarFront, School],
     scene: "morning",
     title: "The morning moved first",
     copy: "Breakfast did not fail. A late alarm, a school run and the first meeting rearranged it.",
     note: "timing × appetite"
 }, {
     time: "13:18 / desk",
-    icon: BriefcaseBusiness,
-    orbitIcon: Laptop,
+    sceneIcons: [Presentation, UsersRound, Files],
     scene: "desk",
     title: "Lunch met the laptop",
     copy: "The meal was sensible. The context made it quick, distracted and strangely forgettable.",
     note: "attention × pace"
 }, {
     time: "21:36 / home",
-    icon: Moon,
-    orbitIcon: BatteryLow,
+    sceneIcons: [House, UtensilsCrossed, BatteryLow],
     scene: "evening",
     title: "The day arrived hungry",
     copy: "Dinner carried every missed pause from the hours before it. Willpower was not the only actor.",
@@ -162,8 +161,7 @@ function FieldStudies() {
             {fieldStudies.map((
                 {
                     time,
-                    icon: Icon,
-                    orbitIcon: OrbitIcon,
+                    sceneIcons,
                     scene,
                     title,
                     copy,
@@ -172,9 +170,8 @@ function FieldStudies() {
             ) => (<article key={title} className="field-frame" data-time={time}>
                 <div className="field-visual">
                     <span className={`field-orbit field-orbit-${scene}`} aria-hidden="true">
-                        <OrbitIcon />
+                        {sceneIcons.map((SceneIcon, index) => <SceneIcon key={index} />)}
                     </span>
-                    <Icon aria-hidden="true" />
                 </div>
                 <div className="field-copy">
                     <h3 className="text-2xl font-normal text-[#f8f2e5]">{title}</h3>
