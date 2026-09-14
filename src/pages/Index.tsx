@@ -1,11 +1,14 @@
 import { FormEvent, useState } from "react";
 
 import {
+    AlarmClock,
     ArrowDown,
     ArrowRight,
+    BatteryLow,
     BriefcaseBusiness,
     Coffee,
     FlaskConical,
+    Laptop,
     Menu,
     Moon,
     NotebookPen,
@@ -37,18 +40,24 @@ const navigation = [{
 const fieldStudies = [{
     time: "07:42 / weekday",
     icon: Coffee,
+    orbitIcon: AlarmClock,
+    scene: "morning",
     title: "The morning moved first",
     copy: "Breakfast did not fail. A late alarm, a school run and the first meeting rearranged it.",
     note: "timing × appetite"
 }, {
     time: "13:18 / desk",
     icon: BriefcaseBusiness,
+    orbitIcon: Laptop,
+    scene: "desk",
     title: "Lunch met the laptop",
     copy: "The meal was sensible. The context made it quick, distracted and strangely forgettable.",
     note: "attention × pace"
 }, {
     time: "21:36 / home",
     icon: Moon,
+    orbitIcon: BatteryLow,
+    scene: "evening",
     title: "The day arrived hungry",
     copy: "Dinner carried every missed pause from the hours before it. Willpower was not the only actor.",
     note: "fatigue × combination"
@@ -154,13 +163,17 @@ function FieldStudies() {
                 {
                     time,
                     icon: Icon,
+                    orbitIcon: OrbitIcon,
+                    scene,
                     title,
                     copy,
                     note
                 }
             ) => (<article key={title} className="field-frame" data-time={time}>
                 <div className="field-visual">
-                    <span className="field-orbit" />
+                    <span className={`field-orbit field-orbit-${scene}`} aria-hidden="true">
+                        <OrbitIcon />
+                    </span>
                     <Icon aria-hidden="true" />
                 </div>
                 <div className="field-copy">
@@ -317,9 +330,9 @@ const Index = () => {
                             <div>
                                 <span className="lab-label !text-[#f8f2e5]/55">Field sheet 003 / real life</span>
                                 <h2
-                                    className="mt-6 max-w-3xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">What did the day do to the food?</h2>
+                                    className="mt-6 max-w-3xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">When diets and discipline say "tomorrow!"</h2>
                             </div>
-                            <p className="max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Not failure. Not virtue. Just interactions worth noticing before another rule is added.</p>
+                            <p className="max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Because work, routine, family, stress, sleep and tolerance always get a vote</p>
                         </div>
                         <FieldStudies />
                         <aside className="press-note mt-10 max-w-lg rotate-[1deg] p-5 text-ink">

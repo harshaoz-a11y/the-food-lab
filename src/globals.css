@@ -591,8 +591,42 @@
 }
 
 .field-frame .field-visual { position: absolute; inset: 3rem 1.5rem 7rem; display: grid; place-items: center; }
-.field-frame .field-visual svg { width: 78px; height: 78px; stroke-width: 1; color: #ddcdb0; }
-.field-frame .field-orbit { position: absolute; width: 165px; height: 165px; border: 1px dashed rgba(221, 205, 176, 0.32); border-radius: 50%; }
+.field-frame .field-visual > svg { position: relative; z-index: 2; width: 68px; height: 68px; stroke-width: 1; color: #f1dfbf; }
+.field-frame .field-orbit {
+  position: absolute;
+  width: 170px;
+  height: 150px;
+  border: 1px dashed rgba(221, 205, 176, 0.38);
+  border-radius: 50%;
+}
+.field-frame .field-orbit::before,
+.field-frame .field-orbit::after { content: ""; position: absolute; border-radius: 50%; background: #d68b7f; }
+.field-frame .field-orbit::before { width: 8px; height: 8px; }
+.field-frame .field-orbit::after { width: 4px; height: 4px; opacity: 0.65; }
+.field-frame .field-orbit svg {
+  position: absolute;
+  z-index: 3;
+  width: 28px;
+  height: 28px;
+  padding: 5px;
+  border: 1px solid rgba(221, 205, 176, 0.42);
+  border-radius: 50%;
+  background: #263d37;
+  color: #d68b7f;
+  stroke-width: 1.4;
+}
+.field-frame .field-orbit-morning { width: 172px; height: 142px; transform: rotate(-8deg); }
+.field-frame .field-orbit-morning::before { right: 17px; bottom: 16px; box-shadow: -129px -73px 0 -2px rgba(214, 139, 127, 0.8); }
+.field-frame .field-orbit-morning::after { top: 14px; left: 48px; box-shadow: 85px 71px 0 rgba(214, 139, 127, 0.65); }
+.field-frame .field-orbit-morning svg { top: -13px; right: 24px; transform: rotate(8deg); }
+.field-frame .field-orbit-desk { width: 178px; height: 116px; border-radius: 1rem; transform: rotate(3deg); }
+.field-frame .field-orbit-desk::before { top: -4px; left: 24px; box-shadow: 124px 111px 0 -1px rgba(214, 139, 127, 0.75); }
+.field-frame .field-orbit-desk::after { right: 20px; bottom: 14px; box-shadow: -144px -82px 0 rgba(214, 139, 127, 0.6); }
+.field-frame .field-orbit-desk svg { right: -14px; top: 18px; transform: rotate(-3deg); }
+.field-frame .field-orbit-evening { width: 158px; height: 164px; border-style: solid dashed dashed solid; transform: rotate(-18deg); }
+.field-frame .field-orbit-evening::before { top: 15px; right: 8px; box-shadow: -128px 96px 0 -2px rgba(214, 139, 127, 0.75); }
+.field-frame .field-orbit-evening::after { right: 31px; bottom: 8px; box-shadow: -112px -116px 0 rgba(214, 139, 127, 0.6); }
+.field-frame .field-orbit-evening svg { left: -15px; bottom: 25px; transform: rotate(18deg); }
 .field-frame .field-copy { position: absolute; left: 1.25rem; right: 1.25rem; bottom: 1.25rem; border-top: 1px solid rgba(244, 237, 220, 0.24); padding-top: 1rem; }
 .field-frame .field-copy p { color: rgba(248, 242, 229, 0.68); }
 
