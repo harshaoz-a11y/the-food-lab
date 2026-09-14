@@ -6,13 +6,17 @@ import {
     ArrowRight,
     BatteryLow,
     CarFront,
+    Clock3,
+    CookingPot,
     Files,
     FlaskConical,
     House,
+    Mail,
     Menu,
     NotebookPen,
     Presentation,
     School,
+    Smartphone,
     UsersRound,
     UtensilsCrossed,
     X,
@@ -41,25 +45,40 @@ const navigation = [{
 
 const fieldStudies = [{
     time: "07:42 / weekday",
-    sceneIcons: [AlarmClock, CarFront, School],
     scene: "morning",
     title: "The morning moved first",
     copy: "Breakfast did not fail. A late alarm, a school run and the first meeting rearranged it.",
-    note: "timing × appetite"
+    note: "timing × appetite",
+    steps: [
+        { label: "Woke up late", icons: [AlarmClock] },
+        { label: "Breakfast rush", icons: [CookingPot] },
+        { label: "Meeting alert", icons: [Smartphone, Presentation] },
+        { label: "Kids late too", icons: [CarFront, School] }
+    ]
 }, {
     time: "13:18 / desk",
-    sceneIcons: [Presentation, UsersRound, Files],
     scene: "desk",
-    title: "Lunch met the laptop",
-    copy: "The meal was sensible. The context made it quick, distracted and strangely forgettable.",
-    note: "attention × pace"
+    title: "Lunch got outnumbered",
+    copy: "The meal was sensible. A conference, a climbing inbox and unfinished work made it disappear.",
+    note: "attention × overload",
+    steps: [
+        { label: "Lunch arrives", icons: [UtensilsCrossed] },
+        { label: "Conference starts", icons: [Presentation, UsersRound] },
+        { label: "Work stacks up", icons: [Mail, Files] },
+        { label: "Lunch is forgotten", icons: [Clock3] }
+    ]
 }, {
     time: "21:36 / home",
-    sceneIcons: [House, UtensilsCrossed, BatteryLow],
     scene: "evening",
-    title: "The day arrived hungry",
-    copy: "Dinner carried every missed pause from the hours before it. Willpower was not the only actor.",
-    note: "fatigue × combination"
+    title: "Hunger met an empty battery",
+    copy: "She got home ready to eat. The day had already spent the energy needed to make dinner.",
+    note: "hunger × fatigue",
+    steps: [
+        { label: "Home, finally", icons: [House] },
+        { label: "Very hungry", icons: [UtensilsCrossed] },
+        { label: "Nothing left", icons: [BatteryLow] },
+        { label: "Cooking feels huge", icons: [CookingPot] }
+    ]
 }];
 
 const notes = [{
@@ -157,27 +176,31 @@ function Header() {
 
 function FieldStudies() {
     return (
-        <div className="grid gap-4 lg:grid-cols-3">
+        <div className="field-studies-grid">
             {fieldStudies.map((
                 {
                     time,
-                    sceneIcons,
                     scene,
                     title,
                     copy,
-                    note
+                    note,
+                    steps
                 }
-            ) => (<article key={title} className="field-frame" data-time={time}>
-                <div className="field-visual">
-                    <span className={`field-orbit field-orbit-${scene}`} aria-hidden="true">
-                        {sceneIcons.map((SceneIcon, index) => <SceneIcon key={index} />)}
-                    </span>
+            ) => (<article key={title} className={`field-frame field-frame-${scene}`} data-time={time}>
+                <div className="field-story" role="list" aria-label={`${title} visual sequence`}>
+                    {steps.map(({ label, icons }, stepIndex) => (
+                        <span className="field-story-step" role="listitem" data-step={stepIndex + 1} key={label}>
+                            <span className="field-story-icons" aria-hidden="true">
+                                {icons.map((StoryIcon, iconIndex) => <StoryIcon key={iconIndex} />)}
+                            </span>
+                            <small>{label}</small>
+                        </span>
+                    ))}
                 </div>
                 <div className="field-copy">
-                    <h3 className="text-2xl font-normal text-[#f8f2e5]">{title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed">{copy}</p>
-                    <span
-                        className="mt-3 block font-mono text-[9px] uppercase tracking-[0.15em] text-[#d68b7f]">{note}</span>
+                    <h3>{title}</h3>
+                    <p>{copy}</p>
+                    <span className="field-note">{note}</span>
                 </div>
             </article>))}
         </div>
@@ -323,18 +346,16 @@ const Index = () => {
                 <section id="real-life" className="px-4 sm:px-6 lg:px-8">
                     <div
                         className="mx-auto max-w-[1400px] bg-charcoal px-6 py-16 text-[#f8f2e5] sm:px-12 lg:px-20 lg:py-24">
-                        <div className="mb-12 grid gap-6 lg:grid-cols-[1fr_.65fr] lg:items-end">
-                            <div>
-                                <span className="lab-label !text-[#f8f2e5]/55">Field sheet 003 / real life</span>
-                                <h2
-                                    className="mt-6 max-w-3xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">When diets and discipline say "tomorrow!"</h2>
-                            </div>
-                            <p className="max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Because work, routine, family, stress, sleep and tolerance always get a vote</p>
+                        <div className="mb-12">
+                            <span className="lab-label !text-[#f8f2e5]/55">Field sheet 003 / real life</span>
+                            <h2
+                                className="mt-6 max-w-none font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:whitespace-nowrap lg:text-[clamp(2.65rem,4.05vw,3.5rem)]">When diets and discipline say "tomorrow!"</h2>
+                            <p className="mt-6 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Because work, routine, family, stress, sleep and tolerance always get a vote</p>
                         </div>
                         <FieldStudies />
                         <aside className="press-note mt-10 max-w-lg rotate-[1deg] p-5 text-ink">
                             <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-ink/50">Margin note</span>
-                            <p className="handwritten mt-2 text-xl leading-tight text-primary">Maybe consistency is designed with a life, not imposed on one.</p>
+                            <p className="handwritten mt-2 text-xl leading-tight text-primary">Maybe consistency is designed along with a life, not imposed on one.</p>
                         </aside>
                     </div>
                 </section>

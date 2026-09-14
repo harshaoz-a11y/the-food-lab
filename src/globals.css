@@ -571,76 +571,95 @@
 @keyframes draw-rice-curve { from { stroke-dasharray: 180; stroke-dashoffset: 180; } to { stroke-dasharray: 180; stroke-dashoffset: 0; } }
 @keyframes rice-metrics-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
+.field-studies-grid { display: grid; gap: 1rem; }
 .field-frame {
   position: relative;
-  min-height: 360px;
+  display: flex;
+  min-height: 390px;
+  flex-direction: column;
   overflow: hidden;
   border: 1px solid rgba(244, 237, 220, 0.25);
-  border-radius: 1.25rem;
-  background: rgba(248, 242, 229, 0.08);
+  border-radius: 1.5rem;
+  padding: 3.3rem 1.25rem 1.25rem;
 }
-
 .field-frame::before {
   content: attr(data-time);
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: 1.15rem;
+  left: 1.25rem;
   font: 0.62rem ui-monospace, monospace;
   letter-spacing: 0.13em;
-  color: rgba(248, 242, 229, 0.65);
+  opacity: 0.64;
 }
-
-.field-frame .field-visual { position: absolute; inset: 3rem 1.5rem 7rem; display: grid; place-items: center; }
-.field-frame .field-orbit {
+.field-frame-morning { background: #d8c7a8; color: #173b30; }
+.field-frame-desk { border-radius: 3rem 1.25rem 3rem 1.25rem; background: #8f463f; color: #fff7e8; }
+.field-frame-evening { border-radius: 1.25rem 4rem 1.25rem 1.25rem; background: #abb8a0; color: #173b30; }
+.field-story {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+.field-story-step {
   position: relative;
-  width: 176px;
-  height: 176px;
-  overflow: hidden;
-  border: 2px solid rgba(154, 67, 59, 0.78);
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border: 1px solid rgba(23, 59, 48, 0.14);
+  border-radius: 1.1rem;
+  padding: 0.75rem 0.45rem;
+  text-align: center;
+}
+.field-story-step::before {
+  content: "0" attr(data-step);
+  position: absolute;
+  left: 0.55rem;
+  top: 0.45rem;
+  font: 0.48rem ui-monospace, monospace;
+  letter-spacing: 0.12em;
+  opacity: 0.45;
+}
+.field-story-icons {
+  display: flex;
+  width: 64px;
+  height: 64px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  border: 1px solid rgba(154, 67, 59, 0.28);
   border-radius: 50%;
-  background: #f3ead8;
-  box-shadow: 0 0 0 7px rgba(243, 234, 216, 0.08), 6px 7px 0 rgba(8, 30, 24, 0.16);
+  background: #f7eddb;
+  box-shadow: 3px 4px 0 rgba(87, 45, 35, 0.12);
 }
-.field-frame .field-orbit::before {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  left: 38px;
-  top: 89px;
-  width: 102px;
-  border-top: 1px dashed rgba(154, 67, 59, 0.48);
-  transform: rotate(-15deg);
+.field-story-icons svg { width: 32px; height: 32px; flex: none; color: #9a433b; stroke-width: 1.55; }
+.field-story-icons svg:nth-child(2) { width: 25px; height: 25px; margin-left: -9px; padding: 3px; border-radius: 50%; background: #f7eddb; }
+.field-story-step small { max-width: 7rem; font: 0.6rem ui-monospace, monospace; line-height: 1.3; letter-spacing: 0.06em; text-transform: uppercase; }
+.field-frame-morning .field-story { border: 1px dashed rgba(23, 59, 48, 0.24); border-radius: 1.25rem; padding: 0.5rem; }
+.field-frame-morning .field-story-step { border: 0; }
+.field-frame-desk .field-story-step { border-color: rgba(255, 247, 232, 0.22); background: rgba(71, 26, 23, 0.18); }
+.field-frame-desk .field-story-step:nth-child(2) { transform: translateY(5px) rotate(1deg); }
+.field-frame-desk .field-story-step:nth-child(3) { transform: translateY(-4px) rotate(-1deg); }
+.field-frame-evening .field-story-step { border-color: rgba(23, 59, 48, 0.18); background: rgba(247, 237, 219, 0.28); }
+.field-copy { margin-top: 1.15rem; border-top: 1px solid currentColor; padding-top: 1rem; }
+.field-copy h3 { font-family: Georgia, "Times New Roman", serif; font-size: 1.55rem; font-weight: 400; line-height: 1; }
+.field-copy p { margin-top: 0.55rem; max-width: 36rem; font-size: 0.85rem; line-height: 1.55; opacity: 0.72; }
+.field-note { display: block; margin-top: 0.7rem; color: #8f3f38; font: 0.56rem ui-monospace, monospace; letter-spacing: 0.15em; text-transform: uppercase; }
+.field-frame-desk .field-note { color: #ffd1c2; }
+
+@media (min-width: 1024px) {
+  .field-studies-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .field-frame-morning { grid-column: span 7; }
+  .field-frame-desk { grid-column: span 5; }
+  .field-frame-evening { grid-column: span 12; display: grid; min-height: 280px; grid-template-columns: 1.4fr 0.75fr; align-items: center; gap: 2rem; }
+  .field-frame-morning .field-story { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .field-frame-morning .field-story-step:not(:last-child)::after,
+  .field-frame-evening .field-story-step:not(:last-child)::after { content: "→"; position: absolute; right: -0.65rem; top: 2.55rem; z-index: 4; color: #9a433b; font-size: 1rem; }
+  .field-frame-evening .field-story { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .field-frame-evening .field-copy { margin-top: 0; border-top: 0; border-left: 1px solid currentColor; padding-top: 0; padding-left: 1.5rem; }
 }
-.field-frame .field-orbit::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  left: 85px;
-  top: 84px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #9a433b;
-}
-.field-frame .field-orbit svg {
-  position: absolute;
-  z-index: 2;
-  color: #9a433b;
-  stroke-width: 1.55;
-}
-.field-frame .field-orbit-morning svg:nth-child(1) { left: 24px; top: 27px; width: 55px; height: 55px; }
-.field-frame .field-orbit-morning svg:nth-child(2) { left: 66px; bottom: 24px; width: 39px; height: 39px; }
-.field-frame .field-orbit-morning svg:nth-child(3) { right: 19px; top: 30px; width: 49px; height: 49px; }
-.field-frame .field-orbit-desk::before { top: 87px; transform: rotate(17deg); }
-.field-frame .field-orbit-desk svg:nth-child(1) { left: 22px; top: 28px; width: 54px; height: 54px; }
-.field-frame .field-orbit-desk svg:nth-child(2) { right: 21px; top: 33px; width: 43px; height: 43px; }
-.field-frame .field-orbit-desk svg:nth-child(3) { left: 65px; bottom: 21px; width: 47px; height: 47px; }
-.field-frame .field-orbit-evening::before { top: 86px; transform: rotate(-20deg); }
-.field-frame .field-orbit-evening svg:nth-child(1) { left: 22px; top: 27px; width: 55px; height: 55px; }
-.field-frame .field-orbit-evening svg:nth-child(2) { right: 21px; top: 39px; width: 45px; height: 45px; }
-.field-frame .field-orbit-evening svg:nth-child(3) { left: 66px; bottom: 22px; width: 45px; height: 45px; }
-.field-frame .field-copy { position: absolute; left: 1.25rem; right: 1.25rem; bottom: 1.25rem; border-top: 1px solid rgba(244, 237, 220, 0.24); padding-top: 1rem; }
-.field-frame .field-copy p { color: rgba(248, 242, 229, 0.68); }
 
 .note-card { position: relative; min-height: 230px; background: #e5dac3; border: 1px solid rgba(78, 60, 34, 0.18); box-shadow: 5px 6px 0 rgba(70, 54, 30, 0.05); }
 .note-card::before { content: ""; position: absolute; width: 58px; height: 14px; top: -7px; right: 1.25rem; background: rgba(181, 157, 108, 0.45); transform: rotate(3deg); }
