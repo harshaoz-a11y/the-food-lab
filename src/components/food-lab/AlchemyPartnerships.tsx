@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Brain,
   Citrus,
@@ -58,9 +59,43 @@ const partnerships = [
     payoff: "Adherence without sacrificing enjoyment or ambition.",
     icon: Sparkles,
   },
-];
+] as const;
+
+type Partnership = typeof partnerships[number];
+
+function FusionNode({
+  partnership,
+  selected,
+  onSelect,
+}: {
+  partnership: Partnership;
+  selected: boolean;
+  onSelect: () => void;
+}) {
+  const { left, right, nuance, payoff, icon: Icon } = partnership;
+  return (
+    <button
+      type="button"
+      className={`fusion-node ${selected ? "is-selected" : ""}`}
+      aria-pressed={selected}
+      onClick={onSelect}
+    >
+      <span className="fusion-node-left">{left}</span>
+      <span className="fusion-node-center" aria-hidden="true">
+        <Icon className="h-4 w-4 stroke-[1.8]" />
+        <span className="sr-only">{nuance}</span>
+      </span>
+      <span className="fusion-node-right">{right}</span>
+      <span className="fusion-node-nuance">{nuance}</span>
+      <span className="fusion-node-payoff">{payoff}</span>
+    </button>
+  );
+}
 
 export function AlchemyPartnerships() {
+  const [selected, setSelected] = useState<number>(0);
+  const current = partnerships[selected];
+
   return (
     <section
       className="mt-10 overflow-hidden rounded-[2rem] border-2 border-dashed border-[#a33a2b] bg-[#fdf6ec] shadow-[8px_12px_0_rgba(163,58,43,.15)]"
@@ -88,32 +123,33 @@ export function AlchemyPartnerships() {
           aria-hidden="true"
         />
         <div className="space-y-3">
-          {partnerships.map(({ left, right, nuance, payoff, icon: Icon }, index) => (
-            <article
-              key={nuance}
-              className="relative rounded-[1.5rem] border-2 border-dashed border-[#a33a2b]/30 bg-[#fff8f0] p-3 sm:grid sm:grid-cols-[minmax(0,1fr)_44px_minmax(0,1fr)] sm:items-center sm:gap-x-3 sm:p-4"
-              style={{ boxShadow: "4px 5px 0 rgba(163,58,43,.08)" }}
-            >
-              <div className="rounded-full border-2 border-dashed border-[#a33a2b]/30 bg-[#fff8f0] px-3 py-2 text-center font-handwriting text-base text-[#a33a2b]" style={{ fontFamily: "\"Segoe Print\", \"Bradley Hand\", cursive" }}>
-                {left}
-              </div>
-              <div className="relative z-10 mx-auto my-1.5 grid h-9 w-9 place-items-center rounded-full bg-[#a33a2b] text-[#fdf6ec] shadow-[3px_4px_0_rgba(76,34,27,.14)] sm:my-0">
-                <Icon className="h-4 w-4 stroke-[1.8]" aria-hidden="true" />
-                <span className="sr-only">Pair {index + 1}</span>
-              </div>
-              <div className="rounded-full border-2 border-dashed border-[#a33a2b]/30 bg-[#fff8f0] px-3 py-2 text-center font-handwriting text-base text-[#a33a2b]" style={{ fontFamily: "\"Segoe Print\", \"Bradley Hand\", cursive" }}>
-                {right}
-              </div>
-              <div className="mt-2.5 border-t-2 border-dashed border-[#a33a2b]/20 pt-2.5 text-center sm:col-span-3">
-                <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-[#a33a2b]/60">
-                  0{index + 1} / {nuance}
-                </span>
-                <p className="mx-auto mt-0.5 max-w-2xl text-sm leading-relaxed text-[#a33a2b]/80" style={{ fontFamily: "\"Segoe Print\", \"Bradley Hand\", cursive" }}>
-                  {payoff}
-                </p>
-              </div>
-            </article>
+          {partnerships.map((partnership, index) => (
+            <FusionNode
+              key={partnership.nuance}
+              partnership={partnership}
+              selected={selected === index}
+              onSelect={() => setSelected(index)}
+            />
           ))}
+        </div>
+
+        <div className="fusion-focus mt-4 rounded-[1.5rem] border-2 border-dashed border-[#a33a2b]/30 bg-[#fff8f0] p-4 sm:p-5">
+          <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-[#a33a2b]/60">
+            Selected fusion
+          </span>
+          <p
+            className="mt-1 font-handwriting text-base leading-snug text-[#a33a2b]/85 sm:text-lg"
+            style={{ fontFamily: "\"Segoe Print\", \"Bradley Hand\", cursive" }}
+          >
+            <strong className="text-[#a33a2b]">{current.left}</strong>
+            {" × "}
+            <strong className="text-[#a33a2b]">{current.right}</strong>
+            {" — "}
+            {current.payoff}
+          </p>
+          <span className="mt-2 inline-block font-mono text-[8px] uppercase tracking-[0.12em] text-[#a33a2b]/55">
+            {current.nuance}
+          </span>
         </div>
       </div>
     </section>
