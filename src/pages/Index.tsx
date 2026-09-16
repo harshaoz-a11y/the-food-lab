@@ -422,7 +422,7 @@ const Index = () => {
                             <div className="relative z-10 min-w-0 lg:pl-3">
                                 <span className="lab-label">Observation 002</span>
                                 <h1
-                                    className="mt-7 max-w-[650px] font-serif text-[clamp(3rem,9vw,5.8rem)] font-normal leading-[0.88] tracking-[-0.055em] text-ink">Could <span className="red-underline">interactions</span> <span className="red-underline">matter</span> more than ingredients?</h1>
+                                    className="mt-7 max-w-[650px] font-serif text-[clamp(3rem,9vw,5.8rem)] font-normal leading-[0.88] tracking-[-0.055em] text-ink">Could <span className="red-underline">interactions</span> <span className="red-underline">matter</span>more than ingredients?</h1>
                                 <p
                                     className="mt-10 max-w-lg font-serif text-xl leading-snug text-ink/75 sm:text-2xl">Most of us keep changing the list. We study what happens around it.</p>
                             </div>
@@ -443,7 +443,7 @@ const Index = () => {
                             <h2 id="map-heading" className="lab-label">The working hypothesis</h2>
                             <p
                                 className="mx-auto mt-4 max-w-xl font-serif text-xl leading-snug text-ink/65">Don’t just read the formula. Put it to work.
-                                                                              </p>
+                                                                                                              </p>
                         </div>
                         <HypothesisExperiment />
                     </div>
@@ -498,7 +498,7 @@ const Index = () => {
                                     className="mt-6 max-w-4xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">1. Precision Bio-Nutrition</h2>
                                 <blockquote
                                     className="mt-7 max-w-2xl border-l-4 border-primary pl-5 font-serif text-2xl leading-snug text-ink/80 sm:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
-                                                                        <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
+                                                                                                            <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
                                 </blockquote>
                                 <a
                                     href="#your-experiment"
@@ -559,36 +559,36 @@ const Index = () => {
                     </div>
                 </section>
                 <section id="alchemy-bar" className="px-4 sm:px-6 lg:px-8">
-                                    <div
-                                        className="mx-auto max-w-[1200px] border-x border-ink/15 bg-[#dfd4be] px-4 py-12 sm:px-8 lg:px-16 lg:py-20">
-                                        <div className="grid gap-8 lg:grid-cols-[1fr_.8fr] lg:items-center">
-                                            <figure className="evidence-photo rotate-[-1deg]">
-                                                <span className="tape tape-left" />
-                                                <img
-                                                    src={maestroAssets.alchemyBar}
-                                                    alt="Alchemy Bar cut open to reveal its whole-food texture"
-                                                    className="min-h-[280px] w-full object-cover sm:min-h-[380px]" />
-                                                <figcaption>Alchemy Bar / first practical experiment</figcaption>
-                                            </figure>
-                                            <div>
-                                                <span className="lab-label">An experiment that became food</span>
-                                                <h2
-                                                    className="mt-4 max-w-xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl italic"><em>Introducing ALCHEMY Bar — because protein was never meant to work alone.</em></h2>
-                                                <div className="mt-5 max-w-lg text-base leading-relaxed text-ink/68 italic">
-                                                    <em>Seven deliberate partnerships balance rapid and sustained protein, steady energy, bright flavour, texture-led satiety and clean sweetness — without making enjoyment the compromise.</em>
-                                                </div>
-                                                <div className="mt-6 flex flex-wrap items-center gap-3">
-                                                    <a
-                                                        href="mailto:harsha@thefoodlab.in?subject=Alchemy%20Bar%20experiment"
-                                                        className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">Ask about Alchemy Bar <ArrowRight className="h-4 w-4" />
-                                                    </a>
-                                                    <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-ink/50">Precision interactions. One enjoyable result.</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <AlchemyPartnerships />
-                                    </div>
-                                </section>
+                    <div
+                        className="mx-auto max-w-[1200px] border-x border-ink/15 bg-[#dfd4be] px-4 py-12 sm:px-8 lg:px-16 lg:py-20">
+                        <div className="grid gap-8 lg:grid-cols-[1fr_.8fr] lg:items-center">
+                            <figure className="evidence-photo rotate-[-1deg]">
+                                <span className="tape tape-left" />
+                                <img
+                                    src={maestroAssets.alchemyBar}
+                                    alt="Alchemy Bar cut open to reveal its whole-food texture"
+                                    className="min-h-[280px] w-full object-cover sm:min-h-[380px]" />
+                                <figcaption>Alchemy Bar / first practical experiment</figcaption>
+                            </figure>
+                            <div>
+                                <span className="lab-label">An experiment that became food</span>
+                                <h2
+                                    className="mt-4 max-w-xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl italic"><em>Introducing ALCHEMY Bar — because protein was never meant to work alone.</em></h2>
+                                <div className="mt-5 max-w-lg text-base leading-relaxed text-ink/68 italic">
+                                    <em>Seven deliberate partnerships balance rapid and sustained protein, steady energy, bright flavour, texture-led satiety and clean sweetness — without making enjoyment the compromise.</em>
+                                </div>
+                                <div className="mt-6 flex flex-wrap items-center gap-3">
+                                    <a
+                                        href="mailto:harsha@thefoodlab.in?subject=Alchemy%20Bar%20experiment"
+                                        className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">Ask about Alchemy Bar <ArrowRight className="h-4 w-4" />
+                                    </a>
+                                    <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-ink/50">Precision interactions. One enjoyable result.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <AlchemyPartnerships />
+                    </div>
+                </section>
                 <section className="px-4 sm:px-6 lg:px-8" aria-labelledby="notes-heading">
                     <div
                         className="paper-sheet mx-auto max-w-[1400px] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
@@ -625,7 +625,7 @@ const Index = () => {
                                 <h2
                                     className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
                                 <p className="mt-7 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Tell us what you have tried and where real life keeps entering the picture. We begin with questions, not a perfect plan.
-                                                                                        </p>
+                                                                                                                            </p>
                                 <div className="mt-10 flex items-center gap-4 text-[#d68b7f]">
                                     <FlaskConical className="h-8 w-8 stroke-[1.2]" />
                                     <span className="handwritten max-w-xs text-xl leading-tight">No judgement. No gold stars for an ideal food diary.</span>
