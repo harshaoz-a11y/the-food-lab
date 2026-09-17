@@ -781,806 +781,204 @@
 
 
 
-/* MAESTRO-030 / mobile editorial reconstruction */
-/*
-  Mobile is treated as an editorial composition, not a stacked desktop UI.
-  Desktop styles above remain the source of truth and are untouched.
-*/
+
+/* MAESTRO-031 / mobile refinements */
 @media (max-width: 767px) {
-  /* ---------- Shared mobile language ---------- */
-  #question,
-  #working-hypothesis,
-  #demonstration,
-  #real-life,
-  #how-we-help,
-  #fit-peasant,
-  #your-experiment {
-    scroll-margin-top: 74px;
+  /* The question: visually separate "matter" and "more" rather than letting the
+     underline treatment visually fuse the phrase together. */
+  #question h1 .red-underline:nth-of-type(2) {
+    margin-right: 0.16em;
   }
 
-  #question,
-  #demonstration,
-  #fit-peasant {
-    padding-inline: 0.6rem;
+  /* Field sheet: the selector is an index, so let the typography carry it.
+     All three options use the same white field; active state is signalled by
+     the rule and arrow rather than a coloured card. */
+  #real-life .field-persona,
+  #real-life .field-persona-morning,
+  #real-life .field-persona-desk,
+  #real-life .field-persona-evening {
+    background: #f8f2e5;
+    color: #173b30;
   }
 
-  /* ---------- 01 / THE QUESTION ---------- */
-  #question {
-    padding-top: 0.45rem;
-    padding-bottom: 0.25rem;
+  #real-life .field-persona[aria-pressed="true"] {
+    background: #fffaf0;
+    box-shadow: inset 3px 0 0 var(--persona-accent);
   }
 
-  #question .paper-sheet {
-    padding: 2rem 0.85rem 1.35rem;
-    border: 0;
-    box-shadow: none;
-    background: transparent;
+  #real-life .field-persona-copy small {
+    color: #173b30;
   }
 
-  #question .paper-sheet > .grid {
-    gap: 0.35rem;
+  #real-life .field-persona-action {
+    color: #173b30;
   }
 
-  #question .lab-label {
-    font-size: 0.59rem;
-  }
-
-  #question h1 {
-    max-width: 20rem;
-    margin-top: 1rem;
-    font-size: clamp(3.15rem, 15vw, 4.25rem);
-    line-height: 0.86;
-    letter-spacing: -0.065em;
-  }
-
-  #question .relative.z-10 > p {
-    max-width: 21rem;
+  /* Precision Bio-Nutrition: make the proposition read like the rest of the
+     site, not like a display quote. */
+  #how-we-help blockquote {
+    max-width: 27rem;
     margin-top: 1.15rem;
-    font-size: 1.08rem;
-    line-height: 1.25;
+    border-left-width: 2px;
+    padding-left: 0.8rem;
+    font-size: 1.12rem;
+    line-height: 1.35;
   }
 
-  /* The map becomes a compact diagram with labels, not five floating cards. */
-  #question .interaction-map {
-    max-width: 23rem;
-    margin-top: 0.25rem;
-  }
-
-  #question .map-stage {
-    min-height: 285px;
+  #how-we-help blockquote span {
     margin-top: 0.2rem;
   }
 
-  #question .map-stage::before {
-    width: min(190px, 54vw);
-    border-color: rgba(149, 133, 107, 0.45);
-  }
-
-  #question .map-vitruvian {
-    width: min(190px, 54vw);
-  }
-
-  #question .map-axis {
-    width: min(190px, 54vw);
-    border-top-width: 1px;
-    border-color: rgba(149, 133, 107, 0.42);
-  }
-
-  #question .map-centre {
-    width: 56px;
-    height: 56px;
-    box-shadow: 3px 4px 0 rgba(23, 59, 48, 0.16);
-  }
-
-  #question .map-centre svg {
-    width: 13px;
-    height: 13px;
-  }
-
-  #question .map-centre span {
-    font-size: 0.62rem;
-  }
-
-  #question .map-centre small {
-    font-size: 0.27rem;
-  }
-
-  #question .factor {
-    width: 88px;
-    grid-template-columns: 15px minmax(0, 1fr);
-    gap: 0.28rem;
-    align-items: start;
-  }
-
-  #question .factor svg {
-    width: 15px;
-    height: 15px;
-    stroke-width: 1.5;
-  }
-
-  #question .factor-copy strong {
-    font-size: 0.64rem;
-    line-height: 1.05;
-  }
-
-  #question .factor-copy ul {
-    display: none;
-  }
-
-  #question .factor:nth-child(1) {
-    --factor-x: 0px;
-    --factor-y: -120px;
-  }
-
-  #question .factor:nth-child(2) {
-    --factor-x: min(128px, 31vw);
-    --factor-y: -43px;
-  }
-
-  #question .factor:nth-child(3) {
-    --factor-x: min(128px, 31vw);
-    --factor-y: 48px;
-  }
-
-  #question .factor:nth-child(4) {
-    --factor-x: calc(0px - min(128px, 31vw));
-    --factor-y: 48px;
-  }
-
-  #question .factor:nth-child(5) {
-    --factor-x: calc(0px - min(128px, 31vw));
-    --factor-y: -43px;
-  }
-
-  #question .interaction-map figcaption {
-    margin-top: 0;
-    font-size: 0.64rem;
-  }
-
-  #question .press-note {
-    margin-top: 0.65rem;
-    padding: 0.85rem 0.4rem 0.25rem;
-    border: 0;
-    border-top: 1px solid rgba(89, 71, 44, 0.18);
-    border-bottom: 1px dashed rgba(89, 71, 44, 0.18);
-    box-shadow: none;
-    background: transparent;
-    transform: rotate(-0.5deg);
-  }
-
-  #question .press-note::before {
-    display: none;
-  }
-
-  #question .press-note p {
-    font-size: 0.96rem;
-  }
-
-  /* ---------- 02 / WORKING HYPOTHESIS ---------- */
-  #working-hypothesis {
-    padding-inline: 0.6rem;
-  }
-
-  #working-hypothesis > div {
-    padding: 2.7rem 0.95rem 3rem;
-    border-inline: 0;
-    background: #e4dac5;
-  }
-
-  #working-hypothesis > div > .text-center {
-    text-align: left;
-  }
-
-  #working-hypothesis > div > .text-center > p {
-    max-width: 20rem;
-    margin-left: 0;
-    font-size: 1.15rem;
-  }
-
-  #working-hypothesis .hypothesis-lab {
-    margin-top: 1.7rem;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-  }
-
-  #working-hypothesis .hypothesis-controls {
-    gap: 0.7rem;
-    padding-bottom: 0.85rem;
-    border-bottom: 1px dashed rgba(23, 59, 48, 0.22);
-  }
-
-  #working-hypothesis .hypothesis-controls > span {
-    font-size: 0.52rem;
-  }
-
-  #working-hypothesis .hypothesis-run {
-    width: auto;
-    justify-content: center;
-    padding: 0.62rem 0.9rem;
-    font-size: 0.54rem;
-  }
-
-  /* Happiness is a principle, not another UI card. */
-  #working-hypothesis .happiness-macro {
+  /* Fit Peasant: turn the formula into a proper lab plate.
+     The Venn/fusion visual comes after the invitation to explore, and the
+     container uses quiet rules rather than a novelty dashed frame. */
+  #fit-peasant .alchemy-mobile-intro {
     display: block;
-    margin-top: 0.9rem;
+  }
+
+  #fit-peasant .alchemy-mobile-intro + .alchemy-partnerships {
+    margin-top: 1.25rem;
+  }
+
+  #fit-peasant .alchemy-partnerships {
+    margin-top: 1.75rem;
     overflow: visible;
     border: 0;
-    border-top: 1px solid rgba(163, 58, 43, 0.32);
-    border-bottom: 1px solid rgba(163, 58, 43, 0.32);
+    border-top: 1px solid rgba(163, 58, 43, 0.38);
+    border-bottom: 1px solid rgba(163, 58, 43, 0.38);
     border-radius: 0;
     background: transparent;
+    box-shadow: none;
   }
 
-  #working-hypothesis .happiness-toggle {
-    width: 100%;
-    grid-template-columns: auto 1fr auto;
-    padding: 0.72rem 0;
+  #fit-peasant .alchemy-partnerships > header {
+    padding: 1rem 0 0.9rem;
+    border-bottom: 1px solid rgba(163, 58, 43, 0.22);
     background: transparent;
   }
 
-  #working-hypothesis .happiness-icon {
-    width: 30px;
-    height: 30px;
+  #fit-peasant .alchemy-partnerships > header > span:last-child {
     border: 0;
+    padding: 0;
+    background: transparent;
+    font-size: 0.46rem;
   }
 
-  #working-hypothesis .happiness-icon svg {
-    width: 16px;
-    height: 16px;
+  #fit-peasant .alchemy-partnerships > div {
+    padding: 1rem 0 1.15rem;
+    background: transparent;
   }
 
-  #working-hypothesis .happiness-title strong {
-    font-size: 0.98rem;
+  #fit-peasant .alchemy-partnerships .grid {
+    gap: 0.9rem;
   }
 
-  #working-hypothesis .happiness-title small {
-    font-size: 0.43rem;
-  }
-
-  #working-hypothesis .happiness-check {
-    min-height: 0;
-    border-left: 0;
-    border-top: 1px dashed rgba(163, 58, 43, 0.2);
-    padding: 0.65rem 0 0.75rem 2.4rem;
-  }
-
-  #working-hypothesis .happiness-check p {
-    font-size: 0.9rem;
-  }
-
-  #working-hypothesis .hypothesis-path {
-    display: block;
-    padding-block: 0.9rem 0;
-  }
-
-  #working-hypothesis .hypothesis-stage-wrap {
-    display: block;
-    border-top: 1px solid rgba(23, 59, 48, 0.15);
-  }
-
-  #working-hypothesis .hypothesis-stage-wrap:last-of-type {
-    border-bottom: 1px solid rgba(23, 59, 48, 0.15);
-  }
-
-  #working-hypothesis .hypothesis-stage {
+  #fit-peasant .alchemy-partnerships [role="tablist"] {
     display: grid;
-    width: 100%;
-    min-height: 72px;
-    grid-template-columns: 28px 1fr auto;
-    grid-template-rows: auto auto;
-    align-items: center;
-    gap: 0 0.7rem;
-    padding: 0.65rem 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-    transform: none;
-  }
-
-  #working-hypothesis .hypothesis-stage:hover,
-  #working-hypothesis .hypothesis-stage.is-active {
-    transform: none;
-    box-shadow: none;
-    background: transparent;
-  }
-
-  #working-hypothesis .hypothesis-stage svg {
-    grid-row: 1 / span 2;
-    width: 22px;
-    height: 22px;
-    margin: 0;
-  }
-
-  #working-hypothesis .hypothesis-stage strong {
-    font-size: 1.18rem;
-  }
-
-  #working-hypothesis .hypothesis-stage small {
-    margin-top: 0.1rem;
-    font-size: 0.45rem;
-  }
-
-  #working-hypothesis .hypothesis-stage-number {
-    position: static;
-    grid-column: 3;
-    grid-row: 1 / span 2;
-    font-size: 0.47rem;
-    color: rgba(23, 59, 48, 0.34);
-  }
-
-  #working-hypothesis .hypothesis-connector {
-    display: none;
-  }
-
-  #working-hypothesis .hypothesis-equals {
-    display: block;
-    padding: 0.75rem 0;
-    font-size: 1.4rem;
-    text-align: center;
-  }
-
-  #working-hypothesis .hypothesis-output {
-    width: min(175px, 55vw);
-    min-height: 175px;
-    margin: 0 auto;
-    border-radius: 50%;
-    padding: 1rem;
-    box-shadow: 6px 7px 0 rgba(23, 59, 48, 0.12);
-  }
-
-  #working-hypothesis .hypothesis-output strong {
-    font-size: 1.3rem;
-  }
-
-  #working-hypothesis .hypothesis-output small {
-    font-size: 0.42rem;
-    text-align: center;
-  }
-
-  #working-hypothesis .hypothesis-observation {
-    grid-template-columns: auto 1fr;
-    gap: 0.7rem;
-    margin-top: 0.95rem;
-    padding-top: 0.85rem;
-  }
-
-  #working-hypothesis .hypothesis-observation span {
-    font-size: 0.48rem;
-  }
-
-  #working-hypothesis .hypothesis-observation p {
-    font-size: 0.94rem;
-  }
-
-  #working-hypothesis .happiness-thesis {
-    margin-top: 1.1rem;
-    padding-top: 0.95rem;
-    font-size: 0.98rem;
-    text-align: left;
-  }
-
-  #working-hypothesis .happiness-thesis::before {
-    left: 0;
-    transform: rotate(-2deg);
-  }
-
-  /* ---------- 03 / DEMONSTRATION ---------- */
-  #demonstration .paper-sheet {
-    padding: 2.75rem 0.9rem 3rem;
-    border: 0;
-    box-shadow: none;
-    background: transparent;
-  }
-
-  #demonstration .experiment-spread {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0;
+    border-top: 1px dashed rgba(163, 58, 43, 0.2);
   }
 
-  #demonstration .experiment-column {
-    padding: 0;
-  }
-
-  #demonstration .experiment-column + .experiment-column {
-    margin-top: 2.6rem;
-    padding-top: 2.6rem;
-    border-top: 1px solid rgba(23, 59, 48, 0.18);
-  }
-
-  #demonstration .experiment-column > .mb-7 {
-    margin-bottom: 1.15rem;
-  }
-
-  #demonstration .experiment-column > .mb-7 h2 {
-    margin-top: 0.8rem;
-    font-size: clamp(2.65rem, 12vw, 3.65rem);
-    line-height: 0.9;
-  }
-
-  #demonstration .experiment-column > .mb-7 p {
-    margin-top: 0.5rem;
-    font-size: 0.98rem;
-  }
-
-  /* Evidence stays visual. Controls stay close to the evidence. */
-  #demonstration .experiment-panel,
-  #demonstration .rice-panel {
-    border: 0;
-    padding: 0;
-    background: transparent;
-  }
-
-  #demonstration .evidence-photo {
-    padding: 0.35rem;
-    border: 1px solid rgba(74, 60, 38, 0.18);
-    box-shadow: 4px 5px 0 rgba(59, 49, 32, 0.06);
-  }
-
-  #demonstration .evidence-photo img {
-    height: 205px;
-    min-height: 0;
-    object-fit: contain;
-  }
-
-  #demonstration .evidence-photo figcaption {
-    padding: 0.45rem 0.2rem 0.1rem;
-    font-size: 0.45rem;
-  }
-
-  #demonstration .experiment-choice {
-    border-radius: 0;
-    border-inline: 0;
-    padding-inline: 0;
-  }
-
-  #demonstration .rice-panel > div[role="group"] {
-    border-top: 1px solid rgba(23, 59, 48, 0.16);
-    border-bottom: 1px solid rgba(23, 59, 48, 0.16);
-    padding-block: 0.25rem;
-  }
-
-  #demonstration .rice-choice {
-    min-height: 64px;
+  #fit-peasant .alchemy-partnerships [role="tab"] {
+    min-height: 62px;
     border: 0;
     border-radius: 0;
+    border-bottom: 1px dashed rgba(163, 58, 43, 0.2);
     padding: 0.55rem 0.35rem;
     background: transparent;
     box-shadow: none;
   }
 
-  #demonstration .rice-choice.is-active {
+  #fit-peasant .alchemy-partnerships [role="tab"]:nth-child(odd) {
+    border-right: 1px dashed rgba(163, 58, 43, 0.2);
+  }
+
+  #fit-peasant .alchemy-partnerships [role="tab"][aria-selected="true"] {
+    background: rgba(45, 125, 70, 0.055);
+    box-shadow: inset 0 -2px 0 #2d7d46;
+  }
+
+  #fit-peasant .alchemy-partnerships [role="tab"] > span:first-child {
+    width: 25px;
+    height: 25px;
+    border: 0;
     background: transparent;
-    color: var(--brick);
-    border-bottom: 2px solid var(--brick);
   }
 
-  #demonstration .rice-choice svg {
-    width: 16px;
-    height: 16px;
+  #fit-peasant .alchemy-partnerships [role="tab"] strong {
+    font-size: 0.66rem;
+    line-height: 1.08;
   }
 
-  #demonstration .rice-choice span {
-    margin-top: 0.35rem;
-    font-size: 0.78rem;
-  }
-
-  #demonstration .rice-choice small {
+  #fit-peasant .alchemy-partnerships [role="tab"] small {
     display: none;
   }
 
-  #demonstration .rice-panel > div[aria-live="polite"] {
-    margin-top: 1rem;
-  }
-
-  #demonstration .rice-panel > div[aria-live="polite"] > p {
-    min-height: 0;
-    font-size: 0.98rem;
-    line-height: 1.35;
-  }
-
-  #demonstration .rice-curve {
-    grid-template-columns: 1fr 82px;
-    min-height: 92px;
-    gap: 0.5rem;
-    border: 0;
-    border-top: 1px dashed rgba(23, 59, 48, 0.22);
-    border-bottom: 1px dashed rgba(23, 59, 48, 0.22);
-    border-radius: 0;
-    padding: 0.7rem 0;
-    background: transparent;
-  }
-
-  #demonstration .rice-curve svg {
-    height: 68px;
-  }
-
-  #demonstration .rice-curve strong {
-    font-size: 0.92rem;
-  }
-
-  #demonstration .rice-metrics {
-    gap: 0;
-    border-bottom: 1px solid rgba(23, 59, 48, 0.16);
-  }
-
-  #demonstration .rice-metric {
-    min-height: 0;
-    border: 0;
-    border-top: 1px solid rgba(23, 59, 48, 0.11);
-    border-radius: 0;
-    padding: 0.75rem 0;
-    background: transparent;
-  }
-
-  #demonstration .rice-metric strong {
-    margin-top: 0.35rem;
-    font-size: 1.45rem;
-  }
-
-  #demonstration .rice-metric p {
-    margin-top: 0.15rem;
-    font-size: 0.67rem;
-  }
-
-  #demonstration .rice-panel > p:last-child {
-    margin-top: 0.9rem;
-    padding-top: 0.7rem;
-    font-size: 0.43rem;
-  }
-
-  /* ---------- 04 / REAL LIFE ---------- */
-  #real-life > div {
-    padding: 3.25rem 1rem 3.5rem;
-  }
-
-  #real-life > div > .mb-12 {
-    margin-bottom: 1.9rem;
-  }
-
-  #real-life > div > .mb-12 h2 {
-    margin-top: 1rem;
-    font-size: clamp(2.55rem, 12vw, 3.8rem);
-    line-height: 0.9;
-    white-space: normal;
-  }
-
-  #real-life > div > .mb-12 p {
-    margin-top: 1rem;
-    font-size: 0.98rem;
-    line-height: 1.45;
-  }
-
-  /* Character selector becomes a single editorial index. */
-  #real-life .field-personas {
-    gap: 0;
-    border-top: 1px solid rgba(247, 237, 219, 0.2);
-    border-bottom: 1px solid rgba(247, 237, 219, 0.2);
-  }
-
-  #real-life .field-persona {
-    grid-template-columns: 64px minmax(0, 1fr) auto;
-    min-height: 74px;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-    transform: none;
-  }
-
-  #real-life .field-persona + .field-persona {
-    border-top: 1px dashed rgba(247, 237, 219, 0.16);
-  }
-
-  #real-life .field-persona[aria-pressed="true"] {
-    border: 0;
-    box-shadow: none;
-    transform: none;
-  }
-
-  #real-life .field-persona-art {
-    height: 70px;
-    align-self: stretch;
-  }
-
-  #real-life .field-persona-copy {
-    justify-content: center;
-    padding: 0.6rem 0.55rem;
-  }
-
-  #real-life .field-persona-copy small {
-    font-size: 0.43rem;
-  }
-
-  #real-life .field-persona-copy strong {
-    margin-top: 0.18rem;
-    font-size: 0.94rem;
-  }
-
-  #real-life .field-persona-copy > span {
-    margin-top: 0.2rem;
-    font-size: 0.59rem;
-    line-height: 1.25;
-  }
-
-  #real-life .field-persona-action {
-    grid-column: auto;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 0;
-    opacity: 0.5;
-  }
-
-  #real-life .field-persona-action svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  #real-life .field-frame {
-    gap: 1.35rem;
-    margin-top: 1.25rem;
-    padding: 0;
-    border: 0;
-    border-top: 3px solid var(--story-accent);
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-  }
-
-  #real-life .field-panel-heading {
-    padding-top: 1rem;
-  }
-
-  #real-life .field-panel-heading h3 {
-    max-width: 18rem;
-    margin-top: 0.6rem;
-    font-size: 1.85rem;
-    line-height: 0.95;
-  }
-
-  #real-life .field-panel-heading p {
-    margin-top: 0.55rem;
-    font-size: 0.78rem;
-    line-height: 1.45;
-  }
-
-  #real-life .field-story {
-    gap: 0;
-    border-top: 1px solid rgba(23, 59, 48, 0.15);
-  }
-
-  #real-life .field-story-step {
-    grid-template-columns: 42px minmax(0, 1fr);
-    gap: 0.7rem;
-    min-height: 0;
-    border: 0;
-    border-bottom: 1px solid rgba(23, 59, 48, 0.12);
-    border-radius: 0;
-    padding: 0.8rem 0;
-    background: transparent;
-    box-shadow: none;
-  }
-
-  #real-life .field-story-step:not(:last-child)::after {
+  #fit-peasant .alchemy-partnerships [role="tab"] > svg {
     display: none;
   }
 
-  #real-life .field-story-icons {
-    width: 42px;
-    height: 42px;
+  #fit-peasant .alchemy-partnerships [role="tabpanel"] {
+    order: -1;
+    height: 245px;
     border: 0;
-    background: rgba(243, 234, 216, 0.55);
+    border-radius: 0;
+    background: #f8f2e5;
+    box-shadow: none;
   }
 
-  #real-life .field-story-icons svg {
-    width: 21px;
-    height: 21px;
+  #fit-peasant .alchemy-partnerships [role="tabpanel"] > div:first-child {
+    left: 50%;
+    top: 58%;
+    width: 250px;
   }
 
-  #real-life .field-story-icons svg:nth-child(2) {
-    width: 17px;
-    height: 17px;
+  #fit-peasant .alchemy-partnerships [role="tabpanel"] > div:first-child > div {
+    border-width: 1px;
   }
 
-  #real-life .field-story-copy small {
+  #fit-peasant .alchemy-partnerships [role="tabpanel"] strong {
+    font-size: 0.72rem;
+  }
+
+  #fit-peasant .alchemy-partnerships [role="tabpanel"] span {
+    font-size: 0.4rem;
+  }
+
+  #fit-peasant .alchemy-partnerships [role="tabpanel"] > div:first-child > div:last-child {
+    width: 56px;
+    height: 56px;
+    border-width: 3px;
+  }
+
+  #fit-peasant .alchemy-partnerships > div > div > div:nth-child(2) {
+    border-top: 1px solid rgba(45, 125, 70, 0.28);
+    padding-top: 0.9rem;
+    background: transparent;
+  }
+
+  #fit-peasant .alchemy-partnerships > div > div > div:nth-child(2) > div {
+    margin-top: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  #fit-peasant .alchemy-partnerships > div > div > div:nth-child(2) > div > h4 {
+    font-size: 1.05rem;
+  }
+
+  #fit-peasant .alchemy-partnerships > div > div > div:nth-child(2) > div > p {
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  #fit-peasant .alchemy-partnerships > div > p:last-child {
+    margin-top: 0.8rem;
+    padding-top: 0.65rem;
+    border-top: 1px dashed rgba(163, 58, 43, 0.2);
     font-size: 0.42rem;
-  }
-
-  #real-life .field-story-copy strong {
-    font-size: 0.92rem;
-  }
-
-  #real-life .field-story-copy p {
-    margin-top: 0.18rem;
-    font-size: 0.63rem;
-  }
-
-  #real-life .press-note {
-    margin-top: 1.5rem;
-    max-width: none;
-    padding: 1rem 0.2rem;
-    border: 0;
-    border-top: 1px dashed rgba(89, 71, 44, 0.24);
-    border-bottom: 1px dashed rgba(89, 71, 44, 0.24);
-    box-shadow: none;
-    transform: rotate(0);
-    background: transparent;
-  }
-
-  #real-life .press-note::before {
-    display: none;
-  }
-
-  /* Stop the rest of the mobile page inheriting the old "card stack" feel. */
-  #how-we-help,
-  #fit-peasant {
-    padding-inline: 0.6rem;
-  }
-}
-
-@media (max-width: 520px) {
-  #question h1 {
-    max-width: 18rem;
-    font-size: clamp(3rem, 15vw, 3.75rem);
-  }
-
-  #question .map-stage {
-    min-height: 270px;
-  }
-
-  #question .map-stage::before,
-  #question .map-vitruvian,
-  #question .map-axis {
-    width: 175px;
-  }
-
-  #question .factor {
-    width: 78px;
-  }
-
-  #question .factor-copy strong {
-    font-size: 0.58rem;
-  }
-
-  #question .factor:nth-child(1) { --factor-y: -112px; }
-  #question .factor:nth-child(2) { --factor-x: 116px; --factor-y: -40px; }
-  #question .factor:nth-child(3) { --factor-x: 116px; --factor-y: 43px; }
-  #question .factor:nth-child(4) { --factor-x: -116px; --factor-y: 43px; }
-  #question .factor:nth-child(5) { --factor-x: -116px; --factor-y: -40px; }
-
-  #working-hypothesis > div {
-    padding-inline: 0.75rem;
-  }
-
-  #working-hypothesis .hypothesis-stage strong {
-    font-size: 1.08rem;
-  }
-
-  #demonstration .rice-curve {
-    grid-template-columns: 1fr 70px;
-  }
-
-  #real-life .field-persona {
-    grid-template-columns: 54px minmax(0, 1fr) auto;
-  }
-
-  #real-life .field-persona-art {
-    height: 64px;
-  }
-
-  #real-life .field-persona-copy > span {
-    display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .factor {
-    opacity: 1;
-    animation: none !important;
-    transform: translate(calc(-50% + var(--factor-x)), calc(-50% + var(--factor-y))) scale(1);
   }
 }
