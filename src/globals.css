@@ -1321,3 +1321,84 @@
     opacity: 1 !important;
   }
 }
+
+/* MAESTRO-033 / Fit Peasant lab grammar on larger screens */
+.alchemy-partnerships {
+  border-style: solid !important;
+  border-width: 1px !important;
+  border-color: rgba(23, 59, 48, 0.2) !important;
+  border-radius: 1.5rem !important;
+  background: rgba(248, 242, 229, 0.48) !important;
+  box-shadow: 7px 8px 0 rgba(70, 54, 30, 0.05) !important;
+}
+
+.alchemy-partnerships > header {
+  border-bottom: 1px dashed rgba(23, 59, 48, 0.2) !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+}
+
+.alchemy-partnerships > header h3 {
+  font-family: Georgia, "Times New Roman", serif !important;
+  color: var(--ink) !important;
+}
+
+.alchemy-partnerships > header > span:first-child {
+  color: var(--ink-soft) !important;
+}
+
+.alchemy-partnerships > header > span:last-child {
+  border: 1px solid rgba(45, 125, 70, 0.35) !important;
+  background: rgba(45, 125, 70, 0.05) !important;
+  color: var(--green) !important;
+}
+
+.alchemy-body {
+  background: transparent !important;
+}
+
+.alchemy-formula {
+  border-color: rgba(23, 59, 48, 0.15) !important;
+  background: rgba(229, 218, 195, 0.5) !important;
+}
+
+.alchemy-formula [role="tab"] {
+  border-color: rgba(23, 59, 48, 0.18) !important;
+  border-radius: 1rem !important;
+  background: rgba(248, 242, 229, 0.72) !important;
+  color: var(--ink) !important;
+}
+
+.alchemy-formula [role="tab"][aria-selected="true"] {
+  border-color: var(--green) !important;
+  background: rgba(45, 125, 70, 0.08) !important;
+  color: var(--green) !important;
+  box-shadow: 4px 5px 0 rgba(45, 125, 70, 0.1) !important;
+}
+
+.alchemy-visual [role="tabpanel"] {
+  border-color: rgba(23, 59, 48, 0.16) !important;
+  background: var(--paper-light) !important;
+  box-shadow: 6px 7px 0 rgba(70, 54, 30, 0.045) !important;
+}
+
+@media (min-width: 768px) {
+  /* Keep the five hero factors close enough to read as one diagram. */
+  #question .map-stage {
+    min-height: 390px;
+    max-width: 590px;
+    margin-inline: auto;
+  }
+
+  #question .map-stage::before,
+  #question .map-vitruvian,
+  #question .map-axis {
+    width: 292px;
+  }
+
+  #question .factor:nth-child(1) { --factor-x: 0px; --factor-y: -170px; }
+  #question .factor:nth-child(2) { --factor-x: 214px; --factor-y: -66px; }
+  #question .factor:nth-child(3) { --factor-x: 214px; --factor-y: 66px; }
+  #question .factor:nth-child(4) { --factor-x: -214px; --factor-y: 66px; }
+  #question .factor:nth-child(5) { --factor-x: -214px; --factor-y: -66px; }
+}
