@@ -420,13 +420,13 @@
 .interaction-map {
   display: grid;
   width: 100%;
-  max-width: 620px;
+  max-width: 680px;
   gap: 0.35rem;
   margin-inline: auto;
 }
 .map-stage {
   position: relative;
-  min-height: clamp(320px, 38vw, 390px);
+  min-height: 450px;
   overflow: visible;
   background: transparent;
 }
@@ -507,11 +507,11 @@
   color: var(--ink);
   animation: map-factor-appear 520ms ease var(--factor-delay) forwards;
 }
-.factor:nth-child(1) { --factor-delay: 0s; --factor-x: 0px; --factor-y: calc(0px - min(155px, 42vw)); }
-.factor:nth-child(2) { --factor-delay: 0.15s; --factor-x: min(147px, 40vw); --factor-y: calc(0px - min(48px, 13vw)); }
-.factor:nth-child(3) { --factor-delay: 0.3s; --factor-x: min(91px, 25vw); --factor-y: min(125px, 34vw); }
-.factor:nth-child(4) { --factor-delay: 0.45s; --factor-x: calc(0px - min(91px, 25vw)); --factor-y: min(125px, 34vw); }
-.factor:nth-child(5) { --factor-delay: 0.6s; --factor-x: calc(0px - min(147px, 40vw)); --factor-y: calc(0px - min(48px, 13vw)); }
+.factor:nth-child(1) { --factor-delay: 0s; --factor-x: 0px; --factor-y: -195px; }
+.factor:nth-child(2) { --factor-delay: 0.15s; --factor-x: 250px; --factor-y: -85px; }
+.factor:nth-child(3) { --factor-delay: 0.3s; --factor-x: 250px; --factor-y: 85px; }
+.factor:nth-child(4) { --factor-delay: 0.45s; --factor-x: -250px; --factor-y: 85px; }
+.factor:nth-child(5) { --factor-delay: 0.6s; --factor-x: -250px; --factor-y: -85px; }
 .factor svg { width: 19px; height: 19px; color: var(--brick); stroke-width: 1.5; }
 .factor-copy { display: flex; min-width: 0; flex-direction: column; }
 .factor-copy strong { font-family: Georgia, serif; font-size: 0.76rem; font-weight: 400; line-height: 1.02; color: var(--ink); }
@@ -529,8 +529,17 @@
   }
 }
 
+@media (max-width: 700px) {
+  .map-stage { min-height: 560px; }
+  .factor { width: min(150px, 44%); }
+  .factor:nth-child(1) { --factor-x: 0px; --factor-y: -255px; }
+  .factor:nth-child(2) { --factor-x: min(100px, 28vw); --factor-y: -190px; }
+  .factor:nth-child(3) { --factor-x: min(100px, 28vw); --factor-y: 210px; }
+  .factor:nth-child(4) { --factor-x: calc(0px - min(100px, 28vw)); --factor-y: 210px; }
+  .factor:nth-child(5) { --factor-x: calc(0px - min(100px, 28vw)); --factor-y: -190px; }
+}
+
 @media (max-width: 520px) {
-  .map-stage { min-height: 350px; }
   .map-centre { width: 68px; height: 68px; }
   .factor { width: 124px; min-height: 49px; padding: 0.34rem 0.4rem; }
   .factor-copy strong { font-size: 0.68rem; }
