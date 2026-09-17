@@ -353,7 +353,7 @@ function ConsultationForm() {
             <div
                 className="flex items-center gap-3 font-mono text-[8px] uppercase tracking-[0.18em] text-[#f8f2e5]/40">
                 <span className="h-px flex-1 bg-[#f8f2e5]/15" />Or
-                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
+                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
             </div>
             <a
                 href="mailto:harsha@thefoodlab.in?subject=The%20Fit%20Peasant%20protein%20bar"
@@ -382,7 +382,7 @@ const Index = () => {
                             <div className="relative z-10 min-w-0 lg:pl-3">
                                 <span className="lab-label">OBSERVATION 002</span>
                                 <h1
-                                    className="mt-7 max-w-[650px] font-serif text-[clamp(3rem,9vw,5.8rem)] font-normal leading-[0.88] tracking-[-0.055em] text-ink">Could <span className="red-underline">interactions</span> <span className="red-underline">matter</span> more than ingredients?</h1>
+                                    className="mt-7 max-w-[650px] font-serif text-[clamp(3rem,9vw,5.8rem)] font-normal leading-[0.88] tracking-[-0.055em] text-ink">Could <span className="red-underline">interactions</span> <span className="red-underline">matter</span>more than ingredients?</h1>
                                 <p
                                     className="mt-10 max-w-lg font-serif text-xl leading-snug text-ink/75 sm:text-2xl">Most of us keep changing the list. We study what happens around it.</p>
                             </div>
@@ -403,7 +403,7 @@ const Index = () => {
                             <h2 id="map-heading" className="lab-label">The working hypothesis</h2>
                             <p
                                 className="mx-auto mt-4 max-w-xl font-serif text-xl leading-snug text-ink/65">Don’t just read the formula. Put it to work.
-                                                                                                                                                                                                              </p>
+                                                                                                                                                                                                                                              </p>
                         </div>
                         <HypothesisExperiment />
                     </div>
@@ -458,7 +458,7 @@ const Index = () => {
                                     className="mt-6 max-w-4xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">1. Precision Bio-Nutrition</h2>
                                 <blockquote
                                     className="mt-7 max-w-2xl border-l-4 border-primary pl-5 font-serif text-2xl leading-snug text-ink/80 sm:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
-                                                                                                                                                                                                                        <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
+                                                                                                                                                                                                                                                            <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
                                 </blockquote>
                                 <a
                                     href="#your-experiment"
@@ -467,8 +467,7 @@ const Index = () => {
                             </div>
                             <div
                                 className="rounded-[2rem] border border-ink/20 bg-[#f8f2e5] p-6 text-ink shadow-[8px_10px_0_rgba(23,59,48,.12)] sm:p-9">
-                                <span
-                                    className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/55">Our working loop</span>
+                                <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/55">Our working loop</span>
                                 <div className="mt-7 flex flex-col items-center">
                                     {bioNutritionProcess.map(
                                         (stage, index) => (<div className="flex w-full flex-col items-center" key={stage}>
@@ -476,7 +475,8 @@ const Index = () => {
                                                 className="flex w-full max-w-sm items-center gap-4 rounded-full border border-ink/20 bg-[#e5dac3] px-5 py-4">
                                                 <span
                                                     className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary font-mono text-[10px] text-[#f8f2e5]">0{index + 1}</span>
-                                                <strong className="font-mono text-sm font-medium uppercase tracking-[0.18em] text-ink">{stage}</strong>
+                                                <strong
+                                                    className="font-mono text-sm font-medium uppercase tracking-[0.18em] text-ink">{stage}</strong>
                                             </div>
                                             {index < bioNutritionProcess.length - 1 && <ArrowDown className="my-2 h-5 w-5 text-ink/45" aria-hidden="true" />}
                                         </div>)
@@ -532,14 +532,18 @@ const Index = () => {
                             </figure>
                             <div>
                                 <span className="lab-label">An experiment that became food</span>
-                                <h2 className="mt-4 max-w-xl font-serif font-normal tracking-[-0.04em] text-ink">
-                                    <span className="block text-lg font-normal leading-snug tracking-normal sm:text-xl">Introducing</span>
-                                    <em className="mt-1 block text-5xl font-normal leading-[0.94] sm:text-6xl lg:text-7xl">The Fit Peasant</em>
-                                    <span className="mt-3 block max-w-md text-lg font-normal leading-snug tracking-normal sm:text-xl">— because protein was never meant to work alone.</span>
+                                <h2
+                                    className="mt-4 max-w-xl font-serif font-normal tracking-[-0.04em] text-ink">
+                                    <span
+                                        className="block text-lg font-normal leading-snug tracking-normal sm:text-xl">Introducing</span>
+                                    <em
+                                        className="mt-1 block text-5xl font-normal leading-[0.94] sm:text-6xl lg:text-7xl">The Fit Peasant</em>
+                                    <span
+                                        className="mt-3 block max-w-md text-lg font-normal leading-snug tracking-normal sm:text-xl">— because protein was never meant to work alone.</span>
                                 </h2>
-                                <p className="mt-5 max-w-lg font-serif text-xl italic leading-relaxed text-ink/68">
-                                    ..we will let you tell us just how tasty it is!
-                                </p>
+                                <p
+                                    className="mt-5 max-w-lg font-serif text-xl italic leading-relaxed text-ink/68">..we will let you tell us just how tasty it is!
+                                                                    </p>
                                 <div className="mt-6 flex flex-wrap items-center gap-3">
                                     <a
                                         href="mailto:harsha@thefoodlab.in?subject=The%20Fit%20Peasant%20experiment"
@@ -588,7 +592,7 @@ const Index = () => {
                                 <h2
                                     className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
                                 <p className="mt-7 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Tell us what you have tried and where real life keeps entering the picture. We begin with questions, not a perfect plan.
-                                                                                                                                                                                                                                        </p>
+                                                                                                                                                                                                                                                                            </p>
                                 <div className="mt-10 flex items-center gap-4 text-[#d68b7f]">
                                     <FlaskConical className="h-8 w-8 stroke-[1.2]" />
                                     <span className="handwritten max-w-xs text-xl leading-tight">No judgement. No gold stars for an ideal food diary.</span>
