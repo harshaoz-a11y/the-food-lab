@@ -1030,3 +1030,294 @@
     order: 3;
   }
 }
+
+/* MAESTRO-032 / lock hero geometry, print legibility, and deepen Fit Peasant */
+@media (max-width: 767px) {
+  /* HERO MAP — deliberately locked geometry.
+     The Vitruvian figure, meal centre and five factor labels now occupy
+     one compact visual field with fixed relative positions. */
+  #question .map-stage {
+    width: 100%;
+    max-width: 290px;
+    min-height: 285px;
+    margin-inline: auto;
+  }
+
+  #question .map-stage::before {
+    width: 174px;
+    height: 174px;
+    border: 1px dashed rgba(149, 133, 107, 0.52);
+  }
+
+  #question .map-vitruvian {
+    width: 168px;
+    height: 168px;
+  }
+
+  #question .map-axis {
+    width: 174px;
+    border-top-width: 1px;
+    border-color: rgba(149, 133, 107, 0.48);
+  }
+
+  #question .map-centre {
+    width: 57px;
+    height: 57px;
+    box-shadow: 3px 4px 0 rgba(23, 59, 48, 0.16);
+  }
+
+  #question .map-centre svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  #question .map-centre span {
+    font-size: 0.62rem;
+  }
+
+  #question .map-centre small {
+    font-size: 0.27rem;
+  }
+
+  #question .map-factors {
+    inset: 0;
+  }
+
+  #question .factor,
+  #question .factor:nth-child(1),
+  #question .factor:nth-child(2),
+  #question .factor:nth-child(3),
+  #question .factor:nth-child(4),
+  #question .factor:nth-child(5) {
+    width: 78px;
+    min-height: 0;
+    grid-template-columns: 13px minmax(0, 1fr);
+    gap: 0.25rem;
+    padding: 0.34rem 0.38rem;
+    border: 1px solid rgba(23, 59, 48, 0.14);
+    border-radius: 0.38rem;
+    background: rgba(248, 242, 229, 0.94);
+    box-shadow: 2px 3px 0 rgba(23, 59, 48, 0.05);
+  }
+
+  #question .factor:nth-child(1) { --factor-x: 0px; --factor-y: -103px; }
+  #question .factor:nth-child(2) { --factor-x: 86px; --factor-y: -35px; }
+  #question .factor:nth-child(3) { --factor-x: 86px; --factor-y: 38px; }
+  #question .factor:nth-child(4) { --factor-x: -86px; --factor-y: 38px; }
+  #question .factor:nth-child(5) { --factor-x: -86px; --factor-y: -35px; }
+
+  #question .factor svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  #question .factor-copy strong {
+    font-size: 0.56rem;
+    line-height: 1.02;
+  }
+
+  #question .factor-copy ul {
+    display: none;
+  }
+
+  #question .interaction-map figcaption {
+    margin-top: 0.05rem;
+  }
+
+  /* Egg + rice evidence: use the actual page paper as the image field.
+     This also makes the result robust in PDF/print engines that handle
+     blend modes inconsistently. */
+  #demonstration .experiment-column img {
+    background: var(--paper);
+    mix-blend-mode: multiply;
+  }
+
+  #demonstration .experiment-column > div:first-of-type {
+    background: var(--paper);
+  }
+
+  #demonstration .experiment-column .experiment-card > div:first-child,
+  #demonstration .experiment-column .overflow-hidden {
+    background: var(--paper);
+  }
+
+  /* The "joy removed" state must remain legible in print and PDF output. */
+  #working-hypothesis .happiness-check {
+    background: var(--paper-light);
+  }
+
+  #working-hypothesis .happiness-check span {
+    color: var(--brick) !important;
+    opacity: 1;
+  }
+
+  #working-hypothesis .happiness-check p {
+    color: var(--ink) !important;
+    opacity: 1;
+    font-size: 0.94rem;
+  }
+
+  /* FIT PEASANT — use the Working Hypothesis visual grammar:
+     quiet lab frame, stronger internal hierarchy, indexed experiments,
+     and a central result rather than a generic widget/card. */
+  #fit-peasant .alchemy-partnerships {
+    margin-top: 2rem;
+    border: 1px solid rgba(23, 59, 48, 0.2);
+    border-radius: 1.5rem;
+    padding: 1rem;
+    background: rgba(248, 242, 229, 0.48);
+    box-shadow: 6px 7px 0 rgba(70, 54, 30, 0.05);
+  }
+
+  #fit-peasant .alchemy-partnerships > header {
+    display: grid;
+    gap: 0.55rem;
+    padding: 0.2rem 0.25rem 0.85rem;
+    border-bottom: 1px dashed rgba(23, 59, 48, 0.2);
+  }
+
+  #fit-peasant .alchemy-partnerships > header h3 {
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: 1.65rem;
+    line-height: 0.98;
+  }
+
+  #fit-peasant .alchemy-partnerships > header > span:first-child {
+    color: var(--ink-soft);
+    font-size: 0.46rem;
+  }
+
+  #fit-peasant .alchemy-partnerships > header > span:last-child {
+    justify-self: start;
+    color: var(--green);
+    font-size: 0.44rem;
+  }
+
+  #fit-peasant .alchemy-body {
+    padding: 0.85rem 0.15rem 0.2rem;
+  }
+
+  #fit-peasant .alchemy-layout {
+    gap: 1rem;
+  }
+
+  #fit-peasant .alchemy-formula {
+    order: 1;
+    padding: 0.75rem 0 0;
+    border: 0;
+    border-top: 1px dashed rgba(23, 59, 48, 0.2);
+    background: transparent;
+  }
+
+  #fit-peasant .alchemy-formula > div:first-child {
+    padding: 0 0 0.55rem;
+  }
+
+  #fit-peasant .alchemy-formula > div:first-child span {
+    color: var(--ink-soft);
+  }
+
+  #fit-peasant .alchemy-formula > div:first-child p {
+    color: var(--ink);
+    font-size: 1.1rem;
+  }
+
+  #fit-peasant .alchemy-partnerships [role="tablist"] {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
+    border: 0;
+  }
+
+  #fit-peasant .alchemy-partnerships [role="tab"] {
+    min-height: 58px;
+    grid-template-columns: auto 1fr auto;
+    border: 1px solid rgba(23, 59, 48, 0.14);
+    border-radius: 0.85rem;
+    padding: 0.5rem 0.55rem;
+    background: rgba(248, 242, 229, 0.58);
+    color: var(--ink);
+  }
+
+  #fit-peasant .alchemy-partnerships [role="tab"]:nth-child(odd) {
+    border-right: 1px solid rgba(23, 59, 48, 0.14);
+  }
+
+  #fit-peasant .alchemy-partnerships [role="tab"][aria-selected="true"] {
+    border-color: var(--green);
+    background: rgba(45, 125, 70, 0.08);
+    box-shadow: 3px 4px 0 rgba(45, 125, 70, 0.1);
+    color: var(--green);
+    transform: translateY(-2px);
+  }
+
+  #fit-peasant .alchemy-partnerships [role="tab"] > span:first-child {
+    width: 22px;
+    height: 22px;
+    border: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+  }
+
+  #fit-peasant .alchemy-partnerships [role="tab"] strong {
+    color: inherit;
+    font-size: 0.58rem;
+  }
+
+  #fit-peasant .alchemy-visual {
+    order: 2;
+  }
+
+  #fit-peasant .alchemy-partnerships [role="tabpanel"] {
+    height: 245px;
+    border: 1px solid rgba(23, 59, 48, 0.16);
+    border-radius: 1.1rem;
+    background: var(--paper);
+    box-shadow: 4px 5px 0 rgba(70, 54, 30, 0.045);
+  }
+
+  #fit-peasant .alchemy-partnerships [role="tabpanel"] > div:first-child {
+    top: 57%;
+    width: 235px;
+  }
+
+  #fit-peasant .alchemy-partnerships [role="tabpanel"] > div:first-child > div {
+    border-width: 1px;
+  }
+
+  #fit-peasant .alchemy-partnerships > div > div > div:nth-child(2) {
+    margin-top: 0;
+    border: 0;
+    border-top: 1px dashed rgba(23, 59, 48, 0.2);
+    padding-top: 0.8rem;
+    background: transparent;
+  }
+
+  #fit-peasant .alchemy-partnerships > div > div > div:nth-child(2) h4 {
+    font-size: 1.05rem;
+  }
+
+  #fit-peasant .alchemy-partnerships > div > div > div:nth-child(2) p {
+    font-size: 0.7rem;
+  }
+
+  #fit-peasant .alchemy-partnerships > div > p:last-child {
+    border-top: 1px dashed rgba(23, 59, 48, 0.18);
+    color: var(--ink-soft);
+  }
+}
+
+@media print {
+  #working-hypothesis .happiness-check,
+  #working-hypothesis .happiness-check p {
+    background: #fff;
+    color: #111 !important;
+    opacity: 1 !important;
+  }
+
+  #working-hypothesis .happiness-check span {
+    color: #7f2f24 !important;
+    opacity: 1 !important;
+  }
+}
