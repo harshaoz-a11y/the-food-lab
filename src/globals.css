@@ -623,6 +623,13 @@
   padding: 1rem;
   background: rgba(248, 242, 229, 0.64);
 }
+.rice-panel.is-green .rice-choice.is-active { border-color: var(--green); background: var(--green); color: #fff9ed; }
+.rice-panel.is-green .rice-curve-current { stroke: var(--green); }
+.rice-panel.is-green .rice-curve,
+.rice-panel.is-green .rice-metric { border-color: var(--green); background: rgba(45, 125, 70, 0.08); }
+.rice-panel.is-green .rice-curve strong,
+.rice-panel.is-green .rice-metric strong,
+.rice-panel.is-green .rice-metric svg { color: var(--green); }
 .experiment-column { min-width: 0; }
 .experiment-spread .experiment-panel,
 .experiment-spread .rice-panel { border-left: 0; padding-left: 0; }

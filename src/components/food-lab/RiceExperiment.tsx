@@ -79,7 +79,7 @@ export function RiceExperiment() {
           <figcaption>Field comparison / fresh, cooled + reheated, coconut oil + cooled</figcaption>
         </figure>
 
-        <div className="rice-panel">
+        <div className={`rice-panel ${active !== "fresh" ? "is-green" : ""}`}>
           <div className="grid gap-2 sm:grid-cols-3" role="group" aria-label="Choose a rice preparation">
             {(Object.keys(preparations) as Preparation[]).map((key) => {
               const option = preparations[key];
