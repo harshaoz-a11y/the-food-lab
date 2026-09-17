@@ -25,7 +25,6 @@ export function InteractionMap() {
             <div
               key={label}
               className="factor"
-              style={{ "--factor-index": index } as React.CSSProperties}
             >
               <Icon />
               <span className="factor-copy">
