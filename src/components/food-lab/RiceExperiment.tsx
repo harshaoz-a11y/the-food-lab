@@ -69,15 +69,13 @@ export function RiceExperiment() {
       </div>
 
       <div className="grid gap-6">
-        <figure className="evidence-photo rotate-[0.35deg]">
-          <span className="tape tape-left" />
+        <div className="overflow-hidden bg-transparent">
           <img
             src={riceEvolution}
             alt="Illustration comparing fresh hot rice, refrigerated and reheated rice, and rice prepared with coconut oil before cooling"
-            className="w-full"
+            className="w-full mix-blend-multiply"
           />
-          <figcaption>Field comparison / fresh, cooled + reheated, coconut oil + cooled</figcaption>
-        </figure>
+        </div>
 
         <div className={`rice-panel ${active !== "fresh" ? "is-green" : ""}`}>
           <div className="grid gap-2 sm:grid-cols-3" role="group" aria-label="Choose a rice preparation">

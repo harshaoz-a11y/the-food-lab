@@ -22,15 +22,13 @@ export function EggExperiment() {
 
   return (
     <div className="experiment-card grid gap-6">
-      <figure className="evidence-photo rotate-[-0.5deg]">
-        <span className="tape tape-left" />
+      <div className="overflow-hidden bg-transparent">
         <img
           src={maestroAssets.eggReference}
           alt="Illustrated comparison of raw and cooked egg protein digestibility"
-          className="w-full"
+          className="w-full mix-blend-multiply"
         />
-        <figcaption>Experiment sheet / cooking changes availability</figcaption>
-      </figure>
+      </div>
 
       <div className="experiment-panel">
         <div className="flex flex-wrap gap-2" role="group" aria-label="Change egg preparation">

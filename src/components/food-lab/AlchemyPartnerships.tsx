@@ -176,13 +176,13 @@ export function AlchemyPartnerships() {
               </div>
 
               <div key={selected} className="absolute left-1/2 top-[59%] aspect-[1.47] w-[calc(100%-1rem)] max-w-[280px] -translate-x-1/2 -translate-y-1/2 animate-in fade-in zoom-in-95 duration-300 sm:top-[57%] sm:h-[270px] sm:w-[430px] sm:max-w-none">
-                <div className="absolute left-0 top-0 flex h-full aspect-square flex-col items-center justify-center rounded-full border-2 border-[#a33a2b]/65 bg-[#f3ddd5] px-5 text-center text-[#7f2f24] sm:px-10">
-                  <strong className="max-w-[100px] font-serif text-base font-normal leading-tight sm:max-w-[150px] sm:text-2xl">{current.left}</strong>
-                  <span className="mt-2 max-w-[105px] font-mono text-[6px] uppercase leading-relaxed tracking-[0.1em] opacity-65 sm:max-w-[130px] sm:text-[8px]">{current.leftAmount}</span>
+                <div className="absolute left-0 top-0 flex h-full aspect-square flex-col items-start justify-center rounded-full border-2 border-[#a33a2b]/65 bg-[#f3ddd5] px-4 text-center text-[#7f2f24] sm:px-7">
+                  <strong className="relative z-20 w-[82px] break-words font-serif text-base font-normal leading-tight sm:w-[118px] sm:text-2xl">{current.left}</strong>
+                  <span className="relative z-20 mt-2 w-[82px] break-words font-mono text-[6px] uppercase leading-relaxed tracking-[0.1em] opacity-65 sm:w-[118px] sm:text-[8px]">{current.leftAmount}</span>
                 </div>
-                <div className="absolute right-0 top-0 flex h-full aspect-square flex-col items-center justify-center rounded-full border-2 border-[#2d7d46]/70 bg-[#deeee2] px-5 text-center text-[#245f38] sm:px-10">
-                  <strong className="max-w-[100px] font-serif text-base font-normal leading-tight sm:max-w-[150px] sm:text-2xl">{current.right}</strong>
-                  <span className="mt-2 max-w-[105px] font-mono text-[6px] uppercase leading-relaxed tracking-[0.1em] opacity-65 sm:max-w-[130px] sm:text-[8px]">{current.rightAmount}</span>
+                <div className="absolute right-0 top-0 flex h-full aspect-square flex-col items-end justify-center rounded-full border-2 border-[#2d7d46]/70 bg-[#deeee2] px-4 text-center text-[#245f38] sm:px-7">
+                  <strong className="relative z-20 w-[82px] break-words font-serif text-base font-normal leading-tight sm:w-[118px] sm:text-2xl">{current.right}</strong>
+                  <span className="relative z-20 mt-2 w-[82px] break-words font-mono text-[6px] uppercase leading-relaxed tracking-[0.1em] opacity-65 sm:w-[118px] sm:text-[8px]">{current.rightAmount}</span>
                 </div>
                 <div className="absolute left-1/2 top-1/2 z-10 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border-4 border-[#fffaf3] bg-[#2d7d46] px-2 text-center text-[#fffaf3] shadow-[0_8px_24px_rgba(45,125,70,.28)] sm:h-28 sm:w-28">
                   <CurrentIcon className="h-4 w-4 stroke-[1.8] sm:h-5 sm:w-5" aria-hidden="true" />

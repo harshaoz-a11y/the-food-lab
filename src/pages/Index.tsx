@@ -156,7 +156,7 @@ const notes = [{
     status: "unresolved"
 }];
 
-const bioNutritionProcess = ["Understand", "Experiment", "Observe", "Adapt"];
+const bioNutritionProcess = ["Understand", "Maximize Benefit and Taste", "Observe", "Adapt"];
 
 const helpAreas = [{
     title: "Your biology",
@@ -503,19 +503,19 @@ const Index = () => {
                                     index
                                 ) => (<article
                                     key={title}
-                                    className="rounded-[1.35rem] border border-ink/15 bg-[#e7dcc5] p-5 shadow-[4px_5px_0_rgba(65,50,28,.05)]">
+                                    className={`rounded-[1.35rem] border p-5 shadow-[4px_5px_0_rgba(65,50,28,.05)] ${index < 3 ? "border-charcoal bg-charcoal text-[#f8f2e5]" : "border-ink/15 bg-[#e7dcc5] text-ink"}`}>
                                     <div className="flex items-start justify-between gap-4">
-                                        <Icon className="h-8 w-8 stroke-[1.35] text-primary" aria-hidden="true" />
-                                        <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-ink/40">Signal 0{index + 1}</span>
+                                        <Icon className={`h-8 w-8 stroke-[1.35] ${index < 3 ? "text-[#d68b7f]" : "text-primary"}`} aria-hidden="true" />
+                                        <span className={`font-mono text-[8px] uppercase tracking-[0.14em] ${index < 3 ? "text-[#f8f2e5]/45" : "text-ink/40"}`}>Signal 0{index + 1}</span>
                                     </div>
                                     <h4
-                                        className="mt-6 font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-ink">{title}</h4>
-                                    <p className="mt-2 text-sm leading-relaxed text-ink/65">{copy}</p>
+                                        className={`mt-6 font-mono text-[11px] font-medium uppercase tracking-[0.15em] ${index < 3 ? "text-[#f8f2e5]" : "text-ink"}`}>{title}</h4>
+                                    <p className={`mt-2 text-sm leading-relaxed ${index < 3 ? "text-[#f8f2e5]/65" : "text-ink/65"}`}>{copy}</p>
                                 </article>))}
                             </div>
                         </div>
                         <p
-                            className="handwritten mt-12 border-t border-dashed border-ink/25 pt-8 text-center text-xl text-primary sm:text-2xl">What if DIETS could be DELICIOUS?</p>
+                            className="handwritten mt-12 border-t border-dashed border-ink/25 pt-8 text-center text-xl text-primary sm:text-2xl">What if......DIETS could be DELICIOUS?</p>
                     </div>
                 </section>
                 <section id="fit-peasant" className="px-4 sm:px-6 lg:px-8">
