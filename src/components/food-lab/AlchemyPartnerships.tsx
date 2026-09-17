@@ -159,9 +159,9 @@ export function AlchemyPartnerships() {
         </span>
       </header>
 
-      <div className="bg-[#fdf6ec] px-4 py-5 sm:px-6 sm:py-7">
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.2fr)_minmax(300px,.8fr)] lg:gap-7">
-          <div className="min-w-0">
+      <div className="alchemy-body bg-[#fdf6ec] px-4 py-5 sm:px-6 sm:py-7">
+        <div className="alchemy-layout grid gap-5 lg:grid-cols-[minmax(0,1.2fr)_minmax(300px,.8fr)] lg:gap-7">
+          <div className="alchemy-visual min-w-0">
             <div
               id="fusion-discovery"
               role="tabpanel"
@@ -198,7 +198,7 @@ export function AlchemyPartnerships() {
             </div>
           </div>
 
-          <aside className="rounded-[1.75rem] border border-[#a33a2b]/25 bg-[#f8ecdf] p-4 sm:p-5" aria-label="Ingredient fusion pairings">
+          <aside className="alchemy-formula rounded-[1.75rem] border border-[#a33a2b]/25 bg-[#f8ecdf] p-4 sm:p-5" aria-label="Ingredient fusion pairings">
             <div className="mb-4 flex items-end justify-between gap-3">
               <div>
                 <span className="font-mono text-[8px] uppercase tracking-[0.15em] text-[#a33a2b]/55">Explore the formula</span>
