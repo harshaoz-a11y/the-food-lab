@@ -17,8 +17,8 @@ const preparations = {
     ],
   },
   reheated: {
-    label: "Chilled 24h + reheated",
-    shortLabel: "Reheated",
+    label: "Refrigerated 24h + reheated",
+    shortLabel: "Refrigerated and reheated",
     icon: Snowflake,
     summary: "Cooling and reheating changes the starch structure—without changing the ingredient.",
     curve: "M4 88 C22 86 32 34 50 38 C67 42 69 62 84 56 C98 51 106 68 116 65",
@@ -73,7 +73,7 @@ export function RiceExperiment() {
           <img
             src={riceEvolution}
             alt="Illustration comparing fresh hot rice, refrigerated and reheated rice, and rice prepared with coconut oil before cooling"
-            className="w-full mix-blend-multiply"
+            className="w-full grayscale contrast-125 brightness-105 mix-blend-multiply"
           />
         </div>
 

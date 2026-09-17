@@ -2,11 +2,11 @@ import { AlarmClock, BellRing, CookingPot, Salad, Smile, UtensilsCrossed } from 
 import vitruvianClean from "@/assets/maestro/vitruvian-clean.svg";
 
 const factors = [
-  { label: "the food", note: "What do I have vs. what I want?", icon: Salad },
-  { label: "preparation", note: "Hot / cold / fresh / packaged / leftovers?", icon: CookingPot },
-  { label: "timing", note: "When life allows", icon: AlarmClock },
-  { label: "distractions", note: "Does my chewing or portion size suffer?", icon: BellRing },
-  { label: "preferences and mood", note: "Sleep, joy of eating, stress, nostalgia?", icon: Smile },
+  { label: "the food", notes: ["What do I have?", "What do I want?"], icon: Salad },
+  { label: "preparation", notes: ["Hot, cold or fresh", "Packaged or leftovers"], icon: CookingPot },
+  { label: "timing", notes: ["When life allows"], icon: AlarmClock },
+  { label: "distractions", notes: ["Chewing", "Portion size"], icon: BellRing },
+  { label: "preferences and mood", notes: ["Sleep and stress", "Joy and nostalgia"], icon: Smile },
 ];
 
 export function InteractionMap() {
@@ -21,7 +21,7 @@ export function InteractionMap() {
           <small>many outcomes</small>
         </div>
         <div className="map-factors">
-          {factors.map(({ label, note, icon: Icon }) => (
+          {factors.map(({ label, notes, icon: Icon }) => (
             <div
               key={label}
               className="factor"
@@ -29,7 +29,9 @@ export function InteractionMap() {
               <Icon />
               <span className="factor-copy">
                 <strong>{label}</strong>
-                <small>{note}</small>
+                <ul>
+                  {notes.map((note) => <li key={note}>{note}</li>)}
+                </ul>
               </span>
             </div>
           ))}

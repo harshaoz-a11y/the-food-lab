@@ -3,7 +3,6 @@ import { useState } from "react";
 import {
     Activity,
     AlarmClock,
-    ArrowDown,
     ArrowRight,
     BatteryLow,
     CalendarDays,
@@ -41,11 +40,17 @@ const navigation = [{
     label: "The question",
     href: "#question"
 }, {
+    label: "The working hypothesis",
+    href: "#working-hypothesis"
+}, {
     label: "A demonstration",
     href: "#demonstration"
 }, {
     label: "Real life",
     href: "#real-life"
+}, {
+    label: "Get Precision Bio-nutrition",
+    href: "#how-we-help"
 }, {
     label: "The Fit Peasant",
     href: "#fit-peasant"
@@ -156,7 +161,23 @@ const notes = [{
     status: "unresolved"
 }];
 
-const bioNutritionProcess = ["Understand", "Maximize Benefit and Taste", "Observe", "Adapt"];
+const bioNutritionProcess = [{
+    label: "Understand",
+    note: "Your body, goals and real life",
+    icon: NotebookPen
+}, {
+    label: "Maximize Benefit and Taste",
+    note: "Build the most useful, enjoyable option",
+    icon: FlaskConical
+}, {
+    label: "Observe",
+    note: "Notice what actually changes",
+    icon: Activity
+}, {
+    label: "Adapt",
+    note: "Keep what works; revise what doesn’t",
+    icon: RefreshCcw
+}];
 
 const helpAreas = [{
     title: "Your biology",
@@ -208,30 +229,30 @@ function Header() {
                 className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
                 <Brand />
                 <nav
-                    className="hidden items-center gap-7 lg:flex"
+                    className="hidden items-center gap-4 xl:flex"
                     aria-label="Primary navigation">
                     {navigation.map(item => (<a
                         key={item.href}
                         href={item.href}
-                        className="text-sm text-ink/65 transition-colors hover:text-primary">
+                        className="text-xs text-ink/65 transition-colors hover:text-primary">
                         {item.label}
                     </a>))}
                 </nav>
                 <a
                     href="#your-experiment"
-                    className="hidden items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5 lg:flex">Bring us a question <ArrowRight className="h-4 w-4" />
+                    className="hidden items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-xs text-[#f8f2e5] transition-transform hover:-translate-y-0.5 xl:flex">Bring us a question <ArrowRight className="h-4 w-4" />
                 </a>
                 <button
                     type="button"
                     onClick={() => setOpen(value => !value)}
-                    className="grid h-11 w-11 place-items-center rounded-full border border-ink/25 text-ink lg:hidden"
+                    className="grid h-11 w-11 place-items-center rounded-full border border-ink/25 text-ink xl:hidden"
                     aria-label={open ? "Close menu" : "Open menu"}
                     aria-expanded={open}>
                     {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                 </button>
             </div>
             {open && (<nav
-                className="border-t border-ink/15 bg-[#f5edde] px-5 py-4 lg:hidden"
+                className="border-t border-ink/15 bg-[#f5edde] px-5 py-4 xl:hidden"
                 aria-label="Mobile navigation">
                 {navigation.map(item => (<a
                     key={item.href}
@@ -396,7 +417,7 @@ const Index = () => {
                         </aside>
                     </div>
                 </section>
-                <section className="px-4 sm:px-6 lg:px-8" aria-labelledby="map-heading">
+                <section id="working-hypothesis" className="scroll-mt-24 px-4 sm:px-6 lg:px-8" aria-labelledby="map-heading">
                     <div
                         className="mx-auto max-w-[1400px] border-x border-b border-ink/15 bg-[#e4dac5] px-6 py-14 sm:px-12 lg:px-16 lg:py-20">
                         <div className="text-center">
@@ -445,7 +466,7 @@ const Index = () => {
                 </section>
                 <section
                     id="how-we-help"
-                    className="px-4 sm:px-6 lg:px-8"
+                    className="scroll-mt-24 px-4 sm:px-6 lg:px-8"
                     aria-labelledby="help-heading">
                     <div
                         className="paper-sheet mx-auto max-w-[1400px] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
@@ -466,21 +487,32 @@ const Index = () => {
                                 </a>
                             </div>
                             <div
-                                className="rounded-[2rem] border border-ink/20 bg-[#f8f2e5] p-6 text-ink shadow-[8px_10px_0_rgba(23,59,48,.12)] sm:p-9">
-                                <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/55">Our working loop</span>
-                                <div className="mt-7 flex flex-col items-center">
-                                    {bioNutritionProcess.map(
-                                        (stage, index) => (<div className="flex w-full flex-col items-center" key={stage}>
-                                            <div
-                                                className="flex w-full max-w-sm items-center gap-4 rounded-full border border-ink/20 bg-[#e5dac3] px-5 py-4">
-                                                <span
-                                                    className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary font-mono text-[10px] text-[#f8f2e5]">0{index + 1}</span>
-                                                <strong
-                                                    className="font-mono text-sm font-medium uppercase tracking-[0.18em] text-ink">{stage}</strong>
+                                className="relative overflow-hidden rounded-[2rem] border border-ink/20 bg-[#f8f2e5] p-6 text-ink shadow-[8px_10px_0_rgba(23,59,48,.12)] sm:p-9">
+                                <div className="flex items-end justify-between gap-4">
+                                    <div>
+                                        <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/55">Our working loop</span>
+                                        <p className="mt-2 font-serif text-2xl leading-none text-ink">A plan that learns.</p>
+                                    </div>
+                                    <RefreshCcw className="h-8 w-8 stroke-[1.3] text-primary" aria-hidden="true" />
+                                </div>
+                                <div className="relative mt-8 grid gap-3 before:absolute before:bottom-5 before:left-1/2 before:top-5 before:w-px before:-translate-x-1/2 before:border-l before:border-dashed before:border-primary/35">
+                                    {bioNutritionProcess.map(({ label, note, icon: StageIcon }, index) => {
+                                        const alignLeft = index % 2 === 0;
+                                        return (
+                                            <div className={`relative z-10 flex w-full ${alignLeft ? "justify-start pr-7" : "justify-end pl-7"}`} key={label}>
+                                                <div className={`flex w-[88%] items-center gap-3 rounded-[1.25rem] border border-ink/15 bg-[#e5dac3] p-3 shadow-[3px_4px_0_rgba(23,59,48,.08)] sm:w-[82%] ${alignLeft ? "text-left" : "flex-row-reverse text-right"}`}>
+                                                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary text-[#f8f2e5]">
+                                                        <StageIcon className="h-5 w-5 stroke-[1.6]" aria-hidden="true" />
+                                                    </span>
+                                                    <span className="min-w-0 flex-1">
+                                                        <small className="font-mono text-[7px] uppercase tracking-[0.15em] text-ink/45">Step 0{index + 1}</small>
+                                                        <strong className="mt-1 block break-words font-mono text-[10px] font-medium uppercase leading-snug tracking-[0.12em] text-ink sm:text-xs">{label}</strong>
+                                                        <span className="mt-1 block text-[11px] leading-snug text-ink/55">{note}</span>
+                                                    </span>
+                                                </div>
                                             </div>
-                                            {index < bioNutritionProcess.length - 1 && <ArrowDown className="my-2 h-5 w-5 text-ink/45" aria-hidden="true" />}
-                                        </div>)
-                                    )}
+                                        );
+                                    })}
                                 </div>
                             </div>
                         </div>
@@ -501,17 +533,20 @@ const Index = () => {
                                         icon: Icon
                                     },
                                     index
-                                ) => (<article
-                                    key={title}
-                                    className={`rounded-[1.35rem] border p-5 shadow-[4px_5px_0_rgba(65,50,28,.05)] ${index < 3 ? "border-charcoal bg-charcoal text-[#f8f2e5]" : "border-ink/15 bg-[#e7dcc5] text-ink"}`}>
-                                    <div className="flex items-start justify-between gap-4">
-                                        <Icon className={`h-8 w-8 stroke-[1.35] ${index < 3 ? "text-[#d68b7f]" : "text-primary"}`} aria-hidden="true" />
-                                        <span className={`font-mono text-[8px] uppercase tracking-[0.14em] ${index < 3 ? "text-[#f8f2e5]/45" : "text-ink/40"}`}>Signal 0{index + 1}</span>
-                                    </div>
-                                    <h4
-                                        className={`mt-6 font-mono text-[11px] font-medium uppercase tracking-[0.15em] ${index < 3 ? "text-[#f8f2e5]" : "text-ink"}`}>{title}</h4>
-                                    <p className={`mt-2 text-sm leading-relaxed ${index < 3 ? "text-[#f8f2e5]/65" : "text-ink/65"}`}>{copy}</p>
-                                </article>))}
+                                ) => {
+                                    const isInverted = index === 0 || index === 2 || index === 4;
+                                    return (<article
+                                        key={title}
+                                        className={`rounded-[1.35rem] border p-5 shadow-[4px_5px_0_rgba(65,50,28,.05)] ${isInverted ? "border-charcoal bg-charcoal text-[#f8f2e5]" : "border-ink/15 bg-[#e7dcc5] text-ink"}`}>
+                                        <div className="flex items-start justify-between gap-4">
+                                            <Icon className={`h-8 w-8 stroke-[1.35] ${isInverted ? "text-[#d68b7f]" : "text-primary"}`} aria-hidden="true" />
+                                            <span className={`font-mono text-[8px] uppercase tracking-[0.14em] ${isInverted ? "text-[#f8f2e5]/45" : "text-ink/40"}`}>Signal 0{index + 1}</span>
+                                        </div>
+                                        <h4
+                                            className={`mt-6 font-mono text-[11px] font-medium uppercase tracking-[0.15em] ${isInverted ? "text-[#f8f2e5]" : "text-ink"}`}>{title}</h4>
+                                        <p className={`mt-2 text-sm leading-relaxed ${isInverted ? "text-[#f8f2e5]/65" : "text-ink/65"}`}>{copy}</p>
+                                    </article>);
+                                })}
                             </div>
                         </div>
                         <p
