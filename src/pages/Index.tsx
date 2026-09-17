@@ -193,7 +193,7 @@ function Brand() {
             <img
                 src={foodLabBrandLogo}
                 alt="The Food Lab — Invisible diets. Visible results."
-                className="absolute left-1/2 top-1/2 w-[210px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain mix-blend-multiply sm:w-[240px]" />
+                className="absolute left-1/2 top-1/2 w-[210px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain mix-blend-darken sm:w-[240px]" />
         </a>
     );
 }
@@ -466,19 +466,19 @@ const Index = () => {
                                 </a>
                             </div>
                             <div
-                                className="rounded-[2rem] bg-charcoal p-6 text-[#f8f2e5] shadow-[8px_10px_0_rgba(23,59,48,.12)] sm:p-9">
+                                className="rounded-[2rem] border border-ink/20 bg-[#f8f2e5] p-6 text-ink shadow-[8px_10px_0_rgba(23,59,48,.12)] sm:p-9">
                                 <span
-                                    className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#f8f2e5]/55">Our working loop</span>
+                                    className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/55">Our working loop</span>
                                 <div className="mt-7 flex flex-col items-center">
                                     {bioNutritionProcess.map(
                                         (stage, index) => (<div className="flex w-full flex-col items-center" key={stage}>
                                             <div
-                                                className="flex w-full max-w-sm items-center gap-4 rounded-full border border-[#f8f2e5]/20 bg-[#f8f2e5]/[0.07] px-5 py-4">
+                                                className="flex w-full max-w-sm items-center gap-4 rounded-full border border-ink/20 bg-[#e5dac3] px-5 py-4">
                                                 <span
-                                                    className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#f8f2e5] font-mono text-[10px] text-primary">0{index + 1}</span>
-                                                <strong className="font-mono text-sm font-medium uppercase tracking-[0.18em]">{stage}</strong>
+                                                    className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary font-mono text-[10px] text-[#f8f2e5]">0{index + 1}</span>
+                                                <strong className="font-mono text-sm font-medium uppercase tracking-[0.18em] text-ink">{stage}</strong>
                                             </div>
-                                            {index < bioNutritionProcess.length - 1 && <ArrowDown className="my-2 h-5 w-5 text-[#d68b7f]" aria-hidden="true" />}
+                                            {index < bioNutritionProcess.length - 1 && <ArrowDown className="my-2 h-5 w-5 text-ink/45" aria-hidden="true" />}
                                         </div>)
                                     )}
                                 </div>
@@ -532,11 +532,14 @@ const Index = () => {
                             </figure>
                             <div>
                                 <span className="lab-label">An experiment that became food</span>
-                                <h2
-                                    className="mt-4 max-w-xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl italic"><em>Introducing The Fit Peasant — because protein was never meant to work alone.</em></h2>
-                                <div className="mt-5 max-w-lg text-base leading-relaxed text-ink/68 italic">
-                                    <em>Seven deliberate partnerships balance rapid and sustained protein, steady energy, bright flavour, texture-led satiety and clean sweetness — without making enjoyment the compromise.</em>
-                                </div>
+                                <h2 className="mt-4 max-w-xl font-serif font-normal tracking-[-0.04em] text-ink">
+                                    <span className="block text-lg font-normal leading-snug tracking-normal sm:text-xl">Introducing</span>
+                                    <em className="mt-1 block text-5xl font-normal leading-[0.94] sm:text-6xl lg:text-7xl">The Fit Peasant</em>
+                                    <span className="mt-3 block max-w-md text-lg font-normal leading-snug tracking-normal sm:text-xl">— because protein was never meant to work alone.</span>
+                                </h2>
+                                <p className="mt-5 max-w-lg font-serif text-xl italic leading-relaxed text-ink/68">
+                                    ..we will let you tell us just how tasty it is!
+                                </p>
                                 <div className="mt-6 flex flex-wrap items-center gap-3">
                                     <a
                                         href="mailto:harsha@thefoodlab.in?subject=The%20Fit%20Peasant%20experiment"
