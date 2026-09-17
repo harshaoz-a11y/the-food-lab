@@ -982,3 +982,51 @@
     font-size: 0.42rem;
   }
 }
+
+@media (max-width: 767px) {
+  #fit-peasant .alchemy-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+  }
+
+  /* On a phone the visitor should see the invitation first, then the
+     visual experiment, rather than having to hunt for the formula index. */
+  #fit-peasant .alchemy-formula {
+    order: 1;
+  }
+
+  #fit-peasant .alchemy-visual {
+    order: 2;
+  }
+
+  #fit-peasant .alchemy-formula {
+    border: 0;
+    border-top: 1px solid rgba(163, 58, 43, 0.25);
+    border-bottom: 1px solid rgba(163, 58, 43, 0.25);
+    border-radius: 0;
+    padding: 0.15rem 0 0;
+    background: transparent;
+  }
+
+  #fit-peasant .alchemy-formula > div:first-child {
+    margin-bottom: 0.35rem;
+    padding: 0.6rem 0;
+  }
+
+  #fit-peasant .alchemy-formula > div:first-child p {
+    font-size: 1rem;
+  }
+
+  #fit-peasant .alchemy-visual {
+    display: contents;
+  }
+
+  #fit-peasant .alchemy-visual #fusion-discovery {
+    order: 2;
+  }
+
+  #fit-peasant .alchemy-visual .mt-4 {
+    order: 3;
+  }
+}
