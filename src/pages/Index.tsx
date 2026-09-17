@@ -422,7 +422,7 @@ const Index = () => {
                             <div className="relative z-10 min-w-0 lg:pl-3">
                                 <span className="lab-label">Observation 002</span>
                                 <h1
-                                    className="mt-7 max-w-[650px] font-serif text-[clamp(3rem,9vw,5.8rem)] font-normal leading-[0.88] tracking-[-0.055em] text-ink">Could <span className="red-underline">interactions</span> <span className="red-underline">matter</span>more than ingredients?</h1>
+                                    className="mt-7 max-w-[650px] font-serif text-[clamp(3rem,9vw,5.8rem)] font-normal leading-[0.88] tracking-[-0.055em] text-ink">Could <span className="red-underline">matter</span> <span className="red-underline">matter</span>more than ingredients?</h1>
                                 <p
                                     className="mt-10 max-w-lg font-serif text-xl leading-snug text-ink/75 sm:text-2xl">Most of us keep changing the list. We study what happens around it.</p>
                             </div>
@@ -443,7 +443,7 @@ const Index = () => {
                             <h2 id="map-heading" className="lab-label">The working hypothesis</h2>
                             <p
                                 className="mx-auto mt-4 max-w-xl font-serif text-xl leading-snug text-ink/65">Don’t just read the formula. Put it to work.
-                                                                                                              </p>
+                                                                                                                                              </p>
                         </div>
                         <HypothesisExperiment />
                     </div>
@@ -498,7 +498,7 @@ const Index = () => {
                                     className="mt-6 max-w-4xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">1. Precision Bio-Nutrition</h2>
                                 <blockquote
                                     className="mt-7 max-w-2xl border-l-4 border-primary pl-5 font-serif text-2xl leading-snug text-ink/80 sm:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
-                                                                                                            <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
+                                                                                                                                                <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
                                 </blockquote>
                                 <a
                                     href="#your-experiment"
@@ -625,7 +625,7 @@ const Index = () => {
                                 <h2
                                     className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
                                 <p className="mt-7 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Tell us what you have tried and where real life keeps entering the picture. We begin with questions, not a perfect plan.
-                                                                                                                            </p>
+                                                                                                                                                                </p>
                                 <div className="mt-10 flex items-center gap-4 text-[#d68b7f]">
                                     <FlaskConical className="h-8 w-8 stroke-[1.2]" />
                                     <span className="handwritten max-w-xs text-xl leading-tight">No judgement. No gold stars for an ideal food diary.</span>
