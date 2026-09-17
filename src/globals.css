@@ -506,24 +506,25 @@
   grid-template-columns: 23px minmax(0, 1fr);
   align-items: center;
   gap: 0.45rem;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(23, 59, 48, 0.15);
   border-radius: 0.75rem;
   padding: 0.42rem 0.5rem;
-  background: transparent;
-  box-shadow: none;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 2px 3px 10px rgba(23, 59, 48, 0.08);
   opacity: 0;
   transform: translate(-50%, -50%);
   text-align: left;
+  color: var(--ink);
 }
-.factor:nth-child(1) { animation: map-food-stack 1s ease 2.5s forwards; top: 15%; }
-.factor:nth-child(2) { animation: map-preparation-stack 1s ease 3.5s forwards; top: 35%; }
-.factor:nth-child(3) { animation: map-timing-stack 1s ease 4.5s forwards; top: 50%; }
-.factor:nth-child(4) { animation: map-distraction-stack 1s ease 5.5s forwards; top: 65%; }
-.factor:nth-child(5) { animation: map-preference-arrive 1s ease 6.5s forwards; top: 85%; }
-.factor svg { width: 19px; height: 19px; color: white; stroke-width: 1.5; }
+.factor:nth-child(1) { animation: map-factor-appear 2s ease 2.5s forwards; --factor-final-y: -110px; top: 15%; }
+.factor:nth-child(2) { animation: map-factor-appear 2s ease 3.5s forwards; --factor-final-y: 110px; top: 35%; }
+.factor:nth-child(3) { animation: map-factor-appear 2s ease 4.5s forwards; --factor-final-y: -55px; top: 50%; }
+.factor:nth-child(4) { animation: map-factor-appear 2s ease 5.5s forwards; --factor-final-y: 55px; top: 65%; }
+.factor:nth-child(5) { animation: map-factor-appear 2s ease 6.5s forwards; --factor-final-y: 42px; top: 85%; }
+.factor svg { width: 19px; height: 19px; color: var(--brick); stroke-width: 1.5; }
 .factor-copy { display: flex; min-width: 0; flex-direction: column; }
-.factor-copy strong { font-family: Georgia, serif; font-size: 0.76rem; font-weight: 400; line-height: 1.02; color: white; }
-.factor-copy small { margin-top: 0.13rem; font: 0.34rem ui-monospace, monospace; letter-spacing: 0.025em; line-height: 1.25; text-transform: uppercase; color: rgba(255, 255, 255, 0.8); }
+.factor-copy strong { font-family: Georgia, serif; font-size: 0.76rem; font-weight: 400; line-height: 1.02; color: var(--ink); }
+.factor-copy small { margin-top: 0.13rem; font: 0.34rem ui-monospace, monospace; letter-spacing: 0.025em; line-height: 1.25; text-transform: uppercase; color: var(--ink-soft); }
 .interaction-map figcaption { text-align: center; font-family: "Segoe Print", cursive; font-size: 0.88rem; color: var(--green); transform: rotate(-1deg); }
 
 @keyframes map-meal-arrive {
@@ -533,30 +534,21 @@
 @keyframes map-axis-draw {
   to { transform: translate(-50%, -50%) scaleX(1); }
 }
-@keyframes map-food-stack {
-  0% { opacity: 0; transform: translate(-50%, -50%) translateX(180px); }
-  12% { opacity: 1; transform: translate(-50%, -50%) translateX(180px); }
-  100% { opacity: 1; transform: translate(-50%, calc(-50% - 110px)) translateX(0); }
-}
-@keyframes map-preparation-stack {
-  0% { opacity: 0; transform: translate(-50%, -50%) translateX(180px); }
-  12% { opacity: 1; transform: translate(-50%, -50%) translateX(180px); }
-  100% { opacity: 1; transform: translate(-50%, calc(-50% + 110px)) translateX(0); }
-}
-@keyframes map-timing-stack {
-  0% { opacity: 0; transform: translate(-50%, -50%) translateX(180px); }
-  12% { opacity: 1; transform: translate(-50%, -50%) translateX(180px); }
-  100% { opacity: 1; transform: translate(-50%, calc(-50% - 55px)) translateX(0); }
-}
-@keyframes map-distraction-stack {
-  0% { opacity: 0; transform: translate(-50%, -50%) translateX(180px); }
-  12% { opacity: 1; transform: translate(-50%, -50%) translateX(180px); }
-  100% { opacity: 1; transform: translate(-50%, calc(-50% + 55px)) translateX(0); }
-}
-@keyframes map-preference-arrive {
-  0% { opacity: 0; transform: translate(-50%, -50%) translateX(180px); }
-  12% { opacity: 1; transform: translate(-50%, -50%) translateX(180px); }
-  100% { opacity: 1; transform: translate(-50%, calc(-50% + 42px)) translateX(0); }
+@keyframes map-factor-appear {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateX(180px) scale(3);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateX(180px) scale(3);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateX(0) scale(1);
+  }
+  100% {
+    transform: translate(-50%, calc(-50% + var(--factor-final-y))) scale(1);
+  }
 }
 
 @media (max-width: 520px) {
