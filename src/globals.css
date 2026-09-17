@@ -780,455 +780,807 @@
 }
 
 
-/* MAESTRO-029 / mobile editorial pass 01 */
+
+/* MAESTRO-030 / mobile editorial reconstruction */
 /*
-  Mobile pass 01 is intentionally scoped to <= 767px.
-  Desktop geometry is left untouched.
-  The aim is pace, hierarchy and information density — not a new visual language.
+  Mobile is treated as an editorial composition, not a stacked desktop UI.
+  Desktop styles above remain the source of truth and are untouched.
 */
 @media (max-width: 767px) {
-  /* Global section rhythm */
+  /* ---------- Shared mobile language ---------- */
   #question,
+  #working-hypothesis,
   #demonstration,
   #real-life,
   #how-we-help,
-  #fit-peasant {
-    padding-inline: 0.75rem;
+  #fit-peasant,
+  #your-experiment {
+    scroll-margin-top: 74px;
   }
 
+  #question,
+  #demonstration,
+  #fit-peasant {
+    padding-inline: 0.6rem;
+  }
+
+  /* ---------- 01 / THE QUESTION ---------- */
   #question {
-    padding-top: 0.75rem;
-    padding-bottom: 0.5rem;
+    padding-top: 0.45rem;
+    padding-bottom: 0.25rem;
   }
 
   #question .paper-sheet {
-    padding: 2.5rem 1.15rem 2rem;
+    padding: 2rem 0.85rem 1.35rem;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
   }
 
   #question .paper-sheet > .grid {
-    gap: 1.5rem;
-  }
-
-  #question .press-note {
-    margin-top: 1.5rem;
-    padding: 0.8rem 0.75rem;
-  }
-
-  /* Hero map: keep the radial idea, remove the excessive mobile air */
-  .interaction-map {
-    max-width: 540px;
-  }
-
-  .map-stage {
-    min-height: 430px;
-  }
-
-  .map-stage::before {
-    width: min(250px, 72vw);
-  }
-
-  .map-vitruvian {
-    width: min(250px, 72vw);
-  }
-
-  .map-axis {
-    width: min(250px, 72vw);
-  }
-
-  .map-centre {
-    width: 64px;
-    height: 64px;
-  }
-
-  .map-centre span {
-    font-size: 0.72rem;
-  }
-
-  .map-centre small {
-    font-size: 0.3rem;
-  }
-
-  .factor {
-    width: min(142px, 39vw);
-    grid-template-columns: 19px minmax(0, 1fr);
     gap: 0.35rem;
   }
 
-  .factor:nth-child(1) {
-    --factor-x: 0px;
-    --factor-y: -155px;
+  #question .lab-label {
+    font-size: 0.59rem;
   }
 
-  .factor:nth-child(2) {
-    --factor-x: min(180px, 36vw);
-    --factor-y: -62px;
-  }
-
-  .factor:nth-child(3) {
-    --factor-x: min(180px, 36vw);
-    --factor-y: 62px;
-  }
-
-  .factor:nth-child(4) {
-    --factor-x: calc(0px - min(180px, 36vw));
-    --factor-y: 62px;
-  }
-
-  .factor:nth-child(5) {
-    --factor-x: calc(0px - min(180px, 36vw));
-    --factor-y: -62px;
-  }
-
-  .factor-copy strong {
-    font-size: 0.72rem;
-  }
-
-  .factor-copy li {
-    font-size: 0.44rem;
-  }
-
-  .interaction-map figcaption {
-    margin-top: 0.25rem;
-    font-size: 0.76rem;
-  }
-
-  /* Working hypothesis: preserve the experiment, compress the scaffolding */
-  #working-hypothesis > div {
-    padding: 2.5rem 1.15rem;
-  }
-
-  .hypothesis-lab {
-    margin-top: 1.5rem;
-    padding: 0.85rem;
-    border-radius: 1.15rem;
-  }
-
-  .hypothesis-path {
-    gap: 0.5rem;
-    padding-block: 1rem;
-  }
-
-  .hypothesis-stage {
-    min-height: 108px;
-  }
-
-  .hypothesis-observation {
-    padding-top: 0.75rem;
-  }
-
-  .hypothesis-output {
-    min-height: 145px;
-  }
-
-  .happiness-thesis {
+  #question h1 {
+    max-width: 20rem;
     margin-top: 1rem;
-    padding-top: 1rem;
+    font-size: clamp(3.15rem, 15vw, 4.25rem);
+    line-height: 0.86;
+    letter-spacing: -0.065em;
   }
 
-  /* Demonstration: let the two experiments read as one spread */
-  #demonstration .paper-sheet {
-    padding: 2.5rem 1.15rem;
+  #question .relative.z-10 > p {
+    max-width: 21rem;
+    margin-top: 1.15rem;
+    font-size: 1.08rem;
+    line-height: 1.25;
   }
 
-  .experiment-spread {
-    gap: 2rem;
+  /* The map becomes a compact diagram with labels, not five floating cards. */
+  #question .interaction-map {
+    max-width: 23rem;
+    margin-top: 0.25rem;
   }
 
-  .experiment-spread .experiment-column > .mb-7 {
-    margin-bottom: 1.25rem;
+  #question .map-stage {
+    min-height: 285px;
+    margin-top: 0.2rem;
   }
 
-  .experiment-spread .experiment-column > .mb-7 h2 {
-    margin-top: 0.9rem;
+  #question .map-stage::before {
+    width: min(190px, 54vw);
+    border-color: rgba(149, 133, 107, 0.45);
   }
 
-  .experiment-spread .experiment-column > .mb-7 p {
-    margin-top: 0.55rem;
-    font-size: 1rem;
+  #question .map-vitruvian {
+    width: min(190px, 54vw);
   }
 
-  .experiment-spread .experiment-panel,
-  .experiment-spread .rice-panel {
-    padding-top: 1.35rem;
+  #question .map-axis {
+    width: min(190px, 54vw);
+    border-top-width: 1px;
+    border-color: rgba(149, 133, 107, 0.42);
   }
 
-  .experiment-spread .evidence-photo img {
-    min-height: 0;
-    height: 190px;
-    object-fit: contain;
+  #question .map-centre {
+    width: 56px;
+    height: 56px;
+    box-shadow: 3px 4px 0 rgba(23, 59, 48, 0.16);
   }
 
-  .experiment-spread .evidence-photo {
-    padding: 0.55rem;
+  #question .map-centre svg {
+    width: 13px;
+    height: 13px;
   }
 
-  .experiment-spread .evidence-photo figcaption {
-    padding-top: 0.5rem;
+  #question .map-centre span {
+    font-size: 0.62rem;
   }
 
-  .experiment-spread .rice-choice {
-    min-height: 76px;
+  #question .map-centre small {
+    font-size: 0.27rem;
   }
 
-  .experiment-spread .rice-curve {
-    grid-template-columns: minmax(0, 1fr) 88px;
-    min-height: 104px;
-    gap: 0.65rem;
-    padding: 0.65rem 0.75rem;
+  #question .factor {
+    width: 88px;
+    grid-template-columns: 15px minmax(0, 1fr);
+    gap: 0.28rem;
+    align-items: start;
   }
 
-  .experiment-spread .rice-curve svg {
-    height: 76px;
+  #question .factor svg {
+    width: 15px;
+    height: 15px;
+    stroke-width: 1.5;
   }
 
-  .experiment-spread .rice-metric {
-    min-height: 108px;
-    padding: 0.8rem;
+  #question .factor-copy strong {
+    font-size: 0.64rem;
+    line-height: 1.05;
   }
 
-  /* Real life: make the field sheet feel like observation, not app UI */
-  #real-life > div {
-    padding: 3.25rem 1.15rem;
+  #question .factor-copy ul {
+    display: none;
   }
 
-  #real-life > div > .mb-12 {
-    margin-bottom: 1.75rem;
+  #question .factor:nth-child(1) {
+    --factor-x: 0px;
+    --factor-y: -120px;
   }
 
-  .field-studies {
-    margin-top: 1.25rem;
+  #question .factor:nth-child(2) {
+    --factor-x: min(128px, 31vw);
+    --factor-y: -43px;
   }
 
-  .field-personas {
-    gap: 0.55rem;
+  #question .factor:nth-child(3) {
+    --factor-x: min(128px, 31vw);
+    --factor-y: 48px;
   }
 
-  .field-persona {
-    grid-template-columns: 86px minmax(0, 1fr);
-    border-radius: 1rem;
+  #question .factor:nth-child(4) {
+    --factor-x: calc(0px - min(128px, 31vw));
+    --factor-y: 48px;
   }
 
-  .field-persona-art {
-    height: 104px;
+  #question .factor:nth-child(5) {
+    --factor-x: calc(0px - min(128px, 31vw));
+    --factor-y: -43px;
   }
 
-  .field-persona-copy {
-    padding: 0.75rem 0.75rem 0.5rem;
-  }
-
-  .field-persona-copy strong {
-    font-size: 1rem;
-  }
-
-  .field-persona-copy > span {
-    margin-top: 0.3rem;
+  #question .interaction-map figcaption {
+    margin-top: 0;
     font-size: 0.64rem;
   }
 
-  .field-persona-action {
-    margin-inline: 0.75rem;
-    padding: 0.5rem 0 0.6rem;
+  #question .press-note {
+    margin-top: 0.65rem;
+    padding: 0.85rem 0.4rem 0.25rem;
+    border: 0;
+    border-top: 1px solid rgba(89, 71, 44, 0.18);
+    border-bottom: 1px dashed rgba(89, 71, 44, 0.18);
+    box-shadow: none;
+    background: transparent;
+    transform: rotate(-0.5deg);
   }
 
-  .field-frame {
-    gap: 1rem;
-    margin-top: 0.75rem;
-    padding: 1rem;
-    border-radius: 1.15rem;
+  #question .press-note::before {
+    display: none;
   }
 
-  .field-panel-heading h3 {
-    font-size: 1.65rem;
+  #question .press-note p {
+    font-size: 0.96rem;
   }
 
-  .field-panel-heading p {
-    margin-top: 0.6rem;
-    font-size: 0.78rem;
+  /* ---------- 02 / WORKING HYPOTHESIS ---------- */
+  #working-hypothesis {
+    padding-inline: 0.6rem;
   }
 
-  .field-story {
-    gap: 0.55rem;
+  #working-hypothesis > div {
+    padding: 2.7rem 0.95rem 3rem;
+    border-inline: 0;
+    background: #e4dac5;
   }
 
-  .field-story-step {
-    grid-template-columns: 52px minmax(0, 1fr);
+  #working-hypothesis > div > .text-center {
+    text-align: left;
+  }
+
+  #working-hypothesis > div > .text-center > p {
+    max-width: 20rem;
+    margin-left: 0;
+    font-size: 1.15rem;
+  }
+
+  #working-hypothesis .hypothesis-lab {
+    margin-top: 1.7rem;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  #working-hypothesis .hypothesis-controls {
     gap: 0.7rem;
-    border-radius: 0.9rem;
-    padding: 0.65rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px dashed rgba(23, 59, 48, 0.22);
   }
 
-  .field-story-icons {
-    width: 50px;
-    height: 50px;
+  #working-hypothesis .hypothesis-controls > span {
+    font-size: 0.52rem;
   }
 
-  .field-story-icons svg {
-    width: 25px;
-    height: 25px;
+  #working-hypothesis .hypothesis-run {
+    width: auto;
+    justify-content: center;
+    padding: 0.62rem 0.9rem;
+    font-size: 0.54rem;
   }
 
-  .field-story-copy strong {
-    font-size: 0.92rem;
+  /* Happiness is a principle, not another UI card. */
+  #working-hypothesis .happiness-macro {
+    display: block;
+    margin-top: 0.9rem;
+    overflow: visible;
+    border: 0;
+    border-top: 1px solid rgba(163, 58, 43, 0.32);
+    border-bottom: 1px solid rgba(163, 58, 43, 0.32);
+    border-radius: 0;
+    background: transparent;
   }
 
-  .field-story-copy p {
-    margin-top: 0.25rem;
-    font-size: 0.66rem;
+  #working-hypothesis .happiness-toggle {
+    width: 100%;
+    grid-template-columns: auto 1fr auto;
+    padding: 0.72rem 0;
+    background: transparent;
   }
 
-  /* Precision Bio-Nutrition: make the proposition lead, supporting system follow */
-  #how-we-help > div {
-    padding: 3.25rem 1.15rem;
+  #working-hypothesis .happiness-icon {
+    width: 30px;
+    height: 30px;
+    border: 0;
   }
 
-  #how-we-help > div > .grid {
-    gap: 2.25rem;
+  #working-hypothesis .happiness-icon svg {
+    width: 16px;
+    height: 16px;
   }
 
-  #help-heading {
-    font-size: clamp(2.8rem, 12vw, 4rem);
+  #working-hypothesis .happiness-title strong {
+    font-size: 0.98rem;
   }
 
-  #how-we-help blockquote {
-    margin-top: 1.25rem;
-    padding-left: 0.9rem;
-    font-size: 1.45rem;
+  #working-hypothesis .happiness-title small {
+    font-size: 0.43rem;
   }
 
-  #how-we-help .mt-16 {
-    margin-top: 3rem;
-  }
-
-  #how-we-help .mt-9 {
-    margin-top: 1.5rem;
-  }
-
-  /* Six signals: compact field notes rather than six full-height cards */
-  #how-we-help .grid.gap-3.sm\:grid-cols-2.lg\:grid-cols-3 > article {
+  #working-hypothesis .happiness-check {
     min-height: 0;
-    padding: 0.9rem 1rem;
-    border-radius: 1rem;
-    box-shadow: 3px 4px 0 rgba(65, 50, 28, 0.04);
+    border-left: 0;
+    border-top: 1px dashed rgba(163, 58, 43, 0.2);
+    padding: 0.65rem 0 0.75rem 2.4rem;
   }
 
-  #how-we-help .grid.gap-3.sm\:grid-cols-2.lg\:grid-cols-3 > article h4 {
+  #working-hypothesis .happiness-check p {
+    font-size: 0.9rem;
+  }
+
+  #working-hypothesis .hypothesis-path {
+    display: block;
+    padding-block: 0.9rem 0;
+  }
+
+  #working-hypothesis .hypothesis-stage-wrap {
+    display: block;
+    border-top: 1px solid rgba(23, 59, 48, 0.15);
+  }
+
+  #working-hypothesis .hypothesis-stage-wrap:last-of-type {
+    border-bottom: 1px solid rgba(23, 59, 48, 0.15);
+  }
+
+  #working-hypothesis .hypothesis-stage {
+    display: grid;
+    width: 100%;
+    min-height: 72px;
+    grid-template-columns: 28px 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 0 0.7rem;
+    padding: 0.65rem 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+  }
+
+  #working-hypothesis .hypothesis-stage:hover,
+  #working-hypothesis .hypothesis-stage.is-active {
+    transform: none;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  #working-hypothesis .hypothesis-stage svg {
+    grid-row: 1 / span 2;
+    width: 22px;
+    height: 22px;
+    margin: 0;
+  }
+
+  #working-hypothesis .hypothesis-stage strong {
+    font-size: 1.18rem;
+  }
+
+  #working-hypothesis .hypothesis-stage small {
+    margin-top: 0.1rem;
+    font-size: 0.45rem;
+  }
+
+  #working-hypothesis .hypothesis-stage-number {
+    position: static;
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    font-size: 0.47rem;
+    color: rgba(23, 59, 48, 0.34);
+  }
+
+  #working-hypothesis .hypothesis-connector {
+    display: none;
+  }
+
+  #working-hypothesis .hypothesis-equals {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  #working-hypothesis .hypothesis-output {
+    width: min(175px, 55vw);
+    min-height: 175px;
+    margin: 0 auto;
+    border-radius: 50%;
+    padding: 1rem;
+    box-shadow: 6px 7px 0 rgba(23, 59, 48, 0.12);
+  }
+
+  #working-hypothesis .hypothesis-output strong {
+    font-size: 1.3rem;
+  }
+
+  #working-hypothesis .hypothesis-output small {
+    font-size: 0.42rem;
+    text-align: center;
+  }
+
+  #working-hypothesis .hypothesis-observation {
+    grid-template-columns: auto 1fr;
+    gap: 0.7rem;
+    margin-top: 0.95rem;
+    padding-top: 0.85rem;
+  }
+
+  #working-hypothesis .hypothesis-observation span {
+    font-size: 0.48rem;
+  }
+
+  #working-hypothesis .hypothesis-observation p {
+    font-size: 0.94rem;
+  }
+
+  #working-hypothesis .happiness-thesis {
+    margin-top: 1.1rem;
+    padding-top: 0.95rem;
+    font-size: 0.98rem;
+    text-align: left;
+  }
+
+  #working-hypothesis .happiness-thesis::before {
+    left: 0;
+    transform: rotate(-2deg);
+  }
+
+  /* ---------- 03 / DEMONSTRATION ---------- */
+  #demonstration .paper-sheet {
+    padding: 2.75rem 0.9rem 3rem;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  #demonstration .experiment-spread {
+    gap: 0;
+  }
+
+  #demonstration .experiment-column {
+    padding: 0;
+  }
+
+  #demonstration .experiment-column + .experiment-column {
+    margin-top: 2.6rem;
+    padding-top: 2.6rem;
+    border-top: 1px solid rgba(23, 59, 48, 0.18);
+  }
+
+  #demonstration .experiment-column > .mb-7 {
+    margin-bottom: 1.15rem;
+  }
+
+  #demonstration .experiment-column > .mb-7 h2 {
     margin-top: 0.8rem;
+    font-size: clamp(2.65rem, 12vw, 3.65rem);
+    line-height: 0.9;
   }
 
-  #how-we-help .grid.gap-3.sm\:grid-cols-2.lg\:grid-cols-3 > article p {
+  #demonstration .experiment-column > .mb-7 p {
+    margin-top: 0.5rem;
+    font-size: 0.98rem;
+  }
+
+  /* Evidence stays visual. Controls stay close to the evidence. */
+  #demonstration .experiment-panel,
+  #demonstration .rice-panel {
+    border: 0;
+    padding: 0;
+    background: transparent;
+  }
+
+  #demonstration .evidence-photo {
+    padding: 0.35rem;
+    border: 1px solid rgba(74, 60, 38, 0.18);
+    box-shadow: 4px 5px 0 rgba(59, 49, 32, 0.06);
+  }
+
+  #demonstration .evidence-photo img {
+    height: 205px;
+    min-height: 0;
+    object-fit: contain;
+  }
+
+  #demonstration .evidence-photo figcaption {
+    padding: 0.45rem 0.2rem 0.1rem;
+    font-size: 0.45rem;
+  }
+
+  #demonstration .experiment-choice {
+    border-radius: 0;
+    border-inline: 0;
+    padding-inline: 0;
+  }
+
+  #demonstration .rice-panel > div[role="group"] {
+    border-top: 1px solid rgba(23, 59, 48, 0.16);
+    border-bottom: 1px solid rgba(23, 59, 48, 0.16);
+    padding-block: 0.25rem;
+  }
+
+  #demonstration .rice-choice {
+    min-height: 64px;
+    border: 0;
+    border-radius: 0;
+    padding: 0.55rem 0.35rem;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  #demonstration .rice-choice.is-active {
+    background: transparent;
+    color: var(--brick);
+    border-bottom: 2px solid var(--brick);
+  }
+
+  #demonstration .rice-choice svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  #demonstration .rice-choice span {
     margin-top: 0.35rem;
     font-size: 0.78rem;
   }
 
-  #how-we-help .handwritten {
-    margin-top: 2rem;
-    padding-top: 1.25rem;
+  #demonstration .rice-choice small {
+    display: none;
   }
 
-  /* Fit Peasant: preserve the hero product moment, reduce surrounding bulk */
-  #fit-peasant > div {
-    padding: 2.75rem 1rem;
+  #demonstration .rice-panel > div[aria-live="polite"] {
+    margin-top: 1rem;
   }
 
-  #fit-peasant .evidence-photo img {
-    min-height: 240px;
+  #demonstration .rice-panel > div[aria-live="polite"] > p {
+    min-height: 0;
+    font-size: 0.98rem;
+    line-height: 1.35;
   }
 
-  #fit-peasant .evidence-photo {
-    padding: 0.55rem;
+  #demonstration .rice-curve {
+    grid-template-columns: 1fr 82px;
+    min-height: 92px;
+    gap: 0.5rem;
+    border: 0;
+    border-top: 1px dashed rgba(23, 59, 48, 0.22);
+    border-bottom: 1px dashed rgba(23, 59, 48, 0.22);
+    border-radius: 0;
+    padding: 0.7rem 0;
+    background: transparent;
   }
 
-  #fit-peasant h2 em {
-    font-size: clamp(3rem, 14vw, 4.25rem);
+  #demonstration .rice-curve svg {
+    height: 68px;
   }
 
-  /* Lab notes: reduce the four-card vertical tax */
-  #notes-heading {
-    font-size: clamp(2.8rem, 12vw, 4rem);
+  #demonstration .rice-curve strong {
+    font-size: 0.92rem;
   }
 
-  .note-card {
-    min-height: 165px;
-    padding: 1rem;
-    border-radius: 1rem;
+  #demonstration .rice-metrics {
+    gap: 0;
+    border-bottom: 1px solid rgba(23, 59, 48, 0.16);
   }
 
-  .note-card h3 {
-    margin-top: 0.8rem;
-    font-size: 1.7rem;
+  #demonstration .rice-metric {
+    min-height: 0;
+    border: 0;
+    border-top: 1px solid rgba(23, 59, 48, 0.11);
+    border-radius: 0;
+    padding: 0.75rem 0;
+    background: transparent;
   }
 
-  .note-card p {
-    margin-top: 0.45rem;
-    font-size: 0.82rem;
+  #demonstration .rice-metric strong {
+    margin-top: 0.35rem;
+    font-size: 1.45rem;
   }
 
-  /* Final CTA remains deliberately generous, but not oversized */
-  #your-experiment > div {
-    padding: 3.25rem 1.15rem;
+  #demonstration .rice-metric p {
+    margin-top: 0.15rem;
+    font-size: 0.67rem;
   }
 
-  #your-experiment .grid {
-    gap: 2rem;
+  #demonstration .rice-panel > p:last-child {
+    margin-top: 0.9rem;
+    padding-top: 0.7rem;
+    font-size: 0.43rem;
+  }
+
+  /* ---------- 04 / REAL LIFE ---------- */
+  #real-life > div {
+    padding: 3.25rem 1rem 3.5rem;
+  }
+
+  #real-life > div > .mb-12 {
+    margin-bottom: 1.9rem;
+  }
+
+  #real-life > div > .mb-12 h2 {
+    margin-top: 1rem;
+    font-size: clamp(2.55rem, 12vw, 3.8rem);
+    line-height: 0.9;
+    white-space: normal;
+  }
+
+  #real-life > div > .mb-12 p {
+    margin-top: 1rem;
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+
+  /* Character selector becomes a single editorial index. */
+  #real-life .field-personas {
+    gap: 0;
+    border-top: 1px solid rgba(247, 237, 219, 0.2);
+    border-bottom: 1px solid rgba(247, 237, 219, 0.2);
+  }
+
+  #real-life .field-persona {
+    grid-template-columns: 64px minmax(0, 1fr) auto;
+    min-height: 74px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+  }
+
+  #real-life .field-persona + .field-persona {
+    border-top: 1px dashed rgba(247, 237, 219, 0.16);
+  }
+
+  #real-life .field-persona[aria-pressed="true"] {
+    border: 0;
+    box-shadow: none;
+    transform: none;
+  }
+
+  #real-life .field-persona-art {
+    height: 70px;
+    align-self: stretch;
+  }
+
+  #real-life .field-persona-copy {
+    justify-content: center;
+    padding: 0.6rem 0.55rem;
+  }
+
+  #real-life .field-persona-copy small {
+    font-size: 0.43rem;
+  }
+
+  #real-life .field-persona-copy strong {
+    margin-top: 0.18rem;
+    font-size: 0.94rem;
+  }
+
+  #real-life .field-persona-copy > span {
+    margin-top: 0.2rem;
+    font-size: 0.59rem;
+    line-height: 1.25;
+  }
+
+  #real-life .field-persona-action {
+    grid-column: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 0;
+    opacity: 0.5;
+  }
+
+  #real-life .field-persona-action svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  #real-life .field-frame {
+    gap: 1.35rem;
+    margin-top: 1.25rem;
+    padding: 0;
+    border: 0;
+    border-top: 3px solid var(--story-accent);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  #real-life .field-panel-heading {
+    padding-top: 1rem;
+  }
+
+  #real-life .field-panel-heading h3 {
+    max-width: 18rem;
+    margin-top: 0.6rem;
+    font-size: 1.85rem;
+    line-height: 0.95;
+  }
+
+  #real-life .field-panel-heading p {
+    margin-top: 0.55rem;
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  #real-life .field-story {
+    gap: 0;
+    border-top: 1px solid rgba(23, 59, 48, 0.15);
+  }
+
+  #real-life .field-story-step {
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 0.7rem;
+    min-height: 0;
+    border: 0;
+    border-bottom: 1px solid rgba(23, 59, 48, 0.12);
+    border-radius: 0;
+    padding: 0.8rem 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  #real-life .field-story-step:not(:last-child)::after {
+    display: none;
+  }
+
+  #real-life .field-story-icons {
+    width: 42px;
+    height: 42px;
+    border: 0;
+    background: rgba(243, 234, 216, 0.55);
+  }
+
+  #real-life .field-story-icons svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  #real-life .field-story-icons svg:nth-child(2) {
+    width: 17px;
+    height: 17px;
+  }
+
+  #real-life .field-story-copy small {
+    font-size: 0.42rem;
+  }
+
+  #real-life .field-story-copy strong {
+    font-size: 0.92rem;
+  }
+
+  #real-life .field-story-copy p {
+    margin-top: 0.18rem;
+    font-size: 0.63rem;
+  }
+
+  #real-life .press-note {
+    margin-top: 1.5rem;
+    max-width: none;
+    padding: 1rem 0.2rem;
+    border: 0;
+    border-top: 1px dashed rgba(89, 71, 44, 0.24);
+    border-bottom: 1px dashed rgba(89, 71, 44, 0.24);
+    box-shadow: none;
+    transform: rotate(0);
+    background: transparent;
+  }
+
+  #real-life .press-note::before {
+    display: none;
+  }
+
+  /* Stop the rest of the mobile page inheriting the old "card stack" feel. */
+  #how-we-help,
+  #fit-peasant {
+    padding-inline: 0.6rem;
   }
 }
 
 @media (max-width: 520px) {
-  .map-stage {
-    min-height: 390px;
+  #question h1 {
+    max-width: 18rem;
+    font-size: clamp(3rem, 15vw, 3.75rem);
   }
 
-  .map-stage::before,
-  .map-vitruvian,
-  .map-axis {
-    width: min(220px, 70vw);
+  #question .map-stage {
+    min-height: 270px;
   }
 
+  #question .map-stage::before,
+  #question .map-vitruvian,
+  #question .map-axis {
+    width: 175px;
+  }
+
+  #question .factor {
+    width: 78px;
+  }
+
+  #question .factor-copy strong {
+    font-size: 0.58rem;
+  }
+
+  #question .factor:nth-child(1) { --factor-y: -112px; }
+  #question .factor:nth-child(2) { --factor-x: 116px; --factor-y: -40px; }
+  #question .factor:nth-child(3) { --factor-x: 116px; --factor-y: 43px; }
+  #question .factor:nth-child(4) { --factor-x: -116px; --factor-y: 43px; }
+  #question .factor:nth-child(5) { --factor-x: -116px; --factor-y: -40px; }
+
+  #working-hypothesis > div {
+    padding-inline: 0.75rem;
+  }
+
+  #working-hypothesis .hypothesis-stage strong {
+    font-size: 1.08rem;
+  }
+
+  #demonstration .rice-curve {
+    grid-template-columns: 1fr 70px;
+  }
+
+  #real-life .field-persona {
+    grid-template-columns: 54px minmax(0, 1fr) auto;
+  }
+
+  #real-life .field-persona-art {
+    height: 64px;
+  }
+
+  #real-life .field-persona-copy > span {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   .factor {
-    width: 124px;
-  }
-
-  .factor:nth-child(1) {
-    --factor-y: -140px;
-  }
-
-  .factor:nth-child(2) {
-    --factor-x: min(145px, 34vw);
-    --factor-y: -55px;
-  }
-
-  .factor:nth-child(3) {
-    --factor-x: min(145px, 34vw);
-    --factor-y: 55px;
-  }
-
-  .factor:nth-child(4) {
-    --factor-x: calc(0px - min(145px, 34vw));
-    --factor-y: 55px;
-  }
-
-  .factor:nth-child(5) {
-    --factor-x: calc(0px - min(145px, 34vw));
-    --factor-y: -55px;
-  }
-
-  .factor-copy strong {
-    font-size: 0.68rem;
-  }
-
-  .factor-copy li {
-    font-size: 0.42rem;
-  }
-
-  .experiment-spread .rice-curve {
-    grid-template-columns: 1fr 78px;
-  }
-
-  .field-persona {
-    grid-template-columns: 76px minmax(0, 1fr);
-  }
-
-  .field-persona-art {
-    height: 96px;
+    opacity: 1;
+    animation: none !important;
+    transform: translate(calc(-50% + var(--factor-x)), calc(-50% + var(--factor-y))) scale(1);
   }
 }
