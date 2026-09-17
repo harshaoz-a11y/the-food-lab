@@ -210,10 +210,12 @@
   color: var(--brick);
 }
 .happiness-icon svg { width: 18px; height: 18px; transition: fill 250ms ease, transform 250ms ease; }
-.is-on .happiness-icon svg { fill: rgba(163, 58, 43, 0.2); transform: scale(1.12) rotate(-5deg); }
+.is-on .happiness-icon { border-color: var(--green); color: var(--green); }
+.is-on .happiness-icon svg { fill: rgba(45, 125, 70, 0.2); transform: scale(1.12) rotate(-5deg); }
 .happiness-title { display: flex; flex-direction: column; }
 .happiness-title strong { font-family: Georgia, "Times New Roman", serif; font-size: 1.08rem; font-weight: 400; }
 .happiness-title small { margin-top: 0.2rem; font: 0.5rem ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brick); }
+.is-on .happiness-title small { color: var(--green); }
 .happiness-switch { position: relative; width: 42px; height: 23px; border-radius: 999px; background: var(--brick); transition: background-color 250ms ease; }
 .happiness-switch i { position: absolute; width: 17px; height: 17px; left: 3px; top: 3px; border-radius: 50%; background: var(--paper-light); box-shadow: 0 1px 3px rgba(23, 59, 48, 0.18); transition: transform 250ms ease; }
 .is-on .happiness-switch { background: var(--green); }
@@ -228,7 +230,9 @@
   text-align: left;
   animation: hypothesis-note-in 300ms ease;
 }
+.is-on .happiness-check { border-left-color: rgba(45, 125, 70, 0.35); }
 .happiness-check span { font: 0.5rem ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brick); }
+.is-on .happiness-check span { color: var(--green); }
 .happiness-check p { margin-top: 0.35rem; font-family: Georgia, "Times New Roman", serif; font-size: 1rem; line-height: 1.25; color: rgba(23, 59, 48, 0.72); }
 
 .hypothesis-run {
@@ -308,11 +312,11 @@
   bottom: 14px;
   width: 74px;
   height: 3px;
-  background: rgba(163, 58, 43, 0.5);
+  background: rgba(45, 125, 70, 0.6);
   transform: rotate(-7deg);
 }
 .hypothesis-stage svg { width: 28px; height: 28px; margin-bottom: auto; color: var(--brick); stroke-width: 1.35; transition: transform 300ms ease; }
-.hypothesis-stage.is-active svg { transform: rotate(-8deg) scale(1.18); }
+.hypothesis-stage.is-active svg { color: var(--green); transform: rotate(-8deg) scale(1.18); }
 .hypothesis-stage strong { font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.15rem, 1.8vw, 1.65rem); font-weight: 400; letter-spacing: -0.025em; }
 .hypothesis-stage small { margin-top: 0.35rem; font: 0.53rem ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
 .hypothesis-stage-number { position: absolute; right: 0.8rem; top: 0.7rem; font: 0.55rem ui-monospace, monospace; letter-spacing: 0.12em; color: rgba(23, 59, 48, 0.35); }
@@ -568,8 +572,10 @@
 .experiment-choice { border: 1px solid rgba(23, 59, 48, 0.32); border-radius: 999px; padding: 0.65rem 1rem; color: var(--ink); font-size: 0.8rem; transition: 180ms ease; }
 .experiment-choice:hover { border-color: var(--brick); color: var(--brick); }
 .experiment-choice.is-active { background: var(--brick); border-color: var(--brick); color: #fff9ed; }
+.experiment-choice.is-green-active { background: var(--green) !important; border-color: var(--green) !important; color: #fff9ed !important; }
 .measure-track { width: 100%; height: 8px; background: rgba(23, 59, 48, 0.14); overflow: hidden; border-radius: 999px; }
-.measure-track span { display: block; height: 100%; border-radius: inherit; background: var(--brick); transition: width 500ms cubic-bezier(.2,.8,.2,1); }
+.measure-track span { display: block; height: 100%; border-radius: inherit; background: var(--brick); transition: width 500ms cubic-bezier(.2,.8,.2,1), background-color 300ms ease; }
+.measure-track span.is-green { background: var(--green); }
 
 .rice-panel {
   border-left: 1px dashed rgba(23, 59, 48, 0.3);
