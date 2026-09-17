@@ -343,23 +343,27 @@ function ConsultationForm() {
             <a
                 href="mailto:harsha@thefoodlab.in?subject=Precise%20nutrition%20solutions"
                 className="group rounded-[1.5rem] border border-[#f8f2e5]/25 bg-[#f8f2e5]/5 p-6 transition hover:-translate-y-1 hover:border-[#d68b7f] hover:bg-[#f8f2e5]/10">
-                <span className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#d68b7f]">Personal nutrition</span>
-                <strong className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Looking for precise solutions to your nutritional goals?</strong>
-                <span className="mt-5 inline-flex items-center gap-2 text-sm text-[#f8f2e5]/70 transition group-hover:text-[#f8f2e5]">Talk to The Food Lab <ArrowRight className="h-4 w-4" /></span>
+                <span
+                    className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#d68b7f]">Personal nutrition</span>
+                <strong
+                    className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Looking for precise solutions to your nutritional goals?</strong>
+                <span
+                    className="mt-5 inline-flex items-center gap-2 text-sm text-[#f8f2e5]/70 transition group-hover:text-[#f8f2e5]">Talk to The Food Lab <ArrowRight className="h-4 w-4" /></span>
             </a>
-
-            <div className="flex items-center gap-3 font-mono text-[8px] uppercase tracking-[0.18em] text-[#f8f2e5]/40">
-                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
-                Or
-                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
+            <div
+                className="flex items-center gap-3 font-mono text-[8px] uppercase tracking-[0.18em] text-[#f8f2e5]/40">
+                <span className="h-px flex-1 bg-[#f8f2e5]/15" />Or
+                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
             </div>
-
             <a
                 href="mailto:harsha@thefoodlab.in?subject=The%20Fit%20Peasant%20protein%20bar"
                 className="group rounded-[1.5rem] border border-[#d68b7f]/45 bg-[#d68b7f]/10 p-6 transition hover:-translate-y-1 hover:border-[#d68b7f] hover:bg-[#d68b7f]/15">
-                <span className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#d68b7f]">The Fit Peasant</span>
-                <strong className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Want to try out our awesome protein bar?</strong>
-                <span className="mt-5 inline-flex items-center gap-2 text-sm text-[#f8f2e5]/70 transition group-hover:text-[#f8f2e5]">Ask about the bar <ArrowRight className="h-4 w-4" /></span>
+                <span
+                    className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#d68b7f]">The Fit Peasant</span>
+                <strong
+                    className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Want to try out our awesome protein bar?</strong>
+                <span
+                    className="mt-5 inline-flex items-center gap-2 text-sm text-[#f8f2e5]/70 transition group-hover:text-[#f8f2e5]">Ask about the bar <ArrowRight className="h-4 w-4" /></span>
             </a>
         </div>
     );
@@ -399,7 +403,7 @@ const Index = () => {
                             <h2 id="map-heading" className="lab-label">The working hypothesis</h2>
                             <p
                                 className="mx-auto mt-4 max-w-xl font-serif text-xl leading-snug text-ink/65">Don’t just read the formula. Put it to work.
-                                                                                                                                                                              </p>
+                                                                                                                                                                                                              </p>
                         </div>
                         <HypothesisExperiment />
                     </div>
@@ -454,7 +458,7 @@ const Index = () => {
                                     className="mt-6 max-w-4xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">1. Precision Bio-Nutrition</h2>
                                 <blockquote
                                     className="mt-7 max-w-2xl border-l-4 border-primary pl-5 font-serif text-2xl leading-snug text-ink/80 sm:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
-                                                                                                                                                                                    <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
+                                                                                                                                                                                                                        <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
                                 </blockquote>
                                 <a
                                     href="#your-experiment"
@@ -581,7 +585,7 @@ const Index = () => {
                                 <h2
                                     className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
                                 <p className="mt-7 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Tell us what you have tried and where real life keeps entering the picture. We begin with questions, not a perfect plan.
-                                                                                                                                                                                                    </p>
+                                                                                                                                                                                                                                        </p>
                                 <div className="mt-10 flex items-center gap-4 text-[#d68b7f]">
                                     <FlaskConical className="h-8 w-8 stroke-[1.2]" />
                                     <span className="handwritten max-w-xs text-xl leading-tight">No judgement. No gold stars for an ideal food diary.</span>
