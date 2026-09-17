@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 
 import {
     Activity,
@@ -28,13 +28,13 @@ import {
     X,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { AlchemyPartnerships } from "@/components/food-lab/AlchemyPartnerships";
 import { EggExperiment } from "@/components/food-lab/EggExperiment";
 import { FieldCharacter, type FieldScene } from "@/components/food-lab/FieldCharacter";
 import { HypothesisExperiment } from "@/components/food-lab/HypothesisExperiment";
 import { InteractionMap } from "@/components/food-lab/InteractionMap";
 import { RiceExperiment } from "@/components/food-lab/RiceExperiment";
+import foodLabBrandLogo from "@/assets/the-food-lab-brand-logo.png";
 import { maestroAssets } from "@/lib/maestro-assets";
 
 const navigation = [{
@@ -47,8 +47,8 @@ const navigation = [{
     label: "Real life",
     href: "#real-life"
 }, {
-    label: "Alchemy Bar",
-    href: "#alchemy-bar"
+    label: "The Fit Peasant",
+    href: "#fit-peasant"
 }];
 
 const fieldStudies = [{
@@ -137,22 +137,22 @@ const fieldStudies = [{
 const notes = [{
     id: "019",
     title: "Healthy.",
-    copy: "What do we actually mean when we call a food healthy?",
+    copy: "Why does healthy often equal boring?",
     status: "question kept open"
 }, {
     id: "031",
     title: "Food behaves.",
-    copy: "Same food. Different context. Different outcome. Worth watching.",
+    copy: "…differently in real life than it does on paper",
     status: "observation"
 }, {
     id: "036",
     title: "Protein.",
-    copy: "Quantity gets counted. Timing and digestion still have a vote.",
+    copy: "The most important ingredient in a meal might not be an ingredient",
     status: "still testing"
 }, {
     id: "041",
     title: "Enjoyment.",
-    copy: "Could enjoyment be part of consistency rather than its opposite?",
+    copy: "Rice isn’t your enemy – you just need to talk it out",
     status: "unresolved"
 }];
 
@@ -188,17 +188,12 @@ function Brand() {
     return (
         <a
             href="#top"
-            className="flex items-center gap-3"
+            className="relative block h-14 w-[200px] shrink-0 overflow-hidden sm:w-[230px]"
             aria-label="The Food Lab home">
             <img
-                src={maestroAssets.foodLabMark}
-                alt=""
-                className="h-11 w-11 object-contain mix-blend-multiply" />
-            <span className="flex flex-col leading-none">
-                <strong className="font-serif text-lg font-normal tracking-[-0.02em] text-ink">The Food Lab</strong>
-                <small
-                    className="mt-1 font-mono text-[8px] uppercase tracking-[0.14em] text-ink/55">Invisible diets. Visible results!</small>
-            </span>
+                src={foodLabBrandLogo}
+                alt="The Food Lab — Invisible diets. Visible results."
+                className="absolute left-1/2 top-1/2 w-[210px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain mix-blend-multiply sm:w-[240px]" />
         </a>
     );
 }
@@ -343,69 +338,30 @@ function FieldStudies() {
 }
 
 function ConsultationForm() {
-    const [sent, setSent] = useState(false);
-
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        const subject = encodeURIComponent("A question for The Food Lab");
-
-        const body = encodeURIComponent(
-            `Name: ${data.get("name")}\n\nWhat I am trying to change:\n${data.get("goal")}\n\nWhat keeps getting in the way:\n${data.get("friction")}\n\nAn ordinary day:\n${data.get("day")}`
-        );
-
-        setSent(true);
-        window.location.href = `mailto:harsha@thefoodlab.in?subject=${subject}&body=${body}`;
-    };
-
     return (
-        <form onSubmit={handleSubmit} className="space-y-5">
-            <label className="block">
-                <span
-                    className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#f8f2e5]/55">Your name</span>
-                <input
-                    className="form-line"
-                    name="name"
-                    required
-                    placeholder="What should we call you?" />
-            </label>
-            <label className="block">
-                <span
-                    className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#f8f2e5]/55">What are you trying to change?</span>
-                <input
-                    className="form-line"
-                    name="goal"
-                    required
-                    placeholder="Weight, energy, digestion, consistency…" />
-            </label>
-            <label className="block">
-                <span
-                    className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#f8f2e5]/55">What keeps getting in the way?</span>
-                <input
-                    className="form-line"
-                    name="friction"
-                    required
-                    placeholder="Time, appetite, taste, routine…" />
-            </label>
-            <label className="block">
-                <span
-                    className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#f8f2e5]/55">An ordinary day</span>
-                <textarea
-                    className="form-line min-h-24 resize-y"
-                    name="day"
-                    required
-                    placeholder="No perfect food diary needed. Just walk us through it." />
-            </label>
-            <Button
-                type="submit"
-                className="h-auto rounded-full bg-[#f8f2e5] px-6 py-3.5 text-sm font-medium text-ink shadow-[4px_5px_0_rgba(0,0,0,.12)] hover:bg-[#e8ddc7]">Send the field note <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <p
-                className="font-mono text-[9px] uppercase leading-relaxed tracking-[0.12em] text-[#f8f2e5]/50"
-                aria-live="polite">
-                {sent ? "Your email app should now have the note ready to send." : "We read the interaction before suggesting a solution."}
-            </p>
-        </form>
+        <div className="grid gap-5">
+            <a
+                href="mailto:harsha@thefoodlab.in?subject=Precise%20nutrition%20solutions"
+                className="group rounded-[1.5rem] border border-[#f8f2e5]/25 bg-[#f8f2e5]/5 p-6 transition hover:-translate-y-1 hover:border-[#d68b7f] hover:bg-[#f8f2e5]/10">
+                <span className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#d68b7f]">Personal nutrition</span>
+                <strong className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Looking for precise solutions to your nutritional goals?</strong>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm text-[#f8f2e5]/70 transition group-hover:text-[#f8f2e5]">Talk to The Food Lab <ArrowRight className="h-4 w-4" /></span>
+            </a>
+
+            <div className="flex items-center gap-3 font-mono text-[8px] uppercase tracking-[0.18em] text-[#f8f2e5]/40">
+                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
+                Or
+                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
+            </div>
+
+            <a
+                href="mailto:harsha@thefoodlab.in?subject=The%20Fit%20Peasant%20protein%20bar"
+                className="group rounded-[1.5rem] border border-[#d68b7f]/45 bg-[#d68b7f]/10 p-6 transition hover:-translate-y-1 hover:border-[#d68b7f] hover:bg-[#d68b7f]/15">
+                <span className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#d68b7f]">The Fit Peasant</span>
+                <strong className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Want to try out our awesome protein bar?</strong>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm text-[#f8f2e5]/70 transition group-hover:text-[#f8f2e5]">Ask about the bar <ArrowRight className="h-4 w-4" /></span>
+            </a>
+        </div>
     );
 }
 
@@ -558,7 +514,7 @@ const Index = () => {
                             className="handwritten mt-12 border-t border-dashed border-ink/25 pt-8 text-center text-xl text-primary sm:text-2xl">What if DIETS could be DELICIOUS?</p>
                     </div>
                 </section>
-                <section id="alchemy-bar" className="px-4 sm:px-6 lg:px-8">
+                <section id="fit-peasant" className="px-4 sm:px-6 lg:px-8">
                     <div
                         className="mx-auto max-w-[1200px] border-x border-ink/15 bg-[#dfd4be] px-4 py-12 sm:px-8 lg:px-16 lg:py-20">
                         <div className="grid gap-8 lg:grid-cols-[1fr_.8fr] lg:items-center">
@@ -566,21 +522,21 @@ const Index = () => {
                                 <span className="tape tape-left" />
                                 <img
                                     src={maestroAssets.alchemyBar}
-                                    alt="Alchemy Bar cut open to reveal its whole-food texture"
+                                    alt="The Fit Peasant protein bar cut open to reveal its whole-food texture"
                                     className="min-h-[280px] w-full object-cover sm:min-h-[380px]" />
-                                <figcaption>Alchemy Bar / first practical experiment</figcaption>
+                                <figcaption>The Fit Peasant / first practical experiment</figcaption>
                             </figure>
                             <div>
                                 <span className="lab-label">An experiment that became food</span>
                                 <h2
-                                    className="mt-4 max-w-xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl italic"><em>Introducing ALCHEMY Bar — because protein was never meant to work alone.</em></h2>
+                                    className="mt-4 max-w-xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl italic"><em>Introducing The Fit Peasant — because protein was never meant to work alone.</em></h2>
                                 <div className="mt-5 max-w-lg text-base leading-relaxed text-ink/68 italic">
                                     <em>Seven deliberate partnerships balance rapid and sustained protein, steady energy, bright flavour, texture-led satiety and clean sweetness — without making enjoyment the compromise.</em>
                                 </div>
                                 <div className="mt-6 flex flex-wrap items-center gap-3">
                                     <a
-                                        href="mailto:harsha@thefoodlab.in?subject=Alchemy%20Bar%20experiment"
-                                        className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">Ask about Alchemy Bar <ArrowRight className="h-4 w-4" />
+                                        href="mailto:harsha@thefoodlab.in?subject=The%20Fit%20Peasant%20experiment"
+                                        className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">Ask about The Fit Peasant <ArrowRight className="h-4 w-4" />
                                     </a>
                                     <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-ink/50">Precision interactions. One enjoyable result.</span>
                                 </div>

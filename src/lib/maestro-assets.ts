@@ -1,5 +1,4 @@
 import eggReferenceBase64 from "@/assets/maestro/egg-reference.b64.txt?raw";
-import foodLabMarkBase64 from "@/assets/maestro/food-lab-mark.b64.txt?raw";
 import alchemyBarBase64 from "@/assets/maestro/alchemyBar.b64.txt?raw";
 
 const imageData = (mime: string, value: string) =>
@@ -7,6 +6,5 @@ const imageData = (mime: string, value: string) =>
 
 export const maestroAssets = {
   eggReference: imageData("image/png", eggReferenceBase64),
-  foodLabMark: imageData("image/png", foodLabMarkBase64),
   alchemyBar: imageData("image/jpeg", alchemyBarBase64),
 };

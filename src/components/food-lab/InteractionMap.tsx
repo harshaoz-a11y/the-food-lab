@@ -21,7 +21,7 @@ export function InteractionMap() {
           <small>many outcomes</small>
         </div>
         <div className="map-factors">
-          {factors.map(({ label, note, icon: Icon }, index) => (
+          {factors.map(({ label, note, icon: Icon }) => (
             <div
               key={label}
               className="factor"

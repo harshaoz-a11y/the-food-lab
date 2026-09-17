@@ -488,7 +488,7 @@
 .map-factors { position: absolute; z-index: 4; inset: 0; pointer-events: none; }
 .factor {
   position: absolute;
-  left: 85%;
+  left: 50%;
   top: 50%;
   display: grid;
   width: min(168px, 43%);
@@ -502,16 +502,16 @@
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 2px 3px 10px rgba(23, 59, 48, 0.08);
   opacity: 0;
-  transform: translate(-50%, -50%) translateY(-185px) scale(3);
+  transform: translate(calc(-50% + var(--factor-x)), calc(-50% + var(--factor-y))) scale(0.86);
   text-align: left;
   color: var(--ink);
-  animation: map-factor-appear 2s ease var(--factor-delay) forwards;
+  animation: map-factor-appear 520ms ease var(--factor-delay) forwards;
 }
-.factor:nth-child(1) { --factor-delay: 0s; --factor-final-y: -130px; }
-.factor:nth-child(2) { --factor-delay: 1s; --factor-final-y: 130px; }
-.factor:nth-child(3) { --factor-delay: 2s; --factor-final-y: -65px; }
-.factor:nth-child(4) { --factor-delay: 3s; --factor-final-y: 65px; }
-.factor:nth-child(5) { --factor-delay: 4s; --factor-final-y: 0px; }
+.factor:nth-child(1) { --factor-delay: 0s; --factor-x: 0px; --factor-y: calc(0px - min(155px, 42vw)); }
+.factor:nth-child(2) { --factor-delay: 0.15s; --factor-x: min(147px, 40vw); --factor-y: calc(0px - min(48px, 13vw)); }
+.factor:nth-child(3) { --factor-delay: 0.3s; --factor-x: min(91px, 25vw); --factor-y: min(125px, 34vw); }
+.factor:nth-child(4) { --factor-delay: 0.45s; --factor-x: calc(0px - min(91px, 25vw)); --factor-y: min(125px, 34vw); }
+.factor:nth-child(5) { --factor-delay: 0.6s; --factor-x: calc(0px - min(147px, 40vw)); --factor-y: calc(0px - min(48px, 13vw)); }
 .factor svg { width: 19px; height: 19px; color: var(--brick); stroke-width: 1.5; }
 .factor-copy { display: flex; min-width: 0; flex-direction: column; }
 .factor-copy strong { font-family: Georgia, serif; font-size: 0.76rem; font-weight: 400; line-height: 1.02; color: var(--ink); }
@@ -519,29 +519,20 @@
 .interaction-map figcaption { text-align: center; font-family: "Segoe Print", cursive; font-size: 0.88rem; color: var(--green); transform: rotate(-1deg); }
 
 @keyframes map-factor-appear {
-  0% {
+  from {
     opacity: 0;
-    transform: translate(-50%, -50%) translateY(-185px) scale(3);
+    transform: translate(calc(-50% + var(--factor-x)), calc(-50% + var(--factor-y))) scale(0.86);
   }
-  10% {
+  to {
     opacity: 1;
-    transform: translate(-50%, -50%) translateY(-185px) scale(3);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(-50%, -50%) translateY(-185px) scale(1);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, calc(-50% + var(--factor-final-y))) scale(1);
+    transform: translate(calc(-50% + var(--factor-x)), calc(-50% + var(--factor-y))) scale(1);
   }
 }
 
 @media (max-width: 520px) {
   .map-stage { min-height: 350px; }
-  .map-centre { width: 68px; height: 68px; left: 20%; }
-  .map-factors { --stack-step: 55px; }
-  .factor { left: 82%; width: 124px; min-height: 49px; padding: 0.34rem 0.4rem; }
+  .map-centre { width: 68px; height: 68px; }
+  .factor { width: 124px; min-height: 49px; padding: 0.34rem 0.4rem; }
   .factor-copy strong { font-size: 0.68rem; }
   .factor-copy small { font-size: 0.29rem; }
 }
@@ -549,12 +540,11 @@
 @media (prefers-reduced-motion: reduce) {
   .map-centre { opacity: 1; transform: translate(-50%, -50%); animation: none; left: 50%; }
   .map-axis { transform: translate(-50%, -50%) scaleX(1); animation: none; }
-  .factor { opacity: 1; animation: none !important; }
-  .factor:nth-child(1) { transform: translate(-50%, calc(-50% - 130px)); }
-  .factor:nth-child(2) { transform: translate(-50%, calc(-50% + 130px)); }
-  .factor:nth-child(3) { transform: translate(-50%, calc(-50% - 65px)); }
-  .factor:nth-child(4) { transform: translate(-50%, calc(-50% + 65px)); }
-  .factor:nth-child(5) { transform: translate(-50%, calc(-50% + 0px)); }
+  .factor {
+    opacity: 1;
+    animation: none !important;
+    transform: translate(calc(-50% + var(--factor-x)), calc(-50% + var(--factor-y))) scale(1);
+  }
 }
 
 .evidence-photo {
@@ -754,10 +744,6 @@
 
 .note-card { position: relative; min-height: 230px; background: #e5dac3; border: 1px solid rgba(78, 60, 34, 0.18); box-shadow: 5px 6px 0 rgba(70, 54, 30, 0.05); }
 .note-card::before { content: ""; position: absolute; width: 58px; height: 14px; top: -7px; right: 1.25rem; background: rgba(181, 157, 108, 0.45); transform: rotate(3deg); }
-
-.form-line { width: 100%; border: 0; border-bottom: 1px solid rgba(248, 242, 229, 0.32); border-radius: 0; background: transparent; padding: 0.8rem 0; color: var(--paper-light); outline: none; }
-.form-line::placeholder { color: rgba(248, 242, 229, 0.46); }
-.form-line:focus { border-bottom-color: #d68b7f; }
 
 @media (max-width: 1100px) {
   .hypothesis-path { grid-template-columns: repeat(3, minmax(0, 1fr)); }

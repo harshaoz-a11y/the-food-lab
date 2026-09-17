@@ -151,7 +151,7 @@ export function AlchemyPartnerships() {
             className="mt-1.5 text-2xl font-normal tracking-[-0.02em] sm:text-3xl"
             style={{ fontFamily: "\"Segoe Print\", \"Bradley Hand\", cursive" }}
           >
-            The Alchemy partnerships
+            The Fit Peasant partnerships
           </h3>
         </div>
         <span className="w-fit rounded-full border-2 border-dashed border-[#a33a2b] bg-[#fdf6ec] px-4 py-1.5 font-mono text-[9px] uppercase tracking-[0.13em] text-[#a33a2b]/75">
