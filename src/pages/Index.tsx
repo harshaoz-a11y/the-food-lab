@@ -224,7 +224,7 @@ function Header() {
 
     return (
         <header
-            className="sticky top-0 z-50 border-b border-ink/15 bg-[#eee7d8]/95 backdrop-blur-sm">
+            className="fixed inset-x-0 top-0 z-50 border-b border-ink/15 bg-[#eee7d8]/95 backdrop-blur-sm">
             <div
                 className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
                 <Brand />
@@ -252,7 +252,7 @@ function Header() {
                 </button>
             </div>
             {open && (<nav
-                className="border-t border-ink/15 bg-[#f5edde] px-5 py-4 xl:hidden"
+                className="absolute left-0 right-0 top-full border-t border-ink/15 bg-[#f5edde] px-5 py-4 shadow-[0_8px_18px_rgba(23,59,48,.08)] xl:hidden"
                 aria-label="Mobile navigation">
                 {navigation.map(item => (<a
                     key={item.href}
@@ -394,7 +394,7 @@ const Index = () => {
     return (
         <div id="top" className="min-h-screen overflow-hidden bg-paper text-ink">
             <Header />
-            <main>
+            <main className="pt-[74px]">
                 <section id="question" className="px-4 pb-4 pt-6 sm:px-6 lg:px-8 lg:pt-8">
                     <div
                         className="paper-sheet mx-auto max-w-[1400px] px-6 py-12 sm:px-12 sm:py-16 lg:px-20 lg:py-20">
