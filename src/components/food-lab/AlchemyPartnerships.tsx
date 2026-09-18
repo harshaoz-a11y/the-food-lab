@@ -140,7 +140,7 @@ export function AlchemyPartnerships() {
 
   return (
     <section
-      className="mt-10 overflow-hidden rounded-[2rem] border-2 border-dashed border-[#a33a2b] bg-[#fdf6ec] shadow-[8px_12px_0_rgba(163,58,43,.15)]"
+      className="alchemy-partnerships mt-10 overflow-hidden rounded-[2rem] border border-[#173b30]/20 bg-[#f8f2e5] shadow-[7px_8px_0_rgba(70,54,30,.05)]"
       aria-labelledby="alchemy-partnerships-heading"
     >
       <header className="flex flex-col justify-between gap-3 border-b-2 border-dashed border-[#a33a2b] bg-[#fdf6ec] px-6 py-5 text-[#a33a2b] sm:flex-row sm:items-center sm:px-8">
