@@ -1402,3 +1402,34 @@
   #question .factor:nth-child(4) { --factor-x: -214px; --factor-y: 66px; }
   #question .factor:nth-child(5) { --factor-x: -214px; --factor-y: -66px; }
 }
+
+/* MAESTRO-034 / visual repair pass */
+@media (max-width: 767px) {
+  /* The hero is one locked instrument: don't let text boxes visually
+     overpower the Vitruvian/meal relationship. */
+  #question .factor {
+    box-shadow: 1px 2px 0 rgba(23, 59, 48, 0.045);
+  }
+
+  /* Image assets sit on the same paper as the page, with no white card halo. */
+  #demonstration .experiment-column img {
+    background: var(--paper) !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  #demonstration .evidence-photo {
+    background: var(--paper) !important;
+  }
+
+  /* The macro's disabled state needs the same visual weight as the active
+     state; never let PDF/export rendering turn the body copy into grey-on-grey. */
+  #working-hypothesis .happiness-macro:not(.is-on) .happiness-check {
+    background: var(--paper-light) !important;
+  }
+
+  #working-hypothesis .happiness-macro:not(.is-on) .happiness-check p {
+    font-size: 0.96rem !important;
+    line-height: 1.35 !important;
+  }
+}
