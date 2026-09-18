@@ -1433,3 +1433,110 @@
     line-height: 1.35 !important;
   }
 }
+
+/* MAESTRO-035 / portrait mobile evidence + Happiness Macro hardening */
+@media (max-width: 520px) {
+  /* Happiness Macro: one readable vertical note, never a squeezed two-column box. */
+  #working-hypothesis .happiness-macro {
+    display: block !important;
+    width: 100%;
+    overflow: visible !important;
+    border-radius: 0.9rem;
+    background: rgba(163, 58, 43, 0.055) !important;
+  }
+
+  #working-hypothesis .happiness-toggle {
+    display: grid !important;
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: 34px minmax(0, 1fr) 42px;
+    box-sizing: border-box;
+    gap: 0.65rem;
+    padding: 0.8rem 0.75rem !important;
+    background: var(--paper-light) !important;
+  }
+
+  #working-hypothesis .happiness-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  #working-hypothesis .happiness-title {
+    min-width: 0;
+  }
+
+  #working-hypothesis .happiness-title strong {
+    font-size: 0.98rem !important;
+    line-height: 1.05;
+    white-space: normal;
+  }
+
+  #working-hypothesis .happiness-title small {
+    font-size: 0.42rem !important;
+    line-height: 1.15;
+  }
+
+  #working-hypothesis .happiness-switch {
+    justify-self: end;
+  }
+
+  #working-hypothesis .happiness-check,
+  #working-hypothesis .happiness-macro:not(.is-on) .happiness-check {
+    display: block !important;
+    width: 100%;
+    min-width: 0;
+    min-height: 0 !important;
+    box-sizing: border-box;
+    border-left: 0 !important;
+    border-top: 1px dashed rgba(163, 58, 43, 0.28);
+    padding: 0.85rem 0.75rem 0.95rem 0.75rem !important;
+    background: var(--paper-light) !important;
+    color: var(--ink) !important;
+    text-align: left;
+    overflow: visible !important;
+  }
+
+  #working-hypothesis .happiness-check span {
+    display: block;
+    color: var(--brick) !important;
+    font-size: 0.45rem !important;
+    line-height: 1.2;
+    opacity: 1 !important;
+  }
+
+  #working-hypothesis .happiness-check p,
+  #working-hypothesis .happiness-macro:not(.is-on) .happiness-check p {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0.4rem 0 0 !important;
+    color: var(--ink) !important;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.92rem !important;
+    line-height: 1.38 !important;
+    opacity: 1 !important;
+    white-space: normal !important;
+  }
+
+  /* Section 002A / 002B: the paper of the illustration is the same paper
+     as the page. No white image-card should survive around the artwork. */
+  #demonstration .experiment-column > .grid > div:first-child,
+  #demonstration .experiment-card > div:first-child,
+  #demonstration .experiment-column .overflow-hidden {
+    background: var(--paper) !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  #demonstration .experiment-column > .grid > div:first-child img,
+  #demonstration .experiment-card > div:first-child img,
+  #demonstration .experiment-column .overflow-hidden img {
+    display: block;
+    width: 100%;
+    background: transparent !important;
+    mix-blend-mode: multiply !important;
+    opacity: 0.94;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+}
