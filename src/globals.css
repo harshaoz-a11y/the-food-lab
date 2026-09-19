@@ -1698,3 +1698,34 @@ section[aria-labelledby="notes-heading"] > div::after {
     background-image: repeating-linear-gradient(to bottom, transparent, transparent 31px, rgba(23, 59, 48, 0.055) 31px, rgba(23, 59, 48, 0.055) 32px);
   }
 }
+
+
+/* ═══════════════════════════════════════════════════════
+   AGED BOOK-PAPER FINAL OVERRIDE
+   Keep the ruled-paper system above; age the stock underneath it.
+   ═══════════════════════════════════════════════════════ */
+.paper-sheet.nb-ruled {
+  background-image:
+    radial-gradient(ellipse at 50% 48%, rgba(255,255,255,.19) 0%, rgba(255,255,255,.07) 43%, transparent 68%),
+    radial-gradient(ellipse at 0% 0%, rgba(112,91,63,.075) 0%, rgba(112,91,63,.025) 25%, transparent 48%),
+    radial-gradient(ellipse at 100% 0%, rgba(104,86,61,.055) 0%, transparent 42%),
+    radial-gradient(ellipse at 0% 100%, rgba(96,78,56,.065) 0%, transparent 45%),
+    radial-gradient(ellipse at 100% 100%, rgba(91,76,55,.085) 0%, transparent 50%),
+    radial-gradient(circle at 19% 17%, rgba(124,96,61,.035) 0%, transparent 15%),
+    radial-gradient(circle at 82% 74%, rgba(124,96,61,.03) 0%, transparent 18%),
+    linear-gradient(90deg, rgba(112,91,63,.025), transparent 18%, transparent 82%, rgba(112,91,63,.035)),
+    linear-gradient(90deg, transparent 68px, rgba(163,58,43,.18) 68px, rgba(163,58,43,.18) 69.5px, transparent 69.5px),
+    repeating-linear-gradient(to bottom, transparent, transparent 31px, rgba(23,59,48,.055) 31px, rgba(23,59,48,.055) 32px);
+  background-blend-mode: multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply;
+}
+
+@media (max-width: 640px) {
+  .paper-sheet.nb-ruled {
+    background-image:
+      radial-gradient(ellipse at 50% 48%, rgba(255,255,255,.17) 0%, rgba(255,255,255,.06) 45%, transparent 72%),
+      radial-gradient(ellipse at 0% 0%, rgba(112,91,63,.06) 0%, transparent 44%),
+      radial-gradient(ellipse at 100% 100%, rgba(91,76,55,.065) 0%, transparent 46%),
+      linear-gradient(90deg, rgba(112,91,63,.02), transparent 20%, transparent 80%, rgba(112,91,63,.028)),
+      repeating-linear-gradient(to bottom, transparent, transparent 31px, rgba(23,59,48,.055) 31px, rgba(23,59,48,.055) 32px);
+    }
+}
