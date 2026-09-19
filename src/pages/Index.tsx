@@ -667,6 +667,7 @@ const Index = () => {
                     className="px-4 pb-4 sm:px-6 sm:pb-6 lg:px-8 lg:pb-8">
                     <div
                         className="mx-auto max-w-[1400px] bg-charcoal px-6 py-16 text-[#f8f2e5] sm:px-12 lg:px-20 lg:py-24">
+                        <div className="nb-dark-ruled-top mb-8" />
                         <div className="grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
                             <div>
                                 <span className="lab-label !text-[#f8f2e5]/55">Your experiment</span>
@@ -685,6 +686,8 @@ const Index = () => {
                 </section>
             </main>
             <footer className="border-t border-ink/15 bg-[#e4dac5] px-5 py-12 sm:px-8">
+                {/* Ruled footer top line */}
+                <div className="mb-6 h-px w-full bg-[repeating-linear-gradient(90deg,rgba(23,59,48,0.12)_0px,rgba(23,59,48,0.12)_1px,transparent_1px,transparent_32px)]" />
                 <div
                     className="mx-auto grid max-w-[1320px] gap-8 sm:grid-cols-[auto_1fr_auto] sm:items-center">
                     <Brand />
