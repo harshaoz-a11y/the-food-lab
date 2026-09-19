@@ -634,7 +634,12 @@ const Index = () => {
                 </section>
                 <section className="px-4 sm:px-6 lg:px-8" aria-labelledby="notes-heading">
                     <div
-                        className="paper-sheet mx-auto max-w-[1400px] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
+                        paper-sheet nb-ruled mx-auto max-w-[1400px] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
+                        <div className="nb-top-margin mb-8 flex items-center gap-4">
+                            <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-ink/35">Lab notebook / ongoing</span>
+                            <span className="h-px flex-1 border-t border-dashed border-ink/15" />
+                            <span className="font-mono text-[8px] text-ink/30">Pg. 007</span>
+                        </div>
                         <div
                             className="mb-12 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
                             <div>
