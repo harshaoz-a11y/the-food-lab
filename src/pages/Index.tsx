@@ -225,6 +225,8 @@ function Header() {
     return (
         <header
             className="fixed inset-x-0 top-0 z-50 border-b border-ink/15 bg-[#eee7d8]/95 backdrop-blur-sm">
+            {/* Ruled-line accent at top of header */}
+            <div className="h-[2px] w-full bg-[repeating-linear-gradient(90deg,rgba(163,58,43,0.22)_0px,rgba(163,58,43,0.22)_1px,transparent_1px,transparent_40px)]" />
             <div
                 className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
                 <Brand />
@@ -305,7 +307,7 @@ function FieldStudies() {
                                 <FieldCharacter scene={scene} />
                             </span>
                             <span className="field-persona-copy">
-                                <small>Character 0{index + 1}</small>
+                                <small>Subject 0{index + 1}</small>
                                 <strong>{persona}</strong>
                                 <span>{personaNote}</span>
                             </span>
@@ -390,6 +392,15 @@ function ConsultationForm() {
     );
 }
 
+/* ─── Notebook margin strip used in several sections ─── */
+function MarginRule({ label, className = "" }: { label: string; className?: string }) {
+    return (
+        <div className={`notebook-margin-strip ${className}`}>
+            <span className="margin-label">{label}</span>
+        </div>
+    );
+}
+
 const Index = () => {
     return (
         <div id="top" className="min-h-screen overflow-hidden bg-paper text-ink">
@@ -397,7 +408,7 @@ const Index = () => {
             <main className="pt-[74px]">
                 <section id="question" className="px-4 pb-4 pt-6 sm:px-6 lg:px-8 lg:pt-8">
                     <div
-                        className="paper-sheet mx-auto max-w-[1400px] px-6 py-12 sm:px-12 sm:py-16 lg:px-20 lg:py-20">
+                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-6 py-12 sm:px-12 sm:py-16 lg:px-20 lg:py-20">
                         <div
                             className="grid min-w-0 items-center gap-10 xl:grid-cols-[minmax(0,.92fr)_minmax(0,1.08fr)] xl:gap-14">
                             <div className="relative z-10 min-w-0 lg:pl-3">
@@ -431,7 +442,7 @@ const Index = () => {
                 </section>
                 <section id="demonstration" className="px-4 sm:px-6 lg:px-8">
                     <div
-                        className="paper-sheet mx-auto max-w-[1400px] px-6 py-12 sm:px-10 lg:px-10 lg:py-14">
+                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-6 py-12 sm:px-10 lg:px-10 lg:py-14">
                         <div className="experiment-spread grid gap-14 lg:grid-cols-2 lg:gap-0">
                             <div className="experiment-column lg:pr-8 xl:pr-10">
                                 <div className="mb-7">
@@ -469,7 +480,7 @@ const Index = () => {
                     className="scroll-mt-24 px-4 sm:px-6 lg:px-8"
                     aria-labelledby="help-heading">
                     <div
-                        className="paper-sheet mx-auto max-w-[1400px] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
+                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
                         <div
                             className="grid gap-12 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:gap-20">
                             <div>
