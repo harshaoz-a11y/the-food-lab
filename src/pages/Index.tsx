@@ -230,6 +230,10 @@ function Header() {
             <div
                 className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
                 <Brand />
+                {/* Page number stamp */}
+                <span className="hidden font-mono text-[8px] uppercase tracking-[0.18em] text-ink/30 lg:block">
+                    Vol. I / Field Notes
+                </span>
                 <nav
                     className="hidden items-center gap-4 xl:flex"
                     aria-label="Primary navigation">
@@ -409,6 +413,12 @@ const Index = () => {
                 <section id="question" className="px-4 pb-4 pt-6 sm:px-6 lg:px-8 lg:pt-8">
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-6 py-12 sm:px-12 sm:py-16 lg:px-20 lg:py-20">
+                        {/* Ruled-page top margin annotation */}
+                        <div className="nb-top-margin mb-8 flex items-center gap-4">
+                            <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-ink/35">The Food Lab / Notebook</span>
+                            <span className="h-px flex-1 border-t border-dashed border-ink/15" />
+                            <span className="font-mono text-[8px] text-ink/30">Pg. 002</span>
+                        </div>
                         <div
                             className="grid min-w-0 items-center gap-10 xl:grid-cols-[minmax(0,.92fr)_minmax(0,1.08fr)] xl:gap-14">
                             <div className="relative z-10 min-w-0 lg:pl-3">
@@ -417,6 +427,10 @@ const Index = () => {
                                     className="mt-7 max-w-[650px] font-serif text-[clamp(3rem,9vw,5.8rem)] font-normal leading-[0.88] tracking-[-0.055em] text-ink">Could <span className="red-underline">interactions</span> <span className="red-underline">matter</span> <span className="red-underline">more</span> than ingredients?</h1>
                                 <p
                                     className="mt-10 max-w-lg font-serif text-xl leading-snug text-ink/75 sm:text-2xl">Most of us keep changing the list. We study what happens around it.</p>
+                                {/* Margin annotation */}
+                                <p className="mt-6 handwritten rotate-[-0.5deg] text-sm text-primary/70 max-w-xs">
+                                    ← the real variable is rarely on the label
+                                </p>
                             </div>
                             <InteractionMap />
                         </div>
@@ -432,10 +446,12 @@ const Index = () => {
                     <div
                         className="mx-auto max-w-[1400px] border-x border-b border-ink/15 bg-[#e4dac5] px-6 py-14 sm:px-12 lg:px-16 lg:py-20">
                         <div className="text-center">
+                            <div className="nb-section-divider mb-3" />
                             <h2 id="map-heading" className="lab-label">The working hypothesis</h2>
                             <p
                                 className="mx-auto mt-4 max-w-xl font-serif text-xl leading-snug text-ink/65">Don’t just read the formula. Put it to work.
                                                                                                                                                                                                                                               </p>
+                            <div className="nb-section-divider mt-3" />
                         </div>
                         <HypothesisExperiment />
                     </div>
@@ -443,6 +459,11 @@ const Index = () => {
                 <section id="demonstration" className="px-4 sm:px-6 lg:px-8">
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-6 py-12 sm:px-10 lg:px-10 lg:py-14">
+                        <div className="nb-top-margin mb-8 flex items-center gap-4">
+                            <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-ink/35">Experiment log</span>
+                            <span className="h-px flex-1 border-t border-dashed border-ink/15" />
+                            <span className="font-mono text-[8px] text-ink/30">Pg. 003</span>
+                        </div>
                         <div className="experiment-spread grid gap-14 lg:grid-cols-2 lg:gap-0">
                             <div className="experiment-column lg:pr-8 xl:pr-10">
                                 <div className="mb-7">
@@ -481,6 +502,11 @@ const Index = () => {
                     aria-labelledby="help-heading">
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
+                        <div className="nb-top-margin mb-8 flex items-center gap-4">
+                            <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-ink/35">Method / approach</span>
+                            <span className="h-px flex-1 border-t border-dashed border-ink/15" />
+                            <span className="font-mono text-[8px] text-ink/30">Pg. 005</span>
+                        </div>
                         <div
                             className="grid gap-12 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:gap-20">
                             <div>
@@ -492,6 +518,10 @@ const Index = () => {
                                     className="mt-7 max-w-2xl border-l-4 border-primary pl-5 font-serif text-2xl leading-snug text-ink/80 sm:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
                                                                                                                                                                                                                                                             <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
                                 </blockquote>
+                                {/* Handwritten margin gloss */}
+                                <p className="handwritten mt-4 rotate-[0.5deg] text-sm text-primary/70">
+                                    ↑ this is the only hypothesis that matters
+                                </p>
                                 <a
                                     href="#your-experiment"
                                     className="mt-8 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">First 30min free consult — Get in touch <ArrowRight className="h-4 w-4" />
