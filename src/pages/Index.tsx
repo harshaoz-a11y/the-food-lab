@@ -483,6 +483,7 @@ const Index = () => {
                 <section id="real-life" className="px-4 sm:px-6 lg:px-8">
                     <div
                         className="mx-auto max-w-[1400px] bg-charcoal px-6 py-16 text-[#f8f2e5] sm:px-12 lg:px-20 lg:py-24">
+                        <div className="nb-dark-ruled-top mb-8" />
                         <div className="mb-12">
                             <span className="lab-label !text-[#f8f2e5]/55">Field sheet 003 / real life</span>
                             <h2
