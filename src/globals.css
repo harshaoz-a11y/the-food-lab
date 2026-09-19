@@ -1542,6 +1542,113 @@
 }
 
 
+
+/* ═══════════════════════════════════════════════════════
+   AGED BOOK-PAPER TREATMENT
+   The page should feel handled, faded and naturally lived-in —
+   not dirty, distressed, sepia, or artificially "vintage".
+   ═══════════════════════════════════════════════════════ */
+
+/* Aged paper base: lighter through the centre, warmer and slightly
+   greyer toward the edges, with a few almost-imperceptible variations. */
+.paper-sheet,
+#working-hypothesis > div,
+#fit-peasant > div,
+section[aria-labelledby="notes-heading"] > div {
+  background-color: var(--paper-light);
+  background-image:
+    radial-gradient(ellipse at 50% 48%, rgba(255,255,255,.19) 0%, rgba(255,255,255,.08) 43%, transparent 68%),
+    radial-gradient(ellipse at 0% 0%, rgba(112,91,63,.075) 0%, rgba(112,91,63,.025) 25%, transparent 48%),
+    radial-gradient(ellipse at 100% 0%, rgba(104,86,61,.055) 0%, transparent 42%),
+    radial-gradient(ellipse at 0% 100%, rgba(96,78,56,.065) 0%, transparent 45%),
+    radial-gradient(ellipse at 100% 100%, rgba(91,76,55,.085) 0%, transparent 50%),
+    radial-gradient(circle at 19% 17%, rgba(124,96,61,.035) 0%, transparent 15%),
+    radial-gradient(circle at 82% 74%, rgba(124,96,61,.03) 0%, transparent 18%),
+    linear-gradient(90deg, rgba(112,91,63,.025), transparent 18%, transparent 82%, rgba(112,91,63,.035));
+  background-blend-mode: multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply;
+}
+
+/* Notebook pages retain their ruled lines while the ageing sits underneath. */
+.paper-sheet.nb-ruled {
+  background-image:
+    radial-gradient(ellipse at 50% 48%, rgba(255,255,255,.19) 0%, rgba(255,255,255,.07) 43%, transparent 68%),
+    radial-gradient(ellipse at 0% 0%, rgba(112,91,63,.075) 0%, rgba(112,91,63,.025) 25%, transparent 48%),
+    radial-gradient(ellipse at 100% 0%, rgba(104,86,61,.055) 0%, transparent 42%),
+    radial-gradient(ellipse at 0% 100%, rgba(96,78,56,.065) 0%, transparent 45%),
+    radial-gradient(ellipse at 100% 100%, rgba(91,76,55,.085) 0%, transparent 50%),
+    radial-gradient(circle at 19% 17%, rgba(124,96,61,.035) 0%, transparent 15%),
+    radial-gradient(circle at 82% 74%, rgba(124,96,61,.03) 0%, transparent 18%),
+    linear-gradient(90deg, rgba(112,91,63,.025), transparent 18%, transparent 82%, rgba(112,91,63,.035)),
+    linear-gradient(90deg, transparent 68px, rgba(163, 58, 43, 0.18) 68px, rgba(163, 58, 43, 0.18) 69.5px, transparent 69.5px),
+    repeating-linear-gradient(to bottom, transparent, transparent 31px, rgba(23, 59, 48, 0.055) 31px, rgba(23, 59, 48, 0.055) 32px);
+  background-blend-mode: multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply;
+}
+
+/* A very fine fibre/grain layer. It is intentionally quieter than the
+   existing global texture, so the ageing is felt before it is noticed. */
+.paper-sheet::after,
+#working-hypothesis > div::after,
+#fit-peasant > div::after,
+section[aria-labelledby="notes-heading"] > div::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .035;
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='papergrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.018 .34' numOctaves='2' seed='17' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23papergrain)' opacity='.42'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* The two charcoal "pages" should feel like old dark stock rather than
+   a flat digital rectangle: very restrained edge fade + fibre variation. */
+#real-life > div,
+#your-experiment > div {
+  position: relative;
+  background-image:
+    radial-gradient(ellipse at 50% 45%, rgba(248,242,229,.035) 0%, transparent 57%),
+    radial-gradient(ellipse at 0% 0%, rgba(196,158,111,.055) 0%, transparent 34%),
+    radial-gradient(ellipse at 100% 100%, rgba(23,35,31,.14) 0%, transparent 42%),
+    radial-gradient(ellipse at 100% 0%, rgba(196,158,111,.025) 0%, transparent 35%),
+    radial-gradient(ellipse at 0% 100%, rgba(23,35,31,.08) 0%, transparent 38%);
+  background-blend-mode: screen, multiply, multiply, multiply, multiply;
+}
+
+#real-life > div::after,
+#your-experiment > div::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='darkgrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.02 .38' numOctaves='2' seed='29' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23darkgrain)' opacity='.45'/%3E%3C/svg%3E");
+  mix-blend-mode: screen;
+}
+
+/* On small screens, keep the fade broad and quiet rather than creating
+   visible corners around the narrow page. */
+@media (max-width: 640px) {
+  .paper-sheet,
+  #working-hypothesis > div,
+  #fit-peasant > div,
+  section[aria-labelledby="notes-heading"] > div {
+    background-image:
+      radial-gradient(ellipse at 50% 48%, rgba(255,255,255,.17) 0%, rgba(255,255,255,.06) 45%, transparent 72%),
+      radial-gradient(ellipse at 0% 0%, rgba(112,91,63,.06) 0%, transparent 44%),
+      radial-gradient(ellipse at 100% 100%, rgba(91,76,55,.065) 0%, transparent 46%),
+      linear-gradient(90deg, rgba(112,91,63,.02), transparent 20%, transparent 80%, rgba(112,91,63,.028));
+  }
+
+  .paper-sheet.nb-ruled {
+    background-image:
+      radial-gradient(ellipse at 50% 48%, rgba(255,255,255,.17) 0%, rgba(255,255,255,.06) 45%, transparent 72%),
+      radial-gradient(ellipse at 0% 0%, rgba(112,91,63,.06) 0%, transparent 44%),
+      radial-gradient(ellipse at 100% 100%, rgba(91,76,55,.065) 0%, transparent 46%),
+      linear-gradient(90deg, rgba(112,91,63,.02), transparent 20%, transparent 80%, rgba(112,91,63,.028)),
+      repeating-linear-gradient(to bottom, transparent, transparent 31px, rgba(23, 59, 48, 0.055) 31px, rgba(23, 59, 48, 0.055) 32px);
+  }
+}
+
 /* ═══════════════════════════════════════════════════════
    LAB NOTEBOOK ENHANCEMENTS
    Added to strengthen the notebook / field-notes vibe
