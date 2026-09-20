@@ -2311,3 +2311,43 @@
   background-size: 1100px 700px;
   mix-blend-mode: multiply;
 }
+
+
+/* MAESTRO-041 / reclaim desktop page width
+   Widen the structural notebook sheets on large screens. Editorial text
+   measure remains constrained so the extra width is used by the visual
+   instruments, not by excessively long reading lines. */
+@media (min-width: 1280px) {
+  #top > header > div { max-width: 1600px !important; }
+
+  #question,
+  #demonstration,
+  #real-life,
+  #working-hypothesis,
+  #how-we-help,
+  #fit-peasant,
+  #your-experiment {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  #question > .paper-sheet,
+  #demonstration > .paper-sheet,
+  #real-life > div,
+  #working-hypothesis > div,
+  #how-we-help > .paper-sheet,
+  #your-experiment > div {
+    max-width: 1600px !important;
+  }
+
+  #fit-peasant > div { max-width: 1500px !important; }
+
+  #question .press-note { max-width: 1180px !important; }
+
+  #demonstration .experiment-shell,
+  #demonstration .experiment-stage,
+  #working-hypothesis .hypothesis-lab,
+  #fit-peasant .alchemy-partnerships {
+    width: 100% !important;
+  }
+}
