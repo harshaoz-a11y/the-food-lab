@@ -599,7 +599,7 @@ const Index = () => {
                             </div>
                         </div>
                         <p
-                            className="handwritten mt-10 border-t border-dashed border-ink/25 pt-7 text-center text-xl text-primary sm:text-2xl">What if......DIETS could be DELICIOUS?</p>
+                            className="handwritten mt-10 border-t border-dashed border-ink/25 pt-7 text-center text-xl text-primary sm:text-2xl">What if… diets could be delicious?</p>
                     </div>
                 </section>
                 <section id="fit-peasant" className="px-4 sm:px-6 lg:px-8">
@@ -626,7 +626,7 @@ const Index = () => {
                                         className="mt-3 block max-w-md text-lg font-normal leading-snug tracking-normal sm:text-xl">— because protein was never meant to work alone.</span>
                                 </h2>
                                 <p
-                                    className="mt-5 max-w-lg font-serif text-xl italic leading-relaxed text-ink/68">..we will let you tell us just how tasty it is!
+                                    className="mt-5 max-w-lg font-serif text-xl italic leading-relaxed text-ink/70">We’ll let you tell us how good it is.
                                                                     </p>
                                 <div className="mt-6 flex flex-wrap items-center gap-3">
                                     <a
