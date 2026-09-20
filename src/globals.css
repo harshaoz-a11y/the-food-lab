@@ -867,8 +867,6 @@
   color: var(--ink);
 }
 .rice-experiment.is-green .rice-fact em { color: var(--green); }
-
-.experiment-column { min-width: 0; }
 .experiment-spread { display: block; }
 .experiment-spread > [role="tabpanel"] { width: 100%; }
 
@@ -1005,9 +1003,6 @@
 
 @keyframes field-story-load { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes field-step-in { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: translateX(0); } }
-
-.note-card { position: relative; min-height: 230px; background: #e5dac3; border: 1px solid rgba(78, 60, 34, 0.18); box-shadow: 5px 6px 0 rgba(70, 54, 30, 0.05); }
-.note-card::before { content: ""; position: absolute; width: 58px; height: 14px; top: -7px; right: 1.25rem; background: rgba(181, 157, 108, 0.45); transform: rotate(3deg); }
 
 @media (max-width: 1100px) {
   .hypothesis-path { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -1376,19 +1371,6 @@
   /* Egg + rice evidence: use the actual page paper as the image field.
      This also makes the result robust in PDF/print engines that handle
      blend modes inconsistently. */
-  #demonstration .experiment-column img {
-    background: var(--paper);
-    mix-blend-mode: multiply;
-  }
-
-  #demonstration .experiment-column > div:first-of-type {
-    background: var(--paper);
-  }
-
-  #demonstration .experiment-column .experiment-card > div:first-child,
-  #demonstration .experiment-column .overflow-hidden {
-    background: var(--paper);
-  }
 
   /* The "joy removed" state must remain legible in print and PDF output. */
   #working-hypothesis .happiness-check {
@@ -1641,9 +1623,6 @@
 
   #question .map-stage::before,
   #question .map-vitruvian,
-  #question .map-axis {
-    width: 292px;
-  }
 
   #question .factor:nth-child(1) { --factor-x: 0px; --factor-y: -170px; }
   #question .factor:nth-child(2) { --factor-x: 214px; --factor-y: -66px; }
@@ -1661,11 +1640,6 @@
   }
 
   /* Image assets sit on the same paper as the page, with no white card halo. */
-  #demonstration .experiment-column img {
-    background: var(--paper) !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-  }
 
   #demonstration .evidence-photo {
     background: var(--paper) !important;
@@ -1721,7 +1695,7 @@
   }
 
   #working-hypothesis .happiness-title small {
-    font-size: 0.42rem !important;
+    font-size: 11px !important;
     line-height: 1.15;
   }
 
@@ -1748,7 +1722,7 @@
   #working-hypothesis .happiness-check span {
     display: block;
     color: var(--brick) !important;
-    font-size: 0.45rem !important;
+    font-size: 11px !important;
     line-height: 1.2;
     opacity: 1 !important;
   }
@@ -1769,25 +1743,6 @@
 
   /* Section 002A / 002B: the paper of the illustration is the same paper
      as the page. No white image-card should survive around the artwork. */
-  #demonstration .experiment-column > .grid > div:first-child,
-  #demonstration .experiment-card > div:first-child,
-  #demonstration .experiment-column .overflow-hidden {
-    background: var(--paper) !important;
-    border: 0 !important;
-    box-shadow: none !important;
-  }
-
-  #demonstration .experiment-column > .grid > div:first-child img,
-  #demonstration .experiment-card > div:first-child img,
-  #demonstration .experiment-column .overflow-hidden img {
-    display: block;
-    width: 100%;
-    background: transparent !important;
-    mix-blend-mode: multiply !important;
-    opacity: 0.94;
-    border: 0 !important;
-    box-shadow: none !important;
-  }
 }
 
 
@@ -1891,26 +1846,9 @@
   background: repeating-linear-gradient(90deg, rgba(248, 242, 229, 0.12) 0px, rgba(248, 242, 229, 0.12) 6px, transparent 6px, transparent 14px);
   margin-bottom: 0;
 }
-.notebook-margin-strip {
-  position: relative; width: 64px; min-height: 100%; border-right: 1.5px solid rgba(163, 58, 43, 0.2);
-  display: flex; align-items: flex-start; padding-top: 1.25rem; padding-right: 0.5rem; flex-shrink: 0;
-}
-.margin-label {
-  writing-mode: vertical-rl; transform: rotate(180deg);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.18em;
-  text-transform: uppercase; color: rgba(23, 59, 48, 0.32); white-space: nowrap;
-}
 .paper-sheet::before {
   width: 12px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='32'%3E%3Ccircle cx='6' cy='6' r='3.2' fill='%2395856b' fill-opacity='.6'/%3E%3C/svg%3E");
-}
-.note-card {
-  background-image: repeating-linear-gradient(to bottom, transparent, transparent 23px, rgba(23, 59, 48, 0.065) 23px, rgba(23, 59, 48, 0.065) 24px);
-}
-.nb-stamp {
-  display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 50%;
-  border: 1.5px solid rgba(163, 58, 43, 0.35); font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 11px; letter-spacing: 0.05em; color: rgba(163, 58, 43, 0.6); background: rgba(163, 58, 43, 0.04); transform: rotate(-3deg);
 }
 @media (max-width: 640px) {
   .paper-sheet.nb-ruled {
