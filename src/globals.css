@@ -1966,16 +1966,7 @@
     0 18px 50px rgba(26,32,28,.13);
 }
 
-/* Archive-paper effect should remain visible on mobile; just reduce contrast. */
-@media (max-width: 640px) {
-  .paper-sheet,
-  #working-hypothesis > div,
-  #fit-peasant > div,
-
-  .paper-sheet::after,
-  #working-hypothesis > div::after,
-  #fit-peasant > div::after
-  }
+/* Archive-paper effect should remain visible on mobile; no extra override needed here. */
 
 
 /* ═══════════════════════════════════════════════════════
@@ -2040,19 +2031,4 @@
     0 24px 55px rgba(26,32,28,.15);
 }
 
-/* Make the separation between "pages" feel like physical sheets,
-   not gaps between web sections. */
-section[id] > .paper-sheet,
-section[id] > div.bg-charcoal,
-section[id="working-hypothesis"] > div,
-section[id="fit-peasant"] > div,
-
-@media (max-width: 640px) {
-  .paper-sheet,
-  #working-hypothesis > div,
-  #fit-peasant > div,
-
-  .paper-sheet::after,
-  #working-hypothesis > div::after,
-  #fit-peasant > div::after
-  }
+/* Page-level separation is handled by the section wrappers above. */
