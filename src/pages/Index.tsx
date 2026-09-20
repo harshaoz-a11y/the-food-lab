@@ -27,6 +27,7 @@ import {
     X,
 } from "lucide-react";
 
+import { useSectionReveal } from "@/hooks/use-section-reveal";
 import { AlchemyPartnerships } from "@/components/food-lab/AlchemyPartnerships";
 import { EggExperiment } from "@/components/food-lab/EggExperiment";
 import { FieldCharacter, type FieldScene } from "@/components/food-lab/FieldCharacter";
@@ -388,6 +389,7 @@ function NbHeader({ label, page }: { label: string; page: string }) {
    ═══════════════════════════════════════════════════════ */
 const Index = () => {
     const [activeExperiment, setActiveExperiment] = useState<"egg" | "rice">("egg");
+    useSectionReveal();
 
     return (
         <div id="top" className="min-h-screen overflow-hidden bg-paper text-ink">
@@ -438,7 +440,7 @@ const Index = () => {
                         </div>
 
                         <div
-                            className="mt-8 flex flex-wrap gap-2 border-b border-dashed border-ink/20 pb-4"
+                            className="mt-8 flex flex-wrap gap-2 border-b border-dashed border-ink/20 pb-4 lg:hidden"
                             role="tablist"
                             aria-label="Choose an experiment">
                             {([
@@ -464,16 +466,21 @@ const Index = () => {
                             })}
                         </div>
 
-                        <div className="experiment-spread mt-8">
-                            {activeExperiment === "egg" ? (
-                                <div id="experiment-panel-egg" role="tabpanel" aria-labelledby="egg-tab">
-                                    <EggExperiment />
-                                </div>
-                            ) : (
-                                <div id="experiment-panel-rice" role="tabpanel" aria-labelledby="rice-tab">
-                                    <RiceExperiment />
-                                </div>
-                            )}
+                        <div className="experiment-spread mt-8 grid gap-12 lg:grid-cols-2 lg:gap-10">
+                            <div
+                                id="experiment-panel-egg"
+                                role="tabpanel"
+                                aria-labelledby="egg-tab"
+                                className={activeExperiment === "egg" ? "" : "hidden lg:block"}>
+                                <EggExperiment />
+                            </div>
+                            <div
+                                id="experiment-panel-rice"
+                                role="tabpanel"
+                                aria-labelledby="rice-tab"
+                                className={activeExperiment === "rice" ? "" : "hidden lg:block"}>
+                                <RiceExperiment />
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -669,7 +676,7 @@ const Index = () => {
                 <div
                     className="mx-auto grid max-w-[1320px] gap-8 sm:grid-cols-[auto_1fr_auto] sm:items-center">
                     <Brand />
-                    <p className="font-serif text-xl italic text-ink/75 sm:text-center">Why does healthy often equal boring?</p>
+                    <p className="font-serif text-xl italic text-ink/75 sm:text-center">We observe. We question. Then we build.</p>
                     <div
                         className="font-mono text-[11px] uppercase leading-loose tracking-[0.12em] text-ink/50 sm:text-right">Bengaluru<br />harsha@thefoodlab.in</div>
                 </div>

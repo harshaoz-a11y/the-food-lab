@@ -64,7 +64,7 @@
   }
 
   h1, h2, h3, h4 {
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Fraunces", Georgia, "Times New Roman", serif;
   }
 
   ::selection {
@@ -78,7 +78,7 @@
   .bg-paper { background-color: var(--paper); }
   .bg-paper-light { background-color: var(--paper-light); }
   .bg-charcoal { background-color: var(--charcoal); }
-  .font-serif { font-family: Georgia, "Times New Roman", serif; }
+  .font-serif { font-family: "Fraunces", Georgia, "Times New Roman", serif; }
   .handwritten { font-family: "Caveat", cursive; }
 }
 
@@ -86,7 +86,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 11px;
   letter-spacing: 0.17em;
   text-transform: uppercase;
@@ -214,8 +214,8 @@
 .is-on .happiness-icon { border-color: var(--green); color: var(--green); }
 .is-on .happiness-icon svg { fill: rgba(45, 125, 70, 0.2); transform: scale(1.12) rotate(-5deg); }
 .happiness-title { display: flex; flex-direction: column; }
-.happiness-title strong { font-family: Georgia, "Times New Roman", serif; font-size: 1.08rem; font-weight: 400; }
-.happiness-title small { margin-top: 0.2rem; font: 11px ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brick); }
+.happiness-title strong { font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: 1.08rem; font-weight: 400; }
+.happiness-title small { margin-top: 0.2rem; font: 11px "Space Mono", ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brick); }
 .is-on .happiness-title small { color: var(--green); }
 .happiness-switch { position: relative; width: 42px; height: 23px; border-radius: 999px; background: var(--brick); transition: background-color 250ms ease; }
 .happiness-switch i { position: absolute; width: 17px; height: 17px; left: 3px; top: 3px; border-radius: 50%; background: var(--paper-light); box-shadow: 0 1px 3px rgba(23, 59, 48, 0.18); transition: transform 250ms ease; }
@@ -232,9 +232,9 @@
   animation: hypothesis-note-in 300ms ease;
 }
 .is-on .happiness-check { border-left-color: rgba(45, 125, 70, 0.35); }
-.happiness-check span { font: 11px ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brick); }
+.happiness-check span { font: 11px "Space Mono", ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brick); }
 .is-on .happiness-check span { color: var(--green); }
-.happiness-check p { margin-top: 0.35rem; font-family: Georgia, "Times New Roman", serif; font-size: 1rem; line-height: 1.25; color: rgba(23, 59, 48, 0.72); }
+.happiness-check p { margin-top: 0.35rem; font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: 1rem; line-height: 1.25; color: rgba(23, 59, 48, 0.72); }
 
 .hypothesis-run {
   display: inline-flex;
@@ -244,7 +244,7 @@
   padding: 0.7rem 1rem;
   background: var(--ink);
   color: var(--paper-light);
-  font: 11px ui-monospace, SFMono-Regular, Menlo, monospace;
+  font: 11px "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: transform 180ms ease, background-color 180ms ease;
@@ -318,9 +318,9 @@
 }
 .hypothesis-stage svg { width: 28px; height: 28px; margin-bottom: auto; color: var(--brick); stroke-width: 1.35; transition: transform 300ms ease; }
 .hypothesis-stage.is-active svg { color: var(--green); transform: rotate(-8deg) scale(1.18); }
-.hypothesis-stage strong { font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.15rem, 1.8vw, 1.65rem); font-weight: 400; letter-spacing: -0.025em; }
-.hypothesis-stage small { margin-top: 0.35rem; font: 11px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
-.hypothesis-stage-number { position: absolute; right: 0.8rem; top: 0.7rem; font: 11px ui-monospace, monospace; letter-spacing: 0.12em; color: rgba(23, 59, 48, 0.35); }
+.hypothesis-stage strong { font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: clamp(1.15rem, 1.8vw, 1.65rem); font-weight: 400; letter-spacing: -0.025em; }
+.hypothesis-stage small { margin-top: 0.35rem; font: 11px "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+.hypothesis-stage-number { position: absolute; right: 0.8rem; top: 0.7rem; font: 11px "Space Mono", ui-monospace, monospace; letter-spacing: 0.12em; color: rgba(23, 59, 48, 0.35); }
 
 .hypothesis-connector {
   position: relative;
@@ -333,7 +333,7 @@
 .hypothesis-connector.is-reached i,
 .is-running .hypothesis-stage-wrap:has(.is-active) .hypothesis-connector i { transform: translateX(0); }
 
-.hypothesis-equals { font-family: Georgia, serif; font-size: 2rem; color: var(--brick); opacity: 0.45; transition: opacity 300ms ease, transform 300ms ease; }
+.hypothesis-equals { font-family: "Fraunces", Georgia, serif; font-size: 2rem; color: var(--brick); opacity: 0.45; transition: opacity 300ms ease, transform 300ms ease; }
 .hypothesis-equals.is-reached { opacity: 1; transform: scale(1.15) rotate(-4deg); }
 
 .hypothesis-output {
@@ -354,9 +354,9 @@
   transition: transform 500ms cubic-bezier(.2,.8,.2,1), box-shadow 500ms ease, opacity 400ms ease, filter 400ms ease;
 }
 .hypothesis-output > svg { width: 22px; height: 22px; margin-bottom: 0.65rem; color: #d68b7f; }
-.hypothesis-output strong { position: relative; z-index: 2; font-family: Georgia, serif; font-size: clamp(1.3rem, 2vw, 1.85rem); font-weight: 400; line-height: 1.02; }
+.hypothesis-output strong { position: relative; z-index: 2; font-family: "Fraunces", Georgia, serif; font-size: clamp(1.3rem, 2vw, 1.85rem); font-weight: 400; line-height: 1.02; }
 .hypothesis-output strong em { font-family: "Caveat", cursive; font-style: normal; color: #e5a69c; }
-.hypothesis-output small { position: relative; z-index: 2; margin-top: 0.7rem; font: 11px ui-monospace, monospace; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.65; }
+.hypothesis-output small { position: relative; z-index: 2; margin-top: 0.7rem; font: 11px "Space Mono", ui-monospace, monospace; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.65; }
 .is-complete .hypothesis-output { transform: scale(1.04) rotate(1deg); box-shadow: 11px 13px 0 rgba(163, 58, 43, 0.16); opacity: 1; filter: none; animation: hypothesis-result-pulse 700ms ease; }
 
 .hypothesis-particle { position: absolute; width: 8px; height: 8px; border: 1px solid #e5a69c; border-radius: 50%; opacity: 0; }
@@ -374,8 +374,8 @@
   padding-top: 1rem;
   text-align: left;
 }
-.hypothesis-observation span { font: 11px ui-monospace, monospace; letter-spacing: 0.13em; text-transform: uppercase; color: var(--brick); }
-.hypothesis-observation p { font-family: Georgia, serif; font-size: clamp(1rem, 1.6vw, 1.25rem); color: rgba(23, 59, 48, 0.7); animation: hypothesis-note-in 300ms ease; }
+.hypothesis-observation span { font: 11px "Space Mono", ui-monospace, monospace; letter-spacing: 0.13em; text-transform: uppercase; color: var(--brick); }
+.hypothesis-observation p { font-family: "Fraunces", Georgia, serif; font-size: clamp(1rem, 1.6vw, 1.25rem); color: rgba(23, 59, 48, 0.7); animation: hypothesis-note-in 300ms ease; }
 
 .happiness-thesis {
   position: relative;
@@ -503,11 +503,11 @@
   transition: transform 220ms ease, box-shadow 220ms ease;
 }
 .map-centre svg { width: 18px; height: 18px; margin-bottom: 0.3rem; color: white; }
-.map-centre span { font-family: Georgia, serif; font-size: 0.95rem; line-height: 1; color: white; }
+.map-centre span { font-family: "Fraunces", Georgia, serif; font-size: 0.95rem; line-height: 1; color: white; }
 .map-centre small {
   margin-top: 0.25rem;
   max-width: 82px;
-  font: 0.7rem ui-monospace, SFMono-Regular, Menlo, monospace;
+  font: 0.7rem "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   letter-spacing: 0.02em;
   line-height: 1.08;
   text-transform: uppercase;
@@ -580,7 +580,7 @@
   flex-direction: column;
 }
 .factor-copy strong {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
   font-size: 0.98rem;
   font-weight: 400;
   line-height: 1.05;
@@ -588,7 +588,7 @@
 }
 .factor-note {
   margin-top: 0.35rem;
-  font: 0.7rem ui-monospace, SFMono-Regular, Menlo, monospace;
+  font: 0.7rem "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   letter-spacing: 0.01em;
   line-height: 1.3;
   color: var(--ink-soft);
@@ -676,7 +676,7 @@
   filter: saturate(0.78) contrast(0.95);
   mix-blend-mode: multiply;
 }
-.evidence-photo figcaption { padding: 0.85rem 0.5rem 0.25rem; font: 11px ui-monospace, monospace; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
+.evidence-photo figcaption { padding: 0.85rem 0.5rem 0.25rem; font: 11px "Space Mono", ui-monospace, monospace; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
 
 .egg-evidence,
 .rice-evidence { overflow: hidden; }
@@ -717,7 +717,7 @@
   padding: .38rem .65rem;
   background: rgba(248,242,229,.9);
   color: var(--ink);
-  font: 11px ui-monospace, monospace;
+  font: 11px "Space Mono", ui-monospace, monospace;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -773,7 +773,7 @@
 .rice-choice:hover { border-color: var(--brick); transform: translateY(-2px); }
 .rice-choice.is-active { border-color: var(--brick); background: var(--brick); color: #fff9ed; }
 .rice-choice svg { width: 18px; height: 18px; stroke-width: 1.5; }
-.rice-choice span { margin-top: 0.45rem; font-family: Georgia, serif; font-size: 0.9rem; line-height: 1.05; }
+.rice-choice span { margin-top: 0.45rem; font-family: "Fraunces", Georgia, serif; font-size: 0.9rem; line-height: 1.05; }
 .rice-experiment.is-green .rice-choice.is-active { border-color: var(--green); background: var(--green); }
 
 .rice-curve {
@@ -797,13 +797,13 @@
   gap: .7rem;
 }
 .rice-primary-metric span {
-  font: 11px ui-monospace, monospace;
+  font: 11px "Space Mono", ui-monospace, monospace;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--ink-soft);
 }
 .rice-primary-metric strong {
-  font-family: Georgia, serif;
+  font-family: "Fraunces", Georgia, serif;
   font-size: 1.35rem;
   font-weight: 400;
   color: var(--ink);
@@ -835,7 +835,7 @@
 }
 .rice-experiment.is-green .rice-curve-active { stroke: var(--green); }
 .rice-axis-label {
-  font: 11px ui-monospace, monospace;
+  font: 11px "Space Mono", ui-monospace, monospace;
   letter-spacing: .02em;
   fill: var(--ink-soft);
 }
@@ -855,13 +855,13 @@
 }
 .rice-fact + .rice-fact { border-left: 1px dashed rgba(23,59,48,.2); }
 .rice-fact strong {
-  font: 11px ui-monospace, monospace;
+  font: 11px "Space Mono", ui-monospace, monospace;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--ink-soft);
 }
 .rice-fact em {
-  font-family: Georgia, serif;
+  font-family: "Fraunces", Georgia, serif;
   font-size: .95rem;
   font-style: normal;
   color: var(--ink);
@@ -925,10 +925,10 @@
 .field-persona-art { display: grid; height: 122px; place-items: end center; overflow: hidden; }
 .field-character-svg { display: block; width: 100%; height: 100%; }
 .field-persona-copy { display: flex; min-width: 0; flex-direction: column; justify-content: center; padding: 1rem 1rem 0.75rem; }
-.field-persona-copy small { font: 11px ui-monospace, monospace; letter-spacing: 0.14em; opacity: 0.58; text-transform: uppercase; }
-.field-persona-copy strong { margin-top: 0.35rem; font-family: Georgia, "Times New Roman", serif; font-size: 1.15rem; font-weight: 400; line-height: 1.05; }
+.field-persona-copy small { font: 11px "Space Mono", ui-monospace, monospace; letter-spacing: 0.14em; opacity: 0.58; text-transform: uppercase; }
+.field-persona-copy strong { margin-top: 0.35rem; font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: 1.15rem; font-weight: 400; line-height: 1.05; }
 .field-persona-copy > span { margin-top: 0.45rem; font-size: 0.7rem; line-height: 1.4; opacity: 0.72; }
-.field-persona-action { grid-column: 2; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; border-top: 1px solid currentColor; margin: 0 1rem; padding: 0.65rem 0 0.8rem; font: 11px ui-monospace, monospace; letter-spacing: 0.1em; opacity: 0.72; text-transform: uppercase; }
+.field-persona-action { grid-column: 2; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; border-top: 1px solid currentColor; margin: 0 1rem; padding: 0.65rem 0 0.8rem; font: 11px "Space Mono", ui-monospace, monospace; letter-spacing: 0.1em; opacity: 0.72; text-transform: uppercase; }
 .field-persona-action svg { width: 14px; height: 14px; transition: transform 180ms ease; }
 .field-persona:hover .field-persona-action svg { transform: translateX(3px); }
 .field-persona[aria-pressed="true"] .field-persona-action { color: var(--persona-accent); opacity: 1; }
@@ -950,10 +950,10 @@
 .field-frame-desk { --story-accent: #173b30; }
 .field-frame-evening { --story-accent: #6e3935; }
 .field-panel-heading { align-self: center; }
-.field-time { font: 11px ui-monospace, monospace; letter-spacing: 0.14em; color: var(--story-accent); text-transform: uppercase; }
-.field-panel-heading h3 { margin-top: 0.75rem; max-width: 17rem; font-family: Georgia, "Times New Roman", serif; font-size: 2rem; font-weight: 400; line-height: 0.96; }
+.field-time { font: 11px "Space Mono", ui-monospace, monospace; letter-spacing: 0.14em; color: var(--story-accent); text-transform: uppercase; }
+.field-panel-heading h3 { margin-top: 0.75rem; max-width: 17rem; font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: 2rem; font-weight: 400; line-height: 0.96; }
 .field-panel-heading p { margin-top: 0.8rem; max-width: 22rem; font-size: 0.86rem; line-height: 1.6; color: rgba(23, 59, 48, 0.72); }
-.field-note { display: block; margin-top: 1rem; color: var(--story-accent); font: 11px ui-monospace, monospace; letter-spacing: 0.15em; text-transform: uppercase; }
+.field-note { display: block; margin-top: 1rem; color: var(--story-accent); font: 11px "Space Mono", ui-monospace, monospace; letter-spacing: 0.15em; text-transform: uppercase; }
 .field-story { display: grid; gap: 0.8rem; }
 .field-story-step {
   position: relative;
@@ -977,8 +977,8 @@
 .field-story-icons svg { width: 32px; height: 32px; flex: none; color: #9a433b; stroke-width: 1.55; }
 .field-story-icons svg:nth-child(2) { width: 24px; height: 24px; margin-left: -9px; padding: 2px; border-radius: 50%; background: #f3ead8; }
 .field-story-copy { display: flex; min-width: 0; flex-direction: column; }
-.field-story-copy small { color: var(--story-accent); font: 11px ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; }
-.field-story-copy strong { margin-top: 0.3rem; font-family: Georgia, "Times New Roman", serif; font-size: 1.05rem; font-weight: 400; line-height: 1.12; }
+.field-story-copy small { color: var(--story-accent); font: 11px "Space Mono", ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; }
+.field-story-copy strong { margin-top: 0.3rem; font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: 1.05rem; font-weight: 400; line-height: 1.12; }
 .field-story-copy p { margin-top: 0.35rem; font-size: 0.72rem; line-height: 1.45; color: rgba(23, 59, 48, 0.68); }
 
 @media (min-width: 768px) {
@@ -1409,7 +1409,7 @@
 
   #fit-peasant .alchemy-partnerships > header h3 {
     color: var(--ink);
-    font-family: Georgia, "Times New Roman", serif !important;
+    font-family: "Fraunces", Georgia, "Times New Roman", serif !important;
     font-size: 1.65rem;
     line-height: 0.98;
   }
@@ -1570,7 +1570,7 @@
 }
 
 .alchemy-partnerships > header h3 {
-  font-family: Georgia, "Times New Roman", serif !important;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif !important;
   color: var(--ink) !important;
 }
 
@@ -1737,7 +1737,7 @@
     max-width: none;
     margin: 0.4rem 0 0 !important;
     color: var(--ink) !important;
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Fraunces", Georgia, "Times New Roman", serif;
     font-size: 0.92rem !important;
     line-height: 1.38 !important;
     opacity: 1 !important;
@@ -2349,5 +2349,27 @@
   #working-hypothesis .hypothesis-lab,
   #fit-peasant .alchemy-partnerships {
     width: 100% !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   SCROLL REVEAL — sections fade + rise into place once,
+   the first time they enter the viewport
+   ═══════════════════════════════════════════════════════ */
+main > section.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+main > section.reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  main > section.reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
