@@ -355,7 +355,7 @@
 }
 .hypothesis-output > svg { width: 22px; height: 22px; margin-bottom: 0.65rem; color: #d68b7f; }
 .hypothesis-output strong { position: relative; z-index: 2; font-family: Georgia, serif; font-size: clamp(1.3rem, 2vw, 1.85rem); font-weight: 400; line-height: 1.02; }
-.hypothesis-output strong em { font-family: "Segoe Print", "Bradley Hand", cursive; font-style: normal; color: #e5a69c; }
+.hypothesis-output strong em { font-family: "Caveat", cursive; font-style: normal; color: #e5a69c; }
 .hypothesis-output small { position: relative; z-index: 2; margin-top: 0.7rem; font: 11px ui-monospace, monospace; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.65; }
 .is-complete .hypothesis-output { transform: scale(1.04) rotate(1deg); box-shadow: 11px 13px 0 rgba(163, 58, 43, 0.16); opacity: 1; filter: none; animation: hypothesis-result-pulse 700ms ease; }
 
@@ -383,7 +383,7 @@
   margin: 1.4rem auto 0;
   padding-top: 1.25rem;
   text-align: center;
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: "Caveat", cursive;
   font-size: clamp(1rem, 1.8vw, 1.35rem);
   line-height: 1.35;
   color: var(--brick);
@@ -598,7 +598,7 @@
   min-height: 1.5rem;
   padding-inline: 0.5rem;
   text-align: center;
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: "Caveat", cursive;
   font-size: 0.95rem;
   line-height: 1.35;
   color: var(--green);
