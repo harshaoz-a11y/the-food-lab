@@ -148,7 +148,6 @@ export function AlchemyPartnerships() {
           <span className="font-mono text-[11px] uppercase tracking-[0.17em] text-[#a33a2b]/60">Interactive ingredient map</span>
           <h3
             id="alchemy-partnerships-heading"
-            className="mt-1.5 text-2xl font-normal tracking-[-0.02em] sm:text-3xl"
             className="handwritten mt-1.5 text-2xl font-normal tracking-[-0.02em] sm:text-3xl"
           >
             The Fit Peasant partnerships
