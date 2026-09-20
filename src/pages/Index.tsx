@@ -386,6 +386,8 @@ function NbHeader({ label, page }: { label: string; page: string }) {
    PAGE
    ═══════════════════════════════════════════════════════ */
 const Index = () => {
+    const [activeExperiment, setActiveExperiment] = useState<"egg" | "rice">("egg");
+
     return (
         <div id="top" className="min-h-screen overflow-hidden bg-paper text-ink">
             <Header />
@@ -424,21 +426,53 @@ const Index = () => {
                 </section>
                 <section id="demonstration" className="px-4 sm:px-6 lg:px-8">
                     <div
-                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-10 lg:py-14">
+                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
                         <NbHeader label="Experiment log" page="Pg. 003" />
-                        <div className="experiment-spread grid gap-12 lg:grid-cols-2 lg:gap-0">
-                            <div className="experiment-column lg:pr-8 xl:pr-10">
-                                <div className="mb-6">
-                                    <span className="lab-label">Observation 002A / change one condition</span>
-                                    <h2
-                                        className="mt-5 max-w-xl font-serif text-3xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-4xl lg:text-[2.75rem] xl:text-[3.1rem]">Same food. Different <span className="red-underline">interaction.</span>
-                                    </h2>
-                                    <p
-                                        className="handwritten mt-3 rotate-[-1deg] text-base leading-tight text-primary sm:text-lg">Try the preparation switch. Watch what changes.</p>
+                        <div className="max-w-3xl">
+                            <span className="lab-label">Observation 002 / change one condition</span>
+                            <h2
+                                className="mt-5 max-w-xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl">Same food. Different <span className="red-underline">interaction.</span></h2>
+                            <p
+                                className="handwritten mt-3 rotate-[-1deg] text-base leading-tight text-primary sm:text-lg">Change the condition. Watch what the body receives.</p>
+                        </div>
+
+                        <div
+                            className="mt-8 flex flex-wrap gap-2 border-b border-dashed border-ink/20 pb-4"
+                            role="tablist"
+                            aria-label="Choose an experiment">
+                            {([
+                                ["egg", "Egg"],
+                                ["rice", "Rice"],
+                            ] as const).map(([key, label]) => {
+                                const isActive = activeExperiment === key;
+                                return (
+                                    <button
+                                        key={key}
+                                        type="button"
+                                        role="tab"
+                                        id={`${key}-tab`}
+                                        aria-selected={isActive}
+                                        aria-controls={`experiment-panel-${key}`}
+                                        onClick={() => setActiveExperiment(key)}
+                                        className={`rounded-full border px-5 py-2.5 text-sm transition-colors ${isActive
+                                            ? "border-ink bg-ink text-[#f8f2e5]"
+                                            : "border-ink/25 bg-transparent text-ink/65 hover:border-ink/50 hover:text-ink"}`}>
+                                        {label}
+                                    </button>
+                                );
+                            })}
+                        </div>
+
+                        <div className="experiment-spread mt-8">
+                            {activeExperiment === "egg" ? (
+                                <div id="experiment-panel-egg" role="tabpanel" aria-labelledby="egg-tab">
+                                    <EggExperiment />
                                 </div>
-                                <EggExperiment />
-                            </div>
-                            <RiceExperiment />
+                            ) : (
+                                <div id="experiment-panel-rice" role="tabpanel" aria-labelledby="rice-tab">
+                                    <RiceExperiment />
+                                </div>
+                            )}
                         </div>
                     </div>
                 </section>
