@@ -160,11 +160,11 @@ export function AlchemyPartnerships() {
                 aria-selected={selected === index}
                 aria-controls="fusion-reader-panel"
                 onClick={() => setSelected(index)}
-                className={\`shrink-0 rounded-full px-2 py-1 font-mono text-[7.5px] transition sm:px-2.5 sm:text-[8px] ${
+                className={`shrink-0 rounded-full px-2 py-1 font-mono text-[7.5px] transition sm:px-2.5 sm:text-[8px] ${
                   selected === index
                     ? "bg-[#2d7d46] text-[#f8f2e5]"
                     : "text-[#f8f2e5]/45 hover:text-[#f8f2e5]/75"
-                }\`}
+                }`}
               >
                 0{index + 1}
               </button>
@@ -181,7 +181,7 @@ export function AlchemyPartnerships() {
               <div
                 className="flex h-[140px] w-[140px] flex-col items-start justify-center rounded-full border border-[#a33a2b]/60 bg-[#a33a2b]/[0.14] px-4 text-left sm:h-[180px] sm:w-[180px] sm:px-6"
                 style={{
-                  boxShadow: \`0 0 ${glowBlur}px ${glowSpread}px rgba(163,58,43,${glowOpacity})\`,
+                  boxShadow: `0 0 ${glowBlur}px ${glowSpread}px rgba(163,58,43,${glowOpacity})`,
                 }}
               >
                 <strong className="w-[74px] break-words font-serif text-sm font-normal leading-tight text-[#f3ddd5] sm:w-[100px] sm:text-lg">
@@ -195,7 +195,7 @@ export function AlchemyPartnerships() {
               <div
                 className="-ml-10 flex h-[140px] w-[140px] flex-col items-end justify-center rounded-full border border-[#2d7d46]/60 bg-[#2d7d46]/[0.14] px-4 text-right sm:-ml-14 sm:h-[180px] sm:w-[180px] sm:px-6"
                 style={{
-                  boxShadow: \`0 0 ${glowBlur}px ${glowSpread}px rgba(45,125,70,${glowOpacity})\`,
+                  boxShadow: `0 0 ${glowBlur}px ${glowSpread}px rgba(45,125,70,${glowOpacity})`,
                 }}
               >
                 <strong className="w-[74px] break-words font-serif text-sm font-normal leading-tight text-[#deeee2] sm:w-[100px] sm:text-lg">
@@ -209,10 +209,10 @@ export function AlchemyPartnerships() {
 
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center pb-12 pt-16 sm:pb-14 sm:pt-20">
               <div
-                key={\`core-${selected}\`}
+                key={`core-${selected}`}
                 className="flex h-16 w-16 flex-col items-center justify-center rounded-full border-4 border-[#122019] bg-[#f8f2e5] text-center text-[#173b30] animate-in fade-in zoom-in-95 duration-300 sm:h-20 sm:w-20"
                 style={{
-                  boxShadow: \`0 0 ${glowBlur}px ${glowSpread}px rgba(248,242,229,${glowOpacity})\`,
+                  boxShadow: `0 0 ${glowBlur}px ${glowSpread}px rgba(248,242,229,${glowOpacity})`,
                 }}
               >
                 <CurrentIcon className="h-3.5 w-3.5 stroke-[1.8] sm:h-4 sm:w-4" aria-hidden="true" />
@@ -241,7 +241,7 @@ export function AlchemyPartnerships() {
           </div>
         </div>
 
-        <div key={\`benefit-${selected}\`} className="mt-4 rounded-[1.5rem] border-2 border-dashed border-[#2d7d46]/45 bg-[#eaf4ec] p-5 text-[#245f38] animate-in fade-in slide-in-from-bottom-2 duration-300 sm:p-6">
+        <div key={`benefit-${selected}`} className="mt-4 rounded-[1.5rem] border-2 border-dashed border-[#2d7d46]/45 bg-[#eaf4ec] p-5 text-[#245f38] animate-in fade-in slide-in-from-bottom-2 duration-300 sm:p-6">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <span className="font-mono text-[8px] uppercase tracking-[0.15em] opacity-65">What the overlap contributes</span>
             <span className="rounded-full border border-[#2d7d46]/40 bg-[#2d7d46]/10 px-3 py-1 font-mono text-[8px] uppercase tracking-[0.13em] text-[#2d7d46]">Pairing 0{selected + 1} of 07</span>
