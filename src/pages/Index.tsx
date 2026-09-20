@@ -15,7 +15,6 @@ import {
     House,
     Mail,
     Menu,
-    NotebookPen,
     Presentation,
     RefreshCcw,
     Salad,
@@ -40,20 +39,14 @@ const navigation = [{
     label: "The question",
     href: "#question"
 }, {
-    label: "The working hypothesis",
-    href: "#working-hypothesis"
-}, {
-    label: "A demonstration",
+    label: "The proof",
     href: "#demonstration"
 }, {
     label: "Real life",
     href: "#real-life"
 }, {
-    label: "Get Precision Bio-nutrition",
+    label: "Work with us",
     href: "#how-we-help"
-}, {
-    label: "The Fit Peasant",
-    href: "#fit-peasant"
 }];
 
 const fieldStudies = [{
@@ -139,27 +132,7 @@ const fieldStudies = [{
     }]
 }];
 
-const notes = [{
-    id: "019",
-    title: "Healthy.",
-    copy: "Why does healthy often equal boring?",
-    status: "question kept open"
-}, {
-    id: "031",
-    title: "Food behaves.",
-    copy: "…differently in real life than it does on paper",
-    status: "observation"
-}, {
-    id: "036",
-    title: "Protein.",
-    copy: "The most important ingredient in a meal might not be an ingredient",
-    status: "still testing"
-}, {
-    id: "041",
-    title: "Enjoyment.",
-    copy: "Rice isn’t your enemy – you just need to talk it out",
-    status: "unresolved"
-}];
+
 
 const bioNutritionProcess = [{
     label: "Understand",
@@ -214,7 +187,7 @@ function Brand() {
             <img
                 src={foodLabBrandLogo}
                 alt="The Food Lab — Invisible diets. Visible results."
-                className="absolute left-1/2 top-1/2 w-[210px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain mix-blend-darken sm:w-[240px]" />
+                className="absolute left-1/2 top-1/2 w-[210px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain sm:w-[240px]" />
         </a>
     );
 }
@@ -235,7 +208,7 @@ function Header() {
                     Vol. I / Field Notes
                 </span>
                 <nav
-                    className="hidden items-center gap-4 xl:flex"
+                    className="hidden items-center gap-4 lg:flex"
                     aria-label="Primary navigation">
                     {navigation.map(item => (<a
                         key={item.href}
@@ -246,19 +219,19 @@ function Header() {
                 </nav>
                 <a
                     href="#your-experiment"
-                    className="hidden items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-xs text-[#f8f2e5] transition-transform hover:-translate-y-0.5 xl:flex">Bring us a question <ArrowRight className="h-4 w-4" />
+                    className="hidden items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-xs text-[#f8f2e5] transition-transform hover:-translate-y-0.5 lg:flex">Bring us a question <ArrowRight className="h-4 w-4" />
                 </a>
                 <button
                     type="button"
                     onClick={() => setOpen(value => !value)}
-                    className="grid h-11 w-11 place-items-center rounded-full border border-ink/25 text-ink xl:hidden"
+                    className="grid h-11 w-11 place-items-center rounded-full border border-ink/25 text-ink lg:hidden"
                     aria-label={open ? "Close menu" : "Open menu"}
                     aria-expanded={open}>
                     {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                 </button>
             </div>
             {open && (<nav
-                className="absolute left-0 right-0 top-full border-t border-ink/15 bg-[#f5edde] px-5 py-4 shadow-[0_8px_18px_rgba(23,59,48,.08)] xl:hidden"
+                className="absolute left-0 right-0 top-full border-t border-ink/15 bg-[#f5edde] px-5 py-4 shadow-[0_8px_18px_rgba(23,59,48,.08)] lg:hidden"
                 aria-label="Mobile navigation">
                 {navigation.map(item => (<a
                     key={item.href}
@@ -449,20 +422,6 @@ const Index = () => {
                         </aside>
                     </div>
                 </section>
-                <section id="working-hypothesis" className="scroll-mt-24 px-4 sm:px-6 lg:px-8" aria-labelledby="map-heading">
-                    <div
-                        className="mx-auto max-w-[1400px] border-x border-b border-ink/15 bg-[#e4dac5] px-6 py-14 sm:px-12 lg:px-16 lg:py-20">
-                        <div className="text-center">
-                            <div className="nb-section-divider mb-3" />
-                            <h2 id="map-heading" className="lab-label">The working hypothesis</h2>
-                            <p
-                                className="mx-auto mt-4 max-w-xl font-serif text-xl leading-snug text-ink/65">Don’t just read the formula. Put it to work.
-                                                                                                                                                                                                                                              </p>
-                            <div className="nb-section-divider mt-3" />
-                        </div>
-                        <HypothesisExperiment />
-                    </div>
-                </section>
                 <section id="demonstration" className="px-4 sm:px-6 lg:px-8">
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-10 lg:py-14">
@@ -498,6 +457,20 @@ const Index = () => {
                             <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-ink/50">Margin note</span>
                             <p className="handwritten mt-2 text-lg leading-tight text-primary sm:text-xl">Maybe consistency is designed along with a life, not imposed on one.</p>
                         </aside>
+                    </div>
+                </section>
+                <section id="working-hypothesis" className="scroll-mt-24 px-4 sm:px-6 lg:px-8" aria-labelledby="map-heading">
+                    <div
+                        className="mx-auto max-w-[1400px] border-x border-b border-ink/15 bg-[#e4dac5] px-6 py-14 sm:px-12 lg:px-16 lg:py-20">
+                        <div className="text-center">
+                            <div className="nb-section-divider mb-3" />
+                            <h2 id="map-heading" className="lab-label">The working hypothesis</h2>
+                            <p
+                                className="mx-auto mt-4 max-w-xl font-serif text-xl leading-snug text-ink/65">Don’t just read the formula. Put it to work.
+                                                                                                                                                                                                                                              </p>
+                            <div className="nb-section-divider mt-3" />
+                        </div>
+                        <HypothesisExperiment />
                     </div>
                 </section>
                 <section
@@ -632,32 +605,6 @@ const Index = () => {
                         <AlchemyPartnerships />
                     </div>
                 </section>
-                <section className="px-4 sm:px-6 lg:px-8" aria-labelledby="notes-heading">
-                    <div
-                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
-                        <NbHeader label="Lab notebook / ongoing" page="Pg. 007" />
-                        <div
-                            className="mb-12 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-                            <div>
-                                <span className="lab-label">Lab notes / work in progress</span>
-                                <h2
-                                    id="notes-heading"
-                                    className="mt-5 font-serif text-4xl font-normal leading-none tracking-[-0.04em] sm:text-5xl lg:text-6xl">Sharp observations. No sermons.</h2>
-                            </div>
-                            <NotebookPen className="h-12 w-12 stroke-[1] text-primary" />
-                        </div>
-                        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                            {notes.map((note, index) => (<article
-                                key={note.id}
-                                className={`note-card rounded-[1.25rem] p-6 ${index % 2 ? "rotate-[0.5deg]" : "rotate-[-0.5deg]"}`}>
-                                <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-ink/45">Note {note.id}</span>
-                                <h3 className="mt-5 text-3xl font-normal">{note.title}</h3>
-                                <p className="mt-3 leading-relaxed text-ink/65">{note.copy}</p>
-                                <span className="handwritten absolute bottom-5 left-6 text-sm text-primary sm:text-base">{note.status}→</span>
-                            </article>))}
-                        </div>
-                    </div>
-                </section>
                 <section
                     id="your-experiment"
                     className="px-4 pb-4 sm:px-6 sm:pb-6 lg:px-8 lg:pb-8">
@@ -680,14 +627,14 @@ const Index = () => {
                         </div>
                     </div>
                 </section>
-            </main>
+            </main>     </main>
             <footer className="border-t border-ink/15 bg-[#e4dac5] px-5 py-12 sm:px-8">
                 {/* Ruled footer top line */}
                 <div className="mb-6 h-px w-full bg-[repeating-linear-gradient(90deg,rgba(23,59,48,0.12)_0px,rgba(23,59,48,0.12)_1px,transparent_1px,transparent_32px)]" />
                 <div
                     className="mx-auto grid max-w-[1320px] gap-8 sm:grid-cols-[auto_1fr_auto] sm:items-center">
                     <Brand />
-                    <p className="font-serif text-xl italic text-ink/75 sm:text-center">We observe. We question. Then we build.</p>
+                    <p className="font-serif text-xl italic text-ink/75 sm:text-center">Why does healthy often equal boring?</p>
                     <div
                         className="font-mono text-[9px] uppercase leading-loose tracking-[0.12em] text-ink/50 sm:text-right">Bengaluru<br />harsha@thefoodlab.in</div>
                 </div>
