@@ -634,7 +634,7 @@ const Index = () => {
                 </section>
                 <section className="px-4 sm:px-6 lg:px-8" aria-labelledby="notes-heading">
                     <div
-                        paper-sheet nb-ruled mx-auto max-w-[1400px] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
+                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
                         <NbHeader label="Lab notebook / ongoing" page="Pg. 007" />
                         <div
                             className="mb-12 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
