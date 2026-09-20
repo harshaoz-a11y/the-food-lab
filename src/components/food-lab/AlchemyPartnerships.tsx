@@ -149,7 +149,7 @@ export function AlchemyPartnerships() {
           <h3
             id="alchemy-partnerships-heading"
             className="mt-1.5 text-2xl font-normal tracking-[-0.02em] sm:text-3xl"
-            style={{ fontFamily: "\"Segoe Print\", \"Bradley Hand\", cursive" }}
+            className="handwritten mt-1.5 text-2xl font-normal tracking-[-0.02em] sm:text-3xl"
           >
             The Fit Peasant partnerships
           </h3>
