@@ -49,6 +49,7 @@
     min-width: 320px;
     font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     background-color: var(--paper);
+    font-size: 16px;
   }
 
   body::before {
@@ -78,19 +79,19 @@
   .bg-paper-light { background-color: var(--paper-light); }
   .bg-charcoal { background-color: var(--charcoal); }
   .font-serif { font-family: Georgia, "Times New Roman", serif; }
-  .handwritten { font-family: "Segoe Print", "Bradley Hand", cursive; }
+  .handwritten { font-family: "Caveat", cursive; }
 }
 
-.lab-label {
+
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.68rem;
+  font-size: 11px;
   letter-spacing: 0.17em;
   text-transform: uppercase;
   color: var(--ink-soft);
-}
+
 
 .lab-label::before {
   content: "";
@@ -214,7 +215,7 @@
 .is-on .happiness-icon svg { fill: rgba(45, 125, 70, 0.2); transform: scale(1.12) rotate(-5deg); }
 .happiness-title { display: flex; flex-direction: column; }
 .happiness-title strong { font-family: Georgia, "Times New Roman", serif; font-size: 1.08rem; font-weight: 400; }
-.happiness-title small { margin-top: 0.2rem; font: 0.5rem ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brick); }
+.happiness-title small { margin-top: 0.2rem; font: 11px ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brick); }
 .is-on .happiness-title small { color: var(--green); }
 .happiness-switch { position: relative; width: 42px; height: 23px; border-radius: 999px; background: var(--brick); transition: background-color 250ms ease; }
 .happiness-switch i { position: absolute; width: 17px; height: 17px; left: 3px; top: 3px; border-radius: 50%; background: var(--paper-light); box-shadow: 0 1px 3px rgba(23, 59, 48, 0.18); transition: transform 250ms ease; }
@@ -231,7 +232,7 @@
   animation: hypothesis-note-in 300ms ease;
 }
 .is-on .happiness-check { border-left-color: rgba(45, 125, 70, 0.35); }
-.happiness-check span { font: 0.5rem ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brick); }
+.happiness-check span { font: 11px ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brick); }
 .is-on .happiness-check span { color: var(--green); }
 .happiness-check p { margin-top: 0.35rem; font-family: Georgia, "Times New Roman", serif; font-size: 1rem; line-height: 1.25; color: rgba(23, 59, 48, 0.72); }
 
@@ -243,7 +244,7 @@
   padding: 0.7rem 1rem;
   background: var(--ink);
   color: var(--paper-light);
-  font: 0.62rem ui-monospace, SFMono-Regular, Menlo, monospace;
+  font: 11px ui-monospace, SFMono-Regular, Menlo, monospace;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: transform 180ms ease, background-color 180ms ease;
@@ -318,8 +319,8 @@
 .hypothesis-stage svg { width: 28px; height: 28px; margin-bottom: auto; color: var(--brick); stroke-width: 1.35; transition: transform 300ms ease; }
 .hypothesis-stage.is-active svg { color: var(--green); transform: rotate(-8deg) scale(1.18); }
 .hypothesis-stage strong { font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.15rem, 1.8vw, 1.65rem); font-weight: 400; letter-spacing: -0.025em; }
-.hypothesis-stage small { margin-top: 0.35rem; font: 0.53rem ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
-.hypothesis-stage-number { position: absolute; right: 0.8rem; top: 0.7rem; font: 0.55rem ui-monospace, monospace; letter-spacing: 0.12em; color: rgba(23, 59, 48, 0.35); }
+.hypothesis-stage small { margin-top: 0.35rem; font: 11px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+.hypothesis-stage-number { position: absolute; right: 0.8rem; top: 0.7rem; font: 11px ui-monospace, monospace; letter-spacing: 0.12em; color: rgba(23, 59, 48, 0.35); }
 
 .hypothesis-connector {
   position: relative;
@@ -355,7 +356,7 @@
 .hypothesis-output > svg { width: 22px; height: 22px; margin-bottom: 0.65rem; color: #d68b7f; }
 .hypothesis-output strong { position: relative; z-index: 2; font-family: Georgia, serif; font-size: clamp(1.3rem, 2vw, 1.85rem); font-weight: 400; line-height: 1.02; }
 .hypothesis-output strong em { font-family: "Segoe Print", "Bradley Hand", cursive; font-style: normal; color: #e5a69c; }
-.hypothesis-output small { position: relative; z-index: 2; margin-top: 0.7rem; font: 0.5rem ui-monospace, monospace; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.65; }
+.hypothesis-output small { position: relative; z-index: 2; margin-top: 0.7rem; font: 11px ui-monospace, monospace; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.65; }
 .is-complete .hypothesis-output { transform: scale(1.04) rotate(1deg); box-shadow: 11px 13px 0 rgba(163, 58, 43, 0.16); opacity: 1; filter: none; animation: hypothesis-result-pulse 700ms ease; }
 
 .hypothesis-particle { position: absolute; width: 8px; height: 8px; border: 1px solid #e5a69c; border-radius: 50%; opacity: 0; }
@@ -373,7 +374,7 @@
   padding-top: 1rem;
   text-align: left;
 }
-.hypothesis-observation span { font: 0.55rem ui-monospace, monospace; letter-spacing: 0.13em; text-transform: uppercase; color: var(--brick); }
+.hypothesis-observation span { font: 11px ui-monospace, monospace; letter-spacing: 0.13em; text-transform: uppercase; color: var(--brick); }
 .hypothesis-observation p { font-family: Georgia, serif; font-size: clamp(1rem, 1.6vw, 1.25rem); color: rgba(23, 59, 48, 0.7); animation: hypothesis-note-in 300ms ease; }
 
 .happiness-thesis {
@@ -675,7 +676,7 @@
   filter: saturate(0.78) contrast(0.95);
   mix-blend-mode: multiply;
 }
-.evidence-photo figcaption { padding: 0.85rem 0.5rem 0.25rem; font: 0.62rem ui-monospace, monospace; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
+.evidence-photo figcaption { padding: 0.85rem 0.5rem 0.25rem; font: 11px ui-monospace, monospace; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
 
 .egg-evidence,
 .rice-evidence { overflow: hidden; }
@@ -716,7 +717,7 @@
   padding: .38rem .65rem;
   background: rgba(248,242,229,.9);
   color: var(--ink);
-  font: .58rem ui-monospace, monospace;
+  font: 11px ui-monospace, monospace;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -796,7 +797,7 @@
   gap: .7rem;
 }
 .rice-primary-metric span {
-  font: .55rem ui-monospace, monospace;
+  font: 11px ui-monospace, monospace;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--ink-soft);
@@ -834,7 +835,7 @@
 }
 .rice-experiment.is-green .rice-curve-active { stroke: var(--green); }
 .rice-axis-label {
-  font: 5px ui-monospace, monospace;
+  font: 11px ui-monospace, monospace;
   letter-spacing: .02em;
   fill: var(--ink-soft);
 }
@@ -854,7 +855,7 @@
 }
 .rice-fact + .rice-fact { border-left: 1px dashed rgba(23,59,48,.2); }
 .rice-fact strong {
-  font: .55rem ui-monospace, monospace;
+  font: 11px ui-monospace, monospace;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--ink-soft);
@@ -926,10 +927,10 @@
 .field-persona-art { display: grid; height: 122px; place-items: end center; overflow: hidden; }
 .field-character-svg { display: block; width: 100%; height: 100%; }
 .field-persona-copy { display: flex; min-width: 0; flex-direction: column; justify-content: center; padding: 1rem 1rem 0.75rem; }
-.field-persona-copy small { font: 0.52rem ui-monospace, monospace; letter-spacing: 0.14em; opacity: 0.58; text-transform: uppercase; }
+.field-persona-copy small { font: 11px ui-monospace, monospace; letter-spacing: 0.14em; opacity: 0.58; text-transform: uppercase; }
 .field-persona-copy strong { margin-top: 0.35rem; font-family: Georgia, "Times New Roman", serif; font-size: 1.15rem; font-weight: 400; line-height: 1.05; }
 .field-persona-copy > span { margin-top: 0.45rem; font-size: 0.7rem; line-height: 1.4; opacity: 0.72; }
-.field-persona-action { grid-column: 2; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; border-top: 1px solid currentColor; margin: 0 1rem; padding: 0.65rem 0 0.8rem; font: 0.5rem ui-monospace, monospace; letter-spacing: 0.1em; opacity: 0.72; text-transform: uppercase; }
+.field-persona-action { grid-column: 2; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; border-top: 1px solid currentColor; margin: 0 1rem; padding: 0.65rem 0 0.8rem; font: 11px ui-monospace, monospace; letter-spacing: 0.1em; opacity: 0.72; text-transform: uppercase; }
 .field-persona-action svg { width: 14px; height: 14px; transition: transform 180ms ease; }
 .field-persona:hover .field-persona-action svg { transform: translateX(3px); }
 .field-persona[aria-pressed="true"] .field-persona-action { color: var(--persona-accent); opacity: 1; }
@@ -951,10 +952,10 @@
 .field-frame-desk { --story-accent: #173b30; }
 .field-frame-evening { --story-accent: #6e3935; }
 .field-panel-heading { align-self: center; }
-.field-time { font: 0.58rem ui-monospace, monospace; letter-spacing: 0.14em; color: var(--story-accent); text-transform: uppercase; }
+.field-time { font: 11px ui-monospace, monospace; letter-spacing: 0.14em; color: var(--story-accent); text-transform: uppercase; }
 .field-panel-heading h3 { margin-top: 0.75rem; max-width: 17rem; font-family: Georgia, "Times New Roman", serif; font-size: 2rem; font-weight: 400; line-height: 0.96; }
 .field-panel-heading p { margin-top: 0.8rem; max-width: 22rem; font-size: 0.86rem; line-height: 1.6; color: rgba(23, 59, 48, 0.72); }
-.field-note { display: block; margin-top: 1rem; color: var(--story-accent); font: 0.56rem ui-monospace, monospace; letter-spacing: 0.15em; text-transform: uppercase; }
+.field-note { display: block; margin-top: 1rem; color: var(--story-accent); font: 11px ui-monospace, monospace; letter-spacing: 0.15em; text-transform: uppercase; }
 .field-story { display: grid; gap: 0.8rem; }
 .field-story-step {
   position: relative;
@@ -978,7 +979,7 @@
 .field-story-icons svg { width: 32px; height: 32px; flex: none; color: #9a433b; stroke-width: 1.55; }
 .field-story-icons svg:nth-child(2) { width: 24px; height: 24px; margin-left: -9px; padding: 2px; border-radius: 50%; background: #f3ead8; }
 .field-story-copy { display: flex; min-width: 0; flex-direction: column; }
-.field-story-copy small { color: var(--story-accent); font: 0.48rem ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; }
+.field-story-copy small { color: var(--story-accent); font: 11px ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; }
 .field-story-copy strong { margin-top: 0.3rem; font-family: Georgia, "Times New Roman", serif; font-size: 1.05rem; font-weight: 400; line-height: 1.12; }
 .field-story-copy p { margin-top: 0.35rem; font-size: 0.72rem; line-height: 1.45; color: rgba(23, 59, 48, 0.68); }
 
@@ -1119,7 +1120,7 @@
     border: 0;
     padding: 0;
     background: transparent;
-    font-size: 0.46rem;
+    font-size: 11px;
   }
 
   #fit-peasant .alchemy-partnerships > div {
@@ -1201,7 +1202,7 @@
   }
 
   #fit-peasant .alchemy-partnerships [role="tabpanel"] span {
-    font-size: 0.4rem;
+    font-size: 11px;
   }
 
   #fit-peasant .alchemy-partnerships [role="tabpanel"] > div:first-child > div:last-child {
@@ -1237,7 +1238,7 @@
     margin-top: 0.8rem;
     padding-top: 0.65rem;
     border-top: 1px dashed rgba(163, 58, 43, 0.2);
-    font-size: 0.42rem;
+    font-size: 11px;
   }
 }
 
@@ -1312,12 +1313,6 @@
     height: 168px;
   }
 
-  #question .map-axis {
-    width: 174px;
-    border-top-width: 1px;
-    border-color: rgba(149, 133, 107, 0.48);
-  }
-
   #question .map-centre {
     width: 57px;
     height: 57px;
@@ -1330,11 +1325,11 @@
   }
 
   #question .map-centre span {
-    font-size: 0.62rem;
+    font-size: 11px;
   }
 
   #question .map-centre small {
-    font-size: 0.27rem;
+    font-size: 11px;
   }
 
   #question .map-factors {
@@ -1370,12 +1365,8 @@
   }
 
   #question .factor-copy strong {
-    font-size: 0.56rem;
+    font-size: 11px;
     line-height: 1.02;
-  }
-
-  #question .factor-copy ul {
-    display: none;
   }
 
   #question .interaction-map figcaption {
@@ -1443,13 +1434,13 @@
 
   #fit-peasant .alchemy-partnerships > header > span:first-child {
     color: var(--ink-soft);
-    font-size: 0.46rem;
+    font-size: 11px;
   }
 
   #fit-peasant .alchemy-partnerships > header > span:last-child {
     justify-self: start;
     color: var(--green);
-    font-size: 0.44rem;
+    font-size: 11px;
   }
 
   #fit-peasant .alchemy-body {
@@ -1520,7 +1511,7 @@
 
   #fit-peasant .alchemy-partnerships [role="tab"] strong {
     color: inherit;
-    font-size: 0.58rem;
+    font-size: 11px;
   }
 
   #fit-peasant .alchemy-visual {
@@ -1812,19 +1803,6 @@
 .paper-sheet,
 #working-hypothesis > div,
 #fit-peasant > div,
-section[aria-labelledby="notes-heading"] > div {
-  background-color: var(--paper-light);
-  background-image:
-    radial-gradient(ellipse at 50% 48%, rgba(255,255,255,.19) 0%, rgba(255,255,255,.08) 43%, transparent 68%),
-    radial-gradient(ellipse at 0% 0%, rgba(112,91,63,.075) 0%, rgba(112,91,63,.025) 25%, transparent 48%),
-    radial-gradient(ellipse at 100% 0%, rgba(104,86,61,.055) 0%, transparent 42%),
-    radial-gradient(ellipse at 0% 100%, rgba(96,78,56,.065) 0%, transparent 45%),
-    radial-gradient(ellipse at 100% 100%, rgba(91,76,55,.085) 0%, transparent 50%),
-    radial-gradient(circle at 19% 17%, rgba(124,96,61,.035) 0%, transparent 15%),
-    radial-gradient(circle at 82% 74%, rgba(124,96,61,.03) 0%, transparent 18%),
-    linear-gradient(90deg, rgba(112,91,63,.025), transparent 18%, transparent 82%, rgba(112,91,63,.035));
-  background-blend-mode: multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply;
-}
 
 /* Notebook pages retain their ruled lines while the ageing sits underneath. */
 .paper-sheet.nb-ruled {
@@ -1847,16 +1825,6 @@ section[aria-labelledby="notes-heading"] > div {
 .paper-sheet::after,
 #working-hypothesis > div::after,
 #fit-peasant > div::after,
-section[aria-labelledby="notes-heading"] > div::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: .035;
-  border-radius: inherit;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='papergrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.018 .34' numOctaves='2' seed='17' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23papergrain)' opacity='.42'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
-}
 
 /* The two charcoal "pages" should feel like old dark stock rather than
    a flat digital rectangle: very restrained edge fade + fibre variation. */
@@ -1889,13 +1857,6 @@ section[aria-labelledby="notes-heading"] > div::after {
   .paper-sheet,
   #working-hypothesis > div,
   #fit-peasant > div,
-  section[aria-labelledby="notes-heading"] > div {
-    background-image:
-      radial-gradient(ellipse at 50% 48%, rgba(255,255,255,.17) 0%, rgba(255,255,255,.06) 45%, transparent 72%),
-      radial-gradient(ellipse at 0% 0%, rgba(112,91,63,.06) 0%, transparent 44%),
-      radial-gradient(ellipse at 100% 100%, rgba(91,76,55,.065) 0%, transparent 46%),
-      linear-gradient(90deg, rgba(112,91,63,.02), transparent 20%, transparent 80%, rgba(112,91,63,.028));
-  }
 
   .paper-sheet.nb-ruled {
     background-image:
@@ -1936,7 +1897,7 @@ section[aria-labelledby="notes-heading"] > div::after {
 }
 .margin-label {
   writing-mode: vertical-rl; transform: rotate(180deg);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.42rem; letter-spacing: 0.18em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.18em;
   text-transform: uppercase; color: rgba(23, 59, 48, 0.32); white-space: nowrap;
 }
 .paper-sheet::before {
@@ -1949,7 +1910,7 @@ section[aria-labelledby="notes-heading"] > div::after {
 .nb-stamp {
   display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 50%;
   border: 1.5px solid rgba(163, 58, 43, 0.35); font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.55rem; letter-spacing: 0.05em; color: rgba(163, 58, 43, 0.6); background: rgba(163, 58, 43, 0.04); transform: rotate(-3deg);
+  font-size: 11px; letter-spacing: 0.05em; color: rgba(163, 58, 43, 0.6); background: rgba(163, 58, 43, 0.04); transform: rotate(-3deg);
 }
 @media (max-width: 640px) {
   .paper-sheet.nb-ruled {
@@ -2006,54 +1967,12 @@ section[aria-labelledby="notes-heading"] > div::after {
 .paper-sheet,
 #working-hypothesis > div,
 #fit-peasant > div,
-section[aria-labelledby="notes-heading"] > div {
-  background-color: var(--archive-paper-light);
-  background-image:
-    /* broad age drift */
-    radial-gradient(ellipse at 52% 44%, rgba(255,252,238,.48) 0%, rgba(255,252,238,.16) 32%, transparent 67%),
-    radial-gradient(ellipse at 2% 18%, rgba(101,76,43,.18) 0%, rgba(101,76,43,.07) 18%, transparent 43%),
-    radial-gradient(ellipse at 98% 8%, rgba(91,69,40,.15) 0%, rgba(91,69,40,.05) 21%, transparent 44%),
-    radial-gradient(ellipse at 5% 96%, rgba(89,67,39,.19) 0%, rgba(89,67,39,.06) 23%, transparent 46%),
-    radial-gradient(ellipse at 96% 91%, rgba(91,67,37,.20) 0%, rgba(91,67,37,.065) 25%, transparent 48%),
-    /* old foxing / age blooms */
-    radial-gradient(circle at 13% 24%, rgba(119,87,47,.11) 0 1.1%, transparent 2.7%),
-    radial-gradient(circle at 87% 19%, rgba(126,91,49,.09) 0 .8%, transparent 2.1%),
-    radial-gradient(circle at 22% 82%, rgba(111,80,43,.08) 0 1%, transparent 2.8%),
-    radial-gradient(circle at 79% 77%, rgba(116,82,43,.09) 0 .7%, transparent 2.4%),
-    radial-gradient(circle at 54% 7%, rgba(111,79,41,.055) 0 .7%, transparent 2.5%),
-    radial-gradient(circle at 43% 93%, rgba(111,79,41,.05) 0 .8%, transparent 2.5%),
-    /* subtle horizontal paper discolouration */
-    linear-gradient(90deg, rgba(95,73,43,.08), transparent 11%, rgba(255,252,238,.06) 48%, transparent 87%, rgba(95,73,43,.09)),
-    linear-gradient(180deg, rgba(105,78,43,.08), transparent 13%, transparent 82%, rgba(95,71,42,.11));
-  background-blend-mode: multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply;
-  box-shadow:
-    inset 0 0 38px rgba(78,57,31,.075),
-    inset 0 0 110px rgba(78,57,31,.045),
-    8px 10px 0 rgba(59,49,32,.055),
-    0 24px 60px rgba(59,49,32,.11);
-}
 
 /* Actual edge wear: irregular translucent marks rather than a perfect
    vignette. */
 .paper-sheet::after,
 #working-hypothesis > div::after,
 #fit-peasant > div::after,
-section[aria-labelledby="notes-heading"] > div::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 20;
-  border-radius: inherit;
-  opacity: .58;
-  background:
-    linear-gradient(90deg, rgba(82,60,34,.16), transparent 3.5%, transparent 96%, rgba(82,60,34,.19)),
-    linear-gradient(180deg, rgba(82,60,34,.13), transparent 4%, transparent 95%, rgba(82,60,34,.17)),
-    radial-gradient(ellipse at 0 48%, rgba(91,66,36,.12), transparent 18%),
-    radial-gradient(ellipse at 100% 63%, rgba(91,66,36,.11), transparent 17%),
-    radial-gradient(ellipse at 17% 100%, rgba(91,66,36,.09), transparent 20%);
-  mix-blend-mode: multiply;
-}
 
 /* Tiny foxing marks: sparse, irregular and mostly near the margins. */
 .paper-sheet::before {
@@ -2114,21 +2033,11 @@ section[aria-labelledby="notes-heading"] > div::after {
   .paper-sheet,
   #working-hypothesis > div,
   #fit-peasant > div,
-  section[aria-labelledby="notes-heading"] > div {
-    box-shadow:
-      inset 0 0 30px rgba(78,57,31,.065),
-      inset 0 0 70px rgba(78,57,31,.035),
-      5px 7px 0 rgba(59,49,32,.045),
-      0 16px 36px rgba(59,49,32,.08);
-  }
 
   .paper-sheet::after,
   #working-hypothesis > div::after,
-  #fit-peasant > div::after,
-  section[aria-labelledby="notes-heading"] > div::after {
-    opacity: .44;
+  #fit-peasant > div::after
   }
-}
 
 
 /* ═══════════════════════════════════════════════════════
@@ -2148,51 +2057,12 @@ section[aria-labelledby="notes-heading"] > div::after {
 .paper-sheet,
 #working-hypothesis > div,
 #fit-peasant > div,
-section[aria-labelledby="notes-heading"] > div {
-  background-color: var(--archive-stock-light);
-  background-image:
-    radial-gradient(ellipse 72% 64% at 50% 47%, rgba(255,251,235,.46) 0%, rgba(255,251,235,.20) 42%, transparent 74%),
-    radial-gradient(ellipse 34% 26% at 1% 7%, rgba(111,79,38,.17), transparent 72%),
-    radial-gradient(ellipse 29% 35% at 100% 15%, rgba(111,79,38,.15), transparent 70%),
-    radial-gradient(ellipse 35% 25% at 0% 96%, rgba(104,75,38,.18), transparent 70%),
-    radial-gradient(ellipse 30% 32% at 100% 94%, rgba(104,75,38,.20), transparent 72%),
-    radial-gradient(circle at 8% 29%, rgba(132,91,42,.15) 0 2px, transparent 15px),
-    radial-gradient(circle at 92% 38%, rgba(132,91,42,.13) 0 1.5px, transparent 13px),
-    radial-gradient(circle at 17% 89%, rgba(132,91,42,.12) 0 2px, transparent 18px),
-    radial-gradient(circle at 84% 83%, rgba(132,91,42,.12) 0 1.5px, transparent 15px),
-    radial-gradient(circle at 72% 11%, rgba(132,91,42,.09) 0 1px, transparent 11px),
-    linear-gradient(90deg, rgba(92,67,35,.10), transparent 9%, transparent 91%, rgba(92,67,35,.13)),
-    linear-gradient(180deg, rgba(92,67,35,.09), transparent 8%, transparent 91%, rgba(92,67,35,.12));
-  background-blend-mode: multiply;
-  box-shadow:
-    inset 18px 0 32px rgba(78,57,30,.075),
-    inset -18px 0 32px rgba(78,57,30,.09),
-    inset 0 18px 30px rgba(78,57,30,.055),
-    inset 0 -22px 36px rgba(78,57,30,.08),
-    8px 10px 0 rgba(59,49,32,.065),
-    0 25px 55px rgba(59,49,32,.12);
-}
 
 /* Aged page surface: very fine fibres plus a handful of irregular
    translucent marks. These should read as material, not "grunge". */
 .paper-sheet::after,
 #working-hypothesis > div::after,
 #fit-peasant > div::after,
-section[aria-labelledby="notes-heading"] > div::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 20;
-  border-radius: inherit;
-  opacity: .12;
-  background:
-    repeating-linear-gradient(91deg, transparent 0 23px, rgba(93,70,39,.08) 24px, transparent 25px 61px),
-    repeating-linear-gradient(1deg, transparent 0 37px, rgba(93,70,39,.06) 38px, transparent 39px),
-    radial-gradient(ellipse at 2% 35%, rgba(93,67,35,.18), transparent 13%),
-    radial-gradient(ellipse at 98% 63%, rgba(93,67,35,.16), transparent 12%);
-  mix-blend-mode: multiply;
-}
 
 /* Small, slightly irregular "foxing" freckles concentrated toward
    the binding/perimeter rather than sprinkled uniformly. */
@@ -2238,28 +2108,13 @@ section[id] > .paper-sheet,
 section[id] > div.bg-charcoal,
 section[id="working-hypothesis"] > div,
 section[id="fit-peasant"] > div,
-section[aria-labelledby="notes-heading"] > div {
-  border-color: rgba(83,70,46,.27);
-}
 
 @media (max-width: 640px) {
   .paper-sheet,
   #working-hypothesis > div,
   #fit-peasant > div,
-  section[aria-labelledby="notes-heading"] > div {
-    box-shadow:
-      inset 10px 0 22px rgba(78,57,30,.065),
-      inset -10px 0 22px rgba(78,57,30,.08),
-      inset 0 14px 24px rgba(78,57,30,.045),
-      inset 0 -18px 28px rgba(78,57,30,.065),
-      5px 7px 0 rgba(59,49,32,.05),
-      0 17px 34px rgba(59,49,32,.09);
-  }
 
   .paper-sheet::after,
   #working-hypothesis > div::after,
-  #fit-peasant > div::after,
-  section[aria-labelledby="notes-heading"] > div::after {
-    opacity: .08;
+  #fit-peasant > div::after
   }
-}
