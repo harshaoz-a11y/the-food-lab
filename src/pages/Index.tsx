@@ -15,6 +15,7 @@ import {
     House,
     Mail,
     Menu,
+    NotebookPen,
     Presentation,
     RefreshCcw,
     Salad,
@@ -661,7 +662,7 @@ const Index = () => {
                         </div>
                     </div>
                 </section>
-            </main>     </main>
+            </main>
             <footer className="border-t border-ink/15 bg-[#e4dac5] px-5 py-12 sm:px-8">
                 {/* Ruled footer top line */}
                 <div className="mb-6 h-px w-full bg-[repeating-linear-gradient(90deg,rgba(23,59,48,0.12)_0px,rgba(23,59,48,0.12)_1px,transparent_1px,transparent_32px)]" />
