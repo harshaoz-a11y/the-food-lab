@@ -2265,31 +2265,19 @@
     0 24px 55px rgba(26,32,28,.15) !important;
 }
 
-/* MAESTRO-038 / old library paper surface
-   No ruling. The light field should feel like aged book stock: warm,
-   uneven, slightly foxed and fibrous, with enough variation to feel
-   physical without becoming decorative or distressed. */
+/* MAESTRO-039 / genuinely aged library stock
+   No designed stains, no ruled-paper simulation, no symmetrical ageing.
+   The character comes from layered paper grain and very slow tonal drift:
+   closer to old cellulose than a "vintage" texture. */
 
 #top {
-  background-color: #e8dcc2 !important;
-  background-image:
-    radial-gradient(ellipse at 48% 45%, rgba(255,250,235,.34) 0%, rgba(255,250,235,.10) 34%, transparent 68%),
-    radial-gradient(ellipse at 4% 12%, rgba(122,82,35,.14) 0%, rgba(122,82,35,.045) 23%, transparent 48%),
-    radial-gradient(ellipse at 96% 18%, rgba(126,88,42,.11) 0%, rgba(126,88,42,.035) 24%, transparent 49%),
-    radial-gradient(ellipse at 6% 88%, rgba(116,78,34,.12) 0%, rgba(116,78,34,.04) 25%, transparent 50%),
-    radial-gradient(ellipse at 94% 92%, rgba(112,75,31,.13) 0%, rgba(112,75,31,.04) 25%, transparent 51%),
-    radial-gradient(circle at 16% 22%, rgba(119,78,31,.14) 0 1.1%, transparent 2.8%),
-    radial-gradient(circle at 73% 16%, rgba(132,91,43,.08) 0 .7%, transparent 2.2%),
-    radial-gradient(circle at 88% 62%, rgba(105,70,29,.10) 0 .9%, transparent 2.7%),
-    radial-gradient(circle at 29% 79%, rgba(126,84,34,.08) 0 .8%, transparent 2.4%),
-    radial-gradient(circle at 56% 91%, rgba(108,72,30,.07) 0 .65%, transparent 2.1%),
-    linear-gradient(90deg, rgba(91,62,29,.08), transparent 13%, rgba(255,250,235,.045) 49%, transparent 87%, rgba(91,62,29,.09)),
-    linear-gradient(180deg, rgba(104,70,30,.065), transparent 16%, transparent 82%, rgba(91,62,29,.075)),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.018 .42' numOctaves='3' seed='17' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='.22'/%3E%3C/svg%3E");
-  background-blend-mode: multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply, multiply;
+  background-color: #e7ddc8 !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='640' viewBox='0 0 640 640'%3E%3Cfilter id='paper' x='-10%25' y='-10%25' width='120%25' height='120%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.009 .013' numOctaves='4' seed='47' stitchTiles='stitch' result='age'/%3E%3CfeColorMatrix in='age' type='matrix' values='.32 0 0 0 .46 .28 0 0 0 .40 .18 0 0 0 .31 0 0 0 .28 0' result='ageTone'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.36 .065' numOctaves='2' seed='19' stitchTiles='stitch' result='fibre'/%3E%3CfeColorMatrix in='fibre' type='matrix' values='.10 0 0 0 .45 .08 0 0 0 .39 .04 0 0 .29 0 0 0 .16 0' result='fibreTone'/%3E%3CfeBlend in='ageTone' in2='fibreTone' mode='multiply'/%3E%3C/filter%3E%3Crect width='640' height='640' fill='%23e7ddc8'/%3E%3Crect width='640' height='640' filter='url(%23paper)' opacity='.34'/%3E%3C/svg%3E");
+  background-size: 640px 640px;
+  background-blend-mode: multiply;
 }
 
-/* The same stock should continue through the light sections. */
+/* The same stock continues through the light sections. */
 #question > div,
 #demonstration > div,
 #working-hypothesis > div,
@@ -2299,22 +2287,22 @@
   background-image: none !important;
 }
 
-/* Keep the two green field pages separate from the library stock. */
+/* The green field pages remain deliberately separate. */
 #real-life > div,
 #your-experiment > div {
   background-color: #29463d !important;
 }
 
-/* Give the continuous light field a faint paper fibre/noise layer without
-   reintroducing rules, margins or a vignette that looks like a UI card. */
+/* A second, almost imperceptible fibre layer prevents the surface from
+   looking like a repeated bitmap when the page becomes very tall. */
 #top::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: .11;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='fibres'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.025 .55' numOctaves='2' seed='31' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fibres)' opacity='.55'/%3E%3C/svg%3E");
+  opacity: .055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='f' x='-10%25' y='-10%25' width='120%25' height='120%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.018 .72' numOctaves='2' seed='83' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='420' height='420' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size: 420px 420px;
   mix-blend-mode: multiply;
-}
+}\n
