@@ -2193,3 +2193,74 @@
     font-size: 0.64rem;
   }
 }
+
+/* MAESTRO-037 / continuous notebook stock
+   The notebook is now the page itself, rather than a set of floating sheets.
+   Keep the dark green field pages distinct. Remove literal ruled lines and
+   the red notebook margin; retain only the quiet aged-paper material. */
+
+#top {
+  background-color: var(--archive-stock, #eee3c9) !important;
+  background-image:
+    radial-gradient(ellipse at 50% 42%, rgba(255,252,238,.42) 0%, rgba(255,252,238,.12) 36%, transparent 68%),
+    radial-gradient(ellipse at 0% 18%, rgba(101,76,43,.13) 0%, rgba(101,76,43,.045) 20%, transparent 46%),
+    radial-gradient(ellipse at 100% 8%, rgba(91,69,40,.11) 0%, rgba(91,69,40,.04) 22%, transparent 46%),
+    radial-gradient(ellipse at 3% 96%, rgba(89,67,39,.13) 0%, rgba(89,67,39,.045) 22%, transparent 48%),
+    radial-gradient(ellipse at 97% 92%, rgba(91,67,37,.14) 0%, rgba(91,67,37,.045) 24%, transparent 50%),
+    radial-gradient(circle at 18% 23%, rgba(119,87,47,.055) 0 1%, transparent 2.5%),
+    radial-gradient(circle at 84% 71%, rgba(116,82,43,.05) 0 .8%, transparent 2.4%),
+    linear-gradient(90deg, rgba(95,73,43,.035), transparent 14%, rgba(255,252,238,.035) 50%, transparent 86%, rgba(95,73,43,.045)),
+    linear-gradient(180deg, rgba(105,78,43,.035), transparent 16%, transparent 84%, rgba(95,71,42,.055));
+  background-blend-mode: multiply;
+}
+
+#question > div,
+#demonstration > div,
+#working-hypothesis > div,
+#how-we-help > div,
+#fit-peasant > div {
+  background-color: transparent !important;
+  background-image: none !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+#question .paper-sheet,
+#demonstration .paper-sheet,
+#how-we-help .paper-sheet {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+#question .paper-sheet.nb-ruled,
+#demonstration .paper-sheet.nb-ruled,
+#how-we-help .paper-sheet.nb-ruled {
+  background-image: none !important;
+}
+
+.nb-top-margin {
+  border-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.nb-section-divider,
+.nb-dark-ruled-top {
+  display: none !important;
+}
+
+#question .paper-sheet::before,
+#demonstration .paper-sheet::before,
+#how-we-help .paper-sheet::before {
+  opacity: .48;
+}
+
+#real-life > div,
+#your-experiment > div {
+  box-shadow:
+    inset 24px 0 45px rgba(12,25,21,.16),
+    inset -24px 0 45px rgba(12,25,21,.18),
+    inset 0 -20px 38px rgba(12,25,21,.10),
+    0 24px 55px rgba(26,32,28,.15) !important;
+}
