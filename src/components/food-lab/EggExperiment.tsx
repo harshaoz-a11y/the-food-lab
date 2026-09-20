@@ -61,7 +61,7 @@ export function EggExperiment() {
           <p className="mt-4 max-w-md text-base leading-relaxed text-ink/75">{current.note}</p>
         </div>
 
-        <p className="mt-6 border-t border-dashed border-ink/25 pt-4 font-mono text-[9px] uppercase leading-relaxed tracking-[0.1em] text-ink/55">
+        <p className="mt-6 border-t border-dashed border-ink/25 pt-4 font-mono text-[11px] uppercase leading-relaxed tracking-[0.1em] text-ink/55">
           Human data discussed in Fuchs et al., The Journal of Nutrition (2022). This is an observation, not personal dietary advice.
         </p>
       </div>
