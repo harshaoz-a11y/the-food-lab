@@ -396,15 +396,22 @@ function ConsultationForm() {
     );
 }
 
-/* ─── Notebook margin strip used in several sections ─── */
-function MarginRule({ label, className = "" }: { label: string; className?: string }) {
+/* ─── Page-number header strip ──────────────────────── */
+function NbHeader({ label, page }: { label: string; page: string }) {
     return (
-        <div className={`notebook-margin-strip ${className}`}>
-            <span className="margin-label">{label}</span>
+        <div className="nb-top-margin flex items-center gap-3 sm:gap-4">
+            <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-ink/35 sm:text-[8px] sm:tracking-[0.18em]">
+                {label}
+            </span>
+            <span className="h-px flex-1 border-t border-dashed border-ink/15" />
+            <span className="font-mono text-[7px] text-ink/30 sm:text-[8px]">{page}</span>
         </div>
     );
 }
 
+/* ═══════════════════════════════════════════════════════
+   PAGE
+   ═══════════════════════════════════════════════════════ */
 const Index = () => {
     return (
         <div id="top" className="min-h-screen overflow-hidden bg-paper text-ink">
@@ -412,7 +419,7 @@ const Index = () => {
             <main className="pt-[74px]">
                 <section id="question" className="px-4 pb-4 pt-6 sm:px-6 lg:px-8 lg:pt-8">
                     <div
-                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-6 py-12 sm:px-12 sm:py-16 lg:px-20 lg:py-20">
+                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 sm:py-14 lg:px-20 lg:py-20">
                         {/* Ruled-page top margin annotation */}
                         <div className="nb-top-margin mb-8 flex items-center gap-4">
                             <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-ink/35">The Food Lab / Notebook</span>
@@ -421,14 +428,14 @@ const Index = () => {
                         </div>
                         <div
                             className="grid min-w-0 items-center gap-10 xl:grid-cols-[minmax(0,.92fr)_minmax(0,1.08fr)] xl:gap-14">
-                            <div className="relative z-10 min-w-0 lg:pl-3">
-                                <span className="lab-label">OBSERVATION 002</span>
+                            <div className="relative z-10 min-w-0">
+                                <span className="lab-label">Observation 002</span>
                                 <h1
-                                    className="mt-7 max-w-[650px] font-serif text-[clamp(3rem,9vw,5.8rem)] font-normal leading-[0.88] tracking-[-0.055em] text-ink">Could <span className="red-underline">interactions</span> <span className="red-underline">matter</span> <span className="red-underline">more</span> than ingredients?</h1>
+                                    className="mt-6 max-w-[650px] font-serif text-[clamp(2.6rem,9vw,5.8rem)] font-normal leading-[0.9] tracking-[-0.05em] text-ink">Could <span className="red-underline">interactions</span> <span className="red-underline">matter</span> <span className="red-underline">more</span> than ingredients?</h1>
                                 <p
-                                    className="mt-10 max-w-lg font-serif text-xl leading-snug text-ink/75 sm:text-2xl">Most of us keep changing the list. We study what happens around it.</p>
+                                    className="mt-8 max-w-lg font-serif text-lg leading-snug text-ink/75 sm:text-xl lg:text-2xl">Most of us keep changing the list. We study what happens around it.</p>
                                 {/* Margin annotation */}
-                                <p className="mt-6 handwritten rotate-[-0.5deg] text-sm text-primary/70 max-w-xs">
+                                <p className="handwritten mt-5 max-w-xs rotate-[-0.5deg] text-sm text-primary/70">
                                     ← the real variable is rarely on the label
                                 </p>
                             </div>
@@ -458,21 +465,17 @@ const Index = () => {
                 </section>
                 <section id="demonstration" className="px-4 sm:px-6 lg:px-8">
                     <div
-                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-6 py-12 sm:px-10 lg:px-10 lg:py-14">
-                        <div className="nb-top-margin mb-8 flex items-center gap-4">
-                            <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-ink/35">Experiment log</span>
-                            <span className="h-px flex-1 border-t border-dashed border-ink/15" />
-                            <span className="font-mono text-[8px] text-ink/30">Pg. 003</span>
-                        </div>
-                        <div className="experiment-spread grid gap-14 lg:grid-cols-2 lg:gap-0">
+                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-10 lg:py-14">
+                        <NbHeader label="Experiment log" page="Pg. 003" />
+                        <div className="experiment-spread grid gap-12 lg:grid-cols-2 lg:gap-0">
                             <div className="experiment-column lg:pr-8 xl:pr-10">
-                                <div className="mb-7">
+                                <div className="mb-6">
                                     <span className="lab-label">Observation 002A / change one condition</span>
                                     <h2
-                                        className="mt-5 max-w-xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-[2.75rem] xl:text-[3.1rem]">Same food. Different <span className="red-underline">interaction.</span>
+                                        className="mt-5 max-w-xl font-serif text-3xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-4xl lg:text-[2.75rem] xl:text-[3.1rem]">Same food. Different <span className="red-underline">interaction.</span>
                                     </h2>
                                     <p
-                                        className="handwritten mt-3 rotate-[-1deg] text-lg leading-tight text-primary">Try the preparation switch. Watch what changes.</p>
+                                        className="handwritten mt-3 rotate-[-1deg] text-base leading-tight text-primary sm:text-lg">Try the preparation switch. Watch what changes.</p>
                                 </div>
                                 <EggExperiment />
                             </div>
@@ -482,18 +485,18 @@ const Index = () => {
                 </section>
                 <section id="real-life" className="px-4 sm:px-6 lg:px-8">
                     <div
-                        className="mx-auto max-w-[1400px] bg-charcoal px-6 py-16 text-[#f8f2e5] sm:px-12 lg:px-20 lg:py-24">
-                        <div className="nb-dark-ruled-top mb-8" />
-                        <div className="mb-12">
+                        className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
+                        <div className="nb-dark-ruled-top" />
+                        <div className="mb-10 sm:mb-12">
                             <span className="lab-label !text-[#f8f2e5]/55">Field sheet 003 / real life</span>
                             <h2
-                                className="mt-6 max-w-none font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:whitespace-nowrap lg:text-[clamp(2.65rem,4.05vw,3.5rem)]">When diets and discipline say "tomorrow!"</h2>
-                            <p className="mt-6 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Because work, routine, family, stress, sleep and tolerance always get a vote</p>
+                                className="mt-5 font-serif text-3xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-4xl lg:whitespace-nowrap lg:text-[clamp(2.4rem,4.05vw,3.5rem)]">When diets and discipline say "tomorrow!"</h2>
+                            <p className="mt-5 max-w-lg text-base leading-relaxed text-[#f8f2e5]/65 sm:text-lg">Because work, routine, family, stress, sleep and tolerance always get a vote</p>
                         </div>
                         <FieldStudies />
                         <aside className="press-note mt-10 max-w-lg rotate-[1deg] p-5 text-ink">
                             <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-ink/50">Margin note</span>
-                            <p className="handwritten mt-2 text-xl leading-tight text-primary">Maybe consistency is designed along with a life, not imposed on one.</p>
+                            <p className="handwritten mt-2 text-lg leading-tight text-primary sm:text-xl">Maybe consistency is designed along with a life, not imposed on one.</p>
                         </aside>
                     </div>
                 </section>
@@ -502,21 +505,17 @@ const Index = () => {
                     className="scroll-mt-24 px-4 sm:px-6 lg:px-8"
                     aria-labelledby="help-heading">
                     <div
-                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
-                        <div className="nb-top-margin mb-8 flex items-center gap-4">
-                            <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-ink/35">Method / approach</span>
-                            <span className="h-px flex-1 border-t border-dashed border-ink/15" />
-                            <span className="font-mono text-[8px] text-ink/30">Pg. 005</span>
-                        </div>
+                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-14 sm:px-10 lg:px-20 lg:py-24">
+                        <NbHeader label="Method / approach" page="Pg. 005" />
                         <div
-                            className="grid gap-12 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:gap-20">
+                            className="grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:gap-20">
                             <div>
                                 <span className="lab-label">The Food Lab approach</span>
                                 <h2
                                     id="help-heading"
-                                    className="mt-6 max-w-4xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">1. Precision Bio-Nutrition</h2>
+                                    className="mt-5 font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl xl:text-7xl">1. Precision Bio-Nutrition</h2>
                                 <blockquote
-                                    className="mt-7 max-w-2xl border-l-4 border-primary pl-5 font-serif text-2xl leading-snug text-ink/80 sm:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
+                                    className="mt-6 max-w-2xl border-l-4 border-primary pl-5 font-serif text-xl leading-snug text-ink/80 sm:text-2xl lg:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
                                                                                                                                                                                                                                                             <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
                                 </blockquote>
                                 {/* Handwritten margin gloss */}
@@ -525,7 +524,7 @@ const Index = () => {
                                 </p>
                                 <a
                                     href="#your-experiment"
-                                    className="mt-8 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">First 30min free consult — Get in touch <ArrowRight className="h-4 w-4" />
+                                    className="mt-7 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">First 30 min free consult — Get in touch <ArrowRight className="h-4 w-4" />
                                 </a>
                             </div>
                             <div
@@ -558,7 +557,7 @@ const Index = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="mt-16 border-t border-ink/15 pt-12 lg:mt-20 lg:pt-16">
+                        <div className="mt-14 border-t border-ink/15 pt-10 lg:mt-20 lg:pt-16">
                             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
                                 <div>
                                     <span className="lab-label">Six signals / one useful plan</span>
@@ -567,7 +566,7 @@ const Index = () => {
                                 </div>
                                 <p className="max-w-sm text-sm leading-relaxed text-ink/60">Not isolated data points. A connected picture of what your body, food and days are doing together.</p>
                             </div>
-                            <div className="mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                                 {helpAreas.map((
                                     {
                                         title,
@@ -592,7 +591,7 @@ const Index = () => {
                             </div>
                         </div>
                         <p
-                            className="handwritten mt-12 border-t border-dashed border-ink/25 pt-8 text-center text-xl text-primary sm:text-2xl">What if......DIETS could be DELICIOUS?</p>
+                            className="handwritten mt-10 border-t border-dashed border-ink/25 pt-7 text-center text-xl text-primary sm:text-2xl">What if......DIETS could be DELICIOUS?</p>
                     </div>
                 </section>
                 <section id="fit-peasant" className="px-4 sm:px-6 lg:px-8">
@@ -636,18 +635,14 @@ const Index = () => {
                 <section className="px-4 sm:px-6 lg:px-8" aria-labelledby="notes-heading">
                     <div
                         paper-sheet nb-ruled mx-auto max-w-[1400px] px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
-                        <div className="nb-top-margin mb-8 flex items-center gap-4">
-                            <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-ink/35">Lab notebook / ongoing</span>
-                            <span className="h-px flex-1 border-t border-dashed border-ink/15" />
-                            <span className="font-mono text-[8px] text-ink/30">Pg. 007</span>
-                        </div>
+                        <NbHeader label="Lab notebook / ongoing" page="Pg. 007" />
                         <div
                             className="mb-12 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
                             <div>
                                 <span className="lab-label">Lab notes / work in progress</span>
                                 <h2
                                     id="notes-heading"
-                                    className="mt-6 font-serif text-5xl font-normal leading-none tracking-[-0.04em] sm:text-6xl">Sharp observations. No sermons.</h2>
+                                    className="mt-5 font-serif text-4xl font-normal leading-none tracking-[-0.04em] sm:text-5xl lg:text-6xl">Sharp observations. No sermons.</h2>
                             </div>
                             <NotebookPen className="h-12 w-12 stroke-[1] text-primary" />
                         </div>
@@ -658,7 +653,7 @@ const Index = () => {
                                 <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-ink/45">Note {note.id}</span>
                                 <h3 className="mt-5 text-3xl font-normal">{note.title}</h3>
                                 <p className="mt-3 leading-relaxed text-ink/65">{note.copy}</p>
-                                <span className="handwritten absolute bottom-5 left-6 text-primary">{note.status}→</span>
+                                <span className="handwritten absolute bottom-5 left-6 text-sm text-primary sm:text-base">{note.status}→</span>
                             </article>))}
                         </div>
                     </div>
@@ -667,8 +662,8 @@ const Index = () => {
                     id="your-experiment"
                     className="px-4 pb-4 sm:px-6 sm:pb-6 lg:px-8 lg:pb-8">
                     <div
-                        className="mx-auto max-w-[1400px] bg-charcoal px-6 py-16 text-[#f8f2e5] sm:px-12 lg:px-20 lg:py-24">
-                        <div className="nb-dark-ruled-top mb-8" />
+                        className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
+                        <div className="nb-dark-ruled-top" />
                         <div className="grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
                             <div>
                                 <span className="lab-label !text-[#f8f2e5]/55">Your experiment</span>
