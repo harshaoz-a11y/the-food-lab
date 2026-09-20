@@ -2265,19 +2265,24 @@
     0 24px 55px rgba(26,32,28,.15) !important;
 }
 
-/* MAESTRO-039 / genuinely aged library stock
-   No designed stains, no ruled-paper simulation, no symmetrical ageing.
-   The character comes from layered paper grain and very slow tonal drift:
-   closer to old cellulose than a "vintage" texture. */
+/* MAESTRO-040 / quiet, tactile old-library stock
+   The paper should feel discovered, not designed: low contrast, broad tonal
+   variation, almost no identifiable marks, and no repeated "stain" motifs. */
 
 #top {
-  background-color: #e7ddc8 !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='640' viewBox='0 0 640 640'%3E%3Cfilter id='paper' x='-10%25' y='-10%25' width='120%25' height='120%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.009 .013' numOctaves='4' seed='47' stitchTiles='stitch' result='age'/%3E%3CfeColorMatrix in='age' type='matrix' values='.32 0 0 0 .46 .28 0 0 0 .40 .18 0 0 0 .31 0 0 0 .28 0' result='ageTone'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.36 .065' numOctaves='2' seed='19' stitchTiles='stitch' result='fibre'/%3E%3CfeColorMatrix in='fibre' type='matrix' values='.10 0 0 0 .45 .08 0 0 0 .39 .04 0 0 .29 0 0 0 .16 0' result='fibreTone'/%3E%3CfeBlend in='ageTone' in2='fibreTone' mode='multiply'/%3E%3C/filter%3E%3Crect width='640' height='640' fill='%23e7ddc8'/%3E%3Crect width='640' height='640' filter='url(%23paper)' opacity='.34'/%3E%3C/svg%3E");
-  background-size: 640px 640px;
+  background-color: #e8dfca !important;
+  background-image:
+    radial-gradient(ellipse 95% 82% at 46% 43%, rgba(255,252,240,.24), transparent 72%),
+    radial-gradient(ellipse 58% 46% at 8% 14%, rgba(121,93,55,.065), transparent 75%),
+    radial-gradient(ellipse 62% 52% at 92% 82%, rgba(112,84,48,.055), transparent 78%),
+    radial-gradient(ellipse 48% 70% at 96% 4%, rgba(144,115,74,.038), transparent 76%),
+    radial-gradient(ellipse 52% 58% at 4% 94%, rgba(136,103,61,.045), transparent 78%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='cellulose' x='-10%25' y='-10%25' width='120%25' height='120%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006 .010' numOctaves='4' seed='61' stitchTiles='stitch' result='n'/%3E%3CfeColorMatrix in='n' type='matrix' values='.15 0 0 0 .45 .12 0 0 0 .38 .08 0 0 0 .29 0 0 0 .34 0'/%3E%3C/filter%3E%3Crect width='900' height='900' fill='%23e8dfca'/%3E%3Crect width='900' height='900' filter='url(%23cellulose)' opacity='.17'/%3E%3C/svg%3E");
+  background-size: auto, auto, auto, auto, auto, 900px 900px;
   background-blend-mode: multiply;
 }
 
-/* The same stock continues through the light sections. */
+/* Keep the paper continuous through the light sections. */
 #question > div,
 #demonstration > div,
 #working-hypothesis > div,
@@ -2287,22 +2292,22 @@
   background-image: none !important;
 }
 
-/* The green field pages remain deliberately separate. */
+/* The dark green pages remain the deliberate material change. */
 #real-life > div,
 #your-experiment > div {
   background-color: #29463d !important;
 }
 
-/* A second, almost imperceptible fibre layer prevents the surface from
-   looking like a repeated bitmap when the page becomes very tall. */
+/* Extremely fine fibre texture. The scale is deliberately large enough to
+   avoid the "tiled texture" look and quiet enough to disappear at a glance. */
 #top::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: .055;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='f' x='-10%25' y='-10%25' width='120%25' height='120%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.018 .72' numOctaves='2' seed='83' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='420' height='420' filter='url(%23f)'/%3E%3C/svg%3E");
-  background-size: 420px 420px;
+  opacity: .035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1100' height='700'%3E%3Cfilter id='fibres' x='-10%25' y='-10%25' width='120%25' height='120%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.045 .005' numOctaves='2' seed='113' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='1100' height='700' filter='url(%23fibres)'/%3E%3C/svg%3E");
+  background-size: 1100px 700px;
   mix-blend-mode: multiply;
 }\n
