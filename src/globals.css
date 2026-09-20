@@ -665,29 +665,99 @@
   position: relative;
   background: #e6dbc4;
   border: 1px solid rgba(74, 60, 38, 0.22);
-  padding: 0.75rem;
+  padding: clamp(0.75rem, 1.6vw, 1.25rem);
   box-shadow: 8px 10px 0 rgba(73, 55, 28, 0.07), 0 20px 40px rgba(73, 55, 28, 0.08);
 }
-
-.evidence-photo img { filter: saturate(0.78) contrast(0.95); mix-blend-mode: multiply; }
+.evidence-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: saturate(0.78) contrast(0.95);
+  mix-blend-mode: multiply;
+}
 .evidence-photo figcaption { padding: 0.85rem 0.5rem 0.25rem; font: 0.62rem ui-monospace, monospace; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
-.tape-left { top: -10px; left: 12%; transform: rotate(-3deg); z-index: 2; }
-.experiment-panel { border-left: 1px dashed rgba(23, 59, 48, 0.3); padding-left: clamp(1.5rem, 4vw, 3.5rem); }
-.experiment-choice { border: 1px solid rgba(23, 59, 48, 0.32); border-radius: 999px; padding: 0.65rem 1rem; color: var(--ink); font-size: 0.8rem; transition: 180ms ease; }
+
+.egg-evidence,
+.rice-evidence { overflow: hidden; }
+.egg-state-illustration,
+.rice-plate-illustration {
+  position: relative;
+  isolation: isolate;
+}
+.egg-state-illustration img,
+.rice-plate-illustration img {
+  transition: opacity 260ms ease, filter 260ms ease;
+}
+.egg-state-illustration.is-raw img,
+.egg-state-illustration.is-cooked img,
+.rice-plate-illustration.is-fresh img,
+.rice-plate-illustration.is-reheated img,
+.rice-plate-illustration.is-coconut img {
+  opacity: .9;
+}
+.egg-state-illustration::after,
+.rice-plate-illustration::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 0 50%, rgba(248,242,229,.05));
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+.egg-now-showing,
+.rice-now-showing {
+  position: absolute;
+  right: .7rem;
+  bottom: .65rem;
+  z-index: 2;
+  border: 1px solid rgba(23,59,48,.2);
+  border-radius: 999px;
+  padding: .38rem .65rem;
+  background: rgba(248,242,229,.9);
+  color: var(--ink);
+  font: .58rem ui-monospace, monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.egg-state-illustration.is-cooked .egg-now-showing,
+.rice-plate-illustration.is-reheated .rice-now-showing,
+.rice-plate-illustration.is-coconut .rice-now-showing {
+  border-color: rgba(45,125,70,.35);
+  color: var(--green);
+}
+.experiment-panel { padding-left: clamp(1.5rem, 4vw, 3.5rem); }
+.experiment-choice {
+  border: 1px solid rgba(23, 59, 48, 0.32);
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  color: var(--ink);
+  font-size: 0.8rem;
+  transition: 180ms ease;
+}
 .experiment-choice:hover { border-color: var(--brick); color: var(--brick); }
 .experiment-choice.is-active { background: var(--brick); border-color: var(--brick); color: #fff9ed; }
 .experiment-choice.is-green-active { background: var(--green) !important; border-color: var(--green) !important; color: #fff9ed !important; }
-.measure-track { width: 100%; height: 8px; background: rgba(23, 59, 48, 0.14); overflow: hidden; border-radius: 999px; }
-.measure-track span { display: block; height: 100%; border-radius: inherit; background: var(--brick); transition: width 500ms cubic-bezier(.2,.8,.2,1), background-color 300ms ease; }
+.measure-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(23, 59, 48, 0.14);
+  overflow: hidden;
+  border-radius: 999px;
+}
+.measure-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--brick);
+  transition: width 500ms cubic-bezier(.2,.8,.2,1), background-color 300ms ease;
+}
 .measure-track span.is-green { background: var(--green); }
 
-.rice-panel {
-  border-left: 1px dashed rgba(23, 59, 48, 0.3);
-  padding-left: clamp(1.5rem, 3vw, 2.5rem);
-}
+.rice-panel { padding-top: 0; }
 .rice-choice {
   display: flex;
-  min-height: 92px;
+  min-height: 76px;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
@@ -702,57 +772,136 @@
 .rice-choice:hover { border-color: var(--brick); transform: translateY(-2px); }
 .rice-choice.is-active { border-color: var(--brick); background: var(--brick); color: #fff9ed; }
 .rice-choice svg { width: 18px; height: 18px; stroke-width: 1.5; }
-.rice-choice span { margin-top: 0.6rem; font-family: Georgia, serif; font-size: 0.95rem; }
-.rice-choice small { margin-top: 0.15rem; font: 0.45rem ui-monospace, monospace; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.68; }
+.rice-choice span { margin-top: 0.45rem; font-family: Georgia, serif; font-size: 0.9rem; line-height: 1.05; }
+.rice-experiment.is-green .rice-choice.is-active { border-color: var(--green); background: var(--green); }
+
 .rice-curve {
-  display: grid;
-  grid-template-columns: 1fr 150px;
-  align-items: center;
-  gap: 1rem;
-  min-height: 124px;
-  border: 1px solid rgba(23, 59, 48, 0.16);
-  border-radius: 1rem;
-  padding: 0.9rem 1rem;
-  background: rgba(248, 242, 229, 0.54);
-}
-.rice-curve svg { width: 100%; height: 100px; overflow: visible; }
-.rice-curve path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.rice-curve-reference { stroke: rgba(23, 59, 48, 0.2); stroke-width: 2; stroke-dasharray: 3 5; }
-.rice-curve-current { stroke: var(--brick); stroke-width: 3; animation: draw-rice-curve 650ms ease both; }
-.rice-metrics { animation: rice-metrics-in 360ms ease both; }
-.rice-metric {
-  min-height: 132px;
+  min-height: 140px;
   border: 1px solid rgba(23, 59, 48, 0.16);
   border-radius: 1rem;
   padding: 1rem;
-  background: rgba(248, 242, 229, 0.64);
+  background: rgba(248, 242, 229, 0.54);
 }
-.rice-panel.is-green .rice-choice.is-active { border-color: var(--green); background: var(--green); color: #fff9ed; }
-.rice-panel.is-green .rice-curve-current { stroke: var(--green); }
-.rice-panel.is-green .rice-curve,
-.rice-panel.is-green .rice-metric { border-color: var(--green); background: rgba(45, 125, 70, 0.08); }
-.rice-panel.is-green .rice-curve strong,
-.rice-panel.is-green .rice-metric strong,
-.rice-panel.is-green .rice-metric svg { color: var(--green); }
-.experiment-column { min-width: 0; }
-.experiment-spread .experiment-panel,
-.experiment-spread .rice-panel { border-left: 0; padding-left: 0; }
-@media (min-width: 1024px) {
-  .experiment-spread .evidence-photo { padding: 0.5rem; }
-  .experiment-spread .evidence-photo img { width: 100%; height: 210px; object-fit: contain; }
-  .experiment-spread .evidence-photo figcaption { padding: 0.45rem 0.3rem 0.1rem; font-size: 0.48rem; }
-  .experiment-spread .experiment-choice { padding: 0.45rem 0.75rem; font-size: 0.7rem; }
-  .experiment-spread .rice-choice { min-height: 68px; padding: 0.55rem; }
-  .experiment-spread .rice-choice svg { width: 14px; height: 14px; }
-  .experiment-spread .rice-choice span { margin-top: 0.3rem; font-size: 0.76rem; }
-  .experiment-spread .rice-choice small { font-size: 0.38rem; }
-  .experiment-spread .rice-curve { min-height: 90px; grid-template-columns: 1fr 102px; padding: 0.6rem 0.75rem; }
-  .experiment-spread .rice-curve svg { height: 68px; }
-  .experiment-spread .rice-metric { min-height: 98px; padding: 0.7rem; }
+.rice-chart-wrap {
+  position: relative;
+  min-height: 140px;
 }
-@keyframes draw-rice-curve { from { stroke-dasharray: 180; stroke-dashoffset: 180; } to { stroke-dasharray: 180; stroke-dashoffset: 0; } }
-@keyframes rice-metrics-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.rice-primary-metric {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+  gap: .7rem;
+}
+.rice-primary-metric span {
+  font: .55rem ui-monospace, monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.rice-primary-metric strong {
+  font-family: Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+.rice-experiment.is-green .rice-primary-metric strong { color: var(--green); }
+.rice-chart-wrap svg {
+  display: block;
+  width: 100%;
+  height: 180px;
+  overflow: visible;
+  padding-top: 1.6rem;
+}
+.rice-chart-wrap path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.rice-curve-inactive {
+  stroke: var(--ink);
+  stroke-width: 2.2;
+  opacity: .2;
+}
+.rice-curve-active {
+  stroke: var(--brick);
+  stroke-width: 3.6;
+  opacity: 1;
+  animation: draw-rice-curve 650ms ease both;
+}
+.rice-experiment.is-green .rice-curve-active { stroke: var(--green); }
+.rice-axis-label {
+  font: 5px ui-monospace, monospace;
+  letter-spacing: .02em;
+  fill: var(--ink-soft);
+}
+.rice-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  margin-top: .7rem;
+  border-top: 1px dashed rgba(23,59,48,.2);
+  border-bottom: 1px dashed rgba(23,59,48,.2);
+}
+.rice-fact {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: .2rem;
+  padding: .7rem .8rem;
+}
+.rice-fact + .rice-fact { border-left: 1px dashed rgba(23,59,48,.2); }
+.rice-fact strong {
+  font: .55rem ui-monospace, monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.rice-fact em {
+  font-family: Georgia, serif;
+  font-size: .95rem;
+  font-style: normal;
+  color: var(--ink);
+}
+.rice-experiment.is-green .rice-fact em { color: var(--green); }
 
+.experiment-column { min-width: 0; }
+.experiment-spread { display: block; }
+.experiment-spread > [role="tabpanel"] { width: 100%; }
+
+@media (max-width: 767px) {
+  .experiment-panel {
+    border-top: 1px dashed rgba(23, 59, 48, 0.3);
+    padding: 1.75rem 0 0;
+  }
+  .rice-panel {
+    border-top: 1px dashed rgba(23, 59, 48, 0.3);
+    padding: 1.75rem 0 0;
+  }
+  .rice-primary-metric {
+    flex-wrap: wrap;
+    gap: .3rem .6rem;
+  }
+  .rice-chart-wrap svg { height: 170px; }
+  .rice-facts { grid-template-columns: 1fr; }
+  .rice-fact + .rice-fact {
+    border-left: 0;
+    border-top: 1px dashed rgba(23,59,48,.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .egg-state-illustration img,
+  .rice-plate-illustration img,
+  .measure-track span,
+  .rice-curve-active { transition: none; animation: none; }
+}
+@keyframes draw-rice-curve {
+  from { stroke-dasharray: 180; stroke-dashoffset: 180; }
+  to { stroke-dasharray: 180; stroke-dashoffset: 0; }
+}
 .field-studies { margin-top: 2rem; }
 .field-personas { display: grid; gap: 0.85rem; }
 .field-persona {
