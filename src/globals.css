@@ -82,6 +82,16 @@
   .handwritten { font-family: "Caveat", cursive; }
 }
 
+.lab-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
 
 .lab-label::before {
   content: "";
@@ -1613,6 +1623,9 @@
 
   #question .map-stage::before,
   #question .map-vitruvian,
+  #question .map-axis {
+    width: 292px;
+  }
 
   #question .factor:nth-child(1) { --factor-x: 0px; --factor-y: -170px; }
   #question .factor:nth-child(2) { --factor-x: 214px; --factor-y: -66px; }
