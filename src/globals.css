@@ -1761,8 +1761,6 @@
 .paper-sheet,
 #working-hypothesis > div,
 #fit-peasant > div,
-
-/* Notebook pages retain their ruled lines while the ageing sits underneath. */
 .paper-sheet.nb-ruled {
   background-image:
     radial-gradient(ellipse at 50% 48%, rgba(255,255,255,.19) 0%, rgba(255,255,255,.07) 43%, transparent 68%),
@@ -1783,9 +1781,6 @@
 .paper-sheet::after,
 #working-hypothesis > div::after,
 #fit-peasant > div::after,
-
-/* The two charcoal "pages" should feel like old dark stock rather than
-   a flat digital rectangle: very restrained edge fade + fibre variation. */
 #real-life > div,
 #your-experiment > div {
   position: relative;
@@ -1905,10 +1900,6 @@
 
 /* The whole light-paper system gets a genuinely old stock colour.
    The layers are deliberately uneven rather than a clean CSS vignette. */
-.paper-sheet,
-#working-hypothesis > div,
-#fit-peasant > div,
-
 /* Actual edge wear: irregular translucent marks rather than a perfect
    vignette. */
 .paper-sheet::after,
@@ -1986,10 +1977,6 @@
 
 /* Every light sheet gets a visible but organic history:
    protected centre, handled perimeter, foxing, and tonal drift. */
-.paper-sheet,
-#working-hypothesis > div,
-#fit-peasant > div,
-
 /* Aged page surface: very fine fibres plus a handful of irregular
    translucent marks. These should read as material, not "grunge". */
 .paper-sheet::after,
