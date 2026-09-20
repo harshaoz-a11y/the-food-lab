@@ -204,7 +204,7 @@ function Header() {
                 className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
                 <Brand />
                 {/* Page number stamp */}
-                <span className="hidden font-mono text-[8px] uppercase tracking-[0.18em] text-ink/30 lg:block">
+                <span className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-ink/30 lg:block">
                     Vol. I / Field Notes
                 </span>
                 <nav
@@ -344,14 +344,14 @@ function ConsultationForm() {
                 href="mailto:harsha@thefoodlab.in?subject=Precise%20nutrition%20solutions"
                 className="group rounded-[1.5rem] border border-[#f8f2e5]/25 bg-[#f8f2e5]/5 p-6 transition hover:-translate-y-1 hover:border-[#d68b7f] hover:bg-[#f8f2e5]/10">
                 <span
-                    className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#d68b7f]">Personal nutrition</span>
+                    className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#d68b7f]">Personal nutrition</span>
                 <strong
                     className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Looking for precise solutions to your nutritional goals?</strong>
                 <span
                     className="mt-5 inline-flex items-center gap-2 text-sm text-[#f8f2e5]/70 transition group-hover:text-[#f8f2e5]">Talk to The Food Lab <ArrowRight className="h-4 w-4" /></span>
             </a>
             <div
-                className="flex items-center gap-3 font-mono text-[8px] uppercase tracking-[0.18em] text-[#f8f2e5]/40">
+                className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[#f8f2e5]/40">
                 <span className="h-px flex-1 bg-[#f8f2e5]/15" />Or
                                                 <span className="h-px flex-1 bg-[#f8f2e5]/15" />
             </div>
@@ -359,7 +359,7 @@ function ConsultationForm() {
                 href="mailto:harsha@thefoodlab.in?subject=The%20Fit%20Peasant%20protein%20bar"
                 className="group rounded-[1.5rem] border border-[#d68b7f]/45 bg-[#d68b7f]/10 p-6 transition hover:-translate-y-1 hover:border-[#d68b7f] hover:bg-[#d68b7f]/15">
                 <span
-                    className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#d68b7f]">The Fit Peasant</span>
+                    className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#d68b7f]">The Fit Peasant</span>
                 <strong
                     className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Want to try out our awesome protein bar?</strong>
                 <span
@@ -373,11 +373,11 @@ function ConsultationForm() {
 function NbHeader({ label, page }: { label: string; page: string }) {
     return (
         <div className="nb-top-margin flex items-center gap-3 sm:gap-4">
-            <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-ink/35 sm:text-[8px] sm:tracking-[0.18em]">
+            <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink/35 sm:text-[11px] sm:tracking-[0.18em]">
                 {label}
             </span>
             <span className="h-px flex-1 border-t border-dashed border-ink/15" />
-            <span className="font-mono text-[7px] text-ink/30 sm:text-[8px]">{page}</span>
+            <span className="font-mono text-[11px] text-ink/30 sm:text-[11px]">{page}</span>
         </div>
     );
 }
@@ -397,9 +397,9 @@ const Index = () => {
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 sm:py-14 lg:px-20 lg:py-20">
                         {/* Ruled-page top margin annotation */}
                         <div className="nb-top-margin mb-8 flex items-center gap-4">
-                            <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-ink/35">The Food Lab / Notebook</span>
+                            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/35">The Food Lab / Notebook</span>
                             <span className="h-px flex-1 border-t border-dashed border-ink/15" />
-                            <span className="font-mono text-[8px] text-ink/30">Pg. 002</span>
+                            <span className="font-mono text-[11px] text-ink/30">Pg. 002</span>
                         </div>
                         <div
                             className="grid min-w-0 items-center gap-10 xl:grid-cols-[minmax(0,.92fr)_minmax(0,1.08fr)] xl:gap-14">
@@ -418,7 +418,7 @@ const Index = () => {
                         </div>
                         <aside
                             className="press-note mx-auto mt-10 w-full max-w-4xl rotate-[-1deg] px-5 py-4 text-center sm:px-8">
-                            <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-ink/50">Working note / not a verdict</span>
+                            <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink/50">Working note / not a verdict</span>
                             <p
                                 className="handwritten mt-2 text-[clamp(.95rem,2vw,1.3rem)] leading-tight text-primary lg:whitespace-nowrap">The food does not arrive alone. The day and its demands come with it.</p>
                         </aside>
@@ -488,7 +488,7 @@ const Index = () => {
                         </div>
                         <FieldStudies />
                         <aside className="press-note mt-10 max-w-lg rotate-[1deg] p-5 text-ink">
-                            <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-ink/50">Margin note</span>
+                            <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink/50">Margin note</span>
                             <p className="handwritten mt-2 text-lg leading-tight text-primary sm:text-xl">Maybe consistency is designed along with a life, not imposed on one.</p>
                         </aside>
                     </div>
@@ -538,7 +538,7 @@ const Index = () => {
                                 className="relative overflow-hidden rounded-[2rem] border border-ink/20 bg-[#f8f2e5] p-6 text-ink shadow-[8px_10px_0_rgba(23,59,48,.12)] sm:p-9">
                                 <div className="flex items-end justify-between gap-4">
                                     <div>
-                                        <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink/55">Our working loop</span>
+                                        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/55">Our working loop</span>
                                         <p className="mt-2 font-serif text-2xl leading-none text-ink">A plan that learns.</p>
                                     </div>
                                     <RefreshCcw className="h-8 w-8 stroke-[1.3] text-primary" aria-hidden="true" />
@@ -553,8 +553,8 @@ const Index = () => {
                                                         <StageIcon className="h-5 w-5 stroke-[1.6]" aria-hidden="true" />
                                                     </span>
                                                     <span className="min-w-0 flex-1">
-                                                        <small className="font-mono text-[7px] uppercase tracking-[0.15em] text-ink/45">Step 0{index + 1}</small>
-                                                        <strong className="mt-1 block break-words font-mono text-[10px] font-medium uppercase leading-snug tracking-[0.12em] text-ink sm:text-xs">{label}</strong>
+                                                        <small className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink/45">Step 0{index + 1}</small>
+                                                        <strong className="mt-1 block break-words font-mono text-[11px] font-medium uppercase leading-snug tracking-[0.12em] text-ink sm:text-xs">{label}</strong>
                                                         <span className="mt-1 block text-[11px] leading-snug text-ink/55">{note}</span>
                                                     </span>
                                                 </div>
@@ -588,7 +588,7 @@ const Index = () => {
                                         className={`rounded-[1.35rem] border p-5 shadow-[4px_5px_0_rgba(65,50,28,.05)] ${isInverted ? "border-charcoal bg-charcoal text-[#f8f2e5]" : "border-ink/15 bg-[#e7dcc5] text-ink"}`}>
                                         <div className="flex items-start justify-between gap-4">
                                             <Icon className={`h-8 w-8 stroke-[1.35] ${isInverted ? "text-[#d68b7f]" : "text-primary"}`} aria-hidden="true" />
-                                            <span className={`font-mono text-[8px] uppercase tracking-[0.14em] ${isInverted ? "text-[#f8f2e5]/45" : "text-ink/40"}`}>Signal 0{index + 1}</span>
+                                            <span className={`font-mono text-[11px] uppercase tracking-[0.14em] ${isInverted ? "text-[#f8f2e5]/45" : "text-ink/40"}`}>Signal 0{index + 1}</span>
                                         </div>
                                         <h4
                                             className={`mt-6 font-mono text-[11px] font-medium uppercase tracking-[0.15em] ${isInverted ? "text-[#f8f2e5]" : "text-ink"}`}>{title}</h4>
@@ -632,7 +632,7 @@ const Index = () => {
                                         href="mailto:harsha@thefoodlab.in?subject=The%20Fit%20Peasant%20experiment"
                                         className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">Ask about The Fit Peasant <ArrowRight className="h-4 w-4" />
                                     </a>
-                                    <span className="font-mono text-[9px] uppercase tracking-[0.13em] text-ink/50">Precision interactions. One enjoyable result.</span>
+                                    <span className="font-mono text-[11px] uppercase tracking-[0.13em] text-ink/50">Precision interactions. One enjoyable result.</span>
                                 </div>
                             </div>
                         </div>
@@ -670,7 +670,7 @@ const Index = () => {
                     <Brand />
                     <p className="font-serif text-xl italic text-ink/75 sm:text-center">Why does healthy often equal boring?</p>
                     <div
-                        className="font-mono text-[9px] uppercase leading-loose tracking-[0.12em] text-ink/50 sm:text-right">Bengaluru<br />harsha@thefoodlab.in</div>
+                        className="font-mono text-[11px] uppercase leading-loose tracking-[0.12em] text-ink/50 sm:text-right">Bengaluru<br />harsha@thefoodlab.in</div>
                 </div>
             </footer>
         </div>
