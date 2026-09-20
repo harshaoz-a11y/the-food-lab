@@ -111,7 +111,7 @@ export function RiceExperiment() {
           </div>
         </div>
 
-        <p className="mt-6 border-t border-dashed border-ink/25 pt-4 font-mono text-[9px] uppercase leading-relaxed tracking-[0.1em] text-ink/50">
+        <p className="mt-6 border-t border-dashed border-ink/25 pt-4 font-mono text-[11px] uppercase leading-relaxed tracking-[0.1em] text-ink/50">
           Figures summarise the supplied clinical comparison. Results depend on rice variety, method and study context; this is an observation, not personal dietary advice.
         </p>
       </div>
