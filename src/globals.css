@@ -2022,3 +2022,174 @@
 }
 
 /* Page-level separation is handled by the section wrappers above. */
+
+
+/* MAESTRO-036 / Interaction Map repair
+   Keep the existing interaction logic; replace the accumulated geometry with
+   one deliberate, readable composition. The five factors remain real buttons. */
+#question .interaction-map {
+  width: 100%;
+  max-width: 680px;
+  margin-inline: auto;
+}
+
+#question .map-stage {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  min-height: 430px;
+  margin-inline: auto;
+  overflow: visible;
+}
+
+#question .map-stage::before {
+  z-index: 0;
+  width: 300px;
+  height: 300px;
+  border-color: rgba(23, 59, 48, 0.18);
+}
+
+#question .map-vitruvian {
+  z-index: 1;
+  display: block;
+  width: 276px;
+  height: 276px;
+  opacity: 0.32;
+  object-fit: contain;
+  visibility: visible;
+  pointer-events: none;
+}
+
+#question .map-spokes {
+  z-index: 2;
+}
+
+#question .map-spoke {
+  width: 235px;
+  height: 2px;
+}
+
+#question .map-centre {
+  z-index: 7;
+  width: 94px;
+  height: 94px;
+}
+
+#question .map-factors {
+  z-index: 8;
+  pointer-events: none;
+}
+
+#question .factor,
+#question .factor:nth-child(1),
+#question .factor:nth-child(2),
+#question .factor:nth-child(3),
+#question .factor:nth-child(4),
+#question .factor:nth-child(5) {
+  box-sizing: border-box;
+  width: 190px;
+  min-height: 82px;
+  grid-template-columns: 25px minmax(0, 1fr);
+  gap: 0.6rem;
+  padding: 0.72rem 0.8rem;
+  border: 1px solid rgba(23, 59, 48, 0.22);
+  border-radius: 0.8rem;
+  background: rgba(248, 242, 229, 0.96);
+  box-shadow: 3px 4px 0 rgba(59, 49, 32, 0.07);
+  pointer-events: auto;
+  overflow: visible;
+}
+
+#question .factor:nth-child(1) { --factor-x: 0px; --factor-y: -178px; }
+#question .factor:nth-child(2) { --factor-x: 220px; --factor-y: -68px; }
+#question .factor:nth-child(3) { --factor-x: 220px; --factor-y: 68px; }
+#question .factor:nth-child(4) { --factor-x: -220px; --factor-y: 68px; }
+#question .factor:nth-child(5) { --factor-x: -220px; --factor-y: -68px; }
+
+#question .factor-copy {
+  min-width: 0;
+}
+
+#question .factor-copy strong {
+  display: block;
+  font-size: 0.98rem;
+  line-height: 1.05;
+}
+
+#question .factor-note {
+  display: block;
+  margin-top: 0.32rem;
+  font-size: 0.7rem;
+  line-height: 1.3;
+}
+
+#question .factor:hover {
+  transform: translate(calc(-50% + var(--factor-x)), calc(-50% + var(--factor-y))) translateY(-3px);
+}
+
+#question .factor.is-active {
+  transform: translate(calc(-50% + var(--factor-x)), calc(-50% + var(--factor-y))) translateY(-4px);
+}
+
+@media (max-width: 767px) {
+  #question .map-stage {
+    max-width: 360px;
+    min-height: 400px;
+  }
+
+  #question .map-stage::before {
+    width: 220px;
+    height: 220px;
+  }
+
+  #question .map-vitruvian {
+    width: 205px;
+    height: 205px;
+    opacity: 0.3;
+  }
+
+  #question .map-spoke {
+    width: 155px;
+  }
+
+  #question .map-centre {
+    width: 76px;
+    height: 76px;
+  }
+
+  #question .map-centre span {
+    font-size: 0.82rem;
+  }
+
+  #question .map-centre small {
+    font-size: 0.62rem;
+  }
+
+  #question .factor,
+  #question .factor:nth-child(1),
+  #question .factor:nth-child(2),
+  #question .factor:nth-child(3),
+  #question .factor:nth-child(4),
+  #question .factor:nth-child(5) {
+    width: 136px;
+    min-height: 68px;
+    grid-template-columns: 20px minmax(0, 1fr);
+    gap: 0.4rem;
+    padding: 0.55rem 0.6rem;
+    border-radius: 0.65rem;
+  }
+
+  #question .factor:nth-child(1) { --factor-x: 0px; --factor-y: -155px; }
+  #question .factor:nth-child(2) { --factor-x: 112px; --factor-y: -58px; }
+  #question .factor:nth-child(3) { --factor-x: 112px; --factor-y: 58px; }
+  #question .factor:nth-child(4) { --factor-x: -112px; --factor-y: 58px; }
+  #question .factor:nth-child(5) { --factor-x: -112px; --factor-y: -58px; }
+
+  #question .factor-copy strong {
+    font-size: 0.86rem;
+  }
+
+  #question .factor-note {
+    font-size: 0.64rem;
+  }
+}
