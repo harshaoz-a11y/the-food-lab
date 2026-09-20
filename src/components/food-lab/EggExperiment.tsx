@@ -21,13 +21,15 @@ export function EggExperiment() {
   const current = states[active];
 
   return (
-    <div className="experiment-card grid gap-6">
-      <div className="overflow-hidden bg-transparent">
-        <img
-          src={maestroAssets.eggReference}
-          alt="Illustrated comparison of raw and cooked egg protein digestibility"
-          className="w-full mix-blend-multiply"
-        />
+    <div className="experiment-card grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,.85fr)] lg:items-center">
+      <div className="evidence-photo egg-evidence">
+        <div className={`egg-state-illustration is-${active}`}>
+          <img
+            src={maestroAssets.eggReference}
+            alt="Illustrated comparison of raw and cooked egg protein digestibility"
+          />
+          <span className="egg-now-showing">Now showing: {current.label}</span>
+        </div>
       </div>
 
       <div className="experiment-panel">
@@ -54,10 +56,7 @@ export function EggExperiment() {
             <span className={`mb-2 handwritten transition-colors duration-300 ${active === "cooked" ? "text-green-700" : "text-primary"}`}>received?</span>
           </div>
           <div className="measure-track mt-4" aria-hidden="true">
-            <span
-              className={active === "cooked" ? "is-green" : ""}
-              style={{ width: `${current.value}%` }}
-            />
+            <span className={active === "cooked" ? "is-green" : ""} style={{ width: `${current.value}%` }} />
           </div>
           <p className="mt-4 max-w-md text-base leading-relaxed text-ink/75">{current.note}</p>
         </div>
