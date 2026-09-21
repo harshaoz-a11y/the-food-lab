@@ -91,15 +91,9 @@ const partnerships = [
 
 export function AlchemyPartnerships() {
   const [selected, setSelected] = useState(0);
-  const [glow, setGlow] = useState(70);
   const current = partnerships[selected];
   const CurrentIcon = current.icon;
 
-  // Glow intensity drives the two circle halos + the fusion core — a genuine
-  // control, not decoration: dragging it visibly brightens/dims the overlap.
-  const glowBlur = 10 + (glow / 100) * 40;
-  const glowSpread = glowBlur / 2.4;
-  const glowOpacity = 0.22 + (glow / 100) * 0.42;
 
   return (
     <section
@@ -112,7 +106,7 @@ export function AlchemyPartnerships() {
           <h3
             id="alchemy-partnerships-heading"
             className="mt-1.5 text-2xl font-normal tracking-[-0.02em] sm:text-3xl"
-            style={{ fontFamily: "\"Segoe Print\", \"Bradley Hand\", cursive" }}
+            
           >
             The Fit Peasant partnerships
           </h3>
@@ -160,7 +154,7 @@ export function AlchemyPartnerships() {
                 aria-selected={selected === index}
                 aria-controls="fusion-reader-panel"
                 onClick={() => setSelected(index)}
-                className={`shrink-0 rounded-full px-2 py-1 font-mono text-[7.5px] transition sm:px-2.5 sm:text-[8px] ${
+                className={`shrink-0 rounded-full min-h-8 px-3 py-1.5 font-mono text-[8px] transition sm:min-h-8 sm:px-3 sm:text-[8px] ${
                   selected === index
                     ? "bg-[#2d7d46] text-[#f8f2e5]"
                     : "text-[#f8f2e5]/45 hover:text-[#f8f2e5]/75"
@@ -180,9 +174,7 @@ export function AlchemyPartnerships() {
             <div key={selected} className="flex animate-in fade-in zoom-in-95 duration-300">
               <div
                 className="flex h-[140px] w-[140px] flex-col items-start justify-center rounded-full border border-[#a33a2b]/60 bg-[#a33a2b]/[0.14] px-4 text-left sm:h-[180px] sm:w-[180px] sm:px-6"
-                style={{
-                  boxShadow: `0 0 ${glowBlur}px ${glowSpread}px rgba(163,58,43,${glowOpacity})`,
-                }}
+                
               >
                 <strong className="w-[74px] break-words font-serif text-sm font-normal leading-tight text-[#f3ddd5] sm:w-[100px] sm:text-lg">
                   {current.left}
@@ -194,9 +186,7 @@ export function AlchemyPartnerships() {
 
               <div
                 className="-ml-10 flex h-[140px] w-[140px] flex-col items-end justify-center rounded-full border border-[#2d7d46]/60 bg-[#2d7d46]/[0.14] px-4 text-right sm:-ml-14 sm:h-[180px] sm:w-[180px] sm:px-6"
-                style={{
-                  boxShadow: `0 0 ${glowBlur}px ${glowSpread}px rgba(45,125,70,${glowOpacity})`,
-                }}
+                
               >
                 <strong className="w-[74px] break-words font-serif text-sm font-normal leading-tight text-[#deeee2] sm:w-[100px] sm:text-lg">
                   {current.right}
@@ -211,9 +201,7 @@ export function AlchemyPartnerships() {
               <div
                 key={`core-${selected}`}
                 className="flex h-16 w-16 flex-col items-center justify-center rounded-full border-4 border-[#122019] bg-[#f8f2e5] text-center text-[#173b30] animate-in fade-in zoom-in-95 duration-300 sm:h-20 sm:w-20"
-                style={{
-                  boxShadow: `0 0 ${glowBlur}px ${glowSpread}px rgba(248,242,229,${glowOpacity})`,
-                }}
+                
               >
                 <CurrentIcon className="h-3.5 w-3.5 stroke-[1.8] sm:h-4 sm:w-4" aria-hidden="true" />
                 <span className="mt-0.5 font-mono text-[5.5px] uppercase tracking-[0.1em] sm:text-[6px]">Fusion</span>
@@ -253,21 +241,6 @@ export function AlchemyPartnerships() {
           </span>
         </div>
 
-        <div className="mt-4 rounded-[1.25rem] border border-[#173b30]/15 bg-[#f8f2e5] p-4 sm:p-5">
-          <div className="flex items-center justify-between gap-3">
-            <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-[#173b30]/55">Visual synergy glow intensity</span>
-            <span className="font-mono text-[10px] text-[#2d7d46]">{glow}%</span>
-          </div>
-          <input
-            type="range"
-            min={10}
-            max={100}
-            value={glow}
-            onChange={(event) => setGlow(Number(event.target.value))}
-            className="mt-3 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-[#173b30]/15 accent-[#2d7d46]"
-            aria-label="Adjust the visual glow intensity of the interaction diagram"
-          />
-        </div>
 
         <p className="mt-4 border-t border-dashed border-[#a33a2b]/25 pt-4 font-mono text-[8px] uppercase leading-relaxed tracking-[0.11em] text-[#a33a2b]/55">
           Amounts reflect the current formula. Benefits describe culinary and formulation roles, not personal medical advice.
