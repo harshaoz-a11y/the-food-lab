@@ -48,7 +48,7 @@ export function EggExperiment() {
         </div>
 
         <div className="mt-6" aria-live="polite">
-          <span className="lab-label">estimated protein digestibility</span>
+          <span className="lab-label">true ileal protein digestibility</span>
           <div className="mt-3 flex items-end gap-3">
             <strong className={`font-serif text-6xl font-normal leading-none transition-colors duration-300 sm:text-7xl ${active === "cooked" ? "text-green-700" : "text-ink"}`}>
               {current.value}%
@@ -62,7 +62,7 @@ export function EggExperiment() {
         </div>
 
         <p className="mt-6 border-t border-dashed border-ink/25 pt-4 font-mono text-[11px] uppercase leading-relaxed tracking-[0.1em] text-ink/55">
-          Human data discussed in Fuchs et al., The Journal of Nutrition (2022). This is an observation, not personal dietary advice.
+          Human data: Evenepoel et al., The Journal of Nutrition (1998); discussed in Fuchs et al., The Journal of Nutrition (2022). This is an observation, not personal dietary advice.
         </p>
       </div>
     </div>
