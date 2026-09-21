@@ -88,10 +88,10 @@ export function RiceExperiment() {
           <div className="rice-curve mt-5">
             <div className="rice-chart-wrap">
               <div className="rice-primary-metric">
-                <span>Illustrative post-meal glucose peak</span>
+                <span>Illustrative comparison · post-meal glucose peak</span>
                 <strong>{current.glucosePeak}</strong>
               </div>
-              <svg viewBox="0 0 120 100" role="img" aria-label="Illustrative comparison of post-meal glucose curves">
+              <svg viewBox="0 0 120 100" role="img" aria-label="Conceptual illustration of the relative post-meal glucose curves shown in this comparison">
                 <path className="rice-curve-inactive rice-curve-fresh" d={preparations.fresh.curve} />
                 <path className="rice-curve-inactive rice-curve-reheated" d={preparations.reheated.curve} />
                 <path className="rice-curve-inactive rice-curve-coconut" d={preparations.coconut.curve} />
@@ -112,7 +112,7 @@ export function RiceExperiment() {
         </div>
 
         <p className="mt-6 border-t border-dashed border-ink/25 pt-4 font-mono text-[11px] uppercase leading-relaxed tracking-[0.1em] text-ink/50">
-          Figures summarise the supplied clinical comparison. Results depend on rice variety, method and study context; this is an observation, not personal dietary advice.
+          Figures summarise the supplied clinical comparison. The curves are illustrative rather than plotted study data; results depend on rice variety, method and study context. This is an observation, not personal dietary advice.
         </p>
       </div>
     </div>
