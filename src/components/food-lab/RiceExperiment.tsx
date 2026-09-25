@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Clock3, Snowflake, Sparkles, TrendingDown, TrendingUp, Utensils } from "lucide-react";
-import riceEvolution from "@/assets/rice-evolution.jpg";
+import riceInteraction from "@/assets/rice-interaction.svg";
 
 const preparations = {
   fresh: {
@@ -55,8 +55,8 @@ export function RiceExperiment() {
       <div className="evidence-photo rice-evidence">
         <div className={`rice-plate-illustration is-${active}`}>
           <img
-            src={riceEvolution}
-            alt="Illustration comparing fresh hot rice, refrigerated and reheated rice, and rice prepared with coconut oil before cooling"
+            src={riceInteraction}
+            alt="Rice interaction illustration showing how the same food can change through preparation, cooling and reheating"
           />
           <span className="rice-now-showing">Now showing: {current.label}</span>
         </div>
