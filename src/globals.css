@@ -689,6 +689,14 @@
 .rice-plate-illustration img {
   transition: opacity 260ms ease, filter 260ms ease;
 }
+.rice-plate-illustration img {
+  width: min(100%, 720px);
+  max-height: 330px;
+  margin: 0 auto;
+  object-fit: contain;
+  opacity: .72;
+  mix-blend-mode: multiply;
+}
 .egg-state-illustration.is-raw img,
 .egg-state-illustration.is-cooked img,
 .rice-plate-illustration.is-fresh img,
