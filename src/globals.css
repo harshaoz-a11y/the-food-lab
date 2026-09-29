@@ -2646,10 +2646,39 @@ main > section.reveal.is-revealed {
 }
 
 /* The egg is a drawn object rather than a static comparison image. */
+.egg-evidence {
+  overflow: visible;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
 .egg-state-illustration {
-  display: grid;
-  min-height: 320px;
-  place-items: center;
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  align-items: center;
+}
+.egg-art {
+  width: min(100%, 420px);
+  aspect-ratio: 1064 / 960;
+}
+.egg-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.egg-now-showing {
+  position: static;
+  display: block;
+  margin-top: 0.55rem;
+  border-color: rgba(23, 59, 48, 0.28);
+  padding: 0.45rem 0.75rem;
+  background: transparent;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.2;
 }
 .egg-object {
   display: block;

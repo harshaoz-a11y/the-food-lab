@@ -35,7 +35,9 @@ export function EggExperiment() {
     <div className="experiment-card grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,.85fr)] lg:items-center">
       <div className="evidence-photo egg-evidence">
         <div className={`egg-state-illustration is-${active}`}>
-          <EggIllustration active={active} />
+          <div className="egg-art">
+            <EggIllustration active={active} />
+          </div>
           <span className="egg-now-showing">Now showing: {current.label}</span>
         </div>
       </div>
