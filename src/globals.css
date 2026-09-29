@@ -2390,23 +2390,67 @@ main > section.reveal.is-revealed {
 #question .factor:nth-child(3),
 #question .factor:nth-child(4),
 #question .factor:nth-child(5) {
-  width: 95px;
-  min-height: 41px;
-  grid-template-columns: 16px minmax(0, 1fr);
-  gap: 0.3rem;
-  padding: 0.38rem;
+  width: 190px;
+  min-height: 82px;
+  grid-template-columns: 25px minmax(0, 1fr);
+  gap: 0.6rem;
+  padding: 0.72rem 0.8rem;
   transform: translate(calc(-50% + var(--factor-x)), calc(-50% + var(--factor-y))) scale(.5);
   transform-origin: center;
   transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
 }
+#question .factor:nth-child(1) { --factor-x: 0px; --factor-y: -150px; }
+#question .factor:nth-child(2) { --factor-x: 143px; --factor-y: -46px; }
+#question .factor:nth-child(3) { --factor-x: 143px; --factor-y: 46px; }
+#question .factor:nth-child(4) { --factor-x: -143px; --factor-y: 46px; }
+#question .factor:nth-child(5) { --factor-x: -143px; --factor-y: -46px; }
 #question .factor:hover,
 #question .factor:focus-visible,
 #question .factor.is-active {
   transform: translate(calc(-50% + var(--factor-x)), calc(-50% + var(--factor-y))) scale(1);
 }
-#question .factor svg { width: 16px; height: 16px; }
-#question .factor-copy strong { font-size: .74rem; }
-#question .factor-note { margin-top: .15rem; font-size: .52rem; line-height: 1.15; }
+#question .factor-copy {
+  justify-content: center;
+  overflow: hidden;
+}
+#question .factor-copy strong {
+  font-size: .98rem;
+  transition: transform 220ms ease;
+}
+#question .factor-note {
+  display: block;
+  max-width: 100%;
+  max-height: 0;
+  margin-top: 0;
+  overflow: hidden;
+  opacity: 0;
+  font-size: .7rem;
+  line-height: 1.3;
+  white-space: nowrap;
+  transition: max-height 220ms ease, margin-top 220ms ease, opacity 220ms ease;
+}
+#question .factor-ticker {
+  display: inline-block;
+  min-width: max-content;
+  animation: factor-ticker 7s linear infinite;
+}
+#question .factor:hover .factor-copy,
+#question .factor:focus-visible .factor-copy,
+#question .factor.is-active .factor-copy {
+  justify-content: flex-start;
+}
+#question .factor:hover .factor-note,
+#question .factor:focus-visible .factor-note,
+#question .factor.is-active .factor-note {
+  max-height: 1.3rem;
+  margin-top: .32rem;
+  opacity: 1;
+}
+#question .factor svg { width: 21px; height: 21px; }
+@keyframes factor-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 
 /* Keep the post-meal comparison compact so the evidence remains scannable. */
 .rice-curve { min-height: 108px; padding: .7rem; }
@@ -2425,11 +2469,16 @@ main > section.reveal.is-revealed {
   #question .factor:nth-child(3),
   #question .factor:nth-child(4),
   #question .factor:nth-child(5) {
-    width: 68px;
-    min-height: 34px;
-    padding: .3rem;
+    width: 136px;
+    min-height: 68px;
+    padding: .55rem .6rem;
   }
-  #question .factor-copy strong { font-size: .66rem; }
-  #question .factor-note { font-size: .48rem; }
+  #question .factor:nth-child(1) { --factor-x: 0px; --factor-y: -110px; }
+  #question .factor:nth-child(2) { --factor-x: 105px; --factor-y: -34px; }
+  #question .factor:nth-child(3) { --factor-x: 105px; --factor-y: 34px; }
+  #question .factor:nth-child(4) { --factor-x: -105px; --factor-y: 34px; }
+  #question .factor:nth-child(5) { --factor-x: -105px; --factor-y: -34px; }
+  #question .factor-copy strong { font-size: .86rem; }
+  #question .factor-note { font-size: .64rem; }
   .rice-chart-wrap svg { height: 118px; }
 }

@@ -71,7 +71,9 @@ export function InteractionMap() {
               <Icon aria-hidden="true" />
               <span className="factor-copy">
                 <strong>{label}</strong>
-                <span className="factor-note">{note}</span>
+                <span className="factor-note" aria-hidden={activeIndex !== index}>
+                  <span className="factor-ticker">{note}&nbsp;&nbsp; · &nbsp;&nbsp;{note}</span>
+                </span>
               </span>
             </button>
           ))}
