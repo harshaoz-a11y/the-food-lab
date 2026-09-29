@@ -12,8 +12,8 @@ const interactions = [{
     benefit: "A more balanced protein profile",
     insight: "Whey brings a lighter, faster-digesting protein source; casein adds a creamier body and a slower-digesting counterpart. Together they make the serving feel more complete than either protein alone.",
     icon: Zap,
-    x: 24,
-    y: 29
+    x: 19,
+    y: 21
 }, {
     region: "texture",
     circleLabel: "Texture",
@@ -25,8 +25,8 @@ const interactions = [{
     benefit: "Steadier texture and a slower carbohydrate release",
     insight: "The oats provide structure while psyllium binds water and thickens the mixture. Their combined fibre matrix creates a more substantial, spoonable texture and may slow digestion compared with oats alone.",
     icon: Wheat,
-    x: 76,
-    y: 29
+    x: 81,
+    y: 21
 }, {
     region: "flavour",
     circleLabel: "Flavour",
@@ -39,7 +39,7 @@ const interactions = [{
     insight: "Defatted peanut powder supplies roasted richness and body. A tiny amount of orange zest adds volatile citrus oils that brighten the peanut notes and keep the flavour from feeling heavy.",
     icon: Citrus,
     x: 50,
-    y: 83
+    y: 82
 }, {
     region: "foundation-texture",
     circleLabel: "Foundation × texture",
@@ -52,7 +52,7 @@ const interactions = [{
     insight: "The larger nut fragments create crunch while broken flax fills the spaces with a finer toasted texture. The contrast makes each bite last longer and adds fibre and naturally occurring fats.",
     icon: Brain,
     x: 50,
-    y: 23
+    y: 28
 }, {
     region: "foundation-flavour",
     circleLabel: "Foundation × flavour",
@@ -64,7 +64,7 @@ const interactions = [{
     benefit: "Cocoa depth balanced by fresh, juicy contrast",
     insight: "Unsweetened cocoa creates the dark base. Whole blueberries release brief pockets of acidity, aroma and moisture, cutting through cocoa bitterness without diluting its character.",
     icon: Sparkles,
-    x: 34,
+    x: 31,
     y: 56
 }, {
     region: "texture-flavour",
@@ -77,7 +77,7 @@ const interactions = [{
     benefit: "Small, varied bursts of sweetness and chew",
     insight: "Golden and black raisins contribute slightly different caramel and fruit notes. Used whole and sparingly, they distribute sweetness as distinct bites rather than turning the entire base uniformly sweet.",
     icon: Grape,
-    x: 66,
+    x: 69,
     y: 56
 }, {
     region: "all-three",
@@ -151,77 +151,11 @@ export function AlchemyPartnerships() {
                             key={role.label}
                             className={`venn-circle ${role.className}`}
                             aria-hidden="true" />))}
-                        <svg
-                            className="venn-region-highlight"
-                            viewBox="0 0 134 100"
-                            preserveAspectRatio="none"
-                            aria-hidden="true">
-                            <defs>
-                                <clipPath id="venn-foundation-clip">
-                                    <ellipse cx="50.25" cy="47.19" rx="38.19" ry="38.19" />
-                                </clipPath>
-                                <clipPath id="venn-texture-clip">
-                                    <ellipse cx="83.75" cy="47.19" rx="38.19" ry="38.19" />
-                                </clipPath>
-                                <clipPath id="venn-flavour-clip">
-                                    <ellipse cx="67" cy="75.19" rx="38.19" ry="38.19" />
-                                </clipPath>
-                                <mask id="venn-region-foundation" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
-                                    <rect width="134" height="100" fill="black" />
-                                    <ellipse cx="50.25" cy="47.19" rx="38.19" ry="38.19" fill="white" />
-                                    <ellipse cx="83.75" cy="47.19" rx="38.19" ry="38.19" fill="black" />
-                                    <ellipse cx="67" cy="75.19" rx="38.19" ry="38.19" fill="black" />
-                                </mask>
-                                <mask id="venn-region-texture" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
-                                    <rect width="134" height="100" fill="black" />
-                                    <ellipse cx="83.75" cy="47.19" rx="38.19" ry="38.19" fill="white" />
-                                    <ellipse cx="50.25" cy="47.19" rx="38.19" ry="38.19" fill="black" />
-                                    <ellipse cx="67" cy="75.19" rx="38.19" ry="38.19" fill="black" />
-                                </mask>
-                                <mask id="venn-region-flavour" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
-                                    <rect width="134" height="100" fill="black" />
-                                    <ellipse cx="67" cy="75.19" rx="38.19" ry="38.19" fill="white" />
-                                    <ellipse cx="50.25" cy="47.19" rx="38.19" ry="38.19" fill="black" />
-                                    <ellipse cx="83.75" cy="47.19" rx="38.19" ry="38.19" fill="black" />
-                                </mask>
-                                <mask id="venn-region-foundation-texture" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
-                                    <rect width="134" height="100" fill="black" />
-                                    <g clipPath="url(#venn-foundation-clip)">
-                                        <ellipse cx="83.75" cy="47.19" rx="38.19" ry="38.19" fill="white" />
-                                    </g>
-                                    <ellipse cx="67" cy="75.19" rx="38.19" ry="38.19" fill="black" />
-                                </mask>
-                                <mask id="venn-region-foundation-flavour" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
-                                    <rect width="134" height="100" fill="black" />
-                                    <g clipPath="url(#venn-foundation-clip)">
-                                        <ellipse cx="67" cy="75.19" rx="38.19" ry="38.19" fill="white" />
-                                    </g>
-                                    <ellipse cx="83.75" cy="47.19" rx="38.19" ry="38.19" fill="black" />
-                                </mask>
-                                <mask id="venn-region-texture-flavour" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
-                                    <rect width="134" height="100" fill="black" />
-                                    <g clipPath="url(#venn-texture-clip)">
-                                        <ellipse cx="67" cy="75.19" rx="38.19" ry="38.19" fill="white" />
-                                    </g>
-                                    <ellipse cx="50.25" cy="47.19" rx="38.19" ry="38.19" fill="black" />
-                                </mask>
-                                <mask id="venn-region-all-three" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
-                                    <rect width="134" height="100" fill="black" />
-                                    <g clipPath="url(#venn-foundation-clip)">
-                                        <g clipPath="url(#venn-texture-clip)">
-                                            <ellipse cx="67" cy="75.19" rx="38.19" ry="38.19" fill="white" />
-                                        </g>
-                                    </g>
-                                </mask>
-                            </defs>
-                            {interactions.map((interaction, index) => (<rect
-                                key={interaction.interaction}
-                                className={`venn-region-fill ${activeIndex === index ? "is-active" : ""}`}
-                                width="134"
-                                height="100"
-                                fill="#2d7d46"
-                                mask={`url(#venn-region-${interaction.region})`} />))}
-                        </svg>
+                        <div className="venn-centre-mark" aria-hidden="true">
+                            <span>Fit</span>
+                            <strong>Peasant</strong>
+                            <small>formula</small>
+                        </div>
                         {interactions.map((interaction, index) => {
                             const Icon = interaction.icon;
                             const isActive = activeIndex === index;
