@@ -2381,3 +2381,55 @@ main > section.reveal.is-revealed {
     transition: none;
   }
 }
+
+/* Interaction map: keep the meal clean and let each decision reveal itself on hover. */
+#question .map-spokes { display: none; }
+#question .factor,
+#question .factor:nth-child(1),
+#question .factor:nth-child(2),
+#question .factor:nth-child(3),
+#question .factor:nth-child(4),
+#question .factor:nth-child(5) {
+  width: 95px;
+  min-height: 41px;
+  grid-template-columns: 16px minmax(0, 1fr);
+  gap: 0.3rem;
+  padding: 0.38rem;
+  transform: translate(calc(-50% + var(--factor-x)), calc(-50% + var(--factor-y))) scale(.5);
+  transform-origin: center;
+  transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
+}
+#question .factor:hover,
+#question .factor:focus-visible,
+#question .factor.is-active {
+  transform: translate(calc(-50% + var(--factor-x)), calc(-50% + var(--factor-y))) scale(1);
+}
+#question .factor svg { width: 16px; height: 16px; }
+#question .factor-copy strong { font-size: .74rem; }
+#question .factor-note { margin-top: .15rem; font-size: .52rem; line-height: 1.15; }
+
+/* Keep the post-meal comparison compact so the evidence remains scannable. */
+.rice-curve { min-height: 108px; padding: .7rem; }
+.rice-chart-wrap { min-height: 108px; }
+.rice-chart-wrap svg { height: 128px; padding-top: 1.4rem; }
+.rice-primary-metric { gap: .45rem; }
+.rice-primary-metric span { font-size: 9px; }
+.rice-primary-metric strong { font-size: 1.05rem; }
+.rice-fact { padding: .5rem .6rem; }
+.rice-panel > div[aria-live="polite"] { margin-top: 1rem; }
+
+@media (max-width: 767px) {
+  #question .factor,
+  #question .factor:nth-child(1),
+  #question .factor:nth-child(2),
+  #question .factor:nth-child(3),
+  #question .factor:nth-child(4),
+  #question .factor:nth-child(5) {
+    width: 68px;
+    min-height: 34px;
+    padding: .3rem;
+  }
+  #question .factor-copy strong { font-size: .66rem; }
+  #question .factor-note { font-size: .48rem; }
+  .rice-chart-wrap svg { height: 118px; }
+}

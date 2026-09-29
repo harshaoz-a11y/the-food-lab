@@ -40,7 +40,7 @@ const factors = [
   },
 ];
 
-const defaultCaption = "Tap a condition. Watch the meal change.";
+const defaultCaption = "Hover over a condition. Watch the meal change.";
 
 export function InteractionMap() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -50,19 +50,10 @@ export function InteractionMap() {
     <figure className="interaction-map" aria-labelledby="map-caption">
       <div className="map-stage">
         <img className="map-vitruvian" src={vitruvianClean} alt="" aria-hidden="true" />
-        <div className="map-spokes" aria-hidden="true">
-          {factors.map((factor, index) => (
-            <span
-              key={factor.label}
-              className={`map-spoke ${activeIndex === index ? "is-active" : ""}`}
-            />
-          ))}
-        </div>
-
         <div className="map-centre" aria-live="polite">
           <UtensilsCrossed />
           <span>one meal</span>
-          <small>{activeFactor?.outcome ?? "many outcomes"}</small>
+          <small>{activeFactor?.outcome ?? "Many Decisions"}</small>
         </div>
 
         <div className="map-factors">
@@ -72,7 +63,10 @@ export function InteractionMap() {
               type="button"
               className={`factor ${activeIndex === index ? "is-active" : ""}`}
               aria-pressed={activeIndex === index}
-              onClick={() => setActiveIndex(index)}
+              onMouseEnter={() => setActiveIndex(index)}
+              onMouseLeave={() => setActiveIndex(null)}
+              onFocus={() => setActiveIndex(index)}
+              onBlur={() => setActiveIndex(null)}
             >
               <Icon aria-hidden="true" />
               <span className="factor-copy">

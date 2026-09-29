@@ -372,9 +372,9 @@ function ConsultationForm() {
                 <span
                     className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#d68b7f]">The Fit Peasant</span>
                 <strong
-                    className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Want to try out our awesome protein bar?</strong>
+                    className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Try Protein11 now!</strong>
                 <span
-                    className="mt-5 inline-flex items-center gap-2 text-sm text-[#f8f2e5]/70 transition group-hover:text-[#f8f2e5]">Ask about the bar <ArrowRight className="h-4 w-4" /></span>
+                    className="mt-5 inline-flex items-center gap-2 text-sm text-[#f8f2e5]/70 transition group-hover:text-[#f8f2e5]">Try Protein11 now <ArrowRight className="h-4 w-4" /></span>
             </a>
         </div>
     );
