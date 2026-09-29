@@ -78,6 +78,7 @@
   .bg-paper { background-color: var(--paper); }
   .bg-paper-light { background-color: var(--paper-light); }
   .bg-charcoal { background-color: var(--charcoal); }
+  .bg-green { background-color: var(--green); }
   .font-serif { font-family: "Fraunces", Georgia, "Times New Roman", serif; }
   .handwritten { font-family: "Caveat", cursive; }
 }
@@ -2622,8 +2623,24 @@ main > section.reveal.is-revealed {
   margin: 0;
   transform: translateX(-50%);
   font-weight: 700;
-}
-#question .map-centre-text {
+  font-size: 1.3rem;
+  }
+  #question .map-dotted-spokes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  #question .map-dotted-spoke {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 50%;
+    height: 0;
+    border-top: 1px dotted rgba(23, 59, 48, 0.2);
+    transform-origin: left center;
+    pointer-events: none;
+  }
+  #question .map-centre-text {
   display: block;
   width: 100%;
   max-width: none;
