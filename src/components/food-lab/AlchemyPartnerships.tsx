@@ -125,11 +125,11 @@ export function AlchemyPartnerships() {
                     <h3
                         id="alchemy-partnerships-heading"
                         className="mt-1.5 text-2xl font-normal tracking-[-0.02em] sm:text-3xl">The Fit Peasant partnerships
-                                  </h3>
+                                                          </h3>
                 </div>
                 <span
                     className="w-fit rounded-full border-2 border-dashed border-[#a33a2b] bg-[#fdf6ec] px-4 py-1.5 font-mono text-[9px] uppercase tracking-[0.13em] text-[#a33a2b]/75">7 interactions / hover an overlap
-                            </span>
+                                                </span>
             </header>
             <div className="alchemy-body bg-[#fdf6ec] px-4 py-5 sm:px-6 sm:py-7">
                 <div
@@ -196,7 +196,8 @@ export function AlchemyPartnerships() {
                             <small>{role.note}</small>
                         </div>))}
                     </div>
-                    <p className="venn-reader-hint">Hover or tab to a numbered overlap to read its benefit</p>
+                    <p className="venn-reader-hint text-[0px]">
+                    </p>
                 </div>
                 <div
                     className="mt-4 grid grid-cols-3 gap-2 rounded-[1.25rem] border border-[#173b30]/15 bg-[#f3ead8] p-3 sm:gap-3 sm:p-5">
@@ -238,7 +239,7 @@ export function AlchemyPartnerships() {
                 </div>
                 <p
                     className="mt-4 border-t border-dashed border-[#a33a2b]/25 pt-4 font-mono text-[8px] uppercase leading-relaxed tracking-[0.11em] text-[#a33a2b]/55">Amounts reflect the current formula. Benefits describe culinary and formulation roles, not personal medical advice.
-                            </p>
+                                                </p>
             </div>
         </section>
     );
