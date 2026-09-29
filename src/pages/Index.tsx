@@ -219,12 +219,12 @@ function Header() {
                     className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-ink/30 lg:block">
                 </span>
                 <nav
-                    className="hidden items-center gap-4 lg:flex"
+                    className="hidden items-center gap-8 lg:flex xl:gap-12"
                     aria-label="Primary navigation">
                     {navigation.map(item => (<a
                         key={item.href}
                         href={item.href}
-                        className="text-xs text-ink/65 transition-colors hover:text-primary">
+                        className="text-sm text-ink/65 transition-colors hover:text-primary xl:text-base">
                         {item.label}
                     </a>))}
                 </nav>
