@@ -425,7 +425,9 @@ const Index = () => {
                                 <p
                                     className="mt-8 max-w-lg font-serif text-lg leading-snug text-ink/75 sm:text-xl lg:text-2xl">Most of us keep changing the list. We study what happens around it.</p>
                                 {}
-                                <p className="mt-7 max-w-md font-serif text-2xl italic leading-tight text-primary sm:text-3xl">What if… diets could be delicious?</p>
+                                <p
+                                    className="handwritten mt-5 max-w-xs rotate-[-0.5deg] text-sm text-primary/70">
+                                </p>
                             </div>
                             <InteractionMap />
                         </div>
@@ -635,6 +637,8 @@ const Index = () => {
                                 })}
                             </div>
                         </div>
+                        <p
+                            className="handwritten mt-10 border-t border-dashed border-ink/25 pt-7 text-center text-xl text-primary sm:text-2xl">What if… diets could be delicious?</p>
                     </div>
                 </section>
                 <section id="fit-peasant" className="px-4 sm:px-6 lg:px-8">
