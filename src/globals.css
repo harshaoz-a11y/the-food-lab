@@ -2768,3 +2768,405 @@ main > section.reveal.is-revealed {
   .egg-object,
   .steam { animation: none; }
 }
+
+/* Fit Peasant: one three-set Venn diagram for all seven ingredient interactions. */
+.venn-reader {
+  color: #f8f2e5;
+}
+
+.venn-reader-intro {
+  position: relative;
+  z-index: 2;
+  max-width: 340px;
+  padding: 1.25rem 1.25rem 0;
+}
+
+.venn-reader-intro p {
+  margin-top: 0.35rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.2;
+  color: rgba(248, 242, 229, 0.72);
+}
+
+.venn-diagram {
+  position: relative;
+  width: min(100%, 800px);
+  aspect-ratio: 1.34;
+  min-height: 500px;
+  margin: 0 auto;
+}
+
+.venn-circle {
+  position: absolute;
+  z-index: 1;
+  width: 57%;
+  aspect-ratio: 1;
+  border: 1.5px solid;
+  border-radius: 50%;
+  color: rgba(248, 242, 229, 0.72);
+  mix-blend-mode: screen;
+}
+
+.venn-circle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: currentColor;
+  opacity: 0.045;
+}
+
+.venn-circle span,
+.venn-circle small {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.venn-circle span {
+  top: 9%;
+  font: 10px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.13em;
+}
+
+.venn-circle small {
+  top: calc(9% + 1.1rem);
+  font: 7px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.08em;
+  opacity: 0.52;
+}
+
+.venn-circle-foundation {
+  left: 9%;
+  top: 9%;
+  color: #e5a69c;
+}
+
+.venn-circle-texture {
+  right: 9%;
+  top: 9%;
+  color: #8fd4a6;
+}
+
+.venn-circle-flavour {
+  left: 21.5%;
+  top: 37%;
+  color: #d9c184;
+}
+
+.venn-circle-flavour span {
+  top: auto;
+  bottom: 8%;
+}
+
+.venn-circle-flavour small {
+  top: auto;
+  bottom: calc(8% - 1.1rem);
+}
+
+.venn-centre-mark {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 49%;
+  display: flex;
+  width: 88px;
+  height: 88px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transform: translate(-50%, -50%);
+  border: 1px dashed rgba(248, 242, 229, 0.58);
+  border-radius: 50%;
+  background: rgba(15, 29, 23, 0.4);
+  text-align: center;
+}
+
+.venn-centre-mark span,
+.venn-centre-mark small {
+  font: 7px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(248, 242, 229, 0.55);
+}
+
+.venn-centre-mark strong {
+  margin-top: 0.08rem;
+  font: 1rem "Fraunces", Georgia, serif;
+  font-weight: 400;
+  color: #f8f2e5;
+}
+
+.venn-centre-mark small {
+  margin-top: 0.15rem;
+  font-size: 6px;
+}
+
+.venn-zone {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  width: 148px;
+  min-height: 74px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.15rem;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(248, 242, 229, 0.28);
+  border-radius: 0.85rem;
+  padding: 0.65rem 0.55rem 0.55rem;
+  cursor: pointer;
+  color: #f8f2e5;
+  background: rgba(15, 29, 23, 0.84);
+  box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.16);
+  font: inherit;
+  text-align: center;
+  transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
+}
+
+.venn-zone-foundation,
+.venn-zone-texture,
+.venn-zone-flavour {
+  width: 132px;
+}
+
+.venn-zone-all-three {
+  width: 136px;
+  border-color: rgba(229, 166, 156, 0.5);
+}
+
+.venn-zone:hover,
+.venn-zone:focus-visible,
+.venn-zone.is-active {
+  transform: translate(-50%, -50%) translateY(-4px) scale(1.04);
+  border-color: #8fd4a6;
+  background: #2d7d46;
+  box-shadow: 5px 7px 0 rgba(45, 125, 70, 0.2);
+  outline: none;
+}
+
+.venn-zone:focus-visible {
+  outline: 2px solid #f8f2e5;
+  outline-offset: 3px;
+}
+
+.venn-zone-number {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.55rem;
+  font: 7px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.08em;
+  color: rgba(248, 242, 229, 0.45);
+}
+
+.venn-zone svg {
+  width: 16px;
+  height: 16px;
+  margin-bottom: 0.12rem;
+  color: #e5a69c;
+  stroke-width: 1.5;
+}
+
+.venn-zone.is-active svg,
+.venn-zone:hover svg,
+.venn-zone:focus-visible svg {
+  color: #f8f2e5;
+}
+
+.venn-zone strong {
+  max-width: 100%;
+  font: 0.78rem/1.05 "Fraunces", Georgia, serif;
+  font-weight: 400;
+}
+
+.venn-zone small {
+  display: block;
+  max-width: 100%;
+  font: 6.5px/1.25 "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.01em;
+  color: rgba(248, 242, 229, 0.55);
+}
+
+.venn-zone small b {
+  color: #e5a69c;
+  font-weight: 400;
+}
+
+.venn-zone.is-active small,
+.venn-zone:hover small,
+.venn-zone:focus-visible small {
+  color: rgba(248, 242, 229, 0.82);
+}
+
+.venn-zone.is-active small b,
+.venn-zone:hover small b,
+.venn-zone:focus-visible small b {
+  color: #f8f2e5;
+}
+
+.venn-role-key {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  max-width: 680px;
+  margin: -0.4rem auto 0;
+  border-top: 1px dashed rgba(248, 242, 229, 0.17);
+  padding: 0.8rem 1.25rem 0;
+}
+
+.venn-role-key > div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.4rem;
+  align-items: center;
+  min-width: 0;
+}
+
+.venn-key-swatch {
+  grid-row: span 2;
+  display: block;
+  width: 11px;
+  height: 11px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.venn-key-swatch.venn-key-foundation { color: #e5a69c; }
+.venn-key-swatch.venn-key-texture { color: #8fd4a6; }
+.venn-key-swatch.venn-key-flavour { color: #d9c184; }
+
+.venn-role-key strong {
+  font: 8px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(248, 242, 229, 0.75);
+}
+
+.venn-role-key small {
+  margin-top: 0.12rem;
+  font: 7px "Space Mono", ui-monospace, monospace;
+  color: rgba(248, 242, 229, 0.4);
+}
+
+.venn-reader-hint {
+  margin: 0.95rem auto 0;
+  padding: 0 1rem 1rem;
+  text-align: center;
+  font: 7px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(248, 242, 229, 0.3);
+}
+
+@media (max-width: 767px) {
+  .venn-reader-intro {
+    padding: 1rem 0.9rem 0;
+  }
+
+  .venn-reader-intro p {
+    max-width: 290px;
+    font-size: 0.9rem;
+  }
+
+  .venn-diagram {
+    aspect-ratio: 0.92;
+    min-height: 425px;
+    margin-top: 0.1rem;
+  }
+
+  .venn-circle {
+    width: 66%;
+  }
+
+  .venn-circle-foundation {
+    left: 3%;
+    top: 10%;
+  }
+
+  .venn-circle-texture {
+    right: 3%;
+    top: 10%;
+  }
+
+  .venn-circle-flavour {
+    left: 17%;
+    top: 34%;
+  }
+
+  .venn-circle span {
+    font-size: 8px;
+  }
+
+  .venn-circle small {
+    font-size: 6px;
+  }
+
+  .venn-centre-mark {
+    width: 66px;
+    height: 66px;
+  }
+
+  .venn-centre-mark strong {
+    font-size: 0.78rem;
+  }
+
+  .venn-centre-mark span,
+  .venn-centre-mark small {
+    font-size: 5px;
+  }
+
+  .venn-zone,
+  .venn-zone-foundation,
+  .venn-zone-texture,
+  .venn-zone-flavour,
+  .venn-zone-all-three {
+    width: 110px;
+    min-height: 64px;
+    border-radius: 0.65rem;
+    padding: 0.5rem 0.35rem 0.4rem;
+  }
+
+  .venn-zone strong {
+    font-size: 0.67rem;
+  }
+
+  .venn-zone small {
+    font-size: 5.5px;
+    line-height: 1.2;
+  }
+
+  .venn-zone svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .venn-zone-number {
+    top: 0.28rem;
+    right: 0.4rem;
+    font-size: 6px;
+  }
+
+  .venn-role-key {
+    gap: 0.45rem;
+    padding-inline: 0.9rem;
+  }
+
+  .venn-role-key strong {
+    font-size: 6.5px;
+  }
+
+  .venn-role-key small {
+    font-size: 5.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .venn-zone {
+    transition: none;
+  }
+}
