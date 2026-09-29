@@ -150,10 +150,7 @@ export function AlchemyPartnerships() {
                         {roles.map(role => (<div
                             key={role.label}
                             className={`venn-circle ${role.className}`}
-                            aria-hidden="true">
-                            <span>{role.label}</span>
-                            <small>{role.note}</small>
-                        </div>))}
+                            aria-hidden="true" />))}
                         <div className="venn-centre-mark" aria-hidden="true">
                             <span>Fit</span>
                             <strong>Peasant</strong>
@@ -184,17 +181,6 @@ export function AlchemyPartnerships() {
                                 </button>
                             );
                         })}
-                    </div>
-                    <div
-                        className="venn-role-key"
-                        aria-label="Ingredient roles in the Venn diagram">
-                        {roles.map(role => (<div key={role.label}>
-                            <span
-                                className={`venn-key-swatch ${role.className.replace("venn-circle-", "venn-key-")}`}
-                                aria-hidden="true" />
-                            <strong>{role.label}</strong>
-                            <small>{role.note}</small>
-                        </div>))}
                     </div>
                     <p className="venn-reader-hint text-[0px]">
                     </p>
