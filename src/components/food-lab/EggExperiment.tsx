@@ -71,9 +71,9 @@ export function EggExperiment() {
           <p className="mt-4 max-w-md text-base leading-relaxed text-ink/75">{current.note}</p>
         </div>
 
-        <p className="mt-2 font-mono text-[11px] uppercase leading-relaxed tracking-[0.1em] text-ink/55">
-                  Human data: Evenepoel et al., The Journal of Nutrition (1998); discussed in Fuchs et al., The Journal of Nutrition (2022). This is an observation, not personal dietary advice.
-                </p>
+        <p className="mt-6 border-t border-dashed border-ink/25 pt-4 font-mono text-[11px] uppercase leading-relaxed tracking-[0.1em] text-ink/55">
+          Human data: Evenepoel et al., The Journal of Nutrition (1998); discussed in Fuchs et al., The Journal of Nutrition (2022). This is an observation, not personal dietary advice.
+        </p>
       </div>
     </div>
   );
