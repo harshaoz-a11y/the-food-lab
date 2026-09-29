@@ -1,57 +1,30 @@
 import { useState } from "react";
+import rawEggAsset from "@/assets/maestro/egg-raw.svg";
+import cookedEggAsset from "@/assets/maestro/egg-cooked.svg";
 
 const states = {
   raw: {
     label: "Raw egg",
     value: 51,
     note: "The ingredient is present. The body may receive less of it.",
+    asset: rawEggAsset,
+    alt: "Raw egg illustration",
   },
   cooked: {
     label: "Cooked egg",
     value: 91,
     note: "Heat changes the interaction — and what becomes available.",
+    asset: cookedEggAsset,
+    alt: "Cooked egg illustration",
   },
 } as const;
 
 type EggState = keyof typeof states;
 
-function RawEggIllustration() {
-  return (
-    <svg className="egg-object egg-object-raw" viewBox="0 0 520 360" role="img" aria-label="A raw egg cracked into a small bowl">
-      <ellipse className="egg-shadow" cx="260" cy="306" rx="170" ry="20" />
-      <path className="egg-bowl" d="M123 174c8 91 55 132 137 132s129-41 137-132Z" />
-      <path className="egg-bowl-rim" d="M119 172c0-18 63-31 141-31s141 13 141 31-63 31-141 31-141-13-141-31Z" />
-      <path className="egg-white" d="M160 173c13-24 42-30 68-17 18 9 36 11 56 2 31-15 70-6 82 17 14 28-19 52-70 56-44 4-75-2-105-13-29-11-41-27-31-45Z" />
-      <ellipse className="egg-yolk" cx="270" cy="178" rx="42" ry="36" />
-      <ellipse className="egg-yolk-shine" cx="257" cy="164" rx="12" ry="8" />
-      <path className="egg-shell-left" d="M164 128c-21-24-29-52-4-73 17-14 37-5 47 13 9 16 7 35-1 53" />
-      <path className="egg-shell-right" d="M355 127c21-24 29-52 4-73-17-14-37-5-47 13-9 16-7 35 1 53" />
-      <path className="egg-crack" d="m205 68 16 18-10 17 17 16m91-51-16 18 10 17-17 16" />
-      <path className="egg-spark" d="m104 111 7 14 14 7-14 7-7 14-7-14-14-7 14-7Z" />
-    </svg>
-  );
-}
-
-function CookedEggIllustration() {
-  return (
-    <svg className="egg-object egg-object-cooked" viewBox="0 0 520 360" role="img" aria-label="A cooked egg on a plate with a golden yolk">
-      <ellipse className="egg-shadow" cx="260" cy="306" rx="178" ry="20" />
-      <ellipse className="cooked-plate" cx="260" cy="235" rx="174" ry="57" />
-      <ellipse className="cooked-plate-inner" cx="260" cy="228" rx="137" ry="39" />
-      <path className="cooked-white" d="M137 216c-8-35 22-61 61-60 27 1 41 14 63 7 29-9 51-23 84-10 37 15 51 53 26 76-23 21-55 20-82 15-30-6-49 8-80 3-37-5-66-12-72-31Z" />
-      <ellipse className="cooked-yolk" cx="277" cy="204" rx="51" ry="43" />
-      <ellipse className="cooked-yolk-light" cx="262" cy="188" rx="15" ry="10" />
-      <path className="cooked-edge" d="M149 177c26-26 55-14 77-16m95 7c23-3 42 9 55 26M161 251c29 13 54 10 76 5m83 2c19 4 35 0 47-10" />
-      <path className="steam steam-one" d="M205 131c-17-20 15-30-2-50-14-16 10-26 4-43" />
-      <path className="steam steam-two" d="M274 128c-16-21 14-29-2-49-13-17 10-28 4-45" />
-      <path className="steam steam-three" d="M337 137c-14-17 12-27-2-43-11-14 8-24 4-38" />
-      <path className="egg-spark" d="m126 112 7 14 14 7-14 7-7 14-7-14-14-7 14-7Z" />
-    </svg>
-  );
-}
-
 function EggIllustration({ active }: { active: EggState }) {
-  return active === "raw" ? <RawEggIllustration /> : <CookedEggIllustration />;
+  const current = states[active];
+
+  return <img src={current.asset} alt={current.alt} />;
 }
 
 export function EggExperiment() {
