@@ -59,7 +59,7 @@ export function InteractionMap() {
             <button
               key={label}
               type="button"
-              className={`factor ${activeIndex === index ? "is-active" : ""}`}
+              className={`factor ${activeIndex === index ? "is-expanded" : "is-collapsed"}`}
               aria-pressed={activeIndex === index}
               onMouseEnter={() => setActiveIndex(index)}
               onMouseLeave={() => setActiveIndex(null)}
@@ -76,10 +76,10 @@ export function InteractionMap() {
             </button>
           ))}
         </div>
+        <figcaption id="map-caption" aria-live="polite">
+          {activeFactor?.sentence ?? defaultCaption}
+        </figcaption>
       </div>
-      <figcaption id="map-caption" aria-live="polite">
-        {activeFactor?.sentence ?? defaultCaption}
-      </figcaption>
     </figure>
   );
 }

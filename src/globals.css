@@ -2496,6 +2496,11 @@ main > section.reveal.is-revealed {
   width: 400px;
   height: 400px;
 }
+#question .factor:nth-child(1) { --factor-x: 0px; --factor-y: -215px; }
+#question .factor:nth-child(2) { --factor-x: 205px; --factor-y: -66px; }
+#question .factor:nth-child(3) { --factor-x: 205px; --factor-y: 66px; }
+#question .factor:nth-child(4) { --factor-x: -205px; --factor-y: 66px; }
+#question .factor:nth-child(5) { --factor-x: -205px; --factor-y: -66px; }
 #question .map-centre {
   width: 64px;
   height: 64px;
@@ -2553,4 +2558,81 @@ main > section.reveal.is-revealed {
   #question .factor:hover .factor-copy strong,
   #question .factor:focus-visible .factor-copy strong,
   #question .factor.is-active .factor-copy strong { font-size: .86rem; }
+}
+
+/* Validate both map states explicitly so collapsed labels and icons never disappear. */
+#question .factor.is-collapsed {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  align-items: center;
+  justify-items: center;
+  gap: .12rem;
+  text-align: center;
+}
+#question .factor.is-collapsed > svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+#question .factor.is-collapsed .factor-copy {
+  width: auto;
+  align-items: center;
+  justify-content: center;
+}
+#question .factor.is-collapsed .factor-copy strong {
+  display: block;
+  font-size: 1.9rem;
+  line-height: 1;
+  color: var(--ink);
+}
+#question .factor.is-expanded {
+  grid-template-columns: 25px minmax(0, 1fr);
+  grid-template-rows: none;
+  align-items: start;
+  justify-items: stretch;
+  gap: .6rem;
+  text-align: left;
+}
+#question .factor.is-expanded > svg {
+  display: block;
+  width: 21px;
+  height: 21px;
+}
+#question .factor.is-expanded .factor-copy {
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+#question .factor.is-expanded .factor-copy strong { font-size: .98rem; }
+#question .map-stage > figcaption {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 9;
+  width: min(260px, 70%);
+  margin: 0;
+  transform: translateX(-50%);
+  font-weight: 700;
+}
+#question .map-centre-text {
+  display: block;
+  width: 100%;
+  max-width: none;
+  padding-inline: .25rem;
+  overflow-wrap: anywhere;
+  text-align: center;
+  white-space: normal;
+}
+#question .map-stage .map-centre small { color: #fff; }
+@media (max-width: 767px) {
+  #question .map-stage > figcaption { width: min(220px, 75%); }
+  #question .factor:nth-child(1) { --factor-x: 0px; --factor-y: -110px; }
+  #question .factor:nth-child(2) { --factor-x: 105px; --factor-y: -34px; }
+  #question .factor:nth-child(3) { --factor-x: 105px; --factor-y: 34px; }
+  #question .factor:nth-child(4) { --factor-x: -105px; --factor-y: 34px; }
+  #question .factor:nth-child(5) { --factor-x: -105px; --factor-y: -34px; }
+  #question .factor.is-collapsed .factor-copy strong { font-size: 1.55rem; }
+  #question .factor.is-collapsed > svg { width: 16px; height: 16px; }
+  #question .factor.is-expanded .factor-copy strong { font-size: .86rem; }
 }
