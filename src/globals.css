@@ -3170,3 +3170,110 @@ main > section.reveal.is-revealed {
     transition: none;
   }
 }
+
+/* The seven interactions are regions of the Venn, not separate cards. */
+.venn-zone,
+.venn-zone-foundation,
+.venn-zone-texture,
+.venn-zone-flavour,
+.venn-zone-all-three {
+  width: 158px;
+  min-height: 108px;
+  aspect-ratio: 1.42;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  padding: 0.75rem 0.85rem;
+  color: rgba(248, 242, 229, 0.76);
+  background: transparent;
+  box-shadow: none;
+  opacity: 0.76;
+  transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease, box-shadow 220ms ease, opacity 220ms ease;
+}
+
+.venn-zone::before {
+  content: "";
+  position: absolute;
+  inset: 0.25rem;
+  z-index: 0;
+  border-radius: inherit;
+  background: rgba(45, 125, 70, 0.34);
+  box-shadow: inset 0 0 22px rgba(143, 212, 166, 0.2);
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.venn-zone:hover,
+.venn-zone:focus-visible,
+.venn-zone.is-active {
+  transform: translate(-50%, -50%) scale(1.04);
+  border-color: rgba(143, 212, 166, 0.92);
+  background: transparent;
+  box-shadow: none;
+  opacity: 1;
+}
+
+.venn-zone:hover::before,
+.venn-zone:focus-visible::before,
+.venn-zone.is-active::before {
+  opacity: 1;
+}
+
+.venn-zone:focus-visible {
+  outline: 2px solid #f8f2e5;
+  outline-offset: 3px;
+}
+
+.venn-zone-number {
+  top: 0.55rem;
+  right: 0.85rem;
+  color: rgba(248, 242, 229, 0.48);
+}
+
+.venn-zone > svg {
+  position: relative;
+  z-index: 1;
+  color: #e5a69c;
+}
+
+.venn-zone strong,
+.venn-zone small {
+  position: relative;
+  z-index: 1;
+}
+
+.venn-zone strong {
+  max-width: 92%;
+}
+
+.venn-zone small {
+  max-width: 92%;
+}
+
+@media (max-width: 767px) {
+  .venn-zone,
+  .venn-zone-foundation,
+  .venn-zone-texture,
+  .venn-zone-flavour,
+  .venn-zone-all-three {
+    width: 116px;
+    min-height: 78px;
+    padding: 0.55rem 0.45rem;
+  }
+
+  .venn-zone-number {
+    top: 0.35rem;
+    right: 0.5rem;
+  }
+
+  .venn-zone strong,
+  .venn-zone small {
+    max-width: 96%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .venn-zone,
+  .venn-zone::before {
+    transition: none;
+  }
+}
