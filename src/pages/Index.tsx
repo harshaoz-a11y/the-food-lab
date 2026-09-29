@@ -1,3 +1,13 @@
+/* Ruled-line accent at top of header */
+/* Page number stamp */
+/* ─── Page-number header strip ──────────────────────── */
+/* ═══════════════════════════════════════════════════════
+   PAGE
+   ═══════════════════════════════════════════════════════ */
+/* Ruled-page top margin annotation */
+/* Margin annotation */
+/* Handwritten margin gloss */
+/* Ruled footer top line */
 import { useState } from "react";
 
 import {
@@ -134,8 +144,6 @@ const fieldStudies = [{
     }]
 }];
 
-
-
 const bioNutritionProcess = [{
     label: "Understand",
     note: "Your body, goals and real life",
@@ -200,15 +208,15 @@ function Header() {
     return (
         <header
             className="fixed inset-x-0 top-0 z-50 border-b border-ink/15 bg-[#eee7d8]/95 backdrop-blur-sm">
-            {/* Ruled-line accent at top of header */}
-            <div className="h-[2px] w-full bg-[repeating-linear-gradient(90deg,rgba(163,58,43,0.22)_0px,rgba(163,58,43,0.22)_1px,transparent_1px,transparent_40px)]" />
+            {}
+            <div
+                className="h-[2px] w-full bg-[repeating-linear-gradient(90deg,rgba(163,58,43,0.22)_0px,rgba(163,58,43,0.22)_1px,transparent_1px,transparent_40px)]" />
             <div
                 className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
                 <Brand />
-                {/* Page number stamp */}
-                <span className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-ink/30 lg:block">
-                    Vol. I / Field Notes
-                </span>
+                {}
+                <span
+                    className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-ink/30 lg:block">VOL. I / FIELD NOTES</span>
                 <nav
                     className="hidden items-center gap-4 lg:flex"
                     aria-label="Primary navigation">
@@ -355,7 +363,7 @@ function ConsultationForm() {
             <div
                 className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[#f8f2e5]/40">
                 <span className="h-px flex-1 bg-[#f8f2e5]/15" />Or
-                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
+                                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
             </div>
             <a
                 href="mailto:harsha@thefoodlab.in?subject=The%20Fit%20Peasant%20protein%20bar"
@@ -371,11 +379,19 @@ function ConsultationForm() {
     );
 }
 
-/* ─── Page-number header strip ──────────────────────── */
-function NbHeader({ label, page }: { label: string; page: string }) {
+function NbHeader(
+    {
+        label,
+        page
+    }: {
+        label: string;
+        page: string;
+    }
+) {
     return (
         <div className="nb-top-margin flex items-center gap-3 sm:gap-4">
-            <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink/35 sm:text-[11px] sm:tracking-[0.18em]">
+            <span
+                className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink/35 sm:text-[11px] sm:tracking-[0.18em]">
                 {label}
             </span>
             <span className="h-px flex-1 border-t border-dashed border-ink/15" />
@@ -384,9 +400,6 @@ function NbHeader({ label, page }: { label: string; page: string }) {
     );
 }
 
-/* ═══════════════════════════════════════════════════════
-   PAGE
-   ═══════════════════════════════════════════════════════ */
 const Index = () => {
     const [activeExperiment, setActiveExperiment] = useState<"egg" | "rice">("egg");
     useSectionReveal();
@@ -398,24 +411,26 @@ const Index = () => {
                 <section id="question" className="px-4 pb-4 pt-6 sm:px-6 lg:px-8 lg:pt-8">
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 sm:py-14 lg:px-20 lg:py-20">
-                        {/* Ruled-page top margin annotation */}
+                        {}
                         <div className="nb-top-margin mb-8 flex items-center gap-4">
-                            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/35">The Food Lab / Notebook</span>
+                            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/35">
+                            </span>
                             <span className="h-px flex-1 border-t border-dashed border-ink/15" />
-                            <span className="font-mono text-[11px] text-ink/30">Pg. 002</span>
+                            <span className="font-mono text-[11px] text-ink/30">
+                            </span>
                         </div>
                         <div
                             className="grid min-w-0 items-center gap-10 xl:grid-cols-[minmax(0,.92fr)_minmax(0,1.08fr)] xl:gap-14">
                             <div className="relative z-10 min-w-0">
-                                <span className="lab-label">Observation 002</span>
+                                <span className="lab-label"></span>
                                 <h1
-                                    className="mt-6 max-w-[650px] font-serif text-[clamp(2.6rem,9vw,5.8rem)] font-normal leading-[0.9] tracking-[-0.05em] text-ink">Could <span className="red-underline">interactions</span> <span className="red-underline">matter</span> <span className="red-underline">more</span> than ingredients?</h1>
+                                    className="mt-6 max-w-[650px] font-serif text-[clamp(2.6rem,9vw,5.8rem)] font-normal leading-[0.9] tracking-[-0.05em] text-ink">Could <span className="red-underline">interactions</span> <span className="red-underline">matter</span> <span className="red-underline">more</span>than ingredients?</h1>
                                 <p
                                     className="mt-8 max-w-lg font-serif text-lg leading-snug text-ink/75 sm:text-xl lg:text-2xl">Most of us keep changing the list. We study what happens around it.</p>
-                                {/* Margin annotation */}
-                                <p className="handwritten mt-5 max-w-xs rotate-[-0.5deg] text-sm text-primary/70">
-                                    ← the real variable is rarely on the label
-                                </p>
+                                {}
+                                <p
+                                    className="handwritten mt-5 max-w-xs rotate-[-0.5deg] text-sm text-primary/70">← the real variable is rarely on the label
+                                                                    </p>
                             </div>
                             <InteractionMap />
                         </div>
@@ -432,22 +447,19 @@ const Index = () => {
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
                         <NbHeader label="Experiment log" page="Pg. 003" />
                         <div className="max-w-3xl">
-                            <span className="lab-label">Observation 002 / change one condition</span>
+                            <span className="lab-label"></span>
                             <h2
                                 className="mt-5 max-w-xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl">Same food. Different <span className="red-underline">interaction.</span></h2>
                             <p
                                 className="handwritten mt-3 rotate-[-1deg] text-base leading-tight text-primary sm:text-lg">Change the condition. Watch what the body receives.</p>
                         </div>
-
                         <div
                             className="mt-8 flex flex-wrap gap-2 border-b border-dashed border-ink/20 pb-4 lg:hidden"
                             role="tablist"
                             aria-label="Choose an experiment">
-                            {([
-                                ["egg", "Egg"],
-                                ["rice", "Rice"],
-                            ] as const).map(([key, label]) => {
+                            {([["egg", "Egg"], ["rice", "Rice"]] as const).map(([key, label]) => {
                                 const isActive = activeExperiment === key;
+
                                 return (
                                     <button
                                         key={key}
@@ -457,15 +469,12 @@ const Index = () => {
                                         aria-selected={isActive}
                                         aria-controls={`experiment-panel-${key}`}
                                         onClick={() => setActiveExperiment(key)}
-                                        className={`rounded-full border px-5 py-2.5 text-sm transition-colors ${isActive
-                                            ? "border-ink bg-ink text-[#f8f2e5]"
-                                            : "border-ink/25 bg-transparent text-ink/65 hover:border-ink/50 hover:text-ink"}`}>
+                                        className={`rounded-full border px-5 py-2.5 text-sm transition-colors ${isActive ? "border-ink bg-ink text-[#f8f2e5]" : "border-ink/25 bg-transparent text-ink/65 hover:border-ink/50 hover:text-ink"}`}>
                                         {label}
                                     </button>
                                 );
                             })}
                         </div>
-
                         <div className="experiment-spread mt-8 grid gap-12 lg:grid-cols-2 lg:gap-10">
                             <div
                                 id="experiment-panel-egg"
@@ -492,16 +501,21 @@ const Index = () => {
                             <span className="lab-label !text-[#f8f2e5]/55">Field sheet 003 / real life</span>
                             <h2
                                 className="mt-5 font-serif text-3xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-4xl lg:whitespace-nowrap lg:text-[clamp(2.4rem,4.05vw,3.5rem)]">When diets and discipline say "tomorrow!"</h2>
-                            <p className="mt-5 max-w-lg text-base leading-relaxed text-[#f8f2e5]/65 sm:text-lg">Because work, routine, family, stress, sleep and tolerance always get a vote</p>
+                            <p
+                                className="mt-5 max-w-lg text-base leading-relaxed text-[#f8f2e5]/65 sm:text-lg">Because work, routine, family, stress, sleep and tolerance always get a vote</p>
                         </div>
                         <FieldStudies />
                         <aside className="press-note mt-10 max-w-lg rotate-[1deg] p-5 text-ink">
                             <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink/50">Margin note</span>
-                            <p className="handwritten mt-2 text-lg leading-tight text-primary sm:text-xl">Maybe consistency is designed along with a life, not imposed on one.</p>
+                            <p
+                                className="handwritten mt-2 text-lg leading-tight text-primary sm:text-xl">Maybe consistency is designed along with a life, not imposed on one.</p>
                         </aside>
                     </div>
                 </section>
-                <section id="working-hypothesis" className="scroll-mt-24 px-4 sm:px-6 lg:px-8" aria-labelledby="map-heading">
+                <section
+                    id="working-hypothesis"
+                    className="scroll-mt-24 px-4 sm:px-6 lg:px-8"
+                    aria-labelledby="map-heading">
                     <div
                         className="mx-auto max-w-[1400px] border-x border-b border-ink/15 bg-[#e4dac5] px-6 py-14 sm:px-12 lg:px-16 lg:py-20">
                         <div className="text-center">
@@ -509,7 +523,7 @@ const Index = () => {
                             <h2 id="map-heading" className="lab-label">The working hypothesis</h2>
                             <p
                                 className="mx-auto mt-4 max-w-xl font-serif text-xl leading-snug text-ink/65">Don’t just read the formula. Put it to work.
-                                                                                                                                                                                                                                              </p>
+                                                                                                                                                                                                                                                                              </p>
                             <div className="nb-section-divider mt-3" />
                         </div>
                         <HypothesisExperiment />
@@ -531,12 +545,11 @@ const Index = () => {
                                     className="mt-5 font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl xl:text-7xl">1. Precision Bio-Nutrition</h2>
                                 <blockquote
                                     className="mt-6 max-w-2xl border-l-4 border-primary pl-5 font-serif text-xl leading-snug text-ink/80 sm:text-2xl lg:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
-                                                                                                                                                                                                                                                            <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
+                                                                                                                                                                                                                                                                                                <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
                                 </blockquote>
-                                {/* Handwritten margin gloss */}
-                                <p className="handwritten mt-4 rotate-[0.5deg] text-sm text-primary/70">
-                                    ↑ this is the only hypothesis that matters
-                                </p>
+                                {}
+                                <p className="handwritten mt-4 rotate-[0.5deg] text-sm text-primary/70">↑ this is the only hypothesis that matters
+                                                                    </p>
                                 <a
                                     href="#your-experiment"
                                     className="mt-7 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">First 30 min free consult — Get in touch <ArrowRight className="h-4 w-4" />
@@ -551,18 +564,32 @@ const Index = () => {
                                     </div>
                                     <RefreshCcw className="h-8 w-8 stroke-[1.3] text-primary" aria-hidden="true" />
                                 </div>
-                                <div className="relative mt-8 grid gap-3 before:absolute before:bottom-5 before:left-1/2 before:top-5 before:w-px before:-translate-x-1/2 before:border-l before:border-dashed before:border-primary/35">
-                                    {bioNutritionProcess.map(({ label, note, icon: StageIcon }, index) => {
+                                <div
+                                    className="relative mt-8 grid gap-3 before:absolute before:bottom-5 before:left-1/2 before:top-5 before:w-px before:-translate-x-1/2 before:border-l before:border-dashed before:border-primary/35">
+                                    {bioNutritionProcess.map((
+                                        {
+                                            label,
+                                            note,
+                                            icon: StageIcon
+                                        },
+                                        index
+                                    ) => {
                                         const alignLeft = index % 2 === 0;
+
                                         return (
-                                            <div className={`relative z-10 flex w-full ${alignLeft ? "justify-start pr-7" : "justify-end pl-7"}`} key={label}>
-                                                <div className={`flex w-[88%] items-center gap-3 rounded-[1.25rem] border border-ink/15 bg-[#e5dac3] p-3 shadow-[3px_4px_0_rgba(23,59,48,.08)] sm:w-[82%] ${alignLeft ? "text-left" : "flex-row-reverse text-right"}`}>
-                                                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary text-[#f8f2e5]">
+                                            <div
+                                                className={`relative z-10 flex w-full ${alignLeft ? "justify-start pr-7" : "justify-end pl-7"}`}
+                                                key={label}>
+                                                <div
+                                                    className={`flex w-[88%] items-center gap-3 rounded-[1.25rem] border border-ink/15 bg-[#e5dac3] p-3 shadow-[3px_4px_0_rgba(23,59,48,.08)] sm:w-[82%] ${alignLeft ? "text-left" : "flex-row-reverse text-right"}`}>
+                                                    <span
+                                                        className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary text-[#f8f2e5]">
                                                         <StageIcon className="h-5 w-5 stroke-[1.6]" aria-hidden="true" />
                                                     </span>
                                                     <span className="min-w-0 flex-1">
                                                         <small className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink/45">Step 0{index + 1}</small>
-                                                        <strong className="mt-1 block break-words font-mono text-[11px] font-medium uppercase leading-snug tracking-[0.12em] text-ink sm:text-xs">{label}</strong>
+                                                        <strong
+                                                            className="mt-1 block break-words font-mono text-[11px] font-medium uppercase leading-snug tracking-[0.12em] text-ink sm:text-xs">{label}</strong>
                                                         <span className="mt-1 block text-[11px] leading-snug text-ink/55">{note}</span>
                                                     </span>
                                                 </div>
@@ -591,17 +618,24 @@ const Index = () => {
                                     index
                                 ) => {
                                     const isInverted = index === 0 || index === 2 || index === 4;
-                                    return (<article
-                                        key={title}
-                                        className={`rounded-[1.35rem] border p-5 shadow-[4px_5px_0_rgba(65,50,28,.05)] ${isInverted ? "border-charcoal bg-charcoal text-[#f8f2e5]" : "border-ink/15 bg-[#e7dcc5] text-ink"}`}>
-                                        <div className="flex items-start justify-between gap-4">
-                                            <Icon className={`h-8 w-8 stroke-[1.35] ${isInverted ? "text-[#d68b7f]" : "text-primary"}`} aria-hidden="true" />
-                                            <span className={`font-mono text-[11px] uppercase tracking-[0.14em] ${isInverted ? "text-[#f8f2e5]/45" : "text-ink/40"}`}>Signal 0{index + 1}</span>
-                                        </div>
-                                        <h4
-                                            className={`mt-6 font-mono text-[11px] font-medium uppercase tracking-[0.15em] ${isInverted ? "text-[#f8f2e5]" : "text-ink"}`}>{title}</h4>
-                                        <p className={`mt-2 text-sm leading-relaxed ${isInverted ? "text-[#f8f2e5]/65" : "text-ink/65"}`}>{copy}</p>
-                                    </article>);
+
+                                    return (
+                                        <article
+                                            key={title}
+                                            className={`rounded-[1.35rem] border p-5 shadow-[4px_5px_0_rgba(65,50,28,.05)] ${isInverted ? "border-charcoal bg-charcoal text-[#f8f2e5]" : "border-ink/15 bg-[#e7dcc5] text-ink"}`}>
+                                            <div className="flex items-start justify-between gap-4">
+                                                <Icon
+                                                    className={`h-8 w-8 stroke-[1.35] ${isInverted ? "text-[#d68b7f]" : "text-primary"}`}
+                                                    aria-hidden="true" />
+                                                <span
+                                                    className={`font-mono text-[11px] uppercase tracking-[0.14em] ${isInverted ? "text-[#f8f2e5]/45" : "text-ink/40"}`}>Signal 0{index + 1}</span>
+                                            </div>
+                                            <h4
+                                                className={`mt-6 font-mono text-[11px] font-medium uppercase tracking-[0.15em] ${isInverted ? "text-[#f8f2e5]" : "text-ink"}`}>{title}</h4>
+                                            <p
+                                                className={`mt-2 text-sm leading-relaxed ${isInverted ? "text-[#f8f2e5]/65" : "text-ink/65"}`}>{copy}</p>
+                                        </article>
+                                    );
                                 })}
                             </div>
                         </div>
@@ -634,7 +668,7 @@ const Index = () => {
                                 </h2>
                                 <p
                                     className="mt-5 max-w-lg font-serif text-xl italic leading-relaxed text-ink/70">We’ll let you tell us how good it is.
-                                                                    </p>
+                                                                                                        </p>
                                 <div className="mt-6 flex flex-wrap items-center gap-3">
                                     <a
                                         href="mailto:harsha@thefoodlab.in?subject=The%20Fit%20Peasant%20experiment"
@@ -659,7 +693,7 @@ const Index = () => {
                                 <h2
                                     className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
                                 <p className="mt-7 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Tell us what you have tried and where real life keeps entering the picture. We begin with questions, not a perfect plan.
-                                                                                                                                                                                                                                                                            </p>
+                                                                                                                                                                                                                                                                                                                </p>
                                 <div className="mt-10 flex items-center gap-4 text-[#d68b7f]">
                                     <FlaskConical className="h-8 w-8 stroke-[1.2]" />
                                     <span className="handwritten max-w-xs text-xl leading-tight">No judgement. No gold stars for an ideal food diary.</span>
@@ -671,8 +705,9 @@ const Index = () => {
                 </section>
             </main>
             <footer className="border-t border-ink/15 bg-[#e4dac5] px-5 py-12 sm:px-8">
-                {/* Ruled footer top line */}
-                <div className="mb-6 h-px w-full bg-[repeating-linear-gradient(90deg,rgba(23,59,48,0.12)_0px,rgba(23,59,48,0.12)_1px,transparent_1px,transparent_32px)]" />
+                {}
+                <div
+                    className="mb-6 h-px w-full bg-[repeating-linear-gradient(90deg,rgba(23,59,48,0.12)_0px,rgba(23,59,48,0.12)_1px,transparent_1px,transparent_32px)]" />
                 <div
                     className="mx-auto grid max-w-[1320px] gap-8 sm:grid-cols-[auto_1fr_auto] sm:items-center">
                     <Brand />
