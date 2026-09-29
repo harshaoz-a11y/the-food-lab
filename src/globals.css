@@ -2636,3 +2636,98 @@ main > section.reveal.is-revealed {
   #question .factor.is-collapsed > svg { width: 16px; height: 16px; }
   #question .factor.is-expanded .factor-copy strong { font-size: .86rem; }
 }
+
+/* The egg is a drawn object rather than a static comparison image. */
+.egg-state-illustration {
+  display: grid;
+  min-height: 320px;
+  place-items: center;
+}
+.egg-object {
+  display: block;
+  width: min(100%, 560px);
+  height: auto;
+  overflow: visible;
+  animation: egg-object-in 420ms ease both;
+}
+.egg-shadow {
+  fill: rgba(54, 45, 30, .14);
+}
+.egg-bowl {
+  fill: #d9c7a9;
+  stroke: #173b30;
+  stroke-width: 3;
+}
+.egg-bowl-rim {
+  fill: #efe3c9;
+  stroke: #173b30;
+  stroke-width: 3;
+}
+.egg-white,
+.cooked-white {
+  fill: #fff6df;
+  stroke: #ad8260;
+  stroke-width: 3;
+}
+.egg-yolk,
+.cooked-yolk {
+  fill: #e99a38;
+  stroke: #b65b2e;
+  stroke-width: 3;
+}
+.egg-yolk-shine,
+.cooked-yolk-light {
+  fill: #ffd98b;
+}
+.egg-shell-left,
+.egg-shell-right {
+  fill: #f6ead0;
+  stroke: #173b30;
+  stroke-width: 3;
+}
+.egg-crack,
+.cooked-edge {
+  fill: none;
+  stroke: #a33a2b;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.egg-spark {
+  fill: #d68b7f;
+  stroke: #a33a2b;
+  stroke-width: 2;
+}
+.cooked-plate {
+  fill: #d8c7aa;
+  stroke: #173b30;
+  stroke-width: 3;
+}
+.cooked-plate-inner {
+  fill: #f3e7ce;
+  stroke: #a78662;
+  stroke-width: 2;
+}
+.steam {
+  fill: none;
+  stroke: #2d7d46;
+  stroke-width: 4;
+  stroke-linecap: round;
+  opacity: .62;
+  stroke-dasharray: 12 8;
+  animation: steam-rise 2.8s ease-in-out infinite;
+}
+.steam-two { animation-delay: .35s; }
+.steam-three { animation-delay: .7s; }
+@keyframes egg-object-in {
+  from { opacity: 0; transform: translateY(8px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes steam-rise {
+  0%, 100% { opacity: .2; transform: translateY(3px); }
+  50% { opacity: .72; transform: translateY(-7px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .egg-object,
+  .steam { animation: none; }
+}
