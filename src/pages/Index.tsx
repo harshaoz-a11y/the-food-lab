@@ -425,7 +425,7 @@ const Index = () => {
                             <div className="relative z-10 min-w-0">
                                 <span className="lab-label"></span>
                                 <h1
-                                    className="mt-6 max-w-[650px] font-serif text-[clamp(2.6rem,9vw,5.8rem)] font-normal leading-[0.9] tracking-[-0.05em] text-ink">Could <span className="red-underline">interactions</span> <span className="red-underline">matter</span> <span className="red-underline">more</span>than ingredients?</h1>
+                                    className="mt-6 max-w-[700px] font-serif text-[clamp(2.6rem,8vw,5.8rem)] font-normal leading-[0.9] tracking-[-0.05em] text-ink">Could <span className="red-underline">interactions</span>{" "}<span className="red-underline">matter</span>{" "}<span className="red-underline">more</span>{" "}than ingredients?</h1>
                                 <p
                                     className="mt-8 max-w-lg font-serif text-lg leading-snug text-ink/75 sm:text-xl lg:text-2xl">Most of us keep changing the list. We study what happens around it.</p>
                                 {}

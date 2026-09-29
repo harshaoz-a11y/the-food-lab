@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AlarmClock, BellRing, CookingPot, Salad, Smile, UtensilsCrossed } from "lucide-react";
+import { AlarmClock, BellRing, CookingPot, Salad, Smile } from "lucide-react";
 import vitruvianClean from "@/assets/maestro/vitruvian-clean.svg";
 
 const factors = [
@@ -51,9 +51,7 @@ export function InteractionMap() {
       <div className="map-stage">
         <img className="map-vitruvian" src={vitruvianClean} alt="" aria-hidden="true" />
         <div className="map-centre" aria-live="polite">
-          <UtensilsCrossed />
-          <span>one meal</span>
-          <small>{activeFactor?.outcome ?? "Many Decisions"}</small>
+          <small className="map-centre-text" key={activeIndex ?? "default"}>{activeFactor?.outcome ?? "Many Decisions"}</small>
         </div>
 
         <div className="map-factors">

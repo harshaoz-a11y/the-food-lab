@@ -2482,3 +2482,75 @@ main > section.reveal.is-revealed {
   #question .factor-note { font-size: .64rem; }
   .rice-chart-wrap svg { height: 118px; }
 }
+
+/* Final map composition: compact labels, a larger desktop figure, and an animated centre outcome. */
+#question .map-stage {
+  max-width: 700px;
+  min-height: 560px;
+}
+#question .map-stage::before {
+  width: 430px;
+  height: 430px;
+}
+#question .map-vitruvian {
+  width: 400px;
+  height: 400px;
+}
+#question .map-centre {
+  width: 64px;
+  height: 64px;
+}
+#question .map-centre-text {
+  margin: 0;
+  max-width: 54px;
+  font-size: .62rem;
+  line-height: 1.1;
+  animation: map-centre-text-in 360ms ease both;
+}
+#question .factor {
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+#question .factor > svg { display: none; }
+#question .factor-copy {
+  width: 100%;
+  align-items: center;
+}
+#question .factor-copy strong {
+  font-size: 2.1rem;
+  line-height: 1;
+}
+#question .factor:hover,
+#question .factor:focus-visible,
+#question .factor.is-active {
+  grid-template-columns: 25px minmax(0, 1fr);
+  align-items: start;
+  justify-items: stretch;
+  text-align: left;
+}
+#question .factor:hover > svg,
+#question .factor:focus-visible > svg,
+#question .factor.is-active > svg { display: block; }
+#question .factor:hover .factor-copy,
+#question .factor:focus-visible .factor-copy,
+#question .factor.is-active .factor-copy { align-items: flex-start; }
+#question .factor:hover .factor-copy strong,
+#question .factor:focus-visible .factor-copy strong,
+#question .factor.is-active .factor-copy strong { font-size: .98rem; }
+@keyframes map-centre-text-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 767px) {
+  #question .map-stage { min-height: 400px; }
+  #question .map-stage::before { width: 220px; height: 220px; }
+  #question .map-vitruvian { width: 205px; height: 205px; }
+  #question .map-centre { width: 48px; height: 48px; }
+  #question .map-centre-text { max-width: 42px; font-size: .48rem; }
+  #question .factor-copy strong { font-size: 1.65rem; }
+  #question .factor:hover .factor-copy strong,
+  #question .factor:focus-visible .factor-copy strong,
+  #question .factor.is-active .factor-copy strong { font-size: .86rem; }
+}
