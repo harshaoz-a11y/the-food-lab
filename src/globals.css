@@ -2433,3 +2433,80 @@ main > section.reveal.is-revealed {
   #question .factor-note { font-size: .48rem; }
   .rice-chart-wrap svg { height: 118px; }
 }
+
+/* Final layout pass: balanced header, larger circular decisions and compact experiments. */
+@media (min-width: 768px) {
+  #question .factor:nth-child(1) { --factor-x: 0px; --factor-y: -150px; }
+  #question .factor:nth-child(2) { --factor-x: 143px; --factor-y: -46px; }
+  #question .factor:nth-child(3) { --factor-x: 88px; --factor-y: 121px; }
+  #question .factor:nth-child(4) { --factor-x: -88px; --factor-y: 121px; }
+  #question .factor:nth-child(5) { --factor-x: -143px; --factor-y: -46px; }
+}
+
+#question .factor,
+#question .factor:nth-child(1),
+#question .factor:nth-child(2),
+#question .factor:nth-child(3),
+#question .factor:nth-child(4),
+#question .factor:nth-child(5) {
+  width: 180px;
+  min-height: 82px;
+  padding: .65rem .75rem;
+  transform: translate(calc(-50% + var(--factor-x)), calc(-50% + var(--factor-y))) scale(.55);
+}
+#question .factor:hover,
+#question .factor:focus-visible,
+#question .factor.is-active {
+  transform: translate(calc(-50% + var(--factor-x)), calc(-50% + var(--factor-y))) scale(1);
+}
+#question .factor svg { width: 20px; height: 20px; }
+#question .factor-copy strong { font-size: .95rem; }
+#question .factor-note { font-size: .66rem; }
+#question .interaction-map figcaption { color: var(--ink-soft); }
+
+#demonstration .evidence-photo {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+#demonstration .egg-evidence img,
+#demonstration .rice-evidence img {
+  max-height: 220px;
+  object-fit: contain;
+}
+#demonstration .experiment-panel { padding-left: 0; }
+#demonstration .text-green-700,
+#demonstration .egg-state-illustration.is-cooked .egg-now-showing,
+#demonstration .rice-experiment.is-green .rice-primary-metric strong,
+#demonstration .rice-experiment.is-green .rice-fact em,
+#demonstration .rice-plate-illustration.is-reheated .rice-now-showing,
+#demonstration .rice-plate-illustration.is-coconut .rice-now-showing {
+  color: var(--ink) !important;
+}
+
+@media (max-width: 767px) {
+  #question .factor,
+  #question .factor:nth-child(1),
+  #question .factor:nth-child(2),
+  #question .factor:nth-child(3),
+  #question .factor:nth-child(4),
+  #question .factor:nth-child(5) {
+    width: 136px;
+    min-height: 68px;
+    padding: .55rem .6rem;
+    transform: translate(calc(-50% + var(--factor-x)), calc(-50% + var(--factor-y))) scale(.55);
+  }
+  #question .factor:hover,
+  #question .factor:focus-visible,
+  #question .factor.is-active {
+    transform: translate(calc(-50% + var(--factor-x)), calc(-50% + var(--factor-y))) scale(1);
+  }
+  #question .factor:nth-child(1) { --factor-x: 0px; --factor-y: -110px; }
+  #question .factor:nth-child(2) { --factor-x: 105px; --factor-y: -34px; }
+  #question .factor:nth-child(3) { --factor-x: 65px; --factor-y: 89px; }
+  #question .factor:nth-child(4) { --factor-x: -65px; --factor-y: 89px; }
+  #question .factor:nth-child(5) { --factor-x: -105px; --factor-y: -34px; }
+  #demonstration .egg-evidence img,
+  #demonstration .rice-evidence img { max-height: 180px; }
+}

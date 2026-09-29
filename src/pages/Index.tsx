@@ -212,14 +212,10 @@ function Header() {
             <div
                 className="h-[2px] w-full bg-[repeating-linear-gradient(90deg,rgba(163,58,43,0.22)_0px,rgba(163,58,43,0.22)_1px,transparent_1px,transparent_40px)]" />
             <div
-                className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
+                className="mx-auto flex h-[74px] max-w-[1400px] items-center gap-6 px-5 sm:px-8 lg:gap-10 lg:px-12">
                 <Brand />
-                {}
-                <span
-                    className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-ink/30 lg:block">
-                </span>
                 <nav
-                    className="hidden items-center gap-8 lg:flex xl:gap-12"
+                    className="hidden flex-1 items-center justify-center gap-8 lg:flex xl:gap-12"
                     aria-label="Primary navigation">
                     {navigation.map(item => (<a
                         key={item.href}
@@ -445,7 +441,7 @@ const Index = () => {
                 </section>
                 <section id="demonstration" className="px-4 sm:px-6 lg:px-8">
                     <div
-                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
+                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-6 sm:px-8 lg:px-12 lg:py-8">
                         <NbHeader label="Experiment log" page="Pg. 003" />
                         <div className="max-w-3xl">
                             <span className="lab-label"></span>
@@ -476,7 +472,7 @@ const Index = () => {
                                 );
                             })}
                         </div>
-                        <div className="experiment-spread mt-8 grid gap-12 lg:grid-cols-2 lg:gap-10">
+                        <div className="experiment-spread mt-5 grid gap-6 lg:grid-cols-2 lg:gap-8">
                             <div
                                 id="experiment-panel-egg"
                                 role="tabpanel"
