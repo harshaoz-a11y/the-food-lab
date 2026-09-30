@@ -3424,3 +3424,64 @@ main > section.reveal.is-revealed {
     transition: none;
   }
 }
+
+#question .map-stage {
+  --map-circle-size: 430px;
+}
+
+#question .map-stage::before {
+  width: var(--map-circle-size);
+  height: var(--map-circle-size);
+}
+
+#question .map-dotted-spoke {
+  width: calc(var(--map-circle-size) / 2);
+}
+
+#question .map-stage > figcaption {
+  top: -1.25rem;
+  width: max-content;
+  min-width: 100%;
+  max-width: none;
+  padding-inline: 1rem;
+  white-space: nowrap;
+  font-family: "Caveat", cursive;
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  line-height: 1;
+  color: hsl(var(--primary));
+}
+
+#question .map-centre-text {
+  max-width: none;
+  overflow-wrap: normal;
+  word-break: normal;
+  white-space: nowrap;
+  text-transform: none;
+}
+
+#question .factor-note,
+#question .factor-ticker {
+  font-family: "Caveat", cursive;
+  font-size: clamp(0.95rem, 2vw, 1.3rem);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.1;
+  color: hsl(var(--primary));
+}
+
+@media (max-width: 767px) {
+  #question .map-stage {
+    --map-circle-size: 220px;
+  }
+
+  #question .map-stage > figcaption {
+    top: -1rem;
+    font-size: 1.2rem;
+  }
+
+  #question .factor-note,
+  #question .factor-ticker {
+    font-size: 1rem;
+  }
+}
