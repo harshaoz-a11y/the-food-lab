@@ -423,7 +423,6 @@ const Index = () => {
                         <div
                             className="grid min-w-0 items-center gap-10 xl:grid-cols-[minmax(0,.92fr)_minmax(0,1.08fr)] xl:gap-14">
                             <div className="relative z-10 min-w-0">
-                                <span className="lab-label"></span>
                                 <h1
                                     className="mt-6 max-w-[700px] font-serif text-[clamp(2.6rem,8vw,5.8rem)] font-normal leading-[0.9] tracking-[-0.05em] text-ink">Could <span className="red-underline">interactions</span>{" "}<span className="red-underline">matter</span>{" "}<span className="red-underline">more</span>{" "}than ingredients?</h1>
                                 <p
