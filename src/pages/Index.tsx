@@ -416,7 +416,6 @@ const Index = () => {
                         <div className="nb-top-margin mb-8 flex items-center gap-4">
                             <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/35">
                             </span>
-                            <span className="h-px flex-1 border-t border-dashed border-ink/15" />
                             <span className="font-mono text-[11px] text-ink/30">
                             </span>
                         </div>
