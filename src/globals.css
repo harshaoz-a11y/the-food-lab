@@ -27,6 +27,7 @@
     --paper: #eee7d8;
     --paper-light: #f8f2e5;
     --paper-deep: #ddd2bc;
+    --archive-stock: #ccbd99;
     --ink: #173b30;
         --ink-soft: #617068;
         --brick: #a33a2b;
@@ -2287,14 +2288,14 @@
    variation, almost no identifiable marks, and no repeated "stain" motifs. */
 
 #top {
-  background-color: #e8dfca !important;
+  background-color: var(--archive-stock) !important;
   background-image:
     radial-gradient(ellipse 95% 82% at 46% 43%, rgba(255,252,240,.24), transparent 72%),
     radial-gradient(ellipse 58% 46% at 8% 14%, rgba(121,93,55,.065), transparent 75%),
     radial-gradient(ellipse 62% 52% at 92% 82%, rgba(112,84,48,.055), transparent 78%),
     radial-gradient(ellipse 48% 70% at 96% 4%, rgba(144,115,74,.038), transparent 76%),
     radial-gradient(ellipse 52% 58% at 4% 94%, rgba(136,103,61,.045), transparent 78%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='cellulose' x='-10%25' y='-10%25' width='120%25' height='120%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006 .010' numOctaves='4' seed='61' stitchTiles='stitch' result='n'/%3E%3CfeColorMatrix in='n' type='matrix' values='.15 0 0 0 .45 .12 0 0 0 .38 .08 0 0 0 .29 0 0 0 .34 0'/%3E%3C/filter%3E%3Crect width='900' height='900' fill='%23e8dfca'/%3E%3Crect width='900' height='900' filter='url(%23cellulose)' opacity='.17'/%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='cellulose' x='-10%25' y='-10%25' width='120%25' height='120%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006 .010' numOctaves='4' seed='61' stitchTiles='stitch' result='n'/%3E%3CfeColorMatrix in='n' type='matrix' values='.15 0 0 0 .45 .12 0 0 0 .38 .08 0 0 0 .29 0 0 0 .34 0'/%3E%3C/filter%3E%3Crect width='900' height='900' fill='%23ccbd99'/%3E%3Crect width='900' height='900' filter='url(%23cellulose)' opacity='.17'/%3E%3C/svg%3E");
   background-size: auto, auto, auto, auto, auto, 900px 900px;
   background-blend-mode: multiply;
 }

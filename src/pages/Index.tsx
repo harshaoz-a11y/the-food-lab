@@ -197,7 +197,7 @@ function Brand() {
             <img
                 src={foodLabBrandLogo}
                 alt="The Food Lab — Invisible diets. Visible results."
-                className="absolute left-1/2 top-1/2 w-[210px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain sm:w-[240px] bg-[#ccbd99]" />
+                className="absolute left-1/2 top-1/2 w-[210px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain sm:w-[240px] bg-[var(--archive-stock)]" />
         </a>
     );
 }
