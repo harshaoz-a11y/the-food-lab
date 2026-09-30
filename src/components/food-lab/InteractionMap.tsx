@@ -57,7 +57,7 @@ export function InteractionMap() {
                 </div>
                 <img className="map-vitruvian" src={vitruvianClean} alt="" aria-hidden="true" />
                 <div className="map-centre" aria-live="polite">
-                    <small className="map-centre-text px-[1px]" key={activeIndex ?? "default"}>{activeFactor?.outcome ?? "Many decisions"}</small>
+                    <small className="map-centre-text px-[0px]" key={activeIndex ?? "default"}>{activeFactor?.outcome ?? "Many decisions"}</small>
                 </div>
                 <div className="map-factors">
                     {factors.map((
