@@ -3452,10 +3452,14 @@ main > section.reveal.is-revealed {
 }
 
 #question .map-centre-text {
-  max-width: none;
+  display: block;
+  width: 100%;
+  max-width: calc(100% - 0.5rem);
+  padding-inline: 0.25rem;
   overflow-wrap: normal;
   word-break: normal;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
   text-transform: none;
 }
 
