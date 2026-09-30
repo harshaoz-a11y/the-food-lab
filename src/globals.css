@@ -919,36 +919,34 @@
   to { stroke-dasharray: 180; stroke-dashoffset: 0; }
 }
 .field-studies { margin-top: 2rem; }
-.field-personas { display: grid; gap: 0.85rem; }
-.field-persona {
-  --persona-accent: #9a433b;
-  position: relative;
-  display: grid;
-  grid-template-columns: 112px minmax(0, 1fr);
-  overflow: hidden;
+.field-selector { display: grid; gap: 0.6rem; }
+.field-selector-option {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
   border: 1px solid rgba(247, 237, 219, 0.24);
-  border-radius: 1.35rem;
-  padding: 0;
-  color: #173b30;
-  text-align: left;
-  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  border-radius: 1rem;
+  padding: 0.85rem 1rem;
+  color: #f8f2e5;
+  background: rgba(248, 242, 229, 0.05);
+  text-align: center;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background-color 220ms ease;
 }
-.field-persona:hover { transform: translateY(-3px); }
-.field-persona:focus-visible { outline: 3px solid #f7eddb; outline-offset: 3px; }
-.field-persona[aria-pressed="true"] { border-color: var(--persona-accent); box-shadow: inset 0 0 0 2px var(--persona-accent), 0 12px 24px rgba(7, 28, 22, 0.2); transform: translateY(-4px); }
-.field-persona-morning { background: #d8c7a8; }
-.field-persona-desk { --persona-accent: #ffd1c2; background: #8f463f; color: #fff7e8; }
-.field-persona-evening { --persona-accent: #6e3935; background: #abb8a0; }
-.field-persona-art { display: grid; height: 122px; place-items: end center; overflow: hidden; }
-.field-character-svg { display: block; width: 100%; height: 100%; }
-.field-persona-copy { display: flex; min-width: 0; flex-direction: column; justify-content: center; padding: 1rem 1rem 0.75rem; }
-.field-persona-copy small { font: 11px "Space Mono", ui-monospace, monospace; letter-spacing: 0.14em; opacity: 0.58; text-transform: uppercase; }
-.field-persona-copy strong { margin-top: 0.35rem; font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: 1.15rem; font-weight: 400; line-height: 1.05; }
-.field-persona-copy > span { margin-top: 0.45rem; font-size: 0.7rem; line-height: 1.4; opacity: 0.72; }
-.field-persona-action { grid-column: 2; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; border-top: 1px solid currentColor; margin: 0 1rem; padding: 0.65rem 0 0.8rem; font: 11px "Space Mono", ui-monospace, monospace; letter-spacing: 0.1em; opacity: 0.72; text-transform: uppercase; }
-.field-persona-action svg { width: 14px; height: 14px; transition: transform 180ms ease; }
-.field-persona:hover .field-persona-action svg { transform: translateX(3px); }
-.field-persona[aria-pressed="true"] .field-persona-action { color: var(--persona-accent); opacity: 1; }
+.field-selector-option:hover { transform: translateY(-3px); border-color: rgba(247, 237, 219, 0.45); }
+.field-selector-option:focus-visible { outline: 3px solid #f7eddb; outline-offset: 3px; }
+.field-selector-option small { font: 11px "Space Mono", ui-monospace, monospace; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.55; }
+.field-selector-option strong { margin-top: 0.3rem; font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: 1.7rem; font-weight: 400; line-height: 1; }
+.field-selector-option > span { margin-top: 0.35rem; font-size: 0.72rem; line-height: 1.35; opacity: 0.65; }
+.field-selector-option.is-active {
+  border-color: rgba(247, 237, 219, 0.92);
+  background: #f8f2e5;
+  color: #173b30;
+  box-shadow: 0 12px 24px rgba(7, 28, 22, 0.25);
+}
+.field-selector-option.is-active small,
+.field-selector-option.is-active > span { opacity: 0.75; }
 
 .field-frame {
   --story-accent: #9a433b;
@@ -966,6 +964,8 @@
 }
 .field-frame-desk { --story-accent: #173b30; }
 .field-frame-evening { --story-accent: #6e3935; }
+.field-panel-art { display: grid; place-items: center; border: 1px dashed rgba(154, 67, 59, 0.35); border-radius: 1rem; background: #fff8e9; overflow: hidden; }
+.field-character-svg { display: block; width: min(300px, 100%); height: 100%; }
 .field-panel-heading { align-self: center; }
 .field-time { font: 11px "Space Mono", ui-monospace, monospace; letter-spacing: 0.14em; color: var(--story-accent); text-transform: uppercase; }
 .field-panel-heading h3 { margin-top: 0.75rem; max-width: 17rem; font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: 2rem; font-weight: 400; line-height: 0.96; }
@@ -999,18 +999,14 @@
 .field-story-copy p { margin-top: 0.35rem; font-size: 0.72rem; line-height: 1.45; color: rgba(23, 59, 48, 0.68); }
 
 @media (min-width: 768px) {
-  .field-personas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .field-persona { display: flex; min-height: 330px; flex-direction: column; }
-  .field-persona-art { height: 170px; }
-  .field-persona-copy { flex: 1; justify-content: flex-start; padding: 1rem 1.1rem 0.75rem; }
-  .field-persona-copy strong { font-size: 1.35rem; }
-  .field-persona-action { grid-column: auto; margin: 0 1.1rem; }
+  .field-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .field-story { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .field-story-step:not(:last-child)::after { display: none; }
 }
 
 @media (min-width: 1200px) {
   .field-frame { grid-template-columns: 250px minmax(0, 1fr); gap: 1.75rem; padding: 1.65rem; }
+  .field-panel-art { align-self: stretch; }
   .field-story { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .field-story-step { min-height: 220px; grid-template-columns: 1fr; align-content: center; justify-items: center; padding: 1rem 0.8rem; text-align: center; }
   .field-story-step:not(:last-child)::after { content: "→"; display: block; left: auto; right: -1.08rem; bottom: auto; top: 50%; transform: translateY(-50%); }
@@ -1059,30 +1055,6 @@
      underline treatment visually fuse the phrase together. */
   #question h1 .red-underline:nth-of-type(2) {
     margin-right: 0.16em;
-  }
-
-  /* Field sheet: the selector is an index, so let the typography carry it.
-     All three options use the same white field; active state is signalled by
-     the rule and arrow rather than a coloured card. */
-  #real-life .field-persona,
-  #real-life .field-persona-morning,
-  #real-life .field-persona-desk,
-  #real-life .field-persona-evening {
-    background: #f8f2e5;
-    color: #173b30;
-  }
-
-  #real-life .field-persona[aria-pressed="true"] {
-    background: #fffaf0;
-    box-shadow: inset 3px 0 0 var(--persona-accent);
-  }
-
-  #real-life .field-persona-copy small {
-    color: #173b30;
-  }
-
-  #real-life .field-persona-action {
-    color: #173b30;
   }
 
   /* Precision Bio-Nutrition: make the proposition read like the rest of the

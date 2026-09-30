@@ -64,7 +64,7 @@ const navigation = [{
 const fieldStudies = [{
     time: "07:42 / weekday",
     scene: "morning" as FieldScene,
-    storyLabel: "Weekday",
+    selectorLabel: "Working mom",
     persona: "The Working Mom",
     personaNote: "Morning logistics / everyone needs her at once",
     title: "The morning moved first",
@@ -91,7 +91,7 @@ const fieldStudies = [{
 }, {
     time: "13:18 / desk",
     scene: "desk" as FieldScene,
-    storyLabel: "Lunch",
+    selectorLabel: "CEO",
     persona: "The “Too Busy for Lunch” CEO",
     personaNote: "Decisions, calls and an untouched meal",
     title: "Lunch got outnumbered",
@@ -118,7 +118,7 @@ const fieldStudies = [{
 }, {
     time: "21:36 / home",
     scene: "evening" as FieldScene,
-    storyLabel: "Home",
+    selectorLabel: "Analyst",
     persona: "The 15-Hour Hot-Shot Analyst",
     personaNote: "Home hungry / too depleted to make dinner",
     title: "Hunger met an empty battery",
@@ -272,13 +272,12 @@ function FieldStudies() {
 
     return (
         <div className="field-studies">
-            <div className="field-personas" aria-label="Choose a real-life story">
+            <div className="field-selector" role="tablist" aria-label="Choose a real-life story">
                 {fieldStudies.map((
                     {
                         scene,
-                        storyLabel,
-                        persona,
-                        personaNote
+                        selectorLabel,
+                        persona
                     },
                     index
                 ) => {
@@ -288,30 +287,30 @@ function FieldStudies() {
                         <button
                             key={scene}
                             type="button"
-                            className={`field-persona field-persona-${scene}`}
-                            aria-pressed={isActive}
+                            role="tab"
+                            id={`field-tab-${scene}`}
+                            aria-selected={isActive}
+                            aria-controls="field-story-panel"
+                            className={`field-selector-option ${isActive ? "is-active" : ""}`}
                             onClick={() => setActiveScene(scene)}>
-                            <span className="field-persona-art">
-                                <FieldCharacter scene={scene} />
-                            </span>
-                            <span className="field-persona-copy">
-                                <small>Subject 0{index + 1}</small>
-                                <strong>{persona}</strong>
-                                <span>{personaNote}</span>
-                            </span>
-                            <span className="field-persona-action">
-                                {isActive ? `${storyLabel} loaded` : `Load ${storyLabel}`}
-                                <ArrowRight aria-hidden="true" />
-                            </span>
+                            <small>Subject 0{index + 1}</small>
+                            <strong>{selectorLabel}</strong>
+                            <span>{persona}</span>
                         </button>
                     );
                 })}
             </div>
             <article
+                id="field-story-panel"
                 key={activeStudy.scene}
+                role="tabpanel"
+                aria-labelledby={`field-tab-${activeStudy.scene}`}
                 className={`field-frame field-frame-${activeStudy.scene}`}
                 aria-live="polite">
                 <header className="field-panel-heading">
+                    <div className="field-panel-art" aria-hidden="true">
+                        <FieldCharacter scene={activeStudy.scene} />
+                    </div>
                     <span className="field-time">{activeStudy.time}</span>
                     <h3>{activeStudy.title}</h3>
                     <p>{activeStudy.copy}</p>
@@ -501,7 +500,7 @@ const Index = () => {
                             <h2
                                 className="mt-5 font-serif text-3xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-4xl lg:whitespace-nowrap lg:text-[clamp(2.4rem,4.05vw,3.5rem)]">When diets and discipline say "tomorrow!"</h2>
                             <p
-                                className="mt-5 max-w-lg text-base leading-relaxed text-[#f8f2e5]/65 sm:text-lg [color:#f5f0e3]">Which one resonates with you?</p>
+                                className="mt-5 max-w-lg text-base leading-relaxed text-[#f8f2e5]/65 sm:text-lg [color:#f5f0e3]">Which one resonates with you? Pick a subject below — the illustration and story load with it.</p>
                         </div>
                         <FieldStudies />
                         <aside className="press-note mt-10 max-w-lg rotate-[1deg] p-5 text-ink">
