@@ -279,8 +279,7 @@ function FieldStudies() {
                 {fieldStudies.map((
                     {
                         scene,
-                        selectorLabel,
-                        persona
+                        selectorLabel
                     },
                     index
                 ) => {
@@ -296,9 +295,8 @@ function FieldStudies() {
                             aria-controls="field-story-panel"
                             className={`field-selector-option ${isActive ? "is-active" : ""}`}
                             onClick={() => setActiveScene(scene)}>
-                            <small>Subject 0{index + 1}</small>
+                            <small>0{index + 1}</small>
                             <strong>{selectorLabel}</strong>
-                            <span>{persona}</span>
                         </button>
                     );
                 })}
@@ -314,10 +312,12 @@ function FieldStudies() {
                     <div className="field-panel-art" aria-hidden="true">
                         <FieldCharacter scene={activeStudy.scene} />
                     </div>
-                    <span className="field-time">{activeStudy.time}</span>
-                    <h3>{activeStudy.title}</h3>
-                    <p>{activeStudy.copy}</p>
-                    <span className="field-note">{activeStudy.note}</span>
+                    <div className="field-panel-copy">
+                        <span className="field-time">{activeStudy.time}</span>
+                        <h3>{activeStudy.title}</h3>
+                        <p>{activeStudy.copy}</p>
+                        <span className="field-note">{activeStudy.persona} · {activeStudy.note}</span>
+                    </div>
                 </header>
                 <div
                     className="field-story"
