@@ -117,32 +117,16 @@ export function AlchemyPartnerships() {
         <section
             className="alchemy-partnerships mt-10 overflow-hidden rounded-[2rem] border border-[#173b30]/20 bg-[#f8f2e5] shadow-[7px_8px_0_rgba(70,54,30,.05)]"
             aria-labelledby="alchemy-partnerships-heading">
-            <header
-                className="flex flex-col justify-between gap-3 border-b-2 border-dashed border-[#a33a2b] bg-[#fdf6ec] px-6 py-5 text-[#a33a2b] sm:flex-row sm:items-center sm:px-8">
+            <header className="alchemy-heading">
                 <div>
-                    <span
-                        className="font-mono text-[9px] uppercase tracking-[0.17em] text-[#a33a2b]/60">Interaction reader</span>
-                    <h3
-                        id="alchemy-partnerships-heading"
-                        className="mt-1.5 text-2xl font-normal tracking-[-0.02em] sm:text-3xl">The Fit Peasant partnerships
-                                                          </h3>
+                    <span className="alchemy-kicker">Interaction reader</span>
+                    <h3 id="alchemy-partnerships-heading">The Fit Peasant partnerships</h3>
                 </div>
-                <span
-                    className="w-fit rounded-full border-2 border-dashed border-[#a33a2b] bg-[#fdf6ec] px-4 py-1.5 font-mono text-[9px] uppercase tracking-[0.13em] text-[#a33a2b]/75">7 interactions / hover an overlap
-                                                </span>
+                <span className="alchemy-count">7 interactions · hover an overlap</span>
             </header>
-            <div className="alchemy-body bg-[#fdf6ec] px-4 py-5 sm:px-6 sm:py-7">
-                <div
-                    className="venn-reader relative overflow-hidden rounded-[1.75rem] border-2 border-[#2d7d46]/50 bg-[#122019] shadow-[6px_8px_0_rgba(45,125,70,.14)]"
-                    style={{
-                        backgroundImage: "radial-gradient(rgba(248,242,229,0.05) 1px, transparent 1px)",
-                        backgroundSize: "18px 18px"
-                    }}>
-                    <div className="venn-reader-intro">
-                        <span
-                            className="font-mono text-[7px] uppercase tracking-[0.15em] text-[#f8f2e5]/45"></span>
-                        <p className="text-[0px]">
-                        </p>
+            <div className="alchemy-body">
+                <div className="venn-reader">
+                    <div className="venn-reader-intro" aria-hidden="true">
                     </div>
                     <div
                         className="venn-diagram"
@@ -251,47 +235,21 @@ export function AlchemyPartnerships() {
                     <p className="venn-reader-hint text-[0px]">
                     </p>
                 </div>
-                <div
-                    className="mt-4 grid grid-cols-3 gap-2 rounded-[1.25rem] border border-[#173b30]/15 bg-[#f3ead8] p-3 sm:gap-3 sm:p-5">
-                    <div className="min-w-0 text-center sm:text-left">
-                        <span
-                            className="block font-mono text-[6.5px] uppercase tracking-[0.13em] text-[#173b30]/45 sm:text-[7px]">Active region</span>
-                        <strong
-                            className="mt-1 block truncate font-serif text-xs text-[#173b30] sm:text-base">{current.interaction}</strong>
-                    </div>
-                    <div
-                        className="min-w-0 border-x border-[#173b30]/10 px-1.5 text-center sm:px-4 sm:text-left">
-                        <span
-                            className="block font-mono text-[6.5px] uppercase tracking-[0.13em] text-[#173b30]/45 sm:text-[7px]">Selected</span>
-                        <strong className="mt-1 block font-serif text-xs text-[#173b30] sm:text-base">0{activeIndex + 1}of 07</strong>
-                    </div>
-                    <div className="min-w-0 text-center sm:text-left">
-                        <span
-                            className="block font-mono text-[6.5px] uppercase tracking-[0.13em] text-[#173b30]/45 sm:text-[7px]">Ingredients</span>
-                        <strong className="mt-1 block font-serif text-xs text-[#173b30] sm:text-base">14 shown</strong>
-                    </div>
+                <div className="alchemy-stats">
+                    <div><span>Active region</span><strong>{current.interaction}</strong></div>
+                    <div><span>Selected</span><strong>0{activeIndex + 1} of 07</strong></div>
+                    <div><span>Ingredients</span><strong>14 shown</strong></div>
                 </div>
-                <div
-                    key={`benefit-${activeIndex}`}
-                    className="mt-4 rounded-[1.5rem] border-2 border-dashed border-[#2d7d46]/45 bg-[#eaf4ec] p-5 text-[#245f38] animate-in fade-in slide-in-from-bottom-2 duration-300 sm:p-6"
-                    aria-live="polite">
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                        <span className="font-mono text-[8px] uppercase tracking-[0.15em] opacity-65">What this overlap contributes</span>
-                        <span
-                            className="rounded-full border border-[#2d7d46]/40 bg-[#2d7d46]/10 px-3 py-1 font-mono text-[8px] uppercase tracking-[0.13em] text-[#2d7d46]">Region 0{activeIndex + 1}of 07</span>
+                <div key={`benefit-${activeIndex}`} className="alchemy-benefit" aria-live="polite">
+                    <div className="alchemy-benefit-head">
+                        <span>What this overlap contributes</span>
+                        <span>Region 0{activeIndex + 1} of 07</span>
                     </div>
-                    <h4
-                        className="mt-3 font-serif text-2xl font-normal leading-tight sm:text-3xl">{current.benefit}</h4>
-                    <p
-                        className="mt-3 max-w-2xl text-sm leading-relaxed text-[#173b30]/75 sm:text-base">{current.insight}</p>
-                    <span
-                        className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-[#173b30]/15 bg-white/60 px-3 py-1 font-mono text-[8px] uppercase tracking-[0.11em] text-[#173b30]/60">
-                        <CurrentIcon className="h-3 w-3" aria-hidden="true" /> {current.left} <b>×</b> {current.right}
-                    </span>
+                    <h4>{current.benefit}</h4>
+                    <p>{current.insight}</p>
+                    <span className="alchemy-ingredients"><CurrentIcon aria-hidden="true" /> {current.left} <b>×</b> {current.right}</span>
                 </div>
-                <p
-                    className="mt-4 border-t border-dashed border-[#a33a2b]/25 pt-4 font-mono text-[8px] uppercase leading-relaxed tracking-[0.11em] text-[#a33a2b]/55">Amounts reflect the current formula. Benefits describe culinary and formulation roles, not personal medical advice.
-                                                </p>
+                <p className="alchemy-footnote">Amounts reflect the current formula. Benefits describe culinary and formulation roles, not personal medical advice.</p>
             </div>
         </section>
     );
