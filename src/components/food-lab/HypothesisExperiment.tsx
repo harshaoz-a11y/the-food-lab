@@ -134,7 +134,8 @@ export function HypothesisExperiment() {
                 <span>Observation-0{active + 1}</span>
                 <p>{stages[active].insight}</p>
             </div>
-            <p className="happiness-thesis">The ultimate secret ingredient to diet consistency isn’t a macro. It’s safeguarding the sheer joy of eating.</p>
+            <p className="happiness-thesis">
+            </p>
         </div>
     );
 }
