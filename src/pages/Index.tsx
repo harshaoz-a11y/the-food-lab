@@ -42,7 +42,6 @@ import { AlchemyPartnerships } from "@/components/food-lab/AlchemyPartnerships";
 import { EggExperiment } from "@/components/food-lab/EggExperiment";
 import { FieldCharacter, type FieldScene } from "@/components/food-lab/FieldCharacter";
 import { HypothesisExperiment } from "@/components/food-lab/HypothesisExperiment";
-import { InteractionMap } from "@/components/food-lab/InteractionMap";
 import { RiceExperiment } from "@/components/food-lab/RiceExperiment";
 import foodLabBrandLogo from "@/assets/the-food-lab-brand-logo.png";
 import { maestroAssets } from "@/lib/maestro-assets";
@@ -433,7 +432,7 @@ const Index = () => {
                                     className="handwritten mt-5 max-w-xs rotate-[-0.5deg] text-sm text-primary/70">
                                 </p>
                             </div>
-                            <InteractionMap />
+                            <HypothesisExperiment />
                         </div>
                         <aside
                             className="press-note mx-auto mt-10 w-full max-w-4xl rotate-[-1deg] px-5 py-4 text-center sm:px-8">
@@ -511,23 +510,6 @@ const Index = () => {
                             <p
                                 className="handwritten mt-2 text-lg leading-tight text-primary sm:text-xl">Maybe consistency is designed along with a life, not imposed on one.</p>
                         </aside>
-                    </div>
-                </section>
-                <section
-                    id="working-hypothesis"
-                    className="scroll-mt-24 px-4 sm:px-6 lg:px-8"
-                    aria-labelledby="map-heading">
-                    <div
-                        className="mx-auto max-w-[1400px] border-x border-b border-ink/15 bg-[#e4dac5] px-6 py-14 sm:px-12 lg:px-16 lg:py-20">
-                        <div className="text-center">
-                            <div className="nb-section-divider mb-3" />
-                            <h2 id="map-heading" className="lab-label">The working hypothesis</h2>
-                            <p
-                                className="mx-auto mt-4 max-w-xl font-serif text-xl leading-snug text-ink/65">Don’t just read the formula. Put it to work.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </p>
-                            <div className="nb-section-divider mt-3" />
-                        </div>
-                        <HypothesisExperiment />
                     </div>
                 </section>
                 <section

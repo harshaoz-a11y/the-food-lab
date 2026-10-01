@@ -1346,16 +1346,16 @@
      blend modes inconsistently. */
 
   /* The "joy removed" state must remain legible in print and PDF output. */
-  #working-hypothesis .happiness-check {
+  #question .happiness-check {
     background: var(--paper-light);
   }
 
-  #working-hypothesis .happiness-check span {
+  #question .happiness-check span {
     color: var(--brick) !important;
     opacity: 1;
   }
 
-  #working-hypothesis .happiness-check p {
+  #question .happiness-check p {
     color: var(--ink) !important;
     opacity: 1;
     font-size: 0.94rem;
@@ -1513,14 +1513,14 @@
 }
 
 @media print {
-  #working-hypothesis .happiness-check,
-  #working-hypothesis .happiness-check p {
+  #question .happiness-check,
+  #question .happiness-check p {
     background: #fff;
     color: #111 !important;
     opacity: 1 !important;
   }
 
-  #working-hypothesis .happiness-check span {
+  #question .happiness-check span {
     color: #7f2f24 !important;
     opacity: 1 !important;
   }
@@ -1623,11 +1623,11 @@
 
   /* The macro's disabled state needs the same visual weight as the active
      state; never let PDF/export rendering turn the body copy into grey-on-grey. */
-  #working-hypothesis .happiness-macro:not(.is-on) .happiness-check {
+  #question .happiness-macro:not(.is-on) .happiness-check {
     background: var(--paper-light) !important;
   }
 
-  #working-hypothesis .happiness-macro:not(.is-on) .happiness-check p {
+  #question .happiness-macro:not(.is-on) .happiness-check p {
     font-size: 0.96rem !important;
     line-height: 1.35 !important;
   }
@@ -1636,7 +1636,7 @@
 /* MAESTRO-035 / portrait mobile evidence + Happiness Macro hardening */
 @media (max-width: 520px) {
   /* Happiness Macro: one readable vertical note, never a squeezed two-column box. */
-  #working-hypothesis .happiness-macro {
+  #question .happiness-macro {
     display: block !important;
     width: 100%;
     overflow: visible !important;
@@ -1644,7 +1644,7 @@
     background: rgba(163, 58, 43, 0.055) !important;
   }
 
-  #working-hypothesis .happiness-toggle {
+  #question .happiness-toggle {
     display: grid !important;
     width: 100%;
     min-width: 0;
@@ -1655,32 +1655,32 @@
     background: var(--paper-light) !important;
   }
 
-  #working-hypothesis .happiness-icon {
+  #question .happiness-icon {
     width: 34px;
     height: 34px;
   }
 
-  #working-hypothesis .happiness-title {
+  #question .happiness-title {
     min-width: 0;
   }
 
-  #working-hypothesis .happiness-title strong {
+  #question .happiness-title strong {
     font-size: 0.98rem !important;
     line-height: 1.05;
     white-space: normal;
   }
 
-  #working-hypothesis .happiness-title small {
+  #question .happiness-title small {
     font-size: 11px !important;
     line-height: 1.15;
   }
 
-  #working-hypothesis .happiness-switch {
+  #question .happiness-switch {
     justify-self: end;
   }
 
-  #working-hypothesis .happiness-check,
-  #working-hypothesis .happiness-macro:not(.is-on) .happiness-check {
+  #question .happiness-check,
+  #question .happiness-macro:not(.is-on) .happiness-check {
     display: block !important;
     width: 100%;
     min-width: 0;
@@ -1695,7 +1695,7 @@
     overflow: visible !important;
   }
 
-  #working-hypothesis .happiness-check span {
+  #question .happiness-check span {
     display: block;
     color: var(--brick) !important;
     font-size: 11px !important;
@@ -1703,8 +1703,8 @@
     opacity: 1 !important;
   }
 
-  #working-hypothesis .happiness-check p,
-  #working-hypothesis .happiness-macro:not(.is-on) .happiness-check p {
+  #question .happiness-check p,
+  #question .happiness-macro:not(.is-on) .happiness-check p {
     display: block;
     width: 100%;
     max-width: none;
@@ -2296,7 +2296,6 @@
   #question,
   #demonstration,
   #real-life,
-  #working-hypothesis,
   #how-we-help,
   #fit-peasant,
   #your-experiment {
@@ -2307,7 +2306,6 @@
   #question > .paper-sheet,
   #demonstration > .paper-sheet,
   #real-life > div,
-  #working-hypothesis > div,
   #how-we-help > .paper-sheet,
   #your-experiment > div {
     max-width: 1600px !important;
@@ -2319,7 +2317,6 @@
 
   #demonstration .experiment-shell,
   #demonstration .experiment-stage,
-  #working-hypothesis .hypothesis-lab,
   #fit-peasant .alchemy-partnerships {
     width: 100% !important;
   }
@@ -3445,3 +3442,39 @@ main > section.reveal.is-revealed {
     font-size: 1rem;
   }
 }
+
+/* The hypothesis experiment now lives in the hero's right column, so it must
+   stay proportional to that column at every viewport — the default five-column
+   formula is only meant for a full-width stage. */
+#question .hypothesis-lab {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  #question .hypothesis-path {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.7rem;
+  }
+
+  #question .hypothesis-equals {
+    display: none;
+  }
+
+  #question .hypothesis-output {
+    grid-column: 1 / -1;
+    min-height: 165px;
+    border-radius: 1.5rem;
+  }
+
+  #question .hypothesis-output strong br {
+    display: none;
+  }
+
+  #question .hypothesis-output strong {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35em;
+  }
+}
+
