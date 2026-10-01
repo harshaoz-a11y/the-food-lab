@@ -3443,6 +3443,100 @@ main > section.reveal.is-revealed {
   }
 }
 
+#question .hero-hypothesis-grid {
+  min-height: 0;
+}
+
+#question .hero-question-copy {
+  min-height: 100%;
+}
+
+#question .hero-hypothesis-grid > .hypothesis-lab {
+  align-self: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0;
+}
+
+@media (min-width: 1024px) {
+  #question .hero-hypothesis-grid {
+    align-items: stretch;
+  }
+
+  #question .hero-question-copy {
+    padding: clamp(1rem, 2vw, 2.5rem) 0;
+  }
+
+  #question .hero-hypothesis-grid > .hypothesis-lab {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(0.9rem, 1.6vw, 1.5rem);
+  }
+
+  #question .hypothesis-controls {
+    padding-bottom: 0.7rem;
+  }
+
+  #question .happiness-macro {
+    margin-top: 0.7rem;
+  }
+
+  #question .hypothesis-path {
+    flex: 1;
+    align-content: center;
+    padding-block: 1rem;
+  }
+
+  #question .hypothesis-stage {
+    min-height: clamp(112px, 10vw, 156px);
+    padding: 0.75rem;
+  }
+
+  #question .hypothesis-stage svg {
+    width: clamp(22px, 2.3vw, 28px);
+    height: clamp(22px, 2.3vw, 28px);
+  }
+
+  #question .hypothesis-stage strong {
+    font-size: clamp(0.95rem, 1.35vw, 1.35rem);
+  }
+
+  #question .hypothesis-stage small,
+  #question .hypothesis-stage-number,
+  #question .hypothesis-output small,
+  #question .happiness-check span,
+  #question .happiness-title small,
+  #question .hypothesis-controls > span {
+    font-size: clamp(8px, 0.75vw, 11px);
+  }
+
+  #question .hypothesis-output {
+    min-height: clamp(115px, 11vw, 165px);
+    padding: 0.9rem;
+  }
+
+  #question .hypothesis-output strong {
+    font-size: clamp(1.05rem, 1.7vw, 1.6rem);
+  }
+}
+
+@media (max-width: 767px) {
+  #question .hero-hypothesis-grid {
+    gap: 2rem;
+  }
+
+  #question .hero-question-copy {
+    min-height: auto;
+    padding: 0;
+  }
+
+  #question .hero-hypothesis-grid > .hypothesis-lab {
+    padding: 1rem;
+  }
+}
+
 /* The hypothesis experiment now lives in the hero's right column, so it must
    stay proportional to that column at every viewport — the default five-column
    formula is only meant for a full-width stage. */
