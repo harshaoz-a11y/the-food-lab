@@ -3450,18 +3450,6 @@ main > section.reveal.is-revealed {
   margin-top: 0;
 }
 
-#question .happiness-macro {
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-}
-
-#question .hypothesis-stage {
-  min-height: 165px;
-}
-
-#question .hypothesis-stage strong {
-  font-size: clamp(1.02rem, 1.5vw, 1.35rem);
-}
-
 @media (min-width: 768px) {
   #question .hypothesis-path {
     grid-template-columns: repeat(3, minmax(0, 1fr));

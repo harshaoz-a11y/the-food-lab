@@ -134,6 +134,8 @@ export function HypothesisExperiment() {
                 <span>Observation-0{active + 1}</span>
                 <p>{stages[active].insight}</p>
             </div>
+            <p className="happiness-thesis">
+            </p>
         </div>
     );
 }
