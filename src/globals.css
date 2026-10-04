@@ -687,14 +687,16 @@
   isolation: isolate;
 }
 .egg-state-illustration {
-  aspect-ratio: 1064 / 960;
+  aspect-ratio: 520 / 420;
 }
-.egg-state-illustration img {
+.egg-state-illustration img,
+.egg-state-illustration svg {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 .egg-state-illustration img,
+.egg-state-illustration svg,
 .rice-plate-illustration img {
   transition: opacity 260ms ease, filter 260ms ease;
 }
@@ -2630,14 +2632,15 @@ main > section.reveal.is-revealed {
   align-items: center;
 }
 .egg-art {
-  width: min(100%, 420px);
-  aspect-ratio: 1064 / 960;
+  width: min(100%, 520px);
+  aspect-ratio: 520 / 420;
 }
-.egg-art img {
+.egg-art svg {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  overflow: visible;
+  filter: saturate(.86) contrast(.97);
 }
 .egg-now-showing {
   position: static;
