@@ -2633,17 +2633,19 @@ main > section.reveal.is-revealed {
   aspect-ratio: auto;
 }
 .egg-art {
- width: min(100%, 520px);
+  width: min(100%, 520px);
 }
-.egg-art svg {
- display: block;
- width: 100%;
- height: auto;
- overflow: visible;
+.egg-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: none;
+  mix-blend-mode: normal;
 }
 .egg-now-showing {
- position: static;
- display: block;
+  position: static;
+  display: block;
   margin-top: 0.55rem;
   border-color: rgba(23, 59, 48, 0.28);
   padding: 0.45rem 0.75rem;
