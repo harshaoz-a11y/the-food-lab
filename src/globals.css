@@ -2633,11 +2633,14 @@ main > section.reveal.is-revealed {
   width: min(100%, 420px);
   aspect-ratio: 1064 / 960;
 }
-.egg-art img {
+.egg-art {
+  display: grid;
+  place-items: center;
+}
+.egg-art .egg-object {
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  width: min(100%, 420px);
+  height: auto;
 }
 .egg-now-showing {
   position: static;
