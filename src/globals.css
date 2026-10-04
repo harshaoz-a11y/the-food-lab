@@ -2630,17 +2630,18 @@ main > section.reveal.is-revealed {
   min-height: 0;
   flex-direction: column;
   align-items: center;
+  aspect-ratio: auto;
 }
 .egg-art {
   width: min(100%, 520px);
-  aspect-ratio: 520 / 420;
 }
-.egg-art svg {
+.egg-art img {
   display: block;
   width: 100%;
-  height: 100%;
-  overflow: visible;
-  filter: saturate(.86) contrast(.97);
+  height: auto;
+  object-fit: contain;
+  filter: none;
+  mix-blend-mode: normal;
 }
 .egg-now-showing {
   position: static;
