@@ -1,5 +1,5 @@
 import { useState } from "react";
-import rawEggAsset from "@/assets/maestro/egg-raw.svg";
+import eggReferenceAsset from "@/assets/maestro/egg-reference.png";
 import cookedEggAsset from "@/assets/maestro/egg-cooked.svg";
 
 const states = {
@@ -7,15 +7,15 @@ const states = {
     label: "Raw egg",
     value: 51,
     note: "The ingredient is present. The body may receive less of it.",
-    asset: rawEggAsset,
-    alt: "Raw egg illustration",
+    asset: eggReferenceAsset,
+    alt: "Raw egg reference photograph",
   },
   cooked: {
     label: "Cooked egg",
     value: 91,
     note: "Heat changes the interaction — and what becomes available.",
-    asset: cookedEggAsset,
-    alt: "Cooked egg illustration",
+    asset: eggReferenceAsset,
+    alt: "Cooked egg reference photograph",
   },
 } as const;
 
