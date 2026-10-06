@@ -700,51 +700,13 @@
 .rice-plate-illustration svg {
   transition: opacity 260ms ease, filter 260ms ease;
 }
-.rice-illustration-frame {
-  position: relative;
+.rice-plate-illustration svg {
   width: min(100%, 720px);
   max-height: 330px;
   margin: 0 auto;
-}
-.rice-illustration-float {
-  position: relative;
-}
-.rice-illustration-float svg {
-  display: block;
-  width: 100%;
-  max-height: 330px;
   object-fit: contain;
   opacity: .72;
   mix-blend-mode: multiply;
-}
-.rice-illustration-highlight {
-  position: absolute;
-  inset: 4% 1% 5%;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  pointer-events: none;
-}
-.rice-illustration-highlight span {
-  margin: 0 .35rem;
-  border: 1px solid transparent;
-  border-radius: 1rem;
-  background: rgba(238, 231, 216, .08);
-  opacity: .65;
-  transition: background-color 320ms ease, border-color 320ms ease, box-shadow 320ms ease, opacity 320ms ease, transform 320ms cubic-bezier(.2,.8,.2,1);
-}
-.rice-illustration-highlight span.is-active {
-  border-color: rgba(163, 58, 43, .28);
-  background: rgba(248, 242, 229, .025);
-  box-shadow: inset 0 0 18px rgba(248, 242, 229, .08), 0 0 16px rgba(163, 58, 43, .06);
-  opacity: .95;
-  transform: translateY(-2px);
-}
-main > section.reveal.is-revealed .rice-illustration-frame {
-  animation: rice-illustration-enter 720ms cubic-bezier(.2,.8,.2,1) both;
-}
-main > section.reveal.is-revealed .rice-illustration-float {
-  animation: rice-illustration-float 9s 720ms ease-in-out infinite;
 }
 .egg-state-illustration.is-raw img,
 .egg-state-illustration.is-cooked img,
@@ -951,21 +913,6 @@ main > section.reveal.is-revealed .rice-illustration-float {
   .rice-plate-illustration svg,
   .measure-track span,
   .rice-curve-active { transition: none; animation: none; }
-  .rice-illustration-frame,
-  .rice-illustration-float,
-  .rice-illustration-highlight span {
-    animation: none;
-    transition: none;
-  }
-  .rice-illustration-highlight span.is-active { transform: none; }
-}
-@keyframes rice-illustration-enter {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes rice-illustration-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-1.5px); }
 }
 @keyframes draw-rice-curve {
   from { stroke-dasharray: 180; stroke-dashoffset: 180; }
