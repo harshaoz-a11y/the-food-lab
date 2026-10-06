@@ -679,14 +679,10 @@
 }
 .evidence-photo figcaption { padding: 0.85rem 0.5rem 0.25rem; font: 11px "Space Mono", ui-monospace, monospace; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
 
-.egg-evidence,
-.rice-evidence { overflow: hidden; }
-.egg-state-illustration,
-.rice-plate-illustration {
+.egg-evidence { overflow: hidden; }
+.egg-state-illustration {
   position: relative;
   isolation: isolate;
-}
-.egg-state-illustration {
   aspect-ratio: 520 / 420;
 }
 .egg-state-illustration img,
@@ -696,27 +692,14 @@
   object-fit: contain;
 }
 .egg-state-illustration img,
-.egg-state-illustration svg,
-.rice-plate-illustration svg {
+.egg-state-illustration svg {
   transition: opacity 260ms ease, filter 260ms ease;
 }
-.rice-plate-illustration svg {
-  width: min(100%, 720px);
-  max-height: 330px;
-  margin: 0 auto;
-  object-fit: contain;
-  opacity: .72;
-  mix-blend-mode: multiply;
-}
 .egg-state-illustration.is-raw img,
-.egg-state-illustration.is-cooked img,
-.rice-plate-illustration.is-fresh svg,
-.rice-plate-illustration.is-reheated svg,
-.rice-plate-illustration.is-coconut svg {
+.egg-state-illustration.is-cooked img {
   opacity: .9;
 }
-.egg-state-illustration::after,
-.rice-plate-illustration::after {
+.egg-state-illustration::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -725,8 +708,7 @@
   opacity: 0;
   transition: opacity 220ms ease;
 }
-.egg-now-showing,
-.rice-now-showing {
+.egg-now-showing {
   position: absolute;
   right: .7rem;
   bottom: .65rem;
@@ -740,9 +722,7 @@
   letter-spacing: .08em;
   text-transform: uppercase;
 }
-.egg-state-illustration.is-cooked .egg-now-showing,
-.rice-plate-illustration.is-reheated .rice-now-showing,
-.rice-plate-illustration.is-coconut .rice-now-showing {
+.egg-state-illustration.is-cooked .egg-now-showing {
   border-color: rgba(45,125,70,.35);
   color: var(--green);
 }
@@ -910,7 +890,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .egg-state-illustration img,
-  .rice-plate-illustration svg,
   .measure-track span,
   .rice-curve-active { transition: none; animation: none; }
 }

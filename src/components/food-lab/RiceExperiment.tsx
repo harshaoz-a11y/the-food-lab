@@ -1,46 +1,44 @@
 import { useState } from "react";
-import { Clock3, Snowflake, Sparkles, TrendingDown, TrendingUp, Utensils } from "lucide-react";
-import RiceInteraction from "@/components/Rice-interaction";
+import { Snowflake, Sparkles, Utensils } from "lucide-react";
+import RiceComic from "@/components/rice-comic/RiceComic";
 
 const preparations = {
     fresh: {
         label: "Fresh and hot",
         shortLabel: "Fresh",
+        value: "fresh",
         icon: Utensils,
         summary: "The reference plate: freshly cooked white rice, served hot.",
         curve: "M4 88 C22 86 31 16 49 20 C66 24 64 58 82 50 C96 44 104 68 116 65",
         glucosePeak: "Reference",
-
         facts: [
             ["Resistant starch", "Reference"],
             ["Effective GI", "Reference"],
             ["Eating pace", "Reference pace"]
         ]
     },
-
     reheated: {
         label: "Refrigerated 24h + reheated",
         shortLabel: "Refrigerated + reheated",
+        value: "reheated",
         icon: Snowflake,
         summary: "Cooling and reheating changes the starch structure—without changing the ingredient.",
         curve: "M4 88 C22 86 32 34 50 38 C67 42 69 62 84 56 C98 51 106 68 116 65",
         glucosePeak: "17.8% lower",
-
         facts: [
             ["Resistant starch", "+158%"],
             ["Effective GI", "20–30% lower"],
             ["Eating pace", "Slower"]
         ]
     },
-
     coconut: {
         label: "Coconut oil + chilled",
         shortLabel: "Coconut oil + chilled",
+        value: "oil",
         icon: Sparkles,
         summary: "Cooking with coconut oil, then cooling, produces the largest shift in this comparison.",
         curve: "M4 88 C25 87 35 57 52 59 C69 61 74 68 89 65 C103 62 109 68 116 66",
         glucosePeak: "~47% lower peak",
-
         facts: [
             ["Resistant starch", "10–15×"],
             ["Effective GI", "17.8–35% lower"],
@@ -50,23 +48,16 @@ const preparations = {
 } as const;
 
 type Preparation = keyof typeof preparations;
+type RiceValue = "fresh" | "reheated" | "oil";
 
 export function RiceExperiment() {
-    const [active, setActive] = useState<Preparation>("fresh");
+    const [selected, setSelected] = useState<RiceValue>("fresh");
+    const active: Preparation = selected === "oil" ? "coconut" : selected;
     const current = preparations[active];
 
     return (
-        <div
-            className={`experiment-card rice-experiment ${active !== "fresh" ? "is-green" : ""}`}>
-            <div className="evidence-photo rice-evidence bg-[#c9b69f]">
-                <div className={`rice-plate-illustration is-${active}`}>
-                    <RiceInteraction
-                        role="img"
-                        aria-label="Rice interaction illustration showing how the same food can change through preparation, cooling and reheating"
-                        className="border-[0px] border-[#c9b79f]" />
-                    <span className="rice-now-showing">Now showing: {current.label}</span>
-                </div>
-            </div>
+        <div className={`rice-experiment grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,.85fr)] lg:items-center ${selected !== "fresh" ? "is-green" : ""}`}>
+            <RiceComic value={selected} onChange={setSelected} />
             <div className="rice-panel">
                 <div
                     className="grid gap-2 sm:grid-cols-3"
@@ -80,9 +71,9 @@ export function RiceExperiment() {
                             <button
                                 key={key}
                                 type="button"
-                                onClick={() => setActive(key)}
-                                className={active === key ? "rice-choice is-active" : "rice-choice"}
-                                aria-pressed={active === key}>
+                                onClick={() => setSelected(option.value)}
+                                className={selected === option.value ? "rice-choice is-active" : "rice-choice"}
+                                aria-pressed={selected === option.value}>
                                 <Icon aria-hidden="true" />
                                 <span>{option.shortLabel}</span>
                             </button>
@@ -124,7 +115,7 @@ export function RiceExperiment() {
                 </div>
                 <p
                     className="mt-6 border-t border-dashed border-ink/25 pt-4 font-mono text-[11px] uppercase leading-relaxed tracking-[0.1em] text-ink/50">Figures summarise the supplied clinical comparison. The curves are illustrative rather than plotted study data; results depend on rice variety, method and study context. This is an observation, not personal dietary advice.
-                            </p>
+                </p>
             </div>
         </div>
     );
