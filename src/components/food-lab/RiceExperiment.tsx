@@ -61,10 +61,6 @@ export function RiceExperiment() {
             <div className="evidence-photo rice-evidence bg-[#c9b69f]">
                 <div className={`rice-plate-illustration is-${active}`}>
                     <RiceInteraction
-                        style={{
-                            width: "500px",
-                            opacity: 0.5
-                        }}
                         role="img"
                         aria-label="Rice interaction illustration showing how the same food can change through preparation, cooling and reheating"
                         className="border-[0px] border-[#c9b79f]" />
