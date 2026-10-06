@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Clock3, Snowflake, Sparkles, TrendingDown, TrendingUp, Utensils } from "lucide-react";
-import riceInteraction from "@/assets/rice-interaction.svg";
+import RiceInteraction from "@/components/Rice-interaction";
 
 const preparations = {
     fresh: {
@@ -60,9 +60,9 @@ export function RiceExperiment() {
             className={`experiment-card rice-experiment ${active !== "fresh" ? "is-green" : ""}`}>
             <div className="evidence-photo rice-evidence bg-[#c9b69f]">
                 <div className={`rice-plate-illustration is-${active}`}>
-                    <img
-                        src={riceInteraction}
-                        alt="Rice interaction illustration showing how the same food can change through preparation, cooling and reheating"
+                    <RiceInteraction
+                        role="img"
+                        aria-label="Rice interaction illustration showing how the same food can change through preparation, cooling and reheating"
                         className="border-[0px] border-[#c9b79f]" />
                     <span className="rice-now-showing">Now showing: {current.label}</span>
                 </div>
