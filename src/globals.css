@@ -886,8 +886,6 @@
   color: var(--ink);
 }
 .rice-experiment.is-green .rice-fact em { color: var(--green); }
-.experiment-spread { display: block; }
-.experiment-spread > [role="tabpanel"] { width: 100%; }
 
 @media (max-width: 767px) {
   .experiment-panel {
