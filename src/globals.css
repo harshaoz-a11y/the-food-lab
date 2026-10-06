@@ -697,10 +697,11 @@
 }
 .egg-state-illustration img,
 .egg-state-illustration svg,
-.rice-plate-illustration img {
+.rice-plate-illustration svg {
   transition: opacity 260ms ease, filter 260ms ease;
 }
-.rice-plate-illustration img {
+.rice-plate-illustration svg {
+  display: block;
   width: min(100%, 720px);
   max-height: 330px;
   margin: 0 auto;
@@ -710,9 +711,9 @@
 }
 .egg-state-illustration.is-raw img,
 .egg-state-illustration.is-cooked img,
-.rice-plate-illustration.is-fresh img,
-.rice-plate-illustration.is-reheated img,
-.rice-plate-illustration.is-coconut img {
+.rice-plate-illustration.is-fresh svg,
+.rice-plate-illustration.is-reheated svg,
+.rice-plate-illustration.is-coconut svg {
   opacity: .9;
 }
 .egg-state-illustration::after,
@@ -910,7 +911,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .egg-state-illustration img,
-  .rice-plate-illustration img,
+  .rice-plate-illustration svg,
   .measure-track span,
   .rice-curve-active { transition: none; animation: none; }
 }
