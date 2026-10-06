@@ -60,10 +60,22 @@ export function RiceExperiment() {
             className={`experiment-card rice-experiment ${active !== "fresh" ? "is-green" : ""}`}>
             <div className="evidence-photo rice-evidence bg-[#c9b69f]">
                 <div className={`rice-plate-illustration is-${active}`}>
-                    <RiceInteraction
-                        role="img"
-                        aria-label="Rice interaction illustration showing how the same food can change through preparation, cooling and reheating"
-                        className="border-[0px] border-[#c9b79f]" />
+                    <div className="rice-illustration-frame">
+                        <div className="rice-illustration-float">
+                            <RiceInteraction
+                                role="img"
+                                aria-label="Rice interaction illustration showing how the same food can change through preparation, cooling and reheating"
+                                className="border-[0px] border-[#c9b79f]" />
+                            <div className="rice-illustration-highlight" aria-hidden="true">
+                                {(["fresh", "reheated", "coconut"] as const).map(state => (
+                                    <span
+                                        key={state}
+                                        className={active === state ? "is-active" : ""}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                     <span className="rice-now-showing">Now showing: {current.label}</span>
                 </div>
             </div>
