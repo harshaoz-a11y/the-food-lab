@@ -475,7 +475,7 @@ const Index = () => {
                                 );
                             })}
                         </div>
-                        <div className="experiment-spread mt-8 grid gap-14 lg:grid-cols-1 lg:gap-16">
+                        <div className="experiment-spread mt-8 grid gap-12 lg:grid-cols-2 lg:gap-10">
                             <div
                                 id="experiment-panel-egg"
                                 role="tabpanel"
