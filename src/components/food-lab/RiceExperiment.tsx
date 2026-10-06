@@ -56,9 +56,9 @@ export function RiceExperiment() {
     const current = preparations[active];
 
     return (
-        <div className={`rice-experiment grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,.85fr)] lg:items-center ${selected !== "fresh" ? "is-green" : ""}`}>
+        <div className={`rice-experiment grid min-w-0 gap-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(360px,.88fr)] lg:items-start lg:gap-14 ${selected !== "fresh" ? "is-green" : ""}`}>
             <RiceComic value={selected} onChange={setSelected} />
-            <div className="rice-panel">
+            <div className="rice-panel min-w-0">
                 <div
                     className="grid gap-2 sm:grid-cols-3"
                     role="group"

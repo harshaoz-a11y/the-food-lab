@@ -34,8 +34,8 @@ export function EggExperiment() {
   const current = states[active];
 
   return (
-    <div className="experiment-card grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,.85fr)] lg:items-center">
-      <div className="evidence-photo egg-evidence">
+    <div className="experiment-card grid min-w-0 gap-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(360px,.88fr)] lg:items-start lg:gap-14">
+      <div className="evidence-photo egg-evidence min-w-0">
         <div className={`egg-state-illustration is-${active}`}>
           <div className="egg-art">
             <EggIllustration active={active} />

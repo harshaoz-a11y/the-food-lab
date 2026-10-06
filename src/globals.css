@@ -3558,6 +3558,131 @@ main > section.reveal.is-revealed {
   min-height: 100%;
 }
 
+/* Desktop experiment spread: give each study enough width for its artwork and evidence. */
+@media (min-width: 768px) {
+  .experiment-spread > [role="tabpanel"] + [role="tabpanel"] {
+    border-top: 1px dashed rgba(23, 59, 48, 0.2);
+    padding-top: 4rem;
+  }
+
+  .experiment-card,
+  .rice-experiment {
+    align-items: start;
+  }
+
+  .egg-art {
+    width: min(100%, 640px);
+    margin-inline: auto;
+  }
+
+  .egg-now-showing {
+    margin-top: 0.8rem;
+    font-size: 0.7rem;
+  }
+
+  .experiment-panel {
+    padding-top: 0.45rem;
+  }
+
+  .experiment-choice {
+    min-height: 2.65rem;
+    padding-inline: 1.1rem;
+    font-size: 0.82rem;
+  }
+
+  .experiment-panel > p:last-child,
+  .rice-panel > p:last-child {
+    max-width: 52ch;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .fl-rc {
+    min-width: 0;
+  }
+
+  .fl-rc__panels {
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  }
+
+  .fl-panel {
+    min-width: 0;
+    padding: 0.85rem 0.7rem 0.65rem;
+  }
+
+  .fl-panel__label {
+    min-height: 2.7rem;
+    margin-bottom: 0.45rem;
+    font-size: 0.7rem;
+  }
+
+  .rice-panel {
+    padding-top: 0.45rem;
+  }
+
+  .rice-choice {
+    min-height: 5.2rem;
+    padding: 0.85rem;
+  }
+
+  .rice-choice span {
+    font-size: 0.88rem;
+    line-height: 1.15;
+  }
+
+  .rice-curve {
+    min-height: 0;
+    padding: 1rem 1.1rem 0.85rem;
+  }
+
+  .rice-chart-wrap {
+    min-height: 0;
+  }
+
+  .rice-primary-metric {
+    position: static;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .rice-primary-metric span {
+    max-width: 30ch;
+    font-size: 10px;
+    line-height: 1.35;
+  }
+
+  .rice-primary-metric strong {
+    flex-shrink: 0;
+    font-size: 1.25rem;
+  }
+
+  .rice-chart-wrap svg {
+    height: 168px;
+    padding-top: 0;
+  }
+
+  .rice-axis-label {
+    font-size: 10px;
+  }
+
+  .rice-fact {
+    padding: 0.7rem 0.75rem;
+  }
+
+  .rice-fact em {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .experiment-spread > [role="tabpanel"] + [role="tabpanel"] {
+    margin-top: 0.5rem;
+    border-top: 1px dashed rgba(23, 59, 48, 0.2);
+    padding-top: 2.5rem;
+  }
+}
+
 #question .hero-hypothesis-grid > .hypothesis-lab {
   align-self: stretch;
   width: 100%;
