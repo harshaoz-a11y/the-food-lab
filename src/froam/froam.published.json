@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-01T08:31:08.593Z",
+  "routes": {
+    "/": {
+      "desktop": {
+        "store": {
+          "div:2/main:1/section:1/div:1/aside:1": {
+            "styles": {
+              "width": "704px",
+              "minWidth": "0px",
+              "maxWidth": "none",
+              "boxSizing": "border-box",
+              "flex": "0 0 auto",
+              "flexBasis": "auto",
+              "flexGrow": "0",
+              "flexShrink": "0"
+            },
+            "fingerprint": {
+              "tag": "aside",
+              "text": "WORKING NOTE / NOT A VERDICT The food does not arrive alone. The day and its dem",
+              "className": "press-note mx-auto mt-10 w-full max-w-4xl rotate-[-1deg] px-5 py-4 text-center sm:px-8",
+              "anchorId": "question",
+              "anchorPath": "div:1/aside:1",
+              "ordinal": 1
+            }
+          },
+          "__froam_persona__:profile": {
+            "text": "{\"name\":\"Harsha\",\"tagline\":\"Shape what comes next\",\"imageUrl\":\"\",\"accentColor\":\"#5eead4\",\"role\":\"Designer\"}"
+          }
+        },
+        "publishedAt": "2026-10-01T08:31:08.593Z"
+      }
+    }
+  }
+}
