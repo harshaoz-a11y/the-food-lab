@@ -1,0 +1,47 @@
+/* EggPlate: every colour/font reads a site token first (--fl-*), with a fallback sampled from thefoodlab.in.
+   Define the --fl-* variables once on :root (or the page wrapper) and this and RiceComic share them. */
+.fl-egg{color:var(--fl-ink,#26211c)}
+.fl-egg__tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1rem}
+.fl-egg__tab{font:500 .9rem var(--fl-font-sans,inherit);padding:.5rem 1rem;border-radius:999px;cursor:pointer;color:var(--fl-ink,#26211c);background:transparent;
+  border:1px solid color-mix(in srgb,var(--fl-ink,#26211c) 35%,transparent);transition:background .3s,color .3s}
+.fl-egg__tab[aria-selected="true"]{background:var(--fl-brick,#a63a2a);border-color:var(--fl-brick,#a63a2a);color:var(--fl-paper,#fbf6ea)}
+.fl-egg__stage{display:grid}
+.fl-egg__plate{grid-area:1/1;display:block;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility 0s .35s}
+.fl-egg__plate.is-active{opacity:1;visibility:visible;transition:opacity .2s ease;animation:fl-egg-wipe .95s cubic-bezier(.3,.7,.2,1) both paused}
+.fl-egg.is-in .fl-egg__plate.is-active{animation-play-state:running}
+.fl-egg__plate svg{display:block;width:100%;height:auto;overflow:visible}
+
+.fl-e-ink{fill:var(--fl-ink,#26211c)}
+.fl-e-soft{fill:var(--fl-ink-soft,#7a6c58)}
+.fl-e-shade{fill:var(--fl-shade,#c4b79c)}
+.fl-e-paper{fill:var(--fl-paper,#fbf6ea)}
+.fl-egg__wash{opacity:.16}
+.fl-egg__wash--brick{fill:var(--fl-brick,#a63a2a)}
+.fl-egg__wash--green{fill:var(--fl-green,#1d4034)}
+.fl-egg__label,.fl-egg__num,.fl-egg__cap{fill:var(--fl-ink,#26211c);font-family:var(--fl-font-hand,"Caveat","Kalam",cursive)}
+.fl-egg__label{font-weight:700;letter-spacing:.04em}
+.fl-egg__num{font-weight:700}
+.fl-egg__cap{font-weight:600;fill:var(--fl-ink-soft,#7a6c58)}
+.fl-egg__rule{fill:none;stroke-width:9;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
+.fl-egg__rule--brick{stroke:var(--fl-brick,#a63a2a)}
+.fl-egg__rule--green{stroke:var(--fl-green,#1d4034)}
+.fl-egg__ring{fill:none;stroke:var(--fl-ink-soft,#7a6c58);stroke-width:3;opacity:0}
+
+/* motion: only the shown egg moves, and it replays whenever the egg is (re)selected */
+.fl-egg__plate.is-active .fl-egg__rule{animation:fl-egg-draw .8s .75s cubic-bezier(.3,.7,.2,1) both paused}
+.fl-egg.is-in .fl-egg__plate.is-active .fl-egg__rule{animation-play-state:running}
+.fl-egg.is-in .fl-egg__plate.is-active .fl-egg__steam{animation:fl-egg-rise 3.2s .9s ease-out infinite}
+.fl-egg.is-in .fl-egg__plate.is-active .fl-egg__shards{animation:fl-egg-fall 2.6s .8s ease-in infinite}
+.fl-egg.is-in .fl-egg__plate.is-active .fl-egg__ring{animation:fl-egg-ring 2.4s 1s ease-out infinite}
+.fl-egg.is-in .fl-egg__plate.is-active .fl-egg__ring--b{animation-delay:2.2s}
+@keyframes fl-egg-wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes fl-egg-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes fl-egg-rise{0%{opacity:.95;transform:translateY(0)}70%{opacity:.3}100%{opacity:0;transform:translateY(-26px)}}
+@keyframes fl-egg-fall{0%{opacity:1;transform:translateY(0)}80%{opacity:.25}100%{opacity:0;transform:translateY(22px)}}
+@keyframes fl-egg-ring{0%{opacity:.7;transform:scale(.3)}100%{opacity:0;transform:scale(1.15)}}
+
+@media (prefers-reduced-motion:reduce){
+  .fl-egg *{animation:none!important}
+  .fl-egg__plate{transition:opacity .2s}
+  .fl-egg__ring{opacity:0}
+}

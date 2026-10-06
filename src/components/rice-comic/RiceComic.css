@@ -1,17 +1,10 @@
 /* RiceComic tokens: ink, foreground heading, paper, card cream, green and brick; Caveat + Space Mono. */
 .fl-rc{
-  --fl-ink:var(--ink);
-  --fl-ink-soft:var(--ink-soft);
   --fl-heading:hsl(var(--foreground));
-  --fl-paper:var(--paper);
   --fl-cream:hsl(var(--card));
   --fl-sheet:var(--paper);
-  --fl-green:var(--green);
-  --fl-brick:var(--brick);
   --fl-line:22;
-  --fl-font-hand:"Caveat",cursive;
   --fl-font-mono:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  --fl-font-sans:inherit;
   --fl-ease:cubic-bezier(.3,.7,.2,1);
   color:var(--fl-ink);
 }

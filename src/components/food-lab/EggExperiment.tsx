@@ -1,6 +1,5 @@
 import { useState } from "react";
-import cookedEggArtwork from "@/assets/maestro/egg-cooked.svg";
-import rawEggArtwork from "@/assets/maestro/egg-raw.svg";
+import EggPlate from "@/components/egg-plate/EggPlate";
 
 const states = {
   raw: {
@@ -17,31 +16,14 @@ const states = {
 
 type EggState = keyof typeof states;
 
-function EggIllustration({ active }: { active: EggState }) {
-  const isRaw = active === "raw";
-
-  return (
-    <img
-      className="egg-source-art"
-      src={isRaw ? rawEggArtwork : cookedEggArtwork}
-      alt={isRaw ? "Raw egg reference sketch" : "Cooked egg reference sketch"}
-    />
-  );
-}
-
 export function EggExperiment() {
-  const [active, setActive] = useState<EggState>("raw");
-  const current = states[active];
+  const [egg, setEgg] = useState<EggState>("raw");
+  const current = states[egg];
 
   return (
     <div className="experiment-card grid min-w-0 gap-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(360px,.88fr)] lg:items-start lg:gap-14">
       <div className="evidence-photo egg-evidence min-w-0">
-        <div className={`egg-state-illustration is-${active}`}>
-          <div className="egg-art">
-            <EggIllustration active={active} />
-          </div>
-          <span className="egg-now-showing">Now showing: {current.label}</span>
-        </div>
+        <EggPlate value={egg} onChange={setEgg} />
       </div>
 
       <div className="experiment-panel">
@@ -50,9 +32,9 @@ export function EggExperiment() {
             <button
               key={key}
               type="button"
-              onClick={() => setActive(key)}
-              className={`experiment-choice ${active === key ? "is-active" : ""} ${active === key && key === "cooked" ? "is-green-active" : ""}`}
-              aria-pressed={active === key}
+              onClick={() => setEgg(key)}
+              className={`experiment-choice ${egg === key ? "is-active" : ""} ${egg === key && key === "cooked" ? "is-green-active" : ""}`}
+              aria-pressed={egg === key}
             >
               {states[key].label}
             </button>
@@ -62,13 +44,13 @@ export function EggExperiment() {
         <div className="mt-6" aria-live="polite">
           <span className="lab-label">true ileal protein digestibility</span>
           <div className="mt-3 flex items-end gap-3">
-            <strong className={`font-serif text-6xl font-normal leading-none transition-colors duration-300 sm:text-7xl ${active === "cooked" ? "text-green-700" : "text-ink"}`}>
+            <strong className={`font-serif text-6xl font-normal leading-none transition-colors duration-300 sm:text-7xl ${egg === "cooked" ? "text-green-700" : "text-ink"}`}>
               {current.value}%
             </strong>
-            <span className={`mb-2 handwritten transition-colors duration-300 ${active === "cooked" ? "text-green-700" : "text-primary"}`}>received?</span>
+            <span className={`mb-2 handwritten transition-colors duration-300 ${egg === "cooked" ? "text-green-700" : "text-primary"}`}>received?</span>
           </div>
           <div className="measure-track mt-4" aria-hidden="true">
-            <span className={active === "cooked" ? "is-green" : ""} style={{ width: `${current.value}%` }} />
+            <span className={egg === "cooked" ? "is-green" : ""} style={{ width: `${current.value}%` }} />
           </div>
           <p className="mt-4 max-w-md text-base leading-relaxed text-ink/75">{current.note}</p>
         </div>
