@@ -43,6 +43,7 @@ import { EggExperiment } from "@/components/food-lab/EggExperiment";
 import { FieldCharacter, type FieldScene } from "@/components/food-lab/FieldCharacter";
 import { HypothesisExperiment } from "@/components/food-lab/HypothesisExperiment";
 import { RiceExperiment } from "@/components/food-lab/RiceExperiment";
+import RegionScene from "@/components/region-scenes/RegionScene";
 import foodLabBrandLogo from "@/assets/the-food-lab-brand-logo.png";
 import { maestroAssets } from "@/lib/maestro-assets";
 
@@ -489,6 +490,35 @@ const Index = () => {
                                 aria-labelledby="rice-tab"
                                 className={activeExperiment === "rice" ? "" : "hidden lg:block"}>
                                 <RiceExperiment />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="gluten" className="bg-paper px-4 py-14 sm:px-6 lg:px-8 lg:py-24">
+                    <div className="mx-auto max-w-[1400px]">
+                        <NbHeader label="Gluten / context" page="Pg. 004" />
+                        <div className="mt-8 max-w-3xl">
+                            <span className="lab-label">Same word. Different meanings.</span>
+                            <h2 className="mt-5 max-w-2xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl">Gluten became a verdict before it became a question.</h2>
+                            <p className="handwritten mt-3 rotate-[-1deg] text-base leading-tight text-primary sm:text-lg">The context changes. So does what "gluten-free" means.</p>
+                        </div>
+                        <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-16">
+                            <RegionScene region="us" />
+                            <div>
+                                <RegionScene region="india" />
+                                <div className="mt-8 border-t border-dashed border-ink/25 pt-5">
+                                    <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/50">India / survey signal</span>
+                                    <p className="mt-3 max-w-xl font-serif text-xl leading-snug text-ink/75">Among 285 people surveyed:</p>
+                                    <ul className="mt-4 grid gap-3 text-sm leading-relaxed text-ink/70 sm:grid-cols-2">
+                                        <li><strong className="font-mono text-ink">50.9%</strong> correctly identified what gluten is.</li>
+                                        <li><strong className="font-mono text-ink">38.6%</strong> correctly identified what a gluten-free diet means.</li>
+                                        <li><strong className="font-mono text-ink">45.3%</strong> correctly identified the medical conditions for which a GFD is recommended.</li>
+                                        <li><strong className="font-mono text-ink">29.1%</strong> thought gluten-free foods were healthier than gluten-containing foods.</li>
+                                        <li><strong className="font-mono text-ink">38.9%</strong> believed gluten-free diets help with weight loss.</li>
+                                        <li><strong className="font-mono text-ink">49.5%</strong> perceived social influences as major drivers of GFD adoption.</li>
+                                    </ul>
+                                    <p className="mt-5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.1em] text-ink/45">Source: <a className="underline decoration-ink/25 underline-offset-2 hover:text-primary" href="https://www.researchsquare.com/article/rs-9052215/v1" target="_blank" rel="noreferrer">Moitra &amp; Qureshi, Research Square preprint, 2026</a>.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
