@@ -404,7 +404,7 @@ function NbHeader(
 }
 
 const Index = () => {
-    const [activeExperiment, setActiveExperiment] = useState<"egg" | "rice">("egg");
+    const [activeExperiment, setActiveExperiment] = useState<"egg" | "rice" | "gluten">("egg");
     useSectionReveal();
 
     return (
@@ -450,15 +450,15 @@ const Index = () => {
                         <div className="max-w-3xl">
                             <span className="lab-label"></span>
                             <h2
-                                className="mt-5 max-w-xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl">Same food. Different <span className="red-underline">interaction.</span></h2>
+                                className="mt-5 max-w-xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl">Three studies. One question.</h2>
                             <p
-                                className="handwritten mt-3 rotate-[-1deg] text-base leading-tight text-primary sm:text-lg">Change the condition. Watch what the body receives.</p>
+                                className="handwritten mt-3 rotate-[-1deg] text-base leading-tight text-primary sm:text-lg">Choose a lens, then give it room to speak clearly.</p>
                         </div>
                         <div
-                            className="mt-8 flex flex-wrap gap-2 border-b border-dashed border-ink/20 pb-4 lg:hidden"
+                            className="experiment-ribbon mt-8 grid gap-2 border-y border-dashed border-ink/20 py-2 sm:grid-cols-3"
                             role="tablist"
                             aria-label="Choose an experiment">
-                            {([["egg", "Egg"], ["rice", "Rice"]] as const).map(([key, label]) => {
+                            {([["egg", "Egg"], ["rice", "Rice"], ["gluten", "Gluten"]] as const).map(([key, label], index) => {
                                 const isActive = activeExperiment === key;
 
                                 return (
@@ -470,56 +470,45 @@ const Index = () => {
                                         aria-selected={isActive}
                                         aria-controls={`experiment-panel-${key}`}
                                         onClick={() => setActiveExperiment(key)}
-                                        className={`rounded-full border px-5 py-2.5 text-sm transition-colors ${isActive ? "border-ink bg-ink text-[#f8f2e5]" : "border-ink/25 bg-transparent text-ink/65 hover:border-ink/50 hover:text-ink"}`}>
-                                        {label}
+                                        className={`flex min-h-14 items-center justify-center gap-3 border px-4 py-3 text-left transition-all ${isActive ? "border-ink bg-ink text-[#f8f2e5] shadow-[4px_4px_0_rgba(23,59,48,.12)]" : "border-transparent text-ink/55 hover:border-ink/20 hover:bg-paper-light hover:text-ink"}`}>
+                                        <span className="font-mono text-[10px] tracking-[0.14em] opacity-55">0{index + 1}</span>
+                                        <span className="font-serif text-xl font-normal">{label}</span>
                                     </button>
                                 );
                             })}
                         </div>
-                        <div className="experiment-spread mt-8 grid gap-12 lg:grid-cols-2 lg:gap-10">
-                            <div
-                                id="experiment-panel-egg"
-                                role="tabpanel"
-                                aria-labelledby="egg-tab"
-                                className={activeExperiment === "egg" ? "" : "hidden lg:block"}>
-                                <EggExperiment />
-                            </div>
-                            <div
-                                id="experiment-panel-rice"
-                                role="tabpanel"
-                                aria-labelledby="rice-tab"
-                                className={activeExperiment === "rice" ? "" : "hidden lg:block"}>
-                                <RiceExperiment />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section id="gluten" className="bg-paper px-4 py-14 sm:px-6 lg:px-8 lg:py-24">
-                    <div className="mx-auto max-w-[1400px]">
-                        <NbHeader label="Gluten / context" page="Pg. 004" />
-                        <div className="mt-8 max-w-3xl">
-                            <span className="lab-label">Same word. Different meanings.</span>
-                            <h2 className="mt-5 max-w-2xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl">Gluten became a verdict before it became a question.</h2>
-                            <p className="handwritten mt-3 rotate-[-1deg] text-base leading-tight text-primary sm:text-lg">The context changes. So does what "gluten-free" means.</p>
-                        </div>
-                        <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-16">
-                            <RegionScene region="us" />
-                            <div>
-                                <RegionScene region="india" />
-                                <div className="mt-8 border-t border-dashed border-ink/25 pt-5">
-                                    <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/50">India / survey signal</span>
-                                    <p className="mt-3 max-w-xl font-serif text-xl leading-snug text-ink/75">Among 285 people surveyed:</p>
-                                    <ul className="mt-4 grid gap-3 text-sm leading-relaxed text-ink/70 sm:grid-cols-2">
-                                        <li><strong className="font-mono text-ink">50.9%</strong> correctly identified what gluten is.</li>
-                                        <li><strong className="font-mono text-ink">38.6%</strong> correctly identified what a gluten-free diet means.</li>
-                                        <li><strong className="font-mono text-ink">45.3%</strong> correctly identified the medical conditions for which a GFD is recommended.</li>
-                                        <li><strong className="font-mono text-ink">29.1%</strong> thought gluten-free foods were healthier than gluten-containing foods.</li>
-                                        <li><strong className="font-mono text-ink">38.9%</strong> believed gluten-free diets help with weight loss.</li>
-                                        <li><strong className="font-mono text-ink">49.5%</strong> perceived social influences as major drivers of GFD adoption.</li>
-                                    </ul>
-                                    <p className="mt-5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.1em] text-ink/45">Source: <a className="underline decoration-ink/25 underline-offset-2 hover:text-primary" href="https://www.researchsquare.com/article/rs-9052215/v1" target="_blank" rel="noreferrer">Moitra &amp; Qureshi, Research Square preprint, 2026</a>.</p>
+                        <div className="experiment-spread experiment-active mt-8">
+                            {activeExperiment === "egg" && (
+                                <div id="experiment-panel-egg" role="tabpanel" aria-labelledby="egg-tab">
+                                    <EggExperiment />
                                 </div>
-                            </div>
+                            )}
+                            {activeExperiment === "rice" && (
+                                <div id="experiment-panel-rice" role="tabpanel" aria-labelledby="rice-tab">
+                                    <RiceExperiment />
+                                </div>
+                            )}
+                            {activeExperiment === "gluten" && (
+                                <div id="experiment-panel-gluten" role="tabpanel" aria-labelledby="gluten-tab" className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+                                    <RegionScene region="us" />
+                                    <div>
+                                        <RegionScene region="india" />
+                                        <div className="mt-8 border-t border-dashed border-ink/25 pt-5">
+                                            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/50">India / survey signal</span>
+                                            <p className="mt-3 max-w-xl font-serif text-xl leading-snug text-ink/75">Among 285 people surveyed:</p>
+                                            <ul className="mt-4 grid gap-3 text-sm leading-relaxed text-ink/70 sm:grid-cols-2">
+                                                <li><strong className="font-mono text-ink">50.9%</strong> correctly identified what gluten is.</li>
+                                                <li><strong className="font-mono text-ink">38.6%</strong> correctly identified what a gluten-free diet means.</li>
+                                                <li><strong className="font-mono text-ink">45.3%</strong> correctly identified the medical conditions for which a GFD is recommended.</li>
+                                                <li><strong className="font-mono text-ink">29.1%</strong> thought gluten-free foods were healthier than gluten-containing foods.</li>
+                                                <li><strong className="font-mono text-ink">38.9%</strong> believed gluten-free diets help with weight loss.</li>
+                                                <li><strong className="font-mono text-ink">49.5%</strong> perceived social influences as major drivers of GFD adoption.</li>
+                                            </ul>
+                                            <p className="mt-5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.1em] text-ink/45">Source: <a className="underline decoration-ink/25 underline-offset-2 hover:text-primary" href="https://www.researchsquare.com/article/rs-9052215/v1" target="_blank" rel="noreferrer">Moitra &amp; Qureshi, Research Square preprint, 2026</a>.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </section>

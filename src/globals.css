@@ -3815,8 +3815,8 @@ main > section.reveal.is-revealed {
   }
 }
 
-/* The two evidence studies share the page width on desktop. Keep each study
-   vertically composed so its supplied artwork stays large and readable. */
+/* Keep the selected study aligned as one generous desktop composition while
+   preserving the same two-column relationship for eggs and rice. */
 @media (min-width: 1024px) {
   .experiment-spread {
     align-items: start;
@@ -3908,5 +3908,20 @@ main > section.reveal.is-revealed {
 
   .experiment-spread .rice-fact em {
     font-size: 0.82rem;
+  }
+
+  .experiment-spread.experiment-active .experiment-card,
+  .experiment-spread.experiment-active .rice-experiment {
+    grid-template-columns: minmax(0, 1.12fr) minmax(360px, .88fr);
+    gap: clamp(1.5rem, 3vw, 3.5rem);
+  }
+
+  .experiment-spread.experiment-active .experiment-panel,
+  .experiment-spread.experiment-active .rice-panel {
+    padding-left: clamp(1.5rem, 4vw, 3.5rem);
+  }
+
+  .experiment-spread.experiment-active .egg-art {
+    width: min(100%, 620px);
   }
 }
