@@ -65,6 +65,7 @@ export default function RegionScene({ region = 'us', title, reason, lines, class
           <g transform={`translate(${-x0} ${-y0})`}>
             {fills(q.fills, 'base')}
             {ink('base')}
+            {q.detail?.map((d, i) => <path key={i} className="fl-r-ink fl-r-detail" fillRule="evenodd" d={d} />)}
             <g transform={`translate(${px} ${py})`}>
               <g className="fl-hand"><g transform={`translate(${-px} ${-py})`}>{fills(q.handFills, 'hand')}{ink('hand')}</g></g>
             </g>

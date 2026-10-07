@@ -12,6 +12,7 @@
 .fl-reg__rtext{display:block;margin-top:.45rem;font:400 1.1rem/1.45 var(--fl-font-serif,Georgia,serif);color:var(--fl-ink,#26211c)}
 
 .fl-r-ink{fill:var(--fl-ink,#26211c);stroke:var(--fl-ink,#26211c);stroke-width:var(--fl-line-scene,1.6);stroke-linejoin:round}
+.fl-r-detail{stroke-width:1.1}
 .fl-r-line{fill:none;stroke:var(--fl-ink,#26211c);stroke-width:3;stroke-linecap:round}
 .fl-r-fills{mix-blend-mode:multiply}
 .fl-r-cream{fill:var(--fl-cream,#efe6d0)}
