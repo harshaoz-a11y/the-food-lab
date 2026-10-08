@@ -42,6 +42,7 @@ import { AlchemyPartnerships } from "@/components/food-lab/AlchemyPartnerships";
 import { EggExperiment } from "@/components/food-lab/EggExperiment";
 import { FieldCharacter, type FieldScene } from "@/components/food-lab/FieldCharacter";
 import { HypothesisExperiment } from "@/components/food-lab/HypothesisExperiment";
+import { ProteinExperiment } from "@/components/food-lab/ProteinExperiment";
 import { RiceExperiment } from "@/components/food-lab/RiceExperiment";
 import RegionScene from "@/components/region-scenes/RegionScene";
 import foodLabBrandLogo from "@/assets/the-food-lab-brand-logo.png";
@@ -404,7 +405,7 @@ function NbHeader(
 }
 
 const Index = () => {
-    const [activeExperiment, setActiveExperiment] = useState<"egg" | "rice" | "gluten">("egg");
+    const [activeExperiment, setActiveExperiment] = useState<"egg" | "rice" | "gluten" | "protein">("egg");
     useSectionReveal();
 
     return (
@@ -450,15 +451,15 @@ const Index = () => {
                         <div className="max-w-3xl">
                             <span className="lab-label"></span>
                             <h2
-                                className="mt-5 max-w-xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl">Three studies. One question.</h2>
+                                className="mt-5 max-w-xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl">Four studies. One question.</h2>
                             <p
                                 className="handwritten mt-3 rotate-[-1deg] text-base leading-tight text-primary sm:text-lg">Choose a lens, then give it room to speak clearly.</p>
                         </div>
                         <div
-                            className="experiment-ribbon mt-8 grid gap-2 border-y border-dashed border-ink/20 py-2 sm:grid-cols-3"
+                            className="experiment-ribbon mt-8 grid gap-2 border-y border-dashed border-ink/20 py-2 sm:grid-cols-4"
                             role="tablist"
                             aria-label="Choose an experiment">
-                            {([["egg", "Egg"], ["rice", "Rice"], ["gluten", "Gluten"]] as const).map(([key, label], index) => {
+                            {([["egg", "Egg"], ["rice", "Rice"], ["gluten", "Gluten"], ["protein", "Protein (fiber?)"]] as const).map(([key, label], index) => {
                                 const isActive = activeExperiment === key;
 
                                 return (
@@ -507,6 +508,11 @@ const Index = () => {
                                             <p className="mt-5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.1em] text-ink/45">Source: <a className="underline decoration-ink/25 underline-offset-2 hover:text-primary" href="https://www.researchsquare.com/article/rs-9052215/v1" target="_blank" rel="noreferrer">Moitra &amp; Qureshi, Research Square preprint, 2026</a>.</p>
                                         </div>
                                     </div>
+                                </div>
+                            )}
+                            {activeExperiment === "protein" && (
+                                <div id="experiment-panel-protein" role="tabpanel" aria-labelledby="protein-tab">
+                                    <ProteinExperiment />
                                 </div>
                             )}
                         </div>

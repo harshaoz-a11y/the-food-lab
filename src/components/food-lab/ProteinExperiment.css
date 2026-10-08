@@ -1,0 +1,145 @@
+.protein-panel {
+  width: min(100%, 1100px);
+  margin-inline: auto;
+  color: var(--fl-ink);
+}
+
+.protein-panel__eyebrow {
+  display: block;
+  color: color-mix(in srgb, var(--fl-ink) 55%, transparent);
+  font: 10px var(--fl-font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.protein-panel > .fl-sink {
+  width: 100%;
+  margin-top: 0.85rem;
+}
+
+.protein-panel__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 3.5rem);
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  border-top: 1px dashed color-mix(in srgb, var(--fl-ink) 22%, transparent);
+  padding-top: clamp(1.25rem, 3vw, 2rem);
+}
+
+.protein-panel__stat {
+  min-width: 0;
+}
+
+.protein-panel__number {
+  display: block;
+  color: var(--fl-green);
+  font: 400 clamp(2.7rem, 5.5vw, 5rem) / 0.9 var(--fl-font-serif);
+  letter-spacing: -0.06em;
+}
+
+.protein-panel__number--recommendation {
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  white-space: nowrap;
+}
+
+.protein-panel__label {
+  display: block;
+  margin-top: 0.65rem;
+  color: color-mix(in srgb, var(--fl-ink) 55%, transparent);
+  font: 10px var(--fl-font-mono);
+  letter-spacing: 0.14em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.protein-panel__stat p {
+  max-width: 24ch;
+  margin-top: 0.65rem;
+  color: color-mix(in srgb, var(--fl-ink) 76%, transparent);
+  font: 400 clamp(1.05rem, 1.8vw, 1.35rem) / 1.22 var(--fl-font-serif);
+}
+
+.protein-panel__stat--paired {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.protein-panel__pair {
+  display: grid;
+  grid-template-columns: auto minmax(4rem, 1fr);
+  align-items: end;
+  gap: 0.9rem;
+}
+
+.protein-panel__pair .protein-panel__number {
+  font-size: clamp(2rem, 4vw, 3.6rem);
+}
+
+.protein-panel__pair .protein-panel__label {
+  margin-top: 0.45rem;
+}
+
+.protein-panel__bar {
+  display: block;
+  height: 0.55rem;
+  margin-bottom: 0.2rem;
+  background: color-mix(in srgb, var(--fl-ink) 10%, var(--fl-paper));
+}
+
+.protein-panel__bar i {
+  display: block;
+  height: 100%;
+}
+
+.protein-panel__bar--women i {
+  width: 73%;
+  background: var(--fl-brick);
+}
+
+.protein-panel__bar--men i {
+  width: 63%;
+  background: var(--fl-green);
+}
+
+.protein-panel__source {
+  max-width: 90ch;
+  margin: clamp(1.75rem, 4vw, 3rem) auto 0;
+  border-top: 1px dashed color-mix(in srgb, var(--fl-ink) 22%, transparent);
+  padding-top: 0.85rem;
+  color: color-mix(in srgb, var(--fl-ink) 50%, transparent);
+  font: 10px var(--fl-font-mono);
+  letter-spacing: 0.08em;
+  line-height: 1.55;
+  text-transform: uppercase;
+}
+
+.protein-panel__source a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--fl-ink) 25%, transparent);
+  text-underline-offset: 2px;
+}
+
+.protein-panel__source a:hover {
+  color: var(--fl-brick);
+}
+
+@media (max-width: 767px) {
+  .protein-panel__stats {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .protein-panel__stat p {
+    max-width: 32ch;
+  }
+
+  .protein-panel__number--recommendation {
+    white-space: normal;
+  }
+
+  .protein-panel__source {
+    font-size: 9px;
+    text-align: left;
+  }
+}
