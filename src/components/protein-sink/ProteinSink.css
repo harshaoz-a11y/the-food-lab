@@ -1,0 +1,43 @@
+/* ProteinSink: every colour/font reads a site token first (--fl-*), with a fallback sampled from thefoodlab.in.
+   Define the --fl-* variables once on :root and all the illustration components share them. */
+.fl-sink{margin:0;color:var(--fl-ink,#26211c)}
+.fl-sink__art{display:block;animation:fl-sink-wipe 1.2s cubic-bezier(.3,.7,.2,1) both paused}
+.fl-sink.is-in .fl-sink__art{animation-play-state:running}
+.fl-sink__art svg{display:block;width:100%;height:auto;overflow:hidden}
+
+.fl-s-ink{fill:var(--fl-ink,#26211c);stroke:var(--fl-ink,#26211c);stroke-width:var(--fl-line-sink,5);stroke-linejoin:round}
+.fl-s-fills{mix-blend-mode:multiply}
+.fl-s-hatch path{fill:none;stroke:var(--fl-ink,#26211c);stroke-linecap:round}
+.fl-h-light{stroke-width:.8;opacity:.9}
+.fl-h-dark{stroke-width:.9}
+/* Laxman look: pen hatching carries the tone, fills become a light paper wash, line is a touch bolder */
+.fl-sink--laxman .fl-s-ink{stroke-width:var(--fl-line-sink,6)}
+.fl-sink--laxman .fl-s-fills{mix-blend-mode:normal;opacity:.5}
+.fl-sink--laxman .fl-s-cream{fill:var(--fl-paper,#fbf6ea)}
+.fl-sink--laxman .fl-pop .fl-s-fills{opacity:.85}
+.fl-sink--cream .fl-s-hatch{display:none}
+.fl-s-cream{fill:var(--fl-cream,#efe6d0)}
+.fl-s-paper{fill:var(--fl-paper,#fbf6ea)}
+.fl-s-brick{fill:#dfb4a3;fill:color-mix(in srgb,var(--fl-brick,#a63a2a) 34%,var(--fl-cream,#efe6d0))}
+.fl-s-green{fill:#b4c0ad;fill:color-mix(in srgb,var(--fl-green,#1d4034) 26%,var(--fl-cream,#efe6d0))}
+.fl-s-txt{fill:var(--fl-ink,#26211c);font-family:var(--fl-font-hand,"Caveat","Kalam",cursive);font-weight:700}
+.fl-s-green-txt{fill:var(--fl-green,#1d4034)}
+.fl-s-brick-txt{fill:var(--fl-brick,#a63a2a)}
+.fl-tick{fill:none;stroke:var(--fl-green,#1d4034);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.fl-drop{fill:var(--fl-cream,#efe6d0);stroke:var(--fl-ink,#26211c);stroke-width:1.1;opacity:0}
+.fl-bub{fill:var(--fl-cream,#efe6d0);stroke:var(--fl-ink,#26211c);stroke-width:1.3;opacity:0}
+
+/* motion: starts when the scene scrolls into view */
+.fl-pop{animation:fl-sink-pop .6s 1s cubic-bezier(.3,.7,.2,1) both paused}
+.fl-sink.is-in .fl-pop{animation-play-state:running}
+.fl-sink.is-in .fl-tick{animation:fl-sink-tick .45s cubic-bezier(.3,.7,.2,1) forwards;animation-delay:calc(1.2s + var(--i,0)*.35s)}
+.fl-sink.is-in .fl-fiber{animation:fl-sink-nag 2.6s 3s ease-in-out infinite}
+.fl-sink.is-in .fl-drop{animation:fl-sink-fall 1.5s ease-in infinite;animation-delay:calc(1.4s + var(--d,0s))}
+.fl-sink.is-in .fl-bub{animation:fl-sink-bubble 2.6s ease-out infinite;animation-delay:calc(1.6s + var(--d,0s))}
+@keyframes fl-sink-wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes fl-sink-pop{0%{opacity:0;transform:scale(.4)}65%{opacity:1;transform:scale(1.05)}100%{opacity:1;transform:scale(1)}}
+@keyframes fl-sink-tick{to{stroke-dashoffset:0}}
+@keyframes fl-sink-nag{0%,60%,100%{transform:scale(1)}72%{transform:scale(1.14) rotate(-2deg)}84%{transform:scale(1.04) rotate(1.5deg)}}
+@keyframes fl-sink-fall{0%{opacity:0;transform:translateY(0)}15%{opacity:1}85%{opacity:.9}100%{opacity:0;transform:translateY(var(--dy,60px))}}
+@keyframes fl-sink-bubble{0%{opacity:0;transform:scale(.2)}35%{opacity:1;transform:scale(1)}55%{opacity:1;transform:scale(1.25)}60%,100%{opacity:0;transform:scale(1.6)}}
+@media (prefers-reduced-motion:reduce){.fl-sink *,.fl-sink__art{animation:none!important}.fl-tick{stroke-dashoffset:0}.fl-drop,.fl-bub{opacity:0}}
