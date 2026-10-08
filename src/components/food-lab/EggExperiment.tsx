@@ -32,7 +32,7 @@ export function EggExperiment() {
                     aria-label="Change egg preparation">
                     {(Object.keys(states) as EggState[]).map(key => (<Fragment key={key}>
                         {key === "cooked" && <span
-                            className="egg-observation__arrow bg-[#c6a687] text-[25px] font-[600] font-[Impact,_fantasy] my-[13px]"
+                            className="egg-observation__arrow bg-[#c6a687] text-[25px] font-[600] font-[Impact,_fantasy] my-[13px] [color:#b3b18b]"
                             aria-hidden="true">→</span>}
                         <button
                             type="button"
@@ -65,7 +65,7 @@ export function EggExperiment() {
                 </div>
             </div>
             <p className="egg-observation__source">Human data: Evenepoel et al., The Journal of Nutrition (1998); discussed in Fuchs et al., The Journal of Nutrition (2022). This is an observation, not personal dietary advice.
-                                                      </p>
+                                                                      </p>
         </article>
     );
 }
