@@ -31,7 +31,9 @@ export function EggExperiment() {
                     role="group"
                     aria-label="Change egg preparation">
                     {(Object.keys(states) as EggState[]).map(key => (<Fragment key={key}>
-                        {key === "cooked" && <span className="egg-observation__arrow" aria-hidden="true">→</span>}
+                        {key === "cooked" && <span
+                            className="egg-observation__arrow my-[9px] bg-[#c6a687] text-[25px] font-[600] font-[Impact,_fantasy]"
+                            aria-hidden="true">→</span>}
                         <button
                             type="button"
                             onClick={() => setEgg(key)}
@@ -63,7 +65,7 @@ export function EggExperiment() {
                 </div>
             </div>
             <p className="egg-observation__source">Human data: Evenepoel et al., The Journal of Nutrition (1998); discussed in Fuchs et al., The Journal of Nutrition (2022). This is an observation, not personal dietary advice.
-                      </p>
+                                      </p>
         </article>
     );
 }
