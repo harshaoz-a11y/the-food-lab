@@ -4410,61 +4410,109 @@ main > section.reveal.is-revealed {
   }
 }
 
-/* Egg-only toggle refinement: an oval field-note rail with a circular hinge. */
-.egg-observation__choices {
-  position: relative;
-  gap: 0.1rem;
+/* Egg state control: a compact field-note switch beside the illustration. */
+.egg-observation__body {
+  grid-template-columns: minmax(8.5rem, 0.24fr) minmax(0, 1.45fr) minmax(280px, 0.9fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.egg-observation__rail {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.9rem;
+}
+
+.egg-observation__prompt {
+  color: var(--ink-soft);
+  font: 10px var(--fl-font-mono);
+  letter-spacing: 0.14em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.egg-observation__toggle {
+  display: inline-flex;
+  min-width: 8rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
   border: 1px solid rgba(23, 59, 48, 0.28);
   border-radius: 999px;
-  padding: 0.28rem;
+  padding: 0.42rem 0.5rem;
+  color: var(--brick);
   background: rgba(248, 242, 229, 0.86);
-  box-shadow: 4px 5px 0 rgba(23, 59, 48, 0.1);
+  box-shadow: 3px 4px 0 rgba(23, 59, 48, 0.1);
+  cursor: pointer;
+  font: inherit;
+  transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+  touch-action: manipulation;
 }
 
-.egg-observation__choice {
-  min-height: 4rem;
-  border-radius: 999px;
-  padding-block: 0.55rem;
-}
-
-.egg-observation__choice.is-active {
-  box-shadow: 2px 3px 0 rgba(23, 59, 48, 0.16);
-}
-
-.egg-observation__choice:not(.is-active) {
-  background: rgba(248, 242, 229, 0.38);
-}
-
-.egg-observation__choice:not(.is-active):hover {
-  background: rgba(248, 242, 229, 0.9);
-}
-
-.egg-observation__arrow {
-  position: relative;
-  z-index: 2;
-  width: 2.25rem;
-  height: 2.25rem;
-  min-width: 2.25rem;
-  border: 1px solid rgba(23, 59, 48, 0.2);
-  border-radius: 50%;
+.egg-observation__toggle:hover {
   background: var(--paper-light);
-  box-shadow: 2px 3px 0 rgba(23, 59, 48, 0.08);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
-@media (max-width: 767px) {
-  .egg-observation__choices {
-    padding: 0.22rem;
-    box-shadow: 3px 4px 0 rgba(23, 59, 48, 0.1);
+.egg-observation__toggle:focus-visible {
+  outline: 2px solid var(--brick);
+  outline-offset: 3px;
+}
+
+.egg-observation__toggle.is-cooked {
+  color: var(--green);
+}
+
+.egg-observation__toggle-label {
+  font: 10px var(--fl-font-mono);
+  letter-spacing: 0.08em;
+}
+
+.egg-observation__toggle-track {
+  position: relative;
+  display: block;
+  width: 2.65rem;
+  height: 1.35rem;
+  flex: 0 0 auto;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 12%, var(--paper-light));
+}
+
+.egg-observation__toggle-knob {
+  position: absolute;
+  top: 0.16rem;
+  left: 0.16rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 1px 1px 0 rgba(23, 59, 48, 0.2);
+  transition: transform 200ms ease;
+}
+
+.egg-observation__toggle.is-cooked .egg-observation__toggle-knob {
+  transform: translateX(1.25rem);
+}
+
+@media (max-width: 899px) {
+  .egg-observation__body {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
-  .egg-observation__choice {
-    min-height: 4rem;
+  .egg-observation__rail {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
   }
+}
 
-  .egg-observation__arrow {
-    width: 1.9rem;
-    height: 1.9rem;
-    min-width: 1.9rem;
+@media (prefers-reduced-motion: reduce) {
+  .egg-observation__toggle,
+  .egg-observation__toggle-knob {
+    transition: none;
   }
 }

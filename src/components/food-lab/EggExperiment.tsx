@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import EggPlate from "@/components/egg-plate/EggPlate";
 
 const states = {
@@ -23,30 +23,23 @@ export function EggExperiment() {
 
     return (
         <article className="egg-observation">
-            <div className="egg-observation__rail">
-                <span className="egg-observation__prompt">
-                </span>
-                <div
-                    className="egg-observation__choices"
-                    role="group"
-                    aria-label="Change egg preparation">
-                    {(Object.keys(states) as EggState[]).map(key => (<Fragment key={key}>
-                        {key === "cooked" && <span
-                            className="egg-observation__arrow bg-[#c6a687] text-[25px] font-[600] font-[Impact,_fantasy] my-[13px] [color:#b3b18b]"
-                            aria-hidden="true">→</span>}
-                        <button
-                            type="button"
-                            onClick={() => setEgg(key)}
-                            className={`egg-observation__choice ${egg === key ? "is-active" : ""} ${egg === key && key === "cooked" ? "is-cooked" : ""}`}
-                            aria-pressed={egg === key}
-                            aria-label={`${states[key].label}, ${states[key].value}% digestible`}>
-                            <span className="egg-observation__state">{key === "raw" ? "RAW" : "COOKED"}</span>
-                            <span className="egg-observation__preview">{states[key].value}% <small>digestible</small></span>
-                        </button>
-                    </Fragment>))}
-                </div>
-            </div>
             <div className="egg-observation__body">
+                <div className="egg-observation__rail">
+                    <span className="egg-observation__prompt">Change the state</span>
+                    <button
+                        type="button"
+                        role="switch"
+                        aria-checked={egg === "cooked"}
+                        aria-label={`Change egg state to ${egg === "cooked" ? "raw" : "cooked"}`}
+                        onClick={() => setEgg(egg === "raw" ? "cooked" : "raw")}
+                        className={`egg-observation__toggle ${egg === "cooked" ? "is-cooked" : ""}`}>
+                        <span className="egg-observation__toggle-label">RAW</span>
+                        <span className="egg-observation__toggle-track" aria-hidden="true">
+                            <span className="egg-observation__toggle-knob" />
+                        </span>
+                        <span className="egg-observation__toggle-label">COOKED</span>
+                    </button>
+                </div>
                 <div className={`egg-observation__art egg-observation__art--${egg}`}>
                     <EggPlate
                         value={egg}
