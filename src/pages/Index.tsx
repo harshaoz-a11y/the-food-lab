@@ -404,6 +404,8 @@ function NbHeader(
     );
 }
 
+const experimentOptions = [["egg", "Egg"], ["rice", "Rice"], ["gluten", "Gluten"], ["protein", "Protein (fiber?)"]] as const;
+
 const Index = () => {
     const [activeExperiment, setActiveExperiment] = useState<"egg" | "rice" | "gluten" | "protein">("egg");
     useSectionReveal();
@@ -453,30 +455,35 @@ const Index = () => {
                             <h2
                                 className="mt-5 max-w-xl font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl">Four studies. One question.</h2>
                             <p
-                                className="handwritten mt-3 rotate-[-1deg] text-base leading-tight text-primary sm:text-lg">Choose a lens, then give it room to speak clearly.</p>
+                                className="handwritten mt-3 rotate-[-1deg] text-base leading-tight text-primary sm:text-lg">Pick a window, then give it room to speak clearly.</p>
                         </div>
                         <div
-                            className="experiment-ribbon mt-8 grid gap-2 border-y border-dashed border-ink/20 py-2 sm:grid-cols-4"
+                            className="experiment-deck mt-8"
                             role="tablist"
                             aria-label="Choose an experiment">
-                            {([["egg", "Egg"], ["rice", "Rice"], ["gluten", "Gluten"], ["protein", "Protein (fiber?)"]] as const).map(([key, label], index) => {
-                                const isActive = activeExperiment === key;
+                            <div className="experiment-deck__stack">
+                                {experimentOptions.map(([key, label], index) => {
+                                    const isActive = activeExperiment === key;
+                                    const activeIndex = experimentOptions.findIndex(([optionKey]) => optionKey === activeExperiment);
+                                    const depth = isActive ? 0 : (index - activeIndex + experimentOptions.length) % experimentOptions.length;
 
-                                return (
-                                    <button
-                                        key={key}
-                                        type="button"
-                                        role="tab"
-                                        id={`${key}-tab`}
-                                        aria-selected={isActive}
-                                        aria-controls={`experiment-panel-${key}`}
-                                        onClick={() => setActiveExperiment(key)}
-                                        className={`flex min-h-14 items-center justify-center gap-3 border px-4 py-3 text-left transition-all ${isActive ? "border-ink bg-ink text-[#f8f2e5] shadow-[4px_4px_0_rgba(23,59,48,.12)]" : "border-transparent text-ink/55 hover:border-ink/20 hover:bg-paper-light hover:text-ink"}`}>
-                                        <span className="font-mono text-[10px] tracking-[0.14em] opacity-55">0{index + 1}</span>
-                                        <span className="font-serif text-xl font-normal">{label}</span>
-                                    </button>
-                                );
-                            })}
+                                    return (
+                                        <button
+                                            key={key}
+                                            type="button"
+                                            role="tab"
+                                            id={`${key}-tab`}
+                                            aria-selected={isActive}
+                                            aria-controls={`experiment-panel-${key}`}
+                                            onClick={() => setActiveExperiment(key)}
+                                            className={`experiment-deck__card experiment-deck__card--depth-${depth} ${isActive ? "is-active" : ""}`}>
+                                            <span className="experiment-deck__number">0{index + 1}</span>
+                                            <span className="experiment-deck__label">{label}</span>
+                                            <span className="experiment-deck__action">{isActive ? "OPEN" : "VIEW"}</span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
                         </div>
                         <div className="experiment-spread experiment-active mt-8">
                             {activeExperiment === "egg" && (
