@@ -584,60 +584,42 @@ const Index = () => {
                                     className="method-cta mt-7 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">First 30 min free consult — Get in touch <ArrowRight className="h-4 w-4" />
                                 </a>
                             </div>
-                            <div className="method-loop">
-                                <div className="method-loop__heading">
-                                    <div>
-                                        <span>Our working loop</span>
-                                        <p>A plan that learns.</p>
-                                    </div>
-                                    <RefreshCcw aria-hidden="true" />
-                                </div>
-                                <div className="method-loop__steps">
-                                    {bioNutritionProcess.map((
-                                        {
-                                            label,
-                                            icon: StageIcon
-                                        },
-                                        index
-                                    ) => (<div
-                                        className={`method-loop__step method-loop__step--step-${index + 1} ${index === 1 ? "is-highlighted" : ""}`}
-                                        key={label}>
-                                        <StageIcon className="method-loop__icon" aria-hidden="true" />
-                                        <small>Step 0{index + 1}</small>
-                                        <strong>{label}</strong>
-                                    </div>))}
-                                </div>
-                            </div>
                         </div>
                         <div className="method-signals mt-14 pt-10 lg:mt-20 lg:pt-16">
                             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
                                 <div>
-                                    <span className="lab-label">Six signals / one useful plan</span>
+                                    <span className="lab-label">Our working loop / six signals</span>
                                     <h3
-                                        className="mt-5 font-serif text-4xl font-normal tracking-[-0.035em] sm:text-5xl">What we look at!</h3>
+                                        className="mt-5 font-serif text-4xl font-normal tracking-[-0.035em] sm:text-5xl">A plan that learns.</h3>
                                 </div>
-                                <p className="max-w-sm text-sm leading-relaxed text-ink/60">Not isolated data points. A connected picture of what your body, food and days are doing together.</p>
+                                <p className="max-w-sm text-sm leading-relaxed text-ink/60">Each step is grounded in the parts of your biology, food and life that it responds to.</p>
                             </div>
-                            <div className="method-signal-grid mt-8">
-                                {helpAreas.map((
-                                    {
-                                        title,
-                                        copy,
-                                        icon: Icon,
-                                        loopStep
-                                    },
-                                    index
-                                ) => (<article
-                                    key={title}
-                                    className={`method-signal-card method-signal-card--step-${loopStep}`}>
-                                    <div className="method-signal-card__top">
-                                        <Icon className="method-signal-card__icon" aria-hidden="true" />
-                                        <span>Signal 0{index + 1}</span>
-                                    </div>
-                                    <span className="method-signal-card__mapping">Step 0{loopStep} · {bioNutritionProcess[loopStep - 1].label}</span>
-                                    <h4>{title}</h4>
-                                    <p>{copy}</p>
-                                </article>))}
+                            <div className="method-map mt-8">
+                                {bioNutritionProcess.map(({ label, icon: StageIcon }, stepIndex) => {
+                                    const signals = helpAreas.filter(signal => signal.loopStep === stepIndex + 1);
+                                    return (<section
+                                        className={`method-map__stage method-map__stage--step-${stepIndex + 1}`}
+                                        key={label}
+                                        aria-labelledby={`method-step-${stepIndex + 1}`}>
+                                        <header className="method-map__stage-head">
+                                            <StageIcon className="method-map__stage-icon" aria-hidden="true" />
+                                            <small>Step 0{stepIndex + 1}</small>
+                                            <h4 id={`method-step-${stepIndex + 1}`}>{label}</h4>
+                                        </header>
+                                        <div className={`method-map__signals ${signals.length === 1 ? "is-single" : ""}`}>
+                                            {signals.map(({ title, copy, icon: SignalIcon }, signalIndex) => (<article
+                                                className="method-map__signal"
+                                                key={title}>
+                                                <div className="method-map__signal-heading">
+                                                    <SignalIcon aria-hidden="true" />
+                                                    <span>Signal 0{helpAreas.indexOf(signals[0]) + signalIndex + 1}</span>
+                                                </div>
+                                                <strong>{title}</strong>
+                                                <p>{copy}</p>
+                                            </article>))}
+                                        </div>
+                                    </section>);
+                                })}
                             </div>
                         </div>
                         <p
