@@ -465,7 +465,9 @@ const Index = () => {
                                 {experimentOptions.map(([key, label], index) => {
                                     const isActive = activeExperiment === key;
                                     const activeIndex = experimentOptions.findIndex(([optionKey]) => optionKey === activeExperiment);
-                                    const depth = isActive ? 0 : (index - activeIndex + experimentOptions.length) % experimentOptions.length;
+                                    const offset = (index - activeIndex + experimentOptions.length) % experimentOptions.length;
+                                    const position = offset > experimentOptions.length / 2 ? offset - experimentOptions.length : offset;
+                                    const positionClass = position === -1 ? "experiment-deck__card--position-neg-1" : position === 0 ? "experiment-deck__card--position-0" : position === 1 ? "experiment-deck__card--position-1" : "experiment-deck__card--position-2";
 
                                     return (
                                         <button
@@ -476,10 +478,10 @@ const Index = () => {
                                             aria-selected={isActive}
                                             aria-controls={`experiment-panel-${key}`}
                                             onClick={() => setActiveExperiment(key)}
-                                            className={`experiment-deck__card experiment-deck__card--depth-${depth} ${isActive ? "is-active" : ""}`}>
+                                            className={`experiment-deck__card ${positionClass} ${isActive ? "is-active" : ""}`}>
                                             <span className="experiment-deck__number">0{index + 1}</span>
                                             <span className="experiment-deck__label">{label}</span>
-                                            <span className="experiment-deck__action">{isActive ? "OPEN" : "VIEW"}</span>
+                                            <span className="experiment-deck__action">{isActive ? "OPEN" : position < 0 ? "PREV" : "NEXT"}</span>
                                         </button>
                                     );
                                 })}
