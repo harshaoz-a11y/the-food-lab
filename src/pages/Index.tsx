@@ -367,7 +367,7 @@ function ConsultationForm() {
             <div
                 className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[#f8f2e5]/40">
                 <span className="h-px flex-1 bg-[#f8f2e5]/15" />Or
-                                                                                                                                                                                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
+                                                                                                                                                                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
             </div>
             <a
                 href="mailto:harsha@thefoodlab.in?subject=The%20Fit%20Peasant%20protein%20bar"
@@ -404,12 +404,7 @@ function NbHeader(
     );
 }
 
-const experimentOptions = [
-    ["egg", "Egg"],
-    ["rice", "Rice"],
-    ["gluten", "Gluten"],
-    ["protein", "Protein (fiber?)"]
-] as const;
+const experimentOptions = [["egg", "Egg"], ["rice", "Rice"], ["gluten", "Gluten"], ["protein", "Protein (fiber?)"]] as const;
 
 const Index = () => {
     const [activeExperiment, setActiveExperiment] = useState<"egg" | "rice" | "gluten" | "protein">("egg");
@@ -431,8 +426,7 @@ const Index = () => {
                         </div>
                         <div
                             className="hero-hypothesis-grid grid min-w-0 items-stretch gap-8 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:gap-10">
-                            <div
-                                className="hero-question-copy relative z-10 flex min-w-0 flex-col justify-center">
+                            <div className="hero-question-copy relative z-10 flex min-w-0 flex-col justify-center">
                                 <h1
                                     className="max-w-[700px] font-serif text-[clamp(2.6rem,5.2vw,5.8rem)] font-normal leading-[0.9] tracking-[-0.05em] text-ink">Could <span className="red-underline">interactions</span>{" "}<span className="red-underline">matter</span>{" "}<span className="red-underline">more</span>{" "}than ingredients?</h1>
                                 <p
@@ -486,7 +480,7 @@ const Index = () => {
                                             onClick={() => setActiveExperiment(key)}
                                             className={`experiment-deck__card ${positionClass} ${isActive ? "is-active" : ""}`}>
                                             <span className="experiment-deck__number">0{index + 1}</span>
-                                            <span className="experiment-deck__label mx-[151px]">{label}</span>
+                                            <span className="experiment-deck__label">{label}</span>
                                             <span className="experiment-deck__action">{isActive ? "OPEN" : position < 0 ? "PREV" : "NEXT"}</span>
                                         </button>
                                     );
@@ -494,47 +488,42 @@ const Index = () => {
                             </div>
                         </div>
                         <div className="experiment-spread experiment-active mt-8">
-                            {activeExperiment === "egg" && (<div id="experiment-panel-egg" role="tabpanel" aria-labelledby="egg-tab">
-                                <EggExperiment />
-                            </div>)}
-                            {activeExperiment === "rice" && (<div id="experiment-panel-rice" role="tabpanel" aria-labelledby="rice-tab">
-                                <RiceExperiment />
-                            </div>)}
-                            {activeExperiment === "gluten" && (<div
-                                id="experiment-panel-gluten"
-                                role="tabpanel"
-                                aria-labelledby="gluten-tab"
-                                className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-                                <RegionScene region="us" />
-                                <div>
-                                    <RegionScene region="india" />
-                                    <div className="mt-8 border-t border-dashed border-ink/25 pt-5">
-                                        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/50">India / survey signal</span>
-                                        <p className="mt-3 max-w-xl font-serif text-xl leading-snug text-ink/75">Among 285 people surveyed:</p>
-                                        <ul
-                                            className="mt-4 grid gap-3 text-sm leading-relaxed text-ink/70 sm:grid-cols-2">
-                                            <li><strong className="font-mono text-ink">50.9%</strong>correctly identified what gluten is.</li>
-                                            <li><strong className="font-mono text-ink">38.6%</strong>correctly identified what a gluten-free diet means.</li>
-                                            <li><strong className="font-mono text-ink">45.3%</strong>correctly identified the medical conditions for which a GFD is recommended.</li>
-                                            <li><strong className="font-mono text-ink">29.1%</strong>thought gluten-free foods were healthier than gluten-containing foods.</li>
-                                            <li><strong className="font-mono text-ink">38.9%</strong>believed gluten-free diets help with weight loss.</li>
-                                            <li><strong className="font-mono text-ink">49.5%</strong>perceived social influences as major drivers of GFD adoption.</li>
-                                        </ul>
-                                        <p
-                                            className="mt-5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.1em] text-ink/45">Source: <a
-                                                className="underline decoration-ink/25 underline-offset-2 hover:text-primary"
-                                                href="https://www.researchsquare.com/article/rs-9052215/v1"
-                                                target="_blank"
-                                                rel="noreferrer">Moitra & Qureshi, Research Square preprint, 2026</a>.</p>
+                            {activeExperiment === "egg" && (
+                                <div id="experiment-panel-egg" role="tabpanel" aria-labelledby="egg-tab">
+                                    <EggExperiment />
+                                </div>
+                            )}
+                            {activeExperiment === "rice" && (
+                                <div id="experiment-panel-rice" role="tabpanel" aria-labelledby="rice-tab">
+                                    <RiceExperiment />
+                                </div>
+                            )}
+                            {activeExperiment === "gluten" && (
+                                <div id="experiment-panel-gluten" role="tabpanel" aria-labelledby="gluten-tab" className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+                                    <RegionScene region="us" />
+                                    <div>
+                                        <RegionScene region="india" />
+                                        <div className="mt-8 border-t border-dashed border-ink/25 pt-5">
+                                            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/50">India / survey signal</span>
+                                            <p className="mt-3 max-w-xl font-serif text-xl leading-snug text-ink/75">Among 285 people surveyed:</p>
+                                            <ul className="mt-4 grid gap-3 text-sm leading-relaxed text-ink/70 sm:grid-cols-2">
+                                                <li><strong className="font-mono text-ink">50.9%</strong> correctly identified what gluten is.</li>
+                                                <li><strong className="font-mono text-ink">38.6%</strong> correctly identified what a gluten-free diet means.</li>
+                                                <li><strong className="font-mono text-ink">45.3%</strong> correctly identified the medical conditions for which a GFD is recommended.</li>
+                                                <li><strong className="font-mono text-ink">29.1%</strong> thought gluten-free foods were healthier than gluten-containing foods.</li>
+                                                <li><strong className="font-mono text-ink">38.9%</strong> believed gluten-free diets help with weight loss.</li>
+                                                <li><strong className="font-mono text-ink">49.5%</strong> perceived social influences as major drivers of GFD adoption.</li>
+                                            </ul>
+                                            <p className="mt-5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.1em] text-ink/45">Source: <a className="underline decoration-ink/25 underline-offset-2 hover:text-primary" href="https://www.researchsquare.com/article/rs-9052215/v1" target="_blank" rel="noreferrer">Moitra &amp; Qureshi, Research Square preprint, 2026</a>.</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>)}
-                            {activeExperiment === "protein" && (<div
-                                id="experiment-panel-protein"
-                                role="tabpanel"
-                                aria-labelledby="protein-tab">
-                                <ProteinExperiment />
-                            </div>)}
+                            )}
+                            {activeExperiment === "protein" && (
+                                <div id="experiment-panel-protein" role="tabpanel" aria-labelledby="protein-tab">
+                                    <ProteinExperiment />
+                                </div>
+                            )}
                         </div>
                     </div>
                 </section>
@@ -573,11 +562,11 @@ const Index = () => {
                                     className="mt-5 font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl xl:text-7xl">1. Precision Bio-Nutrition</h2>
                                 <blockquote
                                     className="mt-6 max-w-2xl border-l-4 border-primary pl-5 font-serif text-xl leading-snug text-ink/80 sm:text-2xl lg:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
                                 </blockquote>
                                 {}
                                 <p className="handwritten mt-4 rotate-[0.5deg] text-sm text-primary/70">↑ this is the only hypothesis that matters
-                                                                                                                                                                                                                                                                                                                                                                                                        </p>
+                                                                                                                                                                                                                                                                                                                                                                    </p>
                                 <a
                                     href="#your-experiment"
                                     className="mt-7 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">First 30 min free consult — Get in touch <ArrowRight className="h-4 w-4" />
@@ -696,7 +685,7 @@ const Index = () => {
                                 </h2>
                                 <p
                                     className="mt-5 max-w-lg font-serif text-xl italic leading-relaxed text-ink/70">We’ll let you tell us how good it is.
-                                                                                                                                                                                                                                                                                                                                                                                                                                            </p>
+                                                                                                                                                                                                                                                                                                                                                                                                        </p>
                                 <div className="mt-6 flex flex-wrap items-center gap-3">
                                     <a
                                         href="mailto:harsha@thefoodlab.in?subject=The%20Fit%20Peasant%20experiment"
@@ -721,7 +710,7 @@ const Index = () => {
                                 <h2
                                     className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
                                 <p className="mt-7 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Tell us what you have tried and where real life keeps entering the picture. We begin with questions, not a perfect plan.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </p>
                                 <div className="mt-10 flex items-center gap-4 text-[#d68b7f]">
                                     <FlaskConical className="h-8 w-8 stroke-[1.2]" />
                                     <span className="handwritten max-w-xs text-xl leading-tight">No judgement. No gold stars for an ideal food diary.</span>
