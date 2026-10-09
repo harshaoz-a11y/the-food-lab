@@ -211,9 +211,6 @@ function Header() {
     return (
         <header
             className="fixed inset-x-0 top-0 z-50 border-b border-ink/15 bg-[#eee7d8]/95 backdrop-blur-sm">
-            {}
-            <div
-                className="h-[2px] w-full bg-[repeating-linear-gradient(90deg,rgba(163,58,43,0.22)_0px,rgba(163,58,43,0.22)_1px,transparent_1px,transparent_40px)]" />
             <div
                 className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
                 <Brand />
@@ -748,9 +745,6 @@ const Index = () => {
                 </section>
             </main>
             <footer className="border-t border-ink/15 bg-[#e4dac5] px-5 py-12 sm:px-8">
-                {}
-                <div
-                    className="mb-6 h-px w-full bg-[repeating-linear-gradient(90deg,rgba(23,59,48,0.12)_0px,rgba(23,59,48,0.12)_1px,transparent_1px,transparent_32px)]" />
                 <div
                     className="mx-auto grid max-w-[1320px] gap-8 sm:grid-cols-[auto_1fr_auto] sm:items-center">
                     <Brand />

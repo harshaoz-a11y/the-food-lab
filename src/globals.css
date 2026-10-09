@@ -2186,7 +2186,7 @@
   display: block !important;
 }
 
-/* Ruled notebook page: vertical red margin line at 68px and horizontal faint lines */
+/* Ruled notebook page: clean warm stock without horizontal ruled lines */
 .paper-sheet.nb-ruled {
   background-color: var(--paper-light) !important;
   background-image:
@@ -2194,30 +2194,21 @@
     radial-gradient(ellipse at 0% 0%, rgba(112,91,63,.065) 0%, rgba(112,91,63,.02) 25%, transparent 48%),
     radial-gradient(ellipse at 100% 0%, rgba(104,86,61,.045) 0%, transparent 42%),
     radial-gradient(ellipse at 0% 100%, rgba(96,78,56,.055) 0%, transparent 45%),
-    radial-gradient(ellipse at 100% 100%, rgba(91,76,55,.07) 0%, transparent 50%),
-    linear-gradient(90deg, transparent 68px, rgba(163, 58, 43, 0.18) 68px, rgba(163, 58, 43, 0.18) 69.5px, transparent 69.5px),
-    repeating-linear-gradient(to bottom, transparent, transparent 31px, rgba(23, 59, 48, 0.045) 31px, rgba(23, 59, 48, 0.045) 32px) !important;
+    radial-gradient(ellipse at 100% 100%, rgba(91,76,55,.07) 0%, transparent 50%) !important;
   background-blend-mode: multiply !important;
 }
 
 .nb-top-margin {
-  border-bottom: 2px solid rgba(163, 58, 43, 0.2) !important;
-  padding-bottom: 0.5rem !important;
+  border-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .nb-section-divider {
-  display: block !important;
-  height: 1px !important;
-  background: repeating-linear-gradient(90deg, rgba(23, 59, 48, 0.22) 0px, rgba(23, 59, 48, 0.22) 6px, transparent 6px, transparent 12px) !important;
-  margin-inline: auto !important;
-  max-width: 480px !important;
+  display: none !important;
 }
 
 .nb-dark-ruled-top {
-  display: block !important;
-  height: 2px !important;
-  background: repeating-linear-gradient(90deg, rgba(248, 242, 229, 0.12) 0px, rgba(248, 242, 229, 0.12) 6px, transparent 6px, transparent 14px) !important;
-  margin-bottom: 1.5rem !important;
+  display: none !important;
 }
 
 /* Red underline / highlighter effect */
@@ -2264,8 +2255,7 @@
 
 @media (max-width: 640px) {
   .paper-sheet.nb-ruled {
-    background-image:
-      repeating-linear-gradient(to bottom, transparent, transparent 31px, rgba(23, 59, 48, 0.045) 31px, rgba(23, 59, 48, 0.045) 32px) !important;
+    background-image: none !important;
   }
   .paper-sheet::before {
     display: none !important;
