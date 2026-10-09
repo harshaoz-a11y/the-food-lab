@@ -33,11 +33,14 @@ export function EggExperiment() {
                         aria-label={`Change egg state to ${egg === "cooked" ? "raw" : "cooked"}`}
                         onClick={() => setEgg(egg === "raw" ? "cooked" : "raw")}
                         className={`egg-observation__toggle ${egg === "cooked" ? "is-cooked" : ""}`}>
-                        <span className="egg-observation__toggle-label">RAW</span>
-                        <span className="egg-observation__toggle-track" aria-hidden="true">
-                            <span className="egg-observation__toggle-knob" />
+                        <span className="egg-observation__toggle-plate" aria-hidden="true">
+                            <span className="egg-observation__toggle-mark egg-observation__toggle-mark--off">OFF</span>
+                            <span className="egg-observation__toggle-mark egg-observation__toggle-mark--on">ON</span>
+                            <span className="egg-observation__toggle-washer">
+                                <span className="egg-observation__toggle-lever" />
+                            </span>
                         </span>
-                        <span className="egg-observation__toggle-label">COOKED</span>
+                        <span className="egg-observation__toggle-caption">{egg === "cooked" ? "COOKED" : "RAW"}</span>
                     </button>
                 </div>
                 <div className={`egg-observation__art egg-observation__art--${egg}`}>
