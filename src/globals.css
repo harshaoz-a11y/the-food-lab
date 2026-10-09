@@ -4504,40 +4504,75 @@ main > section.reveal.is-revealed {
 
 .egg-observation__toggle-track {
   position: relative;
-  display: grid;
-  width: 2.35rem;
+  display: block;
+  width: 2.8rem;
   height: 3.55rem;
-  place-items: center;
   border: 2px solid currentColor;
-  border-radius: 0.75rem;
-  background: color-mix(in srgb, var(--ink) 18%, var(--paper-light));
-  box-shadow: inset 0 2px 0 color-mix(in srgb, var(--paper-light) 65%, var(--ink)), inset 0 -3px 0 color-mix(in srgb, var(--ink) 22%, var(--paper-light));
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 34%, color-mix(in srgb, var(--paper-light) 72%, var(--ink)), color-mix(in srgb, var(--ink) 24%, var(--paper-light)) 72%);
+  box-shadow: inset 0 3px 5px color-mix(in srgb, var(--ink) 30%, transparent), inset 0 -2px 0 color-mix(in srgb, var(--paper-light) 60%, transparent), 0 2px 0 color-mix(in srgb, var(--paper-light) 68%, transparent);
   animation: egg-toggle-pulse 2.8s ease-in-out infinite;
 }
 
+.egg-observation__toggle-track::after {
+  position: absolute;
+  bottom: 0.35rem;
+  left: 50%;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 50%, transparent);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--fl-paper), color-mix(in srgb, var(--ink) 30%, var(--fl-paper)));
+  box-shadow: inset 0 1px 2px color-mix(in srgb, var(--ink) 20%, transparent), 0 1px 1px color-mix(in srgb, var(--ink) 35%, transparent);
+  content: "";
+  transform: translateX(-50%);
+}
+
 .egg-observation__toggle-knob {
+  position: absolute;
+  z-index: 1;
+  bottom: 0.65rem;
+  left: 50%;
   display: block;
-  width: 1.45rem;
-  height: 2.1rem;
-  border: 1px solid color-mix(in srgb, var(--ink) 55%, transparent);
-  border-radius: 0.65rem;
-  background: currentColor;
-  box-shadow: 0 4px 0 color-mix(in srgb, var(--ink) 30%, transparent), inset 0 2px 0 color-mix(in srgb, var(--paper-light) 48%, transparent);
-  transform: translateY(0.48rem) rotate(-7deg);
-  transition: transform 220ms cubic-bezier(.3,.7,.2,1), box-shadow 220ms ease;
+  width: 0.65rem;
+  height: 1.65rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 48%, transparent);
+  border-radius: 999px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--ink) 32%, currentColor), currentColor 38%, color-mix(in srgb, var(--paper-light) 38%, currentColor));
+  box-shadow: 2px 2px 0 color-mix(in srgb, var(--ink) 32%, transparent), inset 1px 0 0 color-mix(in srgb, var(--paper-light) 65%, transparent);
+  transform: translateX(-50%) rotate(-38deg);
+  transform-origin: 50% 100%;
+  transition: transform 420ms cubic-bezier(.2,.85,.25,1.25), filter 220ms ease;
+}
+
+.egg-observation__toggle-knob::after {
+  position: absolute;
+  top: 0.2rem;
+  left: 50%;
+  width: 0.18rem;
+  height: 0.9rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper-light) 78%, transparent);
+  content: "";
+  transform: translateX(-50%);
 }
 
 .egg-observation__toggle.is-cooked .egg-observation__toggle-knob {
-  box-shadow: 0 2px 0 color-mix(in srgb, var(--ink) 30%, transparent), inset 0 2px 0 color-mix(in srgb, var(--paper-light) 48%, transparent);
-  transform: translateY(-0.48rem) rotate(7deg);
+  filter: brightness(1.05);
+  transform: translateX(-50%) rotate(38deg);
+}
+
+.egg-observation__toggle:active .egg-observation__toggle-knob {
+  filter: brightness(0.92);
+  transition-duration: 100ms;
 }
 
 @keyframes egg-toggle-pulse {
   0%, 100% {
-    box-shadow: inset 0 2px 0 color-mix(in srgb, var(--paper-light) 65%, var(--ink)), inset 0 -3px 0 color-mix(in srgb, var(--ink) 22%, var(--paper-light)), 0 0 0 0 color-mix(in srgb, currentColor 0%, transparent);
+    box-shadow: inset 0 3px 5px color-mix(in srgb, var(--ink) 30%, transparent), inset 0 -2px 0 color-mix(in srgb, var(--paper-light) 60%, transparent), 0 2px 0 color-mix(in srgb, var(--paper-light) 68%, transparent);
   }
   50% {
-    box-shadow: inset 0 2px 0 color-mix(in srgb, var(--paper-light) 65%, var(--ink)), inset 0 -3px 0 color-mix(in srgb, var(--ink) 22%, var(--paper-light)), 0 0 0 4px color-mix(in srgb, currentColor 12%, transparent);
+    box-shadow: inset 0 3px 5px color-mix(in srgb, var(--ink) 30%, transparent), inset 0 -2px 0 color-mix(in srgb, var(--paper-light) 60%, transparent), 0 2px 0 color-mix(in srgb, var(--paper-light) 68%, transparent), 0 0 0 4px color-mix(in srgb, currentColor 10%, transparent);
   }
 }
 
