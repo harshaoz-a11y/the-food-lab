@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Brain, Citrus, Grape, Leaf, Sparkles, Wheat, Zap } from "lucide-react";
+import { ParticleExplosionCanvas } from "./ParticleExplosionCanvas";
 
 const interactions = [{
     region: "foundation",
@@ -94,6 +95,16 @@ const interactions = [{
     y: 48
 }] as const;
 
+const regionColors: Record<string, string> = {
+    "foundation": "#a33a2b", // brick red
+    "texture": "#2d7d46",    // forest green
+    "flavour": "#d9822b",    // warm amber/gold
+    "foundation-texture": "#5c7d3c", // olive green
+    "foundation-flavour": "#8a3a52", // dark berry
+    "texture-flavour": "#3a8274",    // teal
+    "all-three": "#d68b7f"           // rose gold / highlight
+};
+
 const roles = [{
     label: "Foundation",
     note: "protein + body",
@@ -110,7 +121,18 @@ const roles = [{
 
 export function AlchemyPartnerships() {
     const [activeIndex, setActiveIndex] = useState(6);
+    const [prevIndex, setPrevIndex] = useState(6);
+    const [explosionCount, setExplosionCount] = useState(0);
+
+    const handleSelect = (nextIdx: number) => {
+        if (nextIdx === activeIndex) return;
+        setPrevIndex(activeIndex);
+        setActiveIndex(nextIdx);
+        setExplosionCount(c => c + 1);
+    };
+
     const current = interactions[activeIndex];
+    const previous = interactions[prevIndex];
     const CurrentIcon = current.icon;
 
     return (
@@ -125,7 +147,16 @@ export function AlchemyPartnerships() {
                 <span className="alchemy-count">7 interactions · hover an overlap</span>
             </header>
             <div className="alchemy-body">
-                <div className="venn-reader">
+                <div className="venn-reader relative">
+                    <ParticleExplosionCanvas
+                        triggerKey={explosionCount}
+                        sourceX={previous.x}
+                        sourceY={previous.y}
+                        targetX={current.x}
+                        targetY={current.y}
+                        fromColor={regionColors[previous.region] || "#2d7d46"}
+                        toColor={regionColors[current.region] || "#a33a2b"}
+                    />
                     <div className="venn-reader-intro" aria-hidden="true">
                     </div>
                     <div
@@ -221,9 +252,9 @@ export function AlchemyPartnerships() {
                                     }}
                                     aria-label={`Interaction ${index + 1}: ${interaction.left} and ${interaction.right}`}
                                     aria-pressed={isActive}
-                                    onMouseEnter={() => setActiveIndex(index)}
-                                    onFocus={() => setActiveIndex(index)}
-                                    onClick={() => setActiveIndex(index)}>
+                                    onMouseEnter={() => handleSelect(index)}
+                                    onFocus={() => handleSelect(index)}
+                                    onClick={() => handleSelect(index)}>
                                     <span className="venn-zone-number">0{index + 1}</span>
                                     <Icon aria-hidden="true" />
                                     <strong>{interaction.interaction}</strong>
