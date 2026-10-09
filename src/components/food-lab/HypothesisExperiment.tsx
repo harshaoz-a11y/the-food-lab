@@ -60,7 +60,6 @@ export function HypothesisExperiment() {
         <div
             className={`hypothesis-lab ${running ? "is-running" : ""} ${completed ? "is-complete" : ""} ${happinessOn ? "has-happiness" : ""}`}>
             <div className="hypothesis-controls">
-                <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink/45">Tap a stage to inspect it</span>
                 <button
                     type="button"
                     className="hypothesis-run bg-[#a1822b]"

@@ -431,7 +431,6 @@ const Index = () => {
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 sm:py-14 lg:px-20 lg:py-20">
                         <div className="nb-top-margin mb-8 flex items-center justify-between gap-4">
                             <span className="lab-label">Observation 002</span>
-                            <span className="font-mono text-[11px] text-ink/30">Pg. 001</span>
                         </div>
                         <div
                             className="hero-hypothesis-grid grid min-w-0 items-stretch gap-8 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:gap-10">
@@ -461,7 +460,6 @@ const Index = () => {
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
                         <NbHeader label="Experiment log" page="Pg. 003" />
                         <div className="max-w-4xl">
-                            <span className="lab-label">Investigation</span>
                             <h2
                                 key={activeExperiment}
                                 className="mt-5 font-serif text-[clamp(1.75rem,4.2vw,3.6rem)] font-normal leading-[1.05] tracking-[-0.03em] animate-in fade-in slide-in-from-bottom-2 duration-300">
@@ -609,7 +607,6 @@ const Index = () => {
                         <NbHeader label="Method / approach" page="Pg. 005" />
                         <div className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-12">
                             <div>
-                                <span className="lab-label">The Food Lab approach</span>
                                 <h2
                                     id="help-heading"
                                     className="mt-5 max-w-none whitespace-nowrap font-serif text-[clamp(1.35rem,4.2vw,4rem)] font-normal leading-[0.94] tracking-[-0.04em]">1. Precision Bio-Nutrition</h2>
@@ -714,7 +711,6 @@ const Index = () => {
                                         href="mailto:harsha@thefoodlab.in?subject=Protein%2011%20experiment"
                                         className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">Ask about Protein 11 <ArrowRight className="h-4 w-4" />
                                     </a>
-                                    <span className="font-mono text-[11px] uppercase tracking-[0.13em] text-ink/50">Precision interactions. One enjoyable result.</span>
                                 </div>
                             </div>
                         </div>
