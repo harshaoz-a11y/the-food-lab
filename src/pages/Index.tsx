@@ -464,80 +464,127 @@ const Index = () => {
                             <h2
                                 className="mt-5 max-w-none whitespace-nowrap font-serif text-[clamp(1.35rem,5.6vw,4rem)] font-normal leading-[0.94] tracking-[-0.04em]">Four studies. One question.</h2>
                             <p
-                                className="handwritten mt-3 rotate-[-1deg] text-base leading-tight text-primary sm:text-lg">Pick a window, then give it room to speak clearly.</p>
+                                className="handwritten mt-3 rotate-[-1deg] text-base leading-tight text-primary sm:text-lg">Flick or click through the lenses to bring any experiment forward.</p>
                         </div>
                         <div
-                            className="experiment-deck mt-8"
-                            role="tablist"
-                            aria-label="Choose an experiment">
-                            <div className="experiment-deck__stack">
-                                {experimentOptions.map(([key, label], index) => {
-                                    const isActive = activeExperiment === key;
-                                    const activeIndex = experimentOptions.findIndex(([optionKey]) => optionKey === activeExperiment);
-                                    const offset = (index - activeIndex + experimentOptions.length) % experimentOptions.length;
-                                    const position = offset > experimentOptions.length / 2 ? offset - experimentOptions.length : offset;
-                                    const positionClass = position === -1 ? "experiment-deck__card--position-neg-1" : position === 0 ? "experiment-deck__card--position-0" : position === 1 ? "experiment-deck__card--position-1" : "experiment-deck__card--position-2";
-
-                                    return (
+                            className="lens-coverflow mt-8"
+                            role="region"
+                            aria-label="Interactive 4-lens coverflow carousel">
+                            {/* Navigation controls */}
+                            <div className="lens-coverflow__controls">
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        const currentIndex = experimentOptions.findIndex(([k]) => k === activeExperiment);
+                                        const prevIndex = (currentIndex - 1 + experimentOptions.length) % experimentOptions.length;
+                                        setActiveExperiment(experimentOptions[prevIndex][0]);
+                                    }}
+                                    className="lens-coverflow__nav-btn"
+                                    aria-label="Previous experiment">
+                                    ← Prev
+                                </button>
+                                <div className="lens-coverflow__pills" role="tablist" aria-label="Experiment switcher">
+                                    {experimentOptions.map(([key, label], index) => (
                                         <button
                                             key={key}
                                             type="button"
                                             role="tab"
-                                            id={`${key}-tab`}
-                                            aria-selected={isActive}
-                                            aria-controls={`experiment-panel-${key}`}
+                                            aria-selected={activeExperiment === key}
                                             onClick={() => setActiveExperiment(key)}
-                                            className={`experiment-deck__card ${positionClass} ${isActive ? "is-active" : ""}`}>
-                                            <span className="experiment-deck__number">0{index + 1}</span>
-                                            <span className="experiment-deck__label">{label}</span>
-                                            <span className="experiment-deck__action">{isActive ? "OPEN" : position < 0 ? "PREV" : "NEXT"}</span>
+                                            className={`lens-coverflow__pill ${activeExperiment === key ? "is-active" : ""}`}>
+                                            0{index + 1} {label}
                                         </button>
+                                    ))}
+                                </div>
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        const currentIndex = experimentOptions.findIndex(([k]) => k === activeExperiment);
+                                        const nextIndex = (currentIndex + 1) % experimentOptions.length;
+                                        setActiveExperiment(experimentOptions[nextIndex][0]);
+                                    }}
+                                    className="lens-coverflow__nav-btn"
+                                    aria-label="Next experiment">
+                                    Next →
+                                </button>
+                            </div>
+
+                            {/* 3D Coverflow stage holding all 4 full lens pages */}
+                            <div className="lens-coverflow__stage">
+                                {experimentOptions.map(([key, label], index) => {
+                                    const isActive = activeExperiment === key;
+                                    const activeIndex = experimentOptions.findIndex(([k]) => k === activeExperiment);
+                                    const offset = (index - activeIndex + experimentOptions.length) % experimentOptions.length;
+                                    const position = offset > experimentOptions.length / 2 ? offset - experimentOptions.length : offset;
+                                    const positionClass =
+                                        position === -1
+                                            ? "lens-coverflow__item--pos-prev"
+                                            : position === 0
+                                            ? "lens-coverflow__item--pos-active"
+                                            : position === 1
+                                            ? "lens-coverflow__item--pos-next"
+                                            : "lens-coverflow__item--pos-far";
+
+                                    return (
+                                        <div
+                                            key={key}
+                                            className={`lens-coverflow__item ${positionClass} ${isActive ? "is-active" : ""}`}
+                                            onClick={() => {
+                                                if (!isActive) setActiveExperiment(key);
+                                            }}
+                                            tabIndex={isActive ? 0 : -1}
+                                            role="tabpanel"
+                                            id={`experiment-panel-${key}`}
+                                            aria-hidden={!isActive}>
+                                            <div className="lens-coverflow__item-header">
+                                                <div className="flex items-center gap-2">
+                                                    <span className="lens-coverflow__badge">LENS 0{index + 1}</span>
+                                                    <span className="font-serif text-lg text-ink font-normal">{label}</span>
+                                                </div>
+                                                {!isActive && (
+                                                    <span className="lens-coverflow__click-prompt">Click to bring forward</span>
+                                                )}
+                                            </div>
+                                            <div className="lens-coverflow__item-content">
+                                                {key === "egg" && <EggExperiment />}
+                                                {key === "rice" && <RiceExperiment />}
+                                                {key === "gluten" && (
+                                                    <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+                                                        <RegionScene region="us" />
+                                                        <div>
+                                                            <RegionScene region="india" />
+                                                            <div className="mt-8 border-t border-dashed border-ink/25 pt-5">
+                                                                <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/50">India / survey signal</span>
+                                                                <p className="mt-3 max-w-xl font-serif text-xl leading-snug text-ink/75">Among 285 people surveyed:</p>
+                                                                <ul className="mt-4 grid gap-3 text-sm leading-relaxed text-ink/70 sm:grid-cols-2">
+                                                                    <li><strong className="font-mono text-ink">50.9%</strong> correctly identified what gluten is.</li>
+                                                                    <li><strong className="font-mono text-ink">38.6%</strong> correctly identified what a gluten-free diet means.</li>
+                                                                    <li><strong className="font-mono text-ink">45.3%</strong> correctly identified the medical conditions for which a GFD is recommended.</li>
+                                                                    <li><strong className="font-mono text-ink">29.1%</strong> thought gluten-free foods were healthier than gluten-containing foods.</li>
+                                                                    <li><strong className="font-mono text-ink">38.9%</strong> believed gluten-free diets help with weight loss.</li>
+                                                                    <li><strong className="font-mono text-ink">49.5%</strong> perceived social influences as major drivers of GFD adoption.</li>
+                                                                </ul>
+                                                                <p className="mt-5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.1em] text-ink/45">
+                                                                    Source:{" "}
+                                                                    <a
+                                                                        className="underline decoration-ink/25 underline-offset-2 hover:text-primary"
+                                                                        href="https://www.researchsquare.com/article/rs-9052215/v1"
+                                                                        target="_blank"
+                                                                        rel="noreferrer">
+                                                                        Moitra &amp; Qureshi, Research Square preprint, 2026
+                                                                    </a>
+                                                                    .
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                )}
+                                                {key === "protein" && <ProteinExperiment />}
+                                            </div>
+                                        </div>
                                     );
                                 })}
                             </div>
-                        </div>
-                        <div className="experiment-spread experiment-active mt-8">
-                            {activeExperiment === "egg" && (<div id="experiment-panel-egg" role="tabpanel" aria-labelledby="egg-tab">
-                                <EggExperiment />
-                            </div>)}
-                            {activeExperiment === "rice" && (<div id="experiment-panel-rice" role="tabpanel" aria-labelledby="rice-tab">
-                                <RiceExperiment />
-                            </div>)}
-                            {activeExperiment === "gluten" && (<div
-                                id="experiment-panel-gluten"
-                                role="tabpanel"
-                                aria-labelledby="gluten-tab"
-                                className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-                                <RegionScene region="us" />
-                                <div>
-                                    <RegionScene region="india" />
-                                    <div className="mt-8 border-t border-dashed border-ink/25 pt-5">
-                                        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/50">India / survey signal</span>
-                                        <p className="mt-3 max-w-xl font-serif text-xl leading-snug text-ink/75">Among 285 people surveyed:</p>
-                                        <ul
-                                            className="mt-4 grid gap-3 text-sm leading-relaxed text-ink/70 sm:grid-cols-2">
-                                            <li><strong className="font-mono text-ink">50.9%</strong>correctly identified what gluten is.</li>
-                                            <li><strong className="font-mono text-ink">38.6%</strong>correctly identified what a gluten-free diet means.</li>
-                                            <li><strong className="font-mono text-ink">45.3%</strong>correctly identified the medical conditions for which a GFD is recommended.</li>
-                                            <li><strong className="font-mono text-ink">29.1%</strong>thought gluten-free foods were healthier than gluten-containing foods.</li>
-                                            <li><strong className="font-mono text-ink">38.9%</strong>believed gluten-free diets help with weight loss.</li>
-                                            <li><strong className="font-mono text-ink">49.5%</strong>perceived social influences as major drivers of GFD adoption.</li>
-                                        </ul>
-                                        <p
-                                            className="mt-5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.1em] text-ink/45">Source: <a
-                                                className="underline decoration-ink/25 underline-offset-2 hover:text-primary"
-                                                href="https://www.researchsquare.com/article/rs-9052215/v1"
-                                                target="_blank"
-                                                rel="noreferrer">Moitra & Qureshi, Research Square preprint, 2026</a>.</p>
-                                    </div>
-                                </div>
-                            </div>)}
-                            {activeExperiment === "protein" && (<div
-                                id="experiment-panel-protein"
-                                role="tabpanel"
-                                aria-labelledby="protein-tab">
-                                <ProteinExperiment />
-                            </div>)}
                         </div>
                     </div>
                 </section>
