@@ -195,12 +195,12 @@ function Brand() {
     return (
         <a
             href="#top"
-            className="relative block h-14 w-[200px] shrink-0 overflow-hidden sm:w-[230px]"
+            className="flex items-center shrink-0"
             aria-label="The Food Lab home">
             <img
                 src={foodLabBrandLogo}
                 alt="The Food Lab — Invisible diets. Visible results."
-                className="absolute left-1/2 top-1/2 w-[210px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain sm:w-[240px] mix-blend-multiply" />
+                className="h-11 sm:h-12 w-auto object-contain mix-blend-multiply" />
         </a>
     );
 }
@@ -210,7 +210,7 @@ function Header() {
 
     return (
         <header
-            className="fixed inset-x-0 top-0 z-50 border-b border-ink/15 bg-[#eee7d8]/95 backdrop-blur-sm">
+            className="fixed inset-x-0 top-0 z-50 border-b border-ink/15 bg-[#faedde]/95 backdrop-blur-sm">
             <div
                 className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
                 <Brand />
@@ -242,7 +242,7 @@ function Header() {
                 </button>
             </div>
             {open && (<nav
-                className="absolute left-0 right-0 top-full border-t border-ink/15 bg-[#f5edde] px-5 py-4 shadow-[0_8px_18px_rgba(23,59,48,.08)] lg:hidden"
+                className="absolute left-0 right-0 top-full border-t border-ink/15 bg-[#faedde] px-5 py-4 shadow-[0_8px_18px_rgba(23,59,48,.08)] lg:hidden"
                 aria-label="Mobile navigation">
                 {navigation.map(item => (<a
                     key={item.href}
@@ -740,7 +740,7 @@ const Index = () => {
                     </div>
                 </section>
             </main>
-            <footer className="border-t border-ink/15 bg-[#e4dac5] px-5 py-12 sm:px-8">
+            <footer className="border-t border-ink/15 bg-[#faedde] px-5 py-12 sm:px-8">
                 <div
                     className="mx-auto grid max-w-[1320px] gap-8 sm:grid-cols-[auto_1fr_auto] sm:items-center">
                     <Brand />
