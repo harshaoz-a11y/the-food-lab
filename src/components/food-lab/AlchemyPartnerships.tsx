@@ -120,7 +120,7 @@ export function AlchemyPartnerships() {
             <header className="alchemy-heading">
                 <div>
                     <span className="alchemy-kicker">Interaction reader</span>
-                    <h3 id="alchemy-partnerships-heading">The Fit Peasant partnerships</h3>
+                    <h3 id="alchemy-partnerships-heading">Protein 11 partnerships</h3>
                 </div>
                 <span className="alchemy-count">7 interactions · hover an overlap</span>
             </header>

@@ -1046,7 +1046,7 @@
     margin-top: 0.2rem;
   }
 
-  /* Fit Peasant: turn the formula into a proper lab plate.
+  /* Protein 11: turn the formula into a proper lab plate.
      The Venn/fusion visual comes after the invitation to explore, and the
      container uses quiet rules rather than a novelty dashed frame. */
   #fit-peasant .alchemy-mobile-intro {
@@ -1248,7 +1248,7 @@
   }
 }
 
-/* MAESTRO-032 / lock hero geometry, print legibility, and deepen Fit Peasant */
+/* MAESTRO-032 / lock hero geometry, print legibility, and deepen Protein 11 */
 @media (max-width: 767px) {
   /* HERO MAP — deliberately locked geometry.
      The Vitruvian figure, meal centre and five factor labels now occupy
@@ -1351,7 +1351,7 @@
     font-size: 0.94rem;
   }
 
-  /* FIT PEASANT — use the Working Hypothesis visual grammar:
+  /* PROTEIN 11 — use the Working Hypothesis visual grammar:
      quiet lab frame, stronger internal hierarchy, indexed experiments,
      and a central result rather than a generic widget/card. */
   #fit-peasant .alchemy-partnerships {
@@ -1516,7 +1516,7 @@
   }
 }
 
-/* MAESTRO-033 / Fit Peasant lab grammar on larger screens */
+/* MAESTRO-033 / Protein 11 lab grammar on larger screens */
 .alchemy-partnerships {
   border-style: solid !important;
   border-width: 1px !important;
@@ -2731,7 +2731,7 @@ main > section.reveal.is-revealed {
   .steam { animation: none; }
 }
 
-/* Fit Peasant: one three-set Venn diagram for all seven ingredient interactions. */
+/* Protein 11: one three-set Venn diagram for all seven ingredient interactions. */
 .venn-reader {
   color: #f8f2e5;
 }
@@ -4704,81 +4704,6 @@ main > section.reveal.is-revealed {
   .experiment-deck__card {
     transition: none;
   }
-}
-
-/* Simplified method loop: four clear steps, one highlighted taste step. */
-.method-loop__steps {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
-}
-
-.method-loop__step {
-  display: flex;
-  min-width: 0;
-  min-height: 9.5rem;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 0.55rem;
-  border: 1px solid rgba(23, 59, 48, 0.16);
-  border-radius: 0.9rem;
-  padding: 0.9rem;
-  color: var(--ink);
-  background: rgba(229, 218, 195, 0.62);
-  box-shadow: 3px 4px 0 rgba(23, 59, 48, 0.07);
-  transition: transform 180ms ease, box-shadow 180ms ease;
-}
-
-.method-loop__step:hover {
-  transform: translateY(-3px);
-  box-shadow: 4px 6px 0 rgba(23, 59, 48, 0.1);
-}
-
-.method-loop__step.is-highlighted {
-  border-color: var(--green);
-  color: var(--paper-light);
-  background: var(--green);
-  box-shadow: 4px 6px 0 rgba(45, 125, 70, 0.18);
-}
-
-.method-loop__icon {
-  width: 1.45rem;
-  height: 1.45rem;
-  color: var(--brick);
-  stroke-width: 1.45;
-}
-
-.method-loop__step.is-highlighted .method-loop__icon {
-  color: var(--paper-light);
-}
-
-.method-loop__step small,
-.method-loop__step strong,
-.method-loop__step > span:last-child {
-  display: block;
-}
-
-.method-loop__step small {
-  color: var(--ink-soft);
-  font: 9px var(--fl-font-mono);
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-}
-
-.method-loop__step strong {
-  font: 400 1rem/1.05 var(--fl-font-serif);
-}
-
-.method-loop__step > span:last-child {
-  color: rgba(23, 59, 48, 0.62);
-  font-size: 0.72rem;
-  line-height: 1.35;
-}
-
-.method-loop__step.is-highlighted small,
-.method-loop__step.is-highlighted > span:last-child {
-  color: rgba(248, 242, 229, 0.72);
 }
 
 .method-cta {

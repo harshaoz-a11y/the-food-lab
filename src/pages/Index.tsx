@@ -25,7 +25,6 @@ import {
     House,
     Mail,
     Menu,
-    NotebookPen,
     Presentation,
     RefreshCcw,
     Salad,
@@ -145,23 +144,6 @@ const fieldStudies = [{
     }]
 }];
 
-const bioNutritionProcess = [{
-    label: "Understand",
-    note: "Your body, goals and real life",
-    icon: NotebookPen
-}, {
-    label: "Maximize Benefit and Taste",
-    note: "Build the most useful, enjoyable option",
-    icon: FlaskConical
-}, {
-    label: "Observe",
-    note: "Notice what actually changes",
-    icon: Activity
-}, {
-    label: "Adapt",
-    note: "Keep what works; revise what doesn’t",
-    icon: RefreshCcw
-}];
 
 const helpAreas = [{
     title: "Your biology",
@@ -370,14 +352,14 @@ function ConsultationForm() {
                                                                                                                                                                                                                                 <span className="h-px flex-1 bg-[#f8f2e5]/15" />
             </div>
             <a
-                href="mailto:harsha@thefoodlab.in?subject=The%20Fit%20Peasant%20protein%20bar"
+                href="mailto:harsha@thefoodlab.in?subject=Protein%2011%20protein%20bar"
                 className="group rounded-[1.5rem] border border-[#d68b7f]/45 bg-[#d68b7f]/10 p-6 transition hover:-translate-y-1 hover:border-[#d68b7f] hover:bg-[#d68b7f]/15">
                 <span
-                    className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#d68b7f]">The Fit Peasant</span>
+                    className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#d68b7f]">Protein 11</span>
                 <strong
-                    className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Try Protein11 now!</strong>
+                    className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Try Protein 11 now!</strong>
                 <span
-                    className="mt-5 inline-flex items-center gap-2 text-sm text-[#f8f2e5]/70 transition group-hover:text-[#f8f2e5]">Try Protein11 now <ArrowRight className="h-4 w-4" /></span>
+                    className="mt-5 inline-flex items-center gap-2 text-sm text-[#f8f2e5]/70 transition group-hover:text-[#f8f2e5]">Try Protein 11 now <ArrowRight className="h-4 w-4" /></span>
             </a>
         </div>
     );
@@ -564,13 +546,12 @@ const Index = () => {
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-14 sm:px-10 lg:px-20 lg:py-24">
                         <NbHeader label="Method / approach" page="Pg. 005" />
-                        <div
-                            className="grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:gap-20">
+                        <div className="grid gap-10">
                             <div>
                                 <span className="lab-label">The Food Lab approach</span>
                                 <h2
                                     id="help-heading"
-                                    className="mt-5 font-serif text-4xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl xl:text-7xl">1. Precision Bio-Nutrition</h2>
+                                    className="mt-5 max-w-none whitespace-nowrap font-serif text-[clamp(1.35rem,5.4vw,4.5rem)] font-normal leading-[0.94] tracking-[-0.04em]">1. Precision Bio-Nutrition</h2>
                                 <blockquote
                                     className="mt-6 max-w-2xl border-l-4 border-primary pl-5 font-serif text-xl leading-snug text-ink/80 sm:text-2xl lg:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
@@ -582,33 +563,6 @@ const Index = () => {
                                     href="#your-experiment"
                                     className="method-cta mt-7 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">First 30 min free consult — Get in touch <ArrowRight className="h-4 w-4" />
                                 </a>
-                            </div>
-                            <div
-                                className="method-loop relative overflow-hidden rounded-[2rem] border border-ink/20 bg-[#f8f2e5] p-6 text-ink shadow-[8px_10px_0_rgba(23,59,48,.12)] sm:p-9">
-                                <div className="flex items-end justify-between gap-4">
-                                    <div>
-                                        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/55">Our working loop</span>
-                                        <p className="mt-2 font-serif text-2xl leading-none text-ink">A plan that learns.</p>
-                                    </div>
-                                    <RefreshCcw className="h-8 w-8 stroke-[1.3] text-primary" aria-hidden="true" />
-                                </div>
-                                <div className="method-loop__steps mt-8">
-                                    {bioNutritionProcess.map((
-                                        {
-                                            label,
-                                            note,
-                                            icon: StageIcon
-                                        },
-                                        index
-                                    ) => (<div
-                                        className={`method-loop__step ${index === 1 ? "is-highlighted" : ""}`}
-                                        key={label}>
-                                        <StageIcon className="method-loop__icon" aria-hidden="true" />
-                                        <small>Step 0{index + 1}</small>
-                                        <strong>{label}</strong>
-                                        <span>{note}</span>
-                                    </div>))}
-                                </div>
                             </div>
                         </div>
                         <div className="method-signals mt-14 pt-10 lg:mt-20 lg:pt-16">
@@ -663,9 +617,9 @@ const Index = () => {
                                 <span className="tape tape-left" />
                                 <img
                                     src={maestroAssets.alchemyBar}
-                                    alt="The Fit Peasant protein bar cut open to reveal its whole-food texture"
+                                    alt="Protein 11 bar cut open to reveal its whole-food texture"
                                     className="min-h-[280px] w-full object-cover sm:min-h-[380px]" />
-                                <figcaption>The Fit Peasant / first practical experiment</figcaption>
+                                <figcaption>Protein 11 / first practical experiment</figcaption>
                             </figure>
                             <div>
                                 <span className="lab-label">An experiment that became food</span>
@@ -683,8 +637,8 @@ const Index = () => {
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 </p>
                                 <div className="mt-6 flex flex-wrap items-center gap-3">
                                     <a
-                                        href="mailto:harsha@thefoodlab.in?subject=The%20Fit%20Peasant%20experiment"
-                                        className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">Ask about The Fit Peasant <ArrowRight className="h-4 w-4" />
+                                        href="mailto:harsha@thefoodlab.in?subject=Protein%2011%20experiment"
+                                        className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">Ask about Protein 11 <ArrowRight className="h-4 w-4" />
                                     </a>
                                     <span className="font-mono text-[11px] uppercase tracking-[0.13em] text-ink/50">Precision interactions. One enjoyable result.</span>
                                 </div>
