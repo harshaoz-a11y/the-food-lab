@@ -415,6 +415,7 @@ const experimentOptions = [
 
 const Index = () => {
     const [activeExperiment, setActiveExperiment] = useState<"egg" | "rice" | "gluten" | "protein">("egg");
+    const [activeMethodStep, setActiveMethodStep] = useState(0);
     useSectionReveal();
 
     return (
@@ -566,7 +567,7 @@ const Index = () => {
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-14 sm:px-10 lg:px-20 lg:py-24">
                         <NbHeader label="Method / approach" page="Pg. 005" />
-                        <div className="grid gap-10 lg:grid-cols-[1fr_.9fr] lg:items-center lg:gap-14">
+                        <div className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-12">
                             <div>
                                 <span className="lab-label">The Food Lab approach</span>
                                 <h2
@@ -584,42 +585,58 @@ const Index = () => {
                                     className="method-cta mt-7 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">First 30 min free consult — Get in touch <ArrowRight className="h-4 w-4" />
                                 </a>
                             </div>
-                        </div>
-                        <div className="method-signals mt-14 pt-10 lg:mt-20 lg:pt-16">
-                            <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-                                <div>
-                                    <span className="lab-label">Our working loop / six signals</span>
-                                    <h3
-                                        className="mt-5 font-serif text-4xl font-normal tracking-[-0.035em] sm:text-5xl">A plan that learns.</h3>
+                            <div className="method-coverflow" aria-label="Working loop stages">
+                                <div className="method-coverflow__track" role="tablist" aria-label="Choose a working-loop stage">
+                                    {bioNutritionProcess.map(({ label, icon: StageIcon }, index) => {
+                                        const offset = (index - activeMethodStep + bioNutritionProcess.length) % bioNutritionProcess.length;
+                                        const position = offset > bioNutritionProcess.length / 2 ? offset - bioNutritionProcess.length : offset;
+                                        const positionClass = position === -1 ? "is-previous" : position === 0 ? "is-active" : position === 1 ? "is-next" : "is-far";
+
+                                        return (<button
+                                            key={label}
+                                            type="button"
+                                            role="tab"
+                                            aria-selected={index === activeMethodStep}
+                                            aria-controls="method-coverflow-panel"
+                                            onClick={() => setActiveMethodStep(index)}
+                                            onKeyDown={event => {
+                                                if (event.key === "ArrowRight") {
+                                                    event.preventDefault();
+                                                    setActiveMethodStep((activeMethodStep + 1) % bioNutritionProcess.length);
+                                                }
+                                                if (event.key === "ArrowLeft") {
+                                                    event.preventDefault();
+                                                    setActiveMethodStep((activeMethodStep - 1 + bioNutritionProcess.length) % bioNutritionProcess.length);
+                                                }
+                                            }}
+                                            className={`method-coverflow__card method-coverflow__card--step-${index + 1} ${positionClass}`}>
+                                            <span className="method-coverflow__index">STEP 0{index + 1}</span>
+                                            <StageIcon aria-hidden="true" />
+                                            <strong>{label}</strong>
+                                            <span className="method-coverflow__hint">{position === 0 ? "SELECTED" : "VIEW STEP"}</span>
+                                        </button>);
+                                    })}
                                 </div>
-                                <p className="max-w-sm text-sm leading-relaxed text-ink/60">Each step is grounded in the parts of your biology, food and life that it responds to.</p>
-                            </div>
-                            <div className="method-map mt-8">
-                                {bioNutritionProcess.map(({ label, icon: StageIcon }, stepIndex) => {
-                                    const signals = helpAreas.filter(signal => signal.loopStep === stepIndex + 1);
-                                    return (<section
-                                        className={`method-map__stage method-map__stage--step-${stepIndex + 1}`}
-                                        key={label}
-                                        aria-labelledby={`method-step-${stepIndex + 1}`}>
-                                        <header className="method-map__stage-head">
-                                            <StageIcon className="method-map__stage-icon" aria-hidden="true" />
-                                            <small>Step 0{stepIndex + 1}</small>
-                                            <h4 id={`method-step-${stepIndex + 1}`}>{label}</h4>
-                                        </header>
-                                        <div className={`method-map__signals ${signals.length === 1 ? "is-single" : ""}`}>
-                                            {signals.map(({ title, copy, icon: SignalIcon }, signalIndex) => (<article
-                                                className="method-map__signal"
-                                                key={title}>
-                                                <div className="method-map__signal-heading">
-                                                    <SignalIcon aria-hidden="true" />
-                                                    <span>Signal 0{helpAreas.indexOf(signals[0]) + signalIndex + 1}</span>
+                                {(() => {
+                                    const activeStage = bioNutritionProcess[activeMethodStep];
+                                    const signals = helpAreas.filter(signal => signal.loopStep === activeMethodStep + 1);
+                                    return (<div className={`method-coverflow__panel method-coverflow__panel--step-${activeMethodStep + 1}`} id="method-coverflow-panel" role="tabpanel" aria-label={`Signals for ${activeStage.label}`}>
+                                        <div className="method-coverflow__panel-heading">
+                                            <span>STEP 0{activeMethodStep + 1} / {activeStage.label}</span>
+                                            <span>{signals.length} RELATED SIGNAL{signals.length === 1 ? "" : "S"}</span>
+                                        </div>
+                                        <div className={`method-coverflow__signals ${signals.length === 1 ? "is-single" : ""}`}>
+                                            {signals.map(({ title, copy, icon: SignalIcon }, index) => (<article className="method-coverflow__signal" key={title}>
+                                                <SignalIcon aria-hidden="true" />
+                                                <div>
+                                                    <strong>{title}</strong>
+                                                    <p>{copy}</p>
                                                 </div>
-                                                <strong>{title}</strong>
-                                                <p>{copy}</p>
+                                                <small>0{helpAreas.indexOf(signals[0]) + index + 1}</small>
                                             </article>))}
                                         </div>
-                                    </section>);
-                                })}
+                                    </div>);
+                                })()}
                             </div>
                         </div>
                         <p
