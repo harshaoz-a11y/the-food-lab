@@ -45,7 +45,7 @@ import { HypothesisExperiment } from "@/components/food-lab/HypothesisExperiment
 import { ProteinExperiment } from "@/components/food-lab/ProteinExperiment";
 import { RiceExperiment } from "@/components/food-lab/RiceExperiment";
 import RegionScene from "@/components/region-scenes/RegionScene";
-import foodLabBrandLogo from "@/assets/the-food-lab-brand-logo.png";
+import { BrandLogo } from "@/components/food-lab/BrandLogo";
 import { maestroAssets } from "@/lib/maestro-assets";
 
 const navigation = [{
@@ -197,10 +197,7 @@ function Brand() {
             href="#top"
             className="flex items-center shrink-0"
             aria-label="The Food Lab home">
-            <img
-                src={foodLabBrandLogo}
-                alt="The Food Lab — Invisible diets. Visible results."
-                className="h-11 sm:h-12 w-auto object-contain mix-blend-multiply" />
+            <BrandLogo className="h-11 sm:h-12 w-auto object-contain" />
         </a>
     );
 }
