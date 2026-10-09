@@ -63,7 +63,7 @@ export function HypothesisExperiment() {
                 <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink/45">Tap a stage to inspect it</span>
                 <button
                     type="button"
-                    className="hypothesis-run"
+                    className="hypothesis-run bg-[#ec5f22]"
                     onClick={runExperiment}
                     disabled={running}>
                     <Play aria-hidden="true" />
