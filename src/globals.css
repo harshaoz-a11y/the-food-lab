@@ -4705,3 +4705,108 @@ main > section.reveal.is-revealed {
     transition: none;
   }
 }
+
+/* Simplified method loop: four clear steps, one highlighted taste step. */
+.method-loop__steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.method-loop__step {
+  display: flex;
+  min-width: 0;
+  min-height: 9.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.55rem;
+  border: 1px solid rgba(23, 59, 48, 0.16);
+  border-radius: 0.9rem;
+  padding: 0.9rem;
+  color: var(--ink);
+  background: rgba(229, 218, 195, 0.62);
+  box-shadow: 3px 4px 0 rgba(23, 59, 48, 0.07);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.method-loop__step:hover {
+  transform: translateY(-3px);
+  box-shadow: 4px 6px 0 rgba(23, 59, 48, 0.1);
+}
+
+.method-loop__step.is-highlighted {
+  border-color: var(--green);
+  color: var(--paper-light);
+  background: var(--green);
+  box-shadow: 4px 6px 0 rgba(45, 125, 70, 0.18);
+}
+
+.method-loop__icon {
+  width: 1.45rem;
+  height: 1.45rem;
+  color: var(--brick);
+  stroke-width: 1.45;
+}
+
+.method-loop__step.is-highlighted .method-loop__icon {
+  color: var(--paper-light);
+}
+
+.method-loop__step small,
+.method-loop__step strong,
+.method-loop__step > span:last-child {
+  display: block;
+}
+
+.method-loop__step small {
+  color: var(--ink-soft);
+  font: 9px var(--fl-font-mono);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.method-loop__step strong {
+  font: 400 1rem/1.05 var(--fl-font-serif);
+}
+
+.method-loop__step > span:last-child {
+  color: rgba(23, 59, 48, 0.62);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.method-loop__step.is-highlighted small,
+.method-loop__step.is-highlighted > span:last-child {
+  color: rgba(248, 242, 229, 0.72);
+}
+
+.method-cta {
+  animation: method-cta-flash 2.8s ease-in-out infinite;
+}
+
+@keyframes method-cta-flash {
+  0%, 72%, 100% {
+    box-shadow: 0 0 0 0 rgba(163, 58, 43, 0), 0 0 0 rgba(163, 58, 43, 0);
+  }
+  80% {
+    box-shadow: 0 0 0 7px rgba(163, 58, 43, 0.14), 0 8px 22px rgba(163, 58, 43, 0.2);
+  }
+  88% {
+    box-shadow: 0 0 0 2px rgba(163, 58, 43, 0.04), 0 4px 12px rgba(163, 58, 43, 0.1);
+  }
+}
+
+@media (min-width: 768px) {
+  .method-loop__steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .method-loop__step,
+  .method-cta {
+    animation: none;
+    transition: none;
+  }
+}

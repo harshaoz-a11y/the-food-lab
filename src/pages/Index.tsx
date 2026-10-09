@@ -459,7 +459,7 @@ const Index = () => {
                         <div className="max-w-3xl">
                             <span className="lab-label"></span>
                             <h2
-                                className="mt-5 max-w-xl font-serif font-normal leading-[0.94] tracking-[-0.04em] sm:text-5xl lg:text-6xl mx-[0px] p-[0px] border-[0px] rounded-[0px] border-[#c7baa3] text-[60px]">Four studies. One question.</h2>
+                                className="mt-5 max-w-none whitespace-nowrap font-serif text-[clamp(1.35rem,5.6vw,4rem)] font-normal leading-[0.94] tracking-[-0.04em]">Four studies. One question.</h2>
                             <p
                                 className="handwritten mt-3 rotate-[-1deg] text-base leading-tight text-primary sm:text-lg">Pick a window, then give it room to speak clearly.</p>
                         </div>
@@ -580,11 +580,11 @@ const Index = () => {
                                                                                                                                                                                                                                                                                                                                                                                                         </p>
                                 <a
                                     href="#your-experiment"
-                                    className="mt-7 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">First 30 min free consult — Get in touch <ArrowRight className="h-4 w-4" />
+                                    className="method-cta mt-7 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">First 30 min free consult — Get in touch <ArrowRight className="h-4 w-4" />
                                 </a>
                             </div>
                             <div
-                                className="relative overflow-hidden rounded-[2rem] border border-ink/20 bg-[#f8f2e5] p-6 text-ink shadow-[8px_10px_0_rgba(23,59,48,.12)] sm:p-9">
+                                className="method-loop relative overflow-hidden rounded-[2rem] border border-ink/20 bg-[#f8f2e5] p-6 text-ink shadow-[8px_10px_0_rgba(23,59,48,.12)] sm:p-9">
                                 <div className="flex items-end justify-between gap-4">
                                     <div>
                                         <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/55">Our working loop</span>
@@ -592,8 +592,7 @@ const Index = () => {
                                     </div>
                                     <RefreshCcw className="h-8 w-8 stroke-[1.3] text-primary" aria-hidden="true" />
                                 </div>
-                                <div
-                                    className="relative mt-8 grid gap-3 before:absolute before:bottom-5 before:left-1/2 before:top-5 before:w-px before:-translate-x-1/2 before:border-l before:border-dashed before:border-primary/35">
+                                <div className="method-loop__steps mt-8">
                                     {bioNutritionProcess.map((
                                         {
                                             label,
@@ -601,33 +600,18 @@ const Index = () => {
                                             icon: StageIcon
                                         },
                                         index
-                                    ) => {
-                                        const alignLeft = index % 2 === 0;
-
-                                        return (
-                                            <div
-                                                className={`relative z-10 flex w-full ${alignLeft ? "justify-start pr-7" : "justify-end pl-7"}`}
-                                                key={label}>
-                                                <div
-                                                    className={`flex w-[88%] items-center gap-3 rounded-[1.25rem] border border-ink/15 bg-[#e5dac3] p-3 shadow-[3px_4px_0_rgba(23,59,48,.08)] sm:w-[82%] ${alignLeft ? "text-left" : "flex-row-reverse text-right"}`}>
-                                                    <span
-                                                        className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary text-[#f8f2e5]">
-                                                        <StageIcon className="h-5 w-5 stroke-[1.6]" aria-hidden="true" />
-                                                    </span>
-                                                    <span className="min-w-0 flex-1">
-                                                        <small className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink/45">Step 0{index + 1}</small>
-                                                        <strong
-                                                            className="mt-1 block break-words font-mono text-[11px] font-medium uppercase leading-snug tracking-[0.12em] text-ink sm:text-xs">{label}</strong>
-                                                        <span className="mt-1 block text-[11px] leading-snug text-ink/55">{note}</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
+                                    ) => (<div
+                                        className={`method-loop__step ${index === 1 ? "is-highlighted" : ""}`}
+                                        key={label}>
+                                        <StageIcon className="method-loop__icon" aria-hidden="true" />
+                                        <small>Step 0{index + 1}</small>
+                                        <strong>{label}</strong>
+                                        <span>{note}</span>
+                                    </div>))}
                                 </div>
                             </div>
                         </div>
-                        <div className="mt-14 border-t border-ink/15 pt-10 lg:mt-20 lg:pt-16">
+                        <div className="method-signals mt-14 pt-10 lg:mt-20 lg:pt-16">
                             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
                                 <div>
                                     <span className="lab-label">Six signals / one useful plan</span>
