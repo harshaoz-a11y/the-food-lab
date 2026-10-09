@@ -260,10 +260,22 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: transform 180ms ease, background-color 180ms ease;
+  animation: hypothesis-run-pulse 0.75s ease-in-out infinite;
 }
 
-.hypothesis-run:hover:not(:disabled) { transform: translateY(-2px) rotate(-0.5deg); background: var(--brick); }
-.hypothesis-run:disabled { cursor: wait; opacity: 0.72; }
+@keyframes hypothesis-run-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(23, 59, 48, 0.45);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 0 5px rgba(23, 59, 48, 0);
+  }
+}
+
+.hypothesis-run:hover:not(:disabled) { transform: translateY(-2px) rotate(-0.5deg); background: var(--brick); animation: none; }
+.hypothesis-run:disabled { cursor: wait; opacity: 0.72; animation: none; }
 .hypothesis-run svg { width: 14px; height: 14px; fill: currentColor; }
 
 .hypothesis-path {
