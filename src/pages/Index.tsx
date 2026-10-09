@@ -162,27 +162,33 @@ const bioNutritionProcess = [{
 const helpAreas = [{
     title: "Your biology",
     copy: "What your body is telling us.",
-    icon: Activity
+    icon: Activity,
+    loopStep: 1
 }, {
     title: "Your goals",
     copy: "What you actually want to change.",
-    icon: Target
+    icon: Target,
+    loopStep: 1
 }, {
     title: "Your food",
     copy: "What you eat, how much, how often — what you enjoy and what you don’t.",
-    icon: Salad
-}, {
-    title: "Your life",
-    copy: "Work, routines, time, travel, family, social life.",
-    icon: CalendarDays
+    icon: Salad,
+    loopStep: 2
 }, {
     title: "Your preferences",
     copy: "Taste, satiety, habits, culture, convenience, affordability.",
-    icon: Heart
+    icon: Heart,
+    loopStep: 2
 }, {
     title: "Your response",
     copy: "What changes when we change something.",
-    icon: RefreshCcw
+    icon: RefreshCcw,
+    loopStep: 3
+}, {
+    title: "Your life",
+    copy: "Work, routines, time, travel, family, social life.",
+    icon: CalendarDays,
+    loopStep: 4
 }];
 
 function Brand() {
@@ -594,7 +600,7 @@ const Index = () => {
                                         },
                                         index
                                     ) => (<div
-                                        className={`method-loop__step ${index === 1 ? "is-highlighted" : ""}`}
+                                        className={`method-loop__step method-loop__step--step-${index + 1} ${index === 1 ? "is-highlighted" : ""}`}
                                         key={label}>
                                         <StageIcon className="method-loop__icon" aria-hidden="true" />
                                         <small>Step 0{index + 1}</small>
@@ -612,35 +618,26 @@ const Index = () => {
                                 </div>
                                 <p className="max-w-sm text-sm leading-relaxed text-ink/60">Not isolated data points. A connected picture of what your body, food and days are doing together.</p>
                             </div>
-                            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                            <div className="method-signal-grid mt-8">
                                 {helpAreas.map((
                                     {
                                         title,
                                         copy,
-                                        icon: Icon
+                                        icon: Icon,
+                                        loopStep
                                     },
                                     index
-                                ) => {
-                                    const isInverted = index === 0 || index === 2 || index === 4;
-
-                                    return (
-                                        <article
-                                            key={title}
-                                            className={`rounded-[1.35rem] border p-5 shadow-[4px_5px_0_rgba(65,50,28,.05)] ${isInverted ? "border-charcoal bg-charcoal text-[#f8f2e5]" : "border-ink/15 bg-[#e7dcc5] text-ink"}`}>
-                                            <div className="flex items-start justify-between gap-4">
-                                                <Icon
-                                                    className={`h-8 w-8 stroke-[1.35] ${isInverted ? "text-[#d68b7f]" : "text-primary"}`}
-                                                    aria-hidden="true" />
-                                                <span
-                                                    className={`font-mono text-[11px] uppercase tracking-[0.14em] ${isInverted ? "text-[#f8f2e5]/45" : "text-ink/40"}`}>Signal 0{index + 1}</span>
-                                            </div>
-                                            <h4
-                                                className={`mt-6 font-mono text-[11px] font-medium uppercase tracking-[0.15em] ${isInverted ? "text-[#f8f2e5]" : "text-ink"}`}>{title}</h4>
-                                            <p
-                                                className={`mt-2 text-sm leading-relaxed ${isInverted ? "text-[#f8f2e5]/65" : "text-ink/65"}`}>{copy}</p>
-                                        </article>
-                                    );
-                                })}
+                                ) => (<article
+                                    key={title}
+                                    className={`method-signal-card method-signal-card--step-${loopStep}`}>
+                                    <div className="method-signal-card__top">
+                                        <Icon className="method-signal-card__icon" aria-hidden="true" />
+                                        <span>Signal 0{index + 1}</span>
+                                    </div>
+                                    <span className="method-signal-card__mapping">Step 0{loopStep} · {bioNutritionProcess[loopStep - 1].label}</span>
+                                    <h4>{title}</h4>
+                                    <p>{copy}</p>
+                                </article>))}
                             </div>
                         </div>
                         <p

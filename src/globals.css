@@ -4821,6 +4821,93 @@ main > section.reveal.is-revealed {
   }
 }
 
+.method-loop__step--step-1,
+.method-signal-card--step-1 { --signal-color: var(--brick); }
+
+.method-loop__step--step-2,
+.method-signal-card--step-2 { --signal-color: var(--green); }
+
+.method-loop__step--step-3,
+.method-signal-card--step-3 { --signal-color: #9a6c52; }
+
+.method-loop__step--step-4,
+.method-signal-card--step-4 { --signal-color: var(--ink-soft); }
+
+.method-loop__step {
+  border-top: 3px solid var(--signal-color);
+}
+
+.method-signal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.method-signal-card {
+  display: flex;
+  min-width: 0;
+  min-height: 10.2rem;
+  flex-direction: column;
+  border: 1px solid rgba(23, 59, 48, 0.15);
+  border-top: 3px solid var(--signal-color);
+  border-radius: 1rem;
+  padding: 1rem;
+  color: var(--ink);
+  background: rgba(229, 218, 195, 0.58);
+  box-shadow: 3px 4px 0 rgba(23, 59, 48, 0.06);
+}
+
+.method-signal-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.method-signal-card__icon {
+  width: 1.55rem;
+  height: 1.55rem;
+  color: var(--signal-color);
+  stroke-width: 1.4;
+}
+
+.method-signal-card__top span,
+.method-signal-card__mapping {
+  font: 9px var(--fl-font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.method-signal-card__top span {
+  color: var(--ink-soft);
+}
+
+.method-signal-card__mapping {
+  margin-top: 0.9rem;
+  color: var(--signal-color);
+}
+
+.method-signal-card h4 {
+  margin-top: 0.45rem;
+  color: var(--ink);
+  font: 500 0.78rem/1.2 var(--fl-font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.method-signal-card p {
+  margin-top: 0.45rem;
+  color: rgba(23, 59, 48, 0.66);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .method-signal-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .method-loop__step,
   .method-cta {
