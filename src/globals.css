@@ -1879,20 +1879,8 @@
    vignette. */
 .paper-sheet::after,
 #working-hypothesis > div::after,
-#fit-peasant > div::after,
-
-/* Tiny foxing marks: sparse, irregular and mostly near the margins. */
-.paper-sheet::before {
-  opacity: .82;
-  width: 12px;
-  background-image:
-    radial-gradient(circle at 45% 8%, rgba(108,76,37,.38) 0 1px, transparent 1.7px),
-    radial-gradient(circle at 55% 31%, rgba(108,76,37,.26) 0 1.2px, transparent 1.9px),
-    radial-gradient(circle at 42% 56%, rgba(108,76,37,.32) 0 .9px, transparent 1.6px),
-    radial-gradient(circle at 57% 77%, rgba(108,76,37,.22) 0 1.2px, transparent 1.9px),
-    radial-gradient(circle at 38% 94%, rgba(108,76,37,.28) 0 1px, transparent 1.7px);
-  background-size: 12px 112px;
-  background-repeat: repeat-y;
+#fit-peasant > div::after {
+  position: relative;
 }
 
 /* Preserve the ruled notebook lines while adding the stronger ageing
@@ -1956,23 +1944,8 @@
    translucent marks. These should read as material, not "grunge". */
 .paper-sheet::after,
 #working-hypothesis > div::after,
-#fit-peasant > div::after,
-
-/* Small, slightly irregular "foxing" freckles concentrated toward
-   the binding/perimeter rather than sprinkled uniformly. */
-.paper-sheet::before {
-  opacity: .9;
-  width: 12px;
-  background-image:
-    radial-gradient(circle at 40% 7%, rgba(107,75,35,.46) 0 1px, transparent 1.7px),
-    radial-gradient(circle at 62% 18%, rgba(107,75,35,.28) 0 1.1px, transparent 1.8px),
-    radial-gradient(circle at 38% 34%, rgba(107,75,35,.34) 0 .8px, transparent 1.5px),
-    radial-gradient(circle at 59% 51%, rgba(107,75,35,.26) 0 1.1px, transparent 1.8px),
-    radial-gradient(circle at 41% 68%, rgba(107,75,35,.39) 0 .9px, transparent 1.6px),
-    radial-gradient(circle at 61% 84%, rgba(107,75,35,.30) 0 1.1px, transparent 1.8px),
-    radial-gradient(circle at 40% 96%, rgba(107,75,35,.34) 0 1px, transparent 1.7px);
-  background-size: 12px 155px;
-  background-repeat: repeat-y;
+#fit-peasant > div::after {
+  position: relative;
 }
 
 /* A faint old fold / handling line — intentionally imperfect. */
@@ -2169,70 +2142,107 @@
   }
 }
 
-/* MAESTRO-037 / continuous notebook stock
-   The notebook is now the page itself, rather than a set of floating sheets.
-   Keep the dark green field pages distinct. Remove literal ruled lines and
-   the red notebook margin; retain only the quiet aged-paper material. */
+/* ═══════════════════════════════════════════════════════
+   AUTHENTIC LAB NOTEBOOK (VERSION 36 RESTORATION)
+   Tactile notebook paper stock, perforated binding holes,
+   vertical red margin rule, horizontal ruled lines, and page depth.
+   ═══════════════════════════════════════════════════════ */
 
 #top {
-  background-color: var(--archive-stock, #eee3c9) !important;
+  background-color: var(--paper) !important;
   background-image:
-    radial-gradient(ellipse at 50% 42%, rgba(255,252,238,.42) 0%, rgba(255,252,238,.12) 36%, transparent 68%),
-    radial-gradient(ellipse at 0% 18%, rgba(101,76,43,.13) 0%, rgba(101,76,43,.045) 20%, transparent 46%),
-    radial-gradient(ellipse at 100% 8%, rgba(91,69,40,.11) 0%, rgba(91,69,40,.04) 22%, transparent 46%),
-    radial-gradient(ellipse at 3% 96%, rgba(89,67,39,.13) 0%, rgba(89,67,39,.045) 22%, transparent 48%),
-    radial-gradient(ellipse at 97% 92%, rgba(91,67,37,.14) 0%, rgba(91,67,37,.045) 24%, transparent 50%),
-    radial-gradient(circle at 18% 23%, rgba(119,87,47,.055) 0 1%, transparent 2.5%),
-    radial-gradient(circle at 84% 71%, rgba(116,82,43,.05) 0 .8%, transparent 2.4%),
-    linear-gradient(90deg, rgba(95,73,43,.035), transparent 14%, rgba(255,252,238,.035) 50%, transparent 86%, rgba(95,73,43,.045)),
-    linear-gradient(180deg, rgba(105,78,43,.035), transparent 16%, transparent 84%, rgba(95,71,42,.055));
-  background-blend-mode: multiply;
+    radial-gradient(ellipse 95% 82% at 46% 43%, rgba(255,252,240,.20), transparent 72%),
+    radial-gradient(ellipse 58% 46% at 8% 14%, rgba(121,93,55,.05), transparent 75%),
+    radial-gradient(ellipse 62% 52% at 92% 82%, rgba(112,84,48,.045), transparent 78%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='cellulose' x='-10%25' y='-10%25' width='120%25' height='120%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006 .010' numOctaves='4' seed='61' stitchTiles='stitch' result='n'/%3E%3CfeColorMatrix in='n' type='matrix' values='.15 0 0 0 .45 .12 0 0 0 .38 .08 0 0 0 .29 0 0 0 .34 0'/%3E%3C/filter%3E%3Crect width='900' height='900' fill='%23eee7d8'/%3E%3Crect width='900' height='900' filter='url(%23cellulose)' opacity='.12'/%3E%3C/svg%3E") !important;
+  background-size: auto, auto, auto, 900px 900px !important;
+  background-blend-mode: multiply !important;
 }
 
-#question > div,
-#demonstration > div,
-#working-hypothesis > div,
-#how-we-help > div,
-#fit-peasant > div {
-  background-color: transparent !important;
-  background-image: none !important;
-  border-left: 0 !important;
-  border-right: 0 !important;
-  border-bottom: 0 !important;
-  box-shadow: none !important;
+/* Notebook paper sheet structure */
+.paper-sheet {
+  position: relative !important;
+  background-color: var(--paper-light) !important;
+  border: 1px solid rgba(83, 70, 46, 0.22) !important;
+  box-shadow: 8px 10px 0 rgba(59, 49, 32, 0.05), 0 20px 50px rgba(59, 49, 32, 0.07) !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
 }
 
-#question .paper-sheet,
-#demonstration .paper-sheet,
-#how-we-help .paper-sheet {
-  border: 0 !important;
-  box-shadow: none !important;
+/* Vertical perforated punch holes down the left margin */
+.paper-sheet::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 1.25rem !important;
+  bottom: 1.25rem !important;
+  left: 1.05rem !important;
+  width: 14px !important;
+  opacity: 0.72 !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='32'%3E%3Ccircle cx='7' cy='7' r='3.2' fill='%2395856b' fill-opacity='.65'/%3E%3C/svg%3E") !important;
+  background-repeat: repeat-y !important;
+  background-size: 14px 32px !important;
+  z-index: 5 !important;
+  pointer-events: none !important;
+  display: block !important;
 }
 
-#question .paper-sheet.nb-ruled,
-#demonstration .paper-sheet.nb-ruled,
-#how-we-help .paper-sheet.nb-ruled {
-  background-image: none !important;
+/* Ruled notebook page: vertical red margin line at 68px and horizontal faint lines */
+.paper-sheet.nb-ruled {
+  background-color: var(--paper-light) !important;
+  background-image:
+    radial-gradient(ellipse at 50% 48%, rgba(255,255,255,.24) 0%, rgba(255,255,255,.08) 43%, transparent 68%),
+    radial-gradient(ellipse at 0% 0%, rgba(112,91,63,.065) 0%, rgba(112,91,63,.02) 25%, transparent 48%),
+    radial-gradient(ellipse at 100% 0%, rgba(104,86,61,.045) 0%, transparent 42%),
+    radial-gradient(ellipse at 0% 100%, rgba(96,78,56,.055) 0%, transparent 45%),
+    radial-gradient(ellipse at 100% 100%, rgba(91,76,55,.07) 0%, transparent 50%),
+    linear-gradient(90deg, transparent 68px, rgba(163, 58, 43, 0.18) 68px, rgba(163, 58, 43, 0.18) 69.5px, transparent 69.5px),
+    repeating-linear-gradient(to bottom, transparent, transparent 31px, rgba(23, 59, 48, 0.045) 31px, rgba(23, 59, 48, 0.045) 32px) !important;
+  background-blend-mode: multiply !important;
 }
 
 .nb-top-margin {
-  border-bottom: 0 !important;
-  padding-bottom: 0 !important;
+  border-bottom: 2px solid rgba(163, 58, 43, 0.2) !important;
+  padding-bottom: 0.5rem !important;
 }
 
-.nb-section-divider,
+.nb-section-divider {
+  display: block !important;
+  height: 1px !important;
+  background: repeating-linear-gradient(90deg, rgba(23, 59, 48, 0.22) 0px, rgba(23, 59, 48, 0.22) 6px, transparent 6px, transparent 12px) !important;
+  margin-inline: auto !important;
+  max-width: 480px !important;
+}
+
 .nb-dark-ruled-top {
-  display: none !important;
+  display: block !important;
+  height: 2px !important;
+  background: repeating-linear-gradient(90deg, rgba(248, 242, 229, 0.12) 0px, rgba(248, 242, 229, 0.12) 6px, transparent 6px, transparent 14px) !important;
+  margin-bottom: 1.5rem !important;
 }
 
-#question .paper-sheet::before,
-#demonstration .paper-sheet::before,
-#how-we-help .paper-sheet::before {
-  opacity: .48;
+/* Red underline / highlighter effect */
+.red-underline {
+  position: relative;
+  white-space: nowrap;
 }
 
+.red-underline::after {
+  content: "";
+  position: absolute;
+  left: -0.04em;
+  right: -0.04em;
+  bottom: 0.04em;
+  height: 0.22em;
+  z-index: -1;
+  background: rgba(163, 58, 43, 0.38);
+  transform: rotate(-0.8deg);
+  border-radius: 2px;
+}
+
+/* Dark green sections */
 #real-life > div,
 #your-experiment > div {
+  background-color: #29463d !important;
   box-shadow:
     inset 24px 0 45px rgba(12,25,21,.16),
     inset -24px 0 45px rgba(12,25,21,.18),
@@ -2240,51 +2250,26 @@
     0 24px 55px rgba(26,32,28,.15) !important;
 }
 
-/* MAESTRO-040 / quiet, tactile old-library stock
-   The paper should feel discovered, not designed: low contrast, broad tonal
-   variation, almost no identifiable marks, and no repeated "stain" motifs. */
-
-#top {
-  background-color: #e8dfca !important;
-  background-image:
-    radial-gradient(ellipse 95% 82% at 46% 43%, rgba(255,252,240,.24), transparent 72%),
-    radial-gradient(ellipse 58% 46% at 8% 14%, rgba(121,93,55,.065), transparent 75%),
-    radial-gradient(ellipse 62% 52% at 92% 82%, rgba(112,84,48,.055), transparent 78%),
-    radial-gradient(ellipse 48% 70% at 96% 4%, rgba(144,115,74,.038), transparent 76%),
-    radial-gradient(ellipse 52% 58% at 4% 94%, rgba(136,103,61,.045), transparent 78%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='cellulose' x='-10%25' y='-10%25' width='120%25' height='120%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006 .010' numOctaves='4' seed='61' stitchTiles='stitch' result='n'/%3E%3CfeColorMatrix in='n' type='matrix' values='.15 0 0 0 .45 .12 0 0 0 .38 .08 0 0 0 .29 0 0 0 .34 0'/%3E%3C/filter%3E%3Crect width='900' height='900' fill='%23e8dfca'/%3E%3Crect width='900' height='900' filter='url(%23cellulose)' opacity='.17'/%3E%3C/svg%3E");
-  background-size: auto, auto, auto, auto, auto, 900px 900px;
-  background-blend-mode: multiply;
-}
-
-/* Keep the paper continuous through the light sections. */
-#question > div,
-#demonstration > div,
-#working-hypothesis > div,
-#how-we-help > div,
-#fit-peasant > div {
-  background-color: transparent !important;
-  background-image: none !important;
-}
-
-/* The dark green pages remain the deliberate material change. */
-#real-life > div,
-#your-experiment > div {
-  background-color: #29463d !important;
-}
-
-/* Extremely fine fibre texture. The scale is deliberately large enough to
-   avoid the "tiled texture" look and quiet enough to disappear at a glance. */
 #top::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: .035;
+  opacity: .03;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1100' height='700'%3E%3Cfilter id='fibres' x='-10%25' y='-10%25' width='120%25' height='120%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.045 .005' numOctaves='2' seed='113' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='1100' height='700' filter='url(%23fibres)'/%3E%3C/svg%3E");
   background-size: 1100px 700px;
   mix-blend-mode: multiply;
+}
+
+@media (max-width: 640px) {
+  .paper-sheet.nb-ruled {
+    background-image:
+      repeating-linear-gradient(to bottom, transparent, transparent 31px, rgba(23, 59, 48, 0.045) 31px, rgba(23, 59, 48, 0.045) 32px) !important;
+  }
+  .paper-sheet::before {
+    display: none !important;
+  }
 }
 
 

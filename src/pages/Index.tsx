@@ -200,7 +200,7 @@ function Brand() {
             <img
                 src={foodLabBrandLogo}
                 alt="The Food Lab — Invisible diets. Visible results."
-                className="absolute left-1/2 top-1/2 w-[210px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain sm:w-[240px] bg-[#ccbd99]" />
+                className="absolute left-1/2 top-1/2 w-[210px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain sm:w-[240px] mix-blend-multiply" />
         </a>
     );
 }
@@ -432,12 +432,9 @@ const Index = () => {
                 <section id="question" className="px-4 pb-4 pt-6 sm:px-6 lg:px-8 lg:pt-8">
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 sm:py-14 lg:px-20 lg:py-20">
-                        {}
-                        <div className="nb-top-margin mb-8 flex items-center gap-4">
-                            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/35">
-                            </span>
-                            <span className="font-mono text-[11px] text-ink/30">
-                            </span>
+                        <div className="nb-top-margin mb-8 flex items-center justify-between gap-4">
+                            <span className="lab-label">Observation 002</span>
+                            <span className="font-mono text-[11px] text-ink/30">Pg. 001</span>
                         </div>
                         <div
                             className="hero-hypothesis-grid grid min-w-0 items-stretch gap-8 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:gap-10">
