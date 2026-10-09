@@ -4706,6 +4706,99 @@ main > section.reveal.is-revealed {
   }
 }
 
+.method-loop {
+  min-width: 0;
+  border: 1px solid rgba(23, 59, 48, 0.16);
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(248, 242, 229, 0.72);
+  box-shadow: 6px 7px 0 rgba(23, 59, 48, 0.08);
+}
+
+.method-loop__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.method-loop__heading span,
+.method-loop__step small {
+  color: var(--ink-soft);
+  font: 9px var(--fl-font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.method-loop__heading p {
+  margin-top: 0.35rem;
+  color: var(--ink);
+  font: 400 1.45rem/1 var(--fl-font-serif);
+}
+
+.method-loop__heading svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  color: var(--brick);
+  stroke-width: 1.4;
+}
+
+.method-loop__steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-top: 1.2rem;
+}
+
+.method-loop__step {
+  display: flex;
+  min-width: 0;
+  min-height: 8.4rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.45rem;
+  border: 1px solid rgba(23, 59, 48, 0.15);
+  border-radius: 0.9rem;
+  padding: 0.7rem;
+  color: var(--ink);
+  background: rgba(229, 218, 195, 0.64);
+  box-shadow: 2px 3px 0 rgba(23, 59, 48, 0.08);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.method-loop__step:hover {
+  transform: translateY(-2px) rotate(-0.4deg);
+  box-shadow: 3px 5px 0 rgba(23, 59, 48, 0.11);
+}
+
+.method-loop__step.is-highlighted {
+  border-color: var(--green);
+  color: var(--paper-light);
+  background: var(--green);
+  box-shadow: 3px 5px 0 rgba(45, 125, 70, 0.2);
+}
+
+.method-loop__icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  color: var(--brick);
+  stroke-width: 1.45;
+}
+
+.method-loop__step.is-highlighted .method-loop__icon {
+  color: var(--paper-light);
+}
+
+.method-loop__step strong {
+  display: block;
+  font: 400 1rem/1.02 var(--fl-font-serif);
+}
+
+.method-loop__step.is-highlighted small {
+  color: rgba(248, 242, 229, 0.72);
+}
+
 .method-cta {
   animation: method-cta-flash 2.8s ease-in-out infinite;
 }

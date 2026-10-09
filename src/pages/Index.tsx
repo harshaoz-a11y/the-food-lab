@@ -25,6 +25,7 @@ import {
     House,
     Mail,
     Menu,
+    NotebookPen,
     Presentation,
     RefreshCcw,
     Salad,
@@ -144,6 +145,19 @@ const fieldStudies = [{
     }]
 }];
 
+const bioNutritionProcess = [{
+    label: "Understand",
+    icon: NotebookPen
+}, {
+    label: "Maximize Benefit and Taste",
+    icon: FlaskConical
+}, {
+    label: "Observe",
+    icon: Activity
+}, {
+    label: "Adapt",
+    icon: RefreshCcw
+}];
 
 const helpAreas = [{
     title: "Your biology",
@@ -546,12 +560,12 @@ const Index = () => {
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-14 sm:px-10 lg:px-20 lg:py-24">
                         <NbHeader label="Method / approach" page="Pg. 005" />
-                        <div className="grid gap-10">
+                        <div className="grid gap-10 lg:grid-cols-[1fr_.9fr] lg:items-center lg:gap-14">
                             <div>
                                 <span className="lab-label">The Food Lab approach</span>
                                 <h2
                                     id="help-heading"
-                                    className="mt-5 max-w-none whitespace-nowrap font-serif text-[clamp(1.35rem,5.4vw,4.5rem)] font-normal leading-[0.94] tracking-[-0.04em]">1. Precision Bio-Nutrition</h2>
+                                    className="mt-5 max-w-none whitespace-nowrap font-serif text-[clamp(1.35rem,4.2vw,4rem)] font-normal leading-[0.94] tracking-[-0.04em]">1. Precision Bio-Nutrition</h2>
                                 <blockquote
                                     className="mt-6 max-w-2xl border-l-4 border-primary pl-5 font-serif text-xl leading-snug text-ink/80 sm:text-2xl lg:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
@@ -563,6 +577,24 @@ const Index = () => {
                                     href="#your-experiment"
                                     className="method-cta mt-7 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">First 30 min free consult — Get in touch <ArrowRight className="h-4 w-4" />
                                 </a>
+                            </div>
+                            <div className="method-loop">
+                                <div className="method-loop__heading">
+                                    <div>
+                                        <span>Our working loop</span>
+                                        <p>A plan that learns.</p>
+                                    </div>
+                                    <RefreshCcw aria-hidden="true" />
+                                </div>
+                                <div className="method-loop__steps">
+                                    {bioNutritionProcess.map(({ label, icon: StageIcon }, index) => (<div
+                                        className={`method-loop__step ${index === 1 ? "is-highlighted" : ""}`}
+                                        key={label}>
+                                        <StageIcon className="method-loop__icon" aria-hidden="true" />
+                                        <small>Step 0{index + 1}</small>
+                                        <strong>{label}</strong>
+                                    </div>))}
+                                </div>
                             </div>
                         </div>
                         <div className="method-signals mt-14 pt-10 lg:mt-20 lg:pt-16">
