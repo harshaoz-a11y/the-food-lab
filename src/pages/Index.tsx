@@ -413,6 +413,13 @@ const experimentOptions = [
     ["protein", "Protein (fiber?)"]
 ] as const;
 
+const lensEssence: Record<"egg" | "rice" | "gluten" | "protein", string> = {
+    egg: "Cooking changes everything. 51% vs 91% protein digested.",
+    rice: "Reheating cool rice turns fast carbs into resistant fibre.",
+    gluten: "Perception vs reality. The regional gluten paradox.",
+    protein: "Protein needs fibre. 70% of people miss the mark."
+};
+
 const Index = () => {
     const [activeExperiment, setActiveExperiment] = useState<"egg" | "rice" | "gluten" | "protein">("egg");
     const [activeMethodStep, setActiveMethodStep] = useState(0);
@@ -459,12 +466,13 @@ const Index = () => {
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
                         <NbHeader label="Experiment log" page="Pg. 003" />
-                        <div className="max-w-3xl">
-                            <span className="lab-label"></span>
+                        <div className="max-w-4xl">
+                            <span className="lab-label">Investigation</span>
                             <h2
-                                className="mt-5 max-w-none whitespace-nowrap font-serif text-[clamp(1.35rem,5.6vw,4rem)] font-normal leading-[0.94] tracking-[-0.04em]">Four studies. One question.</h2>
-                            <p
-                                className="handwritten mt-3 rotate-[-1deg] text-base leading-tight text-primary sm:text-lg">Flick or click through the lenses to bring any experiment forward.</p>
+                                key={activeExperiment}
+                                className="mt-5 font-serif text-[clamp(1.75rem,4.2vw,3.6rem)] font-normal leading-[1.05] tracking-[-0.03em] animate-in fade-in slide-in-from-bottom-2 duration-300">
+                                {lensEssence[activeExperiment]}
+                            </h2>
                         </div>
                         <div
                             className="lens-coverflow mt-8"
@@ -536,15 +544,6 @@ const Index = () => {
                                             role="tabpanel"
                                             id={`experiment-panel-${key}`}
                                             aria-hidden={!isActive}>
-                                            <div className="lens-coverflow__item-header">
-                                                <div className="flex items-center gap-2">
-                                                    <span className="lens-coverflow__badge">LENS 0{index + 1}</span>
-                                                    <span className="font-serif text-lg text-ink font-normal">{label}</span>
-                                                </div>
-                                                {!isActive && (
-                                                    <span className="lens-coverflow__click-prompt">Click to bring forward</span>
-                                                )}
-                                            </div>
                                             <div className="lens-coverflow__item-content">
                                                 {key === "egg" && <EggExperiment />}
                                                 {key === "rice" && <RiceExperiment />}

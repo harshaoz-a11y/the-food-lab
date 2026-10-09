@@ -4640,9 +4640,12 @@ main > section.reveal.is-revealed {
   width: min(92%, 1060px);
   max-height: 820px;
   overflow-y: auto;
-  border: 1px solid rgba(23, 59, 48, 0.22);
+  border: 1px solid rgba(23, 59, 48, 0.2);
   border-radius: 1.25rem;
-  background: #fbf7ef;
+  background: var(--paper);
+  background-image:
+    radial-gradient(ellipse at 50% 48%, rgba(255,255,255,.14) 0%, transparent 68%),
+    linear-gradient(90deg, rgba(112,91,63,.02), transparent 18%, transparent 82%, rgba(112,91,63,.03));
   padding: clamp(1.25rem, 3vw, 2.5rem);
   box-shadow: 0 10px 30px rgba(23, 59, 48, 0.08), 0 2px 6px rgba(23, 59, 48, 0.04);
   transform-style: preserve-3d;
