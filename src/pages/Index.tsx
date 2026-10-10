@@ -392,7 +392,7 @@ function NbHeader(
     return (
         <div className="nb-top-margin flex items-center gap-3 sm:gap-4">
             <span
-                className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink/35 sm:text-[11px] sm:tracking-[0.18em]">
+                className={label === "What if… diets could be delicious?" ? "handwritten text-xl text-primary sm:text-2xl" : "font-mono text-[11px] uppercase tracking-[0.15em] text-ink/35 sm:text-[11px] sm:tracking-[0.18em]"}>
                 {label}
             </span>
             <span className="h-px flex-1 border-t border-dashed border-ink/15" />
@@ -586,7 +586,7 @@ const Index = () => {
                     aria-labelledby="help-heading">
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-14 sm:px-10 lg:px-20 lg:py-24">
-                        <NbHeader label="Method / approach" page="Pg. 005" />
+                        <NbHeader label="What if… diets could be delicious?" />
                         <div
                             className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-12">
                             <div>
@@ -689,13 +689,11 @@ const Index = () => {
                                 })()}
                             </div>
                         </div>
-                        <p
-                            className="handwritten mt-10 border-t border-dashed border-ink/25 pt-7 text-center text-xl text-primary sm:text-2xl">What if… diets could be delicious?</p>
                     </div>
                 </section>
                 <section id="fit-peasant" className="px-4 sm:px-6 lg:px-8">
                     <div
-                        className="mx-auto max-w-[1200px] border-x border-ink/15 bg-[#dfd4be] px-4 py-12 sm:px-8 lg:px-16 lg:py-20">
+                        className="mx-auto max-w-[1200px] border-x border-[#173b30]/20 bg-[#173b30] px-4 py-12 text-[#f8f2e5] sm:px-8 lg:px-16 lg:py-20">
                         <div className="grid gap-8 lg:grid-cols-[1fr_.8fr] lg:items-center">
                             <figure className="evidence-photo rotate-[-1deg]">
                                 <span className="tape tape-left" />
