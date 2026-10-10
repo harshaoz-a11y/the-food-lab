@@ -1,0 +1,484 @@
+import React, { useCallback, useId, useRef, useState } from "react";
+
+// Bezier mathematical solver for cubic segments
+interface BezierSegment {
+  x0: number;
+  y0: number;
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+  x3: number;
+  y3: number;
+}
+
+function evalBezier(p0: number, p1: number, p2: number, p3: number, t: number): number {
+  const mt = 1 - t;
+  return mt * mt * mt * p0 + 3 * mt * mt * t * p1 + 3 * mt * t * t * p2 + t * t * t * p3;
+}
+
+function getYForXInSegment(seg: BezierSegment, x: number): number {
+  let low = 0;
+  let high = 1;
+  for (let i = 0; i < 18; i++) {
+    const mid = (low + high) / 2;
+    const curX = evalBezier(seg.x0, seg.x1, seg.x2, seg.x3, mid);
+    if (curX < x) {
+      low = mid;
+    } else {
+      high = mid;
+    }
+  }
+  const t = (low + high) / 2;
+  return evalBezier(seg.y0, seg.y1, seg.y2, seg.y3, t);
+}
+
+function getYForCurve(segments: BezierSegment[], x: number): number {
+  if (x <= segments[0].x0) return segments[0].y0;
+  if (x >= segments[segments.length - 1].x3) return segments[segments.length - 1].y3;
+  for (const seg of segments) {
+    if (x >= seg.x0 && x <= seg.x3) {
+      return getYForXInSegment(seg, x);
+    }
+  }
+  return 260;
+}
+
+// 4 lines exact Bézier segments
+const WHEY_SEGMENTS: BezierSegment[] = [
+  { x0: 40, y0: 260, x1: 80, y1: 250, x2: 110, y2: 96, x3: 150, y3: 96 },
+  { x0: 150, y0: 96, x1: 200, y1: 96, x2: 240, y2: 200, x3: 300, y3: 245 },
+  { x0: 300, y0: 245, x1: 340, y1: 258, x2: 380, y2: 260, x3: 690, y3: 260 },
+];
+
+const CASEIN_SEGMENTS: BezierSegment[] = [
+  { x0: 40, y0: 260, x1: 120, y1: 255, x2: 200, y2: 200, x3: 300, y3: 154 },
+  { x0: 300, y0: 154, x1: 400, y1: 114, x2: 450, y2: 150, x3: 520, y3: 195 },
+  { x0: 520, y0: 195, x1: 580, y1: 230, x2: 640, y2: 250, x3: 690, y3: 258 },
+];
+
+const NO_FIBRE_SEGMENTS: BezierSegment[] = [
+  { x0: 40, y0: 260, x1: 80, y1: 200, x2: 120, y2: 62, x3: 170, y3: 62 },
+  { x0: 170, y0: 62, x1: 230, y1: 62, x2: 300, y2: 150, x3: 380, y3: 220 },
+  { x0: 380, y0: 220, x1: 440, y1: 255, x2: 520, y2: 260, x3: 690, y3: 260 },
+];
+
+const BAR_SEGMENTS: BezierSegment[] = [
+  { x0: 40, y0: 260, x1: 90, y1: 230, x2: 140, y2: 84, x3: 200, y3: 76 },
+  { x0: 200, y0: 76, x1: 300, y1: 70, x2: 400, y2: 74, x3: 500, y3: 114 },
+  { x0: 500, y0: 114, x1: 580, y1: 146, x2: 630, y2: 204, x3: 690, y3: 234 },
+];
+
+const PATH_WHEY = "M40 260 C80 250 110 96 150 96 C200 96 240 200 300 245 C340 258 380 260 690 260";
+const PATH_CASEIN = "M40 260 C120 255 200 200 300 154 C400 114 450 150 520 195 C580 230 640 250 690 258";
+const PATH_NO_FIBRE = "M40 260 C80 200 120 62 170 62 C230 62 300 150 380 220 C440 255 520 260 690 260";
+const PATH_BAR = "M40 260 C90 230 140 84 200 76 C300 70 400 74 500 114 C580 146 630 204 690 234";
+
+const X_MIN = 40;
+const X_MAX = 690;
+const X_SPAN = X_MAX - X_MIN; // 650
+
+export function Chapter2Digestion() {
+  const [hour, setHour] = useState<number>(2.2);
+  const [isDragging, setIsDragging] = useState(false);
+  const svgRef = useRef<SVGSVGElement | null>(null);
+  const scrubberId = useId();
+
+  // Convert hour (0..6) to SVG x coordinate
+  const currentX = X_MIN + (Math.max(0, Math.min(6, hour)) / 6) * X_SPAN;
+
+  // Compute crossing dots for each line
+  const dotWheyY = getYForCurve(WHEY_SEGMENTS, currentX);
+  const dotCaseinY = getYForCurve(CASEIN_SEGMENTS, currentX);
+  const dotNoFibreY = getYForCurve(NO_FIBRE_SEGMENTS, currentX);
+  const dotBarY = getYForCurve(BAR_SEGMENTS, currentX);
+
+  const updateHourFromClientX = useCallback((clientX: number) => {
+    if (!svgRef.current) return;
+    const rect = svgRef.current.getBoundingClientRect();
+    if (rect.width <= 0) return;
+    const svgX = ((clientX - rect.left) / rect.width) * 700;
+    const clampedSvgX = Math.max(X_MIN, Math.min(X_MAX, svgX));
+    const nextHour = ((clampedSvgX - X_MIN) / X_SPAN) * 6;
+    setHour(Math.round(nextHour * 10) / 10);
+  }, []);
+
+  const handlePointerDown = (e: React.PointerEvent<SVGSVGElement>) => {
+    setIsDragging(true);
+    (e.currentTarget as Element).setPointerCapture(e.pointerId);
+    updateHourFromClientX(e.clientX);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<SVGSVGElement>) => {
+    if (!isDragging) return;
+    updateHourFromClientX(e.clientX);
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<SVGSVGElement>) => {
+    setIsDragging(false);
+    try {
+      (e.currentTarget as Element).releasePointerCapture(e.pointerId);
+    } catch {
+      // Ignore if not captured
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
+      e.preventDefault();
+      setHour((prev) => Math.max(0, Math.round((prev - 0.2) * 10) / 10));
+    } else if (e.key === "ArrowRight" || e.key === "ArrowUp") {
+      e.preventDefault();
+      setHour((prev) => Math.min(6, Math.round((prev + 0.2) * 10) / 10));
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      setHour(0);
+    } else if (e.key === "End") {
+      e.preventDefault();
+      setHour(6);
+    } else if (e.key === "PageDown") {
+      e.preventDefault();
+      setHour((prev) => Math.max(0, Math.round((prev - 1) * 10) / 10));
+    } else if (e.key === "PageUp") {
+      e.preventDefault();
+      setHour((prev) => Math.min(6, Math.round((prev + 1) * 10) / 10));
+    }
+  };
+
+  return (
+    <section
+      className="p11-chapter p11-chapter--digestion"
+      aria-labelledby="ch2-heading"
+    >
+      <header className="p11-chapter__header">
+        <span className="p11-chapter__kicker">Chapter 2 · After you eat it</span>
+        <h3 id="ch2-heading" className="p11-chapter__title">
+          Fast, then slow, then steady
+        </h3>
+        <p className="p11-chapter__subtitle">
+          How whey, micellar casein, and three viscous fibres orchestrate hours of steady amino acid release.
+        </p>
+      </header>
+
+      <div className="p11-digestion-layout">
+        {/* Main Chart Column */}
+        <div className="p11-chart-card">
+          <div className="p11-chart-top">
+            <span className="p11-chart-label" id={`${scrubberId}-label`}>
+              Amino acids in the blood — illustrative, not plotted study data
+            </span>
+            <div className="p11-scrubber-readout" aria-live="polite">
+              <span className="p11-readout-time">{hour.toFixed(1)} h</span>
+              <span className="p11-readout-note">after eating</span>
+            </div>
+          </div>
+
+          {/* Interactive SVG Chart */}
+          <div className="p11-svg-container">
+            <svg
+              ref={svgRef}
+              viewBox="0 0 700 300"
+              className="p11-digestion-svg"
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerUp}
+              role="slider"
+              tabIndex={0}
+              aria-labelledby={`${scrubberId}-label`}
+              aria-valuemin={0}
+              aria-valuemax={6}
+              aria-valuenow={hour}
+              aria-valuetext={`${hour.toFixed(1)} hours after eating`}
+              onKeyDown={handleKeyDown}
+            >
+              <defs>
+                <linearGradient id="p11-grid-fade" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="var(--fl-ink, #1f2924)" stopOpacity="0.08" />
+                  <stop offset="100%" stopColor="var(--fl-ink, #1f2924)" stopOpacity="0.02" />
+                </linearGradient>
+                <linearGradient id="barGlow" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="var(--fl-ink, #1f2924)" stopOpacity="0.14" />
+                  <stop offset="100%" stopColor="var(--fl-ink, #1f2924)" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+
+              {/* Grid guidelines & baseline */}
+              <line x1="40" y1="260" x2="690" y2="260" stroke="var(--fl-ink, #1f2924)" strokeOpacity="0.25" strokeWidth="1.2" />
+              <line x1="40" y1="180" x2="690" y2="180" stroke="var(--fl-ink, #1f2924)" strokeOpacity="0.08" strokeDasharray="3 4" strokeWidth="1" />
+              <line x1="40" y1="100" x2="690" y2="100" stroke="var(--fl-ink, #1f2924)" strokeOpacity="0.08" strokeDasharray="3 4" strokeWidth="1" />
+
+              {/* Hour vertical tick marks & labels (0h to 6h) */}
+              {[0, 1, 2, 3, 4, 5, 6].map((h) => {
+                const tickX = X_MIN + (h / 6) * X_SPAN;
+                return (
+                  <g key={h}>
+                    <line
+                      x1={tickX}
+                      y1="40"
+                      x2={tickX}
+                      y2="260"
+                      stroke="var(--fl-ink, #1f2924)"
+                      strokeOpacity="0.06"
+                      strokeDasharray="2 3"
+                    />
+                    <line
+                      x1={tickX}
+                      y1="260"
+                      x2={tickX}
+                      y2="266"
+                      stroke="var(--fl-ink, #1f2924)"
+                      strokeOpacity="0.4"
+                      strokeWidth="1.2"
+                    />
+                    <text
+                      x={tickX}
+                      y="282"
+                      textAnchor="middle"
+                      className="p11-svg-tick-text"
+                    >
+                      {h} h
+                    </text>
+                  </g>
+                );
+              })}
+
+              {/* Area fill under the bar curve */}
+              <path
+                d={`${PATH_BAR} L690 260 L40 260 Z`}
+                fill="url(#barGlow)"
+              />
+
+              {/* 1. Same protein with no fibre (dashed grey) */}
+              <path
+                d={PATH_NO_FIBRE}
+                fill="none"
+                stroke="var(--fl-ink-soft, #7a6c58)"
+                strokeWidth="2.2"
+                strokeDasharray="5 5"
+                strokeLinecap="round"
+              />
+
+              {/* 2. Whey (brick) */}
+              <path
+                d={PATH_WHEY}
+                fill="none"
+                stroke="var(--brick, #a33a2b)"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              />
+
+              {/* 3. Casein (green) */}
+              <path
+                d={PATH_CASEIN}
+                fill="none"
+                stroke="var(--fl-green, #173b30)"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              />
+
+              {/* 4. The bar (thick ink) */}
+              <path
+                d={PATH_BAR}
+                fill="none"
+                stroke="var(--ink, #1f2924)"
+                strokeWidth="4"
+                strokeLinecap="round"
+              />
+
+              {/* Vertical Scrubber Line */}
+              <line
+                x1={currentX}
+                y1="32"
+                x2={currentX}
+                y2="264"
+                stroke="var(--ink, #1f2924)"
+                strokeWidth="1.75"
+                strokeDasharray="3 3"
+                className="p11-scrubber-line"
+              />
+
+              {/* Scrubber Top Handle Pill */}
+              <g transform={`translate(${currentX}, 28)`}>
+                <rect
+                  x="-20"
+                  y="-14"
+                  width="40"
+                  height="18"
+                  rx="9"
+                  fill="var(--ink, #1f2924)"
+                />
+                <text
+                  x="0"
+                  y="-2"
+                  textAnchor="middle"
+                  fill="var(--fl-cream, #f8f2e5)"
+                  className="p11-svg-handle-text"
+                >
+                  {hour.toFixed(1)}h
+                </text>
+              </g>
+
+              {/* Crossing dots */}
+              {/* Dot on same protein no fibre */}
+              <circle
+                cx={currentX}
+                cy={dotNoFibreY}
+                r="4.5"
+                fill="var(--paper, #f8f2e5)"
+                stroke="var(--fl-ink-soft, #7a6c58)"
+                strokeWidth="2.2"
+              />
+
+              {/* Dot on whey */}
+              <circle
+                cx={currentX}
+                cy={dotWheyY}
+                r="4.5"
+                fill="var(--paper, #f8f2e5)"
+                stroke="var(--brick, #a33a2b)"
+                strokeWidth="2.5"
+              />
+
+              {/* Dot on casein */}
+              <circle
+                cx={currentX}
+                cy={dotCaseinY}
+                r="4.5"
+                fill="var(--paper, #f8f2e5)"
+                stroke="var(--fl-green, #173b30)"
+                strokeWidth="2.5"
+              />
+
+              {/* Dot on the bar */}
+              <circle
+                cx={currentX}
+                cy={dotBarY}
+                r="6"
+                fill="var(--ink, #1f2924)"
+                stroke="var(--fl-cream, #f8f2e5)"
+                strokeWidth="2"
+              />
+            </svg>
+          </div>
+
+          {/* Legend */}
+          <div className="p11-chart-legend">
+            <div className="p11-legend-item">
+              <span className="p11-legend-swatch p11-legend-swatch--bar" />
+              <span className="p11-legend-label">The bar (thick ink)</span>
+            </div>
+            <div className="p11-legend-item">
+              <span className="p11-legend-swatch p11-legend-swatch--whey" />
+              <span className="p11-legend-label">Whey (brick)</span>
+            </div>
+            <div className="p11-legend-item">
+              <span className="p11-legend-swatch p11-legend-swatch--casein" />
+              <span className="p11-legend-label">Casein (green)</span>
+            </div>
+            <div className="p11-legend-item">
+              <span className="p11-legend-swatch p11-legend-swatch--nofibre" />
+              <span className="p11-legend-label">Same protein, no fibre (dashed)</span>
+            </div>
+          </div>
+
+          {/* Fullness gradient strip */}
+          <div className="p11-fullness-section" aria-hidden="true">
+            <div className="p11-fullness-header">
+              <span className="p11-fullness-title">Fullness sensation</span>
+              <span className="p11-fullness-caption">Subjective digestive presence over 6 hours</span>
+            </div>
+            <div className="p11-fullness-bar-wrap">
+              <div className="p11-fullness-bar" />
+              {/* Scrubber pointer on the fullness bar */}
+              <div
+                className="p11-fullness-cursor"
+                style={{ left: `${((currentX - X_MIN) / X_SPAN) * 100}%` }}
+              />
+            </div>
+            <div className="p11-fullness-labels">
+              <span className="p11-f-label p11-f-label--early">You notice it</span>
+              <span className="p11-f-label p11-f-label--mid">Still full</span>
+              <span className="p11-f-label p11-f-label--late">Hunger returns later</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Side Panel Column */}
+        <aside className="p11-side-panel">
+          {/* In plain words */}
+          <div className="p11-panel-box">
+            <span className="p11-panel-kicker">In plain words</span>
+            <p className="p11-panel-plain">
+              Protein isolates drunk in water hit the bloodstream quickly and drop back down within ninety minutes.
+              In Protein 11, micellar casein coagulates gently in the stomach, releasing amino acids slowly over hours.
+              Layered soluble fibres from isabgol and oats create a soft viscosity that tempers absorption, turning what would have been a sharp spike and crash into a sustained, steady delivery.
+            </p>
+          </div>
+
+          {/* Amino acid balance graphic */}
+          <div className="p11-panel-box">
+            <div className="p11-panel-box__head">
+              <span className="p11-panel-kicker">Amino acid balance</span>
+              <span className="p11-panel-tag">Qualitative · No numbers</span>
+            </div>
+            <p className="p11-panel-microcopy">
+              Plant proteins supply deep mineral density but run lower in lysine. Dairy proteins fill that gap.
+            </p>
+
+            <div className="p11-aa-balance">
+              {/* Plant bar */}
+              <div className="p11-aa-row">
+                <div className="p11-aa-label-row">
+                  <span className="p11-aa-name">Plant</span>
+                  <span className="p11-aa-note">peanut butter powder & oats</span>
+                </div>
+                <div className="p11-aa-track">
+                  <div className="p11-aa-fill p11-aa-fill--plant" style={{ width: "72%" }}>
+                    <span className="p11-aa-dip-marker" title="Lysine gap">Lysine dip</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Dairy bar */}
+              <div className="p11-aa-row">
+                <div className="p11-aa-label-row">
+                  <span className="p11-aa-name">Dairy</span>
+                  <span className="p11-aa-note">whey & micellar casein</span>
+                </div>
+                <div className="p11-aa-track">
+                  <div className="p11-aa-fill p11-aa-fill--dairy" style={{ width: "88%" }}>
+                    <span className="p11-aa-surplus-marker">High lysine</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Together bar */}
+              <div className="p11-aa-row p11-aa-row--highlight">
+                <div className="p11-aa-label-row">
+                  <span className="p11-aa-name">Together</span>
+                  <span className="p11-aa-note">Protein 11 balanced profile</span>
+                </div>
+                <div className="p11-aa-track">
+                  <div className="p11-aa-fill p11-aa-fill--together" style={{ width: "100%" }}>
+                    <span className="p11-aa-complete-marker">Complete balance</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Fine print */}
+          <details className="p11-fine-print">
+            <summary>Fine print</summary>
+            <p>
+              Curves represent illustrative gastric emptying and amino acid appearance profiles adapted from established nutritional physiology literature comparing whey, casein, and viscous dietary fibres. This chart is a conceptual illustration of multi-protein digestive kinetics, not plotted clinical trial data from this specific batch. Individual absorption rates vary with physical exertion, hydration, and personal digestive transit.
+            </p>
+          </details>
+        </aside>
+      </div>
+    </section>
+  );
+}
+
+export default Chapter2Digestion;

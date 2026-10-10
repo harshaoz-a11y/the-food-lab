@@ -1,31 +1,144 @@
-.p11-interactions {
-  margin-top: 2.5rem;
+/* Protein 11 Multi-Chapter Experience Stylesheet
+   Uses root design tokens (--fl-green, --brick, --paper, --ink, --fl-cream, --fl-font-serif, --fl-font-mono)
+*/
+
+.p11-experience-root {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+/* ----------------------------------------------------
+   Top "Who's eating?" Persona Filter Bar
+   ---------------------------------------------------- */
+.p11-whos-eating-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.25rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--fl-cream, #ece4d0) 70%, var(--paper, #f8f2e5));
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);
+  box-shadow: 0 2px 10px rgba(31, 41, 36, 0.04);
+}
+
+.p11-whos-eating-lead {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.p11-whos-eating-title {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink, #1f2924);
+}
+
+.p11-whos-eating-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.p11-whos-eating-chip {
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 16%, transparent);
+  background: var(--paper, #f8f2e5);
+  color: var(--ink, #1f2924);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.p11-whos-eating-chip:hover {
+  background: #ffffff;
+  border-color: var(--brick, #a33a2b);
+  color: var(--brick, #a33a2b);
+}
+
+.p11-whos-eating-chip:focus-visible {
+  outline: 2px solid var(--brick, #a33a2b);
+  outline-offset: 2px;
+}
+
+.p11-whos-eating-chip.is-active {
+  background: var(--brick, #a33a2b);
+  border-color: var(--brick, #a33a2b);
+  color: var(--fl-cream, #f8f2e5);
+  box-shadow: 0 2px 8px rgba(163, 58, 43, 0.28);
+}
+
+.p11-whos-eating-clear {
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  border: 1px dashed color-mix(in srgb, var(--ink, #1f2924) 25%, transparent);
+  background: transparent;
+  color: color-mix(in srgb, var(--ink, #1f2924) 65%, transparent);
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.p11-whos-eating-clear:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--ink, #1f2924);
+}
+
+/* ----------------------------------------------------
+   Common Chapter Cards & Headers
+   ---------------------------------------------------- */
+.p11-interactions,
+.p11-chapter {
   border-radius: 2rem;
   border: 1px solid color-mix(in srgb, var(--fl-green, #173b30) 22%, transparent);
   background: var(--paper, #f8f2e5);
   box-shadow: 7px 8px 0 rgba(70, 54, 30, 0.05);
   overflow: hidden;
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 @media (min-width: 640px) {
-  .p11-interactions {
-    padding: 2rem;
+  .p11-interactions,
+  .p11-chapter {
+    padding: 2.25rem;
   }
 }
 
-.p11-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.75rem;
+.p11-header,
+.p11-chapter__header {
   border-bottom: 1px dashed color-mix(in srgb, var(--ink, #1f2924) 18%, transparent);
   padding-bottom: 1.25rem;
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
-.p11-header__kicker {
+.p11-chapter__header-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.p11-header__kicker,
+.p11-chapter__kicker {
   font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
   font-size: 11px;
   letter-spacing: 0.16em;
@@ -33,14 +146,35 @@
   color: var(--brick, #a33a2b);
 }
 
-.p11-header__title {
-  margin-top: 0.25rem;
+.p11-draft-badge {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--brick, #a33a2b) 40%, transparent);
+  background: color-mix(in srgb, var(--brick, #a33a2b) 8%, var(--paper, #f8f2e5));
+  color: var(--brick, #a33a2b);
+}
+
+.p11-header__title,
+.p11-chapter__title {
   font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
-  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.12;
   letter-spacing: -0.03em;
   color: var(--ink, #1f2924);
+  margin-top: 0.15rem;
+}
+
+.p11-chapter__subtitle {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--ink, #1f2924) 75%, transparent);
+  max-width: 65ch;
+  margin-top: 0.25rem;
 }
 
 .p11-header__count {
@@ -49,6 +183,9 @@
   color: color-mix(in srgb, var(--ink, #1f2924) 60%, transparent);
 }
 
+/* ----------------------------------------------------
+   Chapter 1: Particle Bar Stage & Explorer
+   ---------------------------------------------------- */
 .p11-container {
   display: flex;
   flex-direction: column;
@@ -64,10 +201,9 @@
   }
 }
 
-/* Mobile: stage above list. Desktop: list is left column, stage is right */
 .p11-stage-section {
   order: 1;
-  min-width: 340px;
+  min-width: 320px;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -89,7 +225,6 @@
   }
 }
 
-/* List group styling */
 .p11-list-group {
   display: flex;
   flex-direction: column;
@@ -111,7 +246,6 @@
   gap: 0.4rem;
 }
 
-/* List buttons */
 .p11-item-btn {
   width: 100%;
   text-align: left;
@@ -164,13 +298,11 @@
   color: color-mix(in srgb, var(--ink, #1f2924) 55%, transparent);
 }
 
-/* Stage container */
 .p11-stage-wrapper {
   position: relative;
   width: 100%;
 }
 
-/* Understage info card */
 .p11-understage {
   border-radius: 1.25rem;
   border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);
@@ -247,8 +379,8 @@
 }
 
 .p11-understage__plain {
-  font-size: 1rem;
-  line-height: 1.45;
+  font-size: 0.95rem;
+  line-height: 1.5;
   color: color-mix(in srgb, var(--ink, #1f2924) 85%, transparent);
   margin-top: 0.35rem;
 }
@@ -281,4 +413,1102 @@
   margin-top: 0.5rem;
   line-height: 1.5;
   color: color-mix(in srgb, var(--ink, #1f2924) 75%, transparent);
+}
+
+/* ----------------------------------------------------
+   Chapter 2: Digestion ("After you eat it")
+   ---------------------------------------------------- */
+.p11-digestion-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+@media (min-width: 1024px) {
+  .p11-digestion-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(290px, 0.85fr);
+    align-items: start;
+    gap: 2rem;
+  }
+}
+
+.p11-chart-card {
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);
+  background: color-mix(in srgb, var(--fl-cream, #ece4d0) 40%, var(--paper, #f8f2e5));
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.p11-chart-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.p11-chart-label {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: color-mix(in srgb, var(--ink, #1f2924) 70%, transparent);
+}
+
+.p11-scrubber-readout {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: var(--ink, #1f2924);
+  color: var(--fl-cream, #f8f2e5);
+}
+
+.p11-readout-time {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.p11-readout-note {
+  font-size: 10px;
+  opacity: 0.75;
+}
+
+.p11-svg-container {
+  width: 100%;
+  position: relative;
+  touch-action: pan-y;
+  cursor: ew-resize;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 10%, transparent);
+  padding: 0.5rem;
+}
+
+.p11-digestion-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.p11-digestion-svg:focus-visible {
+  outline: 2px solid var(--brick, #a33a2b);
+  outline-offset: 4px;
+}
+
+.p11-svg-tick-text {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  fill: color-mix(in srgb, var(--ink, #1f2924) 70%, transparent);
+}
+
+.p11-svg-handle-text {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.p11-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  padding-top: 0.25rem;
+  border-top: 1px dashed color-mix(in srgb, var(--ink, #1f2924) 12%, transparent);
+}
+
+.p11-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--ink, #1f2924);
+}
+
+.p11-legend-swatch {
+  width: 18px;
+  height: 4px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.p11-legend-swatch--bar {
+  background: var(--ink, #1f2924);
+  height: 5px;
+}
+
+.p11-legend-swatch--whey {
+  background: var(--brick, #a33a2b);
+}
+
+.p11-legend-swatch--casein {
+  background: var(--fl-green, #173b30);
+}
+
+.p11-legend-swatch--nofibre {
+  background: repeating-linear-gradient(90deg, var(--fl-ink-soft, #7a6c58), var(--fl-ink-soft, #7a6c58) 4px, transparent 4px, transparent 8px);
+}
+
+.p11-legend-swatch--green {
+  background: var(--fl-green, #173b30);
+  height: 5px;
+}
+
+.p11-legend-swatch--shelf {
+  background: repeating-linear-gradient(90deg, var(--brick, #a33a2b), var(--brick, #a33a2b) 4px, transparent 4px, transparent 8px);
+}
+
+/* Fullness gradient strip */
+.p11-fullness-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);
+}
+
+.p11-fullness-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.p11-fullness-title {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink, #1f2924);
+}
+
+.p11-fullness-caption {
+  font-size: 10px;
+  color: color-mix(in srgb, var(--ink, #1f2924) 60%, transparent);
+}
+
+.p11-fullness-bar-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 4px;
+}
+
+.p11-fullness-bar {
+  height: 14px;
+  border-radius: 7px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--brick, #a33a2b) 45%, var(--fl-cream, #ece4d0)) 0%,
+    color-mix(in srgb, var(--fl-green, #173b30) 45%, var(--fl-cream, #ece4d0)) 45%,
+    color-mix(in srgb, var(--ink, #1f2924) 25%, var(--paper, #f8f2e5)) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 15%, transparent);
+}
+
+.p11-fullness-cursor {
+  position: absolute;
+  top: 0;
+  width: 3px;
+  height: 22px;
+  background: var(--ink, #1f2924);
+  transform: translateX(-50%);
+  border-radius: 2px;
+  transition: left 0.05s linear;
+}
+
+.p11-fullness-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 10px;
+  color: color-mix(in srgb, var(--ink, #1f2924) 70%, transparent);
+  margin-top: 0.25rem;
+}
+
+/* Side Panel (In plain words, amino acid balance, fine print) */
+.p11-side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.p11-panel-box {
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);
+  background: color-mix(in srgb, var(--fl-cream, #ece4d0) 45%, var(--paper, #f8f2e5));
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.p11-panel-kicker {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brick, #a33a2b);
+}
+
+.p11-panel-plain {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink, #1f2924);
+}
+
+.p11-panel-box__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.p11-panel-tag {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 10px;
+  color: color-mix(in srgb, var(--ink, #1f2924) 55%, transparent);
+}
+
+.p11-panel-microcopy {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--ink, #1f2924) 75%, transparent);
+}
+
+/* Qualitative 3-bar Graphic (no numbers) */
+.p11-aa-balance {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 0.35rem;
+}
+
+.p11-aa-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.p11-aa-label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.p11-aa-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink, #1f2924);
+}
+
+.p11-aa-note {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 10px;
+  color: color-mix(in srgb, var(--ink, #1f2924) 55%, transparent);
+}
+
+.p11-aa-track {
+  width: 100%;
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  position: relative;
+}
+
+.p11-aa-fill {
+  height: 100%;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.5rem;
+  transition: width 0.3s ease;
+}
+
+.p11-aa-fill--plant {
+  background: color-mix(in srgb, #c9975a 75%, var(--ink, #1f2924));
+  color: #fff;
+}
+
+.p11-aa-fill--dairy {
+  background: var(--fl-green, #173b30);
+  color: #fff;
+}
+
+.p11-aa-fill--together {
+  background: linear-gradient(90deg, #c9975a 0%, var(--fl-green, #173b30) 100%);
+  color: #fff;
+}
+
+.p11-aa-dip-marker,
+.p11-aa-surplus-marker,
+.p11-aa-complete-marker {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+}
+
+/* ----------------------------------------------------
+   Chapter 3: Your Day
+   ---------------------------------------------------- */
+.p11-day-persona-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, var(--fl-cream, #ece4d0) 45%, var(--paper, #f8f2e5));
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 10%, transparent);
+}
+
+.p11-day-persona-label {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--ink, #1f2924) 65%, transparent);
+}
+
+.p11-day-persona-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.p11-day-chip {
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 16%, transparent);
+  background: var(--paper, #f8f2e5);
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: var(--ink, #1f2924);
+  transition: all 0.15s ease;
+}
+
+.p11-day-chip:hover {
+  background: #ffffff;
+  border-color: var(--brick, #a33a2b);
+}
+
+.p11-day-chip.is-selected {
+  background: var(--fl-green, #173b30);
+  border-color: var(--fl-green, #173b30);
+  color: var(--fl-cream, #f8f2e5);
+}
+
+.p11-day-empty-card {
+  border-radius: 1.25rem;
+  border: 1px dashed color-mix(in srgb, var(--ink, #1f2924) 20%, transparent);
+  background: color-mix(in srgb, var(--fl-cream, #ece4d0) 30%, var(--paper, #f8f2e5));
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.p11-day-empty-inner {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.p11-day-empty-title {
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: 1.5rem;
+  color: var(--ink, #1f2924);
+}
+
+.p11-day-empty-text {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--ink, #1f2924) 75%, transparent);
+}
+
+.p11-day-quick-picks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.p11-day-quick-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 18%, transparent);
+  background: var(--paper, #f8f2e5);
+  color: var(--ink, #1f2924);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.p11-day-quick-btn:hover {
+  background: var(--brick, #a33a2b);
+  border-color: var(--brick, #a33a2b);
+  color: var(--fl-cream, #f8f2e5);
+}
+
+.p11-day-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.p11-day-headline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.p11-day-kicker {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--brick, #a33a2b);
+}
+
+.p11-day-name {
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  color: var(--ink, #1f2924);
+  margin-top: 0.15rem;
+}
+
+.p11-day-sub {
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--ink, #1f2924) 75%, transparent);
+}
+
+.p11-day-slot-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brick, #a33a2b) 10%, var(--paper, #f8f2e5));
+  border: 1px solid color-mix(in srgb, var(--brick, #a33a2b) 30%, transparent);
+  font-size: 0.8125rem;
+  color: var(--ink, #1f2924);
+}
+
+/* Day Strip (7 AM to 9 PM) */
+.p11-timeline-card {
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);
+  background: color-mix(in srgb, var(--fl-cream, #ece4d0) 40%, var(--paper, #f8f2e5));
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.p11-timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.p11-timeline-title {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink, #1f2924);
+}
+
+.p11-timeline-sub {
+  font-size: 11px;
+  color: color-mix(in srgb, var(--ink, #1f2924) 55%, transparent);
+}
+
+.p11-timeline-ruler {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+
+.p11-timeline-ruler-tick {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.p11-ruler-mark {
+  width: 1px;
+  height: 6px;
+  background: color-mix(in srgb, var(--ink, #1f2924) 30%, transparent);
+}
+
+.p11-ruler-label {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 10px;
+  color: color-mix(in srgb, var(--ink, #1f2924) 60%, transparent);
+}
+
+.p11-timeline-strip {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  min-height: 58px;
+  padding: 4px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 12%, transparent);
+  margin-bottom: 5.5rem; /* Space for marker card */
+}
+
+.p11-time-block {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.45rem 0.4rem;
+  border-radius: 6px;
+  font-size: 11px;
+  line-height: 1.2;
+  transition: all 0.15s ease;
+}
+
+.p11-time-block--focus {
+  background: color-mix(in srgb, var(--fl-green, #173b30) 14%, var(--paper, #f8f2e5));
+  border-left: 2px solid var(--fl-green, #173b30);
+}
+
+.p11-time-block--transit {
+  background: color-mix(in srgb, #c9975a 16%, var(--paper, #f8f2e5));
+  border-left: 2px solid #c9975a;
+}
+
+.p11-time-block--break {
+  background: color-mix(in srgb, var(--brick, #a33a2b) 12%, var(--paper, #f8f2e5));
+  border-left: 2px solid var(--brick, #a33a2b);
+}
+
+.p11-time-block--activity {
+  background: color-mix(in srgb, #2e6b57 14%, var(--paper, #f8f2e5));
+  border-left: 2px solid #2e6b57;
+}
+
+.p11-time-block--routine {
+  background: rgba(0, 0, 0, 0.05);
+  border-left: 2px solid color-mix(in srgb, var(--ink, #1f2924) 30%, transparent);
+}
+
+.p11-time-block-label {
+  font-weight: 600;
+  color: var(--ink, #1f2924);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.p11-time-block-time {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 9px;
+  color: color-mix(in srgb, var(--ink, #1f2924) 55%, transparent);
+}
+
+/* Marker where the bar fits */
+.p11-bar-marker {
+  position: absolute;
+  top: 100%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.p11-marker-pin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.p11-marker-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brick, #a33a2b);
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 2px var(--brick, #a33a2b);
+  margin-top: -5px;
+}
+
+.p11-marker-stem {
+  width: 2px;
+  height: 18px;
+  background: var(--brick, #a33a2b);
+}
+
+.p11-marker-card {
+  width: max-content;
+  max-width: 260px;
+  border-radius: 0.85rem;
+  border: 1px solid var(--brick, #a33a2b);
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(163, 58, 43, 0.16);
+  padding: 0.55rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  pointer-events: auto;
+}
+
+.p11-marker-time {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--brick, #a33a2b);
+  text-transform: uppercase;
+}
+
+.p11-marker-title {
+  font-size: 0.875rem;
+  color: var(--ink, #1f2924);
+  line-height: 1.2;
+}
+
+.p11-marker-desc {
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--ink, #1f2924) 75%, transparent);
+  line-height: 1.35;
+}
+
+/* Day Grid (Needs box + Matches box) */
+.p11-day-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .p11-day-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.p11-needs-box,
+.p11-matches-box {
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);
+  background: color-mix(in srgb, var(--fl-cream, #ece4d0) 45%, var(--paper, #f8f2e5));
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.p11-needs-box__header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.p11-needs-box__title,
+.p11-matches-title {
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: 1.15rem;
+  color: var(--ink, #1f2924);
+}
+
+.p11-needs-box__content {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--ink, #1f2924) 85%, transparent);
+}
+
+.p11-matches-kicker {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fl-green, #173b30);
+}
+
+.p11-matches-hint {
+  font-size: 0.8125rem;
+  color: color-mix(in srgb, var(--ink, #1f2924) 70%, transparent);
+  line-height: 1.4;
+}
+
+.p11-matches-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.p11-partnership-jump-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 18%, transparent);
+  background: var(--paper, #f8f2e5);
+  color: var(--ink, #1f2924);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.p11-partnership-jump-chip:hover {
+  background: var(--brick, #a33a2b);
+  border-color: var(--brick, #a33a2b);
+  color: var(--fl-cream, #f8f2e5);
+  transform: translateY(-1px);
+}
+
+.p11-partnership-jump-chip:focus-visible {
+  outline: 2px solid var(--brick, #a33a2b);
+  outline-offset: 2px;
+}
+
+.p11-jump-title {
+  font-weight: 600;
+}
+
+.p11-jump-group {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* ----------------------------------------------------
+   Chapter 4: Fresh ("Made this week")
+   ---------------------------------------------------- */
+.p11-fresh-header-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* Vintage Lab Stamp */
+.p11-fresh-stamp {
+  transform: rotate(-3deg);
+  user-select: none;
+}
+
+.p11-stamp-border {
+  border: 2px dashed var(--brick, #a33a2b);
+  padding: 0.55rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  background: color-mix(in srgb, var(--brick, #a33a2b) 6%, transparent);
+}
+
+.p11-stamp-lab {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brick, #a33a2b);
+}
+
+.p11-stamp-main {
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--brick, #a33a2b);
+  line-height: 1;
+}
+
+.p11-stamp-sub {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 9px;
+  color: color-mix(in srgb, var(--ink, #1f2924) 65%, transparent);
+}
+
+.p11-stamp-tag {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--brick, #a33a2b);
+  color: #fff;
+  padding: 0.1rem 0.35rem;
+  border-radius: 2px;
+  margin-top: 0.15rem;
+}
+
+.p11-fresh-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+@media (min-width: 1024px) {
+  .p11-fresh-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.85fr);
+    align-items: start;
+    gap: 2rem;
+  }
+}
+
+.p11-fresh-chart-card {
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);
+  background: color-mix(in srgb, var(--fl-cream, #ece4d0) 40%, var(--paper, #f8f2e5));
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.p11-fresh-chart-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.p11-day-pill {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--fl-green, #173b30);
+  color: #fff;
+}
+
+.p11-fresh-svg-wrap {
+  width: 100%;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 10%, transparent);
+  padding: 0.5rem;
+}
+
+.p11-fresh-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Range Slider */
+.p11-range-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.p11-range-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.8125rem;
+  color: var(--ink, #1f2924);
+}
+
+.p11-range-label strong {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  color: var(--fl-green, #173b30);
+}
+
+.p11-range-slider {
+  width: 100%;
+  accent-color: var(--fl-green, #173b30);
+  cursor: pointer;
+  height: 6px;
+}
+
+.p11-range-slider:focus-visible {
+  outline: 2px solid var(--brick, #a33a2b);
+  outline-offset: 2px;
+}
+
+.p11-range-ticks {
+  display: flex;
+  justify-content: space-between;
+}
+
+.p11-range-tick-btn {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 10px;
+  background: transparent;
+  border: none;
+  color: color-mix(in srgb, var(--ink, #1f2924) 55%, transparent);
+  cursor: pointer;
+  padding: 0.2rem 0.35rem;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.p11-range-tick-btn:hover {
+  color: var(--ink, #1f2924);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.p11-range-tick-btn.is-active {
+  color: var(--fl-green, #173b30);
+  font-weight: 700;
+}
+
+.p11-day-status-card {
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 12%, transparent);
+  background: #ffffff;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.p11-status-title {
+  font-size: 0.875rem;
+  color: var(--ink, #1f2924);
+}
+
+.p11-status-note {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--ink, #1f2924) 75%, transparent);
+}
+
+/* Side Info for Freshness */
+.p11-fresh-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.p11-named-food-box {
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);
+  background: color-mix(in srgb, var(--fl-cream, #ece4d0) 45%, var(--paper, #f8f2e5));
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.p11-named-kicker {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fl-green, #173b30);
+}
+
+.p11-named-title {
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: var(--ink, #1f2924);
+}
+
+.p11-named-desc {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--ink, #1f2924) 80%, transparent);
+}
+
+.p11-tradeoff-box {
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);
+  background: color-mix(in srgb, var(--fl-cream, #ece4d0) 45%, var(--paper, #f8f2e5));
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.p11-tradeoff-title {
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: 1.15rem;
+  color: var(--ink, #1f2924);
+}
+
+.p11-tradeoff-text {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--ink, #1f2924) 85%, transparent);
+}
+
+.p11-notin-box {
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--brick, #a33a2b) 20%, transparent);
+  background: color-mix(in srgb, var(--brick, #a33a2b) 5%, var(--paper, #f8f2e5));
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.p11-notin-title {
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: 1.1rem;
+  color: var(--brick, #a33a2b);
+}
+
+.p11-notin-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.p11-notin-item {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
+  background: #ffffff;
+  border: 1px solid color-mix(in srgb, var(--brick, #a33a2b) 30%, transparent);
+  color: var(--brick, #a33a2b);
+  text-decoration: line-through;
+}
+
+/* ----------------------------------------------------
+   Prefers Reduced Motion
+   ---------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
