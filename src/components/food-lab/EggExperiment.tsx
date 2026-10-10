@@ -25,7 +25,6 @@ export function EggExperiment() {
         <article className="egg-observation">
             <div className="egg-observation__body">
                 <div className="egg-observation__rail">
-                    <span className="egg-observation__prompt">Change the state</span>
                     <button
                         type="button"
                         role="switch"

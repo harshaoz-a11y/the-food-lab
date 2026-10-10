@@ -119,7 +119,6 @@ export function AlchemyPartnerships() {
             aria-labelledby="alchemy-partnerships-heading">
             <header className="alchemy-heading">
                 <div>
-                    <span className="alchemy-kicker">Interaction reader</span>
                     <h3 id="alchemy-partnerships-heading">Protein 11 partnerships</h3>
                 </div>
                 <span className="alchemy-count">7 interactions · hover an overlap</span>
@@ -249,7 +248,6 @@ export function AlchemyPartnerships() {
                     <p>{current.insight}</p>
                     <span className="alchemy-ingredients"><CurrentIcon aria-hidden="true" /> {current.left} <b>×</b> {current.right}</span>
                 </div>
-                <p className="alchemy-footnote">Amounts reflect the current formula. Benefits describe culinary and formulation roles, not personal medical advice.</p>
             </div>
         </section>
     );

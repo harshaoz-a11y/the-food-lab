@@ -381,11 +381,10 @@ function ConsultationForm() {
 
 function NbHeader(
     {
-        label,
-        page
+        label
     }: {
         label: string;
-        page: string;
+        page?: string;
     }
 ) {
     return (
@@ -395,7 +394,6 @@ function NbHeader(
                 {label}
             </span>
             <span className="h-px flex-1 border-t border-dashed border-ink/15" />
-            <span className="font-mono text-[11px] text-ink/30 sm:text-[11px]">{page}</span>
         </div>
     );
 }
@@ -426,9 +424,6 @@ const Index = () => {
                 <section id="question" className="px-4 pb-4 pt-6 sm:px-6 lg:px-8 lg:pt-8">
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 sm:py-14 lg:px-20 lg:py-20">
-                        <div className="nb-top-margin mb-8 flex items-center justify-between gap-4">
-                            <span className="lab-label">Observation 002</span>
-                        </div>
                         <div
                             className="hero-hypothesis-grid grid min-w-0 items-stretch gap-8 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:gap-10">
                             <div
@@ -690,9 +685,8 @@ const Index = () => {
                                 <figcaption>Protein 11 / first practical experiment</figcaption>
                             </figure>
                             <div>
-                                <span className="lab-label">An experiment that became food</span>
                                 <h2
-                                    className="mt-4 max-w-xl font-serif font-normal tracking-[-0.04em] text-ink">
+                                    className="max-w-xl font-serif font-normal tracking-[-0.04em] text-ink">
                                     <span
                                         className="block text-lg font-normal leading-snug tracking-normal sm:text-xl">Introducing</span>
                                     <em

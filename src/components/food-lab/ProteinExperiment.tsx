@@ -4,7 +4,6 @@ import "./ProteinExperiment.css";
 export function ProteinExperiment() {
     return (
         <article className="protein-panel">
-            <span className="protein-panel__eyebrow">FIBRE GAP · INDIA</span>
             <ProteinSink look="laxman" />
             <div className="protein-panel__stats">
                 <article className="protein-panel__stat">
