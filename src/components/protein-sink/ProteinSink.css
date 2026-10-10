@@ -40,4 +40,107 @@
 @keyframes fl-sink-nag{0%,60%,100%{transform:scale(1)}72%{transform:scale(1.14) rotate(-2deg)}84%{transform:scale(1.04) rotate(1.5deg)}}
 @keyframes fl-sink-fall{0%{opacity:0;transform:translateY(0)}15%{opacity:1}85%{opacity:.9}100%{opacity:0;transform:translateY(var(--dy,60px))}}
 @keyframes fl-sink-bubble{0%{opacity:0;transform:scale(.2)}35%{opacity:1;transform:scale(1)}55%{opacity:1;transform:scale(1.25)}60%,100%{opacity:0;transform:scale(1.6)}}
-@media (prefers-reduced-motion:reduce){.fl-sink *,.fl-sink__art{animation:none!important}.fl-tick{stroke-dashoffset:0}.fl-drop,.fl-bub{opacity:0}}
+
+/* Blurred first view and reveal transition for plumber, toolbox, comment, and fiber */
+.fl-reveal-target {
+  transition: filter 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s ease;
+  transform-origin: center;
+}
+.fl-reveal-target.is-blurred {
+  filter: url(#fl-reveal-blur);
+  filter: blur(14px);
+  opacity: 0.28;
+  cursor: pointer;
+}
+.fl-reveal-target.is-revealed {
+  filter: none;
+  opacity: 1;
+}
+
+.fl-fiber.is-blurred {
+  filter: url(#fl-reveal-blur);
+  filter: blur(8px);
+  opacity: 0.18;
+  cursor: pointer;
+  animation-play-state: paused;
+}
+.fl-fiber.is-revealed {
+  filter: none;
+  opacity: 1;
+  animation-play-state: running;
+}
+
+/* Clickable shout bubble above the 5 people */
+.fl-callout-bubble {
+  cursor: pointer;
+  transform-origin: 440px 95px;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  outline: none;
+}
+.fl-callout-bubble:hover {
+  transform: scale(1.04);
+}
+.fl-callout-bubble:active {
+  transform: scale(0.97);
+}
+.fl-callout-bg {
+  fill: var(--fl-paper, #fbf6ea);
+  stroke: var(--fl-ink, #26211c);
+  stroke-width: 3.2;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 4px 10px rgba(38, 33, 28, 0.12));
+  transition: fill 0.2s ease, filter 0.2s ease;
+}
+.fl-callout-bubble:hover .fl-callout-bg {
+  fill: #fffdf8;
+  filter: drop-shadow(0 6px 14px rgba(38, 33, 28, 0.2));
+}
+.fl-callout-title {
+  fill: var(--fl-ink, #26211c);
+  font-family: var(--fl-font-hand, "Caveat", "Kalam", cursive);
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+  user-select: none;
+}
+.fl-callout-flash-text {
+  fill: #dc2626;
+  font-family: var(--fl-font-hand, "Caveat", "Kalam", cursive);
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  user-select: none;
+  animation: fl-flash-red 1.1s ease-in-out infinite;
+}
+.fl-callout-flash-line {
+  stroke: #dc2626;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  animation: fl-flash-red 1.1s ease-in-out infinite;
+}
+.fl-callout-revealed-text {
+  fill: var(--fl-green, #1d4034);
+  font-family: var(--fl-font-hand, "Caveat", "Kalam", cursive);
+  font-size: 17px;
+  font-weight: 700;
+  user-select: none;
+}
+.fl-callout-revealed-line {
+  stroke: var(--fl-green, #1d4034);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  opacity: 0.75;
+}
+
+@keyframes fl-flash-red {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px rgba(220, 38, 38, 0.65));
+  }
+  50% {
+    opacity: 0.2;
+    filter: drop-shadow(0 0 1px rgba(220, 38, 38, 0.15));
+  }
+}
+
+@media (prefers-reduced-motion:reduce){.fl-sink *,.fl-sink__art{animation:none!important}.fl-tick{stroke-dashoffset:0}.fl-drop,.fl-bub{opacity:0}.fl-callout-flash-text,.fl-callout-flash-line{animation:none!important}}
