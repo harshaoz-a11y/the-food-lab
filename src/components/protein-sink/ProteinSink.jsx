@@ -59,15 +59,16 @@ export default function ProteinSink({ look = 'laxman', lines, signTitle, signIte
               <feGaussianBlur stdDeviation="13" />
             </filter>
 
-            {/* Clip path covering the 5 people, sink, jars, and notice board */}
+            {/* Clip path covering the 5 people, sink, jars, counter, and notice board */}
             <clipPath id="fl-clip-scene-main">
-              <rect x="0" y="0" width="715" height="784" />
-              <rect x="715" y="0" width="230" height="210" />
+              <rect x="0" y="0" width="850" height="784" />
+              <rect x="850" y="0" width="90" height="200" />
             </clipPath>
 
-            {/* Clip path covering the plumber, plunger, and toolbox */}
+            {/* Clip path covering the plumber, plunger, toolbox, and cap */}
             <clipPath id="fl-clip-plumber">
-              <path d="M 700 480 L 850 480 L 850 200 L 1168 200 L 1168 784 L 700 784 Z" />
+              <rect x="850" y="200" width="318" height="584" />
+              <rect x="940" y="0" width="228" height="200" />
             </clipPath>
 
             {/* Base scene vector art */}
@@ -100,10 +101,10 @@ export default function ProteinSink({ look = 'laxman', lines, signTitle, signIte
           {/* Invisible click hotspot over blurred plumber area for effortless interaction */}
           {!revealed && (
             <rect
-              x="700"
-              y="200"
-              width="468"
-              height="584"
+              x="850"
+              y="150"
+              width="318"
+              height="634"
               fill="transparent"
               onClick={handleToggleReveal}
               style={{ cursor: 'pointer' }}
@@ -169,14 +170,14 @@ export default function ProteinSink({ look = 'laxman', lines, signTitle, signIte
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleToggleReveal(); }}
             role="button"
             tabIndex={0}
-            aria-label={revealed ? "Why isn't it working! Click to re-blur scene" : "Why isn't it working! Click to see why"}
+            aria-label={revealed ? "Oh...My aching stomach :( - Click to re-blur scene" : "Oh...My aching stomach :( - Click to see why"}
           >
             <path
-              d="M 315 46 C 295 46 280 60 280 78 L 280 110 C 280 128 295 142 315 142 L 420 142 L 435 176 L 450 142 L 565 142 C 585 142 600 128 600 110 L 600 78 C 600 60 585 46 565 46 Z"
+              d="M 295 46 C 270 46 255 60 255 78 L 255 110 C 255 128 270 142 295 142 L 420 142 L 435 176 L 450 142 L 585 142 C 610 142 625 128 625 110 L 625 78 C 625 60 610 46 585 46 Z"
               className="fl-callout-bg"
             />
             <text x={440} y={84} textAnchor="middle" className="fl-callout-title">
-              Why isn't it working!!!
+              Oh...My aching stomach :(
             </text>
             {!revealed ? (
               <g className="fl-callout-action">
