@@ -8,6 +8,8 @@
 /* Margin annotation */
 /* Handwritten margin gloss */
 /* Ruled footer top line */
+/* Navigation controls */
+/* 3D Coverflow stage holding all 4 full lens pages */
 import { useState } from "react";
 
 import {
@@ -363,7 +365,7 @@ function ConsultationForm() {
             <div
                 className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[#f8f2e5]/40">
                 <span className="h-px flex-1 bg-[#f8f2e5]/15" />Or
-                                                                                                                                                                                                                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
+                                                                                                                                                                                                                                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
             </div>
             <a
                 href="mailto:harsha@thefoodlab.in?subject=Protein%2011%20protein%20bar"
@@ -462,7 +464,7 @@ const Index = () => {
                             className="lens-coverflow mt-8"
                             role="region"
                             aria-label="Interactive 4-lens coverflow carousel">
-                            {/* Navigation controls */}
+                            {}
                             <div className="lens-coverflow__controls">
                                 <button
                                     type="button"
@@ -472,21 +474,20 @@ const Index = () => {
                                         setActiveExperiment(experimentOptions[prevIndex][0]);
                                     }}
                                     className="lens-coverflow__nav-btn"
-                                    aria-label="Previous experiment">
-                                    ← Prev
-                                </button>
-                                <div className="lens-coverflow__pills" role="tablist" aria-label="Experiment switcher">
-                                    {experimentOptions.map(([key, label], index) => (
-                                        <button
-                                            key={key}
-                                            type="button"
-                                            role="tab"
-                                            aria-selected={activeExperiment === key}
-                                            onClick={() => setActiveExperiment(key)}
-                                            className={`lens-coverflow__pill ${activeExperiment === key ? "is-active" : ""}`}>
-                                            0{index + 1} {label}
-                                        </button>
-                                    ))}
+                                    aria-label="Previous experiment">← Prev
+                                                                    </button>
+                                <div
+                                    className="lens-coverflow__pills"
+                                    role="tablist"
+                                    aria-label="Experiment switcher">
+                                    {experimentOptions.map(([key, label], index) => (<button
+                                        key={key}
+                                        type="button"
+                                        role="tab"
+                                        aria-selected={activeExperiment === key}
+                                        onClick={() => setActiveExperiment(key)}
+                                        className={`lens-coverflow__pill ${activeExperiment === key ? "is-active" : ""}`}>0{index + 1} {label}
+                                    </button>))}
                                 </div>
                                 <button
                                     type="button"
@@ -496,33 +497,25 @@ const Index = () => {
                                         setActiveExperiment(experimentOptions[nextIndex][0]);
                                     }}
                                     className="lens-coverflow__nav-btn"
-                                    aria-label="Next experiment">
-                                    Next →
-                                </button>
+                                    aria-label="Next experiment">Next →
+                                                                    </button>
                             </div>
-
-                            {/* 3D Coverflow stage holding all 4 full lens pages */}
+                            {}
                             <div className="lens-coverflow__stage">
                                 {experimentOptions.map(([key, label], index) => {
                                     const isActive = activeExperiment === key;
                                     const activeIndex = experimentOptions.findIndex(([k]) => k === activeExperiment);
                                     const offset = (index - activeIndex + experimentOptions.length) % experimentOptions.length;
                                     const position = offset > experimentOptions.length / 2 ? offset - experimentOptions.length : offset;
-                                    const positionClass =
-                                        position === -1
-                                            ? "lens-coverflow__item--pos-prev"
-                                            : position === 0
-                                            ? "lens-coverflow__item--pos-active"
-                                            : position === 1
-                                            ? "lens-coverflow__item--pos-next"
-                                            : "lens-coverflow__item--pos-far";
+                                    const positionClass = position === -1 ? "lens-coverflow__item--pos-prev" : position === 0 ? "lens-coverflow__item--pos-active" : position === 1 ? "lens-coverflow__item--pos-next" : "lens-coverflow__item--pos-far";
 
                                     return (
                                         <div
                                             key={key}
                                             className={`lens-coverflow__item ${positionClass} ${isActive ? "is-active" : ""}`}
                                             onClick={() => {
-                                                if (!isActive) setActiveExperiment(key);
+                                                if (!isActive)
+                                                    setActiveExperiment(key);
                                             }}
                                             tabIndex={isActive ? 0 : -1}
                                             role="tabpanel"
@@ -531,37 +524,34 @@ const Index = () => {
                                             <div className="lens-coverflow__item-content">
                                                 {key === "egg" && <EggExperiment />}
                                                 {key === "rice" && <RiceExperiment />}
-                                                {key === "gluten" && (
-                                                    <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-                                                        <RegionScene region="us" />
-                                                        <div>
-                                                            <RegionScene region="india" />
-                                                            <div className="mt-8 border-t border-dashed border-ink/25 pt-5">
-                                                                <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/50">India / survey signal</span>
-                                                                <p className="mt-3 max-w-xl font-serif text-xl leading-snug text-ink/75">Among 285 people surveyed:</p>
-                                                                <ul className="mt-4 grid gap-3 text-sm leading-relaxed text-ink/70 sm:grid-cols-2">
-                                                                    <li><strong className="font-mono text-ink">50.9%</strong> correctly identified what gluten is.</li>
-                                                                    <li><strong className="font-mono text-ink">38.6%</strong> correctly identified what a gluten-free diet means.</li>
-                                                                    <li><strong className="font-mono text-ink">45.3%</strong> correctly identified the medical conditions for which a GFD is recommended.</li>
-                                                                    <li><strong className="font-mono text-ink">29.1%</strong> thought gluten-free foods were healthier than gluten-containing foods.</li>
-                                                                    <li><strong className="font-mono text-ink">38.9%</strong> believed gluten-free diets help with weight loss.</li>
-                                                                    <li><strong className="font-mono text-ink">49.5%</strong> perceived social influences as major drivers of GFD adoption.</li>
-                                                                </ul>
-                                                                <p className="mt-5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.1em] text-ink/45">
-                                                                    Source:{" "}
-                                                                    <a
-                                                                        className="underline decoration-ink/25 underline-offset-2 hover:text-primary"
-                                                                        href="https://www.researchsquare.com/article/rs-9052215/v1"
-                                                                        target="_blank"
-                                                                        rel="noreferrer">
-                                                                        Moitra &amp; Qureshi, Research Square preprint, 2026
-                                                                    </a>
-                                                                    .
-                                                                </p>
-                                                            </div>
+                                                {key === "gluten" && (<div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+                                                    <RegionScene region="us" />
+                                                    <div>
+                                                        <RegionScene region="india" />
+                                                        <div className="mt-8 border-t border-dashed border-ink/25 pt-5">
+                                                            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/50">India / survey signal</span>
+                                                            <p className="mt-3 max-w-xl font-serif text-xl leading-snug text-ink/75">Among 285 people surveyed:</p>
+                                                            <ul
+                                                                className="mt-4 grid gap-3 text-sm leading-relaxed text-ink/70 sm:grid-cols-2">
+                                                                <li><strong className="font-mono text-ink">50.9%</strong>correctly identified what gluten is.</li>
+                                                                <li><strong className="font-mono text-ink">38.6%</strong>correctly identified what a gluten-free diet means.</li>
+                                                                <li><strong className="font-mono text-ink">45.3%</strong>correctly identified the medical conditions for which a GFD is recommended.</li>
+                                                                <li><strong className="font-mono text-ink">29.1%</strong>thought gluten-free foods were healthier than gluten-containing foods.</li>
+                                                                <li><strong className="font-mono text-ink">38.9%</strong>believed gluten-free diets help with weight loss.</li>
+                                                                <li><strong className="font-mono text-ink">49.5%</strong>perceived social influences as major drivers of GFD adoption.</li>
+                                                            </ul>
+                                                            <p
+                                                                className="mt-5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.1em] text-ink/45">Source:{" "}
+                                                                <a
+                                                                    className="underline decoration-ink/25 underline-offset-2 hover:text-primary"
+                                                                    href="https://www.researchsquare.com/article/rs-9052215/v1"
+                                                                    target="_blank"
+                                                                    rel="noreferrer">Moitra & Qureshi, Research Square preprint, 2026
+                                                                                                                                        </a>.
+                                                                                                                                </p>
                                                         </div>
                                                     </div>
-                                                )}
+                                                </div>)}
                                                 {key === "protein" && <ProteinExperiment />}
                                             </div>
                                         </div>
@@ -597,74 +587,105 @@ const Index = () => {
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-14 sm:px-10 lg:px-20 lg:py-24">
                         <NbHeader label="Method / approach" page="Pg. 005" />
-                        <div className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-12">
+                        <div
+                            className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-12">
                             <div>
                                 <h2
                                     id="help-heading"
                                     className="mt-5 max-w-none whitespace-nowrap font-serif text-[clamp(1.35rem,4.2vw,4rem)] font-normal leading-[0.94] tracking-[-0.04em]">1. Precision Bio-Nutrition</h2>
                                 <blockquote
                                     className="mt-6 max-w-2xl border-l-4 border-primary pl-5 font-serif text-xl leading-snug text-ink/80 sm:text-2xl lg:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
                                 </blockquote>
                                 {}
                                 <p className="handwritten mt-4 rotate-[0.5deg] text-sm text-primary/70">↑ this is the only hypothesis that matters
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </p>
                                 <a
                                     href="#your-experiment"
                                     className="method-cta mt-7 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">First 30 min free consult — Get in touch <ArrowRight className="h-4 w-4" />
                                 </a>
                             </div>
                             <div className="method-coverflow" aria-label="Working loop stages">
-                                <div className="method-coverflow__track" role="tablist" aria-label="Choose a working-loop stage">
-                                    {bioNutritionProcess.map(({ label, icon: StageIcon }, index) => {
+                                <div
+                                    className="method-coverflow__track"
+                                    role="tablist"
+                                    aria-label="Choose a working-loop stage">
+                                    {bioNutritionProcess.map((
+                                        {
+                                            label,
+                                            icon: StageIcon
+                                        },
+                                        index
+                                    ) => {
                                         const offset = (index - activeMethodStep + bioNutritionProcess.length) % bioNutritionProcess.length;
                                         const position = offset > bioNutritionProcess.length / 2 ? offset - bioNutritionProcess.length : offset;
                                         const positionClass = position === -1 ? "is-previous" : position === 0 ? "is-active" : position === 1 ? "is-next" : "is-far";
 
-                                        return (<button
-                                            key={label}
-                                            type="button"
-                                            role="tab"
-                                            aria-selected={index === activeMethodStep}
-                                            aria-controls="method-coverflow-panel"
-                                            onClick={() => setActiveMethodStep(index)}
-                                            onKeyDown={event => {
-                                                if (event.key === "ArrowRight") {
-                                                    event.preventDefault();
-                                                    setActiveMethodStep((activeMethodStep + 1) % bioNutritionProcess.length);
-                                                }
-                                                if (event.key === "ArrowLeft") {
-                                                    event.preventDefault();
-                                                    setActiveMethodStep((activeMethodStep - 1 + bioNutritionProcess.length) % bioNutritionProcess.length);
-                                                }
-                                            }}
-                                            className={`method-coverflow__card method-coverflow__card--step-${index + 1} ${positionClass}`}>
-                                            <span className="method-coverflow__index">STEP 0{index + 1}</span>
-                                            <StageIcon aria-hidden="true" />
-                                            <strong>{label}</strong>
-                                            <span className="method-coverflow__hint">{position === 0 ? "SELECTED" : "VIEW STEP"}</span>
-                                        </button>);
+                                        return (
+                                            <button
+                                                key={label}
+                                                type="button"
+                                                role="tab"
+                                                aria-selected={index === activeMethodStep}
+                                                aria-controls="method-coverflow-panel"
+                                                onClick={() => setActiveMethodStep(index)}
+                                                onKeyDown={event => {
+                                                    if (event.key === "ArrowRight") {
+                                                        event.preventDefault();
+                                                        setActiveMethodStep((activeMethodStep + 1) % bioNutritionProcess.length);
+                                                    }
+
+                                                    if (event.key === "ArrowLeft") {
+                                                        event.preventDefault();
+
+                                                        setActiveMethodStep(
+                                                            (activeMethodStep - 1 + bioNutritionProcess.length) % bioNutritionProcess.length
+                                                        );
+                                                    }
+                                                }}
+                                                className={`method-coverflow__card method-coverflow__card--step-${index + 1} ${positionClass}`}>
+                                                <span className="method-coverflow__index">STEP 0{index + 1}</span>
+                                                <StageIcon aria-hidden="true" />
+                                                <strong>{label}</strong>
+                                                <span className="method-coverflow__hint">{position === 0 ? "SELECTED" : "VIEW STEP"}</span>
+                                            </button>
+                                        );
                                     })}
                                 </div>
                                 {(() => {
                                     const activeStage = bioNutritionProcess[activeMethodStep];
                                     const signals = helpAreas.filter(signal => signal.loopStep === activeMethodStep + 1);
-                                    return (<div className={`method-coverflow__panel method-coverflow__panel--step-${activeMethodStep + 1}`} id="method-coverflow-panel" role="tabpanel" aria-label={`Signals for ${activeStage.label}`}>
-                                        <div className="method-coverflow__panel-heading">
-                                            <span>STEP 0{activeMethodStep + 1} / {activeStage.label}</span>
-                                            <span>{signals.length} RELATED SIGNAL{signals.length === 1 ? "" : "S"}</span>
+
+                                    return (
+                                        <div
+                                            className={`method-coverflow__panel method-coverflow__panel--step-${activeMethodStep + 1}`}
+                                            id="method-coverflow-panel"
+                                            role="tabpanel"
+                                            aria-label={`Signals for ${activeStage.label}`}>
+                                            <div className="method-coverflow__panel-heading">
+                                                <span>STEP 0{activeMethodStep + 1}/ {activeStage.label}</span>
+                                                <span>{signals.length}RELATED SIGNAL{signals.length === 1 ? "" : "S"}</span>
+                                            </div>
+                                            <div
+                                                className={`method-coverflow__signals ${signals.length === 1 ? "is-single" : ""}`}>
+                                                {signals.map((
+                                                    {
+                                                        title,
+                                                        copy,
+                                                        icon: SignalIcon
+                                                    },
+                                                    index
+                                                ) => (<article className="method-coverflow__signal" key={title}>
+                                                    <SignalIcon aria-hidden="true" />
+                                                    <div>
+                                                        <strong>{title}</strong>
+                                                        <p>{copy}</p>
+                                                    </div>
+                                                    <small>0{helpAreas.indexOf(signals[0]) + index + 1}</small>
+                                                </article>))}
+                                            </div>
                                         </div>
-                                        <div className={`method-coverflow__signals ${signals.length === 1 ? "is-single" : ""}`}>
-                                            {signals.map(({ title, copy, icon: SignalIcon }, index) => (<article className="method-coverflow__signal" key={title}>
-                                                <SignalIcon aria-hidden="true" />
-                                                <div>
-                                                    <strong>{title}</strong>
-                                                    <p>{copy}</p>
-                                                </div>
-                                                <small>0{helpAreas.indexOf(signals[0]) + index + 1}</small>
-                                            </article>))}
-                                        </div>
-                                    </div>);
+                                    );
                                 })()}
                             </div>
                         </div>
@@ -685,8 +706,7 @@ const Index = () => {
                                 <figcaption>Protein 11 / first practical experiment</figcaption>
                             </figure>
                             <div>
-                                <h2
-                                    className="max-w-xl font-serif font-normal tracking-[-0.04em] text-ink">
+                                <h2 className="max-w-xl font-serif font-normal tracking-[-0.04em] text-ink">
                                     <span
                                         className="block text-lg font-normal leading-snug tracking-normal sm:text-xl">Introducing</span>
                                     <em
@@ -696,7 +716,7 @@ const Index = () => {
                                 </h2>
                                 <p
                                     className="mt-5 max-w-lg font-serif text-xl italic leading-relaxed text-ink/70">We’ll let you tell us how good it is.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </p>
                                 <div className="mt-6 flex flex-wrap items-center gap-3">
                                     <a
                                         href="mailto:harsha@thefoodlab.in?subject=Protein%2011%20experiment"
@@ -720,7 +740,7 @@ const Index = () => {
                                 <h2
                                     className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
                                 <p className="mt-7 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Tell us what you have tried and where real life keeps entering the picture. We begin with questions, not a perfect plan.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </p>
                                 <div className="mt-10 flex items-center gap-4 text-[#d68b7f]">
                                     <FlaskConical className="h-8 w-8 stroke-[1.2]" />
                                     <span className="handwritten max-w-xs text-xl leading-tight">No judgement. No gold stars for an ideal food diary.</span>
