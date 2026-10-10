@@ -1,0 +1,284 @@
+.p11-interactions {
+  margin-top: 2.5rem;
+  border-radius: 2rem;
+  border: 1px solid color-mix(in srgb, var(--fl-green, #173b30) 22%, transparent);
+  background: var(--paper, #f8f2e5);
+  box-shadow: 7px 8px 0 rgba(70, 54, 30, 0.05);
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .p11-interactions {
+    padding: 2rem;
+  }
+}
+
+.p11-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 1px dashed color-mix(in srgb, var(--ink, #1f2924) 18%, transparent);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.p11-header__kicker {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brick, #a33a2b);
+}
+
+.p11-header__title {
+  margin-top: 0.25rem;
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--ink, #1f2924);
+}
+
+.p11-header__count {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  color: color-mix(in srgb, var(--ink, #1f2924) 60%, transparent);
+}
+
+.p11-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .p11-container {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    align-items: start;
+    gap: 2rem;
+  }
+}
+
+/* Mobile: stage above list. Desktop: list is left column, stage is right */
+.p11-stage-section {
+  order: 1;
+  min-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.p11-list-section {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .p11-list-section {
+    order: 1;
+  }
+  .p11-stage-section {
+    order: 2;
+  }
+}
+
+/* List group styling */
+.p11-list-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.p11-group-heading {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink, #1f2924) 55%, transparent);
+  padding-left: 0.25rem;
+}
+
+.p11-group-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* List buttons */
+.p11-item-btn {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 12%, transparent);
+  background: color-mix(in srgb, var(--fl-cream, #ece4d0) 35%, var(--paper, #f8f2e5));
+  color: var(--ink, #1f2924);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  user-select: none;
+}
+
+.p11-item-btn:hover {
+  background: color-mix(in srgb, var(--fl-cream, #ece4d0) 65%, var(--paper, #f8f2e5));
+  border-color: color-mix(in srgb, var(--ink, #1f2924) 25%, transparent);
+}
+
+.p11-item-btn:focus-visible {
+  outline: 2px solid var(--brick, #a33a2b);
+  outline-offset: 2px;
+}
+
+.p11-item-btn.is-selected {
+  background: var(--brick, #a33a2b);
+  border-color: var(--brick, #a33a2b);
+  color: var(--fl-cream, #f8f2e5);
+  box-shadow: 0 2px 8px rgba(163, 58, 43, 0.25);
+}
+
+.p11-item-btn.is-selected .p11-item-badge {
+  color: var(--fl-cream, #f8f2e5);
+  opacity: 0.85;
+}
+
+.p11-item-title {
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.p11-item-badge {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 10px;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--ink, #1f2924) 55%, transparent);
+}
+
+/* Stage container */
+.p11-stage-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Understage info card */
+.p11-understage {
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);
+  background: color-mix(in srgb, var(--fl-cream, #ece4d0) 45%, var(--paper, #f8f2e5));
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.p11-understage__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.p11-understage__kicker {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brick, #a33a2b);
+}
+
+.p11-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.p11-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 22%, transparent);
+  background: var(--paper, #f8f2e5);
+  color: var(--ink, #1f2924);
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.p11-nav-btn:hover {
+  border-color: var(--brick, #a33a2b);
+  color: var(--brick, #a33a2b);
+  background: #ffffff;
+}
+
+.p11-nav-btn:focus-visible {
+  outline: 2px solid var(--brick, #a33a2b);
+  outline-offset: 2px;
+}
+
+.p11-nav-counter {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  color: color-mix(in srgb, var(--ink, #1f2924) 60%, transparent);
+  padding: 0 0.3rem;
+  user-select: none;
+}
+
+.p11-understage__title {
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--ink, #1f2924);
+}
+
+.p11-understage__plain {
+  font-size: 1rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--ink, #1f2924) 85%, transparent);
+  margin-top: 0.35rem;
+}
+
+.p11-fine-print {
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);
+  background: rgba(255, 255, 255, 0.45);
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+}
+
+.p11-fine-print summary {
+  cursor: pointer;
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink, #1f2924);
+  font-weight: 600;
+  user-select: none;
+}
+
+.p11-fine-print summary:focus-visible {
+  outline: 2px solid var(--brick, #a33a2b);
+  outline-offset: 2px;
+}
+
+.p11-fine-print p {
+  margin-top: 0.5rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--ink, #1f2924) 75%, transparent);
+}
