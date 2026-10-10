@@ -1,7 +1,7 @@
 import React from "react";
 import { ArrowUpRight, Clock, Sparkles } from "lucide-react";
 import { PERSONAS, PersonaProfile } from "./protein11Personas";
-import { PARTNERSHIPS } from "@/components/protein-11/protein11Data.js";
+import { PARTNERSHIPS } from "@/components/Protein-11/protein11Data.js";
 
 interface Chapter3YourDayProps {
   selectedPersonaId: string | null;

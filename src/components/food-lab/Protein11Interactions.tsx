@@ -1,16 +1,16 @@
 import React, { Suspense, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, User } from "lucide-react";
-import { INGREDIENTS, PARTNERSHIPS } from "@/components/protein-11/protein11Data.js";
+import { INGREDIENTS, PARTNERSHIPS } from "@/components/Protein-11/protein11Data.js";
 import { PERSONAS } from "./protein11Personas";
 import Chapter2Digestion from "./Chapter2Digestion";
 import Chapter3YourDay from "./Chapter3YourDay";
 import Chapter4Fresh from "./Chapter4Fresh";
 import barImage from "@/assets/maestro/alchemy-bar.jpg";
-import "@/components/protein-11/ParticleBar.css";
+import "@/components/Protein-11/ParticleBar.css";
 import "./Protein11Interactions.css";
 
 // Lazy-load ParticleBar with React.lazy and Suspense
-const ParticleBar = React.lazy(() => import("@/components/protein-11/ParticleBar"));
+const ParticleBar = React.lazy(() => import("@/components/Protein-11/ParticleBar"));
 
 export type Partnership = (typeof PARTNERSHIPS)[number];
 
