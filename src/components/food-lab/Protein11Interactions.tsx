@@ -1,20 +1,15 @@
-import React, { Suspense, useMemo, useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { INGREDIENTS, PARTNERSHIPS } from "@/components/Protein-11/protein11Data.js";
 import { PERSONAS } from "./protein11Personas";
 import Chapter2Digestion from "./Chapter2Digestion";
 import Chapter3YourDay from "./Chapter3YourDay";
 import Chapter4Fresh from "./Chapter4Fresh";
-import barImage from "@/assets/maestro/alchemy-bar.jpg";
-import "@/components/Protein-11/ParticleBar.css";
+import CrossSectionStage from "@/components/Protein-11/CrossSectionStage";
+import crossSection from "@/components/Protein-11/protein11-cross-section.jpg";
 import "./Protein11Interactions.css";
 
-// Lazy-load ParticleBar with React.lazy and Suspense
-const ParticleBar = React.lazy(() => import("@/components/Protein-11/ParticleBar"));
-
 export type Partnership = (typeof PARTNERSHIPS)[number];
-
-const BAR_CROP = [0.2, 0.03, 0.98, 0.87] as const;
 
 export function Protein11Interactions() {
   // Shared state for all chapters: defaults to none (null)
@@ -166,27 +161,7 @@ export function Protein11Interactions() {
 
           {/* Right column on desktop, stacked above list on mobile */}
           <div className="p11-stage-section">
-            {/* Particle stage with Suspense fallback (static bar image) */}
-            <div className="p11-stage-wrapper">
-              <Suspense
-                fallback={
-                  <div className="pb" aria-hidden="true">
-                    <img
-                      className="pb__img"
-                      src={barImage}
-                      alt="Protein 11 bar"
-                    />
-                  </div>
-                }
-              >
-                <ParticleBar
-                  src={barImage}
-                  crop={BAR_CROP}
-                  selected={selected}
-                  ingredients={INGREDIENTS}
-                />
-              </Suspense>
-            </div>
+            <CrossSectionStage src={crossSection} selected={selected} ingredients={INGREDIENTS} />
 
             {/* Under-stage info & navigation */}
             <div
