@@ -76,3 +76,20 @@
   .fl-curve{stroke-dasharray:none}
   .fl-mark path{stroke-dashoffset:0}
 }
+
+/* Single mode: the page's own selector sits above. All three scenes stay mounted in one cell and
+   cross-fade, so choosing a preparation never rebuilds (or re-draws) the artwork, and only the
+   visible scene is ever painted. A thinner outline stroke keeps small features such as faces open. */
+.fl-rc--single{--fl-line:7}
+.fl-rc--single .fl-rc__panels{display:grid;grid-template-columns:minmax(0,1fr)}
+.fl-rc--single .fl-panel{grid-area:1/1;cursor:default;padding:.25rem 0 0;background:transparent;transform:none;filter:none;
+  opacity:0;pointer-events:none;transition:opacity .22s ease}
+.fl-rc--single .fl-panel.is-active{opacity:1;pointer-events:auto}
+.fl-rc--single .fl-panel__label{font-size:.78rem;margin-bottom:.75rem}
+.fl-rc--single .fl-fills{mix-blend-mode:normal}
+.fl-rc--single .fl-panel.is-active .fl-art{animation:none}
+
+/* Keep the page responsive: the scene's ambient loops (steam, blink, sparkle) play a few times and settle,
+   rather than repainting the artwork forever, and the artwork sits on its own layer. */
+.fl-rc.fl-rc--single .fl-panel{contain:layout paint;will-change:opacity}
+.fl-rc.fl-rc--single.is-in .fl-panel.is-active :is(.fl-puffs,.fl-wisps,.fl-bolt,.fl-gi,.fl-blink,.fl-spark){animation-iteration-count:3}

@@ -37,6 +37,11 @@ const JARS = [
     ["YEAST", 672, 396, -17, 60]
 ];
 
+/* Outline of the plumber, his tools and the toolbox. It is what gets blurred until the case is opened,
+   so the sealed picture hides the man and his kit, not a rectangle. */
+const MAN_POINTS = [[985, 138], [1078, 136], [1130, 190], [1156, 300], [1162, 470], [1152, 650], [1136, 722], [1070, 742], [992, 744], [992, 772], [860, 784], [690, 784], [680, 692], [742, 676], [800, 548], [850, 500], [905, 500], [916, 430], [918, 350], [940, 320], [965, 240], [978, 170]];
+const MAN_PATH = "M" + MAN_POINTS.map(([x, y]) => x + " " + y).join(" L") + " Z";
+
 const SIGN_TITLE = [["BALANCED", 837, 43, 20, 95], ["ROUTINE", 836, 62, 20, 73]];
 
 const SIGN_ITEMS = [
@@ -81,13 +86,16 @@ export default function ProteinSink(
         lines,
         signTitle,
         signItems,
+        revealed: revealedProp,
+        onToggle,
         className = ""
     }
 ) {
     const q = SCENE;
     const root = useRef(null);
     const [seen, setSeen] = useState(false);
-    const [revealed, setRevealed] = useState(false);
+    const [innerRevealed, setInnerRevealed] = useState(false);
+    const revealed = revealedProp ?? innerRevealed;
 
     useEffect(() => {
         if (!("IntersectionObserver" in window))
@@ -102,7 +110,10 @@ export default function ProteinSink(
     }, []);
 
     const handleToggleReveal = () => {
-        setRevealed(prev => !prev);
+        if (onToggle)
+            onToggle();
+        else
+            setInnerRevealed(prev => !prev);
     };
 
     const fills = f => (<g className="fl-s-fills" transform="translate(1.2 1.2)">
@@ -136,13 +147,11 @@ export default function ProteinSink(
                         </filter>
                         {}
                         <clipPath id="fl-clip-scene-main">
-                            <rect x="0" y="0" width="850" height="784" />
-                            <rect x="850" y="0" width="90" height="200" />
+                            <path clipRule="evenodd" d={`M0 0 H1168 V784 H0 Z ${MAN_PATH}`} />
                         </clipPath>
                         {}
                         <clipPath id="fl-clip-plumber">
-                            <rect x="850" y="200" width="318" height="584" />
-                            <rect x="940" y="0" width="228" height="200" />
+                            <path d={MAN_PATH} />
                         </clipPath>
                         {}
                         <g id="fl-scene-base">
@@ -157,7 +166,6 @@ export default function ProteinSink(
                     </g>
                     {}
                     <g
-                        clipPath="url(#fl-clip-plumber)"
                         className={`fl-reveal-target ${revealed ? "is-revealed" : "is-blurred"}`}
                         filter={revealed ? undefined : "url(#fl-reveal-blur)"}
                         onClick={handleToggleReveal}
@@ -167,14 +175,13 @@ export default function ProteinSink(
                         style={{
                             cursor: revealed ? "default" : "pointer"
                         }}>
-                        <use href="#fl-scene-base" xlinkHref="#fl-scene-base" />
+                        <g clipPath="url(#fl-clip-plumber)">
+                            <use href="#fl-scene-base" xlinkHref="#fl-scene-base" />
+                        </g>
                     </g>
                     {}
-                    {!revealed && (<rect
-                        x="850"
-                        y="150"
-                        width="318"
-                        height="634"
+                    {!revealed && (<path
+                        d={MAN_PATH}
                         fill="transparent"
                         onClick={handleToggleReveal}
                         style={{
@@ -182,6 +189,13 @@ export default function ProteinSink(
                         }}
                         aria-hidden="true" />)}
                     {}
+                    {!revealed && (<g
+                        className="fl-hint"
+                        onClick={handleToggleReveal}
+                        aria-hidden="true">
+                        <circle cx="1050" cy="400" r="46" className="fl-hint-ring" />
+                        <text x="1050" y="428" textAnchor="middle" className="fl-hint-q">?</text>
+                    </g>)}
                     {JARS.map(
                         ([t, x, y, a, l]) => (<g key={t} transform={`rotate(${a} ${x} ${y})`}><Txt x={x} y={y + 6} size={18} len={l}>{t}</Txt></g>)
                     )}
@@ -195,7 +209,7 @@ export default function ProteinSink(
                         }}>
                         <g transform="rotate(16 895 574)"><Txt x={895} y={583} size={28} len={42} className="fl-s-txt fl-s-green-txt">GUT</Txt></g>
                         <g transform="rotate(16 896 602)"><Txt x={896} y={611} size={26} len={115} className="fl-s-txt fl-s-green-txt">MICROBIOME</Txt></g>
-                        <Txt x={1058} y={325} size={12} len={30}>FIBER</Txt>
+                        <Txt x={1058} y={326} size={14} len={36} className="fl-s-txt fl-s-brick-txt">FIBER</Txt>
                     </g>
                     {}
                     {title.map(
@@ -218,8 +232,9 @@ export default function ProteinSink(
                                 style={{
                                     cursor: revealed ? "default" : "pointer"
                                 }}>
-                                <Txt x={0} y={7} size={19} len={l} className="fl-s-txt fl-s-brick-txt">{t}</Txt>
+                                <Txt x={0} y={8} size={23} len={l + 8} className="fl-s-txt fl-s-brick-txt">{t}</Txt>
                             </g>
+                            {revealed && <ellipse className="fl-fiber-ring" cx={0} cy={1} rx={l / 2 + 16} ry={19} pathLength="1" />}
                         </g>)}
                     </g>))}
                     {}
@@ -242,7 +257,7 @@ export default function ProteinSink(
                             r="6" /></g>))}
                     {}
                     <g
-                        className="fl-callout-bubble"
+                        className={`fl-callout-bubble${revealed ? " is-revealed" : ""}`}
                         onClick={handleToggleReveal}
                         onKeyDown={e => {
                             if (e.key === "Enter" || e.key === " ")
@@ -250,20 +265,16 @@ export default function ProteinSink(
                         }}
                         role="button"
                         tabIndex={0}
-                        aria-label={revealed ? "Oh...My aching stomach :( - Click to re-blur scene" : "Oh...My aching stomach :( - Click to see why"}>
+                        aria-pressed={revealed}
+                        aria-label={revealed ? "Oh...My aching stomach :( - Click to hide the answer" : "Oh...My aching stomach :( - Click to see why"}>
                         <path
-                            d="M 295 46 C 270 46 255 60 255 78 L 255 110 C 255 128 270 142 295 142 L 420 142 L 435 176 L 450 142 L 585 142 C 610 142 625 128 625 110 L 625 78 C 625 60 610 46 585 46 Z"
-                            className="fl-callout-bg bg-[#f5f0e7]" />
-                        <text x={440} y={84} textAnchor="middle" className="fl-callout-title">Oh...My aching stomach :(
-                                        </text>
+                            d="M 280 40 C 250 40 232 56 232 78 L 232 112 C 232 134 250 150 280 150 L 410 150 L 440 192 L 462 150 L 600 150 C 630 150 648 134 648 112 L 648 78 C 648 56 630 40 600 40 Z"
+                            className="fl-callout-bg" />
+                        <text x={440} y={86} textAnchor="middle" className="fl-callout-title">Oh...My aching stomach :(</text>
                         {!revealed ? (<g className="fl-callout-action">
-                            <text x={440} y={116} textAnchor="middle" className="fl-callout-flash-text">Click to see
-                                                </text>
-                            <line x1={370} y1={126} x2={510} y2={126} className="fl-callout-flash-line" />
+                            <text x={440} y={125} textAnchor="middle" className="fl-callout-flash-text">CLICK TO SEE WHY ▸</text>
                         </g>) : (<g className="fl-callout-action">
-                            <text x={440} y={116} textAnchor="middle" className="fl-callout-revealed-text">✓ Missing fibre! (Click to hide)
-                                                </text>
-                            <line x1={340} y1={126} x2={540} y2={126} className="fl-callout-revealed-line" />
+                            <text x={440} y={125} textAnchor="middle" className="fl-callout-revealed-text">✓ Missing fibre! (click to hide)</text>
                         </g>)}
                     </g>
                     {}

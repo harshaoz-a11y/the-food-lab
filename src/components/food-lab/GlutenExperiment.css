@@ -1,0 +1,53 @@
+/* Gluten: the two scenes, then the survey as a light, scannable strip. */
+.gluten-experiment { color: var(--fl-ink); }
+
+.gf-survey {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  border-top: 1px dashed color-mix(in srgb, var(--fl-ink) 25%, transparent);
+  padding-top: 1.1rem;
+}
+.gf-survey__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 2rem; }
+.gf-eyebrow { font: 10px var(--fl-font-mono); letter-spacing: 0.16em; text-transform: uppercase; color: color-mix(in srgb, var(--fl-ink) 55%, transparent); }
+.gf-takeaway { font: 400 clamp(1.3rem, 2.2vw, 1.8rem) / 1.1 var(--fl-font-hand, "Caveat", cursive); color: var(--fl-brick); transform: rotate(-0.6deg); }
+
+.gf-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.25rem, 4vw, 3.5rem); margin-top: 0.9rem; }
+.gf-group--green { --gf-tone: var(--fl-green); }
+.gf-group--brick { --gf-tone: var(--fl-brick); }
+.gf-group__title { font: 10px var(--fl-font-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--gf-tone); padding-bottom: 0.45rem; border-bottom: 1px dashed rgba(23, 59, 48, 0.25); }
+.gf-list { list-style: none; margin: 0; padding: 0; }
+.gf-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4.1rem minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: 0.7rem;
+  padding: 0.5rem 0 0.6rem;
+  border-bottom: 1px dashed rgba(23, 59, 48, 0.14);
+  cursor: help;
+}
+.gf-row strong { font: 400 1.55rem / 1 var(--fl-font-serif); letter-spacing: -0.04em; color: var(--gf-tone); }
+.gf-row span { font: 400 0.98rem / 1.2 var(--fl-font-serif); color: color-mix(in srgb, var(--fl-ink) 80%, transparent); }
+.gf-row i {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  width: 0;
+  background: var(--gf-tone);
+  transition: width 900ms cubic-bezier(0.3, 0.7, 0.2, 1);
+  transition-delay: calc(250ms + var(--i, 0) * 140ms);
+}
+.lens-coverflow__item.is-active .gf-row i { width: var(--v); }
+
+.gf-source {
+  margin-top: 0.9rem;
+  font: 10px / 1.6 var(--fl-font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--fl-ink) 50%, transparent);
+}
+.gf-source a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--fl-ink) 25%, transparent); text-underline-offset: 2px; }
+.gf-source a:hover { color: var(--fl-brick); }
+
+@media (max-width: 767px) { .gf-groups { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .gf-row i { transition: none; width: var(--v); } }

@@ -56,32 +56,32 @@ export function RiceExperiment() {
     const current = preparations[active];
 
     return (
-        <div className={`rice-experiment grid min-w-0 gap-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(360px,.88fr)] lg:items-start lg:gap-14 ${selected !== "fresh" ? "is-green" : ""}`}>
-            <RiceComic value={selected} onChange={setSelected} />
-            <div className="rice-panel min-w-0">
-                <div
-                    className="grid gap-2 sm:grid-cols-3"
-                    role="group"
-                    aria-label="Choose a rice preparation">
-                    {(Object.keys(preparations) as Preparation[]).map(key => {
-                        const option = preparations[key];
-                        const Icon = option.icon;
+        <div className={`rice-experiment min-w-0 ${selected !== "fresh" ? "is-green" : ""}`}>
+            <div
+                className="rice-selector"
+                role="group"
+                aria-label="Choose a rice preparation">
+                {(Object.keys(preparations) as Preparation[]).map(key => {
+                    const option = preparations[key];
+                    const Icon = option.icon;
 
-                        return (
-                            <button
-                                key={key}
-                                type="button"
-                                onClick={() => setSelected(option.value)}
-                                className={selected === option.value ? "rice-choice is-active" : "rice-choice"}
-                                aria-pressed={selected === option.value}>
-                                <Icon aria-hidden="true" />
-                                <span>{option.shortLabel}</span>
-                            </button>
-                        );
-                    })}
-                </div>
-                <div className="mt-7" aria-live="polite">
-                    <p className="min-h-14 font-serif text-xl leading-snug text-ink/75">{current.summary}</p>
+                    return (
+                        <button
+                            key={key}
+                            type="button"
+                            onClick={() => setSelected(option.value)}
+                            className={selected === option.value ? "rice-choice is-active" : "rice-choice"}
+                            aria-pressed={selected === option.value}>
+                            <Icon aria-hidden="true" />
+                            <span>{option.shortLabel}</span>
+                        </button>
+                    );
+                })}
+            </div>
+            <div className="rice-stage mt-8 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,370px)_minmax(0,1fr)] lg:items-start lg:gap-12">
+                <RiceComic single value={selected} onChange={setSelected} />
+                <div className="rice-panel min-w-0" aria-live="polite">
+                    <p className="rice-summary font-serif text-xl leading-snug text-ink/75">{current.summary}</p>
                     <div className="rice-curve mt-5">
                         <div className="rice-chart-wrap">
                             <div className="rice-primary-metric">
@@ -112,10 +112,10 @@ export function RiceExperiment() {
                             <strong>{label}</strong><em>{value}</em>
                         </span>))}
                     </div>
+                    <p
+                        className="mt-6 border-t border-dashed border-ink/25 pt-4 font-mono text-[11px] uppercase leading-relaxed tracking-[0.1em] text-ink/50">Figures summarise the supplied clinical comparison. The curves are illustrative rather than plotted study data; results depend on rice variety, method and study context. This is an observation, not personal dietary advice.
+                    </p>
                 </div>
-                <p
-                    className="mt-6 border-t border-dashed border-ink/25 pt-4 font-mono text-[11px] uppercase leading-relaxed tracking-[0.1em] text-ink/50">Figures summarise the supplied clinical comparison. The curves are illustrative rather than plotted study data; results depend on rice variety, method and study context. This is an observation, not personal dietary advice.
-                </p>
             </div>
         </div>
     );

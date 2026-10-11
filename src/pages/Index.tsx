@@ -68,6 +68,7 @@ import analystArt from "@/assets/field-studies/analyst.webp";
 import { HypothesisExperiment } from "@/components/food-lab/HypothesisExperiment";
 import { ProteinExperiment } from "@/components/food-lab/ProteinExperiment";
 import { RiceExperiment } from "@/components/food-lab/RiceExperiment";
+import { GlutenExperiment } from "@/components/food-lab/GlutenExperiment";
 import RegionScene from "@/components/region-scenes/RegionScene";
 import { BrandLogo } from "@/components/food-lab/BrandLogo";
 import { maestroAssets } from "@/lib/maestro-assets";
@@ -76,11 +77,11 @@ const navigation = [{
     label: "How we approach nutrition",
     href: "#question"
 }, {
-    label: "The proof",
-    href: "#demonstration"
-}, {
     label: "Real life",
     href: "#real-life"
+}, {
+    label: "The proof",
+    href: "#demonstration"
 }];
 
 const offerings = [{
@@ -600,6 +601,24 @@ const Index = () => {
                         </aside>
                     </div>
                 </section>
+                <section id="real-life" className="px-4 sm:px-6 lg:px-8">
+                    <div
+                        className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
+                        <div className="nb-dark-ruled-top" />
+                        <div className="mb-10 sm:mb-12">
+                            <h2
+                                className="mt-5 font-serif text-3xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-4xl lg:whitespace-nowrap lg:text-[clamp(2.4rem,4.05vw,3.5rem)]">When diets and discipline say "tomorrow!"</h2>
+                            <p
+                                className="mt-5 max-w-lg text-base leading-relaxed text-[#f8f2e5]/65 sm:text-lg [color:#f5f0e3]">Which one resonates with you? </p>
+                        </div>
+                        <FieldStudies />
+                        <aside className="press-note mt-10 max-w-lg rotate-[1deg] p-5 text-ink">
+                            <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink/50">Margin note</span>
+                            <p
+                                className="handwritten mt-2 text-lg leading-tight text-primary sm:text-xl">Maybe consistency is designed along with a life, not imposed on one.</p>
+                        </aside>
+                    </div>
+                </section>
                 <section id="demonstration" className="px-4 sm:px-6 lg:px-8">
                                     <div
                                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
@@ -654,34 +673,7 @@ const Index = () => {
                                             <div className="lens-coverflow__item-content">
                                                 {key === "egg" && <EggExperiment />}
                                                 {key === "rice" && <RiceExperiment />}
-                                                {key === "gluten" && (<div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-                                                    <RegionScene region="us" />
-                                                    <div>
-                                                        <RegionScene region="india" />
-                                                        <div className="mt-8 border-t border-dashed border-ink/25 pt-5">
-                                                            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/50">India / survey signal</span>
-                                                            <p className="mt-3 max-w-xl font-serif text-xl leading-snug text-ink/75">Among 285 people surveyed:</p>
-                                                            <ul
-                                                                className="mt-4 grid gap-3 text-sm leading-relaxed text-ink/70 sm:grid-cols-2">
-                                                                <li><strong className="font-mono text-ink">50.9%</strong>correctly identified what gluten is.</li>
-                                                                <li><strong className="font-mono text-ink">38.6%</strong>correctly identified what a gluten-free diet means.</li>
-                                                                <li><strong className="font-mono text-ink">45.3%</strong>correctly identified the medical conditions for which a GFD is recommended.</li>
-                                                                <li><strong className="font-mono text-ink">29.1%</strong>thought gluten-free foods were healthier than gluten-containing foods.</li>
-                                                                <li><strong className="font-mono text-ink">38.9%</strong>believed gluten-free diets help with weight loss.</li>
-                                                                <li><strong className="font-mono text-ink">49.5%</strong>perceived social influences as major drivers of GFD adoption.</li>
-                                                            </ul>
-                                                            <p
-                                                                className="mt-5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.1em] text-ink/45">Source:{" "}
-                                                                <a
-                                                                    className="underline decoration-ink/25 underline-offset-2 hover:text-primary"
-                                                                    href="https://www.researchsquare.com/article/rs-9052215/v1"
-                                                                    target="_blank"
-                                                                    rel="noreferrer">Moitra & Qureshi, Research Square preprint, 2026
-                                                                                                                                                                                                                                                                                                                                                                                                                        </a>.
-                                                                                                                                                                                                                                                                                                                                                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                </div>)}
+                                                {key === "gluten" && <GlutenExperiment />}
                                                 {key === "protein" && <ProteinExperiment />}
                                             </div>
                                         </div>
@@ -689,24 +681,6 @@ const Index = () => {
                                 })}
                             </div>
                         </div>
-                    </div>
-                </section>
-                <section id="real-life" className="px-4 sm:px-6 lg:px-8">
-                    <div
-                        className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
-                        <div className="nb-dark-ruled-top" />
-                        <div className="mb-10 sm:mb-12">
-                            <h2
-                                className="mt-5 font-serif text-3xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-4xl lg:whitespace-nowrap lg:text-[clamp(2.4rem,4.05vw,3.5rem)]">When diets and discipline say "tomorrow!"</h2>
-                            <p
-                                className="mt-5 max-w-lg text-base leading-relaxed text-[#f8f2e5]/65 sm:text-lg [color:#f5f0e3]">Which one resonates with you? </p>
-                        </div>
-                        <FieldStudies />
-                        <aside className="press-note mt-10 max-w-lg rotate-[1deg] p-5 text-ink">
-                            <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink/50">Margin note</span>
-                            <p
-                                className="handwritten mt-2 text-lg leading-tight text-primary sm:text-xl">Maybe consistency is designed along with a life, not imposed on one.</p>
-                        </aside>
                     </div>
                 </section>
                 <section

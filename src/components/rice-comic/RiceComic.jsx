@@ -1,5 +1,5 @@
-import { useEffect, useId, useRef, useState } from 'react';
-import { ART_D, PANELS } from './riceComicData';
+import { memo, useEffect, useId, useRef, useState } from 'react';
+import { PANELS } from './riceComicData';
 import './RiceComic.css';
 
 /**
@@ -49,6 +49,32 @@ const Spark = ({ x, y, i }) => (
   </g>
 );
 
+/* The traced art leaves the two men's faces blank. These pen strokes draw the features back in,
+   placed in the same coordinates as the art and inked like the rest of the line work. */
+const FACE_REHEATED = [
+  'M693 397 q10 -6 22 -1', 'M735 394 q11 -5 21 1',               /* brows */
+  'M697 409 q9 5 18 0', 'M737 408 q9 5 18 0',                    /* lowered lids: he is watching the spoon */
+  'M706 413 l0 .1', 'M746 412 l0 .1',                            /* pupils */
+  'M722 414 q-5 14 2 19 q5 1 8 -2',                              /* nose */
+  'M703 450 q12 7 26 0',                                         /* mouth */
+  'M708 467 q12 5 24 -1',                                        /* chin line */
+];
+const FACE_OIL = [
+  'M1178 372 q9 -5 20 -1', 'M1221 371 q10 -4 20 2',            /* brows, lifted */
+  'M1180 388 q9 -8 19 0', 'M1222 387 q9 -8 19 0',              /* happy closed eyes */
+  'M1209 392 q-4 12 2 16 q4 1 8 -2',                           /* nose */
+  'M1186 420 q23 17 47 -1', 'M1184 417 l-3 -3', 'M1235 418 l3 -3', /* wide smile */
+  'M1176 404 q4 4 9 3', 'M1241 403 q-4 4 -9 3',                /* cheek creases */
+];
+
+function Face({ strokes }) {
+  return (
+    <g className="fl-face" fill="none" stroke="var(--fl-ink)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      {strokes.map((d, i) => <path key={i} d={d} />)}
+    </g>
+  );
+}
+
 /* hand-placed live lettering and extras that sit on top of the traced art */
 function Scene({ id }) {
   if (id === 'fresh')
@@ -60,6 +86,7 @@ function Scene({ id }) {
   if (id === 'reheated')
     return (
       <>
+        <Face strokes={FACE_REHEATED} />
         <g className="fl-blink">
           <Txt x={611} y={258} size={48} len={38}>12</Txt>
           <g className="fl-axis" style={{ strokeWidth: 3 }}>
@@ -73,6 +100,7 @@ function Scene({ id }) {
     );
   return (
     <>
+      <Face strokes={FACE_OIL} />
       {['PURE|36|293', 'COCONUT|62|312', 'OIL|25|330', '- 1 TSP|46|347'].map((s) => {
         const [t, l, y] = s.split('|');
         return <Txt key={t} x={1022} y={+y} size={15} len={+l} className="fl-txt fl-mono">{t}</Txt>;
@@ -82,7 +110,7 @@ function Scene({ id }) {
   );
 }
 
-function Panel({ p, tab, active, onSelect, uid }) {
+const Panel = memo(function Panel({ p, tab, active, onSelect, uid, single }) {
   const [x0, y0, w, h] = p.vb;
   const id = (s) => `${uid}-${p.id}-${s}`;
   const cur = CURVES[p.id];
@@ -90,11 +118,14 @@ function Panel({ p, tab, active, onSelect, uid }) {
   const tip = TIP[p.id];
   const fills = (sc) => Object.entries(sc.fills).map(([k, d]) => <path key={k} className={`fl-f-${k}`} fillRule="evenodd" d={d} />);
   const ink = (cid) => (
-    <g clipPath={`url(#${cid})`}><use href={`#${uid}-art`} className="fl-ink" transform="translate(0 768) scale(.1 -.1)" /></g>
+    <g clipPath={`url(#${cid})`}><use href={`#${id('art')}`} className="fl-ink" transform="translate(0 768) scale(.1 -.1)" /></g>
   );
+  const Wrap = single ? 'div' : 'button';
+  const wrapProps = single
+    ? { className: `fl-panel${active ? ' is-active' : ''}`, role: 'img', 'aria-label': tab.label, 'aria-hidden': !active }
+    : { type: 'button', className: `fl-panel${active ? ' is-active' : ''}`, style: { '--tilt': TILT[p.id] }, 'aria-pressed': active, onClick: onSelect };
   return (
-    <button type="button" className={`fl-panel${active ? ' is-active' : ''}`} style={{ '--tilt': TILT[p.id] }}
-      aria-pressed={active} onClick={onSelect}>
+    <Wrap {...wrapProps}>
       <span className="fl-panel__label">
         {tab.label}
         <svg className="fl-mark" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 5 C25 1 60 7 98 3" /></svg>
@@ -102,6 +133,7 @@ function Panel({ p, tab, active, onSelect, uid }) {
       <span className="fl-art">
         <svg viewBox={`0 0 ${w} ${h}`} role="img" aria-label={tab.label}>
           <defs>
+            <path id={id('art')} d={p.art} />
             <clipPath id={id('base')}><path clipRule="evenodd" d={p.clip} /></clipPath>
             {p.layers.map((l) => <clipPath key={l.id} id={id(l.id)}><path clipRule="evenodd" d={l.clip} /></clipPath>)}
           </defs>
@@ -129,11 +161,11 @@ function Panel({ p, tab, active, onSelect, uid }) {
           </g>
         </svg>
       </span>
-    </button>
+    </Wrap>
   );
-}
+});
 
-export default function RiceComic({ value, defaultValue = 'fresh', onChange, showTabs, className = '' }) {
+export default function RiceComic({ value, defaultValue = 'fresh', onChange, showTabs, single = false, className = '' }) {
   const uid = useId().replace(/:/g, '');
   const [inner, setInner] = useState(defaultValue);
   const controlled = value !== undefined;
@@ -148,10 +180,7 @@ export default function RiceComic({ value, defaultValue = 'fresh', onChange, sho
     return () => io.disconnect();
   }, []);
   return (
-    <div ref={root} className={`fl-rc${seen ? ' is-in' : ''} ${className}`}>
-      <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true" focusable="false">
-        <defs><path id={`${uid}-art`} d={ART_D} /></defs>
-      </svg>
+    <div ref={root} className={`fl-rc${single ? ' fl-rc--single' : ''}${seen ? ' is-in' : ''} ${className}`}>
       {(showTabs ?? !controlled) && (
         <div className="fl-rc__tabs" role="tablist">
           {TABS.map((t) => (
@@ -160,7 +189,7 @@ export default function RiceComic({ value, defaultValue = 'fresh', onChange, sho
         </div>
       )}
       <div className="fl-rc__panels">
-        {PANELS.map((p, i) => <Panel key={p.id} p={p} tab={TABS[i]} active={active === p.id} onSelect={() => select(p.id)} uid={uid} />)}
+        {PANELS.map((p, i) => <Panel key={p.id} p={p} tab={TABS[i]} active={active === p.id} onSelect={single ? undefined : () => select(p.id)} uid={uid} single={single} />)}
       </div>
     </div>
   );

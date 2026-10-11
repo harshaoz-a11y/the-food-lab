@@ -24,7 +24,7 @@
     --input: 39 24% 71%;
     --ring: 8 58% 40%;
     --radius: 1rem;
-    --paper: #faedde;
+    --paper: #faf3e3;
     --paper-light: #fcf7ef;
     --paper-deep: #ddd2bc;
     --ink: #173b30;
@@ -4013,3 +4013,82 @@ main > section.reveal.is-revealed {
   .method-flow__areas { left: 2.75rem; }
   .method-flow__elbow { width: 2.75rem; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   GREEN FRAME
+   The masthead, page ground and footer take the same deep
+   green as the dark pages, with cream type. The peach card
+   colour is now a warm ivory (see --paper) that sits a
+   shade lighter than the aged notebook sheet it rests on.
+   ═══════════════════════════════════════════════════════ */
+body,
+#top {
+  background-color: #29463d !important;
+  background-image: none !important;
+}
+
+#top > header {
+  background-color: rgba(23, 59, 48, 0.97) !important;
+  border-bottom-color: rgba(248, 242, 229, 0.16) !important;
+}
+#top > header nav a:not(.bg-ink),
+#top > header nav button { color: rgba(248, 242, 229, 0.82) !important; }
+#top > header nav a:not(.bg-ink):hover,
+#top > header nav button:hover { color: #efb6a8 !important; }
+#top > header nav div.absolute,
+#top > header nav[aria-label="Mobile navigation"] {
+  background-color: #173b30 !important;
+  border-color: rgba(248, 242, 229, 0.16) !important;
+}
+#top > header nav div.absolute a:hover { background: rgba(248, 242, 229, 0.08) !important; }
+#top > header nav[aria-label="Mobile navigation"] a:not(.bg-ink) { border-color: rgba(248, 242, 229, 0.12) !important; }
+#top > header nav[aria-label="Mobile navigation"] svg { color: #efb6a8; }
+#top > header a.bg-ink,
+#top > header nav a.bg-ink { background-color: #f8f2e5 !important; color: #173b30 !important; }
+#top > header button[aria-label$="menu"] { color: #f8f2e5 !important; border-color: rgba(248, 242, 229, 0.35) !important; }
+
+/* The logo is dark ink on transparent: render it as a cream mark on the green */
+#top > header img,
+#top footer img { filter: brightness(0) invert(0.95) sepia(0.12); }
+
+#top footer {
+  background-color: #173b30 !important;
+  border-top-color: rgba(248, 242, 229, 0.16) !important;
+}
+#top footer p { color: rgba(248, 242, 229, 0.78) !important; }
+#top footer div.font-mono { color: rgba(248, 242, 229, 0.55) !important; }
+#top > header nav[aria-label="Mobile navigation"] a.bg-ink svg { color: #173b30; }
+
+/* Rice: selector on top, illustration and data side by side beneath */
+.rice-selector { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; max-width: 46rem; }
+@media (max-width: 639px) { .rice-selector { grid-template-columns: 1fr; } .rice-choice { min-height: 0; } }
+
+/* The open experiment takes the height its content needs (no inner scrolling);
+   the neighbouring pages still peek out behind it. */
+.lens-coverflow__stage { min-height: 0 !important; display: grid; justify-items: center; }
+.lens-coverflow__item--pos-active {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  transform: translateZ(40px) !important;
+}
+.rice-stage > .fl-rc { width: 100%; max-width: 380px; }
+@media (max-width: 1023px) { .rice-stage > .fl-rc { margin-inline: auto; } }
+.rice-choice { touch-action: manipulation; }
+
+/* Rice: every preparation occupies exactly the same box, so choosing one never moves the page */
+.rice-summary { min-height: 5.2rem; }
+.rice-facts { min-height: 8.4rem; align-content: start; }
+.rice-primary-metric { min-height: 3.4rem; }
+
+/* The open experiment sits flat on the page. The old translateZ "lift" magnified the card ~4% from the
+   stage's perspective origin, so buttons near the card's left edge were drawn away from where the browser
+   hit-tested them: clicks on parts of a button were ignored and the hover state flickered. */
+.lens-coverflow__item--pos-active {
+  transform: none !important;
+  transform-style: flat !important;
+  backface-visibility: visible !important;
+}
+.rice-choice:hover { transform: none; box-shadow: 0 3px 0 rgba(163, 58, 43, 0.18); }
