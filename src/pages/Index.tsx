@@ -365,7 +365,7 @@ function ConsultationForm() {
             <div
                 className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[#f8f2e5]/40">
                 <span className="h-px flex-1 bg-[#f8f2e5]/15" />Or
-                                                                                                                                                                                                                                                                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
+                                                                                                                                                                                                                                                                                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
             </div>
             <a
                 href="mailto:harsha@thefoodlab.in?subject=Protein%2011%20protein%20bar"
@@ -497,7 +497,7 @@ const Index = () => {
                                     }}
                                     className="lens-coverflow__nav-btn"
                                     aria-label="Next experiment">Next →
-                                                                                                                                            </button>
+                                                                                                                                                                                </button>
                             </div>
                             {}
                             <div className="lens-coverflow__stage">
@@ -546,8 +546,8 @@ const Index = () => {
                                                                     href="https://www.researchsquare.com/article/rs-9052215/v1"
                                                                     target="_blank"
                                                                     rel="noreferrer">Moitra & Qureshi, Research Square preprint, 2026
-                                                                                                                                                                                                                                                                                </a>.
-                                                                                                                                                                                                                                                                </p>
+                                                                                                                                                                                                                                                                                                                                                    </a>.
+                                                                                                                                                                                                                                                                                                                                </p>
                                                         </div>
                                                     </div>
                                                 </div>)}
@@ -594,7 +594,7 @@ const Index = () => {
                                     className="mt-5 max-w-none whitespace-nowrap font-serif text-[clamp(1.35rem,4.2vw,4rem)] font-normal leading-[0.94] tracking-[-0.04em]">1. Precision Bio-Nutrition</h2>
                                 <blockquote
                                     className="mt-6 max-w-2xl border-l-4 border-primary pl-5 font-serif text-xl leading-snug text-ink/80 sm:text-2xl lg:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
                                 </blockquote>
                                 {}
                                 <p className="handwritten mt-4 rotate-[0.5deg] text-sm text-primary/70">
@@ -713,7 +713,7 @@ const Index = () => {
                                 </h2>
                                 <p
                                     className="mt-5 max-w-lg font-serif text-xl italic leading-relaxed text-ink/70">We’ll let you tell us how good it is.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </p>
                                 <div className="mt-6 flex flex-wrap items-center gap-3">
                                     <a
                                         href="mailto:harsha@thefoodlab.in?subject=Protein%2011%20experiment"
@@ -737,7 +737,7 @@ const Index = () => {
                                 <h2
                                     className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
                                 <p className="mt-7 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Tell us what you have tried and where real life keeps entering the picture. We begin with questions, not a perfect plan.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </p>
                                 <div className="mt-10 flex items-center gap-4 text-[#d68b7f]">
                                     <FlaskConical className="h-8 w-8 stroke-[1.2]" />
                                     <span className="handwritten max-w-xs text-xl leading-tight">No judgement. No gold stars for an ideal food diary.</span>
