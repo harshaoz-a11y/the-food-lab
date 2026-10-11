@@ -3593,7 +3593,7 @@ main > section.reveal.is-revealed {
 
 .method-coverflow__track {
   position: relative;
-  height: 10.8rem;
+  height: 16rem;
   transform-style: preserve-3d;
 }
 
@@ -3604,7 +3604,7 @@ main > section.reveal.is-revealed {
   left: 50%;
   display: grid;
   width: var(--method-coverflow-card-width);
-  height: 8.8rem;
+  height: 14rem;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr auto;
   align-items: center;
@@ -3692,6 +3692,27 @@ main > section.reveal.is-revealed {
   opacity: 0.72;
 }
 
+.method-coverflow__card-signals {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 0.35rem;
+  align-content: start;
+  margin-top: 0.35rem;
+  border-top: 1px dashed color-mix(in srgb, var(--signal-color) 35%, transparent);
+  padding-top: 0.5rem;
+}
+
+.method-coverflow__card-signals span {
+  color: var(--ink-soft);
+  font: 0.72rem/1.2 var(--fl-font-sans);
+}
+
+.method-coverflow__card-signals span::before {
+  content: "•";
+  margin-right: 0.4rem;
+  color: var(--signal-color);
+}
+
 .method-coverflow__panel {
   border-top: 1px dashed rgba(23, 59, 48, 0.22);
   padding-top: 0.8rem;
@@ -3770,7 +3791,7 @@ main > section.reveal.is-revealed {
 }
 
 @media (max-width: 767px) {
-  .method-coverflow__track { height: 9.2rem; }
+  .method-coverflow__track { height: 16rem; }
   .method-coverflow__card {
     width: min(74%, 17rem);
     height: 7.8rem;
