@@ -383,24 +383,6 @@ function ConsultationForm() {
     );
 }
 
-function NbHeader(
-    {
-        label
-    }: {
-        label: string;
-        page?: string;
-    }
-) {
-    return (
-        <div className="nb-top-margin flex items-center gap-3 sm:gap-4">
-            <span
-                className={label === "What if… diets could be delicious?" ? "handwritten text-xl text-primary sm:text-2xl" : "font-mono text-[11px] uppercase tracking-[0.15em] text-ink/35 sm:text-[11px] sm:tracking-[0.18em]"}>
-                {label}
-            </span>
-            <span className="h-px flex-1 border-t border-dashed border-ink/15" />
-        </div>
-    );
-}
 
 const experimentOptions = [
     ["egg", "Egg"],
@@ -452,10 +434,12 @@ const Index = () => {
                     </div>
                 </section>
                 <section id="demonstration" className="px-4 sm:px-6 lg:px-8">
-                    <div
-                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
-                        <NbHeader label="Experiment log" page="Pg. 003" />
-                        <div className="max-w-4xl">
+                                    <div
+                                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
+                                        <div className="nb-top-margin flex items-center gap-3 sm:gap-4">
+                                            <span className="h-px flex-1 border-t border-dashed border-ink/15" />
+                                        </div>
+                                        <div className="max-w-4xl">
                             <h2
                                 key={activeExperiment}
                                 className="mt-5 font-serif text-[clamp(1.75rem,4.2vw,3.6rem)] font-normal leading-[1.05] tracking-[-0.03em] animate-in fade-in slide-in-from-bottom-2 duration-300">
@@ -566,7 +550,6 @@ const Index = () => {
                         className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
                         <div className="nb-dark-ruled-top" />
                         <div className="mb-10 sm:mb-12">
-                            <span className="lab-label !text-[#f8f2e5]/55">Field sheet 003 / real life</span>
                             <h2
                                 className="mt-5 font-serif text-3xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-4xl lg:whitespace-nowrap lg:text-[clamp(2.4rem,4.05vw,3.5rem)]">When diets and discipline say "tomorrow!"</h2>
                             <p
@@ -586,7 +569,9 @@ const Index = () => {
                     aria-labelledby="help-heading">
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-14 sm:px-10 lg:px-20 lg:py-24">
-                        <NbHeader label="What if… diets could be delicious?" />
+                        <div className="nb-top-margin flex items-center gap-3 sm:gap-4">
+                            <span className="h-px flex-1 border-t border-dashed border-ink/15" />
+                        </div>
                         <div
                             className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-12">
                             <div>
@@ -733,9 +718,8 @@ const Index = () => {
                         <div className="nb-dark-ruled-top" />
                         <div className="grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
                             <div>
-                                <span className="lab-label !text-[#f8f2e5]/55">Your experiment</span>
-                                <h2
-                                    className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
+                                                            <h2
+                                                                className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
                                 <p className="mt-7 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Tell us what you have tried and where real life keeps entering the picture. We begin with questions, not a perfect plan.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 </p>
                                 <div className="mt-10 flex items-center gap-4 text-[#d68b7f]">
