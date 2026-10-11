@@ -1,5 +1,5 @@
-import alchemyBar from "@/assets/maestro/alchemy-bar.jpg";
+import protein11Packaging from "@/assets/maestro/protein11-packaging.png";
 
 export const maestroAssets = {
-  alchemyBar,
+  alchemyBar: protein11Packaging,
 };
