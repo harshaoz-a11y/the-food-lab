@@ -328,9 +328,7 @@ function FieldStudies() {
                     <h3>{activeStudy.title}</h3>
                     <p>{activeStudy.copy}</p>
                     <span className="field-note">{activeStudy.persona}· {activeStudy.note}</span>
-                    <ol
-                        className="field-story"
-                        aria-label={`${activeStudy.title} sequence`}>
+                    <ol className="field-story" aria-label={`${activeStudy.title} sequence`}>
                         {activeStudy.steps.map((
                             {
                                 title,
@@ -367,7 +365,7 @@ function ConsultationForm() {
             <div
                 className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[#f8f2e5]/40">
                 <span className="h-px flex-1 bg-[#f8f2e5]/15" />Or
-                                                                                                                                                                                                                                                                                                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
+                                                                                                                                                                                                                                                                                                                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
             </div>
             <a
                 href="mailto:harsha@thefoodlab.in?subject=Protein%2011%20protein%20bar"
@@ -382,7 +380,6 @@ function ConsultationForm() {
         </div>
     );
 }
-
 
 const experimentOptions = [
     ["egg", "Egg"],
@@ -434,12 +431,12 @@ const Index = () => {
                     </div>
                 </section>
                 <section id="demonstration" className="px-4 sm:px-6 lg:px-8">
-                                    <div
-                                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
-                                        <div className="nb-top-margin flex items-center gap-3 sm:gap-4">
-                                            <span className="h-px flex-1 border-t border-dashed border-ink/15" />
-                                        </div>
-                                        <div className="max-w-4xl">
+                    <div
+                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
+                        <div className="nb-top-margin flex items-center gap-3 sm:gap-4">
+                            <span className="h-px flex-1 border-t border-dashed border-ink/15" />
+                        </div>
+                        <div className="max-w-4xl">
                             <h2
                                 key={activeExperiment}
                                 className="mt-5 font-serif text-[clamp(1.75rem,4.2vw,3.6rem)] font-normal leading-[1.05] tracking-[-0.03em] animate-in fade-in slide-in-from-bottom-2 duration-300">
@@ -453,7 +450,7 @@ const Index = () => {
                             {}
                             <div className="lens-coverflow__controls">
                                 <div
-                                    className="lens-coverflow__pills"
+                                    className="lens-coverflow__pills mx-[215px]"
                                     role="tablist"
                                     aria-label="Experiment switcher">
                                     {experimentOptions.map(([key, label], index) => (<button
@@ -513,8 +510,8 @@ const Index = () => {
                                                                     href="https://www.researchsquare.com/article/rs-9052215/v1"
                                                                     target="_blank"
                                                                     rel="noreferrer">Moitra & Qureshi, Research Square preprint, 2026
-                                                                                                                                                                                                                                                                                                                                                                                                                        </a>.
-                                                                                                                                                                                                                                                                                                                                                                                                </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </a>.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                </p>
                                                         </div>
                                                     </div>
                                                 </div>)}
@@ -562,7 +559,7 @@ const Index = () => {
                                     className="mt-5 max-w-none whitespace-nowrap font-serif text-[clamp(1.35rem,4.2vw,4rem)] font-normal leading-[0.94] tracking-[-0.04em]">1. Precision Bio-Nutrition</h2>
                                 <blockquote
                                     className="mt-6 max-w-2xl border-l-4 border-primary pl-5 font-serif text-xl leading-snug text-ink/80 sm:text-2xl lg:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
                                 </blockquote>
                                 {}
                                 <p className="handwritten mt-4 rotate-[0.5deg] text-sm text-primary/70">
@@ -662,7 +659,8 @@ const Index = () => {
                     <div
                         className="mx-auto max-w-[1200px] border-x border-[#173b30]/20 bg-[#173b30] px-4 py-12 text-[#f8f2e5] sm:px-8 lg:px-16 lg:py-20">
                         <div className="grid gap-8 lg:grid-cols-[1fr_.8fr] lg:items-center">
-                            <figure className="evidence-photo flex items-center justify-center rotate-[-1deg]">
+                            <figure
+                                className="evidence-photo flex items-center justify-center rotate-[-1deg]">
                                 <span className="tape tape-left" />
                                 <img
                                     src={maestroAssets.alchemyBar}
@@ -680,7 +678,7 @@ const Index = () => {
                                 </h2>
                                 <p
                                     className="mt-5 max-w-lg font-serif text-xl italic leading-relaxed text-ink/70">We’ll let you tell us how good it is.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </p>
                                 <div className="mt-6 flex flex-wrap items-center gap-3">
                                     <a
                                         href="mailto:harsha@thefoodlab.in?subject=Protein%2011%20experiment"
@@ -700,10 +698,10 @@ const Index = () => {
                         <div className="nb-dark-ruled-top" />
                         <div className="grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
                             <div>
-                                                            <h2
-                                                                className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
+                                <h2
+                                    className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
                                 <p className="mt-7 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Tell us what you have tried and where real life keeps entering the picture. We begin with questions, not a perfect plan.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </p>
                                 <div className="mt-10 flex items-center gap-4 text-[#d68b7f]">
                                     <FlaskConical className="h-8 w-8 stroke-[1.2]" />
                                     <span className="handwritten max-w-xs text-xl leading-tight">No judgement. No gold stars for an ideal food diary.</span>
