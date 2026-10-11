@@ -45,7 +45,7 @@ export function EggExperiment() {
                         onChange={setEgg}
                         caption="true ileal protein digestibility"
                         className="egg-observation__plate" />
-                    <p className="egg-observation__caption">FIG. 1 — {egg === "raw" ? "RAW EGG" : "COOKED EGG"}</p>
+                    <p className="egg-observation__caption mx-[73px] my-[14px]">FIG. 1 — {egg === "raw" ? "RAW EGG" : "COOKED EGG"}</p>
                 </div>
                 <div className="egg-observation__reading" aria-live="polite">
                     <span className="egg-observation__eyebrow">HUMAN DATA</span>
