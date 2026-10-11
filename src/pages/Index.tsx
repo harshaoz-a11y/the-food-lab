@@ -693,12 +693,12 @@ const Index = () => {
                     <div
                         className="mx-auto max-w-[1200px] border-x border-[#173b30]/20 bg-[#173b30] px-4 py-12 text-[#f8f2e5] sm:px-8 lg:px-16 lg:py-20">
                         <div className="grid gap-8 lg:grid-cols-[1fr_.8fr] lg:items-center">
-                            <figure className="evidence-photo rotate-[-1deg]">
+                            <figure className="evidence-photo flex items-center justify-center rotate-[-1deg]">
                                 <span className="tape tape-left" />
                                 <img
                                     src={maestroAssets.alchemyBar}
                                     alt="Protein 11 bar cut open to reveal its whole-food texture"
-                                    className="min-h-[280px] w-full object-cover sm:min-h-[380px]" />
+                                    className="h-auto max-h-[420px] w-full object-contain" />
                             </figure>
                             <div>
                                 <h2 className="max-w-xl font-serif font-normal tracking-[-0.04em] text-ink">
