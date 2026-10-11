@@ -603,9 +603,6 @@ const Index = () => {
                 <section id="demonstration" className="px-4 sm:px-6 lg:px-8">
                                     <div
                                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
-                                        <div className="nb-top-margin flex items-center gap-3 sm:gap-4">
-                                            <span className="h-px flex-1 border-t border-dashed border-ink/15" />
-                                        </div>
                                         <div className="max-w-4xl">
                             <h2
                                 key={activeExperiment}
