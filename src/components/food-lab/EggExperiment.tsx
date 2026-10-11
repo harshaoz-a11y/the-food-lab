@@ -56,8 +56,7 @@ export function EggExperiment() {
                     <p className="egg-observation__interpretation">{current.note}</p>
                 </div>
             </div>
-            <p className="egg-observation__source">Human data: Evenepoel et al., The Journal of Nutrition (1998); discussed in Fuchs et al., The Journal of Nutrition (2022). This is an observation, not personal dietary advice.
-                                                                      </p>
+            <p className="egg-observation__source">SOURCE- HUMAN BIOLOGY, SCHOOL OF NUTRITION AND TRANSLATIONAL RESEARCH IN METABOLISM (NUTRIM), MAASTRICHT UNIVERSITY MEDICAL CENTRE+, MAASTRICHT, THE NETHERLANDS</p>
         </article>
     );
 }
