@@ -10,6 +10,8 @@
 /* Ruled footer top line */
 /* Navigation controls */
 /* 3D Coverflow stage holding all 4 full lens pages */
+// Geometry shared with .method-flow in globals.css (px).
+// Elbow from the hovered stage's centre to the tree's vertical centre.
 import { useState } from "react";
 
 import {
@@ -184,66 +186,115 @@ const fieldStudies = [{
 const methodFlow = [{
     label: "Understand",
     icon: NotebookPen,
+
     areas: [{
         title: "Your biology",
         icon: Activity,
-        leaves: [{ label: "What your body is telling us.", icon: HeartPulse }]
+
+        leaves: [{
+            label: "What your body is telling us.",
+            icon: HeartPulse
+        }]
     }, {
         title: "Your goals",
         icon: Target,
-        leaves: [{ label: "What you actually want to change.", icon: Flag }]
+
+        leaves: [{
+            label: "What you actually want to change.",
+            icon: Flag
+        }]
     }]
 }, {
     label: "Maximize Benefit and Taste",
     icon: FlaskConical,
+
     areas: [{
         title: "Your food",
         icon: Salad,
-        leaves: [
-            { label: "What you eat", icon: Utensils },
-            { label: "How much", icon: Scale },
-            { label: "How often", icon: Repeat },
-            { label: "What you enjoy", icon: Smile },
-            { label: "What you don’t", icon: ThumbsDown }
-        ]
+
+        leaves: [{
+            label: "What you eat",
+            icon: Utensils
+        }, {
+            label: "How much",
+            icon: Scale
+        }, {
+            label: "How often",
+            icon: Repeat
+        }, {
+            label: "What you enjoy",
+            icon: Smile
+        }, {
+            label: "What you don’t",
+            icon: ThumbsDown
+        }]
     }, {
         title: "Your preferences",
         icon: Heart,
-        leaves: [
-            { label: "Taste", icon: Sparkles },
-            { label: "Satiety", icon: Soup },
-            { label: "Habits", icon: Footprints },
-            { label: "Culture", icon: Globe },
-            { label: "Convenience", icon: Timer },
-            { label: "Affordability", icon: Wallet }
-        ]
+
+        leaves: [{
+            label: "Taste",
+            icon: Sparkles
+        }, {
+            label: "Satiety",
+            icon: Soup
+        }, {
+            label: "Habits",
+            icon: Footprints
+        }, {
+            label: "Culture",
+            icon: Globe
+        }, {
+            label: "Convenience",
+            icon: Timer
+        }, {
+            label: "Affordability",
+            icon: Wallet
+        }]
     }]
 }, {
     label: "Observe",
     icon: Activity,
+
     areas: [{
         title: "Your response",
         icon: RefreshCcw,
-        leaves: [{ label: "What changes when we change something.", icon: TrendingUp }]
+
+        leaves: [{
+            label: "What changes when we change something.",
+            icon: TrendingUp
+        }]
     }]
 }, {
     label: "Adapt",
     icon: RefreshCcw,
+
     areas: [{
         title: "Your life",
         icon: CalendarDays,
-        leaves: [
-            { label: "Work", icon: Briefcase },
-            { label: "Routines", icon: CalendarClock },
-            { label: "Time", icon: Hourglass },
-            { label: "Travel", icon: Plane },
-            { label: "Family", icon: UsersRound },
-            { label: "Social life", icon: MessagesSquare }
-        ]
+
+        leaves: [{
+            label: "Work",
+            icon: Briefcase
+        }, {
+            label: "Routines",
+            icon: CalendarClock
+        }, {
+            label: "Time",
+            icon: Hourglass
+        }, {
+            label: "Travel",
+            icon: Plane
+        }, {
+            label: "Family",
+            icon: UsersRound
+        }, {
+            label: "Social life",
+            icon: MessagesSquare
+        }]
     }]
 }];
 
-// Geometry shared with .method-flow in globals.css (px).
 const FLOW_SLOT = 112;
 const FLOW_HEIGHT = FLOW_SLOT * 4;
 
@@ -256,13 +307,13 @@ function MethodFlow() {
             event.preventDefault();
             setActive((active + 1) % methodFlow.length);
         }
+
         if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
             event.preventDefault();
             setActive((active - 1 + methodFlow.length) % methodFlow.length);
         }
     };
 
-    // Elbow from the hovered stage's centre to the tree's vertical centre.
     const stageCentre = FLOW_SLOT * active + FLOW_SLOT / 2;
     const rootCentre = FLOW_HEIGHT / 2;
     const elbowTop = Math.min(stageCentre, rootCentre);
@@ -270,18 +321,38 @@ function MethodFlow() {
     const stageIsAbove = stageCentre < rootCentre;
 
     return (
-        <div className={`method-flow method-flow--step-${active + 1}`} aria-label="Working loop">
-            <svg className="method-flow__filters" width="0" height="0" aria-hidden="true" focusable="false">
+        <div
+            className={`method-flow method-flow--step-${active + 1}`}
+            aria-label="Working loop">
+            <svg
+                className="method-flow__filters"
+                width="0"
+                height="0"
+                aria-hidden="true"
+                focusable="false">
                 <filter id="mf-rough" x="-5%" y="-5%" width="110%" height="110%">
-                    <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="7" result="n" />
+                    <feTurbulence
+                        type="fractalNoise"
+                        baseFrequency="0.022"
+                        numOctaves="2"
+                        seed="7"
+                        result="n" />
                     <feDisplacementMap in="SourceGraphic" in2="n" scale="1.8" />
                 </filter>
             </svg>
             <span className="tape method-flow__tape" aria-hidden="true" />
             <div className="method-flow__body">
-            <div className="method-flow__stages" role="group" aria-label="Choose a working-loop stage">
-                {methodFlow.map(({ label, icon: StageIcon }, index) => (
-                    <button
+                <div
+                    className="method-flow__stages"
+                    role="group"
+                    aria-label="Choose a working-loop stage">
+                    {methodFlow.map((
+                        {
+                            label,
+                            icon: StageIcon
+                        },
+                        index
+                    ) => (<button
                         key={label}
                         type="button"
                         className={`method-flow__stage method-flow__stage--step-${index + 1} ${index === active ? "is-active" : ""}`}
@@ -294,39 +365,62 @@ function MethodFlow() {
                         <span className="method-flow__index">STEP 0{index + 1}</span>
                         <StageIcon aria-hidden="true" />
                         <strong><span>{label}</span></strong>
-                    </button>
-                ))}
-            </div>
-            <div className="method-flow__panel" id="method-flow-panel" aria-live="polite">
-                <div className="method-flow__tree" key={active}>
-                    <span
-                        className={`method-flow__elbow ${stageIsAbove ? "is-down" : "is-up"}`}
-                        aria-hidden="true"
-                        style={{ top: elbowTop, height: elbowHeight }}>
-                        <i /><i /><i />
-                    </span>
-                    <ul className="method-flow__areas" aria-label={`${stage.label}: what we look at`}>
-                        {stage.areas.map(({ title, icon: AreaIcon, leaves }, areaIndex) => (
-                            <li className="method-flow__area" key={title} style={{ "--d": areaIndex } as React.CSSProperties}>
+                    </button>))}
+                </div>
+                <div className="method-flow__panel" id="method-flow-panel" aria-live="polite">
+                    <div className="method-flow__tree" key={active}>
+                        <span
+                            className={`method-flow__elbow ${stageIsAbove ? "is-down" : "is-up"}`}
+                            aria-hidden="true"
+                            style={{
+                                top: elbowTop,
+                                height: elbowHeight
+                            }}>
+                            <i /><i /><i />
+                        </span>
+                        <ul
+                            className="method-flow__areas"
+                            aria-label={`${stage.label}: what we look at`}>
+                            {stage.areas.map((
+                                {
+                                    title,
+                                    icon: AreaIcon,
+                                    leaves
+                                },
+                                areaIndex
+                            ) => (<li
+                                className="method-flow__area"
+                                key={title}
+                                style={{
+                                    "--d": areaIndex
+                                } as React.CSSProperties}>
                                 <span className="method-flow__node method-flow__node--area">
                                     <AreaIcon aria-hidden="true" />
                                     <strong>{title}</strong>
                                 </span>
                                 <ul className="method-flow__leaves">
-                                    {leaves.map(({ label, icon: LeafIcon }, leafIndex) => (
-                                        <li className="method-flow__leaf" key={label} style={{ "--l": leafIndex } as React.CSSProperties}>
-                                            <span className="method-flow__node method-flow__node--leaf">
-                                                <LeafIcon aria-hidden="true" />
-                                                <span>{label}</span>
-                                            </span>
-                                        </li>
-                                    ))}
+                                    {leaves.map((
+                                        {
+                                            label,
+                                            icon: LeafIcon
+                                        },
+                                        leafIndex
+                                    ) => (<li
+                                        className="method-flow__leaf"
+                                        key={label}
+                                        style={{
+                                            "--l": leafIndex
+                                        } as React.CSSProperties}>
+                                        <span className="method-flow__node method-flow__node--leaf">
+                                            <LeafIcon aria-hidden="true" />
+                                            <span>{label}</span>
+                                        </span>
+                                    </li>))}
                                 </ul>
-                            </li>
-                        ))}
-                    </ul>
+                            </li>))}
+                        </ul>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     );
@@ -371,10 +465,10 @@ function Header() {
                             type="button"
                             onClick={() => setOfferingsOpen(value => !value)}
                             className="flex items-center gap-2 text-sm text-ink/65 transition-colors hover:text-primary xl:text-base"
-                            aria-expanded={offeringsOpen}>
-                            Our Offerings <span aria-hidden="true">⌄</span>
+                            aria-expanded={offeringsOpen}>Our Offerings <span aria-hidden="true">⌄</span>
                         </button>
-                        {offeringsOpen && (<div className="absolute left-0 top-full mt-3 min-w-[210px] rounded-xl border border-ink/15 bg-[#faedde] p-2 shadow-lg">
+                        {offeringsOpen && (<div
+                            className="absolute left-0 top-full mt-3 min-w-[210px] rounded-xl border border-ink/15 bg-[#faedde] p-2 shadow-lg">
                             {offerings.map(item => (<a
                                 key={item.href}
                                 href={item.href}
@@ -412,8 +506,7 @@ function Header() {
                     type="button"
                     onClick={() => setOfferingsOpen(value => !value)}
                     className="flex w-full items-center justify-between border-b border-ink/10 py-3 text-left text-sm text-ink"
-                    aria-expanded={offeringsOpen}>
-                    Our Offerings <span aria-hidden="true">⌄</span>
+                    aria-expanded={offeringsOpen}>Our Offerings <span aria-hidden="true">⌄</span>
                 </button>
                 {offeringsOpen && (<div className="border-b border-ink/10 pl-4">
                     {offerings.map(item => (<a
@@ -493,9 +586,7 @@ function FieldStudies() {
                     <h3>{activeStudy.title}</h3>
                     <p>{activeStudy.copy}</p>
                     <span className="field-note">{activeStudy.persona}· {activeStudy.note}</span>
-                    <ol
-                        className="field-story"
-                        aria-label={`${activeStudy.title} sequence`}>
+                    <ol className="field-story" aria-label={`${activeStudy.title} sequence`}>
                         {activeStudy.steps.map((
                             {
                                 title,
@@ -532,7 +623,7 @@ function ConsultationForm() {
             <div
                 className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[#f8f2e5]/40">
                 <span className="h-px flex-1 bg-[#f8f2e5]/15" />Or
-                                                                                                                                                                                                                                                                                                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
+                                                                                                                                                                                                                                                                                                                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
             </div>
             <a
                 href="mailto:harsha@thefoodlab.in?subject=Protein%2011%20protein%20bar"
@@ -547,7 +638,6 @@ function ConsultationForm() {
         </div>
     );
 }
-
 
 const experimentOptions = [
     ["egg", "Egg"],
@@ -603,7 +693,7 @@ const Index = () => {
                         <div className="nb-dark-ruled-top" />
                         <div className="mb-10 sm:mb-12">
                             <h2
-                                className="mt-5 font-serif text-3xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-4xl lg:whitespace-nowrap lg:text-[clamp(2.4rem,4.05vw,3.5rem)]">When diets and discipline say "tomorrow!"</h2>
+                                className="mt-5 font-serif text-3xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-4xl lg:whitespace-nowrap lg:text-[clamp(2.4rem,4.05vw,3.5rem)]">Why diets  say - "tomorrow!"</h2>
                             <p
                                 className="mt-5 max-w-lg text-base leading-relaxed text-[#f8f2e5]/65 sm:text-lg [color:#f5f0e3]">Which one resonates with you? </p>
                         </div>
@@ -616,9 +706,9 @@ const Index = () => {
                     </div>
                 </section>
                 <section id="demonstration" className="px-4 sm:px-6 lg:px-8">
-                                    <div
-                                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
-                                        <div className="max-w-4xl">
+                    <div
+                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
+                        <div className="max-w-4xl">
                             <h2
                                 key={activeExperiment}
                                 className="mt-5 font-serif text-[clamp(1.75rem,4.2vw,3.6rem)] font-normal leading-[1.05] tracking-[-0.03em] animate-in fade-in slide-in-from-bottom-2 duration-300">
@@ -693,7 +783,7 @@ const Index = () => {
                                     className="mt-5 max-w-none whitespace-nowrap font-serif text-[clamp(1.35rem,4.2vw,4rem)] xl:whitespace-normal xl:text-[clamp(2.4rem,3.4vw,3.6rem)] font-normal leading-[0.94] tracking-[-0.04em]">1. Precision <span className="whitespace-nowrap">Bio-Nutrition</span></h2>
                                 <blockquote
                                     className="mt-6 max-w-2xl border-l-4 border-primary pl-5 font-serif text-xl leading-snug text-ink/80 sm:text-2xl lg:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
                                 </blockquote>
                                 {}
                                 <p className="handwritten mt-4 rotate-[0.5deg] text-sm text-primary/70">
@@ -711,7 +801,8 @@ const Index = () => {
                     <div
                         className="mx-auto max-w-[1200px] border-x border-[#173b30]/20 bg-[#173b30] px-4 py-12 text-[#f8f2e5] sm:px-8 lg:px-16 lg:py-20">
                         <div className="grid gap-8 lg:grid-cols-[1fr_.8fr] lg:items-center">
-                            <figure className="evidence-photo flex items-center justify-center border-0 bg-transparent p-0 shadow-none">
+                            <figure
+                                className="evidence-photo flex items-center justify-center border-0 bg-transparent p-0 shadow-none">
                                 <img
                                     src={maestroAssets.alchemyBar}
                                     alt="Protein 11 bar cut open to reveal its whole-food texture"
@@ -728,7 +819,7 @@ const Index = () => {
                                 </h2>
                                 <p
                                     className="mt-5 max-w-lg font-serif text-xl italic leading-relaxed text-ink/70">We’ll let you tell us how good it is.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </p>
                                 <div className="mt-6 flex flex-wrap items-center gap-3">
                                     <a
                                         href="mailto:harsha@thefoodlab.in?subject=Protein%2011%20experiment"
@@ -748,10 +839,10 @@ const Index = () => {
                         <div className="nb-dark-ruled-top" />
                         <div className="grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
                             <div>
-                                                            <h2
-                                                                className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
+                                <h2
+                                    className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
                                 <p className="mt-7 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Tell us what you have tried and where real life keeps entering the picture. We begin with questions, not a perfect plan.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </p>
                                 <div className="mt-10 flex items-center gap-4 text-[#d68b7f]">
                                     <FlaskConical className="h-8 w-8 stroke-[1.2]" />
                                     <span className="handwritten max-w-xs text-xl leading-tight">No judgement. No gold stars for an ideal food diary.</span>
