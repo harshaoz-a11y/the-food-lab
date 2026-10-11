@@ -4094,3 +4094,53 @@ body,
   backface-visibility: visible !important;
 }
 .rice-choice:hover { transform: none; box-shadow: 0 3px 0 rgba(163, 58, 43, 0.18); }
+
+/* Protein 11 hero: "Made this week" stamp tucked onto the bar photo, ingredient line beneath */
+.p11-hero-stamp {
+  position: absolute;
+  top: 6%;
+  right: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0.5rem 0.85rem;
+  border: 2px dashed rgba(248, 242, 229, 0.85);
+  border-radius: 0.5rem;
+  background: rgba(23, 59, 48, 0.55);
+  backdrop-filter: blur(2px);
+  color: #f8f2e5;
+  transform: rotate(-4deg);
+  pointer-events: none;
+  user-select: none;
+}
+.p11-hero-stamp__lab,
+.p11-hero-stamp__sub {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+.p11-hero-stamp__main {
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.p11-hero-caption {
+  margin-top: 0.75rem;
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(248, 242, 229, 0.8);
+  text-align: center;
+}
+@media (max-width: 640px) {
+  .p11-hero-stamp { top: -10px; right: -6px; padding: 0.3rem 0.55rem; }
+  .p11-hero-stamp__lab { display: none; }
+  .p11-hero-stamp__main { font-size: 0.8rem; }
+  .p11-hero-stamp__sub { font-size: 8px; }
+}

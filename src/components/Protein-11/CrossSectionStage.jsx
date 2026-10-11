@@ -1,4 +1,4 @@
-import { useId, useMemo } from 'react';
+import { useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import './CrossSectionStage.css';
 
 /**
@@ -55,6 +55,30 @@ function ringPath(cx, cy, r, seed) {
   return d;
 }
 
+// Chip positions: start from each SPOTS label, keep the chip inside the frame (allowing for the
+// 1.04 push-in), and nudge any chip that would collide with an earlier one away from its edge.
+// sizes are the chips' measured [width, height] in photo pixels.
+const ZOOM = 1.04, MARGIN = 70, GAP = 12;
+function placeLabels(ids, sizes) {
+  const placed = [];
+  const clamp = (v, half, max) => Math.min(max - half - MARGIN, Math.max(half + MARGIN, v));
+  return ids.map((id, i) => {
+    const [w, h] = sizes[i];
+    let [x, y] = SPOTS[id].label;
+    x = clamp(x, w / 2, W);
+    y = clamp(y, h / 2, H);
+    let dir = y < H / 2 ? 1 : -1;
+    const hits = () => placed.some(([px, py, pw, ph]) => Math.abs(px - x) < (w + pw) / 2 + GAP && Math.abs(py - y) < (h + ph) / 2 + GAP);
+    for (let n = 0; n < 12 && hits(); n++) {
+      const next = clamp(y + dir * (h + GAP), h / 2, H);
+      if (next === y) dir = -dir;
+      y = next;
+    }
+    placed.push([x, y, w, h]);
+    return [x, y];
+  });
+}
+
 function leader([px, py, pr], [lx, ly]) {
   const dx = lx - px, dy = ly - py, len = Math.hypot(dx, dy) || 1;
   const sx = px + (dx / len) * (pr + 6), sy = py + (dy / len) * (pr + 6);
@@ -68,13 +92,38 @@ export default function CrossSectionStage({ src, selected = null, ingredients, a
   const byId = useMemo(() => Object.fromEntries(ingredients.map((i) => [i.id, i])), [ingredients]);
   const ids = (selected?.ingredients || []).filter((id) => SPOTS[id]);
   const active = ids.length > 0;
+  const key = selected?.id || 'whole';
+  const frameRef = useRef(null);
+  const chipRefs = useRef({});
+  const [layout, setLayout] = useState(null);
+
+  // measure the rendered chips (they start invisible) and place them before they fade in
+  useLayoutEffect(() => {
+    const frame = frameRef.current;
+    if (!frame || !ids.length) return undefined;
+    const compute = () => {
+      const k = W / frame.clientWidth / ZOOM;
+      const sizes = ids.map((id) => {
+        const el = chipRefs.current[id];
+        return el ? [el.offsetWidth * k, el.offsetHeight * k] : [0, 0];
+      });
+      setLayout({ key, pos: placeLabels(ids, sizes) });
+    };
+    compute();
+    const ro = new ResizeObserver(compute);
+    ro.observe(frame);
+    return () => ro.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key]);
+
+  const labels = layout?.key === key ? layout.pos : ids.map((id) => SPOTS[id].label);
 
   // a gentle push-in when a partnership is chosen (scale only, so labels near the edges stay in frame)
-  const zoom = { s: active ? 1.04 : 1 };
+  const zoom = { s: active ? ZOOM : 1 };
 
   return (
     <figure className={`css-stage${active ? ' is-active' : ''} ${className}`}>
-      <div className="css-stage__frame">
+      <div className="css-stage__frame" ref={frameRef}>
         <div
           className="css-stage__zoom"
           style={{ transform: `scale(${zoom.s})` }}
@@ -115,7 +164,7 @@ export default function CrossSectionStage({ src, selected = null, ingredients, a
                     <path key={j} className={`css-ring${sp.hidden ? ' css-ring--hidden' : ''}`} pathLength="1"
                       d={ringPath(x, y, r, i * 3 + j)} />
                   ))}
-                  <path className="css-leader" pathLength="1" d={leader(sp.points[0], sp.label)} />
+                  <path className="css-leader" pathLength="1" d={leader(sp.points[0], labels[i])} />
                   <g className="css-badge">
                     <circle cx={sp.points[0][0] + sp.points[0][2] * 0.72} cy={sp.points[0][1] - sp.points[0][2] * 0.72} r="19" />
                     <text x={sp.points[0][0] + sp.points[0][2] * 0.72} y={sp.points[0][1] - sp.points[0][2] * 0.72 + 7}>{i + 1}</text>
@@ -127,14 +176,14 @@ export default function CrossSectionStage({ src, selected = null, ingredients, a
 
           <div key={'chips-' + (selected?.id || 'whole')} className="css-stage__chips">
             {ids.map((id, i) => {
-              const sp = SPOTS[id], ing = byId[id];
+              const ing = byId[id];
               if (!ing) return null;
               return (
-                <div key={id} className="css-chip" style={{ left: `${(sp.label[0] / W) * 100}%`, top: `${(sp.label[1] / H) * 100}%`, '--d': `${0.55 + i * 0.18}s` }}>
+                <div key={id} ref={(el) => { chipRefs.current[id] = el; }} className="css-chip" style={{ left: `${(labels[i][0] / W) * 100}%`, top: `${(labels[i][1] / H) * 100}%`, '--d': `${0.55 + i * 0.18}s` }}>
                   <i>{i + 1}</i>
                   <span>{ing.name}</span>
                   <b>{ing.perBar}</b>
-                  {sp.hidden && <em>in the mix</em>}
+                  {SPOTS[id].hidden && <em>in the mix</em>}
                 </div>
               );
             })}

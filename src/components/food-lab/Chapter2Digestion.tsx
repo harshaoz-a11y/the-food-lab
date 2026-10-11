@@ -74,6 +74,19 @@ const PATH_CASEIN = "M40 260 C120 255 200 200 300 154 C400 114 450 150 520 195 C
 const PATH_NO_FIBRE = "M40 260 C80 200 120 62 170 62 C230 62 300 150 380 220 C440 255 520 260 690 260";
 const PATH_BAR = "M40 260 C90 230 140 84 200 76 C300 70 400 74 500 114 C580 146 630 204 690 234";
 
+// Qualitative share of each essential amino acid from the plant side; dairy tops up the rest
+const AMINO_ACIDS = [
+  { name: "Leucine", short: "Leu", plant: 45 },
+  { name: "Isoleucine", short: "Ile", plant: 45 },
+  { name: "Valine", short: "Val", plant: 50 },
+  { name: "Lysine", short: "Lys", plant: 20 },
+  { name: "Methionine", short: "Met", plant: 40 },
+  { name: "Threonine", short: "Thr", plant: 45 },
+  { name: "Tryptophan", short: "Trp", plant: 50 },
+  { name: "Phenylalanine", short: "Phe", plant: 55 },
+  { name: "Histidine", short: "His", plant: 50 },
+];
+
 const X_MIN = 40;
 const X_MAX = 690;
 const X_SPAN = X_MAX - X_MIN; // 650
@@ -156,7 +169,7 @@ export function Chapter2Digestion() {
           Fast, then slow, then steady
         </h3>
         <p className="p11-chapter__subtitle">
-          How whey, micellar casein, and three viscous fibres orchestrate hours of steady amino acid release.
+          One protein is quick, one is slow, and the fibre stretches both — so the bar keeps feeding you for hours, not minutes.
         </p>
       </header>
 
@@ -165,7 +178,7 @@ export function Chapter2Digestion() {
         <div className="p11-chart-card">
           <div className="p11-chart-top">
             <span className="p11-chart-label" id={`${scrubberId}-label`}>
-              Amino acids in the blood — illustrative, not plotted study data
+              Protein reaching your blood — an illustration, not study data
             </span>
             <div className="p11-scrubber-readout" aria-live="polite">
               <span className="p11-readout-time">{hour.toFixed(1)} h</span>
@@ -259,7 +272,7 @@ export function Chapter2Digestion() {
                 strokeLinecap="round"
               />
 
-              {/* 2. Whey (brick) */}
+              {/* 2. Whey alone */}
               <path
                 d={PATH_WHEY}
                 fill="none"
@@ -268,7 +281,7 @@ export function Chapter2Digestion() {
                 strokeLinecap="round"
               />
 
-              {/* 3. Casein (green) */}
+              {/* 3. Casein alone */}
               <path
                 d={PATH_CASEIN}
                 fill="none"
@@ -277,7 +290,7 @@ export function Chapter2Digestion() {
                 strokeLinecap="round"
               />
 
-              {/* 4. The bar (thick ink) */}
+              {/* 4. Protein 11 */}
               <path
                 d={PATH_BAR}
                 fill="none"
@@ -366,40 +379,19 @@ export function Chapter2Digestion() {
           <div className="p11-chart-legend">
             <div className="p11-legend-item">
               <span className="p11-legend-swatch p11-legend-swatch--bar" />
-              <span className="p11-legend-label">The bar (thick ink)</span>
+              <span className="p11-legend-label">Protein 11</span>
             </div>
             <div className="p11-legend-item">
               <span className="p11-legend-swatch p11-legend-swatch--whey" />
-              <span className="p11-legend-label">Whey (brick)</span>
+              <span className="p11-legend-label">Whey alone</span>
             </div>
             <div className="p11-legend-item">
               <span className="p11-legend-swatch p11-legend-swatch--casein" />
-              <span className="p11-legend-label">Casein (green)</span>
+              <span className="p11-legend-label">Casein alone</span>
             </div>
             <div className="p11-legend-item">
               <span className="p11-legend-swatch p11-legend-swatch--nofibre" />
-              <span className="p11-legend-label">Same protein, no fibre (dashed)</span>
-            </div>
-          </div>
-
-          {/* Fullness gradient strip */}
-          <div className="p11-fullness-section" aria-hidden="true">
-            <div className="p11-fullness-header">
-              <span className="p11-fullness-title">Fullness sensation</span>
-              <span className="p11-fullness-caption">Subjective digestive presence over 6 hours</span>
-            </div>
-            <div className="p11-fullness-bar-wrap">
-              <div className="p11-fullness-bar" />
-              {/* Scrubber pointer on the fullness bar */}
-              <div
-                className="p11-fullness-cursor"
-                style={{ left: `${((currentX - X_MIN) / X_SPAN) * 100}%` }}
-              />
-            </div>
-            <div className="p11-fullness-labels">
-              <span className="p11-f-label p11-f-label--early">You notice it</span>
-              <span className="p11-f-label p11-f-label--mid">Still full</span>
-              <span className="p11-f-label p11-f-label--late">Hunger returns later</span>
+              <span className="p11-legend-label">Same protein, no fibre</span>
             </div>
           </div>
         </div>
@@ -410,61 +402,38 @@ export function Chapter2Digestion() {
           <div className="p11-panel-box">
             <span className="p11-panel-kicker">In plain words</span>
             <p className="p11-panel-plain">
-              Protein isolates drunk in water hit the bloodstream quickly and drop back down within ninety minutes.
-              In Protein 11, micellar casein coagulates gently in the stomach, releasing amino acids slowly over hours.
-              Layered soluble fibres from isabgol and oats create a soft viscosity that tempers absorption, turning what would have been a sharp spike and crash into a sustained, steady delivery.
+              A protein shake hits fast and is gone in about an hour and a half. This bar works in relay: whey
+              shows up first, casein takes over later, and the fibre from isabgol and oats slows everything down
+              a little. No spike, no slump — just steady fuel through the afternoon.
             </p>
           </div>
 
-          {/* Amino acid balance graphic */}
+          {/* Amino acid balance: one bar, nine essential slots */}
           <div className="p11-panel-box">
             <div className="p11-panel-box__head">
               <span className="p11-panel-kicker">Amino acid balance</span>
-              <span className="p11-panel-tag">Qualitative · No numbers</span>
+              <span className="p11-aa-complete-tag">Complete · 9/9</span>
             </div>
             <p className="p11-panel-microcopy">
-              Plant proteins supply deep mineral density but run lower in lysine. Dairy proteins fill that gap.
+              Your body needs nine building blocks it can’t make itself. Oats and peanut run short on one of them
+              (lysine); milk proteins fill the gap.
             </p>
 
-            <div className="p11-aa-balance">
-              {/* Plant bar */}
-              <div className="p11-aa-row">
-                <div className="p11-aa-label-row">
-                  <span className="p11-aa-name">Plant</span>
-                  <span className="p11-aa-note">peanut butter powder & oats</span>
-                </div>
-                <div className="p11-aa-track">
-                  <div className="p11-aa-fill p11-aa-fill--plant" style={{ width: "72%" }}>
-                    <span className="p11-aa-dip-marker" title="Lysine gap">Lysine dip</span>
+            <div className="p11-aa-bar" role="img" aria-label="All nine essential amino acids covered, lysine mostly from dairy">
+              {AMINO_ACIDS.map((aa) => (
+                <div key={aa.name} className={`p11-aa-slot${aa.name === "Lysine" ? " is-gap" : ""}`} title={aa.name}>
+                  <div className="p11-aa-slot__fill">
+                    <span className="p11-aa-slot__plant" style={{ flexBasis: `${aa.plant}%` }} />
+                    <span className="p11-aa-slot__dairy" />
                   </div>
+                  <span className="p11-aa-slot__name">{aa.short}</span>
                 </div>
-              </div>
+              ))}
+            </div>
 
-              {/* Dairy bar */}
-              <div className="p11-aa-row">
-                <div className="p11-aa-label-row">
-                  <span className="p11-aa-name">Dairy</span>
-                  <span className="p11-aa-note">whey & micellar casein</span>
-                </div>
-                <div className="p11-aa-track">
-                  <div className="p11-aa-fill p11-aa-fill--dairy" style={{ width: "88%" }}>
-                    <span className="p11-aa-surplus-marker">High lysine</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Together bar */}
-              <div className="p11-aa-row p11-aa-row--highlight">
-                <div className="p11-aa-label-row">
-                  <span className="p11-aa-name">Together</span>
-                  <span className="p11-aa-note">Protein 11 balanced profile</span>
-                </div>
-                <div className="p11-aa-track">
-                  <div className="p11-aa-fill p11-aa-fill--together" style={{ width: "100%" }}>
-                    <span className="p11-aa-complete-marker">Complete balance</span>
-                  </div>
-                </div>
-              </div>
+            <div className="p11-aa-key">
+              <span><i className="p11-aa-key__dot p11-aa-key__dot--plant" /> Oats &amp; peanut</span>
+              <span><i className="p11-aa-key__dot p11-aa-key__dot--dairy" /> Whey &amp; casein</span>
             </div>
           </div>
 

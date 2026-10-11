@@ -38,7 +38,7 @@ export const PERSONAS: PersonaProfile[] = [
     subtitle: 'Desk stretches, back-to-back reviews, and evening commutes',
     draft: true,
     whatDayNeeds:
-      'Steady, non-crashing fuel that carries you through the late-afternoon lull without a heavy digestive slowdown or an awkward sugar spike while you are leading reviews.',
+      'Steady fuel for the 4 PM slump. No crash, no heaviness.',
     barMarker: {
       time: '4:00 PM',
       hourFraction: 16.0,
@@ -63,7 +63,7 @@ export const PERSONAS: PersonaProfile[] = [
     subtitle: 'Fast clinical handovers, variable pacing, and eating on your feet',
     draft: true,
     whatDayNeeds:
-      'A dense, quiet bite you can unwrap in under two minutes with clean hands, that sits gently in the stomach while you are on your feet through emergency intake.',
+      'Two minutes, clean hands, sits easy while you stay on your feet.',
     barMarker: {
       time: '11:30 AM',
       hourFraction: 11.5,
@@ -88,7 +88,7 @@ export const PERSONAS: PersonaProfile[] = [
     subtitle: 'Transit days, security lines, site walkthroughs, and unpredictable delays',
     draft: true,
     whatDayNeeds:
-      'A resilient bar that survives hours inside a bag without crumbling into dust or melting in heat, giving clean satiety when airport or roadside options are sparse.',
+      'Survives a bag all day. Fills you when nothing else is around.',
     barMarker: {
       time: '12:30 PM',
       hourFraction: 12.5,
@@ -112,7 +112,7 @@ export const PERSONAS: PersonaProfile[] = [
     subtitle: 'Early sessions, active daytime schedule, and sustained physical output',
     draft: true,
     whatDayNeeds:
-      'Clean whole-food protein pairing without isolate chalkiness or syrupy coatings, bringing balanced sustenance alongside wholesome fats and natural sweetness.',
+      'Real-food protein after a session. No chalk, no syrup.',
     barMarker: {
       time: '8:45 AM',
       hourFraction: 8.75,
@@ -137,7 +137,7 @@ export const PERSONAS: PersonaProfile[] = [
     subtitle: 'Fragmented hours, one-handed eating, and continuous daily care',
     draft: true,
     whatDayNeeds:
-      'Wholesome nutrient density requiring zero prep and zero cleanup, easily eaten with one hand while holding a little one when standard sit-down meals get pushed back.',
+      'One hand, zero prep. Carries you to a late lunch.',
     barMarker: {
       time: '10:15 AM',
       hourFraction: 10.25,

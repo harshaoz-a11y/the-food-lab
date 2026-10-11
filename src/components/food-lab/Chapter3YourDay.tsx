@@ -1,32 +1,19 @@
-import React from "react";
-import { ArrowUpRight, Clock, Sparkles } from "lucide-react";
-import { PERSONAS, PersonaProfile } from "./protein11Personas";
-import { PARTNERSHIPS } from "@/components/Protein-11/protein11Data.js";
+import React, { useState } from "react";
+import { PERSONAS } from "./protein11Personas";
 
-interface Chapter3YourDayProps {
-  selectedPersonaId: string | null;
-  onSelectPersona: (id: string | null) => void;
-  onSelectPartnership: (partnershipId: string) => void;
-}
+// Days from batch until we'd rather you finish it; null hides the line
+export const FRESH_DAYS: number | null = null;
 
-export function Chapter3YourDay({
-  selectedPersonaId,
-  onSelectPersona,
-  onSelectPartnership,
-}: Chapter3YourDayProps) {
-  const currentPersona = PERSONAS.find((p) => p.id === selectedPersonaId) || null;
+// Freshness chart (viewBox 0 0 600 220): x runs Day 0 → Day 7, lower y = better eating quality
+const xForDay = (d: number) => 40 + (d / 7) * 520;
+const FRESH_PATH = "M40 52 C170 53 300 56 430 60 C480 62 530 64 560 66";
+const SHELF_PATH = "M40 150 L560 150";
 
-  const handleChipClick = (partnershipId: string) => {
-    onSelectPartnership(partnershipId);
+export function Chapter3YourDay() {
+  const [selectedPersonaId, setSelectedPersonaId] = useState<string>(PERSONAS[0].id);
+  const currentPersona = PERSONAS.find((p) => p.id === selectedPersonaId) ?? PERSONAS[0];
 
-    // Scroll to particle bar stage
-    const stageElement = document.getElementById("p11-particle-stage");
-    if (stageElement) {
-      stageElement.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
-  // Convert hour string (e.g. 7.0 to 21.0) into a percentage across the 14-hour window (7 AM - 9 PM)
+  // Convert an hour (7.0 to 21.0) into a percentage across the 14-hour window (7 AM - 9 PM)
   const getTimelinePercent = (hourDecimal: number) => {
     const minHour = 7.0;
     const maxHour = 21.0;
@@ -40,33 +27,24 @@ export function Chapter3YourDay({
       aria-labelledby="ch3-heading"
     >
       <header className="p11-chapter__header">
-        <div className="p11-chapter__header-meta">
-          <span className="p11-chapter__kicker">Chapter 3 · Your day</span>
-          <span className="p11-draft-badge" title="Draft placeholder copy for review">
-            Draft: true
-          </span>
-        </div>
+        <span className="p11-chapter__kicker">Chapter 3 · Your day</span>
         <h3 id="ch3-heading" className="p11-chapter__title">
-          Where the bar fits in a 14-hour rhythm
+          Where it fits in your day
         </h3>
-        <p className="p11-chapter__subtitle">
-          From 7 AM to 9 PM, hunger is not a clock error — it is a consequence of real work, transit, and unpredictable schedules.
-        </p>
       </header>
 
-      {/* Persona Selector Row inside Chapter 3 for convenience */}
-      <div className="p11-day-persona-bar">
-        <span className="p11-day-persona-label">Viewing day for:</span>
-        <div className="p11-day-persona-chips" role="radiogroup" aria-label="Select persona schedule">
+      {/* Persona selector with the day's need in a bubble beside it */}
+      <div className="p11-day-select">
+        <div className="p11-day-persona-chips" role="radiogroup" aria-label="Whose day?">
           {PERSONAS.map((p) => {
-            const isSelected = selectedPersonaId === p.id;
+            const isSelected = currentPersona.id === p.id;
             return (
               <button
                 key={p.id}
                 type="button"
                 role="radio"
                 aria-checked={isSelected}
-                onClick={() => onSelectPersona(isSelected ? null : p.id)}
+                onClick={() => setSelectedPersonaId(p.id)}
                 className={`p11-day-chip ${isSelected ? "is-selected" : ""}`}
               >
                 {p.chipLabel}
@@ -74,144 +52,109 @@ export function Chapter3YourDay({
             );
           })}
         </div>
+
+        <div key={currentPersona.id} className="p11-day-bubble" aria-live="polite">
+          <span className="p11-day-bubble__kicker">What the day needs</span>
+          <p className="p11-day-bubble__text">{currentPersona.whatDayNeeds}</p>
+        </div>
       </div>
 
-      {!currentPersona ? (
-        /* Empty / default prompt state */
-        <div className="p11-day-empty-card">
-          <div className="p11-day-empty-inner">
-            <Clock className="h-8 w-8 text-brick opacity-80" aria-hidden="true" />
-            <h4 className="p11-day-empty-title">Pick who is eating</h4>
-            <p className="p11-day-empty-text">
-              Select one of the schedules above — such as <em>14-hour days</em>, <em>Shift work / ER</em>, or <em>Always on the move</em> — to inspect their 7 AM to 9 PM blocks and where Protein 11 fits into their day.
-            </p>
-            <div className="p11-day-quick-picks">
-              {PERSONAS.slice(0, 3).map((p) => (
-                <button
-                  key={p.id}
-                  type="button"
-                  onClick={() => onSelectPersona(p.id)}
-                  className="p11-day-quick-btn"
-                >
-                  <span>Explore {p.chipLabel}</span>
-                  <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-                </button>
-              ))}
+      {/* Day Strip (7 AM to 9 PM) */}
+      <div className="p11-timeline-card">
+        <div className="p11-timeline-ruler" aria-hidden="true">
+          {["7 AM", "9 AM", "11 AM", "1 PM", "3 PM", "5 PM", "7 PM", "9 PM"].map((tick) => (
+            <div key={tick} className="p11-timeline-ruler-tick">
+              <span className="p11-ruler-mark" />
+              <span className="p11-ruler-label">{tick}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="p11-timeline-strip" role="region" aria-label={`${currentPersona.title}: schedule from 7 AM to 9 PM`}>
+          {currentPersona.timeBlocks.map((block, idx) => (
+            <div
+              key={idx}
+              className={`p11-time-block p11-time-block--${block.type}`}
+              title={`${block.label} (${block.start} – ${block.end})`}
+            >
+              <span className="p11-time-block-label">{block.label}</span>
+              <span className="p11-time-block-time">{block.start}</span>
+            </div>
+          ))}
+
+          {/* Marker where the bar fits */}
+          <div
+            className="p11-bar-marker"
+            style={{
+              left: `${getTimelinePercent(currentPersona.barMarker.hourFraction)}%`,
+            }}
+          >
+            <div className="p11-marker-pin" aria-hidden="true">
+              <span className="p11-marker-dot" />
+              <span className="p11-marker-stem" />
+            </div>
+            <div className="p11-marker-card">
+              <span className="p11-marker-time">{currentPersona.barMarker.time}</span>
+              <strong className="p11-marker-title">{currentPersona.barMarker.label}</strong>
+              <p className="p11-marker-desc">{currentPersona.barMarker.context}</p>
             </div>
           </div>
         </div>
-      ) : (
-        /* Active Persona Schedule */
-        <div className="p11-day-layout" aria-live="polite">
-          {/* Persona Header Info */}
-          <div className="p11-day-headline">
-            <div>
-              <span className="p11-day-kicker">Schedule Profile</span>
-              <h4 className="p11-day-name">{currentPersona.title}</h4>
-              <p className="p11-day-sub">{currentPersona.subtitle}</p>
-            </div>
-            <div className="p11-day-slot-badge">
-              <Clock className="h-3.5 w-3.5 text-brick" aria-hidden="true" />
-              <span>Bar fits at <strong>{currentPersona.barMarker.time}</strong></span>
-            </div>
-          </div>
+      </div>
 
-          {/* Day Strip (7 AM to 9 PM) */}
-          <div className="p11-timeline-card">
-            <div className="p11-timeline-header">
-              <span className="p11-timeline-title">The 7 AM – 9 PM Day Strip</span>
-              <span className="p11-timeline-sub">Illustrative schedule</span>
-            </div>
+      {/* Freshness across the week + the honest trade-off */}
+      <div className="p11-fresh-layout">
+        <div className="p11-fresh-chart-card">
+          <span className="p11-chart-label">Eating quality across the week — illustrative</span>
+          <div className="p11-fresh-svg-wrap">
+            <svg
+              viewBox="0 0 600 220"
+              className="p11-fresh-svg"
+              role="img"
+              aria-label="Protein 11 stays close to its best from day 0 to day 7; a shelf-stable bar stays flat at a lower level"
+            >
+              <defs>
+                <linearGradient id="p11-fresh-fill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="var(--fl-green, #173b30)" stopOpacity="0.12" />
+                  <stop offset="100%" stopColor="var(--fl-green, #173b30)" stopOpacity="0.01" />
+                </linearGradient>
+              </defs>
 
-            {/* Hour ruler */}
-            <div className="p11-timeline-ruler" aria-hidden="true">
-              {["7 AM", "9 AM", "11 AM", "1 PM", "3 PM", "5 PM", "7 PM", "9 PM"].map((tick) => (
-                <div key={tick} className="p11-timeline-ruler-tick">
-                  <span className="p11-ruler-mark" />
-                  <span className="p11-ruler-label">{tick}</span>
-                </div>
-              ))}
-            </div>
+              <line x1="40" y1="190" x2="560" y2="190" stroke="var(--fl-ink, #1f2924)" strokeOpacity="0.2" strokeWidth="1.2" />
 
-            {/* Main Day Bar Strip with blocks */}
-            <div className="p11-timeline-strip" role="region" aria-label="Schedule blocks from 7 AM to 9 PM">
-              {currentPersona.timeBlocks.map((block, idx) => {
+              {[0, 1, 2, 3, 4, 5, 6, 7].map((d) => {
+                const x = xForDay(d);
                 return (
-                  <div
-                    key={idx}
-                    className={`p11-time-block p11-time-block--${block.type}`}
-                    title={`${block.label} (${block.start} – ${block.end})`}
-                  >
-                    <span className="p11-time-block-label">{block.label}</span>
-                    <span className="p11-time-block-time">{block.start}</span>
-                  </div>
+                  <g key={d}>
+                    <line x1={x} y1="36" x2={x} y2="190" stroke="var(--fl-ink, #1f2924)" strokeOpacity="0.05" strokeDasharray="2 3" />
+                    <text x={x} y="210" textAnchor="middle" className="p11-svg-tick-text">
+                      Day {d}
+                    </text>
+                  </g>
                 );
               })}
 
-              {/* Marker where the bar fits */}
-              <div
-                className="p11-bar-marker"
-                style={{
-                  left: `${getTimelinePercent(currentPersona.barMarker.hourFraction)}%`,
-                }}
-              >
-                <div className="p11-marker-pin" aria-hidden="true">
-                  <span className="p11-marker-dot" />
-                  <span className="p11-marker-stem" />
-                </div>
-                <div className="p11-marker-card">
-                  <span className="p11-marker-time">{currentPersona.barMarker.time}</span>
-                  <strong className="p11-marker-title">{currentPersona.barMarker.label}</strong>
-                  <p className="p11-marker-desc">{currentPersona.barMarker.context}</p>
-                </div>
-              </div>
-            </div>
-          </div>
+              <path d={`${FRESH_PATH} L560 190 L40 190 Z`} fill="url(#p11-fresh-fill)" />
+              <path d={SHELF_PATH} fill="none" stroke="var(--brick, #a33a2b)" strokeWidth="2.5" strokeDasharray="5 5" strokeLinecap="round" />
+              <path d={FRESH_PATH} fill="none" stroke="var(--fl-green, #173b30)" strokeWidth="3.5" strokeLinecap="round" />
 
-          {/* What this day needs & matching partnerships */}
-          <div className="p11-day-grid">
-            {/* What this day needs box */}
-            <div className="p11-needs-box">
-              <div className="p11-needs-box__header">
-                <Sparkles className="h-4 w-4 text-brick" aria-hidden="true" />
-                <h5 className="p11-needs-box__title">What this day needs</h5>
-              </div>
-              <p className="p11-needs-box__content">
-                {currentPersona.whatDayNeeds}
-              </p>
-            </div>
-
-            {/* Matching partnerships */}
-            <div className="p11-matches-box">
-              <span className="p11-matches-kicker">Formulated for this day</span>
-              <h5 className="p11-matches-title">Matching partnerships in the bar</h5>
-              <p className="p11-matches-hint">
-                Click any partnership to view how these ingredients work together in the particle bar above:
-              </p>
-              <div className="p11-matches-chips" role="list">
-                {currentPersona.matchingPartnershipIds.map((partId) => {
-                  const part = PARTNERSHIPS.find((p) => p.id === partId);
-                  if (!part) return null;
-                  return (
-                    <button
-                      key={part.id}
-                      type="button"
-                      role="listitem"
-                      onClick={() => handleChipClick(part.id)}
-                      className="p11-partnership-jump-chip"
-                      aria-label={`View partnership: ${part.title}. Scrolls to particle bar`}
-                    >
-                      <span className="p11-jump-title">{part.title}</span>
-                      <span className="p11-jump-group">{part.group}</span>
-                      <ArrowUpRight className="h-3.5 w-3.5 opacity-60" aria-hidden="true" />
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
+              {/* direct labels instead of a legend */}
+              <text x="44" y="38" className="p11-fresh-line-label p11-fresh-line-label--fresh">Protein 11, made this week</text>
+              <text x="44" y="138" className="p11-fresh-line-label p11-fresh-line-label--shelf">Shelf-stable bar</text>
+            </svg>
           </div>
         </div>
-      )}
+
+        <div className="p11-tradeoff-box">
+          <span className="p11-panel-kicker">Honest kitchen</span>
+          <h5 className="p11-tradeoff-title">The trade-off, said plainly</h5>
+          <p className="p11-tradeoff-text">
+            No glycerine, palm oil or stabilisers to keep it on a warehouse shelf for two years. It smells of real
+            citrus, cocoa and toasted nuts — and it’s made to be eaten fresh, like food.
+            {FRESH_DAYS !== null && <> Best within {FRESH_DAYS} days.</>}
+          </p>
+        </div>
+      </div>
     </section>
   );
 }

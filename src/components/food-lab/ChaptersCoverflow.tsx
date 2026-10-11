@@ -2,7 +2,6 @@ import React, { useState, useCallback } from "react";
 import { Protein11Interactions } from "./Protein11Interactions";
 import { Chapter2Digestion } from "./Chapter2Digestion";
 import { Chapter3YourDay } from "./Chapter3YourDay";
-import { Chapter4Fresh } from "./Chapter4Fresh";
 import "./ChaptersCoverflow.css";
 
 interface Chapter {
@@ -25,12 +24,7 @@ const chapters: Chapter[] = [
   {
     id: "day",
     label: "Your Day",
-    component: <Chapter3YourDay selectedPersonaId={null} onSelectPersona={() => {}} onSelectPartnership={() => {}} />,
-  },
-  {
-    id: "fresh",
-    label: "Fresh",
-    component: <Chapter4Fresh />,
+    component: <Chapter3YourDay />,
   },
 ];
 

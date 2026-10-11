@@ -1,10 +1,6 @@
 import React, { useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { INGREDIENTS, PARTNERSHIPS } from "@/components/Protein-11/protein11Data.js";
-import { PERSONAS } from "./protein11Personas";
-import Chapter2Digestion from "./Chapter2Digestion";
-import Chapter3YourDay from "./Chapter3YourDay";
-import Chapter4Fresh from "./Chapter4Fresh";
 import CrossSectionStage from "@/components/Protein-11/CrossSectionStage";
 import crossSection from "@/components/Protein-11/protein11-cross-section.jpg";
 import "./Protein11Interactions.css";
@@ -12,9 +8,6 @@ import "./Protein11Interactions.css";
 export type Partnership = (typeof PARTNERSHIPS)[number];
 
 export function Protein11Interactions() {
-  // Shared state for all chapters: defaults to none (null)
-  const [selectedPersona, setSelectedPersona] = useState<string | null>(null);
-
   // Partnership state for the particle bar
   const [selected, setSelected] = useState<Partnership | null>(null);
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -62,11 +55,6 @@ export function Protein11Interactions() {
       setSelected(allItems[prevIdx]);
       buttonRefs.current[prevIdx]?.focus();
     }
-  };
-
-  const handleSelectPartnershipById = (partnershipId: string) => {
-    const found = PARTNERSHIPS.find((p) => p.id === partnershipId) || null;
-    setSelected(found);
   };
 
   const currentTitle = selected ? selected.title : "Whole bar";
@@ -211,19 +199,6 @@ export function Protein11Interactions() {
           </div>
         </div>
       </section>
-
-      {/* Chapter 2: "After you eat it" */}
-      <Chapter2Digestion />
-
-      {/* Chapter 3: "Your day" */}
-      <Chapter3YourDay
-        selectedPersonaId={selectedPersona}
-        onSelectPersona={setSelectedPersona}
-        onSelectPartnership={handleSelectPartnershipById}
-      />
-
-      {/* Chapter 4: "Fresh" */}
-      <Chapter4Fresh />
     </div>
   );
 }
