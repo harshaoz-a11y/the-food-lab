@@ -48,7 +48,7 @@ export function EggExperiment() {
                     <p className="egg-observation__caption">FIG. 1 — {egg === "raw" ? "RAW EGG" : "COOKED EGG"}</p>
                 </div>
                 <div className="egg-observation__reading" aria-live="polite">
-                    <span className="egg-observation__eyebrow">TRUE ILEAL · HUMAN DATA</span>
+                    <span className="egg-observation__eyebrow">HUMAN DATA</span>
                     <h3>Protein<br />digestibility</h3>
                     <div className={`egg-observation__metric egg-observation__metric--${egg}`}>
                         <strong>{current.value}%</strong>
@@ -56,7 +56,7 @@ export function EggExperiment() {
                     <p className="egg-observation__interpretation">{current.note}</p>
                 </div>
             </div>
-            <p className="egg-observation__source">SOURCE- HUMAN BIOLOGY, SCHOOL OF NUTRITION AND TRANSLATIONAL RESEARCH IN METABOLISM (NUTRIM), MAASTRICHT UNIVERSITY MEDICAL CENTRE+, MAASTRICHT, THE NETHERLANDS</p>
+            <p className="egg-observation__source">SOURCE- HUMAN BIOLOGY, SCHOOL OF NUTRITION AND TRANSLATIONAL RESEARCH IN METABOLISM (NUTRIM), MAASTRICHT UNIVERSITY MEDICAL CENTRE+, MAASTRICHT, THE NETHERLANDS (TRUE ILEAL HUMAN DATA)</p>
         </article>
     );
 }
