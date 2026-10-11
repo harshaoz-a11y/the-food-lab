@@ -1,3 +1,4 @@
+// Import React and other dependencies
 import React, { Suspense, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { INGREDIENTS, PARTNERSHIPS } from "@/components/Protein-11/protein11Data.js";
@@ -141,11 +142,13 @@ export function ParticleBarExplorer() {
                         {item.ingredients.length} parts
                       </span>
                     </button>
-                  )}
+                  )
+                }
+              })
                 </div>
               </div>
             )
-          )}
+          }
 
           {/* Mobile-only navigation */}
           <div className="p11-mobile-nav">
