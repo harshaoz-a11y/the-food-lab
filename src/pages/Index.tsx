@@ -15,6 +15,25 @@ import { useState } from "react";
 import {
     Activity,
     AlarmClock,
+    Briefcase,
+    CalendarClock,
+    Flag,
+    Footprints,
+    Globe,
+    HeartPulse,
+    Hourglass,
+    MessagesSquare,
+    Plane,
+    Repeat,
+    Scale,
+    Smile,
+    Soup,
+    Sparkles,
+    ThumbsDown,
+    Timer,
+    TrendingUp,
+    Utensils,
+    Wallet,
     ArrowRight,
     BatteryLow,
     CalendarDays,
@@ -161,51 +180,160 @@ const fieldStudies = [{
     }]
 }];
 
-const bioNutritionProcess = [{
+const methodFlow = [{
     label: "Understand",
-    icon: NotebookPen
+    icon: NotebookPen,
+    areas: [{
+        title: "Your biology",
+        icon: Activity,
+        leaves: [{ label: "What your body is telling us.", icon: HeartPulse }]
+    }, {
+        title: "Your goals",
+        icon: Target,
+        leaves: [{ label: "What you actually want to change.", icon: Flag }]
+    }]
 }, {
     label: "Maximize Benefit and Taste",
-    icon: FlaskConical
+    icon: FlaskConical,
+    areas: [{
+        title: "Your food",
+        icon: Salad,
+        leaves: [
+            { label: "What you eat", icon: Utensils },
+            { label: "How much", icon: Scale },
+            { label: "How often", icon: Repeat },
+            { label: "What you enjoy", icon: Smile },
+            { label: "What you don’t", icon: ThumbsDown }
+        ]
+    }, {
+        title: "Your preferences",
+        icon: Heart,
+        leaves: [
+            { label: "Taste", icon: Sparkles },
+            { label: "Satiety", icon: Soup },
+            { label: "Habits", icon: Footprints },
+            { label: "Culture", icon: Globe },
+            { label: "Convenience", icon: Timer },
+            { label: "Affordability", icon: Wallet }
+        ]
+    }]
 }, {
     label: "Observe",
-    icon: Activity
+    icon: Activity,
+    areas: [{
+        title: "Your response",
+        icon: RefreshCcw,
+        leaves: [{ label: "What changes when we change something.", icon: TrendingUp }]
+    }]
 }, {
     label: "Adapt",
-    icon: RefreshCcw
+    icon: RefreshCcw,
+    areas: [{
+        title: "Your life",
+        icon: CalendarDays,
+        leaves: [
+            { label: "Work", icon: Briefcase },
+            { label: "Routines", icon: CalendarClock },
+            { label: "Time", icon: Hourglass },
+            { label: "Travel", icon: Plane },
+            { label: "Family", icon: UsersRound },
+            { label: "Social life", icon: MessagesSquare }
+        ]
+    }]
 }];
 
-const helpAreas = [{
-    title: "Your biology",
-    copy: "What your body is telling us.",
-    icon: Activity,
-    loopStep: 1
-}, {
-    title: "Your goals",
-    copy: "What you actually want to change.",
-    icon: Target,
-    loopStep: 1
-}, {
-    title: "Your food",
-    copy: "What you eat, how much, how often — what you enjoy and what you don’t.",
-    icon: Salad,
-    loopStep: 2
-}, {
-    title: "Your preferences",
-    copy: "Taste, satiety, habits, culture, convenience, affordability.",
-    icon: Heart,
-    loopStep: 2
-}, {
-    title: "Your response",
-    copy: "What changes when we change something.",
-    icon: RefreshCcw,
-    loopStep: 3
-}, {
-    title: "Your life",
-    copy: "Work, routines, time, travel, family, social life.",
-    icon: CalendarDays,
-    loopStep: 4
-}];
+// Geometry shared with .method-flow in globals.css (px).
+const FLOW_SLOT = 112;
+const FLOW_HEIGHT = FLOW_SLOT * 4;
+
+function MethodFlow() {
+    const [active, setActive] = useState(0);
+    const stage = methodFlow[active];
+
+    const handleKeyDown = (event: React.KeyboardEvent) => {
+        if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+            event.preventDefault();
+            setActive((active + 1) % methodFlow.length);
+        }
+        if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+            event.preventDefault();
+            setActive((active - 1 + methodFlow.length) % methodFlow.length);
+        }
+    };
+
+    // Elbow from the hovered stage's centre to the tree's vertical centre.
+    const stageCentre = FLOW_SLOT * active + FLOW_SLOT / 2;
+    const rootCentre = FLOW_HEIGHT / 2;
+    const elbowTop = Math.min(stageCentre, rootCentre);
+    const elbowHeight = Math.abs(stageCentre - rootCentre);
+    const stageIsAbove = stageCentre < rootCentre;
+
+    return (
+        <div className={`method-flow method-flow--step-${active + 1}`} aria-label="Working loop">
+            <svg className="method-flow__filters" width="0" height="0" aria-hidden="true" focusable="false">
+                <filter id="mf-rough" x="-5%" y="-5%" width="110%" height="110%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="7" result="n" />
+                    <feDisplacementMap in="SourceGraphic" in2="n" scale="1.8" />
+                </filter>
+            </svg>
+            <span className="tape method-flow__tape" aria-hidden="true" />
+            <div className="method-flow__head" aria-hidden="true">
+                <span>Fig. 0{active + 1} / {stage.label}</span>
+                <span className="method-flow__hint">Hover or tap a step</span>
+            </div>
+            <div className="method-flow__body">
+            <div className="method-flow__stages" role="group" aria-label="Choose a working-loop stage">
+                {methodFlow.map(({ label, icon: StageIcon }, index) => (
+                    <button
+                        key={label}
+                        type="button"
+                        className={`method-flow__stage method-flow__stage--step-${index + 1} ${index === active ? "is-active" : ""}`}
+                        aria-pressed={index === active}
+                        aria-controls="method-flow-panel"
+                        onMouseEnter={() => setActive(index)}
+                        onFocus={() => setActive(index)}
+                        onClick={() => setActive(index)}
+                        onKeyDown={handleKeyDown}>
+                        <span className="method-flow__index">STEP 0{index + 1}</span>
+                        <StageIcon aria-hidden="true" />
+                        <strong><span>{label}</span></strong>
+                    </button>
+                ))}
+            </div>
+            <div className="method-flow__panel" id="method-flow-panel" aria-live="polite">
+                <div className="method-flow__tree" key={active}>
+                    <span
+                        className={`method-flow__elbow ${stageIsAbove ? "is-down" : "is-up"}`}
+                        aria-hidden="true"
+                        style={{ top: elbowTop, height: elbowHeight }}>
+                        <i /><i /><i />
+                    </span>
+                    <ul className="method-flow__areas" aria-label={`${stage.label}: what we look at`}>
+                        {stage.areas.map(({ title, icon: AreaIcon, leaves }, areaIndex) => (
+                            <li className="method-flow__area" key={title} style={{ "--d": areaIndex } as React.CSSProperties}>
+                                <span className="method-flow__node method-flow__node--area">
+                                    <AreaIcon aria-hidden="true" />
+                                    <strong>{title}</strong>
+                                </span>
+                                <ul className="method-flow__leaves">
+                                    {leaves.map(({ label, icon: LeafIcon }, leafIndex) => (
+                                        <li className="method-flow__leaf" key={label} style={{ "--l": leafIndex } as React.CSSProperties}>
+                                            <span className="method-flow__node method-flow__node--leaf">
+                                                <LeafIcon aria-hidden="true" />
+                                                <span>{label}</span>
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+    );
+}
 
 function Brand() {
     return (
@@ -440,7 +568,6 @@ const lensEssence: Record<"egg" | "rice" | "gluten" | "protein", string> = {
 
 const Index = () => {
     const [activeExperiment, setActiveExperiment] = useState<"egg" | "rice" | "gluten" | "protein">("egg");
-    const [activeMethodStep, setActiveMethodStep] = useState(0);
     useSectionReveal();
 
     return (
@@ -595,11 +722,11 @@ const Index = () => {
                             <span className="h-px flex-1 border-t border-dashed border-ink/15" />
                         </div>
                         <div
-                            className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-12">
+                            className="grid gap-10 lg:gap-12 xl:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] xl:items-center">
                             <div>
                                 <h2
                                     id="help-heading"
-                                    className="mt-5 max-w-none whitespace-nowrap font-serif text-[clamp(1.35rem,4.2vw,4rem)] font-normal leading-[0.94] tracking-[-0.04em]">1. Precision Bio-Nutrition</h2>
+                                    className="mt-5 max-w-none whitespace-nowrap font-serif text-[clamp(1.35rem,4.2vw,4rem)] xl:whitespace-normal xl:text-[clamp(2.4rem,3.4vw,3.6rem)] font-normal leading-[0.94] tracking-[-0.04em]">1. Precision <span className="whitespace-nowrap">Bio-Nutrition</span></h2>
                                 <blockquote
                                     className="mt-6 max-w-2xl border-l-4 border-primary pl-5 font-serif text-xl leading-snug text-ink/80 sm:text-2xl lg:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
@@ -612,91 +739,7 @@ const Index = () => {
                                     className="method-cta mt-7 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">First 30 min free consult — Get in touch <ArrowRight className="h-4 w-4" />
                                 </a>
                             </div>
-                            <div className="method-coverflow" aria-label="Working loop stages">
-                                <div className="method-coverflow__stage">
-                                <div
-                                    className="method-coverflow__track"
-                                    role="tablist"
-                                    aria-label="Choose a working-loop stage">
-                                    {bioNutritionProcess.map((
-                                        {
-                                            label,
-                                            icon: StageIcon
-                                        },
-                                        index
-                                    ) => {
-                                        const offset = (index - activeMethodStep + bioNutritionProcess.length) % bioNutritionProcess.length;
-                                        const position = offset > bioNutritionProcess.length / 2 ? offset - bioNutritionProcess.length : offset;
-                                        const positionClass = position === -1 ? "is-previous" : position === 0 ? "is-active" : position === 1 ? "is-next" : "is-far";
-
-                                        return (
-                                            <button
-                                                key={label}
-                                                type="button"
-                                                role="tab"
-                                                aria-selected={index === activeMethodStep}
-                                                aria-controls="method-coverflow-panel"
-                                                onClick={() => setActiveMethodStep(index)}
-                                                onKeyDown={event => {
-                                                    if (event.key === "ArrowRight") {
-                                                        event.preventDefault();
-                                                        setActiveMethodStep((activeMethodStep + 1) % bioNutritionProcess.length);
-                                                    }
-
-                                                    if (event.key === "ArrowLeft") {
-                                                        event.preventDefault();
-
-                                                        setActiveMethodStep(
-                                                            (activeMethodStep - 1 + bioNutritionProcess.length) % bioNutritionProcess.length
-                                                        );
-                                                    }
-                                                }}
-                                                className={`method-coverflow__card method-coverflow__card--step-${index + 1} ${positionClass}`}>
-                                                <span className="method-coverflow__index">STEP 0{index + 1}</span>
-                                                <StageIcon aria-hidden="true" />
-                                                <strong>{label}</strong>
-                                                <span className="method-coverflow__hint">{position === 0 ? "SELECTED" : "VIEW STEP"}</span>
-                                            </button>
-                                        );
-                                    })}
-                                </div>
-                                {(() => {
-                                    const activeStage = bioNutritionProcess[activeMethodStep];
-                                    const signals = helpAreas.filter(signal => signal.loopStep === activeMethodStep + 1);
-
-                                    return (
-                                        <div
-                                            className={`method-coverflow__panel method-coverflow__panel--step-${activeMethodStep + 1}`}
-                                            id="method-coverflow-panel"
-                                            role="tabpanel"
-                                            aria-label={`Signals for ${activeStage.label}`}>
-                                            <div className="method-coverflow__panel-heading">
-                                                <span>STEP 0{activeMethodStep + 1}/ {activeStage.label}</span>
-                                                <span>{signals.length}RELATED SIGNAL{signals.length === 1 ? "" : "S"}</span>
-                                            </div>
-                                            <div
-                                                className={`method-coverflow__signals ${signals.length === 1 ? "is-single" : ""}`}>
-                                                {signals.map((
-                                                    {
-                                                        title,
-                                                        copy,
-                                                        icon: SignalIcon
-                                                    },
-                                                    index
-                                                ) => (<article className="method-coverflow__signal" key={title}>
-                                                    <SignalIcon aria-hidden="true" />
-                                                    <div>
-                                                        <strong>{title}</strong>
-                                                        <p>{copy}</p>
-                                                    </div>
-                                                    <small>0{helpAreas.indexOf(signals[0]) + index + 1}</small>
-                                                </article>))}
-                                            </div>
-                                        </div>
-                                    );
-                                })()}
-                                </div>
-                            </div>
+                            <MethodFlow />
                         </div>
                     </div>
                 </section>
