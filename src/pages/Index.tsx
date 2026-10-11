@@ -613,6 +613,7 @@ const Index = () => {
                                 </a>
                             </div>
                             <div className="method-coverflow" aria-label="Working loop stages">
+                                <div className="method-coverflow__stage">
                                 <div
                                     className="method-coverflow__track"
                                     role="tablist"
@@ -694,6 +695,7 @@ const Index = () => {
                                         </div>
                                     );
                                 })()}
+                                </div>
                             </div>
                         </div>
                     </div>
