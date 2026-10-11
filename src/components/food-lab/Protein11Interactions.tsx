@@ -1,5 +1,4 @@
 import React, { useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import { INGREDIENTS, PARTNERSHIPS } from "@/components/Protein-11/protein11Data.js";
 import CrossSectionStage from "@/components/Protein-11/CrossSectionStage";
 import crossSection from "@/components/Protein-11/protein11-cross-section.jpg";
@@ -26,22 +25,6 @@ export function Protein11Interactions() {
     }
     return Array.from(map.entries()).map(([name, items]) => ({ name, items }));
   }, []);
-
-  const currentIndex = selected === null
-    ? 0
-    : allItems.findIndex((it) => it && it.id === selected.id);
-
-  const handlePrev = () => {
-    const prevIdx = (currentIndex - 1 + allItems.length) % allItems.length;
-    setSelected(allItems[prevIdx]);
-    buttonRefs.current[prevIdx]?.focus();
-  };
-
-  const handleNext = () => {
-    const nextIdx = (currentIndex + 1) % allItems.length;
-    setSelected(allItems[nextIdx]);
-    buttonRefs.current[nextIdx]?.focus();
-  };
 
   const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
     if (e.key === "ArrowDown") {
@@ -74,15 +57,9 @@ export function Protein11Interactions() {
         aria-labelledby="p11-interactions-heading"
       >
         <header className="p11-header">
-          <div>
-            <span className="p11-header__kicker">Chapter 1 · The Particle Bar</span>
-            <h3 id="p11-interactions-heading" className="p11-header__title">
-              Protein 11 partnerships
-            </h3>
-          </div>
-          <span className="p11-header__count">
-            {PARTNERSHIPS.length} partnerships · select to inspect
-          </span>
+          <h3 id="p11-interactions-heading" className="p11-header__title">
+            Protein 11 partnerships
+          </h3>
         </header>
 
         <div className="p11-container">
@@ -157,35 +134,6 @@ export function Protein11Interactions() {
               aria-live="polite"
               aria-atomic="true"
             >
-              <div className="p11-understage__header">
-                <span className="p11-understage__kicker">
-                  {selected ? `${selected.group} partnership` : "Formula overview"}
-                </span>
-                <div className="p11-nav">
-                  <button
-                    type="button"
-                    onClick={handlePrev}
-                    className="p11-nav-btn"
-                    aria-label="Previous partnership"
-                  >
-                    <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
-                    <span>Prev</span>
-                  </button>
-                  <span className="p11-nav-counter" aria-hidden="true">
-                    {currentIndex + 1} / {allItems.length}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={handleNext}
-                    className="p11-nav-btn"
-                    aria-label="Next partnership"
-                  >
-                    <span>Next</span>
-                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                  </button>
-                </div>
-              </div>
-
               <div className="p11-understage__copy">
                 <h4 className="p11-understage__title">{currentTitle}</h4>
                 <p className="p11-understage__plain">{currentPlain}</p>

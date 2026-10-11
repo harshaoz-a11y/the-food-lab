@@ -296,6 +296,15 @@ const methodFlow = [{
 }];
 
 const FLOW_SLOT = 112;
+// Per-bar macros, scaled to an actual 70 g bar
+const PROTEIN11_MACROS = [
+    { label: "Calories", value: "~224 kcal" },
+    { label: "Protein", value: "~19.5–20 g" },
+    { label: "Carbs", value: "~20 g" },
+    { label: "Fat", value: "~8.8 g" },
+    { label: "Fibre", value: "~6.2 g" },
+];
+
 const FLOW_HEIGHT = FLOW_SLOT * 4;
 
 function MethodFlow() {
@@ -774,7 +783,7 @@ const Index = () => {
                     className="scroll-mt-24 px-4 sm:px-6 lg:px-8"
                     aria-labelledby="help-heading">
                     <div
-                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-14 sm:px-10 lg:px-20 lg:py-24">
+                        className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
                         <div
                             className="grid gap-10 lg:gap-12 xl:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] xl:items-center">
                             <div>
@@ -790,7 +799,7 @@ const Index = () => {
                                 </p>
                                 <a
                                     href="#your-experiment"
-                                    className="method-cta mt-7 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">First 30 min free consult — Get in touch <ArrowRight className="h-4 w-4" />
+                                    className="method-cta mt-7 inline-flex items-center gap-3 rounded-full bg-[#f8f2e5] px-6 py-3.5 text-sm text-ink transition-transform hover:-translate-y-0.5">First 30 min free consult — Get in touch <ArrowRight className="h-4 w-4" />
                                 </a>
                             </div>
                             <MethodFlow />
@@ -799,10 +808,10 @@ const Index = () => {
                 </section>
                 <section id="fit-peasant" className="px-4 sm:px-6 lg:px-8">
                     <div
-                        className="mx-auto max-w-[1200px] border-x border-[#173b30]/20 bg-[#173b30] px-4 py-12 text-[#f8f2e5] sm:px-8 lg:px-16 lg:py-20">
+                        className="paper-sheet nb-ruled mx-auto max-w-[1200px] px-4 py-12 sm:px-8 lg:px-16 lg:py-20">
                         <div className="grid gap-8 lg:grid-cols-[1fr_.8fr] lg:items-center">
                             <figure
-                                className="evidence-photo relative flex flex-col items-center justify-center border-0 bg-transparent p-0 shadow-none">
+                                className="relative flex flex-col items-center justify-center border-0 bg-transparent p-0 shadow-none">
                                 <img
                                     src={maestroAssets.alchemyBar}
                                     alt="Protein 11 bar cut open to reveal its whole-food texture"
@@ -813,6 +822,14 @@ const Index = () => {
                                     <span className="p11-hero-stamp__sub">Small batch · Bengaluru</span>
                                 </div>
                                 <figcaption className="p11-hero-caption">16 ingredients, every one a food you can name.</figcaption>
+                                <dl className="p11-macros" aria-label="Macros per bar">
+                                    {PROTEIN11_MACROS.map((m) => (
+                                        <div key={m.label} className="p11-macros__item">
+                                            <dt>{m.label}</dt>
+                                            <dd>{m.value}</dd>
+                                        </div>
+                                    ))}
+                                </dl>
                             </figure>
                             <div>
                                 <h2 className="max-w-xl font-serif font-normal tracking-[-0.04em] text-ink">

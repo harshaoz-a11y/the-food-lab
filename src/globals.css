@@ -827,7 +827,7 @@
 .rice-primary-metric strong,
 .rice-primary-value {
   font-family: "Fraunces", Georgia, serif;
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   font-weight: 400;
   color: var(--ink);
 }
@@ -3168,7 +3168,7 @@ main > section.reveal.is-revealed {
   }
 
   .egg-observation__state {
-    font-size: 1.35rem;
+    font-size: 1.15rem;
   }
 
   .egg-observation__preview {
@@ -4095,21 +4095,20 @@ body,
 }
 .rice-choice:hover { transform: none; box-shadow: 0 3px 0 rgba(163, 58, 43, 0.18); }
 
-/* Protein 11 hero: "Made this week" stamp tucked onto the bar photo, ingredient line beneath */
+/* Protein 11 hero: bar sits straight on the notebook page with a "Made this week" stamp and the macros beside it */
 .p11-hero-stamp {
   position: absolute;
-  top: 6%;
-  right: 2%;
+  top: 2%;
+  right: 3%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
   padding: 0.5rem 0.85rem;
-  border: 2px dashed rgba(248, 242, 229, 0.85);
+  border: 2px dashed var(--brick, #a33a2b);
   border-radius: 0.5rem;
-  background: rgba(23, 59, 48, 0.55);
-  backdrop-filter: blur(2px);
-  color: #f8f2e5;
+  background: rgba(246, 236, 216, 0.85);
+  color: var(--brick, #a33a2b);
   transform: rotate(-4deg);
   pointer-events: none;
   user-select: none;
@@ -4120,7 +4119,7 @@ body,
   font-size: 9px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 .p11-hero-stamp__main {
   font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
@@ -4131,16 +4130,66 @@ body,
   text-transform: uppercase;
 }
 .p11-hero-caption {
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
   font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
   font-style: italic;
   font-size: 1.05rem;
-  color: rgba(248, 242, 229, 0.8);
+  color: rgba(23, 59, 48, 0.8);
   text-align: center;
+}
+.p11-macros {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  width: 100%;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(23, 59, 48, 0.25);
+  border-bottom: 1px solid rgba(23, 59, 48, 0.25);
+}
+.p11-macros__item {
+  padding: 0.6rem 0.25rem;
+  text-align: center;
+}
+.p11-macros__item + .p11-macros__item {
+  border-left: 1px dashed rgba(23, 59, 48, 0.2);
+}
+.p11-macros dt {
+  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(23, 59, 48, 0.6);
+}
+.p11-macros dd {
+  margin: 0.15rem 0 0;
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: 1.15rem;
+  line-height: 1.1;
+  color: var(--ink, #173b30);
 }
 @media (max-width: 640px) {
   .p11-hero-stamp { top: -10px; right: -6px; padding: 0.3rem 0.55rem; }
   .p11-hero-stamp__lab { display: none; }
   .p11-hero-stamp__main { font-size: 0.8rem; }
   .p11-hero-stamp__sub { font-size: 8px; }
+  .p11-macros dd { font-size: 1.05rem; }
 }
+
+/* Precision Bio-Nutrition now sits on the green stock (Protein 11 took the notebook paper) */
+#how-we-help > div {
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  border-radius: 0 !important;
+  padding-left: var(--page-gutter) !important;
+  padding-right: var(--page-gutter) !important;
+  background-color: #29443b;
+  box-shadow:
+    inset 0 0 70px rgba(15,24,21,.20),
+    inset 0 0 150px rgba(15,24,21,.12),
+    0 18px 50px rgba(26,32,28,.13);
+}
+#how-we-help blockquote {
+  color: rgba(248, 242, 229, 0.85);
+}
+#how-we-help blockquote span { color: #f8f2e5; }
+#how-we-help .method-flow { background: #f6ecd8; }

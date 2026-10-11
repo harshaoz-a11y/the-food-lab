@@ -433,6 +433,13 @@
   }
 }
 
+.p11-digestion-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
 .p11-chart-card {
   border-radius: 1.25rem;
   border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);

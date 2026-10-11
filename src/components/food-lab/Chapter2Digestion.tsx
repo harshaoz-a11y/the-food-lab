@@ -164,7 +164,6 @@ export function Chapter2Digestion() {
       aria-labelledby="ch2-heading"
     >
       <header className="p11-chapter__header">
-        <span className="p11-chapter__kicker">Chapter 2 · After you eat it</span>
         <h3 id="ch2-heading" className="p11-chapter__title">
           Fast, then slow, then steady
         </h3>
@@ -174,7 +173,8 @@ export function Chapter2Digestion() {
       </header>
 
       <div className="p11-digestion-layout">
-        {/* Main Chart Column */}
+        {/* Main Chart Column: graph, then the plain-words explanation */}
+        <div className="p11-digestion-main">
         <div className="p11-chart-card">
           <div className="p11-chart-top">
             <span className="p11-chart-label" id={`${scrubberId}-label`}>
@@ -396,8 +396,6 @@ export function Chapter2Digestion() {
           </div>
         </div>
 
-        {/* Side Panel Column */}
-        <aside className="p11-side-panel">
           {/* In plain words */}
           <div className="p11-panel-box">
             <span className="p11-panel-kicker">In plain words</span>
@@ -407,7 +405,10 @@ export function Chapter2Digestion() {
               a little. No spike, no slump — just steady fuel through the afternoon.
             </p>
           </div>
+        </div>
 
+        {/* Side Panel Column */}
+        <aside className="p11-side-panel">
           {/* Amino acid balance: one bar, nine essential slots */}
           <div className="p11-panel-box">
             <div className="p11-panel-box__head">

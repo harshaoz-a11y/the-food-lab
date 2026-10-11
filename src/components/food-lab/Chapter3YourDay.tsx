@@ -27,7 +27,6 @@ export function Chapter3YourDay() {
       aria-labelledby="ch3-heading"
     >
       <header className="p11-chapter__header">
-        <span className="p11-chapter__kicker">Chapter 3 · Your day</span>
         <h3 id="ch3-heading" className="p11-chapter__title">
           Where it fits in your day
         </h3>
