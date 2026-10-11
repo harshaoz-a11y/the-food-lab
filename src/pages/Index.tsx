@@ -699,7 +699,6 @@ const Index = () => {
                                     src={maestroAssets.alchemyBar}
                                     alt="Protein 11 bar cut open to reveal its whole-food texture"
                                     className="min-h-[280px] w-full object-cover sm:min-h-[380px]" />
-                                <figcaption>Protein 11 / first practical experiment</figcaption>
                             </figure>
                             <div>
                                 <h2 className="max-w-xl font-serif font-normal tracking-[-0.04em] text-ink">
