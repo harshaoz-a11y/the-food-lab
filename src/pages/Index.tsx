@@ -49,7 +49,6 @@ import { RiceExperiment } from "@/components/food-lab/RiceExperiment";
 import RegionScene from "@/components/region-scenes/RegionScene";
 import { BrandLogo } from "@/components/food-lab/BrandLogo";
 import { maestroAssets } from "@/lib/maestro-assets";
-import "@/pages/Index.css";
 
 const navigation = [{
     label: "The question",
@@ -426,7 +425,7 @@ const Index = () => {
             <main className="pt-[74px]">
                 <section id="question" className="px-4 pb-4 pt-6 sm:px-6 lg:px-8 lg:pt-8">
                     <div
-                        className="paper-sheet nb-ruled paper-sheet-aged mx-auto max-w-[1400px] px-5 py-10 sm:px-10 sm:py-14 lg:px-20 lg:py-20">
+                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 sm:py-14 lg:px-20 lg:py-20">
                         <div
                             className="hero-hypothesis-grid grid min-w-0 items-stretch gap-8 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:gap-10">
                             <div
@@ -452,7 +451,7 @@ const Index = () => {
                 </section>
                 <section id="demonstration" className="px-4 sm:px-6 lg:px-8">
                     <div
-                        className="paper-sheet nb-ruled paper-sheet-aged mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
+                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
                         <NbHeader label="Experiment log" page="Pg. 003" />
                         <div className="max-w-4xl">
                             <h2
@@ -586,7 +585,7 @@ const Index = () => {
                     className="scroll-mt-24 px-4 sm:px-6 lg:px-8"
                     aria-labelledby="help-heading">
                     <div
-                        className="paper-sheet nb-ruled paper-sheet-aged mx-auto max-w-[1400px] px-5 py-14 sm:px-10 lg:px-20 lg:py-24">
+                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-14 sm:px-10 lg:px-20 lg:py-24">
                         <NbHeader label="What if… diets could be delicious?" />
                         <div
                             className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-12">
