@@ -452,15 +452,6 @@ const Index = () => {
                             aria-label="Interactive 4-lens coverflow carousel">
                             {}
                             <div className="lens-coverflow__controls">
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        const currentIndex = experimentOptions.findIndex(([k]) => k === activeExperiment);
-                                        const prevIndex = (currentIndex - 1 + experimentOptions.length) % experimentOptions.length;
-                                        setActiveExperiment(experimentOptions[prevIndex][0]);
-                                    }}
-                                    className="lens-coverflow__nav-btn"
-                                    aria-label="Previous experiment">← PREV</button>
                                 <div
                                     className="lens-coverflow__pills"
                                     role="tablist"
@@ -474,15 +465,6 @@ const Index = () => {
                                         className={`lens-coverflow__pill ${activeExperiment === key ? "is-active" : ""}`}>0{index + 1} {label}
                                     </button>))}
                                 </div>
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        const currentIndex = experimentOptions.findIndex(([k]) => k === activeExperiment);
-                                        const nextIndex = (currentIndex + 1) % experimentOptions.length;
-                                        setActiveExperiment(experimentOptions[nextIndex][0]);
-                                    }}
-                                    className="lens-coverflow__nav-btn"
-                                    aria-label="Next experiment">NEXT →</button>
                             </div>
                             {}
                             <div className="lens-coverflow__stage">
