@@ -54,7 +54,7 @@ import { BrandLogo } from "@/components/food-lab/BrandLogo";
 import { maestroAssets } from "@/lib/maestro-assets";
 
 const navigation = [{
-    label: "The question",
+    label: "How we approach nutrition",
     href: "#question"
 }, {
     label: "The proof",
@@ -62,9 +62,14 @@ const navigation = [{
 }, {
     label: "Real life",
     href: "#real-life"
-}, {
-    label: "Work with us",
+}];
+
+const offerings = [{
+    label: "Nutritional Consulting",
     href: "#how-we-help"
+}, {
+    label: "Protein 11",
+    href: "#fit-peasant"
 }];
 
 const fieldStudies = [{
@@ -215,6 +220,7 @@ function Brand() {
 
 function Header() {
     const [open, setOpen] = useState(false);
+    const [offeringsOpen, setOfferingsOpen] = useState(false);
 
     return (
         <header
@@ -235,6 +241,24 @@ function Header() {
                         className="text-sm text-ink/65 transition-colors hover:text-primary xl:text-base mx-[44px]">
                         {item.label}
                     </a>))}
+                    <div className="relative mx-[44px]">
+                        <button
+                            type="button"
+                            onClick={() => setOfferingsOpen(value => !value)}
+                            className="flex items-center gap-2 text-sm text-ink/65 transition-colors hover:text-primary xl:text-base"
+                            aria-expanded={offeringsOpen}>
+                            Our Offerings <span aria-hidden="true">⌄</span>
+                        </button>
+                        {offeringsOpen && (<div className="absolute left-0 top-full mt-3 min-w-[210px] rounded-xl border border-ink/15 bg-[#faedde] p-2 shadow-lg">
+                            {offerings.map(item => (<a
+                                key={item.href}
+                                href={item.href}
+                                onClick={() => setOfferingsOpen(false)}
+                                className="block rounded-lg px-3 py-2 text-sm text-ink/70 hover:bg-ink/5 hover:text-primary">
+                                {item.label}
+                            </a>))}
+                        </div>)}
+                    </div>
                 </nav>
                 <a
                     href="#your-experiment"
@@ -259,6 +283,22 @@ function Header() {
                     className="flex items-center justify-between border-b border-ink/10 py-3 text-sm text-ink">
                     {item.label}<ArrowRight className="h-4 w-4 text-primary" />
                 </a>))}
+                <button
+                    type="button"
+                    onClick={() => setOfferingsOpen(value => !value)}
+                    className="flex w-full items-center justify-between border-b border-ink/10 py-3 text-left text-sm text-ink"
+                    aria-expanded={offeringsOpen}>
+                    Our Offerings <span aria-hidden="true">⌄</span>
+                </button>
+                {offeringsOpen && (<div className="border-b border-ink/10 pl-4">
+                    {offerings.map(item => (<a
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className="flex items-center justify-between py-3 text-sm text-ink/75">
+                        {item.label}<ArrowRight className="h-4 w-4 text-primary" />
+                    </a>))}
+                </div>)}
                 <a
                     href="#your-experiment"
                     onClick={() => setOpen(false)}
