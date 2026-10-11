@@ -278,10 +278,6 @@ function MethodFlow() {
                 </filter>
             </svg>
             <span className="tape method-flow__tape" aria-hidden="true" />
-            <div className="method-flow__head" aria-hidden="true">
-                <span>Fig. 0{active + 1} / {stage.label}</span>
-                <span className="method-flow__hint">Hover or tap a step</span>
-            </div>
             <div className="method-flow__body">
             <div className="method-flow__stages" role="group" aria-label="Choose a working-loop stage">
                 {methodFlow.map(({ label, icon: StageIcon }, index) => (
@@ -689,9 +685,6 @@ const Index = () => {
                     aria-labelledby="help-heading">
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-14 sm:px-10 lg:px-20 lg:py-24">
-                        <div className="nb-top-margin flex items-center gap-3 sm:gap-4">
-                            <span className="h-px flex-1 border-t border-dashed border-ink/15" />
-                        </div>
                         <div
                             className="grid gap-10 lg:gap-12 xl:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] xl:items-center">
                             <div>

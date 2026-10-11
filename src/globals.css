@@ -824,13 +824,15 @@
   text-transform: uppercase;
   color: var(--ink-soft);
 }
-.rice-primary-metric strong {
+.rice-primary-metric strong,
+.rice-primary-value {
   font-family: "Fraunces", Georgia, serif;
   font-size: 1.35rem;
   font-weight: 400;
   color: var(--ink);
 }
-.rice-experiment.is-green .rice-primary-metric strong { color: var(--green); }
+.rice-experiment.is-green .rice-primary-metric strong,
+.rice-experiment.is-green .rice-primary-value { color: var(--green); }
 .rice-chart-wrap svg {
   display: block;
   width: 100%;

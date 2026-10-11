@@ -86,7 +86,7 @@ export function RiceExperiment() {
                         <div className="rice-chart-wrap">
                             <div className="rice-primary-metric">
                                 <span>Illustrative comparison · post-meal glucose peak</span>
-                                <strong>{current.glucosePeak}</strong>
+                                <div className="rice-primary-value">{current.glucosePeak}</div>
                             </div>
                             <svg
                                 viewBox="0 0 120 100"
@@ -113,7 +113,7 @@ export function RiceExperiment() {
                         </span>))}
                     </div>
                     <p
-                        className="mt-6 border-t border-dashed border-ink/25 pt-4 font-mono text-[11px] uppercase leading-relaxed tracking-[0.1em] text-ink/50">Figures summarise the supplied clinical comparison. The curves are illustrative rather than plotted study data; results depend on rice variety, method and study context. This is an observation, not personal dietary advice.
+                        className="mt-6 w-full border-t border-dashed border-ink/25 pt-4 text-sm leading-relaxed tracking-wide text-ink/55">Figures summarise the supplied clinical comparison. The curves are illustrative rather than plotted study data; results depend on rice variety, method and study context. This is an observation, not personal dietary advice.
                     </p>
                 </div>
             </div>
