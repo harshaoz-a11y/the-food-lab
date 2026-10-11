@@ -220,7 +220,7 @@ function Header() {
         <header
             className="fixed inset-x-0 top-0 z-50 border-b border-ink/15 bg-[#faedde]/95 backdrop-blur-sm">
             <div
-                className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12 bg-paper">
+                className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
                 <Brand />
                 {}
                 <span
