@@ -1,5 +1,5 @@
 import React, { Suspense, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, User } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { INGREDIENTS, PARTNERSHIPS } from "@/components/Protein-11/protein11Data.js";
 import { PERSONAS } from "./protein11Personas";
 import Chapter2Digestion from "./Chapter2Digestion";
@@ -84,42 +84,6 @@ export function Protein11Interactions() {
 
   return (
     <div className="p11-experience-root" id="p11-experience">
-      {/* Top Bar: "Who's eating?" Chips (Shared State, defaults to none) */}
-      <header className="p11-whos-eating-bar" aria-label="Who's eating persona filter">
-        <div className="p11-whos-eating-lead">
-          <User className="h-4 w-4 text-brick" aria-hidden="true" />
-          <span className="p11-whos-eating-title">Who’s eating?</span>
-        </div>
-        <div className="p11-whos-eating-chips" role="toolbar" aria-label="Who's eating schedules">
-          {PERSONAS.map((persona) => {
-            const isSelected = selectedPersona === persona.id;
-            return (
-              <button
-                key={persona.id}
-                type="button"
-                aria-pressed={isSelected}
-                onClick={() =>
-                  setSelectedPersona(isSelected ? null : persona.id)
-                }
-                className={`p11-whos-eating-chip ${isSelected ? "is-active" : ""}`}
-              >
-                {persona.chipLabel}
-              </button>
-            );
-          })}
-          {selectedPersona !== null && (
-            <button
-              type="button"
-              onClick={() => setSelectedPersona(null)}
-              className="p11-whos-eating-clear"
-              aria-label="Clear persona selection"
-            >
-              Reset
-            </button>
-          )}
-        </div>
-      </header>
-
       {/* Chapter 1: The Particle Bar Explorer */}
       <section
         id="p11-particle-stage"

@@ -1,0 +1,244 @@
+/* Chapters Coverflow Carousel - Protein 11 Experience */
+
+/* Main container */
+.chapters-coverflow {
+  position: relative;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+/* Navigation Controls */
+.chapters-coverflow__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed rgba(23, 59, 48, 0.2);
+}
+
+.chapters-coverflow__nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(23, 59, 48, 0.25);
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  background: var(--paper-light);
+  color: var(--ink);
+  font: 11px "Space Mono", monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 2px 3px 0 rgba(23, 59, 48, 0.08);
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.chapters-coverflow__nav-btn:hover {
+  transform: translateY(-2px);
+  background: var(--paper);
+  box-shadow: 3px 4px 0 rgba(23, 59, 48, 0.12);
+}
+
+.chapters-coverflow__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.chapters-coverflow__pill {
+  border: 1px solid rgba(23, 59, 48, 0.2);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  background: rgba(248, 242, 229, 0.65);
+  color: var(--ink-soft);
+  font: 11px "Space Mono", monospace;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.chapters-coverflow__pill:hover {
+  color: var(--ink);
+  background: var(--paper-light);
+}
+
+.chapters-coverflow__pill.is-active {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper-light);
+  box-shadow: 2px 3px 0 rgba(23, 59, 48, 0.15);
+}
+
+.chapters-coverflow__pill-number {
+  margin-right: 0.25rem;
+  font-weight: 600;
+}
+
+/* 3D Coverflow Stage */
+.chapters-coverflow__stage {
+  position: relative;
+  width: 100%;
+  min-height: 900px;
+  perspective: 1400px;
+  perspective-origin: 50% 30%;
+  overflow: hidden;
+  padding: 2rem 0 4rem;
+}
+
+.chapters-coverflow__item {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  width: min(92%, 1060px);
+  max-height: 850px;
+  overflow-y: auto;
+  border: 1px solid rgba(23, 59, 48, 0.2);
+  border-radius: 1.5rem;
+  background: var(--paper);
+  background-image:
+    radial-gradient(ellipse at 50% 48%, rgba(255,255,255,.14) 0%, transparent 68%),
+    linear-gradient(90deg, rgba(112,91,63,.02), transparent 18%, transparent 82%, rgba(112,91,63,.03));
+  padding: clamp(1.5rem, 4vw, 3rem);
+  box-shadow: 0 10px 30px rgba(23, 59, 48, 0.08), 0 2px 6px rgba(23, 59, 48, 0.04);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 500ms ease,
+              box-shadow 500ms ease,
+              filter 500ms ease;
+  cursor: pointer;
+}
+
+/* Active center card */
+.chapters-coverflow__item--pos-active {
+  z-index: 10;
+  transform: translateX(-50%) translateZ(60px) rotateY(0deg) scale(1);
+  opacity: 1;
+  filter: none;
+  cursor: default;
+  box-shadow: 0 25px 55px rgba(23, 59, 48, 0.18), 0 8px 18px rgba(23, 59, 48, 0.1), 0 0 0 1px rgba(23, 59, 48, 0.12);
+  pointer-events: auto;
+}
+
+/* Previous card (turned left) */
+.chapters-coverflow__item--pos-prev {
+  z-index: 5;
+  transform: translateX(calc(-50% - 28rem)) translateZ(-200px) rotateY(45deg) scale(0.8);
+  opacity: 0.5;
+  filter: brightness(0.95) saturate(0.8);
+  box-shadow: 0 18px 40px rgba(23, 59, 48, 0.14);
+  pointer-events: auto;
+}
+
+.chapters-coverflow__item--pos-prev:hover {
+  opacity: 0.75;
+  transform: translateX(calc(-50% - 25rem)) translateZ(-150px) rotateY(38deg) scale(0.85);
+}
+
+/* Next card (turned right) */
+.chapters-coverflow__item--pos-next {
+  z-index: 5;
+  transform: translateX(calc(-50% + 28rem)) translateZ(-200px) rotateY(-45deg) scale(0.8);
+  opacity: 0.5;
+  filter: brightness(0.95) saturate(0.8);
+  box-shadow: 0 18px 40px rgba(23, 59, 48, 0.14);
+  pointer-events: auto;
+}
+
+.chapters-coverflow__item--pos-next:hover {
+  opacity: 0.75;
+  transform: translateX(calc(-50% + 25rem)) translateZ(-150px) rotateY(-38deg) scale(0.85);
+}
+
+/* 4th card (deep background) */
+.chapters-coverflow__item--pos-far {
+  z-index: 1;
+  transform: translateX(calc(-50% + 42rem)) translateZ(-400px) rotateY(-55deg) scale(0.65);
+  opacity: 0.2;
+  filter: brightness(0.85) blur(1.5px);
+  pointer-events: auto;
+}
+
+.chapters-coverflow__item--pos-far:hover {
+  opacity: 0.45;
+  transform: translateX(calc(-50% + 38rem)) translateZ(-320px) rotateY(-50deg) scale(0.7);
+}
+
+/* Content styling */
+.chapters-coverflow__item-content {
+  position: relative;
+  min-height: 500px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .chapters-coverflow__stage {
+    min-height: 950px;
+    perspective: 1200px;
+  }
+  
+  .chapters-coverflow__item {
+    width: min(95%, 900px);
+    max-height: 880px;
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+  }
+  
+  .chapters-coverflow__item--pos-active {
+    transform: translateX(-50%) translateZ(40px) rotateY(0deg) scale(0.95);
+  }
+  
+  .chapters-coverflow__item--pos-prev {
+    transform: translateX(calc(-50% - 22rem)) translateZ(-150px) rotateY(40deg) scale(0.7);
+  }
+  
+  .chapters-coverflow__item--pos-next {
+    transform: translateX(calc(-50% + 22rem)) translateZ(-150px) rotateY(-40deg) scale(0.7);
+  }
+  
+  .chapters-coverflow__item--pos-far {
+    transform: translateX(calc(-50% + 32rem)) translateZ(-300px) rotateY(-50deg) scale(0.55);
+  }
+}
+
+@media (max-width: 768px) {
+  .chapters-coverflow__stage {
+    min-height: 1000px;
+    perspective: 1000px;
+    padding: 1.5rem 0 3rem;
+  }
+  
+  .chapters-coverflow__item {
+    width: min(98%, 750px);
+    max-height: 900px;
+    padding: clamp(1rem, 4vw, 2rem);
+  }
+  
+  .chapters-coverflow__item--pos-active {
+    transform: translateX(-50%) translateZ(25px) rotateY(0deg) scale(0.9);
+  }
+  
+  .chapters-coverflow__item--pos-prev {
+    transform: translateX(calc(-50% - 16rem)) translateZ(-100px) rotateY(35deg) scale(0.65);
+  }
+  
+  .chapters-coverflow__item--pos-next {
+    transform: translateX(calc(-50% + 16rem)) translateZ(-100px) rotateY(-35deg) scale(0.65);
+  }
+  
+  .chapters-coverflow__item--pos-far {
+    transform: translateX(calc(-50% + 24rem)) translateZ(-200px) rotateY(-45deg) scale(0.5);
+  }
+  
+  .chapters-coverflow__nav-btn {
+    padding: 0.35rem 0.8rem;
+    font-size: 10px;
+  }
+  
+  .chapters-coverflow__pill {
+    padding: 0.3rem 0.6rem;
+    font-size: 10px;
+  }
+}

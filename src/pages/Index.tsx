@@ -40,7 +40,7 @@ import {
 } from "lucide-react";
 
 import { useSectionReveal } from "@/hooks/use-section-reveal";
-import { Protein11Interactions } from "@/components/food-lab/Protein11Interactions";
+import { ChaptersCoverflow } from "@/components/food-lab/ChaptersCoverflow";
 import { EggExperiment } from "@/components/food-lab/EggExperiment";
 import { FieldCharacter, type FieldScene } from "@/components/food-lab/FieldCharacter";
 import { HypothesisExperiment } from "@/components/food-lab/HypothesisExperiment";
@@ -723,7 +723,7 @@ const Index = () => {
                                 </div>
                             </div>
                         </div>
-                        <Protein11Interactions />
+                        <ChaptersCoverflow />
                     </div>
                 </section>
                 <section
