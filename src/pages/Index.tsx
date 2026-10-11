@@ -654,9 +654,6 @@ const Index = () => {
                                                 <span className="method-coverflow__index">STEP 0{index + 1}</span>
                                                 <StageIcon aria-hidden="true" />
                                                 <strong>{label}</strong>
-                                                <div className="method-coverflow__card-signals">
-                                                    {helpAreas.filter(signal => signal.loopStep === index + 1).map(signal => (<span key={signal.title}>{signal.title}</span>))}
-                                                </div>
                                                 <span className="method-coverflow__hint">{position === 0 ? "SELECTED" : "VIEW STEP"}</span>
                                             </button>
                                         );
