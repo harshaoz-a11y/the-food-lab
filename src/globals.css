@@ -3950,7 +3950,66 @@ main > section.reveal.is-revealed {
   box-shadow:
     inset 0 0 80px rgba(150, 112, 56, 0.13),
     inset 0 0 14px rgba(120, 88, 44, 0.12),
-    inset 22px 0 38px -18px rgba(110, 80, 40, 0.10),
-    8px 10px 0 rgba(59, 49, 32, 0.05),
-    0 20px 50px rgba(59, 49, 32, 0.08) !important;
+    inset 22px 0 38px -18px rgba(110, 80, 40, 0.10) !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   FULL-BLEED PAGES
+   The notebook sheets run edge to edge. Content keeps a
+   generous, fluid gutter and a ~1560px reading frame on
+   very wide screens, so nothing stretches without limit.
+   ═══════════════════════════════════════════════════════ */
+:root { --page-gutter: max(clamp(1.35rem, 5.5vw, 6rem), calc((100% - 1560px) / 2)); }
+
+#question,
+#demonstration,
+#real-life,
+#how-we-help,
+#fit-peasant,
+#your-experiment {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+#question > .paper-sheet,
+#demonstration > .paper-sheet,
+#how-we-help > .paper-sheet,
+#real-life > div,
+#fit-peasant > div,
+#your-experiment > div {
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  border-left-width: 0 !important;
+  border-right-width: 0 !important;
+  border-radius: 0 !important;
+  padding-left: var(--page-gutter) !important;
+  padding-right: var(--page-gutter) !important;
+}
+
+#top > header > div {
+  max-width: none !important;
+  padding-left: var(--page-gutter) !important;
+  padding-right: var(--page-gutter) !important;
+}
+
+/* More air between the headline and the interaction card now the page is wider */
+@media (min-width: 1024px) {
+  #question .hero-hypothesis-grid { column-gap: clamp(2.5rem, 6vw, 7rem) !important; }
+}
+
+/* No peach strips above the first sheet or below the last: the paper meets the header and footer */
+#question { padding-top: 0 !important; padding-bottom: 0 !important; }
+#your-experiment { padding-bottom: 0 !important; }
+
+/* Wider screens: let the flowchart use the room it has been given */
+@media (min-width: 1280px) {
+  .method-flow { padding: 1.9rem 2.1rem 2.1rem; }
+  .method-flow__body { grid-template-columns: 12rem minmax(0, 1fr); }
+  .method-flow__node--area { width: 11.5rem; }
+  .method-flow__node--area strong { font-size: 1rem; }
+  .method-flow__node--leaf { font-size: 1.32rem; }
+  .method-flow__areas { left: 2.75rem; }
+  .method-flow__elbow { width: 2.75rem; }
 }
