@@ -407,9 +407,9 @@ const Index = () => {
         <div id="top" className="min-h-screen overflow-hidden bg-paper text-ink">
             <Header />
             <main className="pt-[74px]">
-                <section id="question" className="px-4 pb-4 pt-6 sm:px-6 lg:px-8 lg:pt-8">
+                <section id="question" className="bg-[#e9decc] px-4 pb-6 pt-8 sm:px-6 lg:px-8 lg:pb-8 lg:pt-10">
                     <div
-                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 sm:py-14 lg:px-20 lg:py-20">
+                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 shadow-[0_18px_45px_rgba(23,59,48,.08)] sm:px-10 sm:py-14 lg:px-20 lg:py-20">
                         <div
                             className="hero-hypothesis-grid grid min-w-0 items-stretch gap-8 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:gap-10">
                             <div
@@ -433,9 +433,9 @@ const Index = () => {
                         </aside>
                     </div>
                 </section>
-                <section id="demonstration" className="px-4 sm:px-6 lg:px-8">
+                <section id="demonstration" className="bg-[#dce7df] px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
                                     <div
-                                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
+                                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 shadow-[0_18px_45px_rgba(23,59,48,.08)] sm:px-10 lg:px-16 lg:py-14">
                                         <div className="nb-top-margin flex items-center gap-3 sm:gap-4">
                                             <span className="h-px flex-1 border-t border-dashed border-ink/15" />
                                         </div>
@@ -527,9 +527,9 @@ const Index = () => {
                         </div>
                     </div>
                 </section>
-                <section id="real-life" className="px-4 sm:px-6 lg:px-8">
+                <section id="real-life" className="bg-[#c9d6cb] px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
                     <div
-                        className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
+                        className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] shadow-[0_18px_45px_rgba(23,59,48,.14)] sm:px-10 lg:px-20 lg:py-24">
                         <div className="nb-dark-ruled-top" />
                         <div className="mb-10 sm:mb-12">
                             <h2
@@ -547,10 +547,10 @@ const Index = () => {
                 </section>
                 <section
                     id="how-we-help"
-                    className="scroll-mt-24 px-4 sm:px-6 lg:px-8"
+                    className="scroll-mt-24 bg-[#eee5d4] px-4 py-8 sm:px-6 lg:px-8 lg:py-10"
                     aria-labelledby="help-heading">
                     <div
-                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-14 sm:px-10 lg:px-20 lg:py-24">
+                        className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-14 shadow-[0_18px_45px_rgba(23,59,48,.08)] sm:px-10 lg:px-20 lg:py-24">
                         <div className="nb-top-margin flex items-center gap-3 sm:gap-4">
                             <span className="h-px flex-1 border-t border-dashed border-ink/15" />
                         </div>
@@ -658,9 +658,9 @@ const Index = () => {
                         </div>
                     </div>
                 </section>
-                <section id="fit-peasant" className="px-4 sm:px-6 lg:px-8">
+                <section id="fit-peasant" className="bg-[#d68b7f]/20 px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
                     <div
-                        className="mx-auto max-w-[1200px] border-x border-[#173b30]/20 bg-[#173b30] px-4 py-12 text-[#f8f2e5] sm:px-8 lg:px-16 lg:py-20">
+                        className="mx-auto max-w-[1200px] border-x border-[#173b30]/20 bg-[#173b30] px-4 py-12 text-[#f8f2e5] shadow-[0_18px_45px_rgba(23,59,48,.14)] sm:px-8 lg:px-16 lg:py-20">
                         <div className="grid gap-8 lg:grid-cols-[1fr_.8fr] lg:items-center">
                             <figure className="evidence-photo flex items-center justify-center rotate-[-1deg]">
                                 <span className="tape tape-left" />
@@ -694,9 +694,9 @@ const Index = () => {
                 </section>
                 <section
                     id="your-experiment"
-                    className="px-4 pb-4 sm:px-6 sm:pb-6 lg:px-8 lg:pb-8">
+                    className="bg-[#1d4036] px-4 pb-6 pt-8 sm:px-6 sm:pb-8 lg:px-8 lg:pb-10 lg:pt-10">
                     <div
-                        className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
+                        className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] shadow-[0_18px_45px_rgba(23,59,48,.18)] sm:px-10 lg:px-20 lg:py-24">
                         <div className="nb-dark-ruled-top" />
                         <div className="grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
                             <div>
