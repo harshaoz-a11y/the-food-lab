@@ -947,57 +947,49 @@
 .field-frame {
   --story-accent: #9a433b;
   display: grid;
-  gap: 1rem;
+  gap: 1.25rem;
   margin-top: 1rem;
   overflow: hidden;
   border: 1px solid rgba(154, 67, 59, 0.3);
   border-top: 4px solid var(--story-accent);
   border-radius: 1rem;
   background: #f3ead8;
-  padding: 1rem;
+  padding: 1.25rem;
   color: #173b30;
   animation: field-story-load 320ms ease both;
 }
 .field-frame-desk { --story-accent: #173b30; }
 .field-frame-evening { --story-accent: #6e3935; }
-.field-panel-heading { display: flex; align-items: center; gap: 1rem; }
-.field-panel-art { flex: none; display: grid; width: 138px; place-items: center; border: 1px dashed rgba(154, 67, 59, 0.35); border-radius: 0.75rem; background: #fff8e9; overflow: hidden; }
-.field-character-svg { display: block; width: 100%; height: auto; }
-.field-panel-copy { min-width: 0; }
+/* Ink sketches are multiplied onto the paper card so their white ground disappears. */
+.field-panel-art { display: grid; place-items: center; min-width: 0; }
+.field-panel-art img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; filter: sepia(0.18) contrast(1.04); }
+.field-panel-copy { display: flex; min-width: 0; flex-direction: column; justify-content: center; }
 .field-time { font: 10px "Space Mono", ui-monospace, monospace; letter-spacing: 0.14em; color: var(--story-accent); text-transform: uppercase; }
-.field-panel-heading h3 { margin-top: 0.3rem; font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: 1.45rem; font-weight: 400; line-height: 1; }
-.field-panel-heading p { margin-top: 0.4rem; font-size: 0.8rem; line-height: 1.5; color: rgba(23, 59, 48, 0.72); }
-.field-note { display: block; margin-top: 0.5rem; color: var(--story-accent); font: 10px "Space Mono", ui-monospace, monospace; letter-spacing: 0.13em; text-transform: uppercase; }
-.field-story { display: grid; gap: 0.6rem; }
+.field-panel-copy h3 { margin-top: 0.4rem; font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: 1.6rem; font-weight: 400; line-height: 1; }
+.field-panel-copy > p { margin-top: 0.6rem; font-size: 0.9rem; line-height: 1.55; color: rgba(23, 59, 48, 0.72); }
+.field-note { display: block; margin-top: 0.7rem; color: var(--story-accent); font: 10px "Space Mono", ui-monospace, monospace; letter-spacing: 0.13em; text-transform: uppercase; }
+.field-story { display: grid; gap: 0; margin-top: 1.1rem; border-top: 1px dashed rgba(23, 59, 48, 0.25); list-style: none; padding: 0; }
 .field-story-step {
-  position: relative;
   display: grid;
   min-width: 0;
-  grid-template-columns: 44px minmax(0, 1fr);
-  align-items: center;
-  gap: 0.65rem;
-  border: 1px solid rgba(23, 59, 48, 0.14);
-  border-radius: 0.75rem;
-  background: #fff8e9;
-  padding: 0.55rem 0.7rem;
-  box-shadow: 2px 3px 0 rgba(64, 42, 28, 0.06);
+  grid-template-columns: 2rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.5rem;
+  border-bottom: 1px dashed rgba(23, 59, 48, 0.25);
+  padding: 0.6rem 0;
   animation: field-step-in 320ms ease both;
 }
 .field-story-step:nth-child(2) { animation-delay: 70ms; }
 .field-story-step:nth-child(3) { animation-delay: 140ms; }
 .field-story-step:nth-child(4) { animation-delay: 210ms; }
-.field-story-icons { display: flex; width: 44px; height: 44px; align-items: center; justify-content: center; gap: 0.1rem; border: 1px solid rgba(154, 67, 59, 0.26); border-radius: 50%; background: #f3ead8; }
-.field-story-icons svg { width: 21px; height: 21px; flex: none; color: #9a433b; stroke-width: 1.55; }
-.field-story-icons svg:nth-child(2) { width: 16px; height: 16px; margin-left: -7px; padding: 2px; border-radius: 50%; background: #f3ead8; }
+.field-story-step > small { color: var(--story-accent); font: 10px "Space Mono", ui-monospace, monospace; letter-spacing: 0.12em; }
 .field-story-copy { display: flex; min-width: 0; flex-direction: column; }
-.field-story-copy small { color: var(--story-accent); font: 9px "Space Mono", ui-monospace, monospace; letter-spacing: 0.12em; text-transform: uppercase; }
-.field-story-copy strong { margin-top: 0.15rem; font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: 0.95rem; font-weight: 400; line-height: 1.1; }
-.field-story-copy p { margin-top: 0.2rem; font-size: 0.72rem; line-height: 1.4; color: rgba(23, 59, 48, 0.68); }
+.field-story-copy strong { font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: 1rem; font-weight: 400; line-height: 1.15; }
+.field-story-copy p { margin-top: 0.15rem; font-size: 0.78rem; line-height: 1.4; color: rgba(23, 59, 48, 0.68); }
 
 @media (min-width: 768px) {
-  .field-story { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .field-panel-art { width: 160px; }
-  .field-panel-heading h3 { font-size: 1.7rem; }
+  .field-frame { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); align-items: center; gap: 2rem; padding: 1.75rem 2rem; }
+  .field-panel-copy h3 { font-size: 2rem; }
 }
 
 @keyframes field-story-load { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }

@@ -42,7 +42,10 @@ import {
 import { useSectionReveal } from "@/hooks/use-section-reveal";
 import { ChaptersCoverflow } from "@/components/food-lab/ChaptersCoverflow";
 import { EggExperiment } from "@/components/food-lab/EggExperiment";
-import { FieldCharacter, type FieldScene } from "@/components/food-lab/FieldCharacter";
+import { type FieldScene } from "@/components/food-lab/FieldCharacter";
+import workingMomArt from "@/assets/field-studies/working-mom.webp";
+import ceoArt from "@/assets/field-studies/ceo.webp";
+import analystArt from "@/assets/field-studies/analyst.webp";
 import { HypothesisExperiment } from "@/components/food-lab/HypothesisExperiment";
 import { ProteinExperiment } from "@/components/food-lab/ProteinExperiment";
 import { RiceExperiment } from "@/components/food-lab/RiceExperiment";
@@ -68,6 +71,8 @@ const fieldStudies = [{
     time: "07:42 / weekday",
     scene: "morning" as FieldScene,
     selectorLabel: "Working mom",
+    art: workingMomArt,
+    artAlt: "Sketch of a working mom hurrying her child to school with a coffee in hand",
     persona: "The Working Mom",
     personaNote: "Morning logistics / everyone needs her at once",
     title: "The morning moved first",
@@ -95,6 +100,8 @@ const fieldStudies = [{
     time: "13:18 / desk",
     scene: "desk" as FieldScene,
     selectorLabel: "CEO",
+    art: ceoArt,
+    artAlt: "Sketch of a CEO leaning back at a desk, lost in thought, with lunch untouched",
     persona: "The “Too Busy for Lunch” CEO",
     personaNote: "Decisions, calls and an untouched meal",
     title: "Lunch got outnumbered",
@@ -122,6 +129,8 @@ const fieldStudies = [{
     time: "21:36 / home",
     scene: "evening" as FieldScene,
     selectorLabel: "Analyst",
+    art: analystArt,
+    artAlt: "Sketch of an analyst at a laptop late in the day, surrounded by papers and a coffee mug",
     persona: "The 15-Hour Hot-Shot Analyst",
     personaNote: "Home hungry / too depleted to make dinner",
     title: "Hunger met an empty battery",
@@ -307,42 +316,35 @@ function FieldStudies() {
                 aria-labelledby={`field-tab-${activeStudy.scene}`}
                 className={`field-frame field-frame-${activeStudy.scene}`}
                 aria-live="polite">
-                <header className="field-panel-heading">
-                    <div className="field-panel-art" aria-hidden="true">
-                        <FieldCharacter scene={activeStudy.scene} />
-                    </div>
-                    <div className="field-panel-copy">
-                        <span className="field-time">{activeStudy.time}</span>
-                        <h3>{activeStudy.title}</h3>
-                        <p>{activeStudy.copy}</p>
-                        <span className="field-note">{activeStudy.persona}· {activeStudy.note}</span>
-                    </div>
-                </header>
-                <div
-                    className="field-story"
-                    role="list"
-                    aria-label={`${activeStudy.title} visual sequence`}>
-                    {activeStudy.steps.map((
-                        {
-                            title,
-                            detail,
-                            icons
-                        },
-                        stepIndex
-                    ) => (<div
-                        className="field-story-step"
-                        role="listitem"
-                        data-step={stepIndex + 1}
-                        key={title}>
-                        <span className="field-story-icons" aria-hidden="true">
-                            {icons.map((StoryIcon, iconIndex) => <StoryIcon key={iconIndex} />)}
-                        </span>
-                        <span className="field-story-copy">
-                            <small>Step 0{stepIndex + 1}</small>
-                            <strong>{title}</strong>
-                            <p>{detail}</p>
-                        </span>
-                    </div>))}
+                <div className="field-panel-art">
+                    <img
+                        src={activeStudy.art}
+                        alt={activeStudy.artAlt}
+                        loading="lazy"
+                        decoding="async" />
+                </div>
+                <div className="field-panel-copy">
+                    <span className="field-time">{activeStudy.time}</span>
+                    <h3>{activeStudy.title}</h3>
+                    <p>{activeStudy.copy}</p>
+                    <span className="field-note">{activeStudy.persona}· {activeStudy.note}</span>
+                    <ol
+                        className="field-story"
+                        aria-label={`${activeStudy.title} sequence`}>
+                        {activeStudy.steps.map((
+                            {
+                                title,
+                                detail
+                            },
+                            stepIndex
+                        ) => (<li className="field-story-step" key={title}>
+                            <small>0{stepIndex + 1}</small>
+                            <span className="field-story-copy">
+                                <strong>{title}</strong>
+                                <p>{detail}</p>
+                            </span>
+                        </li>))}
+                    </ol>
                 </div>
             </article>
         </div>
