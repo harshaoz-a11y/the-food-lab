@@ -53,6 +53,9 @@ const ORDER_PROTEIN11 = "mailto:harsha@thefoodlab.in?subject=Order%20Protein%201
 const BOOK_CONSULT = "mailto:harsha@thefoodlab.in?subject=Book%20my%20free%2030-min%20consult&body=Hi%20Food%20Lab%2C%20I%27d%20like%20to%20book%20my%20free%2030-minute%20consult.%0A%0AWhat%20I%27d%20like%20help%20with%3A%20";
 
 const PROTEIN11_MACROS = [{
+    label: "Bar weight",
+    value: "70 g"
+}, {
     label: "Calories",
     value: "~224 kcal"
 }, {
@@ -250,7 +253,8 @@ const Index = () => {
                                     className="mt-6 max-w-lg font-serif text-[clamp(1.05rem,1.65vw,1.5rem)] leading-snug text-ink/75">Most of us keep changing the list. We study what happens around it.</p>
                                 <a href="#fit-peasant" className="hero-p11-strip">
                                     <img src={maestroAssets.alchemyBar} alt="" aria-hidden="true" />
-                                    <span><b>New: Protein 11.</b>{" "}A 70 g bar with 20 g protein, from 16 foods you can name.</span>
+                                    <span className="hero-p11-strip__sticker" aria-hidden="true">New</span>
+                                    <span><b>Protein 11.</b>{" "}A 70 g bar with 20 g protein,{" "}<em>from 16 foods you can name.</em></span>
                                     <ArrowRight className="h-4 w-4 shrink-0" />
                                 </a>
                                 <div className="hero-p11">
@@ -284,11 +288,7 @@ const Index = () => {
                         className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
                         <div className="nb-dark-ruled-top" />
                         <div className="section-head">
-                            <div>
-                                <span className="section-head__kicker">Field notes · three real days</span>
-                                <h2 className="section-head__title">The plan was perfect. <em>The day wasn’t in it.</em></h2>
-                            </div>
-                            <p className="section-head__sub">Pick a person. See which meals a generic diet chart actually survives, and what we would build instead.</p>
+                            <h2 className="section-head__title">The plan was perfect. <em>The day wasn’t in it.</em></h2>
                         </div>
                         <PlanLedger />
                         <aside className="press-note mt-10 max-w-lg rotate-[1deg] p-5 text-ink">
@@ -371,9 +371,9 @@ const Index = () => {
                                 <span className="section-head__kicker">PRECISION BIO-NUTRITION CONSULTS</span>
                                 <h2 id="help-heading" className="section-head__title">Customized plans that <em>won’t ask you to “diet”</em></h2>
                             </div>
-                            <div className="service-offer bg-[#f3ead7]">
-                                <p className="service-offer__line [color:#274037] bg-[#364d45]">Work 1:1 with thefoodlab.in on a plan built around your biology, your taste and your actual needs.</p>
-                                <p className="service-offer__free [color:#dc9392]">Your first 30 minutes are free.</p>
+                            <div className="service-offer">
+                                <p className="service-offer__line">Work 1:1 with thefoodlab.in on a plan built around your biology, your taste and your actual needs.</p>
+                                <p className="service-offer__free">Your first 30 minutes are free.</p>
                                 <a href={BOOK_CONSULT} className="cta-btn cta-btn--gold service-offer__cta">Book your free consult <ArrowRight className="h-4 w-4" /></a>
                             </div>
                         </div>
@@ -417,10 +417,9 @@ const Index = () => {
                                     <span
                                         className="mt-3 block max-w-md text-lg font-normal leading-snug tracking-normal sm:text-xl">— because protein was never meant to work alone.</span>
                                 </h2>
-                                <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink/80">A protein bar you can order from us, made fresh every week in Bengaluru. We’ll let you tell us how good it is.</p>
+                                <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink/80">We’ll let you tell us how good it is.</p>
                                 <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
                                     <a href={ORDER_PROTEIN11} className="cta-btn">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
-                                    <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink/55">Order by email · small batch, Bengaluru</span>
                                 </div>
                             </div>
                         </div>

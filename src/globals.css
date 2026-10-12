@@ -4151,7 +4151,7 @@ body,
 }
 .p11-macros {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   width: 100%;
   margin-top: 1rem;
   border-top: 1px solid rgba(23, 59, 48, 0.25);
@@ -4164,6 +4164,8 @@ body,
 .p11-macros__item + .p11-macros__item {
   border-left: 1px dashed rgba(23, 59, 48, 0.2);
 }
+.p11-macros__item:nth-child(4) { border-left: 0; }
+.p11-macros__item:nth-child(n + 4) { border-top: 1px dashed rgba(23, 59, 48, 0.2); }
 .p11-macros dt {
   font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
   font-size: 10px;
@@ -4174,16 +4176,18 @@ body,
 .p11-macros dd {
   margin: 0.15rem 0 0;
   font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
-  font-size: 1.15rem;
+  font-size: 1.35rem;
+  font-weight: 600;
   line-height: 1.1;
-  color: var(--ink, #173b30);
+  letter-spacing: -0.02em;
+  color: #a33a2b;
 }
 @media (max-width: 640px) {
   .p11-hero-stamp { top: -10px; right: -6px; padding: 0.3rem 0.55rem; }
   .p11-hero-stamp__lab { display: none; }
   .p11-hero-stamp__main { font-size: 0.8rem; }
   .p11-hero-stamp__sub { font-size: 8px; }
-  .p11-macros dd { font-size: 1.05rem; }
+  .p11-macros dd { font-size: 1.25rem; }
 }
 
 /* Precision Bio-Nutrition now sits on the green stock (Protein 11 took the notebook paper) */
@@ -4380,18 +4384,21 @@ body,
   flex-direction: column;
   align-items: flex-start;
   gap: 0.6rem;
-  padding: 1.25rem 1.4rem 1.4rem;
-  border: 1px solid rgba(248, 242, 229, 0.25);
-  border-radius: 1rem;
-  background: rgba(248, 242, 229, 0.06);
+  padding: 1.35rem 1.5rem 1.5rem;
+  border: 0;
+  border-left: 5px solid #a33a2b;
+  border-radius: 0.4rem 1rem 1rem 0.4rem;
+  background: #f8f2e5;
+  box-shadow: 0 14px 30px rgba(10, 22, 18, 0.35), 0 0 0 1px rgba(248, 242, 229, 0.35);
+  transform: rotate(-0.6deg);
 }
-.service-offer__line { margin: 0; font-size: 1.08rem; line-height: 1.45; color: #f8f2e5; }
+.service-offer__line { margin: 0; font-size: 1.1rem; line-height: 1.45; color: #173b30; }
 .service-offer__free {
   margin: 0 0 0.35rem;
   font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-style: italic;
-  color: #f3c98b;
+  color: #a33a2b;
 }
 
 /* ── the science: experiments as bookmarks hanging from the page ─ */
@@ -4548,7 +4555,24 @@ body,
     transform: rotate(-7deg);
     filter: drop-shadow(0 4px 5px rgba(40, 28, 12, 0.2));
   }
+  .hero-p11-strip { position: relative; }
+  .hero-p11-strip__sticker {
+    position: absolute;
+    top: -0.7rem;
+    left: -0.45rem;
+    z-index: 1;
+    padding: 0.2rem 0.55rem;
+    border-radius: 0.3rem;
+    background: #a33a2b;
+    color: #f8f2e5;
+    font: 700 11px/1.2 "Space Mono", ui-monospace, monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transform: rotate(-9deg);
+    box-shadow: 0 3px 6px rgba(40, 28, 12, 0.25);
+  }
   .hero-p11-strip b { color: #a33a2b; font-weight: 700; }
+  .hero-p11-strip em { font-size: 0.82em; font-style: italic; opacity: 0.85; }
   .hero-p11-strip svg { color: #a33a2b; }
 
   /* hero card: the equation reads in two short lines, not five */
