@@ -48,7 +48,7 @@
 
 .macro-card__lede {
   margin: 0;
-  max-width: 30rem;
+  max-width: none;
   font-size: 1.05rem;
   line-height: 1.45;
   color: rgba(23, 59, 48, 0.78);

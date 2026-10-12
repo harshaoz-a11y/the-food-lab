@@ -287,7 +287,7 @@ const Index = () => {
                     <div
                         className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
                         <div className="nb-dark-ruled-top" />
-                        <div className="section-head">
+                        <div className="section-head section-head--wide">
                             <h2 className="section-head__title">The plan was perfect. <em>The day wasn’t in it.</em></h2>
                         </div>
                         <PlanLedger />

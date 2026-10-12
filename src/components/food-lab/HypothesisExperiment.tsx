@@ -37,9 +37,9 @@ export function HypothesisExperiment() {
     return (
         <div className={`macro-card ${generic ? "is-nojoy" : "is-joy"}`}>
             <span className="macro-card__nickname">
-                <Heart aria-hidden="true" /> The Happiness Macro
+                <Heart aria-hidden="true" /> Our secret
             </span>
-            <h2 className="macro-card__question">Will I do this again?</h2>
+            <h2 className="macro-card__question">The Happiness Macro</h2>
             <p className="macro-card__lede">
                 Nutrition makes a plan work on paper. Enjoyment helps it survive real life.
             </p>
