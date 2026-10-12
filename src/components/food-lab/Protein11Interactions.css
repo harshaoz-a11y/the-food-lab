@@ -762,7 +762,7 @@
 .p11-personas {
   display: flex;
   align-items: center;
-  gap: 0.25rem 0.4rem;
+  gap: 0.5rem;
 }
 .p11-persona {
   display: flex;
@@ -770,34 +770,32 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0.4rem;
-  padding: 0.45rem 0.7rem;
-  border: 0;
-  border-radius: 1rem;
-  background: none;
-  color: color-mix(in srgb, var(--ink, #1f2924) 55%, transparent);
+  padding: 0.45rem 0.85rem;
+  border: 1.5px solid color-mix(in srgb, var(--ink, #1f2924) 22%, transparent);
+  border-radius: 999px;
+  background: #fffaf0;
+  color: color-mix(in srgb, var(--ink, #1f2924) 80%, transparent);
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--ink, #1f2924) 12%, transparent);
   font: 500 1rem/1.2 var(--fl-font-serif, "Fraunces", Georgia, serif);
   text-align: left;
   white-space: nowrap;
   cursor: pointer;
   transition: background-color 0.25s ease, color 0.2s ease, padding 0.25s ease;
 }
-.p11-persona:hover .p11-persona__name {
-  color: var(--ink, #1f2924);
-  text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--ink, #1f2924) 30%, transparent);
-  text-underline-offset: 4px;
-}
+.p11-persona:hover { border-color: #2f6f4f; color: #2f6f4f; }
 .p11-persona:focus-visible { outline: 2px solid var(--brick, #a33a2b); outline-offset: 2px; }
 .p11-persona.is-selected {
   flex: 0 1 340px;
   padding: 0.85rem 1.1rem;
+  border-color: #2f6f4f;
+  border-radius: 1rem;
   background: #2f6f4f;
   color: #f8f2e5;
   white-space: normal;
   box-shadow: 0 8px 18px -10px rgba(23, 59, 48, 0.6);
 }
 .p11-persona.is-selected .p11-persona__name { font-size: 1.2rem; font-weight: 600; }
-.p11-persona.is-selected:hover .p11-persona__name { color: inherit; text-decoration: none; }
+.p11-persona.is-selected:hover { color: #f8f2e5; }
 .p11-persona__need {
   display: flex;
   flex-direction: column;
@@ -916,10 +914,59 @@
 }
 
 @media (max-width: 767px) {
-  .p11-personas { overflow-x: auto; scrollbar-width: none; }
-  .p11-personas::-webkit-scrollbar { display: none; }
-  .p11-daystrip { grid-auto-flow: row; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  /* titles wrap onto two short lines; the chosen one opens full width where it sits */
+  .p11-personas { flex-wrap: wrap; gap: 0.4rem; }
+  .p11-persona { min-height: 40px; justify-content: center; padding: 0.35rem 0.75rem; font-size: 0.9rem; }
+  .p11-persona.is-selected { flex: 1 0 100%; padding: 0.75rem 0.95rem; }
+  .p11-persona.is-selected .p11-persona__name { font-size: 1.05rem; }
+  .p11-persona__need { font-size: 0.88rem; }
+
+  /* the day reads top to bottom: time, scene, caption on one row each */
+  .p11-daystrip-card { padding: 0.75rem; gap: 0.75rem; }
+  .p11-daystrip { grid-auto-flow: row; grid-template-columns: 1fr; gap: 0.4rem; }
+  .p11-scene {
+    display: grid;
+    grid-template-columns: 3rem 3.25rem minmax(0, 1fr);
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .p11-scene__time { padding: 0; border: 0; text-align: left; }
+  .p11-scene__art { border-radius: 10px; }
+  .p11-scene__caption { text-align: left; font-size: 0.88rem; }
+  .p11-scene.is-bar { padding: 0.2rem 0; border-radius: 10px; background: color-mix(in srgb, var(--brick, #a33a2b) 8%, transparent); }
 }
 @media (prefers-reduced-motion: reduce) {
   .p11-scene, .p11-persona__need { animation: none; }
+}
+
+/* ── What's inside on phones: the partnerships become a numbered keypad (All, 1–9),
+   always fully in view; the chosen one's name and story show underneath ── */
+.p11-item-num { display: none; }
+@media (max-width: 767px) {
+  .p11-list-section {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.4rem;
+    overflow: visible;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .p11-list-group,
+  .p11-group-items { display: contents; }
+  .p11-item-btn {
+    position: relative;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0;
+    border-radius: 999px;
+  }
+  .p11-item-num { display: block; font: 700 14px var(--fl-font-mono, "Space Mono", ui-monospace, monospace); }
+  .p11-item-title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
 }

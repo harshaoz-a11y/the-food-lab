@@ -49,7 +49,7 @@ export function Protein11Interactions() {
   const currentTitle = selected ? selected.title : "Whole bar";
   const currentPlain = selected
     ? selected.plain
-    : "Every ingredient is chosen for what it does with the others. Pick a partnership to see who works with whom.";
+    : "Every ingredient is chosen for what it does with the others. Pick a partnership (1–9) to see who works with whom.";
   const currentFine = selected
     ? selected.fine
     : "16 ingredients formulated to work together: fast and slow proteins, three fibres, and sweetness from fruit and monk fruit.";
@@ -87,6 +87,7 @@ export function Protein11Interactions() {
                 onKeyDown={(e) => handleKeyDown(e, 0)}
                 className={`p11-item-btn ${selected === null ? "is-selected" : ""}`}
               >
+                <span className="p11-item-num" aria-hidden="true">All</span>
                 <span className="p11-item-title">Whole bar</span>
                 <span className="p11-item-badge">All 16</span>
               </button>
@@ -118,6 +119,7 @@ export function Protein11Interactions() {
                         onKeyDown={(e) => handleKeyDown(e, itemIndex)}
                         className={`p11-item-btn ${isSelected ? "is-selected" : ""}`}
                       >
+                        <span className="p11-item-num" aria-hidden="true">{itemIndex}</span>
                         <span className="p11-item-title">{item.title}</span>
                         <span className="p11-item-badge">
                           {item.ingredients.length} parts

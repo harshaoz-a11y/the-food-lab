@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Snowflake, Sparkles, Utensils } from "lucide-react";
 import RiceComic from "@/components/rice-comic/RiceComic";
+import { SourceNote } from "./SourceNote";
 
 const preparations = {
     fresh: {
@@ -8,7 +9,7 @@ const preparations = {
         shortLabel: "Fresh",
         value: "fresh",
         icon: Utensils,
-        summary: "The reference plate: freshly cooked white rice, served hot.",
+        summary: "",
         curve: "M4 88 C22 86 31 16 49 20 C66 24 64 58 82 50 C96 44 104 68 116 65",
         glucosePeak: "Reference",
         facts: [
@@ -81,11 +82,11 @@ export function RiceExperiment() {
             <div className="rice-stage mt-8 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)] lg:items-center lg:gap-10">
                 <RiceComic single value={selected} onChange={setSelected} />
                 <div className="rice-panel min-w-0" aria-live="polite">
-                    <p className="rice-summary font-serif text-xl leading-snug text-ink/75">{current.summary}</p>
+                    {current.summary && <p className="rice-summary font-serif text-xl leading-snug text-ink/75">{current.summary}</p>}
                     <div className="rice-curve mt-5">
                         <div className="rice-chart-wrap">
                             <div className="rice-primary-metric">
-                                <span>Glucose response · illustrative</span>
+                                <span>Glucose response</span>
                                 <div className="rice-primary-value">{current.glucosePeak}</div>
                             </div>
                             <svg
@@ -103,7 +104,6 @@ export function RiceExperiment() {
                                     d={preparations.coconut.curve} />
                                 <path className={`rice-curve-active rice-curve-${active}`} d={current.curve} />
                                 <text className="rice-axis-label" x="108" y="97">time</text>
-                                <text className="rice-axis-label" x="5" y="9">glucose</text>
                             </svg>
                         </div>
                     </div>
@@ -114,11 +114,11 @@ export function RiceExperiment() {
                     </div>
                 </div>
             </div>
-            <p className="rice-source">
-                Sources: refrigerated + reheated,{" "}
+            <SourceNote className="rice-source">
+                Refrigerated + reheated:{" "}
                 <a href="https://pubmed.ncbi.nlm.nih.gov/26693746/" target="_blank" rel="noreferrer">Sonia et al., Asia Pac J Clin Nutr, 2015</a>{" "}
                 (15 adults; resistant starch 0.64 → 1.65 g/100 g, glucose response 17.8% lower). Coconut oil + chilled: early findings presented at the American Chemical Society meeting, 2015, not peer-reviewed. Other figures summarise the clinical comparison supplied to us. Curves are illustrative, not plotted study data; results depend on rice variety and method. An observation, not personal dietary advice.
-            </p>
+            </SourceNote>
         </div>
     );
 }

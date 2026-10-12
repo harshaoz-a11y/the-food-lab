@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Boxes, Check, Heart, Repeat, SlidersHorizontal, Workflow, X } from "lucide-react";
+import { Check, Heart, Repeat, X } from "lucide-react";
 import "./HypothesisExperiment.css";
 
 const stages = [
-    { title: "Ingredients", icon: Boxes },
-    { title: "Collaboration", icon: Workflow },
-    { title: "Optimization", icon: SlidersHorizontal },
+    { title: "Ingredients" },
+    { title: "Collaboration" },
+    { title: "Optimization" },
 ] as const;
 
 const DAYS = ["M", "T", "W", "T", "F", "S", "S"];
@@ -47,9 +47,9 @@ export function HypothesisExperiment() {
             {/* the equation: three stages + enjoyment = result */}
             <div className="macro-eq" aria-label="Ingredients, collaboration and optimization, plus enjoyment, make the outcome">
                 <ol className="macro-eq__stages">
-                    {stages.map(({ title, icon: Icon }, i) => (
+                    {stages.map(({ title }, i) => (
                         <li key={title} className={`macro-eq__stage macro-eq__stage--${i + 1}`} style={{ "--i": i } as React.CSSProperties}>
-                            <Icon aria-hidden="true" />
+                            <Check aria-hidden="true" className="macro-eq__tick" />
                             {title}
                         </li>
                     ))}
@@ -85,14 +85,13 @@ export function HypothesisExperiment() {
                                 </li>
                             ))}
                         </ol>
-                        <span className="macro-week__count">Kept {kept(outcome.week)} of 7 days</span>
                     </div>
                 </div>
             </div>
 
             {/* the other outcome, always visible, so the contrast needs no click */}
             <p className="macro-counter">
-                {other.counter} <b>Kept {kept(other.week)} of 7 days.</b>
+                {other.counter}
             </p>
 
             <label className="macro-generic">

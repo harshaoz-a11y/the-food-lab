@@ -100,17 +100,21 @@
 /* every stage done properly is green. Most diets get the ingredients right and
    rush the rest (amber), and leave enjoyment as a question (grey). */
 .macro-eq__stage {
-  border: 1.5px solid color-mix(in srgb, var(--mc-joy) 45%, transparent);
-  background: var(--mc-joy-bg);
+  padding-left: 0;
+  padding-right: 0.2rem;
+  border: 0;
+  background: none;
+  color: var(--mc-ink);
+}
+.macro-eq__stage .macro-eq__tick {
+  width: 17px;
+  height: 17px;
+  stroke-width: 3;
   color: var(--mc-joy);
-  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  transition: color 0.25s ease;
 }
-.is-nojoy .macro-eq__stage--2,
-.is-nojoy .macro-eq__stage--3 {
-  border-color: #d9a441;
-  background: #f8e8c4;
-  color: #8a5a12;
-}
+.is-nojoy .macro-eq__stage--2 .macro-eq__tick,
+.is-nojoy .macro-eq__stage--3 .macro-eq__tick { color: #d9a441; }
 
 .macro-eq__stage + .macro-eq__stage::before {
   content: "→";
@@ -389,4 +393,27 @@
   .macro-generic__box {
     animation: none;
   }
+}
+
+/* phones: the whole card fits on the first screen */
+@media (max-width: 767px) {
+  .macro-card { gap: 0.45rem; padding: 0.9rem 0.95rem 0.8rem; }
+  .macro-card__question { font-size: 1.6rem; }
+  .macro-card__lede { font-size: 0.9rem; line-height: 1.4; }
+  /* one flowing line of terms: Enjoyment sits right after Optimization */
+  .macro-eq { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin-top: 0; }
+  .macro-eq__stages,
+  .macro-eq__joyrow { display: contents; }
+  .macro-eq__stage { padding: 0.3rem 0.5rem; font-size: 0.8rem; }
+  .macro-eq__joy { padding: 0.3rem 0.65rem; font-size: 0.8rem; }
+  .macro-eq__joy-heart { width: 14px; height: 14px; }
+  .macro-eq__plus { font-size: 1.2rem; }
+  .macro-eq__equals { display: none; }
+  .macro-result { gap: 0.75rem; padding: 0.75rem 0.85rem; }
+  .macro-result__icon { width: 36px; height: 36px; }
+  .macro-result__icon svg { width: 18px; height: 18px; }
+  .macro-result__headline { font-size: 1.15rem; }
+  .macro-week { margin-top: 0.4rem; }
+  .macro-counter { font-size: 0.8rem; }
+  .macro-generic { padding: 0; font-size: 0.9rem; }
 }

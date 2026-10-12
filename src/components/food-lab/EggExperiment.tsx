@@ -1,5 +1,6 @@
 import { useState } from "react";
 import EggPlate from "@/components/egg-plate/EggPlate";
+import { SourceNote } from "./SourceNote";
 
 const states = {
     raw: {
@@ -56,7 +57,7 @@ export function EggExperiment() {
                     <p className="egg-observation__interpretation">{current.note}</p>
                 </div>
             </div>
-            <p className="egg-observation__source">SOURCE- HUMAN BIOLOGY, SCHOOL OF NUTRITION AND TRANSLATIONAL RESEARCH IN METABOLISM (NUTRIM), MAASTRICHT UNIVERSITY MEDICAL CENTRE+, MAASTRICHT, THE NETHERLANDS (TRUE ILEAL HUMAN DATA)</p>
+            <SourceNote className="egg-observation__source">HUMAN BIOLOGY, SCHOOL OF NUTRITION AND TRANSLATIONAL RESEARCH IN METABOLISM (NUTRIM), MAASTRICHT UNIVERSITY MEDICAL CENTRE+, MAASTRICHT, THE NETHERLANDS (TRUE ILEAL HUMAN DATA)</SourceNote>
         </article>
     );
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ProteinSink from "@/components/protein-sink/ProteinSink";
+import { SourceNote } from "./SourceNote";
 import "./ProteinExperiment.css";
 
 export function ProteinExperiment() {
@@ -41,10 +42,6 @@ export function ProteinExperiment() {
                                 </div>
                                 <p>fall short of the recommended intake.</p>
                             </div>
-                            <div className="protein-panel__stat protein-panel__stat--target">
-                                <strong className="protein-panel__number protein-panel__number--recommendation">25 g / 30 g</strong>
-                                <p>ICMR-NIN recommendation, per day for adult women / men.</p>
-                            </div>
                         </div>
                     </div>
 
@@ -56,9 +53,9 @@ export function ProteinExperiment() {
                 </aside>
             </div>
 
-            <p className="protein-panel__source">
-                SOURCE: <a href="https://nuffoodsspectrum.asia/2026/05/29/nearly-7-in-10-indians-fall-short-of-daily-fibre-intake-aashirvaad-happy-tummy-findings.html" target="_blank" rel="noopener noreferrer">AASHIRVAAD HAPPY TUMMY (ITC)</a>, FINDINGS RELEASED FOR WORLD DIGESTIVE HEALTH DAY 2026. SELF-REPORTED RESPONSES FROM 6.5 LAKH+ PARTICIPANTS AGED 18–60, COLLECTED 2021–2025 ON AN ONLINE PLATFORM; NOT A NATIONALLY REPRESENTATIVE SAMPLE. RECOMMENDED INTAKE AS QUOTED IN THE SAME RELEASE (ICMR-NIN). AN OBSERVATION, NOT PERSONAL DIETARY ADVICE.
-            </p>
+            <SourceNote className="protein-panel__source">
+                <a href="https://nuffoodsspectrum.asia/2026/05/29/nearly-7-in-10-indians-fall-short-of-daily-fibre-intake-aashirvaad-happy-tummy-findings.html" target="_blank" rel="noopener noreferrer">AASHIRVAAD HAPPY TUMMY (ITC)</a>, FINDINGS RELEASED FOR WORLD DIGESTIVE HEALTH DAY 2026. SELF-REPORTED RESPONSES FROM 6.5 LAKH+ PARTICIPANTS AGED 18–60, COLLECTED 2021–2025 ON AN ONLINE PLATFORM; NOT A NATIONALLY REPRESENTATIVE SAMPLE. RECOMMENDED INTAKE AS QUOTED IN THE SAME RELEASE (ICMR-NIN). AN OBSERVATION, NOT PERSONAL DIETARY ADVICE.
+            </SourceNote>
         </article>
     );
 }

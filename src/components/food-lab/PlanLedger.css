@@ -1,106 +1,64 @@
-/* PlanLedger: one glance. What the chart planned, what survived, what we'd do */
+/* PlanLedger: three real days side by side. What the chart planned, what real life allowed. */
 .plan-ledger {
   --pl-paper: #f6ecd8;
   --pl-ink: #173b30;
   --pl-miss: #c8503f;
   --pl-held: #3f8a5f;
-  --pl-gold: #f3c98b;
+}
+
+/* ── the rail: cards in a row; it scrolls sideways when they don't all fit ── */
+.plan-ledger__rail {
+  display: grid;
+  grid-auto-columns: minmax(300px, 1fr);
+  grid-auto-flow: column;
+  gap: 1.1rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  padding-bottom: 0.5rem;
+}
+
+.plan-ledger__card {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-}
-
-/* ── person selector ─────────────────────────────── */
-.plan-ledger__selector {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.plan-ledger__tab {
-  padding: 0.6rem 1.25rem;
-  border: 1px solid rgba(248, 242, 229, 0.35);
-  border-radius: 999px;
-  background: transparent;
-  color: #f8f2e5;
-  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
-  font-size: 1.05rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.plan-ledger__tab:hover {
-  background: rgba(248, 242, 229, 0.12);
-}
-
-.plan-ledger__tab.is-active {
-  background: var(--pl-paper);
-  border-color: var(--pl-paper);
-  color: var(--pl-ink);
-}
-
-.plan-ledger__tab:focus-visible {
-  outline: 2px solid var(--pl-gold);
-  outline-offset: 3px;
-}
-
-/* ── panel: sketch | verdict + meals, fix underneath ─ */
-.plan-ledger__panel {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  padding: clamp(1.25rem, 3vw, 2.25rem);
+  gap: 1rem;
+  padding: 1.25rem;
   border-radius: 1.25rem;
   background: var(--pl-paper);
   color: var(--pl-ink);
   box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.6);
-  animation: pl-in 0.45s cubic-bezier(0.3, 0.7, 0.2, 1);
+  scroll-snap-align: start;
 }
 
-@media (min-width: 900px) {
-  .plan-ledger__panel {
-    grid-template-columns: 220px minmax(0, 1fr);
-    column-gap: 2.5rem;
-    align-items: center;
-  }
-
-  .plan-ledger__fix {
-    grid-column: 1 / -1;
-  }
-}
-
-@keyframes pl-in {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+.plan-ledger__head {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  align-items: center;
+  gap: 0.9rem;
 }
 
 .plan-ledger__art {
   width: 100%;
-  max-width: 220px;
   height: auto;
-  justify-self: center;
   mix-blend-mode: multiply;
 }
 
-.plan-ledger__main {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  min-width: 0;
+.plan-ledger__who {
+  display: block;
+  margin-bottom: 0.3rem;
+  font: 700 11px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(23, 59, 48, 0.6);
 }
 
 /* the one sentence that matters */
 .plan-ledger__verdict {
   margin: 0;
   font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
-  font-size: clamp(1.5rem, 2.8vw, 2.4rem);
-  line-height: 1.15;
+  font-size: 1.3rem;
+  line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
@@ -121,29 +79,27 @@
   font-weight: 600;
 }
 
-/* ── four meals, red or green at a glance ────────── */
+/* ── four meals as a 2 × 2: breakfast, lunch / snack, dinner ── */
 .plan-ledger__meals {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
-}
-
-@media (min-width: 700px) {
-  .plan-ledger__meals {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .plan-ledger__meal {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  padding: 0.95rem 0.95rem 1rem;
-  border-radius: 0.85rem;
-  border: 2px solid transparent;
+  display: grid;
+  grid-template-columns: 22px auto 1fr;
+  grid-template-areas:
+    "badge name time"
+    "note note note";
+  align-items: center;
+  column-gap: 0.4rem;
+  padding: 0.6rem 0.65rem;
+  border: 1.5px solid transparent;
+  border-radius: 0.75rem;
   animation: pl-in 0.4s calc(var(--i) * 80ms + 0.1s) cubic-bezier(0.3, 0.7, 0.2, 1) backwards;
 }
 
@@ -158,32 +114,28 @@
 }
 
 .plan-ledger__badge {
+  grid-area: badge;
   display: grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
-  margin-bottom: 0.4rem;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   color: #fff;
 }
 
 .plan-ledger__badge svg {
-  width: 18px;
-  height: 18px;
+  width: 13px;
+  height: 13px;
   stroke-width: 3.2;
 }
 
-.is-missed .plan-ledger__badge {
-  background: var(--pl-miss);
-}
-
-.is-held .plan-ledger__badge {
-  background: var(--pl-held);
-}
+.is-missed .plan-ledger__badge { background: var(--pl-miss); }
+.is-held .plan-ledger__badge { background: var(--pl-held); }
 
 .plan-ledger__meal-name {
+  grid-area: name;
   font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.1;
 }
 
@@ -194,157 +146,42 @@
 }
 
 .plan-ledger__meal-time {
-  font: 700 11px "Space Mono", ui-monospace, monospace;
-  letter-spacing: 0.08em;
+  grid-area: time;
+  justify-self: end;
+  font: 700 10px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.06em;
   color: rgba(23, 59, 48, 0.55);
 }
 
 .plan-ledger__meal-note {
-  margin-top: 0.45rem;
+  grid-area: note;
+  margin-top: 0.3rem;
   font-family: "Caveat", cursive;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   line-height: 1.05;
 }
 
-/* ── the payoff ──────────────────────────────────── */
-.plan-ledger__fix {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  padding: 1.25rem 1.5rem;
-  border-radius: 0.9rem;
-  background: var(--pl-ink);
-  color: #f8f2e5;
+@keyframes pl-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
 }
 
-.plan-ledger__fix-kicker {
-  font: 700 11px "Space Mono", ui-monospace, monospace;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--pl-gold);
-}
-
-.plan-ledger__fix strong {
-  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
-  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
-  font-weight: 400;
-  line-height: 1.15;
-}
-
-.plan-ledger__fix-note {
-  font-size: 0.95rem;
-  color: rgba(248, 242, 229, 0.75);
-}
-
-@media (max-width: 899px) {
-  .plan-ledger__art {
-    max-width: 170px;
+/* phones: one card and a slice of the next, so it is clear there is more to swipe */
+@media (max-width: 767px) {
+  .plan-ledger__rail {
+    grid-auto-columns: 86%;
+    gap: 0.75rem;
+    scrollbar-width: none;
   }
+  .plan-ledger__rail::-webkit-scrollbar { display: none; }
+  .plan-ledger__card { padding: 1rem; }
+  .plan-ledger__head { grid-template-columns: 104px minmax(0, 1fr); gap: 0.7rem; }
+  .plan-ledger__verdict { font-size: 0.98rem; line-height: 1.25; }
+  .plan-ledger__meal { padding: 0.5rem 0.55rem; }
+  .plan-ledger__meal-time { display: none; } /* the struck-out name already says it; the boxes are narrow */
+  .plan-ledger__meal-note { font-size: 1.02rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .plan-ledger__panel,
-  .plan-ledger__meal {
-    animation: none;
-  }
-}
-
-/* ── phones: sketch beside the verdict, meals as a compact kept/missed list ── */
-@media (max-width: 767px) {
-  .plan-ledger {
-    gap: 1rem;
-  }
-
-  .plan-ledger__selector {
-    flex-wrap: nowrap;
-    gap: 0.4rem;
-  }
-
-  .plan-ledger__tab {
-    flex: 1 1 auto;
-    min-height: 44px;
-    padding: 0.5rem 0.7rem;
-    font-size: 0.95rem;
-    white-space: nowrap;
-  }
-
-  .plan-ledger__panel {
-    grid-template-columns: 84px minmax(0, 1fr);
-    gap: 1rem 0.9rem;
-    align-items: center;
-    padding: 1.1rem;
-  }
-
-  .plan-ledger__main {
-    display: contents;
-  }
-
-  .plan-ledger__art {
-    max-width: 84px;
-  }
-
-  .plan-ledger__verdict {
-    font-size: 1.35rem;
-  }
-
-  .plan-ledger__meals,
-  .plan-ledger__fix {
-    grid-column: 1 / -1;
-  }
-
-  .plan-ledger__meals {
-    grid-template-columns: 1fr;
-    gap: 0.4rem;
-  }
-
-  .plan-ledger__meal {
-    display: grid;
-    grid-template-columns: 26px auto 1fr;
-    grid-template-areas:
-      "badge name time"
-      "badge note note";
-    column-gap: 0.6rem;
-    row-gap: 0;
-    align-items: baseline;
-    padding: 0.55rem 0.75rem;
-    border-width: 1.5px;
-  }
-
-  .plan-ledger__badge {
-    grid-area: badge;
-    align-self: center;
-    width: 26px;
-    height: 26px;
-    margin: 0;
-  }
-
-  .plan-ledger__badge svg {
-    width: 15px;
-    height: 15px;
-  }
-
-  .plan-ledger__meal-name {
-    grid-area: name;
-    font-size: 1.05rem;
-  }
-
-  .plan-ledger__meal-time {
-    grid-area: time;
-    font-size: 12px;
-  }
-
-  .plan-ledger__meal-note {
-    grid-area: note;
-    margin: 0;
-    font-size: 1.15rem;
-  }
-
-  .plan-ledger__fix {
-    padding: 1rem 1.1rem;
-  }
-
-  .plan-ledger__fix-kicker {
-    font-size: 12px;
-  }
+  .plan-ledger__meal { animation: none; }
 }

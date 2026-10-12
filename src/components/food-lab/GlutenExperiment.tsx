@@ -1,5 +1,6 @@
 import { useState } from "react";
 import RegionScene from "@/components/region-scenes/RegionScene";
+import { SourceNote } from "./SourceNote";
 import "./GlutenExperiment.css";
 
 type Signal = { value: number; short: string; full: string };
@@ -83,18 +84,18 @@ export function GlutenExperiment() {
             </div>
             <div className="gf-survey">
                 <div className="gf-survey__head">
-                    <span className="gf-eyebrow">India / survey signal · 285 people</span>
+                    <span className="gf-eyebrow">India / survey · 285 people</span>
                     <p className="gf-takeaway">Half couldn’t say what gluten is. Half say the crowd drives the trend.</p>
                 </div>
                 <div className="gf-groups">
                     <Group title="What they know" tone="green" items={knowledge} open={open} onToggle={toggle} />
                     <Group title="What they believe" tone="brick" items={belief} open={open} onToggle={toggle} />
                 </div>
-                <p className="gf-source">
-                    Source:{" "}
+                <p className="gf-hint">Tap a line for the full question.</p>
+                <SourceNote className="gf-source">
                     <a href="https://www.researchsquare.com/article/rs-9052215/v1" target="_blank" rel="noreferrer">Moitra &amp; Qureshi, Research Square preprint, 2026</a>.
-                    Share of respondents; tap a line for the full question. An observation, not personal dietary advice.
-                </p>
+                    Share of respondents. An observation, not personal dietary advice.
+                </SourceNote>
             </div>
         </div>
     );

@@ -247,7 +247,7 @@ const Index = () => {
                                 <a href="#fit-peasant" className="hero-p11-strip">
                                     <img src={maestroAssets.alchemyBar} alt="" aria-hidden="true" />
                                     <span className="hero-p11-strip__sticker" aria-hidden="true">New</span>
-                                    <span><b>Protein 11.</b>{" "}A 70 g bar with 20 g protein,{" "}<em>from 16 ingredients you can name.</em></span>
+                                    <span><b>Protein 11<span className="hidden md:inline">.</span></b>{" "}A 70 g bar with 20 g protein<em>, from 16 ingredients you can name.</em></span>
                                     <ArrowRight className="h-4 w-4 shrink-0" />
                                 </a>
                                 <div className="hero-p11">
@@ -311,7 +311,7 @@ const Index = () => {
                             </button>))}
                         </div>
                         <div className="lens-head">
-                            <span className="section-head__kicker">The Food Lab thinking · and how it adds value</span>
+                            <span className="section-head__kicker">The Food Lab thinking · some examples</span>
                             <h2
                                 key={activeExperiment}
                                 className="lens-head__title animate-in fade-in slide-in-from-bottom-2 duration-300">
@@ -412,7 +412,6 @@ const Index = () => {
                                     <span
                                         className="mt-3 block max-w-md text-lg font-normal leading-snug tracking-normal sm:text-xl">— because protein was never meant to work alone.</span>
                                 </h2>
-                                <p className="mt-3 max-w-lg text-lg leading-relaxed text-ink/80 sm:mt-5">We’ll let you tell us how good it is.</p>
                                 {/* phones already have Order in the action bar */}
                                 <div className="mt-7 hidden flex-wrap items-center gap-x-6 gap-y-3 md:flex">
                                     <a href={ORDER_PROTEIN11} className="cta-btn">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>

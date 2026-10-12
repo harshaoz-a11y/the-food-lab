@@ -279,7 +279,7 @@
 
 @media (max-width: 767px) {
   .paper-sheet::before { display: none; }
-  .rice-panel { border-left: 0; border-top: 1px dashed rgba(23, 59, 48, 0.3); padding: 2rem 0 0; }
+  .rice-panel { border-left: 0; padding: 0; }
   .rice-curve { grid-template-columns: 1fr 112px; }
 }
 
@@ -785,7 +785,7 @@ main > section.reveal.is-revealed {
 
 @media (max-width: 767px) {
   #question .hero-hypothesis-grid {
-    gap: 2rem;
+    gap: 1.1rem;
   }
 
   #question .hero-question-copy {
@@ -1371,8 +1371,14 @@ body,
   .rice-selector { gap: 0.4rem; }
   .rice-choice { min-height: 64px; padding: 0.55rem 0.5rem; }
   .rice-choice span { font-size: 0.78rem; }
-  .rice-stage { gap: 1.5rem; margin-top: 1.25rem; }
-  .rice-stage > .rice-panel { order: -1; }
+  .rice-stage { gap: 0.75rem; margin-top: 1rem; }
+  .rice-stage > .fl-rc.fl-rc { max-width: 240px; }
+  .rice-facts.rice-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .rice-facts.rice-facts .rice-fact + .rice-fact { border-top: 0; border-left: 1px dashed rgba(23, 59, 48, 0.2); }
+  .rice-fact { padding: 0.5rem 0.45rem; }
+  .rice-fact strong { font-size: 9px; letter-spacing: 0.04em; }
+  .rice-fact em { font-size: 0.85rem; }
+  .rice-summary { font-size: 0.95rem; }
 }
 
 /* The open experiment takes the height its content needs (no inner scrolling);
@@ -1821,63 +1827,56 @@ body,
 
   /* ── hero: Protein 11 shrinks to one line (it has its own section) ── */
   #question .hero-p11 { display: none; }
-  /* the subtitle and a highlighted side note share one row */
+  /* the headline shares its row with a small Protein 11 note; the subtitle runs full width */
+  #question { padding-top: 0.75rem; }
+  #question > .paper-sheet { padding-top: 1.4rem; padding-bottom: 1.75rem; }
   #question .hero-question-copy {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 7.6rem;
-    column-gap: 1rem;
-    align-items: start;
+    grid-template-columns: minmax(0, 1fr) 6.2rem;
+    column-gap: 0.75rem;
+    align-items: center;
   }
-  #question .hero-question-copy h1 { grid-column: 1 / -1; }
+  #question .hero-question-copy h1 { font-size: 2.05rem; line-height: 0.95; }
+  #question .hero-question-copy > p { grid-column: 1 / -1; margin-top: 0.9rem; font-size: 1rem; }
+  /* a quiet product card: cream stock, a hairline border, the bar, three short lines */
   .hero-p11-strip {
-    position: relative;
+    grid-row: 1;
+    grid-column: 2;
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
-    margin-top: 1.5rem;
-    padding: 0.6rem 0.65rem 0.7rem;
-    background: rgba(243, 214, 120, 0.55);
-    border-left: 3px solid #a33a2b;
+    align-items: flex-start;
+    gap: 0.2rem;
+    padding: 0.55rem 0.55rem 0.6rem;
+    border: 1px solid rgba(23, 59, 48, 0.18);
+    border-radius: 10px;
+    background: #fdf9f0;
     color: #173b30;
-    font-size: 0.78rem;
-    line-height: 1.3;
-    transform: rotate(2deg);
-    box-shadow: 0 6px 14px rgba(40, 28, 12, 0.1);
+    font: 400 0.66rem/1.25 Inter, ui-sans-serif, system-ui, sans-serif;
+    box-shadow: 0 6px 16px -10px rgba(40, 28, 12, 0.35);
   }
   .hero-p11-strip img {
-    width: 76px;
+    width: 100%;
     height: auto;
-    transform: rotate(-7deg);
-    filter: drop-shadow(0 4px 5px rgba(40, 28, 12, 0.2));
+    margin-bottom: 0.15rem;
+    filter: drop-shadow(0 3px 4px rgba(40, 28, 12, 0.18));
   }
-  .hero-p11-strip b { display: block; }
-  .hero-p11-strip svg { display: none; }
   .hero-p11-strip__sticker {
-    position: absolute;
-    top: -0.65rem;
-    right: -0.4rem;
-    z-index: 1;
-    padding: 0.2rem 0.55rem;
-    border-radius: 0.3rem;
-    background: #a33a2b;
-    color: #f8f2e5;
-    font: 700 11px/1.2 "Space Mono", ui-monospace, monospace;
-    letter-spacing: 0.12em;
+    order: -1;
+    font: 700 9px/1 "Space Mono", ui-monospace, monospace;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    transform: rotate(-9deg);
-    box-shadow: 0 3px 6px rgba(40, 28, 12, 0.25);
+    color: #a33a2b;
   }
-  .hero-p11-strip b { color: #a33a2b; font-weight: 700; }
-  .hero-p11-strip em { font-size: 0.9em; font-style: italic; opacity: 0.85; }
+  .hero-p11-strip b {
+    display: block;
+    font: 500 0.9rem/1.1 var(--fl-font-serif, "Fraunces", Georgia, serif);
+    color: #173b30;
+  }
+  .hero-p11-strip em,
+  .hero-p11-strip svg { display: none; }
 
-  /* hero card: the equation reads in two short lines, not five */
-  .macro-card { gap: 0.8rem; padding: 1.2rem 1.1rem; }
-  .macro-eq { margin-top: 0; gap: 0.4rem; }
-  .macro-eq__stage { padding: 0.35rem 0.55rem; font-size: 0.85rem; }
-  .macro-eq__stage svg { display: none; }
+  /* hero card: the equation flows as one wrapped line (see HypothesisExperiment.css) */
   .macro-eq__stage + .macro-eq__stage::before { margin-right: 0.25rem; }
-  .macro-eq__plus,
-  .macro-eq__equals { font-size: 1.5rem; }
   #question .press-note { margin-top: 1.75rem; }
 
   /* ── consults: one CTA, under the comparison ── */
@@ -2042,15 +2041,31 @@ body,
 #happiness-macro { scroll-margin-top: 96px; }
 
 @media (max-width: 767px) {
-  /* egg: the reading sits right under the switch, so cause and effect share a screen */
-  .egg-observation__body { gap: 1.1rem; }
-  .egg-observation__rail { margin-bottom: 0; }
-  .egg-observation__reading { order: 1; }
-  .egg-observation__art { order: 2; width: 100%; max-width: 300px; margin-inline: auto; }
-  .egg-observation__reading h3 { margin-top: 0.35rem; font-size: 1.7rem; }
-  .egg-observation__metric { margin-top: 0.6rem; }
-  .egg-observation__metric strong { font-size: 5rem; }
-  .egg-observation__interpretation { margin-top: 0.75rem; font-size: 1.05rem; }
+  /* egg: the drawing first, then a vertical switch beside the reading, so cause and effect share a row */
+  .egg-observation__body {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "art art" "rail reading";
+    gap: 1rem 1.1rem;
+    align-items: center;
+  }
+  .egg-observation__art { grid-area: art; width: 100%; max-width: 280px; margin-inline: auto; }
+  .egg-observation__caption { margin-top: 0.4rem; }
+  .egg-observation__rail { grid-area: rail; display: flex; margin-bottom: 0; }
+  .egg-observation__toggle {
+    min-width: 0;
+    grid-template-columns: auto;
+    justify-items: center;
+    gap: 0.45rem;
+    padding: 0.7rem 0.55rem;
+    border-radius: 1.4rem;
+  }
+  .egg-observation__toggle-track { width: 1.8rem; height: 3.4rem; }
+  .egg-observation__toggle.is-cooked .egg-observation__toggle-knob { transform: translateY(1.6rem); }
+  .egg-observation__reading { grid-area: reading; text-align: left; }
+  .egg-observation__reading h3 { margin-top: 0.2rem; font-size: 1.45rem; }
+  .egg-observation__metric { margin-top: 0.45rem; }
+  .egg-observation__metric strong { font-size: 4.2rem; }
+  .egg-observation__interpretation { max-width: none; margin: 0.6rem 0 0; font-size: 0.95rem; }
 
   /* protein: the sink scene runs to the card's edges */
   .protein-panel .fl-sink { margin-inline: -0.9rem; }
@@ -2087,3 +2102,26 @@ body,
 .consult-card { box-shadow: 0 14px 30px rgba(10, 22, 18, 0.3); }
 .consult-card .card-cta { background: var(--ink); color: #f8f2e5; }
 .group.consult-card:hover .card-cta { background: #24543f; }
+
+/* citations fold to one "Source" line under each experiment */
+.source-note summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  list-style: none;
+  cursor: pointer;
+  font: 700 10px var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}
+.source-note summary::-webkit-details-marker { display: none; }
+.source-note summary::after { content: "+"; text-decoration: none; }
+.source-note[open] summary::after { content: "–"; }
+.source-note p { margin: 0.45rem 0 0; }
+.gf-hint {
+  margin: 0.75rem 0 0;
+  font: 11px var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  color: color-mix(in srgb, var(--fl-ink) 55%, transparent);
+}
