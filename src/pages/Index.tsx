@@ -195,7 +195,7 @@ function ConsultationForm() {
             <div
                 className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[#f8f2e5]/40">
                 <span className="h-px flex-1 bg-[#f8f2e5]/15" />Or
-                                                                                                                                                                                                                                                                                                                                                                                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
+                                                                                                                                                                                                                                                                                                                                                                                                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
             </div>
             <a
                 href={ORDER_PROTEIN11}
@@ -368,11 +368,11 @@ const Index = () => {
                         className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
                         <div className="section-head">
                             <div>
-                                <span className="section-head__kicker">Our service · Precision Bio-Nutrition consults</span>
+                                <span className="section-head__kicker">PRECISION BIO-NUTRITION CONSULTS</span>
                                 <h2 id="help-heading" className="section-head__title">What a generic plan <em>never asks.</em></h2>
                             </div>
                             <div className="service-offer bg-[#f3ead7]">
-                                <p className="service-offer__line bg-[#e5d5d8] [color:#274037]">Work 1:1 with thefoodlab.in on a plan built around your biology, your taste and your actual needs.</p>
+                                <p className="service-offer__line [color:#274037] bg-[#364d45]">Work 1:1 with thefoodlab.in on a plan built around your biology, your taste and your actual needs.</p>
                                 <p className="service-offer__free [color:#dc9392]">Your first 30 minutes are free.</p>
                                 <a href={BOOK_CONSULT} className="cta-btn cta-btn--gold service-offer__cta">Book your free consult <ArrowRight className="h-4 w-4" /></a>
                             </div>
@@ -438,7 +438,7 @@ const Index = () => {
                                 <h2
                                     className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
                                 <p className="mt-7 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Tell us what you have tried and where real life keeps entering the picture. We begin with questions, not a perfect plan.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </p>
                                 <div className="mt-10 flex items-center gap-4 text-[#d68b7f]">
                                     <FlaskConical className="h-8 w-8 stroke-[1.2]" />
                                     <span className="handwritten max-w-xs text-xl leading-tight">No judgement. No gold stars for an ideal food diary.</span>
