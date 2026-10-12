@@ -34,24 +34,17 @@ import RegionScene from "@/components/region-scenes/RegionScene";
 import { BrandLogo } from "@/components/food-lab/BrandLogo";
 import { maestroAssets } from "@/lib/maestro-assets";
 
-const navigation = [{
-    label: "How we approach nutrition",
-    href: "#question"
-}, {
-    label: "Real life",
-    href: "#real-life"
-}, {
-    label: "The proof",
-    href: "#demonstration"
-}];
+const navigation = [
+    { label: "Our approach", href: "#question" },
+    { label: "Real life", href: "#real-life" },
+    { label: "The science", href: "#demonstration" },
+    { label: "Nutrition consults", href: "#how-we-help" },
+    { label: "Protein 11", href: "#fit-peasant" },
+];
 
-const offerings = [{
-    label: "Nutritional Consulting",
-    href: "#how-we-help"
-}, {
-    label: "Protein 11",
-    href: "#fit-peasant"
-}];
+// Every call to action goes to one of these two places.
+const ORDER_PROTEIN11 = "mailto:harsha@thefoodlab.in?subject=Order%20Protein%2011&body=Hi%20Food%20Lab%2C%20I%27d%20like%20to%20order%20Protein%2011.%0A%0ANumber%20of%20bars%3A%20%0AArea%20in%20Bengaluru%3A%20";
+const BOOK_CONSULT = "mailto:harsha@thefoodlab.in?subject=Book%20my%20free%2030-min%20consult&body=Hi%20Food%20Lab%2C%20I%27d%20like%20to%20book%20my%20free%2030-minute%20consult.%0A%0AWhat%20I%27d%20like%20help%20with%3A%20";
 
 // Per-bar macros, scaled to an actual 70 g bar
 const PROTEIN11_MACROS = [
@@ -75,89 +68,44 @@ function Brand() {
 
 function Header() {
     const [open, setOpen] = useState(false);
-    const [offeringsOpen, setOfferingsOpen] = useState(false);
-
     return (
         <header
             className="fixed inset-x-0 top-0 z-50 border-b border-ink/15 bg-[#faedde]/95 backdrop-blur-sm">
             <div
-                className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
+                className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-12">
                 <Brand />
-                {}
-                <span
-                    className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-ink/30 lg:block">
-                </span>
-                <nav
-                    className="hidden items-center gap-8 lg:flex xl:gap-12 mx-[0px]"
-                    aria-label="Primary navigation">
-                    {navigation.map(item => (<a
-                        key={item.href}
-                        href={item.href}
-                        className="text-sm text-ink/65 transition-colors hover:text-primary xl:text-base mx-[44px]">
+                <nav className="site-nav hidden xl:flex" aria-label="Primary navigation">
+                    {navigation.map(item => (<a key={item.href} href={item.href} className="site-nav__link">
                         {item.label}
                     </a>))}
-                    <div className="relative mx-[44px]">
-                        <button
-                            type="button"
-                            onClick={() => setOfferingsOpen(value => !value)}
-                            className="flex items-center gap-2 text-sm text-ink/65 transition-colors hover:text-primary xl:text-base"
-                            aria-expanded={offeringsOpen}>Our Offerings <span aria-hidden="true">⌄</span>
-                        </button>
-                        {offeringsOpen && (<div
-                            className="absolute left-0 top-full mt-3 min-w-[210px] rounded-xl border border-ink/15 bg-[#faedde] p-2 shadow-lg">
-                            {offerings.map(item => (<a
-                                key={item.href}
-                                href={item.href}
-                                onClick={() => setOfferingsOpen(false)}
-                                className="block rounded-lg px-3 py-2 text-sm text-ink/70 hover:bg-ink/5 hover:text-primary">
-                                {item.label}
-                            </a>))}
-                        </div>)}
-                    </div>
                 </nav>
-                <a
-                    href="#your-experiment"
-                    className="hidden items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-xs text-[#f8f2e5] transition-transform hover:-translate-y-0.5 lg:flex">Bring us a question <ArrowRight className="h-4 w-4" />
-                </a>
-                <button
-                    type="button"
-                    onClick={() => setOpen(value => !value)}
-                    className="grid h-11 w-11 place-items-center rounded-full border border-ink/25 text-ink lg:hidden"
-                    aria-label={open ? "Close menu" : "Open menu"}
-                    aria-expanded={open}>
-                    {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-                </button>
+                <div className="flex items-center gap-2.5">
+                    <a href={BOOK_CONSULT} className="header-cta header-cta--ghost hidden xl:inline-flex">Free 30-min consult</a>
+                    <a href={ORDER_PROTEIN11} className="header-cta header-cta--gold hidden sm:inline-flex">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
+                    <button
+                        type="button"
+                        onClick={() => setOpen(value => !value)}
+                        className="grid h-11 w-11 place-items-center rounded-full border border-ink/25 text-ink xl:hidden"
+                        aria-label={open ? "Close menu" : "Open menu"}
+                        aria-expanded={open}>
+                        {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                    </button>
+                </div>
             </div>
             {open && (<nav
-                className="absolute left-0 right-0 top-full border-t border-ink/15 bg-[#faedde] px-5 py-4 shadow-[0_8px_18px_rgba(23,59,48,.08)] lg:hidden"
+                className="absolute left-0 right-0 top-full border-t border-ink/15 bg-[#faedde] px-5 py-4 shadow-[0_8px_18px_rgba(23,59,48,.08)] xl:hidden"
                 aria-label="Mobile navigation">
                 {navigation.map(item => (<a
                     key={item.href}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-between border-b border-ink/10 py-3 text-sm text-ink">
+                    className="flex items-center justify-between border-b border-ink/10 py-3 text-base text-ink">
                     {item.label}<ArrowRight className="h-4 w-4 text-primary" />
                 </a>))}
-                <button
-                    type="button"
-                    onClick={() => setOfferingsOpen(value => !value)}
-                    className="flex w-full items-center justify-between border-b border-ink/10 py-3 text-left text-sm text-ink"
-                    aria-expanded={offeringsOpen}>Our Offerings <span aria-hidden="true">⌄</span>
-                </button>
-                {offeringsOpen && (<div className="border-b border-ink/10 pl-4">
-                    {offerings.map(item => (<a
-                        key={item.href}
-                        href={item.href}
-                        onClick={() => setOpen(false)}
-                        className="flex items-center justify-between py-3 text-sm text-ink/75">
-                        {item.label}<ArrowRight className="h-4 w-4 text-primary" />
-                    </a>))}
-                </div>)}
-                <a
-                    href="#your-experiment"
-                    onClick={() => setOpen(false)}
-                    className="mt-4 flex items-center justify-between rounded-full bg-ink px-5 py-3 text-sm text-[#f8f2e5]">Bring us a question <ArrowRight className="h-4 w-4" />
-                </a>
+                <div className="mt-4 grid gap-2.5">
+                    <a href={ORDER_PROTEIN11} onClick={() => setOpen(false)} className="header-cta header-cta--gold justify-center">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
+                    <a href={BOOK_CONSULT} onClick={() => setOpen(false)} className="header-cta header-cta--ghost justify-center">Book a free 30-min consult</a>
+                </div>
             </nav>)}
         </header>
     );
@@ -167,14 +115,14 @@ function ConsultationForm() {
     return (
         <div className="grid gap-5">
             <a
-                href="mailto:harsha@thefoodlab.in?subject=Precise%20nutrition%20solutions"
+                href={BOOK_CONSULT}
                 className="group rounded-[1.5rem] border border-[#f8f2e5]/25 bg-[#f8f2e5]/5 p-6 transition hover:-translate-y-1 hover:border-[#d68b7f] hover:bg-[#f8f2e5]/10">
                 <span
-                    className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#d68b7f]">Personal nutrition</span>
+                    className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#d68b7f]">Nutrition consult · 1:1</span>
                 <strong
                     className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Looking for precise solutions to your nutritional goals?</strong>
                 <span
-                    className="mt-5 inline-flex items-center gap-2 text-sm text-[#f8f2e5]/70 transition group-hover:text-[#f8f2e5]">Talk to The Food Lab <ArrowRight className="h-4 w-4" /></span>
+                    className="card-cta">Book your free 30-min consult <ArrowRight className="h-4 w-4" /></span>
             </a>
             <div
                 className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[#f8f2e5]/40">
@@ -182,14 +130,14 @@ function ConsultationForm() {
                                                                                                                                                                                                                                                                                                                                                 <span className="h-px flex-1 bg-[#f8f2e5]/15" />
             </div>
             <a
-                href="mailto:harsha@thefoodlab.in?subject=Protein%2011%20protein%20bar"
+                href={ORDER_PROTEIN11}
                 className="group rounded-[1.5rem] border border-[#d68b7f]/45 bg-[#d68b7f]/10 p-6 transition hover:-translate-y-1 hover:border-[#d68b7f] hover:bg-[#d68b7f]/15">
                 <span
                     className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#d68b7f]">Protein 11</span>
                 <strong
-                    className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Try Protein 11 now!</strong>
+                    className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Protein 11, made fresh this week.</strong>
                 <span
-                    className="mt-5 inline-flex items-center gap-2 text-sm text-[#f8f2e5]/70 transition group-hover:text-[#f8f2e5]">Try Protein 11 now <ArrowRight className="h-4 w-4" /></span>
+                    className="card-cta">Order Protein 11 <ArrowRight className="h-4 w-4" /></span>
             </a>
         </div>
     );
@@ -199,7 +147,7 @@ const experimentOptions = [
     ["egg", "Egg"],
     ["rice", "Rice"],
     ["gluten", "Gluten"],
-    ["protein", "Protein (fiber?)"]
+    ["protein", "Protein"]
 ] as const;
 
 const lensEssence: Record<"egg" | "rice" | "gluten" | "protein", string> = {
@@ -228,10 +176,21 @@ const Index = () => {
                                     className="max-w-[700px] font-serif text-[clamp(2.6rem,5.2vw,5.8rem)] font-normal leading-[0.9] tracking-[-0.05em] text-ink">Could <span className="red-underline">interactions</span>{" "}<span className="red-underline">matter</span>{" "}<span className="red-underline">more</span>{" "}than ingredients?</h1>
                                 <p
                                     className="mt-6 max-w-lg font-serif text-[clamp(1.05rem,1.65vw,1.5rem)] leading-snug text-ink/75">Most of us keep changing the list. We study what happens around it.</p>
-                                {}
-                                <p
-                                    className="handwritten mt-5 max-w-xs rotate-[-0.5deg] text-sm text-primary/70">
-                                </p>
+                                <div className="hero-p11">
+                                    <img
+                                        src={maestroAssets.alchemyBar}
+                                        alt="Protein 11 bar in its wrapper"
+                                        className="hero-p11__img" />
+                                    <div className="hero-p11__body">
+                                        <span className="hero-p11__kicker">New from our kitchen · made this week</span>
+                                        <strong className="hero-p11__title">Protein 11</strong>
+                                        <p className="hero-p11__line">A 20 g protein bar made from 16 foods you can name.</p>
+                                        <div className="hero-p11__actions">
+                                            <a href={ORDER_PROTEIN11} className="cta-btn">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
+                                            <a href="#fit-peasant" className="text-link">What’s inside? <ArrowRight className="h-3.5 w-3.5 rotate-90" /></a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <HypothesisExperiment />
                         </div>
@@ -247,13 +206,12 @@ const Index = () => {
                     <div
                         className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
                         <div className="nb-dark-ruled-top" />
-                        <div className="mb-10 max-w-3xl sm:mb-12">
-                            <span
-                                className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#e49a8d]">Field notes / three days that ignored the plan</span>
-                            <h2
-                                className="mt-5 font-serif text-4xl font-normal leading-[0.96] tracking-[-0.04em] sm:text-5xl lg:text-[clamp(2.6rem,4.4vw,4rem)]">The plan was perfect. <em>The day wasn’t in it.</em></h2>
-                            <p
-                                className="mt-5 max-w-xl text-base leading-relaxed text-[#f5f0e3] sm:text-lg">Pick a person. See which meals a generic diet chart actually survives.</p>
+                        <div className="section-head">
+                            <div>
+                                <span className="section-head__kicker">Field notes · three real days</span>
+                                <h2 className="section-head__title">The plan was perfect. <em>The day wasn’t in it.</em></h2>
+                            </div>
+                            <p className="section-head__sub">Pick a person. See which meals a generic diet chart actually survives, and what we would build instead.</p>
                         </div>
                         <PlanLedger />
                         <aside className="press-note mt-10 max-w-lg rotate-[1deg] p-5 text-ink">
@@ -266,33 +224,31 @@ const Index = () => {
                 <section id="demonstration" className="px-4 sm:px-6 lg:px-8">
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
-                        <div className="max-w-4xl">
+                        <div className="lens-bookmarks" role="tablist" aria-label="Choose an experiment">
+                            {experimentOptions.map(([key, label], index) => (<button
+                                key={key}
+                                type="button"
+                                role="tab"
+                                aria-selected={activeExperiment === key}
+                                aria-controls={`experiment-panel-${key}`}
+                                onClick={() => setActiveExperiment(key)}
+                                className={`lens-bookmark ${activeExperiment === key ? "is-active" : ""}`}>
+                                <small>0{index + 1}</small>
+                                <span>{label}</span>
+                            </button>))}
+                        </div>
+                        <div className="lens-head">
+                            <span className="section-head__kicker">The science · pick a bookmark</span>
                             <h2
                                 key={activeExperiment}
-                                className="mt-5 font-serif text-[clamp(1.75rem,4.2vw,3.6rem)] font-normal leading-[1.05] tracking-[-0.03em] animate-in fade-in slide-in-from-bottom-2 duration-300">
+                                className="lens-head__title animate-in fade-in slide-in-from-bottom-2 duration-300">
                                 {lensEssence[activeExperiment]}
                             </h2>
                         </div>
                         <div
-                            className="lens-coverflow mt-8"
+                            className="lens-coverflow mt-6"
                             role="region"
-                            aria-label="Interactive 4-lens coverflow carousel">
-                            {}
-                            <div className="lens-coverflow__controls">
-                                <div
-                                    className="lens-coverflow__pills"
-                                    role="tablist"
-                                    aria-label="Experiment switcher">
-                                    {experimentOptions.map(([key, label], index) => (<button
-                                        key={key}
-                                        type="button"
-                                        role="tab"
-                                        aria-selected={activeExperiment === key}
-                                        onClick={() => setActiveExperiment(key)}
-                                        className={`lens-coverflow__pill ${activeExperiment === key ? "is-active" : ""}`}>0{index + 1} {label}
-                                    </button>))}
-                                </div>
-                            </div>
+                            aria-label="Experiments">
                             {}
                             <div className="lens-coverflow__stage">
                                 {experimentOptions.map(([key, label], index) => {
@@ -333,22 +289,21 @@ const Index = () => {
                     aria-labelledby="help-heading">
                     <div
                         className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
-                        <div className="mb-10 max-w-3xl sm:mb-12">
-                            <span
-                                className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#e49a8d]">Precision Bio-Nutrition / the part the PDF skips</span>
-                            <h2
-                                id="help-heading"
-                                className="mt-5 font-serif text-4xl font-normal leading-[0.96] tracking-[-0.04em] sm:text-5xl lg:text-[clamp(2.6rem,4.4vw,4rem)]">What a generic plan <em>never asks.</em></h2>
-                            <blockquote
-                                className="mt-6 max-w-2xl border-l-4 border-primary pl-5 font-serif text-xl leading-snug text-ink/80 sm:text-2xl">The right nutritional solution isn’t the one that looks best on paper.
-                                <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
-                            </blockquote>
+                        <div className="section-head">
+                            <div>
+                                <span className="section-head__kicker">Our service · Precision Bio-Nutrition consults</span>
+                                <h2 id="help-heading" className="section-head__title">What a generic plan <em>never asks.</em></h2>
+                            </div>
+                            <div className="service-offer">
+                                <p className="service-offer__line">Work 1:1 with The Food Lab on a plan built around your biology, your taste and your actual day.</p>
+                                <p className="service-offer__free">Your first 30 minutes are free.</p>
+                                <a href={BOOK_CONSULT} className="cta-btn cta-btn--gold">Book your free consult <ArrowRight className="h-4 w-4" /></a>
+                            </div>
                         </div>
                         <GapBoard />
-                        <a
-                            href="#your-experiment"
-                            className="method-cta mt-10 inline-flex items-center gap-3 rounded-full bg-[#f8f2e5] px-6 py-3.5 text-sm text-ink transition-transform hover:-translate-y-0.5">First 30 min free consult — Get in touch <ArrowRight className="h-4 w-4" />
-                        </a>
+                        <div className="mt-10">
+                            <a href={BOOK_CONSULT} className="cta-btn cta-btn--gold">Book your free 30-min consult <ArrowRight className="h-4 w-4" /></a>
+                        </div>
                     </div>
                 </section>
                 <section id="fit-peasant" className="px-4 sm:px-6 lg:px-8">
@@ -386,8 +341,11 @@ const Index = () => {
                                         className="mt-3 block max-w-md text-lg font-normal leading-snug tracking-normal sm:text-xl">— because protein was never meant to work alone.</span>
                                 </h2>
                                 <p
-                                    className="mt-5 max-w-lg font-serif text-xl italic leading-relaxed text-ink/70">We’ll let you tell us how good it is.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </p>
+                                    className="mt-5 max-w-lg text-lg leading-relaxed text-ink/80">A protein bar you can order from us, made fresh every week in Bengaluru. We’ll let you tell us how good it is.</p>
+                                <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+                                    <a href={ORDER_PROTEIN11} className="cta-btn">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
+                                    <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink/55">Order by email · small batch, Bengaluru</span>
+                                </div>
                             </div>
                         </div>
                         <ChaptersCoverflow />
