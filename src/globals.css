@@ -3109,6 +3109,18 @@ main > section.reveal.is-revealed {
   color: var(--green);
 }
 
+.egg-observation__metric--raw strong {
+  color: var(--brick);
+}
+
+.egg-observation__only {
+  display: block;
+  margin-bottom: 0.35em;
+  font-size: 0.32em;
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+
 .egg-observation__interpretation {
   max-width: 26ch;
   margin-top: 1.4rem;
@@ -4641,8 +4653,8 @@ body,
   .protein-diagnosis__state,
   .protein-diagnosis__cta,
   .protein-panel__label,
-  .protein-panel__source,
   .fl-reg__title { font-size: 12px !important; }
+  .protein-panel__source { font-size: 8.5px; line-height: 1.5; letter-spacing: 0.05em; }
   .lens-bookmark small { font-size: 12px; }
   .lens-bookmark { min-height: 44px; }
   .macro-generic,
@@ -4661,23 +4673,7 @@ body,
 }
 #top footer.site-footer::before,
 #top footer.site-footer::after { display: none; }
-#top footer.site-footer p { color: rgba(248, 242, 229, 0.8); }
-#top footer.site-footer div > div { color: rgba(248, 242, 229, 0.6); }
-@media (max-width: 767px) {
-  #top footer.site-footer { padding: 1.5rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom)); }
-  #top footer.site-footer > div {
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: 0.9rem 1rem;
-  }
-  #top footer.site-footer p {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    font-size: 1rem;
-  }
-  #top footer.site-footer div > div {
-    text-align: right;
-    font-size: 12px !important;
-    line-height: 1.6;
-  }
-}
+#top footer.site-footer { border-width: 1px 0 0 !important; border-radius: 0 !important; padding: 0 0 env(safe-area-inset-bottom); }
+#top footer.site-footer .site-footer__tagline { color: rgba(248, 242, 229, 0.8); }
+#top footer.site-footer .site-footer__contact { color: rgba(248, 242, 229, 0.6); }
+

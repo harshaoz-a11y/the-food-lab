@@ -214,7 +214,7 @@ const experimentOptions = [
     ["egg", "Egg"],
     ["rice", "Rice"],
     ["gluten", "Gluten"],
-    ["protein", "Protein"]
+    ["protein", "Protein (fiber!!)"]
 ] as const;
 
 const lensEssence: Record<"egg" | "rice" | "gluten" | "protein", string> = {
@@ -369,7 +369,7 @@ const Index = () => {
                         <div className="section-head">
                             <div>
                                 <span className="section-head__kicker">PRECISION BIO-NUTRITION CONSULTS</span>
-                                <h2 id="help-heading" className="section-head__title">What a generic plan <em>never asks.</em></h2>
+                                <h2 id="help-heading" className="section-head__title">Customized plans that <em>won’t ask you to “diet”</em></h2>
                             </div>
                             <div className="service-offer bg-[#f3ead7]">
                                 <p className="service-offer__line [color:#274037] bg-[#364d45]">Work 1:1 with thefoodlab.in on a plan built around your biology, your taste and your actual needs.</p>
@@ -451,13 +451,13 @@ const Index = () => {
                     </div>
                 </section>
             </main>
-            <footer className="paper-sheet nb-ruled site-footer px-5 py-12 sm:px-8">
+            <footer className="paper-sheet site-footer">
                 <div
-                    className="mx-auto grid max-w-[1320px] gap-8 sm:grid-cols-[auto_1fr_auto] sm:items-center">
+                    className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-12">
                     <Brand />
-                    <p className="font-serif text-xl italic text-ink/75 sm:text-center">We observe. We question. Then we build.</p>
+                    <p className="site-footer__tagline hidden font-serif text-lg italic md:block">We observe. We question. Then we build.</p>
                     <div
-                        className="font-mono text-[11px] uppercase leading-loose tracking-[0.12em] text-ink/50 sm:text-right">Bengaluru<br />harsha@thefoodlab.in</div>
+                        className="site-footer__contact text-right font-mono text-[11px] uppercase leading-relaxed tracking-[0.12em]">Bengaluru<br />harsha@thefoodlab.in</div>
                 </div>
             </footer>
             <MobileActionBar />

@@ -51,7 +51,7 @@ export function EggExperiment() {
                     <span className="egg-observation__eyebrow">HUMAN DATA</span>
                     <h3>Protein<br />digestibility</h3>
                     <div className={`egg-observation__metric egg-observation__metric--${egg}`}>
-                        <strong>{current.value}%</strong>
+                        <strong>{egg === "raw" && <span className="egg-observation__only">Only </span>}{current.value}%</strong>
                     </div>
                     <p className="egg-observation__interpretation">{current.note}</p>
                 </div>
