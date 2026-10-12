@@ -314,7 +314,7 @@ export function Chapter2Digestion() {
               />
 
               {/* Scrubber Top Handle Pill */}
-              <g transform={`translate(${currentX}, 28)`}>
+              <g className="p11-scrubber-handle" transform={`translate(${currentX}, 28)`}>
                 <rect
                   x="-20"
                   y="-14"
@@ -398,15 +398,6 @@ export function Chapter2Digestion() {
           </div>
         </div>
 
-          {/* In plain words */}
-          <div className="p11-panel-box p11-secondary">
-            <span className="p11-panel-kicker">In plain words</span>
-            <p className="p11-panel-plain">
-              A protein shake hits fast and is gone in about an hour and a half. This bar works in relay: whey
-              shows up first, casein takes over later, and the fibre from isabgol and oats slows everything down
-              a little. No spike, no slump — just steady fuel through the afternoon.
-            </p>
-          </div>
         </div>
 
         {/* Side Panel Column */}
@@ -448,6 +439,15 @@ export function Chapter2Digestion() {
             </p>
           </details>
         </aside>
+      </div>
+      {/* In plain words: full width under the chart and the side panel */}
+      <div className="p11-panel-box p11-plain-words p11-secondary">
+        <span className="p11-panel-kicker">In plain words</span>
+        <p className="p11-panel-plain">
+          A protein shake hits fast and is gone in about an hour and a half. This bar works in relay: whey
+          shows up first, casein takes over later, and the fibre from isabgol and oats slows everything down
+          a little. No spike, no slump — just steady fuel through the afternoon.
+        </p>
       </div>
       <ChapterMore open={more} onToggle={() => setMore((value) => !value)} />
     </section>

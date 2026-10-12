@@ -9,7 +9,7 @@
 .fl-rc__tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.25rem}
 .fl-rc__tab{font:500 .9rem var(--fl-font-sans);padding:.5rem 1rem;border-radius:999px;cursor:pointer;
   border:1px solid color-mix(in srgb,var(--fl-ink) 35%,transparent);background:transparent;color:var(--fl-ink);transition:background .3s,color .3s}
-.fl-rc__tab[aria-selected="true"]{background:var(--fl-brick);border-color:var(--fl-brick);color:var(--fl-paper)}
+.fl-rc__tab[aria-selected="true"]{color:var(--fl-paper)}
 .fl-rc__panels{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.5rem,1.6vw,1.5rem);align-items:start}
 
 .fl-panel{all:unset;box-sizing:border-box;display:block;cursor:pointer;padding:.75rem .75rem .5rem;border-radius:6px;
@@ -45,11 +45,8 @@
 .fl-panel.is-active .fl-art{animation:fl-wipe .9s var(--fl-ease) both paused}
 .fl-rc.is-in .fl-panel.is-active .fl-art{animation-play-state:running}
 .fl-panel.is-active .fl-pop{animation:fl-pop .55s .55s var(--fl-ease) both paused}
-.fl-panel.is-active .fl-curve{stroke-dasharray:1;animation:fl-draw 1.5s .95s var(--fl-ease) both paused}
+.fl-panel.is-active .fl-curve{stroke-dasharray:1;animation:fl-draw 1.2s .35s var(--fl-ease) both paused}
 .fl-rc.is-in .fl-panel.is-active :is(.fl-pop,.fl-curve){animation-play-state:running}
-.fl-rc.is-in .fl-panel.is-active .fl-puffs{animation:fl-rise 3.4s 1s ease-out infinite}
-.fl-rc.is-in .fl-panel.is-active .fl-wisps{animation:fl-rise 4.2s .6s ease-out infinite}
-.fl-rc.is-in .fl-panel.is-active .fl-bolt{animation:fl-zap 2.6s 1.1s steps(1) infinite}
 .fl-rc.is-in .fl-panel.is-active .fl-gi{animation:fl-throb 1.1s 1.2s ease-in-out infinite}
 .fl-rc.is-in .fl-panel.is-active .fl-blink{animation:fl-blink 1.4s 1s steps(1) infinite}
 .fl-rc.is-in .fl-panel.is-active .fl-spark{animation:fl-twinkle 2.2s ease-in-out infinite;animation-delay:calc(var(--i,0)*.5s + 1.2s)}

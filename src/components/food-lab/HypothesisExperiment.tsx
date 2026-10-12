@@ -35,7 +35,7 @@ export function HypothesisExperiment() {
     const other = generic ? outcomes.joy : outcomes.nojoy;
 
     return (
-        <div className={`macro-card ${generic ? "is-nojoy" : "is-joy"}`}>
+        <div id="happiness-macro" className={`macro-card ${generic ? "is-nojoy" : "is-joy"}`}>
             <span className="macro-card__nickname">
                 <Heart aria-hidden="true" /> Our secret
             </span>
@@ -48,7 +48,7 @@ export function HypothesisExperiment() {
             <div className="macro-eq" aria-label="Ingredients, collaboration and optimization, plus enjoyment, make the outcome">
                 <ol className="macro-eq__stages">
                     {stages.map(({ title, icon: Icon }, i) => (
-                        <li key={title} className="macro-eq__stage" style={{ "--i": i } as React.CSSProperties}>
+                        <li key={title} className={`macro-eq__stage macro-eq__stage--${i + 1}`} style={{ "--i": i } as React.CSSProperties}>
                             <Icon aria-hidden="true" />
                             {title}
                         </li>
@@ -58,7 +58,7 @@ export function HypothesisExperiment() {
                     <span className="macro-eq__plus" aria-hidden="true">+</span>
                     <span className="macro-eq__joy">
                         <Heart aria-hidden="true" className="macro-eq__joy-heart" />
-                        <span className="macro-eq__joy-label">Enjoyment</span>
+                        <span className="macro-eq__joy-label">{generic ? "Enjoyment?" : "Enjoyment"}</span>
                     </span>
                 </div>
             </div>
@@ -98,7 +98,7 @@ export function HypothesisExperiment() {
             <label className="macro-generic">
                 <input type="checkbox" checked={generic} onChange={(e) => setGeneric(e.target.checked)} />
                 <span className="macro-generic__box" aria-hidden="true"><Check /></span>
-                Prefer what works for someone else?
+                See what most diets tend to do
             </label>
         </div>
     );

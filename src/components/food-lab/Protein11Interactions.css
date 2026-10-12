@@ -13,90 +13,6 @@
 /* ----------------------------------------------------
    Top "Who's eating?" Persona Filter Bar
    ---------------------------------------------------- */
-.p11-whos-eating-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.9rem 1.25rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--fl-cream, #ece4d0) 70%, var(--paper, #f8f2e5));
-  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);
-  box-shadow: 0 2px 10px rgba(31, 41, 36, 0.04);
-}
-
-.p11-whos-eating-lead {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.p11-whos-eating-title {
-  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink, #1f2924);
-}
-
-.p11-whos-eating-chips {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.p11-whos-eating-chip {
-  padding: 0.4rem 0.85rem;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 16%, transparent);
-  background: var(--paper, #f8f2e5);
-  color: var(--ink, #1f2924);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.18s ease;
-  user-select: none;
-}
-
-.p11-whos-eating-chip:hover {
-  background: #ffffff;
-  border-color: var(--brick, #a33a2b);
-  color: var(--brick, #a33a2b);
-}
-
-.p11-whos-eating-chip:focus-visible {
-  outline: 2px solid var(--brick, #a33a2b);
-  outline-offset: 2px;
-}
-
-.p11-whos-eating-chip.is-active {
-  background: var(--brick, #a33a2b);
-  border-color: var(--brick, #a33a2b);
-  color: var(--fl-cream, #f8f2e5);
-  box-shadow: 0 2px 8px rgba(163, 58, 43, 0.28);
-}
-
-.p11-whos-eating-clear {
-  padding: 0.35rem 0.65rem;
-  border-radius: 999px;
-  border: 1px dashed color-mix(in srgb, var(--ink, #1f2924) 25%, transparent);
-  background: transparent;
-  color: color-mix(in srgb, var(--ink, #1f2924) 65%, transparent);
-  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.p11-whos-eating-clear:hover {
-  background: rgba(0, 0, 0, 0.05);
-  color: var(--ink, #1f2924);
-}
 
 /* ----------------------------------------------------
    Common Chapter Cards & Headers
@@ -130,34 +46,6 @@
   gap: 0.35rem;
 }
 
-.p11-chapter__header-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-
-.p11-header__kicker,
-.p11-chapter__kicker {
-  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--brick, #a33a2b);
-}
-
-.p11-draft-badge {
-  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.2rem 0.55rem;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--brick, #a33a2b) 40%, transparent);
-  background: color-mix(in srgb, var(--brick, #a33a2b) 8%, var(--paper, #f8f2e5));
-  color: var(--brick, #a33a2b);
-}
-
 .p11-header__title,
 .p11-chapter__title {
   font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
@@ -175,12 +63,6 @@
   color: color-mix(in srgb, var(--ink, #1f2924) 75%, transparent);
   max-width: 65ch;
   margin-top: 0.25rem;
-}
-
-.p11-header__count {
-  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
-  font-size: 11px;
-  color: color-mix(in srgb, var(--ink, #1f2924) 60%, transparent);
 }
 
 /* ----------------------------------------------------
@@ -298,11 +180,6 @@
   color: color-mix(in srgb, var(--ink, #1f2924) 55%, transparent);
 }
 
-.p11-stage-wrapper {
-  position: relative;
-  width: 100%;
-}
-
 .p11-understage {
   border-radius: 1.25rem;
   border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);
@@ -311,62 +188,6 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-.p11-understage__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.p11-understage__kicker {
-  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--brick, #a33a2b);
-}
-
-.p11-nav {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.p11-nav-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.25rem 0.65rem;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 22%, transparent);
-  background: var(--paper, #f8f2e5);
-  color: var(--ink, #1f2924);
-  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
-  font-size: 11px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  user-select: none;
-}
-
-.p11-nav-btn:hover {
-  border-color: var(--brick, #a33a2b);
-  color: var(--brick, #a33a2b);
-  background: #ffffff;
-}
-
-.p11-nav-btn:focus-visible {
-  outline: 2px solid var(--brick, #a33a2b);
-  outline-offset: 2px;
-}
-
-.p11-nav-counter {
-  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
-  font-size: 11px;
-  color: color-mix(in srgb, var(--ink, #1f2924) 60%, transparent);
-  padding: 0 0.3rem;
-  user-select: none;
 }
 
 .p11-understage__title {
@@ -698,72 +519,8 @@
 /* ----------------------------------------------------
    Chapter 3: Your Day
    ---------------------------------------------------- */
-.p11-day-select {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-@media (min-width: 900px) {
-  .p11-day-select {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-  }
-}
 
 /* "What the day needs": a speech bubble pointing back at the chips */
-.p11-day-bubble {
-  position: relative;
-  max-width: 340px;
-  padding: 0.7rem 1rem;
-  border-radius: 0.9rem;
-  background: var(--fl-green, #173b30);
-  color: var(--fl-cream, #f8f2e5);
-  box-shadow: 0 8px 20px -10px rgba(23, 59, 48, 0.6);
-  animation: p11-bubble-in 0.35s cubic-bezier(0.3, 0.7, 0.2, 1);
-}
-
-.p11-day-bubble::before {
-  content: "";
-  position: absolute;
-  left: 1.5rem;
-  top: -7px;
-  width: 14px;
-  height: 14px;
-  background: inherit;
-  transform: rotate(45deg);
-  border-radius: 2px;
-}
-
-@media (min-width: 900px) {
-  .p11-day-bubble {
-    flex: 0 0 300px;
-  }
-
-  .p11-day-bubble::before {
-    left: -7px;
-    top: 50%;
-    margin-top: -7px;
-  }
-}
-
-.p11-day-bubble__kicker {
-  display: block;
-  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  opacity: 0.7;
-}
-
-.p11-day-bubble__text {
-  margin-top: 0.2rem;
-  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
-  font-size: 1rem;
-  line-height: 1.35;
-}
 
 @keyframes p11-bubble-in {
   from {
@@ -776,181 +533,9 @@
   }
 }
 
-.p11-day-persona-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.p11-day-chip {
-  padding: 0.3rem 0.75rem;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 16%, transparent);
-  background: var(--paper, #f8f2e5);
-  font-size: 0.8rem;
-  cursor: pointer;
-  color: var(--ink, #1f2924);
-  transition: all 0.15s ease;
-}
-
-.p11-day-chip:hover {
-  background: #ffffff;
-  border-color: var(--brick, #a33a2b);
-}
-
-.p11-day-chip.is-selected {
-  background: var(--fl-green, #173b30);
-  border-color: var(--fl-green, #173b30);
-  color: var(--fl-cream, #f8f2e5);
-}
-
 /* Day Strip (7 AM to 9 PM) */
-.p11-timeline-card {
-  border-radius: 1.25rem;
-  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);
-  background: color-mix(in srgb, var(--fl-cream, #ece4d0) 40%, var(--paper, #f8f2e5));
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.p11-timeline-ruler {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 4px;
-}
-
-.p11-timeline-ruler-tick {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.p11-ruler-mark {
-  width: 1px;
-  height: 6px;
-  background: color-mix(in srgb, var(--ink, #1f2924) 30%, transparent);
-}
-
-.p11-ruler-label {
-  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
-  font-size: 10px;
-  color: color-mix(in srgb, var(--ink, #1f2924) 60%, transparent);
-}
-
-.p11-timeline-strip {
-  position: relative;
-  display: flex;
-  gap: 4px;
-  min-height: 58px;
-  padding: 4px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.45);
-  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 12%, transparent);
-  margin-bottom: 5.5rem; /* Space for marker card */
-}
-
-.p11-time-block {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0.45rem 0.4rem;
-  border-radius: 6px;
-  font-size: 11px;
-  line-height: 1.2;
-  transition: all 0.15s ease;
-}
-
-.p11-time-block--focus {
-  background: color-mix(in srgb, var(--fl-green, #173b30) 14%, var(--paper, #f8f2e5));
-  border-left: 2px solid var(--fl-green, #173b30);
-}
-
-.p11-time-block--transit {
-  background: color-mix(in srgb, #c9975a 16%, var(--paper, #f8f2e5));
-  border-left: 2px solid #c9975a;
-}
-
-.p11-time-block--break {
-  background: color-mix(in srgb, var(--brick, #a33a2b) 12%, var(--paper, #f8f2e5));
-  border-left: 2px solid var(--brick, #a33a2b);
-}
-
-.p11-time-block--activity {
-  background: color-mix(in srgb, #2e6b57 14%, var(--paper, #f8f2e5));
-  border-left: 2px solid #2e6b57;
-}
-
-.p11-time-block--routine {
-  background: rgba(0, 0, 0, 0.05);
-  border-left: 2px solid color-mix(in srgb, var(--ink, #1f2924) 30%, transparent);
-}
-
-.p11-time-block-label {
-  font-weight: 600;
-  color: var(--ink, #1f2924);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.p11-time-block-time {
-  font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
-  font-size: 9px;
-  color: color-mix(in srgb, var(--ink, #1f2924) 55%, transparent);
-}
 
 /* Marker where the bar fits */
-.p11-bar-marker {
-  position: absolute;
-  top: 100%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.p11-marker-pin {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.p11-marker-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--brick, #a33a2b);
-  border: 2px solid #ffffff;
-  box-shadow: 0 0 0 2px var(--brick, #a33a2b);
-  margin-top: -5px;
-}
-
-.p11-marker-stem {
-  width: 2px;
-  height: 18px;
-  background: var(--brick, #a33a2b);
-}
-
-.p11-marker-card {
-  width: max-content;
-  max-width: 260px;
-  border-radius: 0.85rem;
-  border: 1px solid var(--brick, #a33a2b);
-  background: #ffffff;
-  box-shadow: 0 4px 14px rgba(163, 58, 43, 0.16);
-  padding: 0.55rem 0.85rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  pointer-events: auto;
-}
 
 .p11-marker-time {
   font-family: var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
@@ -1075,8 +660,7 @@
     gap: 0.9rem;
   }
 
-  .p11-list-section,
-  .p11-day-persona-chips {
+  .p11-list-section {
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 0.4rem;
@@ -1087,8 +671,7 @@
     mask-image: linear-gradient(to right, #000 85%, transparent);
   }
 
-  .p11-list-section::-webkit-scrollbar,
-  .p11-day-persona-chips::-webkit-scrollbar {
+  .p11-list-section::-webkit-scrollbar {
     display: none;
   }
 
@@ -1104,8 +687,7 @@
     display: none;
   }
 
-  .p11-item-btn,
-  .p11-day-chip {
+  .p11-item-btn {
     flex: none;
     width: auto;
     min-height: 44px;
@@ -1160,4 +742,184 @@
   .p11-more-btn[aria-expanded="true"] svg {
     transform: rotate(180deg);
   }
+}
+
+/* the end time is only shown where the day reads as a list (phones) */
+
+@media (max-width: 767px) {
+  /* What's inside: the partnerships sit above the photo, so the choice and its result share a screen */
+  .p11-list-section { order: 0; }
+
+  /* What happens next: give the chart the card's full width and readable labels */
+  .p11-chart-card { padding: 0.85rem 0.6rem; }
+  .p11-svg-tick-text { font-size: 30px; }
+  .p11-scrubber-handle { display: none; }
+
+  /* Where does it fit: the day becomes a list you read top to bottom */
+}
+
+/* ── Where it fits: five titles on one line; the chosen one opens into a card ── */
+.p11-personas {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem 0.4rem;
+}
+.p11-persona {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  padding: 0.45rem 0.7rem;
+  border: 0;
+  border-radius: 1rem;
+  background: none;
+  color: color-mix(in srgb, var(--ink, #1f2924) 55%, transparent);
+  font: 500 1rem/1.2 var(--fl-font-serif, "Fraunces", Georgia, serif);
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.2s ease, padding 0.25s ease;
+}
+.p11-persona:hover .p11-persona__name {
+  color: var(--ink, #1f2924);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--ink, #1f2924) 30%, transparent);
+  text-underline-offset: 4px;
+}
+.p11-persona:focus-visible { outline: 2px solid var(--brick, #a33a2b); outline-offset: 2px; }
+.p11-persona.is-selected {
+  flex: 0 1 340px;
+  padding: 0.85rem 1.1rem;
+  background: #2f6f4f;
+  color: #f8f2e5;
+  white-space: normal;
+  box-shadow: 0 8px 18px -10px rgba(23, 59, 48, 0.6);
+}
+.p11-persona.is-selected .p11-persona__name { font-size: 1.2rem; font-weight: 600; }
+.p11-persona.is-selected:hover .p11-persona__name { color: inherit; text-decoration: none; }
+.p11-persona__need {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font: 500 0.95rem/1.35 Inter, ui-sans-serif, system-ui, sans-serif;
+  animation: p11-need-in 0.3s ease both;
+}
+.p11-persona__need small {
+  font: 700 10px var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+@keyframes p11-need-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+
+/* ── the day as small scenes, clock along the top ── */
+.p11-daystrip-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--ink, #1f2924) 14%, transparent);
+  border-radius: 1.25rem;
+  background: color-mix(in srgb, var(--fl-cream, #ece4d0) 40%, var(--paper, #f8f2e5));
+}
+.p11-daystrip {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.p11-scene {
+  --tone: var(--ink, #1f2924);
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  animation: p11-scene-in 0.4s calc(var(--i, 0) * 60ms) cubic-bezier(0.3, 0.7, 0.2, 1) both;
+}
+.p11-scene--focus { --tone: var(--fl-green, #173b30); }
+.p11-scene--transit { --tone: #b07a3c; }
+.p11-scene--break { --tone: var(--brick, #a33a2b); }
+.p11-scene--activity { --tone: #2e6b57; }
+.p11-scene--routine { --tone: #6b6355; }
+.p11-scene__time {
+  width: 100%;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px dashed color-mix(in srgb, var(--ink, #1f2924) 25%, transparent);
+  color: color-mix(in srgb, var(--ink, #1f2924) 60%, transparent);
+  font: 700 11px var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  text-align: center;
+}
+.p11-scene__art {
+  position: relative;
+  display: grid;
+  width: 100%;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1.5px solid color-mix(in srgb, var(--tone) 45%, transparent);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--tone) 10%, #fffaf0);
+}
+.p11-scene__main {
+  width: 46%;
+  height: 46%;
+  color: var(--tone);
+  stroke-width: 1.5;
+}
+.p11-scene__detail {
+  position: absolute;
+  top: 7%;
+  right: 7%;
+  display: grid;
+  width: 32%;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1.5px solid color-mix(in srgb, var(--tone) 45%, transparent);
+  border-radius: 50%;
+  background: #fffaf0;
+  color: var(--tone);
+}
+.p11-scene__detail svg { width: 58%; height: 58%; stroke-width: 1.8; }
+.p11-scene__caption {
+  color: var(--ink, #1f2924);
+  font: 600 0.82rem/1.2 Inter, ui-sans-serif, system-ui, sans-serif;
+  text-align: center;
+}
+.p11-scene.is-bar .p11-scene__art {
+  border: 2px solid var(--brick, #a33a2b);
+  background: color-mix(in srgb, var(--brick, #a33a2b) 14%, #fffaf0);
+  box-shadow: 0 6px 14px -8px rgba(163, 58, 43, 0.6);
+}
+.p11-scene.is-bar .p11-scene__art img {
+  width: 92%;
+  transform: rotate(-8deg);
+  filter: drop-shadow(0 4px 5px rgba(40, 28, 12, 0.25));
+}
+.p11-scene.is-bar .p11-scene__caption,
+.p11-scene.is-bar .p11-scene__time { color: var(--brick, #a33a2b); }
+@keyframes p11-scene-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+.p11-daystrip__marker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+  margin: 0;
+  padding: 0.7rem 0.95rem;
+  border-left: 3px solid var(--brick, #a33a2b);
+  border-radius: 0.6rem;
+  background: #fffdf8;
+}
+
+@media (max-width: 767px) {
+  .p11-personas { overflow-x: auto; scrollbar-width: none; }
+  .p11-personas::-webkit-scrollbar { display: none; }
+  .p11-daystrip { grid-auto-flow: row; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .p11-scene, .p11-persona__need { animation: none; }
 }

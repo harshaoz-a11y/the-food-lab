@@ -1,4 +1,4 @@
-/* GapBoard: generic consult vs The Food Lab, side by side, readable at a glance */
+/* GapBoard: The Food Lab vs a generic consult, side by side, readable at a glance */
 .gap-board {
   --gb-paper: #f6ecd8;
   --gb-ink: #173b30;
@@ -13,7 +13,7 @@
 
 @media (min-width: 1000px) {
   .gap-board {
-    grid-template-columns: minmax(0, 0.8fr) auto minmax(0, 2fr);
+    grid-template-columns: minmax(0, 2fr) auto minmax(0, 0.8fr);
     gap: 1.25rem;
   }
 }
@@ -141,17 +141,24 @@
   color: #f0a597;
 }
 
+/* the questions a generic consult never reaches: dashed, empty-looking, but named */
 .gap-card__slots {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.gap-card__slots i {
-  width: 22px;
-  height: 22px;
-  border-radius: 5px;
+.gap-card__slots li {
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
   border: 1.5px dashed rgba(240, 165, 151, 0.55);
+  color: rgba(248, 242, 229, 0.55);
+  font: 400 0.78rem/1.35 Inter, ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .gap-card--generic .gap-card__facts {

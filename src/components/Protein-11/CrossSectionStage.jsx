@@ -6,7 +6,7 @@ import './CrossSectionStage.css';
  * One photo only: the Protein 11 cross-section. Choosing a partnership dims the photo
  * and opens soft spotlights on the parts of the bar that partnership is about, with
  * hand-drawn rings, leader lines and labelled chips. Ingredients you cannot see in the
- * cut (powders, liquids, salt) are pointed at in the bar's matrix and marked "in the mix".
+ * cut (powders, liquids, salt) are pointed at in the bar's matrix.
  *
  *   src          URL of the cross-section photo (1536 × 1024, the coordinates below are in its pixels)
  *   selected     a partnership ({ ingredients: [ids] }) or null for the whole bar
@@ -183,7 +183,7 @@ export default function CrossSectionStage({ src, selected = null, ingredients, a
                   <i>{i + 1}</i>
                   <span>{ing.name}</span>
                   <b>{ing.perBar}</b>
-                  {SPOTS[id].hidden && <em>in the mix</em>}
+                  
                 </div>
               );
             })}
@@ -195,7 +195,7 @@ export default function CrossSectionStage({ src, selected = null, ingredients, a
       {active && (
         <ol className="css-legend">
           {ids.map((id, i) => byId[id] && (
-            <li key={id}><i>{i + 1}</i><span>{byId[id].name}</span><b>{byId[id].perBar}</b>{SPOTS[id].hidden && <em>in the mix</em>}</li>
+            <li key={id}><i>{i + 1}</i><span>{byId[id].name}</span><b>{byId[id].perBar}</b></li>
           ))}
         </ol>
       )}

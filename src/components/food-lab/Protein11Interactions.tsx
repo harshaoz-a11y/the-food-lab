@@ -1,7 +1,7 @@
 import React, { useMemo, useRef, useState } from "react";
 import { INGREDIENTS, PARTNERSHIPS } from "@/components/Protein-11/protein11Data.js";
 import CrossSectionStage from "@/components/Protein-11/CrossSectionStage";
-import crossSection from "@/components/Protein-11/protein11-cross-section.jpg";
+import crossSection from "@/components/Protein-11/protein11-cross-section.webp";
 import "./Protein11Interactions.css";
 
 export type Partnership = (typeof PARTNERSHIPS)[number];
@@ -40,13 +40,19 @@ export function Protein11Interactions() {
     }
   };
 
+  // On phones the partnerships are a sideways strip: bring the chosen one fully into view.
+  const choose = (item: Partnership | null, button: HTMLButtonElement) => {
+    setSelected(item);
+    button.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+  };
+
   const currentTitle = selected ? selected.title : "Whole bar";
   const currentPlain = selected
     ? selected.plain
-    : "Every ingredient chosen for what it does with the others. Select a partnership to explore how they interact.";
+    : "Every ingredient is chosen for what it does with the others. Pick a partnership to see who works with whom.";
   const currentFine = selected
     ? selected.fine
-    : "16 ingredients formulated to work together — balancing fast and slow digestion, viscous fibres, and natural sweetness without isolate chalkiness.";
+    : "16 ingredients formulated to work together: fast and slow proteins, three fibres, and sweetness from fruit and monk fruit.";
 
   return (
     <div className="p11-experience-root" id="p11-experience">
@@ -58,7 +64,7 @@ export function Protein11Interactions() {
       >
         <header className="p11-header">
           <h3 id="p11-interactions-heading" className="p11-header__title">
-            Protein 11 partnerships
+            What’s inside, and why
           </h3>
         </header>
 
@@ -77,7 +83,7 @@ export function Protein11Interactions() {
                   buttonRefs.current[0] = el;
                 }}
                 aria-pressed={selected === null}
-                onClick={() => setSelected(null)}
+                onClick={(e) => choose(null, e.currentTarget)}
                 onKeyDown={(e) => handleKeyDown(e, 0)}
                 className={`p11-item-btn ${selected === null ? "is-selected" : ""}`}
               >
@@ -108,7 +114,7 @@ export function Protein11Interactions() {
                           buttonRefs.current[itemIndex] = el;
                         }}
                         aria-pressed={isSelected}
-                        onClick={() => setSelected(item)}
+                        onClick={(e) => choose(item, e.currentTarget)}
                         onKeyDown={(e) => handleKeyDown(e, itemIndex)}
                         className={`p11-item-btn ${isSelected ? "is-selected" : ""}`}
                       >

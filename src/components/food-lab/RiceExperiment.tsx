@@ -78,14 +78,14 @@ export function RiceExperiment() {
                     );
                 })}
             </div>
-            <div className="rice-stage mt-8 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,370px)_minmax(0,1fr)] lg:items-start lg:gap-12">
+            <div className="rice-stage mt-8 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)] lg:items-center lg:gap-10">
                 <RiceComic single value={selected} onChange={setSelected} />
                 <div className="rice-panel min-w-0" aria-live="polite">
                     <p className="rice-summary font-serif text-xl leading-snug text-ink/75">{current.summary}</p>
                     <div className="rice-curve mt-5">
                         <div className="rice-chart-wrap">
                             <div className="rice-primary-metric">
-                                <span>Illustrative comparison · post-meal glucose peak</span>
+                                <span>Glucose response · illustrative</span>
                                 <div className="rice-primary-value">{current.glucosePeak}</div>
                             </div>
                             <svg
@@ -112,11 +112,13 @@ export function RiceExperiment() {
                             <strong>{label}</strong><em>{value}</em>
                         </span>))}
                     </div>
-                    <p
-                        className="mt-6 w-full border-t border-dashed border-ink/25 pt-4 text-sm leading-relaxed tracking-wide text-ink/55">Figures summarise the supplied clinical comparison. The curves are illustrative rather than plotted study data; results depend on rice variety, method and study context. This is an observation, not personal dietary advice.
-                    </p>
                 </div>
             </div>
+            <p className="rice-source">
+                Sources: refrigerated + reheated,{" "}
+                <a href="https://pubmed.ncbi.nlm.nih.gov/26693746/" target="_blank" rel="noreferrer">Sonia et al., Asia Pac J Clin Nutr, 2015</a>{" "}
+                (15 adults; resistant starch 0.64 → 1.65 g/100 g, glucose response 17.8% lower). Coconut oil + chilled: early findings presented at the American Chemical Society meeting, 2015, not peer-reviewed. Other figures summarise the clinical comparison supplied to us. Curves are illustrative, not plotted study data; results depend on rice variety and method. An observation, not personal dietary advice.
+            </p>
         </div>
     );
 }

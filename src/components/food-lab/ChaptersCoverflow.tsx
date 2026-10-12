@@ -1,9 +1,16 @@
-import React, { useState, useCallback } from "react";
-import { Protein11Interactions } from "./Protein11Interactions";
-import { Chapter2Digestion } from "./Chapter2Digestion";
-import { Chapter3YourDay } from "./Chapter3YourDay";
+import React, { lazy, Suspense, useState } from "react";
 import { useSnapCarousel } from "@/hooks/use-snap-carousel";
+import { useDeferredPanels } from "@/hooks/use-deferred-panels";
+import { PanelPlaceholder } from "./PanelPlaceholder";
 import "./ChaptersCoverflow.css";
+
+const loadInside = () => import("./Protein11Interactions");
+const loadDigestion = () => import("./Chapter2Digestion");
+const loadDay = () => import("./Chapter3YourDay");
+const Protein11Interactions = lazy(() => loadInside().then((m) => ({ default: m.Protein11Interactions })));
+const Chapter2Digestion = lazy(() => loadDigestion().then((m) => ({ default: m.Chapter2Digestion })));
+const Chapter3YourDay = lazy(() => loadDay().then((m) => ({ default: m.Chapter3YourDay })));
+const preloadChapters = () => Promise.all([loadInside(), loadDigestion(), loadDay()]);
 
 interface Chapter {
   id: string;
@@ -11,40 +18,39 @@ interface Chapter {
   label: string;
   /** what is behind it */
   sub: string;
-  component: React.ReactNode;
+  Component: React.ComponentType;
 }
 
 const chapters: Chapter[] = [
   {
     id: "particle",
     label: "What’s inside?",
-    sub: "The particle bar",
-    component: <Protein11Interactions />,
+    sub: "16 ingredients",
+    Component: Protein11Interactions,
   },
   {
     id: "digestion",
     label: "What happens next?",
     sub: "After you eat it",
-    component: <Chapter2Digestion />,
+    Component: Chapter2Digestion,
   },
   {
     id: "day",
     label: "Where does it fit?",
     sub: "Your day",
-    component: <Chapter3YourDay />,
+    Component: Chapter3YourDay,
   },
 ];
+
+const chapterIds = chapters.map((chapter) => chapter.id);
 
 export function ChaptersCoverflow() {
   const [activeIndex, setActiveIndex] = useState(0);
   const stageRef = useSnapCarousel(activeIndex, setActiveIndex);
-
-  const goTo = useCallback((index: number) => {
-    setActiveIndex((prev) => (index + chapters.length) % chapters.length);
-  }, []);
+  const { rootRef, built } = useDeferredPanels(chapters[activeIndex].id, chapterIds, preloadChapters);
 
   return (
-    <div className="chapters-coverflow" role="region" aria-label="Protein 11 chapters carousel">
+    <div ref={rootRef} className="chapters-coverflow" role="region" aria-label="Protein 11 chapters carousel">
       {/* Chapter selector */}
       <div className="chapters-coverflow__controls">
         <div className="chapters-coverflow__pills" role="tablist" aria-label="Chapter selector">
@@ -70,10 +76,9 @@ export function ChaptersCoverflow() {
 
       {/* 3D Coverflow Stage */}
       <div ref={stageRef} className="chapters-coverflow__stage">
-        {chapters.map((chapter, index) => {
+        {chapters.map(({ id, label, sub, Component }, index) => {
           const offset = (index - activeIndex + chapters.length) % chapters.length;
           const position = offset > chapters.length / 2 ? offset - chapters.length : offset;
-
           const positionClass =
             position === -1
               ? "chapters-coverflow__item--pos-prev"
@@ -82,22 +87,27 @@ export function ChaptersCoverflow() {
               : position === 1
               ? "chapters-coverflow__item--pos-next"
               : "chapters-coverflow__item--pos-far";
-
           const isActive = activeIndex === index;
 
           return (
             <div
-              key={chapter.id}
+              key={id}
               className={`chapters-coverflow__item ${positionClass} ${isActive ? "is-active" : ""}`}
               onClick={() => !isActive && setActiveIndex(index)}
               tabIndex={isActive ? 0 : -1}
               role="tabpanel"
-              id={`chapter-panel-${chapter.id}`}
+              id={`chapter-panel-${id}`}
               aria-hidden={!isActive}
-              aria-label={`${chapter.sub}: ${chapter.label}`}
+              aria-label={`${sub}: ${label}`}
             >
               <div className="chapters-coverflow__item-content">
-                {chapter.component}
+                {built.has(id) ? (
+                  <Suspense fallback={<PanelPlaceholder />}>
+                    <Component />
+                  </Suspense>
+                ) : (
+                  <PanelPlaceholder />
+                )}
               </div>
             </div>
           );

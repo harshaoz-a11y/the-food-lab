@@ -22,8 +22,19 @@
   align-items: baseline;
   column-gap: 0.7rem;
   padding: 0.5rem 0 0.6rem;
+  width: 100%;
+  border: 0;
   border-bottom: 1px dashed rgba(23, 59, 48, 0.14);
-  cursor: help;
+  background: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.gf-row:focus-visible { outline: 2px solid var(--gf-tone); outline-offset: 2px; }
+.gf-row__full {
+  margin: 0.35rem 0 0.5rem 4.8rem;
+  font: 400 0.9rem / 1.35 var(--fl-font-serif);
+  color: color-mix(in srgb, var(--fl-ink) 70%, transparent);
 }
 .gf-row strong { font: 400 1.55rem / 1 var(--fl-font-serif); letter-spacing: -0.04em; color: var(--gf-tone); }
 .gf-row span { font: 400 0.98rem / 1.2 var(--fl-font-serif); color: color-mix(in srgb, var(--fl-ink) 80%, transparent); }
@@ -49,5 +60,33 @@
 .gf-source a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--fl-ink) 25%, transparent); text-underline-offset: 2px; }
 .gf-source a:hover { color: var(--fl-brick); }
 
-@media (max-width: 767px) { .gf-groups { grid-template-columns: 1fr; } }
+/* the country switch only exists on phones, where one scene shows at a time */
+.gf-region-switch { display: none; }
+
+@media (max-width: 767px) {
+  .gf-groups { grid-template-columns: 1fr; }
+  .gf-region-switch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+    padding: 0.25rem;
+    border: 1px solid rgba(23, 59, 48, 0.2);
+    border-radius: 999px;
+  }
+  .gf-region-switch button {
+    min-height: 44px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--fl-ink);
+    font: 700 12px var(--fl-font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .gf-region-switch button[aria-selected="true"] { background: var(--fl-ink); color: var(--fl-paper, #f8f2e5); }
+  .gf-scenes.is-showing-us .gf-scene--india,
+  .gf-scenes.is-showing-india .gf-scene--us { display: none; }
+  .gf-scene .fl-reg__title { display: none; } /* the switch already names the country */
+}
 @media (prefers-reduced-motion: reduce) { .gf-row i { transition: none; width: var(--v); } }

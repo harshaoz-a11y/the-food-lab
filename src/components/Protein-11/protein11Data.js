@@ -26,7 +26,7 @@ export const PARTNERSHIPS = [
   { id: 'fibre-layers', group: 'Fibre + texture', title: 'Layered fibre', ingredients: ['oats', 'isabgol', 'flax'], draft: true,
     plain: 'Three fibres, three jobs: structure, thickness, binding.', fine: 'Soluble fibres thicken with water and may slow digestion compared with oats alone.' },
   { id: 'binder', group: 'Fibre + texture', title: 'The binder', ingredients: ['almondmilk', 'isabgol', 'flax'], draft: true,
-    plain: 'The only glue in the bar: almond milk, isabgol and ground flax.', fine: 'Isabgol and ground flax form a gel with water, holding the bar together.' },
+    plain: 'The glue in the bar: almond milk, isabgol and ground flax.', fine: 'Isabgol and ground flax form a gel with water, holding the bar together.' },
   { id: 'fibre-fruit', group: 'Fibre + texture', title: 'Fibre × fruit sugar', ingredients: ['isabgol', 'oats', 'raisins-black', 'blueberries'], draft: true,
     plain: 'Fruit sweetness arrives wrapped in fibre.', fine: 'Viscous fibre may slow how quickly sugars are absorbed. Effects in this exact bar are unmeasured.' },
   { id: 'fruit-two-forms', group: 'Flavour + sweetness', title: 'Same fruit, two forms', ingredients: ['raisins-black', 'raisins-ground'], draft: true,

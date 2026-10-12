@@ -18,29 +18,6 @@
   border-bottom: 1px dashed rgba(23, 59, 48, 0.2);
 }
 
-.chapters-coverflow__nav-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(23, 59, 48, 0.25);
-  border-radius: 999px;
-  padding: 0.45rem 1rem;
-  background: var(--paper-light);
-  color: var(--ink);
-  font: 11px "Space Mono", monospace;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  box-shadow: 2px 3px 0 rgba(23, 59, 48, 0.08);
-  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
-}
-
-.chapters-coverflow__nav-btn:hover {
-  transform: translateY(-2px);
-  background: var(--paper);
-  box-shadow: 3px 4px 0 rgba(23, 59, 48, 0.12);
-}
-
 .chapters-coverflow__pills {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -293,10 +270,5 @@
   
   .chapters-coverflow__item--pos-far {
     transform: translateX(calc(-50% + 24rem)) translateZ(-200px) rotateY(-45deg) scale(0.5);
-  }
-  
-  .chapters-coverflow__nav-btn {
-    padding: 0.35rem 0.8rem;
-    font-size: 10px;
   }
 }

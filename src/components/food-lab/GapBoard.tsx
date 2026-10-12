@@ -155,6 +155,9 @@ const ASKED_BY_GENERIC = new Set([
 ]);
 
 const TOTAL = methodFlow.reduce((n, s) => n + s.areas.reduce((m, a) => m + a.leaves.length, 0), 0);
+const MISSED_LEAVES = methodFlow
+    .flatMap((s) => s.areas.flatMap((a) => a.leaves))
+    .filter((l) => !ASKED_BY_GENERIC.has(l.label));
 const GENERIC_COUNT = methodFlow.reduce(
     (n, s) => n + s.areas.reduce((m, a) => m + a.leaves.filter((l) => ASKED_BY_GENERIC.has(l.label)).length, 0),
     0,
@@ -162,52 +165,21 @@ const GENERIC_COUNT = methodFlow.reduce(
 
 export function GapBoard() {
     const missed = TOTAL - GENERIC_COUNT;
-    // Phones show one card at a time behind a switch, and the Food Lab list folded to its four steps.
-    const [shown, setShown] = useState<"generic" | "lab">("generic");
+    // Phones show one card at a time behind a switch (The Food Lab first), and the Food Lab
+    // list folded to its four steps.
+    const [shown, setShown] = useState<"generic" | "lab">("lab");
     const [expanded, setExpanded] = useState(false);
 
     return (
         <div className={`gap-board is-showing-${shown} ${expanded ? "is-expanded" : ""}`}>
             <div className="gap-board__switch" role="group" aria-label="Compare consults">
-                <button type="button" aria-pressed={shown === "generic"} onClick={() => setShown("generic")}>
-                    Generic consult <b>{GENERIC_COUNT}</b>
-                </button>
                 <button type="button" aria-pressed={shown === "lab"} onClick={() => setShown("lab")}>
                     The Food Lab <b>{TOTAL}</b>
                 </button>
+                <button type="button" aria-pressed={shown === "generic"} onClick={() => setShown("generic")}>
+                    Generic consult <b>{GENERIC_COUNT}</b>
+                </button>
             </div>
-            {/* the generic consult: small, grey, mostly empty */}
-            <section className="gap-card gap-card--generic" aria-label="A generic consult">
-                <span className="gap-card__kicker">A generic consult</span>
-                <p className="gap-card__big">
-                    {GENERIC_COUNT}
-                    <small>things asked</small>
-                </p>
-                <ul className="gap-card__chips">
-                    {methodFlow.flatMap((s) => s.areas.flatMap((a) => a.leaves))
-                        .filter((l) => ASKED_BY_GENERIC.has(l.label))
-                        .map(({ label, icon: Icon }) => (
-                            <li key={label} className="gap-chip gap-chip--grey">
-                                <Icon aria-hidden="true" />
-                                {label}
-                            </li>
-                        ))}
-                </ul>
-                <div className="gap-card__empty" aria-label={`${missed} things never asked`}>
-                    <span className="gap-card__slots" aria-hidden="true">
-                        {Array.from({ length: missed }, (_, i) => <i key={i} />)}
-                    </span>
-                    <span>{missed} never asked</span>
-                </div>
-                <ul className="gap-card__facts">
-                    <li><X aria-hidden="true" />One sitting</li>
-                    <li><X aria-hidden="true" />A chart, then you are on your own</li>
-                    <li><X aria-hidden="true" />Taste and routine left out</li>
-                </ul>
-            </section>
-
-            <span className="gap-board__vs" aria-hidden="true">vs</span>
-
             {/* The Food Lab: big, bright, full */}
             <section className="gap-card gap-card--lab" aria-label="The Food Lab">
                 <span className="gap-card__kicker">The Food Lab</span>
@@ -253,6 +225,38 @@ export function GapBoard() {
                     <li><Check aria-hidden="true" />An ongoing loop that adapts</li>
                     <li><Check aria-hidden="true" />Built around your actual day</li>
                     <li><Check aria-hidden="true" />Taste is designed in</li>
+                </ul>
+            </section>
+
+            <span className="gap-board__vs" aria-hidden="true">vs</span>
+
+            {/* the generic consult: small, grey, mostly empty */}
+            <section className="gap-card gap-card--generic" aria-label="A generic consult">
+                <span className="gap-card__kicker">A generic consult</span>
+                <p className="gap-card__big">
+                    {GENERIC_COUNT}
+                    <small>things asked</small>
+                </p>
+                <ul className="gap-card__chips">
+                    {methodFlow.flatMap((s) => s.areas.flatMap((a) => a.leaves))
+                        .filter((l) => ASKED_BY_GENERIC.has(l.label))
+                        .map(({ label, icon: Icon }) => (
+                            <li key={label} className="gap-chip gap-chip--grey">
+                                <Icon aria-hidden="true" />
+                                {label}
+                            </li>
+                        ))}
+                </ul>
+                <div className="gap-card__empty">
+                    <span>{missed} never asked</span>
+                    <ul className="gap-card__slots">
+                        {MISSED_LEAVES.map(({ label }) => <li key={label}>{label}</li>)}
+                    </ul>
+                </div>
+                <ul className="gap-card__facts">
+                    <li><X aria-hidden="true" />One sitting</li>
+                    <li><X aria-hidden="true" />A chart, then you are on your own</li>
+                    <li><X aria-hidden="true" />Taste and routine left out</li>
                 </ul>
             </section>
         </div>

@@ -86,7 +86,6 @@
   gap: 0.4rem;
   padding: 0.5rem 0.8rem;
   border-radius: 0.6rem;
-  background: rgba(23, 59, 48, 0.07);
   font-size: 0.9rem;
   font-weight: 600;
   animation: mc-pop 0.4s calc(var(--i) * 140ms + 0.2s) cubic-bezier(0.3, 0.7, 0.2, 1) backwards;
@@ -95,7 +94,22 @@
 .macro-eq__stage svg {
   width: 16px;
   height: 16px;
-  color: rgba(23, 59, 48, 0.6);
+  color: currentColor;
+}
+
+/* every stage done properly is green. Most diets get the ingredients right and
+   rush the rest (amber), and leave enjoyment as a question (grey). */
+.macro-eq__stage {
+  border: 1.5px solid color-mix(in srgb, var(--mc-joy) 45%, transparent);
+  background: var(--mc-joy-bg);
+  color: var(--mc-joy);
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+.is-nojoy .macro-eq__stage--2,
+.is-nojoy .macro-eq__stage--3 {
+  border-color: #d9a441;
+  background: #f8e8c4;
+  color: #8a5a12;
 }
 
 .macro-eq__stage + .macro-eq__stage::before {
@@ -141,14 +155,9 @@
 
 .is-nojoy .macro-eq__joy {
   border-style: dashed;
-  border-color: var(--mc-no);
-  background: transparent;
-  color: var(--mc-no);
-}
-
-.is-nojoy .macro-eq__joy-label {
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
+  border-color: rgba(23, 59, 48, 0.35);
+  background: rgba(23, 59, 48, 0.05);
+  color: rgba(23, 59, 48, 0.5);
 }
 
 .is-nojoy .macro-eq__joy-heart {
@@ -355,24 +364,6 @@
 }
 
 /* ── depth for people who keep reading ───────────── */
-.macro-card__note {
-  margin: 0.25rem 0 0;
-  padding-top: 0.9rem;
-  border-top: 1px dashed rgba(23, 59, 48, 0.2);
-  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
-  font-size: 1rem;
-  line-height: 1.4;
-  color: rgba(23, 59, 48, 0.75);
-}
-
-.macro-card__note span {
-  display: block;
-  margin-bottom: 0.2rem;
-  font: 700 10px "Space Mono", ui-monospace, monospace;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #a33a2b;
-}
 
 /* a red pulse until it is ticked, so the curious find it */
 @keyframes mc-pulse {

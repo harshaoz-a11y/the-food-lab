@@ -106,7 +106,7 @@
 
 .plan-ledger__verdict b {
   font-weight: 400;
-  color: rgba(23, 59, 48, 0.5);
+  color: rgba(23, 59, 48, 0.72);
 }
 
 .plan-ledger__verdict strong {
@@ -262,10 +262,11 @@
   }
 
   .plan-ledger__tab {
-    flex: 1 1 0;
+    flex: 1 1 auto;
     min-height: 44px;
-    padding: 0.5rem 0.6rem;
-    font-size: 0.98rem;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.95rem;
+    white-space: nowrap;
   }
 
   .plan-ledger__panel {

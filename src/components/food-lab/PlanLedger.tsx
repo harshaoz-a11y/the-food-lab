@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Check, X } from "lucide-react";
 import workingMomArt from "@/assets/field-studies/working-mom.webp";
 import ceoArt from "@/assets/field-studies/ceo.webp";
@@ -74,6 +74,21 @@ export function PlanLedger() {
     const day = days.find((d) => d.id === activeId) ?? days[0];
     const held = day.meals.filter((m) => m.held).length;
 
+    // Phones: a sideways swipe on the card moves to the next or previous person.
+    const touchStart = useRef<{ x: number; y: number } | null>(null);
+    const step = (by: number) => {
+        const index = days.findIndex((d) => d.id === activeId);
+        setActiveId(days[(index + by + days.length) % days.length].id);
+    };
+    const onTouchEnd = (e: React.TouchEvent) => {
+        const start = touchStart.current;
+        touchStart.current = null;
+        if (!start) return;
+        const dx = e.changedTouches[0].clientX - start.x;
+        const dy = e.changedTouches[0].clientY - start.y;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) step(dx < 0 ? 1 : -1);
+    };
+
     return (
         <div className="plan-ledger">
             <div className="plan-ledger__selector" role="tablist" aria-label="Choose a real-life day">
@@ -100,6 +115,8 @@ export function PlanLedger() {
                 aria-labelledby={`ledger-tab-${day.id}`}
                 className="plan-ledger__panel"
                 aria-live="polite"
+                onTouchStart={(e) => (touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY })}
+                onTouchEnd={onTouchEnd}
             >
                 <img className="plan-ledger__art" src={day.art} alt={day.artAlt} loading="lazy" decoding="async" />
 

@@ -31,7 +31,8 @@ export function useSectionReveal() {
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      // start a little before a section arrives, so fast scrolling never lands on a blank screen
+      { threshold: 0, rootMargin: "0px 0px 25% 0px" }
     );
 
     sections.forEach((section) => observer.observe(section));

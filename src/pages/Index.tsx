@@ -1,40 +1,31 @@
-/* Ruled-line accent at top of header */
-/* Page number stamp */
-/* ─── Page-number header strip ──────────────────────── */
-/* ═══════════════════════════════════════════════════════
-   PAGE
-   ═══════════════════════════════════════════════════════ */
-/* Ruled-page top margin annotation */
-/* Margin annotation */
-/* Handwritten margin gloss */
-/* Ruled footer top line */
-/* Navigation controls */
-/* 3D Coverflow stage holding all 4 full lens pages */
-// Geometry shared with .method-flow in globals.css (px).
-// Elbow from the hovered stage's centre to the tree's vertical centre.
-// Every call to action goes to one of these two places.
-// Per-bar macros, scaled to an actual 70 g bar
-// Phones only: the two calls to action stay one thumb away once the hero has
-// scrolled by, and step aside when the closing section shows the same two.
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
+import type { ComponentType } from "react";
 import { ArrowRight, FlaskConical, Menu, X } from "lucide-react";
 import { useSectionReveal } from "@/hooks/use-section-reveal";
 import { useSnapCarousel } from "@/hooks/use-snap-carousel";
+import { useDeferredPanels } from "@/hooks/use-deferred-panels";
 import { ChaptersCoverflow } from "@/components/food-lab/ChaptersCoverflow";
 import { PlanLedger } from "@/components/food-lab/PlanLedger";
 import { GapBoard } from "@/components/food-lab/GapBoard";
-import { EggExperiment } from "@/components/food-lab/EggExperiment";
 import { HypothesisExperiment } from "@/components/food-lab/HypothesisExperiment";
-import { ProteinExperiment } from "@/components/food-lab/ProteinExperiment";
-import { RiceExperiment } from "@/components/food-lab/RiceExperiment";
-import { GlutenExperiment } from "@/components/food-lab/GlutenExperiment";
-import RegionScene from "@/components/region-scenes/RegionScene";
+import { PanelPlaceholder } from "@/components/food-lab/PanelPlaceholder";
 import { BrandLogo } from "@/components/food-lab/BrandLogo";
 import { maestroAssets } from "@/lib/maestro-assets";
 
+// The four experiments carry most of the site's drawing data, so each loads on its own.
+const loadEgg = () => import("@/components/food-lab/EggExperiment");
+const loadRice = () => import("@/components/food-lab/RiceExperiment");
+const loadGluten = () => import("@/components/food-lab/GlutenExperiment");
+const loadProtein = () => import("@/components/food-lab/ProteinExperiment");
+const EggExperiment = lazy(() => loadEgg().then(m => ({ default: m.EggExperiment })));
+const RiceExperiment = lazy(() => loadRice().then(m => ({ default: m.RiceExperiment })));
+const GlutenExperiment = lazy(() => loadGluten().then(m => ({ default: m.GlutenExperiment })));
+const ProteinExperiment = lazy(() => loadProtein().then(m => ({ default: m.ProteinExperiment })));
+const preloadExperiments = () => Promise.all([loadEgg(), loadRice(), loadGluten(), loadProtein()]);
+
 const navigation = [{
     label: "Our approach",
-    href: "#question"
+    href: "#happiness-macro"
 }, {
     label: "Real life",
     href: "#real-life"
@@ -49,9 +40,11 @@ const navigation = [{
     href: "#fit-peasant"
 }];
 
+// Every call to action goes to one of these two places.
 const ORDER_PROTEIN11 = "mailto:harsha@thefoodlab.in?subject=Order%20Protein%2011&body=Hi%20Food%20Lab%2C%20I%27d%20like%20to%20order%20Protein%2011.%0A%0ANumber%20of%20bars%3A%20%0AArea%20in%20Bengaluru%3A%20";
 const BOOK_CONSULT = "mailto:harsha@thefoodlab.in?subject=Book%20my%20free%2030-min%20consult&body=Hi%20Food%20Lab%2C%20I%27d%20like%20to%20book%20my%20free%2030-minute%20consult.%0A%0AWhat%20I%27d%20like%20help%20with%3A%20";
 
+// Per-bar macros, scaled to an actual 70 g bar
 const PROTEIN11_MACROS = [{
     label: "Bar weight",
     value: "70 g"
@@ -92,7 +85,7 @@ function Header() {
             <div
                 className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-12">
                 <Brand />
-                <nav className="site-nav hidden xl:flex" aria-label="Primary navigation">
+                <nav className="site-nav hidden flex-1 justify-evenly xl:flex" aria-label="Primary navigation">
                     {navigation.map(item => (<a key={item.href} href={item.href} className="site-nav__link">
                         {item.label}
                     </a>))}
@@ -139,32 +132,20 @@ function Header() {
     );
 }
 
+// Phones only: the two calls to action stay one thumb away from the first screen,
+// and step aside when the closing section shows the same two.
 function MobileActionBar() {
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
         const closing = document.getElementById("your-experiment");
-        let closingInView = false;
-        const update = () => setVisible(window.scrollY > window.innerHeight * 0.9 && !closingInView);
-
-        const observer = new IntersectionObserver(([entry]) => {
-            closingInView = entry.isIntersecting;
-            update();
-        });
-
-        if (closing)
-            observer.observe(closing);
-
-        window.addEventListener("scroll", update, {
-            passive: true
-        });
-
-        update();
-
-        return () => {
-            observer.disconnect();
-            window.removeEventListener("scroll", update);
-        };
+        if (!closing) {
+            setVisible(true);
+            return;
+        }
+        const observer = new IntersectionObserver(([entry]) => setVisible(!entry.isIntersecting));
+        observer.observe(closing);
+        return () => observer.disconnect();
     }, []);
 
     return (
@@ -188,25 +169,25 @@ function ConsultationForm() {
         <div className="consult-cards grid gap-5">
             <a
                 href={BOOK_CONSULT}
-                className="group rounded-[1.5rem] border border-[#f8f2e5]/25 bg-[#f8f2e5]/5 p-6 transition hover:-translate-y-1 hover:border-[#d68b7f] hover:bg-[#f8f2e5]/10">
+                className="consult-card group rounded-[1.5rem] border border-[#f8f2e5] bg-[#f8f2e5] p-6 transition hover:-translate-y-1">
                 <span
-                    className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#d68b7f]">Nutrition consult · 1:1</span>
+                    className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#a33a2b]">Nutrition consult · 1:1</span>
                 <strong
-                    className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Looking for precise solutions to your nutritional goals?</strong>
+                    className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-ink sm:text-4xl">Looking for precise solutions to your nutritional goals?</strong>
                 <span className="card-cta">Book your free 30-min consult <ArrowRight className="h-4 w-4" /></span>
             </a>
             <div
-                className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[#f8f2e5]/40">
+                className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[#f8f2e5]/60">
                 <span className="h-px flex-1 bg-[#f8f2e5]/15" />Or
-                                                                                                                                                                                                                                                                                                                                                                                                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
+                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
             </div>
             <a
                 href={ORDER_PROTEIN11}
-                className="group rounded-[1.5rem] border border-[#d68b7f]/45 bg-[#d68b7f]/10 p-6 transition hover:-translate-y-1 hover:border-[#d68b7f] hover:bg-[#d68b7f]/15">
+                className="consult-card group rounded-[1.5rem] border border-[#f3dccf] bg-[#f3dccf] p-6 transition hover:-translate-y-1">
                 <span
-                    className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#d68b7f]">Protein 11</span>
+                    className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#a33a2b]">Protein 11</span>
                 <strong
-                    className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Protein 11, made fresh this week.</strong>
+                    className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-ink sm:text-4xl">Protein 11, made fresh this week.</strong>
                 <span className="card-cta">Order Protein 11 <ArrowRight className="h-4 w-4" /></span>
             </a>
         </div>
@@ -220,16 +201,28 @@ const experimentOptions = [
     ["protein", "Protein (fiber!!)"]
 ] as const;
 
-const lensEssence: Record<"egg" | "rice" | "gluten" | "protein", string> = {
-    egg: "Cooking changes everything. 51% vs 91% protein digested.",
-    rice: "Reheating cool rice turns fast carbs into resistant fibre.",
+type ExperimentKey = (typeof experimentOptions)[number][0];
+const experimentKeys = experimentOptions.map(([key]) => key);
+
+// Each headline asks the question; the experiment below gives the answer.
+const lensEssence: Record<ExperimentKey, string> = {
+    egg: "Raw or cooked: how much of an egg’s protein do you actually get?",
+    rice: "Cool it, reheat it: the same rice digests differently.",
     gluten: "Perception vs reality. The regional gluten paradox.",
-    protein: "Protein needs fibre. 70% of people miss the mark."
+    protein: "Protein: ticked. But what about fibre?"
+};
+
+const experimentPanels: Record<ExperimentKey, ComponentType> = {
+    egg: EggExperiment,
+    rice: RiceExperiment,
+    gluten: GlutenExperiment,
+    protein: ProteinExperiment
 };
 
 const Index = () => {
-    const [activeExperiment, setActiveExperiment] = useState<"egg" | "rice" | "gluten" | "protein">("egg");
+    const [activeExperiment, setActiveExperiment] = useState<ExperimentKey>("egg");
     useSectionReveal();
+    const experiments = useDeferredPanels(activeExperiment, experimentKeys, preloadExperiments);
 
     const lensStageRef = useSnapCarousel(
         experimentOptions.findIndex(([key]) => key === activeExperiment),
@@ -254,7 +247,7 @@ const Index = () => {
                                 <a href="#fit-peasant" className="hero-p11-strip">
                                     <img src={maestroAssets.alchemyBar} alt="" aria-hidden="true" />
                                     <span className="hero-p11-strip__sticker" aria-hidden="true">New</span>
-                                    <span><b>Protein 11.</b>{" "}A 70 g bar with 20 g protein,{" "}<em>from 16 foods you can name.</em></span>
+                                    <span><b>Protein 11.</b>{" "}A 70 g bar with 20 g protein,{" "}<em>from 16 ingredients you can name.</em></span>
                                     <ArrowRight className="h-4 w-4 shrink-0" />
                                 </a>
                                 <div className="hero-p11">
@@ -265,7 +258,7 @@ const Index = () => {
                                     <div className="hero-p11__body">
                                         <span className="hero-p11__kicker">New from our kitchen · made this week</span>
                                         <strong className="hero-p11__title">Protein 11</strong>
-                                        <p className="hero-p11__line">A 70 g bar with 20 g protein, from 16 foods you can name.</p>
+                                        <p className="hero-p11__line">A 70 g bar with 20 g protein, from 16 ingredients you can name.</p>
                                         <div className="hero-p11__actions">
                                             <a href={ORDER_PROTEIN11} className="cta-btn">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
                                             <a href="#fit-peasant" className="text-link">What’s inside? <ArrowRight className="h-3.5 w-3.5 rotate-90" /></a>
@@ -288,7 +281,7 @@ const Index = () => {
                         className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
                         <div className="nb-dark-ruled-top" />
                         <div className="section-head section-head--wide">
-                            <h2 className="section-head__title">The plan was perfect. <em>The day wasn’t in it.</em></h2>
+                            <h2 className="section-head__title">The plan was perfect. <em>The day just didn’t agree.</em></h2>
                         </div>
                         <PlanLedger />
                         <aside className="press-note mt-10 max-w-lg rotate-[1deg] p-5 text-ink">
@@ -318,15 +311,14 @@ const Index = () => {
                             </button>))}
                         </div>
                         <div className="lens-head">
-                            <span className="section-head__kicker">The science · pick a bookmark</span>
+                            <span className="section-head__kicker">The Food Lab thinking · and how it adds value</span>
                             <h2
                                 key={activeExperiment}
                                 className="lens-head__title animate-in fade-in slide-in-from-bottom-2 duration-300">
                                 {lensEssence[activeExperiment]}
                             </h2>
                         </div>
-                        <div className="lens-coverflow mt-6" role="region" aria-label="Experiments">
-                            {}
+                        <div ref={experiments.rootRef} className="lens-coverflow mt-6" role="region" aria-label="Experiments">
                             <div ref={lensStageRef} className="lens-coverflow__stage">
                                 {experimentOptions.map(([key, label], index) => {
                                     const isActive = activeExperiment === key;
@@ -334,6 +326,7 @@ const Index = () => {
                                     const offset = (index - activeIndex + experimentOptions.length) % experimentOptions.length;
                                     const position = offset > experimentOptions.length / 2 ? offset - experimentOptions.length : offset;
                                     const positionClass = position === -1 ? "lens-coverflow__item--pos-prev" : position === 0 ? "lens-coverflow__item--pos-active" : position === 1 ? "lens-coverflow__item--pos-next" : "lens-coverflow__item--pos-far";
+                                    const Panel = experimentPanels[key];
 
                                     return (
                                         <div
@@ -348,10 +341,11 @@ const Index = () => {
                                             id={`experiment-panel-${key}`}
                                             aria-hidden={!isActive}>
                                             <div className="lens-coverflow__item-content">
-                                                {key === "egg" && <EggExperiment />}
-                                                {key === "rice" && <RiceExperiment />}
-                                                {key === "gluten" && <GlutenExperiment />}
-                                                {key === "protein" && <ProteinExperiment />}
+                                                {experiments.built.has(key) ? (
+                                                    <Suspense fallback={<PanelPlaceholder />}>
+                                                        <Panel />
+                                                    </Suspense>
+                                                ) : <PanelPlaceholder />}
                                             </div>
                                         </div>
                                     );
@@ -391,7 +385,7 @@ const Index = () => {
                                 className="relative flex flex-col items-center justify-center border-0 bg-transparent p-0 shadow-none">
                                 <img
                                     src={maestroAssets.alchemyBar}
-                                    alt="Protein 11 bar cut open to reveal its whole-food texture"
+                                    alt="Protein 11 bar in its kraft-paper and jute wrapper"
                                     className="h-auto max-h-[420px] w-full object-contain mix-blend-normal drop-shadow-[0_10px_18px_rgba(0,0,0,0.16)]" />
                                 <div
                                     className="p11-hero-stamp"
@@ -400,7 +394,7 @@ const Index = () => {
                                     <strong className="p11-hero-stamp__main">Made this week</strong>
                                     <span className="p11-hero-stamp__sub">Small batch · Bengaluru</span>
                                 </div>
-                                <figcaption className="p11-hero-caption">16 ingredients, every one a food you can name.</figcaption>
+                                <figcaption className="p11-hero-caption">16 ingredients, every one you can name.</figcaption>
                                 <dl className="p11-macros" aria-label="Macros per bar">
                                     {PROTEIN11_MACROS.map(m => (<div key={m.label} className="p11-macros__item">
                                         <dt>{m.label}</dt>
@@ -408,7 +402,8 @@ const Index = () => {
                                     </div>))}
                                 </dl>
                             </figure>
-                            <div>
+                            {/* phones: say what it is before showing it */}
+                            <div className="order-first lg:order-none">
                                 <h2 className="max-w-xl font-serif font-normal tracking-[-0.04em] text-ink">
                                     <span
                                         className="block text-lg font-normal leading-snug tracking-normal sm:text-xl">Introducing</span>
@@ -417,8 +412,9 @@ const Index = () => {
                                     <span
                                         className="mt-3 block max-w-md text-lg font-normal leading-snug tracking-normal sm:text-xl">— because protein was never meant to work alone.</span>
                                 </h2>
-                                <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink/80">We’ll let you tell us how good it is.</p>
-                                <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+                                <p className="mt-3 max-w-lg text-lg leading-relaxed text-ink/80 sm:mt-5">We’ll let you tell us how good it is.</p>
+                                {/* phones already have Order in the action bar */}
+                                <div className="mt-7 hidden flex-wrap items-center gap-x-6 gap-y-3 md:flex">
                                     <a href={ORDER_PROTEIN11} className="cta-btn">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
                                 </div>
                             </div>
@@ -432,7 +428,7 @@ const Index = () => {
                     <div
                         className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
                         <div className="nb-dark-ruled-top" />
-                        <div className="grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
+                        <div className="grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:items-center lg:gap-20">
                             <div>
                                 <h2
                                     className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
