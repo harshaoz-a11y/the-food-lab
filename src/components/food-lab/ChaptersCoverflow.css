@@ -42,40 +42,102 @@
 }
 
 .chapters-coverflow__pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem 1.25rem;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
   width: 100%;
 }
 
 .chapters-coverflow__pill {
-  border: 1px solid rgba(23, 59, 48, 0.2);
-  border-radius: 999px;
-  padding: 0.4rem 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 0;
+  padding: 0.8rem 1.1rem;
+  border: 1.5px solid rgba(23, 59, 48, 0.25);
+  border-radius: 14px;
   background: rgba(248, 242, 229, 0.65);
-  color: var(--ink-soft);
-  font: 11px "Space Mono", monospace;
-  letter-spacing: 0.08em;
+  color: var(--ink);
+  text-align: left;
   cursor: pointer;
-  transition: all 180ms ease;
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
 .chapters-coverflow__pill:hover {
-  color: var(--ink);
+  transform: translateY(-2px);
   background: var(--paper-light);
+  border-color: var(--ink);
+  box-shadow: 3px 4px 0 rgba(23, 59, 48, 0.12);
+}
+
+.chapters-coverflow__pill:focus-visible {
+  outline: 2px solid var(--brick, #a33a2b);
+  outline-offset: 3px;
 }
 
 .chapters-coverflow__pill.is-active {
   border-color: var(--ink);
   background: var(--ink);
   color: var(--paper-light);
-  box-shadow: 2px 3px 0 rgba(23, 59, 48, 0.15);
+  box-shadow: 4px 5px 0 rgba(23, 59, 48, 0.18);
 }
 
 .chapters-coverflow__pill-number {
-  margin-right: 0.25rem;
-  font-weight: 600;
+  flex: none;
+  font-family: "Caveat", cursive;
+  font-size: 2.4rem;
+  line-height: 0.8;
+  color: var(--brick, #a33a2b);
+}
+
+.chapters-coverflow__pill.is-active .chapters-coverflow__pill-number {
+  color: #e49a8d;
+}
+
+.chapters-coverflow__pill-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.chapters-coverflow__pill-label {
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: 1.3rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.chapters-coverflow__pill-sub {
+  font: 10px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+@media (max-width: 720px) {
+  .chapters-coverflow__pills {
+    gap: 0.4rem;
+  }
+
+  .chapters-coverflow__pill {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    padding: 0.6rem 0.7rem;
+  }
+
+  .chapters-coverflow__pill-number {
+    font-size: 1.7rem;
+  }
+
+  .chapters-coverflow__pill-label {
+    font-size: 0.95rem;
+  }
+
+  .chapters-coverflow__pill-sub {
+    display: none;
+  }
 }
 
 /* 3D Coverflow Stage */
@@ -235,11 +297,6 @@
   
   .chapters-coverflow__nav-btn {
     padding: 0.35rem 0.8rem;
-    font-size: 10px;
-  }
-  
-  .chapters-coverflow__pill {
-    padding: 0.3rem 0.6rem;
     font-size: 10px;
   }
 }

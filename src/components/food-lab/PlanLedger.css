@@ -1,0 +1,251 @@
+/* PlanLedger: one glance. What the chart planned, what survived, what we'd do */
+.plan-ledger {
+  --pl-paper: #f6ecd8;
+  --pl-ink: #173b30;
+  --pl-miss: #c8503f;
+  --pl-held: #3f8a5f;
+  --pl-gold: #f3c98b;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── person selector ─────────────────────────────── */
+.plan-ledger__selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.plan-ledger__tab {
+  padding: 0.6rem 1.25rem;
+  border: 1px solid rgba(248, 242, 229, 0.35);
+  border-radius: 999px;
+  background: transparent;
+  color: #f8f2e5;
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.plan-ledger__tab:hover {
+  background: rgba(248, 242, 229, 0.12);
+}
+
+.plan-ledger__tab.is-active {
+  background: var(--pl-paper);
+  border-color: var(--pl-paper);
+  color: var(--pl-ink);
+}
+
+.plan-ledger__tab:focus-visible {
+  outline: 2px solid var(--pl-gold);
+  outline-offset: 3px;
+}
+
+/* ── panel: sketch | verdict + meals, fix underneath ─ */
+.plan-ledger__panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  border-radius: 1.25rem;
+  background: var(--pl-paper);
+  color: var(--pl-ink);
+  box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.6);
+  animation: pl-in 0.45s cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
+@media (min-width: 900px) {
+  .plan-ledger__panel {
+    grid-template-columns: 220px minmax(0, 1fr);
+    column-gap: 2.5rem;
+    align-items: center;
+  }
+
+  .plan-ledger__fix {
+    grid-column: 1 / -1;
+  }
+}
+
+@keyframes pl-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.plan-ledger__art {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  justify-self: center;
+  mix-blend-mode: multiply;
+}
+
+.plan-ledger__main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+/* the one sentence that matters */
+.plan-ledger__verdict {
+  margin: 0;
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: clamp(1.5rem, 2.8vw, 2.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.plan-ledger__verdict b {
+  font-weight: 400;
+  color: rgba(23, 59, 48, 0.5);
+}
+
+.plan-ledger__verdict strong {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.2em;
+  height: 1.2em;
+  padding: 0 0.15em;
+  border-radius: 0.25em;
+  background: var(--pl-miss);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ── four meals, red or green at a glance ────────── */
+.plan-ledger__meals {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (min-width: 700px) {
+  .plan-ledger__meals {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.plan-ledger__meal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.95rem 0.95rem 1rem;
+  border-radius: 0.85rem;
+  border: 2px solid transparent;
+  animation: pl-in 0.4s calc(var(--i) * 80ms + 0.1s) cubic-bezier(0.3, 0.7, 0.2, 1) backwards;
+}
+
+.plan-ledger__meal.is-missed {
+  background: #fbe3dd;
+  border-color: var(--pl-miss);
+}
+
+.plan-ledger__meal.is-held {
+  background: #e1efe4;
+  border-color: var(--pl-held);
+}
+
+.plan-ledger__badge {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 0.4rem;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.plan-ledger__badge svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 3.2;
+}
+
+.is-missed .plan-ledger__badge {
+  background: var(--pl-miss);
+}
+
+.is-held .plan-ledger__badge {
+  background: var(--pl-held);
+}
+
+.plan-ledger__meal-name {
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: 1.2rem;
+  line-height: 1.1;
+}
+
+.is-missed .plan-ledger__meal-name {
+  text-decoration: line-through;
+  text-decoration-color: var(--pl-miss);
+  text-decoration-thickness: 2px;
+}
+
+.plan-ledger__meal-time {
+  font: 700 11px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.08em;
+  color: rgba(23, 59, 48, 0.55);
+}
+
+.plan-ledger__meal-note {
+  margin-top: 0.45rem;
+  font-family: "Caveat", cursive;
+  font-size: 1.25rem;
+  line-height: 1.05;
+}
+
+/* ── the payoff ──────────────────────────────────── */
+.plan-ledger__fix {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.9rem;
+  background: var(--pl-ink);
+  color: #f8f2e5;
+}
+
+.plan-ledger__fix-kicker {
+  font: 700 11px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pl-gold);
+}
+
+.plan-ledger__fix strong {
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.plan-ledger__fix-note {
+  font-size: 0.95rem;
+  color: rgba(248, 242, 229, 0.75);
+}
+
+@media (max-width: 899px) {
+  .plan-ledger__art {
+    max-width: 170px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plan-ledger__panel,
+  .plan-ledger__meal {
+    animation: none;
+  }
+}

@@ -1,0 +1,257 @@
+/* GapBoard: generic consult vs The Food Lab, side by side, readable at a glance */
+.gap-board {
+  --gb-paper: #f6ecd8;
+  --gb-ink: #173b30;
+  --gb-gold: #f3c98b;
+  --gb-gold-deep: #e0a64f;
+  --gb-miss: #c8503f;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+@media (min-width: 1000px) {
+  .gap-board {
+    grid-template-columns: minmax(0, 0.8fr) auto minmax(0, 2fr);
+    gap: 1.25rem;
+  }
+}
+
+.gap-board__vs {
+  align-self: center;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--gb-gold);
+  color: var(--gb-ink);
+  font: italic 600 1.25rem var(--fl-font-serif, "Fraunces", Georgia, serif);
+  box-shadow: 0 6px 18px -6px rgba(0, 0, 0, 0.5);
+}
+
+/* ── cards ───────────────────────────────────────── */
+.gap-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border-radius: 1.25rem;
+}
+
+.gap-card__kicker {
+  font: 700 12px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.gap-card__big {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.gap-card__big small {
+  font-size: 1.05rem;
+  letter-spacing: 0;
+}
+
+.gap-card__chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.gap-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  line-height: 1.2;
+}
+
+.gap-chip svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+}
+
+.gap-card__facts {
+  list-style: none;
+  margin: auto 0 0;
+  padding: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.95rem;
+}
+
+.gap-card__facts li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.gap-card__facts svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  border-radius: 50%;
+  stroke-width: 3;
+  color: #fff;
+}
+
+/* ── generic: flat, grey, half-empty ─────────────── */
+.gap-card--generic {
+  background: #3a5249;
+  border: 1px dashed rgba(248, 242, 229, 0.25);
+  color: rgba(248, 242, 229, 0.6);
+}
+
+.gap-card--generic .gap-card__big {
+  color: rgba(248, 242, 229, 0.75);
+}
+
+.gap-chip--grey {
+  background: rgba(248, 242, 229, 0.12);
+  color: rgba(248, 242, 229, 0.75);
+}
+
+.gap-card__empty {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font: 700 11px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f0a597;
+}
+
+.gap-card__slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.gap-card__slots i {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  border: 1.5px dashed rgba(240, 165, 151, 0.55);
+}
+
+.gap-card--generic .gap-card__facts {
+  border-top: 1px dashed rgba(248, 242, 229, 0.2);
+}
+
+.gap-card--generic .gap-card__facts svg {
+  background: var(--gb-miss);
+}
+
+/* ── The Food Lab: bright paper, gold highlights ─── */
+.gap-card--lab {
+  background: var(--gb-paper);
+  color: var(--gb-ink);
+  box-shadow: 0 24px 50px -22px rgba(0, 0, 0, 0.65);
+}
+
+.gap-card--lab .gap-card__kicker {
+  color: #a33a2b;
+}
+
+.gap-card__steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .gap-card__steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .gap-card__steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.gap-card__step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.gap-card__step-name {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: 1.05rem;
+  line-height: 1.15;
+}
+
+.gap-card__step-name i {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gb-ink);
+  color: var(--gb-paper);
+  font: normal 700 11px "Space Mono", ui-monospace, monospace;
+}
+
+.gap-chip--shared {
+  background: rgba(23, 59, 48, 0.1);
+  color: var(--gb-ink);
+}
+
+.gap-chip--new {
+  background: var(--gb-gold);
+  color: var(--gb-ink);
+  font-weight: 600;
+}
+
+.gap-card__key {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font: 700 11px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gap-card__key i {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: var(--gb-gold);
+  box-shadow: inset 0 0 0 1px var(--gb-gold-deep);
+}
+
+.gap-card--lab .gap-card__facts {
+  border-top: 1px solid rgba(23, 59, 48, 0.15);
+  font-weight: 600;
+}
+
+.gap-card--lab .gap-card__facts svg {
+  background: #3f8a5f;
+}

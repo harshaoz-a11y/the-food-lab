@@ -15,58 +15,17 @@
 import { useState } from "react";
 
 import {
-    Activity,
-    AlarmClock,
-    Briefcase,
-    CalendarClock,
-    Flag,
-    Footprints,
-    Globe,
-    HeartPulse,
-    Hourglass,
-    MessagesSquare,
-    Plane,
-    Repeat,
-    Scale,
-    Smile,
-    Soup,
-    Sparkles,
-    ThumbsDown,
-    Timer,
-    TrendingUp,
-    Utensils,
-    Wallet,
     ArrowRight,
-    BatteryLow,
-    CalendarDays,
-    CarFront,
-    Clock3,
-    CookingPot,
-    Files,
     FlaskConical,
-    Heart,
-    House,
-    Mail,
     Menu,
-    NotebookPen,
-    Presentation,
-    RefreshCcw,
-    Salad,
-    School,
-    Smartphone,
-    Target,
-    UsersRound,
-    UtensilsCrossed,
     X,
 } from "lucide-react";
 
 import { useSectionReveal } from "@/hooks/use-section-reveal";
 import { ChaptersCoverflow } from "@/components/food-lab/ChaptersCoverflow";
+import { PlanLedger } from "@/components/food-lab/PlanLedger";
+import { GapBoard } from "@/components/food-lab/GapBoard";
 import { EggExperiment } from "@/components/food-lab/EggExperiment";
-import { type FieldScene } from "@/components/food-lab/FieldCharacter";
-import workingMomArt from "@/assets/field-studies/working-mom.webp";
-import ceoArt from "@/assets/field-studies/ceo.webp";
-import analystArt from "@/assets/field-studies/analyst.webp";
 import { HypothesisExperiment } from "@/components/food-lab/HypothesisExperiment";
 import { ProteinExperiment } from "@/components/food-lab/ProteinExperiment";
 import { RiceExperiment } from "@/components/food-lab/RiceExperiment";
@@ -94,208 +53,6 @@ const offerings = [{
     href: "#fit-peasant"
 }];
 
-const fieldStudies = [{
-    time: "07:42 / weekday",
-    scene: "morning" as FieldScene,
-    selectorLabel: "Working mom",
-    art: workingMomArt,
-    artAlt: "Sketch of a working mom hurrying her child to school with a coffee in hand",
-    persona: "The Working Mom",
-    personaNote: "Morning logistics / everyone needs her at once",
-    title: "The morning moved first",
-    copy: "Breakfast did not fail. It was interrupted by the next urgent thing, then the next.",
-    note: "timing × appetite",
-
-    steps: [{
-        title: "The alarm is missed",
-        detail: "She wakes up already behind the clock.",
-        icons: [AlarmClock]
-    }, {
-        title: "Breakfast becomes a race",
-        detail: "She rushes to get something on the table.",
-        icons: [CookingPot]
-    }, {
-        title: "Her phone interrupts",
-        detail: "The moment she sits, a meeting reminder flashes.",
-        icons: [Smartphone, Presentation]
-    }, {
-        title: "School cannot wait",
-        detail: "Before the first bite, the kids need to leave.",
-        icons: [CarFront, School]
-    }]
-}, {
-    time: "13:18 / desk",
-    scene: "desk" as FieldScene,
-    selectorLabel: "CEO",
-    art: ceoArt,
-    artAlt: "Sketch of a CEO leaning back at a desk, lost in thought, with lunch untouched",
-    persona: "The “Too Busy for Lunch” CEO",
-    personaNote: "Decisions, calls and an untouched meal",
-    title: "Lunch got outnumbered",
-    copy: "The meal arrived on time. Everything competing for his attention did too.",
-    note: "attention × overload",
-
-    steps: [{
-        title: "The calendar closes in",
-        detail: "Back-to-back calls swallow the morning.",
-        icons: [Clock3]
-    }, {
-        title: "Lunch reaches the desk",
-        detail: "A meal lands beside the laptop.",
-        icons: [UtensilsCrossed]
-    }, {
-        title: "One more conference",
-        detail: "A quick decision pulls everyone into another call.",
-        icons: [Presentation, UsersRound]
-    }, {
-        title: "Work wins the foreground",
-        detail: "The inbox climbs; lunch goes cold and unnoticed.",
-        icons: [Mail, Files]
-    }]
-}, {
-    time: "21:36 / home",
-    scene: "evening" as FieldScene,
-    selectorLabel: "Analyst",
-    art: analystArt,
-    artAlt: "Sketch of an analyst at a laptop late in the day, surrounded by papers and a coffee mug",
-    persona: "The 15-Hour Hot-Shot Analyst",
-    personaNote: "Home hungry / too depleted to make dinner",
-    title: "Hunger met an empty battery",
-    copy: "He made it home ready to eat. The workday had spent the energy needed to make dinner.",
-    note: "hunger × fatigue",
-
-    steps: [{
-        title: "Fifteen hours later",
-        detail: "The final spreadsheet is finally closed.",
-        icons: [Files, Clock3]
-    }, {
-        title: "He reaches home hungry",
-        detail: "Hunger arrives before he has even put his bag down.",
-        icons: [House, UtensilsCrossed]
-    }, {
-        title: "The kitchen asks again",
-        detail: "Dinner still needs choices, chopping and time.",
-        icons: [CookingPot]
-    }, {
-        title: "His battery is empty",
-        detail: "Exhaustion makes even eating feel like work.",
-        icons: [BatteryLow]
-    }]
-}];
-
-const methodFlow = [{
-    label: "Understand",
-    icon: NotebookPen,
-
-    areas: [{
-        title: "Your biology",
-        icon: Activity,
-
-        leaves: [{
-            label: "What your body is telling us.",
-            icon: HeartPulse
-        }]
-    }, {
-        title: "Your goals",
-        icon: Target,
-
-        leaves: [{
-            label: "What you actually want to change.",
-            icon: Flag
-        }]
-    }]
-}, {
-    label: "Maximize Benefit and Taste",
-    icon: FlaskConical,
-
-    areas: [{
-        title: "Your food",
-        icon: Salad,
-
-        leaves: [{
-            label: "What you eat",
-            icon: Utensils
-        }, {
-            label: "How much",
-            icon: Scale
-        }, {
-            label: "How often",
-            icon: Repeat
-        }, {
-            label: "What you enjoy",
-            icon: Smile
-        }, {
-            label: "What you don’t",
-            icon: ThumbsDown
-        }]
-    }, {
-        title: "Your preferences",
-        icon: Heart,
-
-        leaves: [{
-            label: "Taste",
-            icon: Sparkles
-        }, {
-            label: "Satiety",
-            icon: Soup
-        }, {
-            label: "Habits",
-            icon: Footprints
-        }, {
-            label: "Culture",
-            icon: Globe
-        }, {
-            label: "Convenience",
-            icon: Timer
-        }, {
-            label: "Affordability",
-            icon: Wallet
-        }]
-    }]
-}, {
-    label: "Observe",
-    icon: Activity,
-
-    areas: [{
-        title: "Your response",
-        icon: RefreshCcw,
-
-        leaves: [{
-            label: "What changes when we change something.",
-            icon: TrendingUp
-        }]
-    }]
-}, {
-    label: "Adapt",
-    icon: RefreshCcw,
-
-    areas: [{
-        title: "Your life",
-        icon: CalendarDays,
-
-        leaves: [{
-            label: "Work",
-            icon: Briefcase
-        }, {
-            label: "Routines",
-            icon: CalendarClock
-        }, {
-            label: "Time",
-            icon: Hourglass
-        }, {
-            label: "Travel",
-            icon: Plane
-        }, {
-            label: "Family",
-            icon: UsersRound
-        }, {
-            label: "Social life",
-            icon: MessagesSquare
-        }]
-    }]
-}];
-
-const FLOW_SLOT = 112;
 // Per-bar macros, scaled to an actual 70 g bar
 const PROTEIN11_MACROS = [
     { label: "Calories", value: "~224 kcal" },
@@ -304,136 +61,6 @@ const PROTEIN11_MACROS = [
     { label: "Fat", value: "~8.8 g" },
     { label: "Fibre", value: "~6.2 g" },
 ];
-
-const FLOW_HEIGHT = FLOW_SLOT * 4;
-
-function MethodFlow() {
-    const [active, setActive] = useState(0);
-    const stage = methodFlow[active];
-
-    const handleKeyDown = (event: React.KeyboardEvent) => {
-        if (event.key === "ArrowDown" || event.key === "ArrowRight") {
-            event.preventDefault();
-            setActive((active + 1) % methodFlow.length);
-        }
-
-        if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
-            event.preventDefault();
-            setActive((active - 1 + methodFlow.length) % methodFlow.length);
-        }
-    };
-
-    const stageCentre = FLOW_SLOT * active + FLOW_SLOT / 2;
-    const rootCentre = FLOW_HEIGHT / 2;
-    const elbowTop = Math.min(stageCentre, rootCentre);
-    const elbowHeight = Math.abs(stageCentre - rootCentre);
-    const stageIsAbove = stageCentre < rootCentre;
-
-    return (
-        <div
-            className={`method-flow method-flow--step-${active + 1}`}
-            aria-label="Working loop">
-            <svg
-                className="method-flow__filters"
-                width="0"
-                height="0"
-                aria-hidden="true"
-                focusable="false">
-                <filter id="mf-rough" x="-5%" y="-5%" width="110%" height="110%">
-                    <feTurbulence
-                        type="fractalNoise"
-                        baseFrequency="0.022"
-                        numOctaves="2"
-                        seed="7"
-                        result="n" />
-                    <feDisplacementMap in="SourceGraphic" in2="n" scale="1.8" />
-                </filter>
-            </svg>
-            <span className="tape method-flow__tape" aria-hidden="true" />
-            <div className="method-flow__body">
-                <div
-                    className="method-flow__stages"
-                    role="group"
-                    aria-label="Choose a working-loop stage">
-                    {methodFlow.map((
-                        {
-                            label,
-                            icon: StageIcon
-                        },
-                        index
-                    ) => (<button
-                        key={label}
-                        type="button"
-                        className={`method-flow__stage method-flow__stage--step-${index + 1} ${index === active ? "is-active" : ""}`}
-                        aria-pressed={index === active}
-                        aria-controls="method-flow-panel"
-                        onMouseEnter={() => setActive(index)}
-                        onFocus={() => setActive(index)}
-                        onClick={() => setActive(index)}
-                        onKeyDown={handleKeyDown}>
-                        <span className="method-flow__index">STEP 0{index + 1}</span>
-                        <StageIcon aria-hidden="true" />
-                        <strong><span>{label}</span></strong>
-                    </button>))}
-                </div>
-                <div className="method-flow__panel" id="method-flow-panel" aria-live="polite">
-                    <div className="method-flow__tree" key={active}>
-                        <span
-                            className={`method-flow__elbow ${stageIsAbove ? "is-down" : "is-up"}`}
-                            aria-hidden="true"
-                            style={{
-                                top: elbowTop,
-                                height: elbowHeight
-                            }}>
-                            <i /><i /><i />
-                        </span>
-                        <ul
-                            className="method-flow__areas"
-                            aria-label={`${stage.label}: what we look at`}>
-                            {stage.areas.map((
-                                {
-                                    title,
-                                    icon: AreaIcon,
-                                    leaves
-                                },
-                                areaIndex
-                            ) => (<li
-                                className="method-flow__area"
-                                key={title}
-                                style={{
-                                    "--d": areaIndex
-                                } as React.CSSProperties}>
-                                <span className="method-flow__node method-flow__node--area">
-                                    <AreaIcon aria-hidden="true" />
-                                    <strong>{title}</strong>
-                                </span>
-                                <ul className="method-flow__leaves">
-                                    {leaves.map((
-                                        {
-                                            label,
-                                            icon: LeafIcon
-                                        },
-                                        leafIndex
-                                    ) => (<li
-                                        className="method-flow__leaf"
-                                        key={label}
-                                        style={{
-                                            "--l": leafIndex
-                                        } as React.CSSProperties}>
-                                        <span className="method-flow__node method-flow__node--leaf">
-                                            <LeafIcon aria-hidden="true" />
-                                            <span>{label}</span>
-                                        </span>
-                                    </li>))}
-                                </ul>
-                            </li>))}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-}
 
 function Brand() {
     return (
@@ -536,86 +163,6 @@ function Header() {
     );
 }
 
-function FieldStudies() {
-    const [activeScene, setActiveScene] = useState<FieldScene>("morning");
-
-    const activeStudy = fieldStudies.find((
-        {
-            scene
-        }
-    ) => scene === activeScene) ?? fieldStudies[0];
-
-    return (
-        <div className="field-studies">
-            <div
-                className="field-selector"
-                role="tablist"
-                aria-label="Choose a real-life story">
-                {fieldStudies.map((
-                    {
-                        scene,
-                        selectorLabel
-                    },
-                    index
-                ) => {
-                    const isActive = scene === activeScene;
-
-                    return (
-                        <button
-                            key={scene}
-                            type="button"
-                            role="tab"
-                            id={`field-tab-${scene}`}
-                            aria-selected={isActive}
-                            aria-controls="field-story-panel"
-                            className={`field-selector-option ${isActive ? "is-active" : ""}`}
-                            onClick={() => setActiveScene(scene)}>
-                            <small>0{index + 1}</small>
-                            <strong>{selectorLabel}</strong>
-                        </button>
-                    );
-                })}
-            </div>
-            <article
-                id="field-story-panel"
-                key={activeStudy.scene}
-                role="tabpanel"
-                aria-labelledby={`field-tab-${activeStudy.scene}`}
-                className={`field-frame field-frame-${activeStudy.scene}`}
-                aria-live="polite">
-                <div className="field-panel-art">
-                    <img
-                        src={activeStudy.art}
-                        alt={activeStudy.artAlt}
-                        loading="lazy"
-                        decoding="async" />
-                </div>
-                <div className="field-panel-copy">
-                    <span className="field-time">{activeStudy.time}</span>
-                    <h3>{activeStudy.title}</h3>
-                    <p>{activeStudy.copy}</p>
-                    <span className="field-note">{activeStudy.persona}· {activeStudy.note}</span>
-                    <ol className="field-story" aria-label={`${activeStudy.title} sequence`}>
-                        {activeStudy.steps.map((
-                            {
-                                title,
-                                detail
-                            },
-                            stepIndex
-                        ) => (<li className="field-story-step" key={title}>
-                            <small>0{stepIndex + 1}</small>
-                            <span className="field-story-copy">
-                                <strong>{title}</strong>
-                                <p>{detail}</p>
-                            </span>
-                        </li>))}
-                    </ol>
-                </div>
-            </article>
-        </div>
-    );
-}
-
 function ConsultationForm() {
     return (
         <div className="grid gap-5">
@@ -700,13 +247,15 @@ const Index = () => {
                     <div
                         className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
                         <div className="nb-dark-ruled-top" />
-                        <div className="mb-10 sm:mb-12">
+                        <div className="mb-10 max-w-3xl sm:mb-12">
+                            <span
+                                className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#e49a8d]">Field notes / three days that ignored the plan</span>
                             <h2
-                                className="mt-5 font-serif text-3xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-4xl lg:whitespace-nowrap lg:text-[clamp(2.4rem,4.05vw,3.5rem)]">Why diets  say - "tomorrow!"</h2>
+                                className="mt-5 font-serif text-4xl font-normal leading-[0.96] tracking-[-0.04em] sm:text-5xl lg:text-[clamp(2.6rem,4.4vw,4rem)]">The plan was perfect. <em>The day wasn’t in it.</em></h2>
                             <p
-                                className="mt-5 max-w-lg text-base leading-relaxed text-[#f8f2e5]/65 sm:text-lg [color:#f5f0e3]">Which one resonates with you? </p>
+                                className="mt-5 max-w-xl text-base leading-relaxed text-[#f5f0e3] sm:text-lg">Pick a person. See which meals a generic diet chart actually survives.</p>
                         </div>
-                        <FieldStudies />
+                        <PlanLedger />
                         <aside className="press-note mt-10 max-w-lg rotate-[1deg] p-5 text-ink">
                             <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink/50">Margin note</span>
                             <p
@@ -784,26 +333,22 @@ const Index = () => {
                     aria-labelledby="help-heading">
                     <div
                         className="mx-auto max-w-[1400px] bg-charcoal px-5 py-14 text-[#f8f2e5] sm:px-10 lg:px-20 lg:py-24">
-                        <div
-                            className="grid gap-10 lg:gap-12 xl:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] xl:items-center">
-                            <div>
-                                <h2
-                                    id="help-heading"
-                                    className="mt-5 max-w-none whitespace-nowrap font-serif text-[clamp(1.35rem,4.2vw,4rem)] xl:whitespace-normal xl:text-[clamp(2.4rem,3.4vw,3.6rem)] font-normal leading-[0.94] tracking-[-0.04em]">1. Precision <span className="whitespace-nowrap">Bio-Nutrition</span></h2>
-                                <blockquote
-                                    className="mt-6 max-w-2xl border-l-4 border-primary pl-5 font-serif text-xl leading-snug text-ink/80 sm:text-2xl lg:text-3xl">The right nutritional solution isn’t the one that looks best on paper.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
-                                </blockquote>
-                                {}
-                                <p className="handwritten mt-4 rotate-[0.5deg] text-sm text-primary/70">
-                                </p>
-                                <a
-                                    href="#your-experiment"
-                                    className="method-cta mt-7 inline-flex items-center gap-3 rounded-full bg-[#f8f2e5] px-6 py-3.5 text-sm text-ink transition-transform hover:-translate-y-0.5">First 30 min free consult — Get in touch <ArrowRight className="h-4 w-4" />
-                                </a>
-                            </div>
-                            <MethodFlow />
+                        <div className="mb-10 max-w-3xl sm:mb-12">
+                            <span
+                                className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#e49a8d]">Precision Bio-Nutrition / the part the PDF skips</span>
+                            <h2
+                                id="help-heading"
+                                className="mt-5 font-serif text-4xl font-normal leading-[0.96] tracking-[-0.04em] sm:text-5xl lg:text-[clamp(2.6rem,4.4vw,4rem)]">What a generic plan <em>never asks.</em></h2>
+                            <blockquote
+                                className="mt-6 max-w-2xl border-l-4 border-primary pl-5 font-serif text-xl leading-snug text-ink/80 sm:text-2xl">The right nutritional solution isn’t the one that looks best on paper.
+                                <span className="mt-3 block text-ink">It’s the one that works in your life.</span>
+                            </blockquote>
                         </div>
+                        <GapBoard />
+                        <a
+                            href="#your-experiment"
+                            className="method-cta mt-10 inline-flex items-center gap-3 rounded-full bg-[#f8f2e5] px-6 py-3.5 text-sm text-ink transition-transform hover:-translate-y-0.5">First 30 min free consult — Get in touch <ArrowRight className="h-4 w-4" />
+                        </a>
                     </div>
                 </section>
                 <section id="fit-peasant" className="px-4 sm:px-6 lg:px-8">
@@ -843,12 +388,6 @@ const Index = () => {
                                 <p
                                     className="mt-5 max-w-lg font-serif text-xl italic leading-relaxed text-ink/70">We’ll let you tell us how good it is.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             </p>
-                                <div className="mt-6 flex flex-wrap items-center gap-3">
-                                    <a
-                                        href="mailto:harsha@thefoodlab.in?subject=Protein%2011%20experiment"
-                                        className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm text-[#f8f2e5] transition-transform hover:-translate-y-0.5">Ask about Protein 11 <ArrowRight className="h-4 w-4" />
-                                    </a>
-                                </div>
                             </div>
                         </div>
                         <ChaptersCoverflow />
@@ -876,7 +415,7 @@ const Index = () => {
                     </div>
                 </section>
             </main>
-            <footer className="border-t border-ink/15 bg-[#faedde] px-5 py-12 sm:px-8">
+            <footer className="paper-sheet nb-ruled site-footer px-5 py-12 sm:px-8">
                 <div
                     className="mx-auto grid max-w-[1320px] gap-8 sm:grid-cols-[auto_1fr_auto] sm:items-center">
                     <Brand />

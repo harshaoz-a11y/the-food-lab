@@ -6,24 +6,30 @@ import "./ChaptersCoverflow.css";
 
 interface Chapter {
   id: string;
+  /** the question the tab asks */
   label: string;
+  /** what is behind it */
+  sub: string;
   component: React.ReactNode;
 }
 
 const chapters: Chapter[] = [
   {
     id: "particle",
-    label: "The Particle Bar",
+    label: "What’s inside?",
+    sub: "The particle bar",
     component: <Protein11Interactions />,
   },
   {
     id: "digestion",
-    label: "After You Eat It",
+    label: "What happens next?",
+    sub: "After you eat it",
     component: <Chapter2Digestion />,
   },
   {
     id: "day",
-    label: "Your Day",
+    label: "Where does it fit?",
+    sub: "Your day",
     component: <Chapter3YourDay />,
   },
 ];
@@ -50,8 +56,11 @@ export function ChaptersCoverflow() {
               onClick={() => setActiveIndex(index)}
               className={`chapters-coverflow__pill ${activeIndex === index ? "is-active" : ""}`}
             >
-              <span className="chapters-coverflow__pill-number">0{index + 1}</span>
-              <span className="chapters-coverflow__pill-label">{chapter.label}</span>
+              <span className="chapters-coverflow__pill-number" aria-hidden="true">{index + 1}</span>
+              <span className="chapters-coverflow__pill-text">
+                <span className="chapters-coverflow__pill-label">{chapter.label}</span>
+                <span className="chapters-coverflow__pill-sub">{chapter.sub}</span>
+              </span>
             </button>
           ))}
         </div>
@@ -83,7 +92,7 @@ export function ChaptersCoverflow() {
               role="tabpanel"
               id={`chapter-panel-${chapter.id}`}
               aria-hidden={!isActive}
-              aria-label={`Chapter ${index + 1}: ${chapter.label}`}
+              aria-label={`${chapter.sub}: ${chapter.label}`}
             >
               <div className="chapters-coverflow__item-content">
                 {chapter.component}
