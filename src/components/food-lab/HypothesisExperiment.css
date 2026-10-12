@@ -1,0 +1,401 @@
+/* Hero: "Will I do this again?" The idea reads with no interaction;
+   the Enjoyment switch lets the curious test it. */
+.macro-card {
+  --mc-ink: #173b30;
+  --mc-paper: #fffaf0;
+  --mc-joy: #2f7d52;
+  --mc-joy-bg: #e3f1e6;
+  --mc-no: #b5473a;
+  --mc-no-bg: #f8e2dc;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-self: center;
+  min-width: 0;
+  padding: clamp(1.4rem, 3vw, 2.25rem);
+  border: 1.5px solid rgba(23, 59, 48, 0.2);
+  border-radius: 1.4rem;
+  background: var(--mc-paper);
+  color: var(--mc-ink);
+  box-shadow: 8px 10px 0 rgba(23, 59, 48, 0.07);
+}
+
+.macro-card__nickname {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font: 700 11px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #a33a2b;
+}
+
+.macro-card__nickname svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.macro-card__question {
+  margin: 0;
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: clamp(2.1rem, 3.6vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.macro-card__lede {
+  margin: 0;
+  max-width: 30rem;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: rgba(23, 59, 48, 0.78);
+}
+
+/* ── the equation ────────────────────────────────── */
+.macro-eq {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin-top: 0.5rem;
+}
+
+.macro-eq__joyrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.macro-eq__stages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.macro-eq__stage {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.6rem;
+  background: rgba(23, 59, 48, 0.07);
+  font-size: 0.9rem;
+  font-weight: 600;
+  animation: mc-pop 0.4s calc(var(--i) * 140ms + 0.2s) cubic-bezier(0.3, 0.7, 0.2, 1) backwards;
+}
+
+.macro-eq__stage svg {
+  width: 16px;
+  height: 16px;
+  color: rgba(23, 59, 48, 0.6);
+}
+
+.macro-eq__stage + .macro-eq__stage::before {
+  content: "→";
+  margin: 0 0.35rem 0 -0.15rem;
+  color: rgba(23, 59, 48, 0.35);
+  font-weight: 400;
+}
+
+.macro-eq__plus,
+.macro-eq__equals {
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: 1.9rem;
+  line-height: 1;
+  color: rgba(23, 59, 48, 0.55);
+}
+
+.macro-eq__equals {
+  align-self: flex-start;
+  margin: -0.4rem 0 -0.5rem 0.35rem;
+}
+
+/* enjoyment is the fourth term of the equation */
+.macro-eq__joy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  border: 2px solid var(--mc-joy);
+  border-radius: 999px;
+  background: var(--mc-joy-bg);
+  color: var(--mc-joy);
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.macro-eq__joy-heart {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+.is-nojoy .macro-eq__joy {
+  border-style: dashed;
+  border-color: var(--mc-no);
+  background: transparent;
+  color: var(--mc-no);
+}
+
+.is-nojoy .macro-eq__joy-label {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.is-nojoy .macro-eq__joy-heart {
+  fill: none;
+}
+
+/* ── the result: colour says it before the words do ─ */
+.macro-result {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem 1.2rem;
+  border-radius: 1rem;
+  border: 2px solid var(--mc-joy);
+  background: var(--mc-joy-bg);
+  animation: mc-pop 0.35s cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
+.is-nojoy .macro-result {
+  border-color: var(--mc-no);
+  background: var(--mc-no-bg);
+}
+
+.macro-result__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--mc-joy);
+  color: #fff;
+}
+
+.macro-result__icon svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2.6;
+}
+
+.is-nojoy .macro-result__icon {
+  background: var(--mc-no);
+}
+
+.macro-result__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.macro-result__kicker {
+  font: 700 11px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mc-joy);
+}
+
+.is-nojoy .macro-result__kicker {
+  color: var(--mc-no);
+}
+
+.macro-result__headline {
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+/* the week: adherence you can see */
+.macro-week {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+  margin-top: 0.65rem;
+}
+
+.macro-week__days {
+  display: flex;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.macro-week__days li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.macro-week__days i {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  animation: mc-pop 0.3s calc(var(--i) * 70ms + 0.15s) cubic-bezier(0.3, 0.7, 0.2, 1) backwards;
+}
+
+.macro-week__days .is-kept i {
+  background: var(--mc-joy);
+  color: #fff;
+}
+
+.is-nojoy .macro-week__days .is-kept i {
+  background: rgba(23, 59, 48, 0.55);
+}
+
+.macro-week__days .is-missed i {
+  border: 1.5px dashed rgba(181, 71, 58, 0.55);
+}
+
+.macro-week__days svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 3.2;
+}
+
+.macro-week__days span {
+  font: 700 9px "Space Mono", ui-monospace, monospace;
+  color: rgba(23, 59, 48, 0.5);
+}
+
+.macro-week__count {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--mc-joy);
+}
+
+.is-nojoy .macro-week__count {
+  color: var(--mc-no);
+}
+
+/* the other outcome: quiet, always there */
+.macro-counter {
+  margin: -0.35rem 0 0;
+  padding-left: 0.2rem;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: rgba(23, 59, 48, 0.5);
+}
+
+.macro-counter b {
+  font-weight: 600;
+}
+
+/* the curious can try the generic route */
+.macro-generic {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: fit-content;
+  padding: 0.35rem 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--mc-no);
+  cursor: pointer;
+}
+
+.macro-generic input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.macro-generic__box {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--mc-no);
+  animation: mc-pulse 1.8s ease-in-out infinite;
+  border-radius: 5px;
+  background: #fff;
+  color: transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.macro-generic__box svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 3.4;
+}
+
+.macro-generic:hover .macro-generic__box {
+  border-color: var(--mc-no);
+}
+
+.macro-generic input:checked + .macro-generic__box {
+  animation: none;
+  border-color: var(--mc-no);
+  background: var(--mc-no);
+  color: #fff;
+}
+
+.macro-generic input:focus-visible + .macro-generic__box {
+  outline: 3px solid #f3c98b;
+  outline-offset: 2px;
+}
+
+/* ── depth for people who keep reading ───────────── */
+.macro-card__note {
+  margin: 0.25rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px dashed rgba(23, 59, 48, 0.2);
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: 1rem;
+  line-height: 1.4;
+  color: rgba(23, 59, 48, 0.75);
+}
+
+.macro-card__note span {
+  display: block;
+  margin-bottom: 0.2rem;
+  font: 700 10px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #a33a2b;
+}
+
+/* a red pulse until it is ticked, so the curious find it */
+@keyframes mc-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(181, 71, 58, 0.45); }
+  60% { box-shadow: 0 0 0 7px rgba(181, 71, 58, 0); }
+}
+
+@keyframes mc-pop {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .macro-eq__stage,
+  .macro-result,
+  .macro-week__days i,
+  .macro-generic__box {
+    animation: none;
+  }
+}
