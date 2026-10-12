@@ -12,16 +12,14 @@
 /* 3D Coverflow stage holding all 4 full lens pages */
 // Geometry shared with .method-flow in globals.css (px).
 // Elbow from the hovered stage's centre to the tree's vertical centre.
-import { useState } from "react";
-
-import {
-    ArrowRight,
-    FlaskConical,
-    Menu,
-    X,
-} from "lucide-react";
-
+// Every call to action goes to one of these two places.
+// Per-bar macros, scaled to an actual 70 g bar
+// Phones only: the two calls to action stay one thumb away once the hero has
+// scrolled by, and step aside when the closing section shows the same two.
+import { useEffect, useState } from "react";
+import { ArrowRight, FlaskConical, Menu, X } from "lucide-react";
 import { useSectionReveal } from "@/hooks/use-section-reveal";
+import { useSnapCarousel } from "@/hooks/use-snap-carousel";
 import { ChaptersCoverflow } from "@/components/food-lab/ChaptersCoverflow";
 import { PlanLedger } from "@/components/food-lab/PlanLedger";
 import { GapBoard } from "@/components/food-lab/GapBoard";
@@ -34,26 +32,42 @@ import RegionScene from "@/components/region-scenes/RegionScene";
 import { BrandLogo } from "@/components/food-lab/BrandLogo";
 import { maestroAssets } from "@/lib/maestro-assets";
 
-const navigation = [
-    { label: "Our approach", href: "#question" },
-    { label: "Real life", href: "#real-life" },
-    { label: "The science", href: "#demonstration" },
-    { label: "Nutrition consults", href: "#how-we-help" },
-    { label: "Protein 11", href: "#fit-peasant" },
-];
+const navigation = [{
+    label: "Our approach",
+    href: "#question"
+}, {
+    label: "Real life",
+    href: "#real-life"
+}, {
+    label: "The science",
+    href: "#demonstration"
+}, {
+    label: "Nutrition consults",
+    href: "#how-we-help"
+}, {
+    label: "Protein 11",
+    href: "#fit-peasant"
+}];
 
-// Every call to action goes to one of these two places.
 const ORDER_PROTEIN11 = "mailto:harsha@thefoodlab.in?subject=Order%20Protein%2011&body=Hi%20Food%20Lab%2C%20I%27d%20like%20to%20order%20Protein%2011.%0A%0ANumber%20of%20bars%3A%20%0AArea%20in%20Bengaluru%3A%20";
 const BOOK_CONSULT = "mailto:harsha@thefoodlab.in?subject=Book%20my%20free%2030-min%20consult&body=Hi%20Food%20Lab%2C%20I%27d%20like%20to%20book%20my%20free%2030-minute%20consult.%0A%0AWhat%20I%27d%20like%20help%20with%3A%20";
 
-// Per-bar macros, scaled to an actual 70 g bar
-const PROTEIN11_MACROS = [
-    { label: "Calories", value: "~224 kcal" },
-    { label: "Protein", value: "~19.5–20 g" },
-    { label: "Carbs", value: "~20 g" },
-    { label: "Fat", value: "~8.8 g" },
-    { label: "Fibre", value: "~6.2 g" },
-];
+const PROTEIN11_MACROS = [{
+    label: "Calories",
+    value: "~224 kcal"
+}, {
+    label: "Protein",
+    value: "~19.5–20 g"
+}, {
+    label: "Carbs",
+    value: "~20 g"
+}, {
+    label: "Fat",
+    value: "~8.8 g"
+}, {
+    label: "Fibre",
+    value: "~6.2 g"
+}];
 
 function Brand() {
     return (
@@ -68,6 +82,7 @@ function Brand() {
 
 function Header() {
     const [open, setOpen] = useState(false);
+
     return (
         <header
             className="fixed inset-x-0 top-0 z-50 border-b border-ink/15 bg-[#faedde]/95 backdrop-blur-sm">
@@ -80,8 +95,12 @@ function Header() {
                     </a>))}
                 </nav>
                 <div className="flex items-center gap-2.5">
-                    <a href={BOOK_CONSULT} className="header-cta header-cta--ghost hidden xl:inline-flex">Free 30-min consult</a>
-                    <a href={ORDER_PROTEIN11} className="header-cta header-cta--gold hidden sm:inline-flex">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
+                    <a
+                        href={BOOK_CONSULT}
+                        className="header-cta header-cta--ghost hidden xl:inline-flex">Free 30-min consult</a>
+                    <a
+                        href={ORDER_PROTEIN11}
+                        className="header-cta header-cta--gold hidden sm:inline-flex">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
                     <button
                         type="button"
                         onClick={() => setOpen(value => !value)}
@@ -103,17 +122,67 @@ function Header() {
                     {item.label}<ArrowRight className="h-4 w-4 text-primary" />
                 </a>))}
                 <div className="mt-4 grid gap-2.5">
-                    <a href={ORDER_PROTEIN11} onClick={() => setOpen(false)} className="header-cta header-cta--gold justify-center">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
-                    <a href={BOOK_CONSULT} onClick={() => setOpen(false)} className="header-cta header-cta--ghost justify-center">Book a free 30-min consult</a>
+                    <a
+                        href={ORDER_PROTEIN11}
+                        onClick={() => setOpen(false)}
+                        className="header-cta header-cta--gold justify-center">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
+                    <a
+                        href={BOOK_CONSULT}
+                        onClick={() => setOpen(false)}
+                        className="header-cta header-cta--ghost justify-center">Book a free 30-min consult</a>
                 </div>
             </nav>)}
         </header>
     );
 }
 
+function MobileActionBar() {
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        const closing = document.getElementById("your-experiment");
+        let closingInView = false;
+        const update = () => setVisible(window.scrollY > window.innerHeight * 0.9 && !closingInView);
+
+        const observer = new IntersectionObserver(([entry]) => {
+            closingInView = entry.isIntersecting;
+            update();
+        });
+
+        if (closing)
+            observer.observe(closing);
+
+        window.addEventListener("scroll", update, {
+            passive: true
+        });
+
+        update();
+
+        return () => {
+            observer.disconnect();
+            window.removeEventListener("scroll", update);
+        };
+    }, []);
+
+    return (
+        <div
+            className={`mobile-action-bar ${visible ? "is-visible" : ""}`}
+            aria-hidden={!visible}>
+            <a
+                href={BOOK_CONSULT}
+                tabIndex={visible ? 0 : -1}
+                className="mobile-action-bar__ghost">Free consult</a>
+            <a
+                href={ORDER_PROTEIN11}
+                tabIndex={visible ? 0 : -1}
+                className="mobile-action-bar__gold">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
+        </div>
+    );
+}
+
 function ConsultationForm() {
     return (
-        <div className="grid gap-5">
+        <div className="consult-cards grid gap-5">
             <a
                 href={BOOK_CONSULT}
                 className="group rounded-[1.5rem] border border-[#f8f2e5]/25 bg-[#f8f2e5]/5 p-6 transition hover:-translate-y-1 hover:border-[#d68b7f] hover:bg-[#f8f2e5]/10">
@@ -121,13 +190,12 @@ function ConsultationForm() {
                     className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#d68b7f]">Nutrition consult · 1:1</span>
                 <strong
                     className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Looking for precise solutions to your nutritional goals?</strong>
-                <span
-                    className="card-cta">Book your free 30-min consult <ArrowRight className="h-4 w-4" /></span>
+                <span className="card-cta">Book your free 30-min consult <ArrowRight className="h-4 w-4" /></span>
             </a>
             <div
                 className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[#f8f2e5]/40">
                 <span className="h-px flex-1 bg-[#f8f2e5]/15" />Or
-                                                                                                                                                                                                                                                                                                                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
+                                                                                                                                                                                                                                                                                                                                                                <span className="h-px flex-1 bg-[#f8f2e5]/15" />
             </div>
             <a
                 href={ORDER_PROTEIN11}
@@ -136,8 +204,7 @@ function ConsultationForm() {
                     className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#d68b7f]">Protein 11</span>
                 <strong
                     className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-[#f8f2e5] sm:text-4xl">Protein 11, made fresh this week.</strong>
-                <span
-                    className="card-cta">Order Protein 11 <ArrowRight className="h-4 w-4" /></span>
+                <span className="card-cta">Order Protein 11 <ArrowRight className="h-4 w-4" /></span>
             </a>
         </div>
     );
@@ -161,6 +228,11 @@ const Index = () => {
     const [activeExperiment, setActiveExperiment] = useState<"egg" | "rice" | "gluten" | "protein">("egg");
     useSectionReveal();
 
+    const lensStageRef = useSnapCarousel(
+        experimentOptions.findIndex(([key]) => key === activeExperiment),
+        index => setActiveExperiment(experimentOptions[index][0])
+    );
+
     return (
         <div id="top" className="min-h-screen overflow-hidden bg-paper text-ink">
             <Header />
@@ -176,6 +248,11 @@ const Index = () => {
                                     className="max-w-[700px] font-serif text-[clamp(2.6rem,5.2vw,5.8rem)] font-normal leading-[0.9] tracking-[-0.05em] text-ink">Could <span className="red-underline">interactions</span>{" "}<span className="red-underline">matter</span>{" "}<span className="red-underline">more</span>{" "}than ingredients?</h1>
                                 <p
                                     className="mt-6 max-w-lg font-serif text-[clamp(1.05rem,1.65vw,1.5rem)] leading-snug text-ink/75">Most of us keep changing the list. We study what happens around it.</p>
+                                <a href="#fit-peasant" className="hero-p11-strip">
+                                    <img src={maestroAssets.alchemyBar} alt="" aria-hidden="true" />
+                                    <span><b>New: Protein 11.</b>20 g protein from 16 foods you can name.</span>
+                                    <ArrowRight className="h-4 w-4 shrink-0" />
+                                </a>
                                 <div className="hero-p11">
                                     <img
                                         src={maestroAssets.alchemyBar}
@@ -224,7 +301,10 @@ const Index = () => {
                 <section id="demonstration" className="px-4 sm:px-6 lg:px-8">
                     <div
                         className="paper-sheet nb-ruled mx-auto max-w-[1400px] px-5 py-10 sm:px-10 lg:px-16 lg:py-14">
-                        <div className="lens-bookmarks" role="tablist" aria-label="Choose an experiment">
+                        <div
+                            className="lens-bookmarks"
+                            role="tablist"
+                            aria-label="Choose an experiment">
                             {experimentOptions.map(([key, label], index) => (<button
                                 key={key}
                                 type="button"
@@ -245,12 +325,9 @@ const Index = () => {
                                 {lensEssence[activeExperiment]}
                             </h2>
                         </div>
-                        <div
-                            className="lens-coverflow mt-6"
-                            role="region"
-                            aria-label="Experiments">
+                        <div className="lens-coverflow mt-6" role="region" aria-label="Experiments">
                             {}
-                            <div className="lens-coverflow__stage">
+                            <div ref={lensStageRef} className="lens-coverflow__stage">
                                 {experimentOptions.map(([key, label], index) => {
                                     const isActive = activeExperiment === key;
                                     const activeIndex = experimentOptions.findIndex(([k]) => k === activeExperiment);
@@ -295,9 +372,9 @@ const Index = () => {
                                 <h2 id="help-heading" className="section-head__title">What a generic plan <em>never asks.</em></h2>
                             </div>
                             <div className="service-offer">
-                                <p className="service-offer__line">Work 1:1 with The Food Lab on a plan built around your biology, your taste and your actual day.</p>
+                                <p className="service-offer__line bg-[#dae0e0] [color:#1b3d31]">Work 1:1 with thefoodlab.in on a plan built around your biology, your taste and your actual needs.</p>
                                 <p className="service-offer__free">Your first 30 minutes are free.</p>
-                                <a href={BOOK_CONSULT} className="cta-btn cta-btn--gold">Book your free consult <ArrowRight className="h-4 w-4" /></a>
+                                <a href={BOOK_CONSULT} className="cta-btn cta-btn--gold service-offer__cta">Book your free consult <ArrowRight className="h-4 w-4" /></a>
                             </div>
                         </div>
                         <GapBoard />
@@ -316,19 +393,19 @@ const Index = () => {
                                     src={maestroAssets.alchemyBar}
                                     alt="Protein 11 bar cut open to reveal its whole-food texture"
                                     className="h-auto max-h-[420px] w-full object-contain mix-blend-normal drop-shadow-[0_10px_18px_rgba(0,0,0,0.16)]" />
-                                <div className="p11-hero-stamp" aria-label="Made this week, small batch, Bengaluru">
+                                <div
+                                    className="p11-hero-stamp"
+                                    aria-label="Made this week, small batch, Bengaluru">
                                     <span className="p11-hero-stamp__lab">The Food Lab</span>
                                     <strong className="p11-hero-stamp__main">Made this week</strong>
                                     <span className="p11-hero-stamp__sub">Small batch · Bengaluru</span>
                                 </div>
                                 <figcaption className="p11-hero-caption">16 ingredients, every one a food you can name.</figcaption>
                                 <dl className="p11-macros" aria-label="Macros per bar">
-                                    {PROTEIN11_MACROS.map((m) => (
-                                        <div key={m.label} className="p11-macros__item">
-                                            <dt>{m.label}</dt>
-                                            <dd>{m.value}</dd>
-                                        </div>
-                                    ))}
+                                    {PROTEIN11_MACROS.map(m => (<div key={m.label} className="p11-macros__item">
+                                        <dt>{m.label}</dt>
+                                        <dd>{m.value}</dd>
+                                    </div>))}
                                 </dl>
                             </figure>
                             <div>
@@ -340,8 +417,7 @@ const Index = () => {
                                     <span
                                         className="mt-3 block max-w-md text-lg font-normal leading-snug tracking-normal sm:text-xl">— because protein was never meant to work alone.</span>
                                 </h2>
-                                <p
-                                    className="mt-5 max-w-lg text-lg leading-relaxed text-ink/80">A protein bar you can order from us, made fresh every week in Bengaluru. We’ll let you tell us how good it is.</p>
+                                <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink/80">A protein bar you can order from us, made fresh every week in Bengaluru. We’ll let you tell us how good it is.</p>
                                 <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
                                     <a href={ORDER_PROTEIN11} className="cta-btn">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
                                     <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink/55">Order by email · small batch, Bengaluru</span>
@@ -362,13 +438,17 @@ const Index = () => {
                                 <h2
                                     className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
                                 <p className="mt-7 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Tell us what you have tried and where real life keeps entering the picture. We begin with questions, not a perfect plan.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </p>
                                 <div className="mt-10 flex items-center gap-4 text-[#d68b7f]">
                                     <FlaskConical className="h-8 w-8 stroke-[1.2]" />
                                     <span className="handwritten max-w-xs text-xl leading-tight">No judgement. No gold stars for an ideal food diary.</span>
                                 </div>
                             </div>
                             <ConsultationForm />
+                            <div className="closing-ctas">
+                                <a href={BOOK_CONSULT} className="cta-btn cta-btn--gold">Book your free 30-min consult <ArrowRight className="h-4 w-4" /></a>
+                                <a href={ORDER_PROTEIN11} className="cta-btn closing-ctas__secondary">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -382,6 +462,7 @@ const Index = () => {
                         className="font-mono text-[11px] uppercase leading-loose tracking-[0.12em] text-ink/50 sm:text-right">Bengaluru<br />harsha@thefoodlab.in</div>
                 </div>
             </footer>
+            <MobileActionBar />
         </div>
     );
 };
