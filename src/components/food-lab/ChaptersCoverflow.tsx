@@ -2,6 +2,7 @@ import React, { useState, useCallback } from "react";
 import { Protein11Interactions } from "./Protein11Interactions";
 import { Chapter2Digestion } from "./Chapter2Digestion";
 import { Chapter3YourDay } from "./Chapter3YourDay";
+import { useSnapCarousel } from "@/hooks/use-snap-carousel";
 import "./ChaptersCoverflow.css";
 
 interface Chapter {
@@ -36,6 +37,7 @@ const chapters: Chapter[] = [
 
 export function ChaptersCoverflow() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const stageRef = useSnapCarousel(activeIndex, setActiveIndex);
 
   const goTo = useCallback((index: number) => {
     setActiveIndex((prev) => (index + chapters.length) % chapters.length);
@@ -67,7 +69,7 @@ export function ChaptersCoverflow() {
       </div>
 
       {/* 3D Coverflow Stage */}
-      <div className="chapters-coverflow__stage">
+      <div ref={stageRef} className="chapters-coverflow__stage">
         {chapters.map((chapter, index) => {
           const offset = (index - activeIndex + chapters.length) % chapters.length;
           const position = offset > chapters.length / 2 ? offset - chapters.length : offset;

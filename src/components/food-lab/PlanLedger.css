@@ -249,3 +249,101 @@
     animation: none;
   }
 }
+
+/* ── phones: sketch beside the verdict, meals as a compact kept/missed list ── */
+@media (max-width: 767px) {
+  .plan-ledger {
+    gap: 1rem;
+  }
+
+  .plan-ledger__selector {
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+  }
+
+  .plan-ledger__tab {
+    flex: 1 1 0;
+    min-height: 44px;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.98rem;
+  }
+
+  .plan-ledger__panel {
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 1rem 0.9rem;
+    align-items: center;
+    padding: 1.1rem;
+  }
+
+  .plan-ledger__main {
+    display: contents;
+  }
+
+  .plan-ledger__art {
+    max-width: 84px;
+  }
+
+  .plan-ledger__verdict {
+    font-size: 1.35rem;
+  }
+
+  .plan-ledger__meals,
+  .plan-ledger__fix {
+    grid-column: 1 / -1;
+  }
+
+  .plan-ledger__meals {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .plan-ledger__meal {
+    display: grid;
+    grid-template-columns: 26px auto 1fr;
+    grid-template-areas:
+      "badge name time"
+      "badge note note";
+    column-gap: 0.6rem;
+    row-gap: 0;
+    align-items: baseline;
+    padding: 0.55rem 0.75rem;
+    border-width: 1.5px;
+  }
+
+  .plan-ledger__badge {
+    grid-area: badge;
+    align-self: center;
+    width: 26px;
+    height: 26px;
+    margin: 0;
+  }
+
+  .plan-ledger__badge svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .plan-ledger__meal-name {
+    grid-area: name;
+    font-size: 1.05rem;
+  }
+
+  .plan-ledger__meal-time {
+    grid-area: time;
+    font-size: 12px;
+  }
+
+  .plan-ledger__meal-note {
+    grid-area: note;
+    margin: 0;
+    font-size: 1.15rem;
+  }
+
+  .plan-ledger__fix {
+    padding: 1rem 1.1rem;
+  }
+
+  .plan-ledger__fix-kicker {
+    font-size: 12px;
+  }
+}

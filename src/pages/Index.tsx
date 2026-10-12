@@ -250,7 +250,7 @@ const Index = () => {
                                     className="mt-6 max-w-lg font-serif text-[clamp(1.05rem,1.65vw,1.5rem)] leading-snug text-ink/75">Most of us keep changing the list. We study what happens around it.</p>
                                 <a href="#fit-peasant" className="hero-p11-strip">
                                     <img src={maestroAssets.alchemyBar} alt="" aria-hidden="true" />
-                                    <span><b>New: Protein 11.</b>20 g protein from 16 foods you can name.</span>
+                                    <span><b>New: Protein 11.</b>{" "}A 70 g bar with 20 g protein, from 16 foods you can name.</span>
                                     <ArrowRight className="h-4 w-4 shrink-0" />
                                 </a>
                                 <div className="hero-p11">
@@ -261,7 +261,7 @@ const Index = () => {
                                     <div className="hero-p11__body">
                                         <span className="hero-p11__kicker">New from our kitchen · made this week</span>
                                         <strong className="hero-p11__title">Protein 11</strong>
-                                        <p className="hero-p11__line">A 20 g protein bar made from 16 foods you can name.</p>
+                                        <p className="hero-p11__line">A 70 g bar with 20 g protein, from 16 foods you can name.</p>
                                         <div className="hero-p11__actions">
                                             <a href={ORDER_PROTEIN11} className="cta-btn">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
                                             <a href="#fit-peasant" className="text-link">What’s inside? <ArrowRight className="h-3.5 w-3.5 rotate-90" /></a>
@@ -437,9 +437,7 @@ const Index = () => {
                             <div>
                                 <h2
                                     className="mt-6 max-w-2xl font-serif text-5xl font-normal leading-[0.94] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Bring us the part that never quite works.</h2>
-                                <p className="mt-7 max-w-lg text-lg leading-relaxed text-[#f8f2e5]/65">Tell us what you have tried and where real life keeps entering the picture. We begin with questions, not a perfect plan.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </p>
-                                <div className="mt-10 flex items-center gap-4 text-[#d68b7f]">
+                                <div className="mt-8 flex items-center gap-4 text-[#d68b7f]">
                                     <FlaskConical className="h-8 w-8 stroke-[1.2]" />
                                     <span className="handwritten max-w-xs text-xl leading-tight">No judgement. No gold stars for an ideal food diary.</span>
                                 </div>

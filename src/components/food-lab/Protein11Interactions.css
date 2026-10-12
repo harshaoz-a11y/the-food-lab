@@ -1061,3 +1061,103 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ── phones: each chapter fits one screen ─────────
+   Chapter 1's partnerships become one swipeable row of chips; chapters 2
+   and 3 fold their supporting blocks (.p11-secondary) behind "More detail". */
+.p11-more-btn {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .p11-stage-section {
+    min-width: 0;
+    gap: 0.9rem;
+  }
+
+  .p11-list-section,
+  .p11-day-persona-chips {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, #000 85%, transparent);
+    mask-image: linear-gradient(to right, #000 85%, transparent);
+  }
+
+  .p11-list-section::-webkit-scrollbar,
+  .p11-day-persona-chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .p11-list-group,
+  .p11-group-items {
+    flex: none;
+    flex-direction: row;
+    gap: 0.4rem;
+  }
+
+  .p11-group-heading,
+  .p11-item-badge {
+    display: none;
+  }
+
+  .p11-item-btn,
+  .p11-day-chip {
+    flex: none;
+    width: auto;
+    min-height: 44px;
+    align-items: center;
+    padding: 0.4rem 0.8rem;
+    white-space: nowrap;
+  }
+
+  .p11-understage {
+    gap: 0.6rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .p11-chapter__subtitle {
+    font-size: 0.9rem;
+  }
+
+  .p11-chart-legend {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.3rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .p11-chapter:not(.is-more-open) .p11-secondary {
+    display: none;
+  }
+
+  .p11-more-btn {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    padding: 0 1rem;
+    border: 1.5px solid var(--ink, #1f2924);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink, #1f2924);
+    font: 700 12px var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .p11-more-btn svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+  }
+
+  .p11-more-btn[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+  }
+}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { PERSONAS } from "./protein11Personas";
+import { ChapterMore } from "./ChapterMore";
 
 // Days from batch until we'd rather you finish it; null hides the line
 export const FRESH_DAYS: number | null = null;
@@ -11,6 +12,7 @@ const SHELF_PATH = "M40 150 L560 150";
 
 export function Chapter3YourDay() {
   const [selectedPersonaId, setSelectedPersonaId] = useState<string>(PERSONAS[0].id);
+  const [more, setMore] = useState(false);
   const currentPersona = PERSONAS.find((p) => p.id === selectedPersonaId) ?? PERSONAS[0];
 
   // Convert an hour (7.0 to 21.0) into a percentage across the 14-hour window (7 AM - 9 PM)
@@ -23,7 +25,7 @@ export function Chapter3YourDay() {
 
   return (
     <section
-      className="p11-chapter p11-chapter--day"
+      className={`p11-chapter p11-chapter--day ${more ? "is-more-open" : ""}`}
       aria-labelledby="ch3-heading"
     >
       <header className="p11-chapter__header">
@@ -102,7 +104,7 @@ export function Chapter3YourDay() {
       </div>
 
       {/* Freshness across the week + the honest trade-off */}
-      <div className="p11-fresh-layout">
+      <div className="p11-fresh-layout p11-secondary">
         <div className="p11-fresh-chart-card">
           <span className="p11-chart-label">Eating quality across the week — illustrative</span>
           <div className="p11-fresh-svg-wrap">
@@ -154,6 +156,7 @@ export function Chapter3YourDay() {
           </p>
         </div>
       </div>
+      <ChapterMore open={more} onToggle={() => setMore((value) => !value)} />
     </section>
   );
 }

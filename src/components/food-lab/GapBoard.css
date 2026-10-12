@@ -255,3 +255,88 @@
 .gap-card--lab .gap-card__facts svg {
   background: #3f8a5f;
 }
+
+/* ── phones and tablets: one card at a time, Food Lab folded to its four steps ──
+   Side by side starts at 1000px; below that the cards would stack a screen apart. */
+.gap-board__switch,
+.gap-card__step-count,
+.gap-card__more {
+  display: none;
+}
+
+@media (max-width: 999px) {
+  .gap-board__switch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem;
+    padding: 0.3rem;
+    border: 1px solid rgba(248, 242, 229, 0.25);
+    border-radius: 999px;
+  }
+
+  .gap-board__switch button {
+    min-height: 44px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: #f8f2e5;
+    font: 600 0.92rem/1.1 var(--fl-font-serif, "Fraunces", Georgia, serif);
+    cursor: pointer;
+  }
+
+  .gap-board__switch button b {
+    margin-left: 0.25rem;
+    font-weight: 700;
+  }
+
+  .gap-board__switch button[aria-pressed="true"] {
+    background: var(--gb-gold);
+    color: var(--gb-ink);
+  }
+
+  .gap-board__vs,
+  .gap-board.is-showing-lab .gap-card--generic,
+  .gap-board.is-showing-generic .gap-card--lab {
+    display: none;
+  }
+
+  .gap-card__big {
+    font-size: 3rem;
+  }
+
+  .gap-card__step-count {
+    display: inline;
+    margin-left: auto;
+    font: 700 12px "Space Mono", ui-monospace, monospace;
+    opacity: 0.6;
+  }
+
+  .gap-board:not(.is-expanded) .gap-card__step .gap-card__chips {
+    display: none;
+  }
+
+  .gap-board:not(.is-expanded) .gap-card__steps {
+    gap: 0;
+  }
+
+  .gap-board:not(.is-expanded) .gap-card__step {
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed rgba(23, 59, 48, 0.2);
+  }
+
+  .gap-card__more {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 1.1rem;
+    border: 1.5px solid var(--gb-ink);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--gb-ink);
+    font: 700 12px "Space Mono", ui-monospace, monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+}

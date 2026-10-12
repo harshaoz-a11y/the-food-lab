@@ -30,6 +30,7 @@ import {
     Wallet,
     X,
 } from "lucide-react";
+import { useState } from "react";
 import "./GapBoard.css";
 
 const methodFlow = [{
@@ -161,9 +162,20 @@ const GENERIC_COUNT = methodFlow.reduce(
 
 export function GapBoard() {
     const missed = TOTAL - GENERIC_COUNT;
+    // Phones show one card at a time behind a switch, and the Food Lab list folded to its four steps.
+    const [shown, setShown] = useState<"generic" | "lab">("generic");
+    const [expanded, setExpanded] = useState(false);
 
     return (
-        <div className="gap-board">
+        <div className={`gap-board is-showing-${shown} ${expanded ? "is-expanded" : ""}`}>
+            <div className="gap-board__switch" role="group" aria-label="Compare consults">
+                <button type="button" aria-pressed={shown === "generic"} onClick={() => setShown("generic")}>
+                    Generic consult <b>{GENERIC_COUNT}</b>
+                </button>
+                <button type="button" aria-pressed={shown === "lab"} onClick={() => setShown("lab")}>
+                    The Food Lab <b>{TOTAL}</b>
+                </button>
+            </div>
             {/* the generic consult: small, grey, mostly empty */}
             <section className="gap-card gap-card--generic" aria-label="A generic consult">
                 <span className="gap-card__kicker">A generic consult</span>
@@ -209,6 +221,9 @@ export function GapBoard() {
                             <span className="gap-card__step-name">
                                 <i>{stageIndex + 1}</i>
                                 {label}
+                                <small className="gap-card__step-count">
+                                    {areas.reduce((n, a) => n + a.leaves.length, 0)}
+                                </small>
                             </span>
                             <ul className="gap-card__chips">
                                 {areas.flatMap((a) => a.leaves).map(({ label: leaf, icon: Icon }) => (
@@ -224,6 +239,13 @@ export function GapBoard() {
                         </div>
                     ))}
                 </div>
+                <button
+                    type="button"
+                    className="gap-card__more"
+                    aria-expanded={expanded}
+                    onClick={() => setExpanded(value => !value)}>
+                    {expanded ? "Show the four steps only" : `See all ${TOTAL}`}
+                </button>
                 <p className="gap-card__key">
                     <i aria-hidden="true" /> {missed} things a generic consult never reaches
                 </p>

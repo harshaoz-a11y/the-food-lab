@@ -1,4 +1,5 @@
 import React, { useCallback, useId, useRef, useState } from "react";
+import { ChapterMore } from "./ChapterMore";
 
 // Bezier mathematical solver for cubic segments
 interface BezierSegment {
@@ -93,6 +94,7 @@ const X_SPAN = X_MAX - X_MIN; // 650
 
 export function Chapter2Digestion() {
   const [hour, setHour] = useState<number>(2.2);
+  const [more, setMore] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const svgRef = useRef<SVGSVGElement | null>(null);
   const scrubberId = useId();
@@ -160,7 +162,7 @@ export function Chapter2Digestion() {
 
   return (
     <section
-      className="p11-chapter p11-chapter--digestion"
+      className={`p11-chapter p11-chapter--digestion ${more ? "is-more-open" : ""}`}
       aria-labelledby="ch2-heading"
     >
       <header className="p11-chapter__header">
@@ -397,7 +399,7 @@ export function Chapter2Digestion() {
         </div>
 
           {/* In plain words */}
-          <div className="p11-panel-box">
+          <div className="p11-panel-box p11-secondary">
             <span className="p11-panel-kicker">In plain words</span>
             <p className="p11-panel-plain">
               A protein shake hits fast and is gone in about an hour and a half. This bar works in relay: whey
@@ -408,7 +410,7 @@ export function Chapter2Digestion() {
         </div>
 
         {/* Side Panel Column */}
-        <aside className="p11-side-panel">
+        <aside className="p11-side-panel p11-secondary">
           {/* Amino acid balance: one bar, nine essential slots */}
           <div className="p11-panel-box">
             <div className="p11-panel-box__head">
@@ -447,6 +449,7 @@ export function Chapter2Digestion() {
           </details>
         </aside>
       </div>
+      <ChapterMore open={more} onToggle={() => setMore((value) => !value)} />
     </section>
   );
 }

@@ -100,11 +100,6 @@ export function HypothesisExperiment() {
                 <span className="macro-generic__box" aria-hidden="true"><Check /></span>
                 Prefer what works for someone else?
             </label>
-
-            <p className="macro-card__note">
-                <span>Observation</span>
-                The list tells us what is present, not what happens next.
-            </p>
         </div>
     );
 }
