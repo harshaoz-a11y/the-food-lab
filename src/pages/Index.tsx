@@ -41,7 +41,7 @@ const navigation = [{
 }];
 
 // Every call to action goes to one of these two places.
-const ORDER_PROTEIN11 = "mailto:harsha@thefoodlab.in?subject=Order%20Protein%2011&body=Hi%20Food%20Lab%2C%20I%27d%20like%20to%20order%20Protein%2011.%0A%0ANumber%20of%20bars%3A%20%0AArea%20in%20Bengaluru%3A%20";
+const ORDER_PROTEIN11 = "mailto:harsha@thefoodlab.in?subject=Order%20Protein%2011&body=Hi%20Food%20Lab%2C%20I%27d%20like%20to%20order%20Protein%2011.%0A%0ANumber%20of%20bars%20(minimum%203)%3A%20%0AArea%20in%20Bengaluru%3A%20";
 const BOOK_CONSULT = "mailto:harsha@thefoodlab.in?subject=Book%20my%20free%2030-min%20consult&body=Hi%20Food%20Lab%2C%20I%27d%20like%20to%20book%20my%20free%2030-minute%20consult.%0A%0AWhat%20I%27d%20like%20help%20with%3A%20";
 
 // Per-bar macros, scaled to an actual 70 g bar
@@ -174,6 +174,7 @@ function ConsultationForm() {
                     className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#a33a2b]">Nutrition consult · 1:1</span>
                 <strong
                     className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-ink sm:text-4xl">Looking for precise solutions to your nutritional goals?</strong>
+                <span className="mt-2 block text-sm text-ink/65">Free 30-min intro · then ₹1,499 per consult</span>
                 <span className="card-cta">Book your free 30-min consult <ArrowRight className="h-4 w-4" /></span>
             </a>
             <div
@@ -188,6 +189,7 @@ function ConsultationForm() {
                     className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#a33a2b]">Protein 11</span>
                 <strong
                     className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-ink sm:text-4xl">Protein 11, made fresh this week.</strong>
+                <span className="mt-2 block text-sm text-ink/65">₹150 a bar from 3 bars · free delivery on 6+ · Bengaluru</span>
                 <span className="card-cta">Order Protein 11 <ArrowRight className="h-4 w-4" /></span>
             </a>
         </div>
@@ -368,6 +370,7 @@ const Index = () => {
                             <div className="service-offer">
                                 <p className="service-offer__line">Work 1:1 with thefoodlab.in on a plan built around your biology, your taste and your actual needs.</p>
                                 <p className="service-offer__free">Your first 30 minutes are free.</p>
+                                <p className="service-offer__price">Full consults after that: ₹1,499 each.</p>
                                 <a href={BOOK_CONSULT} className="cta-btn cta-btn--gold service-offer__cta">Book your free consult <ArrowRight className="h-4 w-4" /></a>
                             </div>
                         </div>
@@ -412,6 +415,12 @@ const Index = () => {
                                     <span
                                         className="mt-3 block max-w-md text-lg font-normal leading-snug tracking-normal sm:text-xl">— because protein was never meant to work alone.</span>
                                 </h2>
+                                <div className="p11-price" aria-label="Price: 180 rupees a bar, 150 rupees a bar when you order 3 or more">
+                                    <p className="p11-price__main">
+                                        <s>₹180</s> <strong>₹150</strong> <span>a bar, when you order 3 or more</span>
+                                    </p>
+                                    <p className="p11-price__terms">Minimum 3 bars (₹450) · Free delivery on 6 or more · Bengaluru only</p>
+                                </div>
                                 {/* phones already have Order in the action bar */}
                                 <div className="mt-7 hidden flex-wrap items-center gap-x-6 gap-y-3 md:flex">
                                     <a href={ORDER_PROTEIN11} className="cta-btn">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>

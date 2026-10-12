@@ -2125,3 +2125,12 @@ body,
   font: 11px var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
   color: color-mix(in srgb, var(--fl-ink) 55%, transparent);
 }
+
+/* Protein 11 price: the offer price leads, the list price is struck through, terms sit quietly below */
+.p11-price { margin-top: 1.25rem; padding-top: 0.9rem; border-top: 1px dashed rgba(23, 59, 48, 0.25); }
+.p11-price__main { margin: 0; font-family: var(--fl-font-serif, "Fraunces", Georgia, serif); font-size: 1.15rem; color: var(--ink); }
+.p11-price__main s { color: rgba(23, 59, 48, 0.45); text-decoration-thickness: 1.5px; }
+.p11-price__main strong { font-size: 1.9rem; font-weight: 500; color: var(--brick); letter-spacing: -0.02em; }
+.p11-price__main span { font-size: 1rem; color: rgba(23, 59, 48, 0.75); }
+.p11-price__terms { margin: 0.35rem 0 0; font: 700 11px var(--fl-font-mono, "Space Mono", ui-monospace, monospace); letter-spacing: 0.06em; text-transform: uppercase; color: rgba(23, 59, 48, 0.6); }
+.service-offer__price { margin: -0.2rem 0 0.35rem; font-size: 0.9rem; color: rgba(23, 59, 48, 0.7); }
