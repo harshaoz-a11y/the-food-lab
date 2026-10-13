@@ -73,16 +73,16 @@ export function PlanLedger() {
                     const meals = [...day.meals].sort((a, b) => ORDER.indexOf(a.meal) - ORDER.indexOf(b.meal));
                     return (
                         <article key={day.id} role="listitem" className="plan-ledger__card" aria-label={day.label}>
-                            <div className="plan-ledger__head">
+                            <div className="plan-ledger__art-wrap">
                                 <img className="plan-ledger__art" src={day.art} alt={day.artAlt} loading="lazy" decoding="async" />
-                                <div>
-                                    <span className="plan-ledger__who">{day.label}</span>
-                                    <p className="plan-ledger__verdict">
-                                        The diet chart planned <b>{day.meals.length} meals</b>.
-                                        <br />
-                                        Real life <span className="whitespace-nowrap">allowed <strong>{held}</strong>.</span>
-                                    </p>
-                                </div>
+                            </div>
+                            <div className="plan-ledger__head">
+                                <span className="plan-ledger__who">{day.label}</span>
+                                <p className="plan-ledger__verdict">
+                                    The diet chart planned <b>{day.meals.length} meals</b>.
+                                    <br />
+                                    Real life <span className="whitespace-nowrap">allowed <strong>{held}</strong>.</span>
+                                </p>
                             </div>
                             <ol className="plan-ledger__meals">
                                 {meals.map((m, i) => (

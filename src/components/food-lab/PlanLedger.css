@@ -22,127 +22,118 @@
 .plan-ledger__card {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1.25rem;
-  border-radius: 1.25rem;
-  background: var(--pl-paper);
+  overflow: hidden;
+  border: 1px solid rgba(23, 59, 48, 0.1);
+  border-radius: 18px;
+  background: #fbf7ee;
   color: var(--pl-ink);
-  box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 18px 40px -22px rgba(0, 0, 0, 0.55);
   scroll-snap-align: start;
 }
 
-.plan-ledger__head {
+/* the sketch is the card's picture, edge to edge */
+.plan-ledger__art-wrap {
   display: grid;
-  grid-template-columns: 96px minmax(0, 1fr);
-  align-items: center;
-  gap: 0.9rem;
+  height: 150px;
+  place-items: center;
+  border-bottom: 1px solid rgba(23, 59, 48, 0.08);
+  background: #fffdf8;
 }
 
 .plan-ledger__art {
-  width: 100%;
-  height: auto;
+  width: auto;
+  max-width: 88%;
+  height: 132px;
+  object-fit: contain;
   mix-blend-mode: multiply;
 }
 
+.plan-ledger__head { padding: 0.9rem 1.1rem 0.2rem; }
+
 .plan-ledger__who {
   display: block;
-  margin-bottom: 0.3rem;
-  font: 700 11px "Space Mono", ui-monospace, monospace;
-  letter-spacing: 0.14em;
+  margin-bottom: 0.35rem;
+  font: 700 10px "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(23, 59, 48, 0.6);
+  color: var(--pl-miss);
 }
 
-/* the one sentence that matters */
+/* the one sentence that matters: quiet setup, the number carries it */
 .plan-ledger__verdict {
   margin: 0;
   font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
-  font-size: 1.3rem;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  font-size: 1.05rem;
+  line-height: 1.3;
 }
 
 .plan-ledger__verdict b {
   font-weight: 400;
-  color: rgba(23, 59, 48, 0.72);
+  color: rgba(23, 59, 48, 0.6);
 }
 
 .plan-ledger__verdict strong {
-  display: inline-grid;
-  place-items: center;
-  min-width: 1.2em;
-  height: 1.2em;
-  padding: 0 0.15em;
-  border-radius: 0.25em;
-  background: var(--pl-miss);
-  color: #fff;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--pl-miss);
 }
 
-/* ── four meals as a 2 × 2: breakfast, lunch / snack, dinner ── */
+/* ── four meals as a 2 × 2 of light tiles: breakfast, lunch / snack, dinner ── */
 .plan-ledger__meals {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.5rem;
+  gap: 0.45rem;
   margin: 0;
-  padding: 0;
+  padding: 0.75rem 1.1rem 1.1rem;
   list-style: none;
 }
 
 .plan-ledger__meal {
   display: grid;
-  grid-template-columns: 22px auto 1fr;
+  grid-template-columns: 18px auto 1fr;
   grid-template-areas:
     "badge name time"
     "note note note";
   align-items: center;
   column-gap: 0.4rem;
-  padding: 0.6rem 0.65rem;
-  border: 1.5px solid transparent;
-  border-radius: 0.75rem;
+  padding: 0.55rem 0.6rem;
+  border: 1px solid rgba(23, 59, 48, 0.12);
+  border-radius: 10px;
+  background: #fff;
   animation: pl-in 0.4s calc(var(--i) * 80ms + 0.1s) cubic-bezier(0.3, 0.7, 0.2, 1) backwards;
-}
-
-.plan-ledger__meal.is-missed {
-  background: #fbe3dd;
-  border-color: var(--pl-miss);
-}
-
-.plan-ledger__meal.is-held {
-  background: #e1efe4;
-  border-color: var(--pl-held);
 }
 
 .plan-ledger__badge {
   grid-area: badge;
   display: grid;
   place-items: center;
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  color: #fff;
 }
 
 .plan-ledger__badge svg {
-  width: 13px;
-  height: 13px;
-  stroke-width: 3.2;
+  width: 11px;
+  height: 11px;
+  stroke-width: 3.4;
 }
 
-.is-missed .plan-ledger__badge { background: var(--pl-miss); }
-.is-held .plan-ledger__badge { background: var(--pl-held); }
+.is-held .plan-ledger__badge { background: #e1efe4; color: var(--pl-held); }
+.is-missed .plan-ledger__badge { background: #fbe3dd; color: var(--pl-miss); }
 
 .plan-ledger__meal-name {
   grid-area: name;
   font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
-  font-size: 1rem;
+  font-size: 0.98rem;
   line-height: 1.1;
 }
 
 .is-missed .plan-ledger__meal-name {
+  color: rgba(23, 59, 48, 0.55);
   text-decoration: line-through;
-  text-decoration-color: var(--pl-miss);
-  text-decoration-thickness: 2px;
+  text-decoration-color: rgba(200, 80, 63, 0.7);
+  text-decoration-thickness: 1.5px;
 }
 
 .plan-ledger__meal-time {
@@ -150,15 +141,16 @@
   justify-self: end;
   font: 700 10px "Space Mono", ui-monospace, monospace;
   letter-spacing: 0.06em;
-  color: rgba(23, 59, 48, 0.55);
+  color: rgba(23, 59, 48, 0.45);
 }
 
 .plan-ledger__meal-note {
   grid-area: note;
   margin-top: 0.3rem;
   font-family: "Caveat", cursive;
-  font-size: 1.1rem;
+  font-size: 1.08rem;
   line-height: 1.05;
+  color: rgba(23, 59, 48, 0.85);
 }
 
 @keyframes pl-in {
@@ -174,12 +166,14 @@
     scrollbar-width: none;
   }
   .plan-ledger__rail::-webkit-scrollbar { display: none; }
-  .plan-ledger__card { padding: 1rem; }
-  .plan-ledger__head { grid-template-columns: 104px minmax(0, 1fr); gap: 0.7rem; }
-  .plan-ledger__verdict { font-size: 0.98rem; line-height: 1.25; }
-  .plan-ledger__meal { padding: 0.5rem 0.55rem; }
-  .plan-ledger__meal-time { display: none; } /* the struck-out name already says it; the boxes are narrow */
-  .plan-ledger__meal-note { font-size: 1.02rem; }
+  .plan-ledger__art-wrap { height: 136px; }
+  .plan-ledger__art { height: 120px; }
+  .plan-ledger__head { padding: 0.8rem 0.9rem 0.1rem; }
+  .plan-ledger__verdict { font-size: 0.98rem; }
+  .plan-ledger__meals { padding: 0.65rem 0.9rem 0.9rem; gap: 0.4rem; }
+  .plan-ledger__meal { padding: 0.5rem 0.5rem; }
+  .plan-ledger__meal-time { display: none; } /* the struck-out name already says it; the tiles are narrow */
+  .plan-ledger__meal-note { font-size: 1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

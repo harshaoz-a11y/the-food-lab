@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import type { ComponentType } from "react";
-import { ArrowRight, FlaskConical, Menu, X } from "lucide-react";
+import { ArrowRight, Check, FlaskConical, Menu, X } from "lucide-react";
 import { useSectionReveal } from "@/hooks/use-section-reveal";
 import { useSnapCarousel } from "@/hooks/use-snap-carousel";
 import { useDeferredPanels } from "@/hooks/use-deferred-panels";
@@ -43,6 +43,17 @@ const navigation = [{
 // Every call to action goes to one of these two places.
 const ORDER_PROTEIN11 = "mailto:harsha@thefoodlab.in?subject=Order%20Protein%2011&body=Hi%20Food%20Lab%2C%20I%27d%20like%20to%20order%20Protein%2011.%0A%0ANumber%20of%20bars%20(minimum%203)%3A%20%0AArea%20in%20Bengaluru%3A%20";
 const BOOK_CONSULT = "mailto:harsha@thefoodlab.in?subject=Book%20my%20free%2030-min%20consult&body=Hi%20Food%20Lab%2C%20I%27d%20like%20to%20book%20my%20free%2030-minute%20consult.%0A%0AWhat%20I%27d%20like%20help%20with%3A%20";
+
+// What sets the bar apart, in three ticks (hero card and the phone note)
+const PROTEIN11_POINTS = ["Fast + slow proteins", "3 fibres", "Sweetness only from raisins and monk fruit"];
+
+function Protein11Points({ className }: { className: string }) {
+    return (
+        <ul className={className}>
+            {PROTEIN11_POINTS.map(point => (<li key={point}><Check aria-hidden="true" />{point}</li>))}
+        </ul>
+    );
+}
 
 // Per-bar macros, scaled to an actual 70 g bar
 const PROTEIN11_MACROS = [{
@@ -249,7 +260,11 @@ const Index = () => {
                                 <a href="#fit-peasant" className="hero-p11-strip">
                                     <img src={maestroAssets.alchemyBar} alt="" aria-hidden="true" />
                                     <span className="hero-p11-strip__sticker" aria-hidden="true">New</span>
-                                    <span><b>Protein 11<span className="hidden md:inline">.</span></b>{" "}A 70 g bar with 20 g protein<em>, from 16 ingredients you can name.</em></span>
+                                    <span className="hero-p11-strip__text">
+                                        <b>Protein 11</b>
+                                        <span className="hero-p11-strip__spec">70 g | 20 g protein</span>
+                                        <Protein11Points className="hero-p11-strip__points" />
+                                    </span>
                                     <ArrowRight className="h-4 w-4 shrink-0" />
                                 </a>
                                 <div className="hero-p11">
@@ -260,7 +275,8 @@ const Index = () => {
                                     <div className="hero-p11__body">
                                         <span className="hero-p11__kicker">New from our kitchen · made this week</span>
                                         <strong className="hero-p11__title">Protein 11</strong>
-                                        <p className="hero-p11__line">A 70 g bar with 20 g protein, from 16 ingredients you can name.</p>
+                                        <p className="hero-p11__line">70 g | 20 g protein</p>
+                                        <Protein11Points className="hero-p11__points" />
                                         <div className="hero-p11__actions">
                                             <a href={ORDER_PROTEIN11} className="cta-btn">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
                                             <a href="#fit-peasant" className="text-link">What’s inside? <ArrowRight className="h-3.5 w-3.5 rotate-90" /></a>

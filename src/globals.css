@@ -1829,15 +1829,15 @@ body,
   #question .hero-p11 { display: none; }
   /* the headline shares its row with a small Protein 11 note; the subtitle runs full width */
   #question { padding-top: 0.75rem; }
-  #question > .paper-sheet { padding-top: 1.4rem; padding-bottom: 1.75rem; }
+  #question > .paper-sheet { padding-top: 1.1rem; padding-bottom: 1.75rem; }
   #question .hero-question-copy {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 6.2rem;
-    column-gap: 0.75rem;
-    align-items: center;
+    grid-template-columns: minmax(0, 1fr) 8rem;
+    column-gap: 0.7rem;
+    align-items: start;
   }
-  #question .hero-question-copy h1 { font-size: 2.05rem; line-height: 0.95; }
-  #question .hero-question-copy > p { grid-column: 1 / -1; margin-top: 0.9rem; font-size: 1rem; }
+  #question .hero-question-copy h1 { font-size: 1.85rem; line-height: 0.98; }
+  #question .hero-question-copy > p { grid-column: 1 / -1; margin-top: 0.6rem; font-size: 1rem; }
   /* a quiet product card: cream stock, a hairline border, the bar, three short lines */
   .hero-p11-strip {
     grid-row: 1;
@@ -1872,8 +1872,12 @@ body,
     font: 500 0.9rem/1.1 var(--fl-font-serif, "Fraunces", Georgia, serif);
     color: #173b30;
   }
-  .hero-p11-strip em,
-  .hero-p11-strip svg { display: none; }
+  .hero-p11-strip > svg { display: none; }
+  .hero-p11-strip__text { display: flex; flex-direction: column; gap: 0.15rem; }
+  .hero-p11-strip__spec { font: 700 9px var(--fl-font-mono, "Space Mono", ui-monospace, monospace); letter-spacing: 0; white-space: nowrap; }
+  .hero-p11-strip__points { display: grid; gap: 0.1rem; margin: 0.15rem 0 0; padding: 0; list-style: none; font-size: 0.6rem; line-height: 1.2; color: rgba(23, 59, 48, 0.8); }
+  .hero-p11-strip__points li { display: grid; grid-template-columns: 10px 1fr; gap: 0.2rem; align-items: start; }
+  .hero-p11-strip__points svg { display: block; width: 10px; height: 10px; margin-top: 1px; stroke-width: 3.5; color: #2f7d52; }
 
   /* hero card: the equation flows as one wrapped line (see HypothesisExperiment.css) */
   .macro-eq__stage + .macro-eq__stage::before { margin-right: 0.25rem; }
@@ -2134,3 +2138,31 @@ body,
 .p11-price__main span { font-size: 1rem; color: rgba(23, 59, 48, 0.75); }
 .p11-price__terms { margin: 0.35rem 0 0; font: 700 11px var(--fl-font-mono, "Space Mono", ui-monospace, monospace); letter-spacing: 0.06em; text-transform: uppercase; color: rgba(23, 59, 48, 0.6); }
 .service-offer__price { margin: -0.2rem 0 0.35rem; font-size: 0.9rem; color: rgba(23, 59, 48, 0.7); }
+
+/* hero card (wider screens): the three ticks under the spec line */
+.hero-p11__points { display: grid; gap: 0.2rem; margin: 0.45rem 0 0; padding: 0; list-style: none; font-size: 0.82rem; line-height: 1.3; color: rgba(23, 59, 48, 0.78); }
+.hero-p11__points li { display: flex; align-items: flex-start; gap: 0.35rem; }
+.hero-p11__points svg { flex: none; width: 14px; height: 14px; margin-top: 2px; stroke-width: 3; color: #2f7d52; }
+.hero-p11__line { font: 700 12px var(--fl-font-mono, "Space Mono", ui-monospace, monospace); letter-spacing: 0.04em; }
+
+/* ── every selector gets a visible lift, so none of them reads as plain text ──
+   (prefixed with body so it also wins over the experiments' own stylesheets, which load later) */
+body :is(.rice-choice, .chapters-coverflow__pill, .p11-persona, .p11-item-btn, .gap-board__switch button, .gf-region-switch button, .egg-observation__toggle) {
+  box-shadow: 0 2px 0 rgba(23, 59, 48, 0.14), 0 8px 16px -10px rgba(23, 59, 48, 0.5);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+@media (hover: hover) {
+  body :is(.rice-choice, .chapters-coverflow__pill, .p11-persona, .p11-item-btn):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 0 rgba(23, 59, 48, 0.16), 0 12px 20px -10px rgba(23, 59, 48, 0.55);
+  }
+}
+body :is(.rice-choice.is-active, .chapters-coverflow__pill.is-active, .p11-persona.is-selected, .p11-item-btn.is-selected,
+  .gap-board__switch button[aria-pressed="true"], .gf-region-switch button[aria-selected="true"]) {
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.18), 0 12px 22px -10px rgba(23, 59, 48, 0.7);
+}
+/* the switches' unselected half stays flat inside its track */
+body :is(.gap-board__switch button[aria-pressed="false"], .gf-region-switch button[aria-selected="false"]) { box-shadow: none; }
+body :is(.gap-board__switch, .gf-region-switch) { box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12); }
+/* bookmarks are clipped shapes, so the shadow goes on their row */
+.lens-bookmarks { filter: drop-shadow(0 6px 6px rgba(40, 28, 12, 0.18)); }
