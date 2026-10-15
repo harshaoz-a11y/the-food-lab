@@ -24,7 +24,7 @@ interface Chapter {
 const chapters: Chapter[] = [
   {
     id: "particle",
-    label: "What’s inside?",
+    label: "Our benefits",
     sub: "16 ingredients",
     Component: Protein11Interactions,
   },

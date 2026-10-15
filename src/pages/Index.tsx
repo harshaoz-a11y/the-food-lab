@@ -27,7 +27,7 @@ const navigation = [{
     label: "Our approach",
     href: "#happiness-macro"
 }, {
-    label: "Real life",
+    label: "Why most diets fail",
     href: "#real-life"
 }, {
     label: "The science",
@@ -45,7 +45,7 @@ const ORDER_PROTEIN11 = "mailto:harsha@thefoodlab.in?subject=Order%20Protein%201
 const BOOK_CONSULT = "mailto:harsha@thefoodlab.in?subject=Book%20my%20free%2030-min%20consult&body=Hi%20Food%20Lab%2C%20I%27d%20like%20to%20book%20my%20free%2030-minute%20consult.%0A%0AWhat%20I%27d%20like%20help%20with%3A%20";
 
 // What sets the bar apart, in three ticks (hero card and the phone note)
-const PROTEIN11_POINTS = ["Fast + slow proteins", "3 fibres", "Sweetness only from raisins and monk fruit"];
+const PROTEIN11_POINTS = ["3 fibres", "Zero artificial sweeteners"];
 
 function Protein11Points({ className }: { className: string }) {
     return (
@@ -263,6 +263,7 @@ const Index = () => {
                                     <span className="hero-p11-strip__text">
                                         <b>Protein 11</b>
                                         <span className="hero-p11-strip__spec">70 g | 20 g protein</span>
+                                        <span className="hero-p11-strip__sub">4 fast + slow acting proteins</span>
                                         <Protein11Points className="hero-p11-strip__points" />
                                     </span>
                                     <ArrowRight className="h-4 w-4 shrink-0" />
@@ -275,11 +276,11 @@ const Index = () => {
                                     <div className="hero-p11__body">
                                         <span className="hero-p11__kicker">New from our kitchen · made this week</span>
                                         <strong className="hero-p11__title">Protein 11</strong>
-                                        <p className="hero-p11__line">70 g | 20 g protein</p>
+                                        <p className="hero-p11__line">70 g | 20 g protein · 4 fast + slow acting proteins</p>
                                         <Protein11Points className="hero-p11__points" />
                                         <div className="hero-p11__actions">
                                             <a href={ORDER_PROTEIN11} className="cta-btn">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
-                                            <a href="#fit-peasant" className="text-link">What’s inside? <ArrowRight className="h-3.5 w-3.5 rotate-90" /></a>
+                                            <a href="#fit-peasant" className="text-link">Our benefits <ArrowRight className="h-3.5 w-3.5 rotate-90" /></a>
                                         </div>
                                     </div>
                                 </div>

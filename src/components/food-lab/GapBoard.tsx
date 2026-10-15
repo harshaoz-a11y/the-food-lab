@@ -25,6 +25,9 @@ import {
     ThumbsDown,
     Timer,
     TrendingUp,
+    ChefHat,
+    CircleHelp,
+    Sprout,
     Utensils,
     UsersRound,
     Wallet,
@@ -35,6 +38,7 @@ import "./GapBoard.css";
 
 const methodFlow = [{
     label: "Understand",
+    note: "What’s stopping you?",
     icon: NotebookPen,
 
     areas: [{
@@ -52,10 +56,14 @@ const methodFlow = [{
         leaves: [{
             label: "What you actually want to change.",
             icon: Flag
+        }, {
+            label: "What’s stopping you?",
+            icon: CircleHelp
         }]
     }]
 }, {
     label: "Maximize Benefit and Taste",
+    note: "Can diets be delicious?",
     icon: FlaskConical,
 
     areas: [{
@@ -100,10 +108,14 @@ const methodFlow = [{
         }, {
             label: "Affordability",
             icon: Wallet
+        }, {
+            label: "Can diets be delicious?",
+            icon: ChefHat
         }]
     }]
 }, {
     label: "Observe",
+    note: "What changes when we change something?",
     icon: Activity,
 
     areas: [{
@@ -117,6 +129,7 @@ const methodFlow = [{
     }]
 }, {
     label: "Adapt",
+    note: "Continue to improve.",
     icon: RefreshCcw,
 
     areas: [{
@@ -141,6 +154,9 @@ const methodFlow = [{
         }, {
             label: "Social life",
             icon: MessagesSquare
+        }, {
+            label: "Continue to improve",
+            icon: Sprout
         }]
     }]
 }];
@@ -176,6 +192,7 @@ export function GapBoard() {
                 <button type="button" aria-pressed={shown === "lab"} onClick={() => setShown("lab")}>
                     The Food Lab <b>{TOTAL}</b>
                 </button>
+                <span className="gap-board__switch-vs" aria-hidden="true">vs</span>
                 <button type="button" aria-pressed={shown === "generic"} onClick={() => setShown("generic")}>
                     Generic consult <b>{GENERIC_COUNT}</b>
                 </button>
@@ -188,7 +205,7 @@ export function GapBoard() {
                     <small>things we look at</small>
                 </p>
                 <div className="gap-card__steps">
-                    {methodFlow.map(({ label, areas }, stageIndex) => (
+                    {methodFlow.map(({ label, note, areas }, stageIndex) => (
                         <div key={label} className="gap-card__step">
                             <span className="gap-card__step-name">
                                 <i>{stageIndex + 1}</i>
@@ -197,6 +214,7 @@ export function GapBoard() {
                                     {areas.reduce((n, a) => n + a.leaves.length, 0)}
                                 </small>
                             </span>
+                            <em className="gap-card__step-note">{note}</em>
                             <ul className="gap-card__chips">
                                 {areas.flatMap((a) => a.leaves).map(({ label: leaf, icon: Icon }) => (
                                     <li

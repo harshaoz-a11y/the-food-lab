@@ -1,8 +1,35 @@
 import React, { useMemo, useRef, useState } from "react";
+import { Candy, Cherry, Droplet, Gauge, Grape, Milk, Nut, Package, Wheat, Citrus } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { INGREDIENTS, PARTNERSHIPS } from "@/components/Protein-11/protein11Data.js";
 import CrossSectionStage from "@/components/Protein-11/CrossSectionStage";
 import crossSection from "@/components/Protein-11/protein11-cross-section.webp";
 import "./Protein11Interactions.css";
+
+// Each partnership: a literal icon, its own colour, and a short label for the phone keypad
+const PARTNERSHIP_LOOK: Record<string, { Icon: LucideIcon; color: string; short: string }> = {
+  whole: { Icon: Package, color: "#173b30", short: "All 16" },
+  "fast-slow": { Icon: Gauge, color: "#b5473a", short: "Fast / slow" },
+  "dairy-plant": { Icon: Milk, color: "#2f6fa5", short: "Dairy + plant" },
+  "fibre-layers": { Icon: Wheat, color: "#9a7a1c", short: "3 fibres" },
+  binder: { Icon: Droplet, color: "#2f8c8c", short: "Binder" },
+  "fibre-fruit": { Icon: Cherry, color: "#c2416b", short: "Fibre + fruit" },
+  "fruit-two-forms": { Icon: Grape, color: "#6b3fa0", short: "Raisins" },
+  "cocoa-orange": { Icon: Citrus, color: "#d9731f", short: "Cocoa + orange" },
+  "salt-monk": { Icon: Candy, color: "#c48a12", short: "Salt + sweet" },
+  "two-nuts": { Icon: Nut, color: "#7a4a2a", short: "2 nuts" },
+};
+
+function PartnershipMark({ id }: { id: string }) {
+  const { Icon, color, short } = PARTNERSHIP_LOOK[id] ?? PARTNERSHIP_LOOK.whole;
+  return (
+    <span className="p11-item-num" aria-hidden="true" style={{ "--mark": color } as React.CSSProperties}>
+      <Icon />
+      <small>{short}</small>
+    </span>
+  );
+}
+
 
 export type Partnership = (typeof PARTNERSHIPS)[number];
 
@@ -49,7 +76,7 @@ export function Protein11Interactions() {
   const currentTitle = selected ? selected.title : "Whole bar";
   const currentPlain = selected
     ? selected.plain
-    : "Every ingredient is chosen for what it does with the others. Pick a partnership (1–9) to see who works with whom.";
+    : "Every ingredient is chosen for what it does with the others. Pick a partnership to see who works with whom.";
   const currentFine = selected
     ? selected.fine
     : "16 ingredients formulated to work together: fast and slow proteins, three fibres, and sweetness from fruit and monk fruit.";
@@ -64,7 +91,7 @@ export function Protein11Interactions() {
       >
         <header className="p11-header">
           <h3 id="p11-interactions-heading" className="p11-header__title">
-            What’s inside, and why
+            How this bar delivers more for less
           </h3>
         </header>
 
@@ -87,7 +114,7 @@ export function Protein11Interactions() {
                 onKeyDown={(e) => handleKeyDown(e, 0)}
                 className={`p11-item-btn ${selected === null ? "is-selected" : ""}`}
               >
-                <span className="p11-item-num" aria-hidden="true">All</span>
+                <PartnershipMark id="whole" />
                 <span className="p11-item-title">Whole bar</span>
                 <span className="p11-item-badge">All 16</span>
               </button>
@@ -119,7 +146,7 @@ export function Protein11Interactions() {
                         onKeyDown={(e) => handleKeyDown(e, itemIndex)}
                         className={`p11-item-btn ${isSelected ? "is-selected" : ""}`}
                       >
-                        <span className="p11-item-num" aria-hidden="true">{itemIndex}</span>
+                        <PartnershipMark id={item.id} />
                         <span className="p11-item-title">{item.title}</span>
                         <span className="p11-item-badge">
                           {item.ingredients.length} parts

@@ -3,18 +3,16 @@ import RegionScene from "@/components/region-scenes/RegionScene";
 import { SourceNote } from "./SourceNote";
 import "./GlutenExperiment.css";
 
-type Signal = { value: number; short: string; full: string };
+type Signal = { value: number; short: string; only?: boolean };
 
-const knowledge: Signal[] = [
-    { value: 50.9, short: "could say what gluten is", full: "correctly identified what gluten is" },
-    { value: 38.6, short: "knew what “gluten-free” means", full: "correctly identified what a gluten-free diet means" },
-    { value: 45.3, short: "knew who needs it medically", full: "correctly identified the medical conditions for which a GFD is recommended" }
-];
-
-const belief: Signal[] = [
-    { value: 29.1, short: "think it is healthier", full: "thought gluten-free foods were healthier than gluten-containing foods" },
-    { value: 38.9, short: "think it helps weight loss", full: "believed gluten-free diets help with weight loss" },
-    { value: 49.5, short: "say the crowd drives it", full: "perceived social influences as major drivers of GFD adoption" }
+// One list, one colour: what the survey found
+const findings: Signal[] = [
+    { value: 49.1, short: "could not say what gluten is" },
+    { value: 38.6, short: "knew what “gluten-free” means", only: true },
+    { value: 45.3, short: "knew who needs it medically", only: true },
+    { value: 70.9, short: "don’t think it is healthier" },
+    { value: 38.9, short: "think it helps weight loss" },
+    { value: 49.5, short: "say the crowd drives it" }
 ];
 
 const regions = [
@@ -24,14 +22,14 @@ const regions = [
 
 type Region = (typeof regions)[number][0];
 
-function Group({ title, tone, items }: { title: string; tone: "green" | "brick"; items: Signal[] }) {
+function Group({ title, items }: { title: string; items: Signal[] }) {
     return (
-        <div className={`gf-group gf-group--${tone}`}>
+        <div className="gf-group">
             <h5 className="gf-group__title">{title}</h5>
             <ul className="gf-list">
-                {items.map(({ value, short }, index) => (
+                {items.map(({ value, short, only }, index) => (
                     <li key={short} className="gf-row" style={{ "--v": `${value}%`, "--i": index } as React.CSSProperties}>
-                        <strong>{value}%</strong>
+                        <strong>{only && <small>Only </small>}{value}%</strong>
                         <span>{short}</span>
                         <i aria-hidden="true" />
                     </li>
@@ -63,14 +61,14 @@ export function GlutenExperiment() {
                 <div className="gf-scene gf-scene--us"><RegionScene region="us" /></div>
                 <div className="gf-scene gf-scene--india"><RegionScene region="india" /></div>
             </div>
-            <div className="gf-survey">
+            {/* phones: the India survey belongs to the India scene, so it shows only there */}
+            <div className={`gf-survey ${region === "us" ? "is-us" : ""}`}>
                 <div className="gf-survey__head">
                     <span className="gf-eyebrow">India / survey · 285 people</span>
                     <p className="gf-takeaway">Half couldn’t say what gluten is. Half say the crowd drives the trend.</p>
                 </div>
                 <div className="gf-groups">
-                    <Group title="What they know" tone="green" items={knowledge} />
-                    <Group title="What they believe" tone="brick" items={belief} />
+                    <Group title="What we know" items={findings} />
                 </div>
                 <SourceNote className="gf-source">
                     <a href="https://www.researchsquare.com/article/rs-9052215/v1" target="_blank" rel="noreferrer">Moitra &amp; Qureshi, Research Square preprint, 2026</a>.

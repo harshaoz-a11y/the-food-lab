@@ -56,7 +56,12 @@
 .gf-region-switch { display: none; }
 
 @media (max-width: 767px) {
-  .gf-groups { grid-template-columns: 1fr; }
+  .gf-survey.is-us { display: none; }
+  /* what they know | what they believe, side by side */
+  .gf-groups { grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+  .gf-row { grid-template-columns: 1fr; row-gap: 0.15rem; padding: 0.45rem 0 0.5rem; }
+  .gf-row strong { font-size: 1.3rem; }
+  .gf-row span { font-size: 0.8rem; line-height: 1.2; }
   .gf-region-switch {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -82,3 +87,13 @@
   .gf-scene .fl-reg__title { display: none; } /* the switch already names the country */
 }
 @media (prefers-reduced-motion: reduce) { .gf-row i { transition: none; width: var(--v); } }
+
+/* one list of six findings in a single colour, laid out in two columns */
+.gf-groups { grid-template-columns: 1fr; }
+.gf-group { --gf-tone: var(--fl-green); }
+.gf-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(1.25rem, 4vw, 3.5rem); }
+.gf-row strong small { font-size: 0.55em; font-style: italic; letter-spacing: 0; }
+@media (min-width: 768px) {
+  .gf-row { grid-template-columns: 6.4rem minmax(0, 1fr); }
+  .gf-row strong { white-space: nowrap; }
+}

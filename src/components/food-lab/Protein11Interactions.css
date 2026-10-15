@@ -937,7 +937,21 @@
 
 /* ── What's inside on phones: the partnerships become a numbered keypad (All, 1–9),
    always fully in view; the chosen one's name and story show underneath ── */
-.p11-item-num { display: none; }
+/* each partnership's icon: beside the name on wider screens, the whole button on phones */
+.p11-item-num {
+  display: inline-grid;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  margin-right: 0.55rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--mark) 14%, #fff);
+  color: var(--mark);
+}
+.p11-item-num svg { width: 16px; height: 16px; stroke-width: 2; }
+.p11-item-num small { display: none; }
+.p11-item-btn.is-selected .p11-item-num { background: #fff; }
 @media (max-width: 767px) {
   .p11-list-section {
     display: grid;
@@ -952,11 +966,23 @@
   .p11-item-btn {
     position: relative;
     justify-content: center;
-    min-height: 44px;
-    padding: 0;
-    border-radius: 999px;
+    align-items: center;
+    min-height: 64px;
+    padding: 0.35rem 0.15rem;
+    border-radius: 14px;
   }
-  .p11-item-num { display: block; font: 700 14px var(--fl-font-mono, "Space Mono", ui-monospace, monospace); }
+  .p11-item-num { width: auto; height: auto; margin: 0; gap: 0.2rem; background: none; }
+  .p11-item-num svg { width: 22px; height: 22px; }
+  .p11-item-num small {
+    display: block;
+    color: var(--ink, #1f2924);
+    max-width: 3.1rem;
+    font: 600 8.5px/1.1 Inter, ui-sans-serif, system-ui, sans-serif;
+    text-align: center;
+    white-space: normal;
+  }
+  .p11-item-btn.is-selected .p11-item-num { background: none; color: #fff; }
+  .p11-item-btn.is-selected .p11-item-num small { color: #fff; }
   .p11-item-title {
     position: absolute;
     width: 1px;
@@ -965,4 +991,8 @@
     clip: rect(0 0 0 0);
     white-space: nowrap;
   }
+}
+@media (min-width: 768px) {
+  .p11-item-btn { align-items: center; }
+  .p11-item-btn .p11-item-title { flex: 1; text-align: left; }
 }

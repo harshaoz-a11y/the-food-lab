@@ -1821,56 +1821,71 @@ body,
 
   /* ── hero: Protein 11 shrinks to one line (it has its own section) ── */
   #question .hero-p11 { display: none; }
-  /* the headline shares its row with a small Protein 11 note; the subtitle runs full width */
-  #question { padding-top: 0.75rem; }
+  /* the headline shares its row with a wide Protein 11 card that ends level with it;
+     the subtitle runs full width underneath */
+  #question { padding-top: 0.5rem; }
+  #question > .paper-sheet.paper-sheet { padding-top: 0.85rem; }
+  #question .hero-hypothesis-grid.hero-hypothesis-grid { gap: 0.85rem; }
   #question .hero-question-copy {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 8rem;
-    column-gap: 0.7rem;
+    grid-template-columns: minmax(0, 1fr) 10.2rem;
+    column-gap: 0.6rem;
     align-items: start;
   }
-  #question .hero-question-copy h1 { font-size: 1.85rem; line-height: 0.98; }
-  #question .hero-question-copy > p { grid-column: 1 / -1; margin-top: 0.6rem; font-size: 1rem; }
-  /* a quiet product card: cream stock, a hairline border, the bar, three short lines */
+  #question .hero-question-copy h1 { font-size: 1.8rem; line-height: 1.02; }
+  #question .hero-question-copy > p { grid-column: 1 / -1; margin-top: 0.6rem; font-size: 0.95rem; }
   .hero-p11-strip {
+    position: relative;
     grid-row: 1;
     grid-column: 2;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.2rem;
-    padding: 0.55rem 0.55rem 0.6rem;
-    border: 1px solid rgba(23, 59, 48, 0.18);
-    border-radius: 10px;
+    gap: 0.3rem;
+    padding: 0.45rem 0.5rem 0.5rem;
+    border: 1px solid rgba(23, 59, 48, 0.16);
+    border-radius: 12px;
     background: #fdf9f0;
     color: #173b30;
-    font: 400 0.66rem/1.25 Inter, ui-sans-serif, system-ui, sans-serif;
-    box-shadow: 0 6px 16px -10px rgba(40, 28, 12, 0.35);
+    font: 400 0.62rem/1.2 Inter, ui-sans-serif, system-ui, sans-serif;
+    box-shadow: 0 8px 18px -12px rgba(40, 28, 12, 0.45);
   }
   .hero-p11-strip img {
     width: 100%;
     height: auto;
-    margin-bottom: 0.15rem;
     filter: drop-shadow(0 3px 4px rgba(40, 28, 12, 0.18));
   }
   .hero-p11-strip__sticker {
-    order: -1;
-    font: 700 9px/1 "Space Mono", ui-monospace, monospace;
-    letter-spacing: 0.16em;
+    position: absolute;
+    top: 0.35rem;
+    left: 0.35rem;
+    z-index: 1;
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    background: #a33a2b;
+    color: #f8f2e5;
+    font: 700 8px/1.2 "Space Mono", ui-monospace, monospace;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #a33a2b;
-  }
-  .hero-p11-strip b {
-    display: block;
-    font: 500 0.9rem/1.1 var(--fl-font-serif, "Fraunces", Georgia, serif);
-    color: #173b30;
   }
   .hero-p11-strip > svg { display: none; }
-  .hero-p11-strip__text { display: flex; flex-direction: column; gap: 0.15rem; }
-  .hero-p11-strip__spec { font: 700 9px var(--fl-font-mono, "Space Mono", ui-monospace, monospace); letter-spacing: 0; white-space: nowrap; }
-  .hero-p11-strip__points { display: grid; gap: 0.1rem; margin: 0.15rem 0 0; padding: 0; list-style: none; font-size: 0.6rem; line-height: 1.2; color: rgba(23, 59, 48, 0.8); }
-  .hero-p11-strip__points li { display: grid; grid-template-columns: 10px 1fr; gap: 0.2rem; align-items: start; }
-  .hero-p11-strip__points svg { display: block; width: 10px; height: 10px; margin-top: 1px; stroke-width: 3.5; color: #2f7d52; }
+  .hero-p11-strip__text { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; text-align: center; }
+  .hero-p11-strip__sub { font-size: 0.6rem; line-height: 1.15; color: rgba(23, 59, 48, 0.85); }
+  .hero-p11-strip b { font: 500 0.95rem/1.1 var(--fl-font-serif, "Fraunces", Georgia, serif); color: #173b30; }
+  .hero-p11-strip__spec { font: 700 8.5px var(--fl-font-mono, "Space Mono", ui-monospace, monospace); white-space: nowrap; }
+  .hero-p11-strip__points {
+    display: grid;
+    flex-basis: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.15rem 0.4rem;
+    margin: 0.25rem 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.58rem;
+    line-height: 1.15;
+    color: rgba(23, 59, 48, 0.82);
+  }
+  .hero-p11-strip__points li { display: grid; grid-template-columns: 9px 1fr; gap: 0.2rem; align-items: start; }
+  .hero-p11-strip__points svg { display: block; width: 9px; height: 9px; margin-top: 1px; stroke-width: 3.5; color: #2f7d52; }
 
   /* hero card: the equation flows as one wrapped line (see HypothesisExperiment.css) */
   .macro-eq__stage + .macro-eq__stage::before { margin-right: 0.25rem; }
