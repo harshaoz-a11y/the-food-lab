@@ -926,10 +926,6 @@ main > section.reveal.is-revealed {
     width: 100%;
   }
 
-  .egg-observation__rail {
-    display: block;
-  }
-
   .egg-observation__caption {
     margin-left: 0;
     text-align: center;
@@ -937,11 +933,9 @@ main > section.reveal.is-revealed {
 
   .egg-observation__reading {
     max-width: none;
-    text-align: center;
   }
 
   .egg-observation__interpretation {
-    max-width: 31ch;
     margin-inline: auto;
   }
 
@@ -1829,7 +1823,6 @@ body,
   #question .hero-p11 { display: none; }
   /* the headline shares its row with a small Protein 11 note; the subtitle runs full width */
   #question { padding-top: 0.75rem; }
-  #question > .paper-sheet { padding-top: 1.1rem; padding-bottom: 1.75rem; }
   #question .hero-question-copy {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 8rem;
@@ -2124,11 +2117,6 @@ body,
 .source-note summary::after { content: "+"; text-decoration: none; }
 .source-note[open] summary::after { content: "–"; }
 .source-note p { margin: 0.45rem 0 0; }
-.gf-hint {
-  margin: 0.75rem 0 0;
-  font: 11px var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
-  color: color-mix(in srgb, var(--fl-ink) 55%, transparent);
-}
 
 /* Protein 11 price: the offer price leads, the list price is struck through, terms sit quietly below */
 .p11-price { margin-top: 1.25rem; padding-top: 0.9rem; border-top: 1px dashed rgba(23, 59, 48, 0.25); }
@@ -2166,3 +2154,6 @@ body :is(.gap-board__switch button[aria-pressed="false"], .gf-region-switch butt
 body :is(.gap-board__switch, .gf-region-switch) { box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12); }
 /* bookmarks are clipped shapes, so the shadow goes on their row */
 .lens-bookmarks { filter: drop-shadow(0 6px 6px rgba(40, 28, 12, 0.18)); }
+
+/* no dashed rule above the folded sources */
+.lens-coverflow :is(.egg-observation__source, .rice-source, .protein-panel__source) { border-top: 0; padding-top: 0; }

@@ -26,14 +26,8 @@
   background: none;
   color: inherit;
   text-align: left;
-  cursor: pointer;
 }
 .gf-row:focus-visible { outline: 2px solid var(--gf-tone); outline-offset: 2px; }
-.gf-row__full {
-  margin: 0.35rem 0 0.5rem 4.8rem;
-  font: 400 0.9rem / 1.35 var(--fl-font-serif);
-  color: color-mix(in srgb, var(--fl-ink) 70%, transparent);
-}
 .gf-row strong { font: 400 1.55rem / 1 var(--fl-font-serif); letter-spacing: -0.04em; color: var(--gf-tone); }
 .gf-row span { font: 400 0.98rem / 1.2 var(--fl-font-serif); color: color-mix(in srgb, var(--fl-ink) 80%, transparent); }
 .gf-row i {

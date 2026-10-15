@@ -13,15 +13,8 @@
 }
 .protein-stage > .fl-sink { width: 100%; margin: 0; align-self: center; }
 /* the diagnosis stays compact so the drawing leads */
-.protein-diagnosis { padding: 0.8rem 0.95rem 0.9rem; }
-.protein-diagnosis__body { margin-top: 0.6rem; }
 .protein-diagnosis__body h4 { font-size: clamp(1.15rem, 1.8vw, 1.45rem); }
-.protein-panel__stats { gap: 0.6rem; margin-top: 0.6rem; }
-.protein-panel__stat { padding-top: 0.55rem; }
 .protein-panel__number { font-size: clamp(1.9rem, 3vw, 2.5rem); }
-.protein-panel__pair .protein-panel__number,
-.protein-panel__number--recommendation { font-size: clamp(1.5rem, 2.3vw, 1.9rem); }
-.protein-panel__pair + .protein-panel__pair { margin-top: 0.35rem; }
 @media (max-width: 767px) {
   /* phones: the headline number sits beside its sentence */
   .protein-panel__stat:first-child { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: 0.8rem; }
@@ -81,7 +74,6 @@
   font: 400 clamp(2.3rem, 3.6vw, 3.2rem) / 0.9 var(--fl-font-serif);
   letter-spacing: -0.06em;
 }
-.protein-panel__number--recommendation { color: var(--fl-ink); font-size: clamp(1.8rem, 2.8vw, 2.5rem); white-space: nowrap; }
 
 .protein-panel__label {
   display: block;

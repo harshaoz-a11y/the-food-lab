@@ -98,7 +98,6 @@
   align-items: center;
   column-gap: 0.4rem;
   padding: 0.55rem 0.6rem;
-  border: 1px solid rgba(23, 59, 48, 0.12);
   border-radius: 10px;
   background: #fff;
   animation: pl-in 0.4s calc(var(--i) * 80ms + 0.1s) cubic-bezier(0.3, 0.7, 0.2, 1) backwards;
@@ -178,4 +177,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .plan-ledger__meal { animation: none; }
+}
+
+/* meal tiles lift off the card with a shadow instead of an outline */
+.plan-ledger__meal {
+  border: 0;
+  box-shadow: 0 1px 2px rgba(23, 59, 48, 0.1), 0 6px 14px -8px rgba(23, 59, 48, 0.4);
 }

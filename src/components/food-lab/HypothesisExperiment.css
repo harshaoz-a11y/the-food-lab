@@ -84,8 +84,6 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.5rem 0.8rem;
-  border-radius: 0.6rem;
   font-size: 0.9rem;
   font-weight: 600;
   animation: mc-pop 0.4s calc(var(--i) * 140ms + 0.2s) cubic-bezier(0.3, 0.7, 0.2, 1) backwards;
@@ -103,7 +101,6 @@
   padding-left: 0;
   padding-right: 0.2rem;
   border: 0;
-  background: none;
   color: var(--mc-ink);
 }
 .macro-eq__stage .macro-eq__tick {
@@ -175,7 +172,6 @@
   gap: 1rem;
   padding: 1.1rem 1.25rem 1.2rem;
   border-radius: 1rem;
-  border: 2px solid var(--mc-joy);
   background: var(--mc-joy-bg);
   animation: mc-pop 0.35s cubic-bezier(0.3, 0.7, 0.2, 1);
 }
@@ -288,16 +284,6 @@
   color: rgba(23, 59, 48, 0.5);
 }
 
-.macro-week__count {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--mc-joy);
-}
-
-.is-nojoy .macro-week__count {
-  color: var(--mc-no);
-}
-
 /* the other outcome: quiet, always there */
 .macro-counter {
   margin: -0.35rem 0 0;
@@ -404,7 +390,7 @@
   .macro-eq { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin-top: 0; }
   .macro-eq__stages,
   .macro-eq__joyrow { display: contents; }
-  .macro-eq__stage { padding: 0.3rem 0.5rem; font-size: 0.8rem; }
+  .macro-eq__stage { font-size: 0.8rem; }
   .macro-eq__joy { padding: 0.3rem 0.65rem; font-size: 0.8rem; }
   .macro-eq__joy-heart { width: 14px; height: 14px; }
   .macro-eq__plus { font-size: 1.2rem; }
@@ -416,4 +402,27 @@
   .macro-week { margin-top: 0.4rem; }
   .macro-counter { font-size: 0.8rem; }
   .macro-generic { padding: 0; font-size: 0.9rem; }
+}
+
+/* surfaces lift with a soft shadow instead of an outline */
+.macro-eq__stage {
+  padding: 0.4rem 0.75rem 0.4rem 0.6rem;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(23, 59, 48, 0.12), 0 6px 14px -8px rgba(23, 59, 48, 0.45);
+}
+.macro-eq__stage + .macro-eq__stage::before { display: none; }
+.macro-eq__joy,
+.is-nojoy .macro-eq__joy {
+  border: 0;
+  box-shadow: 0 1px 2px rgba(47, 125, 82, 0.25), 0 8px 18px -8px rgba(47, 125, 82, 0.6);
+}
+.is-nojoy .macro-eq__joy { box-shadow: 0 1px 2px rgba(23, 59, 48, 0.12), 0 6px 14px -8px rgba(23, 59, 48, 0.35); }
+.macro-result {
+  border: 0;
+  box-shadow: 0 2px 4px rgba(47, 125, 82, 0.15), 0 14px 28px -12px rgba(47, 125, 82, 0.55);
+}
+.is-nojoy .macro-result { box-shadow: 0 2px 4px rgba(181, 71, 58, 0.15), 0 14px 28px -12px rgba(181, 71, 58, 0.55); }
+@media (max-width: 767px) {
+  .macro-eq__stage { padding: 0.3rem 0.6rem 0.3rem 0.45rem; }
 }

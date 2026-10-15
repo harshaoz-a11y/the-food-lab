@@ -663,12 +663,10 @@
   .p11-list-section {
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: 0.4rem;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scrollbar-width: none;
     -webkit-mask-image: linear-gradient(to right, #000 85%, transparent);
-    mask-image: linear-gradient(to right, #000 85%, transparent);
   }
 
   .p11-list-section::-webkit-scrollbar {
@@ -690,9 +688,7 @@
   .p11-item-btn {
     flex: none;
     width: auto;
-    min-height: 44px;
     align-items: center;
-    padding: 0.4rem 0.8rem;
     white-space: nowrap;
   }
 

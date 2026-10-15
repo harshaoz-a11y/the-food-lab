@@ -24,35 +24,18 @@ const regions = [
 
 type Region = (typeof regions)[number][0];
 
-function Group({ title, tone, items, open, onToggle }: {
-    title: string;
-    tone: "green" | "brick";
-    items: Signal[];
-    open: string | null;
-    onToggle: (key: string) => void;
-}) {
+function Group({ title, tone, items }: { title: string; tone: "green" | "brick"; items: Signal[] }) {
     return (
         <div className={`gf-group gf-group--${tone}`}>
             <h5 className="gf-group__title">{title}</h5>
             <ul className="gf-list">
-                {items.map(({ value, short, full }, index) => {
-                    const isOpen = open === short;
-                    return (
-                        <li key={short}>
-                            <button
-                                type="button"
-                                className="gf-row"
-                                aria-expanded={isOpen}
-                                onClick={() => onToggle(short)}
-                                style={{ "--v": `${value}%`, "--i": index } as React.CSSProperties}>
-                                <strong>{value}%</strong>
-                                <span>{short}</span>
-                                <i aria-hidden="true" />
-                            </button>
-                            {isOpen && <p className="gf-row__full">{value}% {full}.</p>}
-                        </li>
-                    );
-                })}
+                {items.map(({ value, short }, index) => (
+                    <li key={short} className="gf-row" style={{ "--v": `${value}%`, "--i": index } as React.CSSProperties}>
+                        <strong>{value}%</strong>
+                        <span>{short}</span>
+                        <i aria-hidden="true" />
+                    </li>
+                ))}
             </ul>
         </div>
     );
@@ -61,8 +44,6 @@ function Group({ title, tone, items, open, onToggle }: {
 export function GlutenExperiment() {
     // Phones show one scene at a time; wider screens show both side by side.
     const [region, setRegion] = useState<Region>("us");
-    const [open, setOpen] = useState<string | null>(null);
-    const toggle = (key: string) => setOpen((current) => (current === key ? null : key));
 
     return (
         <div className="gluten-experiment">
@@ -88,10 +69,9 @@ export function GlutenExperiment() {
                     <p className="gf-takeaway">Half couldn’t say what gluten is. Half say the crowd drives the trend.</p>
                 </div>
                 <div className="gf-groups">
-                    <Group title="What they know" tone="green" items={knowledge} open={open} onToggle={toggle} />
-                    <Group title="What they believe" tone="brick" items={belief} open={open} onToggle={toggle} />
+                    <Group title="What they know" tone="green" items={knowledge} />
+                    <Group title="What they believe" tone="brick" items={belief} />
                 </div>
-                <p className="gf-hint">Tap a line for the full question.</p>
                 <SourceNote className="gf-source">
                     <a href="https://www.researchsquare.com/article/rs-9052215/v1" target="_blank" rel="noreferrer">Moitra &amp; Qureshi, Research Square preprint, 2026</a>.
                     Share of respondents. An observation, not personal dietary advice.
