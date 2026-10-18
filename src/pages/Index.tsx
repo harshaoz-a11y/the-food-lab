@@ -1,6 +1,6 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import type { ComponentType } from "react";
-import { ArrowRight, Check, FlaskConical, Menu, X } from "lucide-react";
+import { ArrowRight, Check, FlaskConical } from "lucide-react";
 import { useSectionReveal } from "@/hooks/use-section-reveal";
 import { useSnapCarousel } from "@/hooks/use-snap-carousel";
 import { useDeferredPanels } from "@/hooks/use-deferred-panels";
@@ -9,7 +9,7 @@ import { PlanLedger } from "@/components/food-lab/PlanLedger";
 import { GapBoard } from "@/components/food-lab/GapBoard";
 import { HypothesisExperiment } from "@/components/food-lab/HypothesisExperiment";
 import { PanelPlaceholder } from "@/components/food-lab/PanelPlaceholder";
-import { BrandLogo } from "@/components/food-lab/BrandLogo";
+import { BOOK_FIT_CALL, Header, MobileActionBar, ORDER_PROTEIN11, SiteFooter } from "@/components/site/SiteChrome";
 import { maestroAssets } from "@/lib/maestro-assets";
 
 // The four experiments carry most of the site's drawing data, so each loads on its own.
@@ -22,27 +22,6 @@ const RiceExperiment = lazy(() => loadRice().then(m => ({ default: m.RiceExperim
 const GlutenExperiment = lazy(() => loadGluten().then(m => ({ default: m.GlutenExperiment })));
 const ProteinExperiment = lazy(() => loadProtein().then(m => ({ default: m.ProteinExperiment })));
 const preloadExperiments = () => Promise.all([loadEgg(), loadRice(), loadGluten(), loadProtein()]);
-
-const navigation = [{
-    label: "Our approach",
-    href: "#happiness-macro"
-}, {
-    label: "Why most diets fail",
-    href: "#real-life"
-}, {
-    label: "The science",
-    href: "#demonstration"
-}, {
-    label: "Nutrition consults",
-    href: "#how-we-help"
-}, {
-    label: "Protein 11",
-    href: "#fit-peasant"
-}];
-
-// Every call to action goes to one of these two places.
-const ORDER_PROTEIN11 = "mailto:harsha@thefoodlab.in?subject=Order%20Protein%2011&body=Hi%20Food%20Lab%2C%20I%27d%20like%20to%20order%20Protein%2011.%0A%0ANumber%20of%20bars%20(minimum%203)%3A%20%0AArea%20in%20Bengaluru%3A%20";
-const BOOK_CONSULT = "mailto:harsha@thefoodlab.in?subject=Book%20my%20free%2030-min%20consult&body=Hi%20Food%20Lab%2C%20I%27d%20like%20to%20book%20my%20free%2030-minute%20consult.%0A%0AWhat%20I%27d%20like%20help%20with%3A%20";
 
 // What sets the bar apart, in three ticks (hero card and the phone note)
 const PROTEIN11_POINTS = ["3 fibres", "Zero artificial sweeteners"];
@@ -76,117 +55,18 @@ const PROTEIN11_MACROS = [{
     value: "~6.2 g"
 }];
 
-function Brand() {
-    return (
-        <a
-            href="#top"
-            className="flex items-center shrink-0"
-            aria-label="The Food Lab home">
-            <BrandLogo className="h-11 sm:h-12 w-auto object-contain" />
-        </a>
-    );
-}
-
-function Header() {
-    const [open, setOpen] = useState(false);
-
-    return (
-        <header
-            className="fixed inset-x-0 top-0 z-50 border-b border-ink/15 bg-[#faedde]/95 backdrop-blur-sm">
-            <div
-                className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-12">
-                <Brand />
-                <nav className="site-nav hidden flex-1 justify-evenly xl:flex" aria-label="Primary navigation">
-                    {navigation.map(item => (<a key={item.href} href={item.href} className="site-nav__link">
-                        {item.label}
-                    </a>))}
-                </nav>
-                <div className="flex items-center gap-2.5">
-                    <a
-                        href={BOOK_CONSULT}
-                        className="header-cta header-cta--ghost hidden xl:inline-flex">Free 30-min consult</a>
-                    <a
-                        href={ORDER_PROTEIN11}
-                        className="header-cta header-cta--gold hidden sm:inline-flex">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
-                    <button
-                        type="button"
-                        onClick={() => setOpen(value => !value)}
-                        className="grid h-11 w-11 place-items-center rounded-full border border-ink/25 text-ink xl:hidden"
-                        aria-label={open ? "Close menu" : "Open menu"}
-                        aria-expanded={open}>
-                        {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-                    </button>
-                </div>
-            </div>
-            {open && (<nav
-                className="absolute left-0 right-0 top-full border-t border-ink/15 bg-[#faedde] px-5 py-4 shadow-[0_8px_18px_rgba(23,59,48,.08)] xl:hidden"
-                aria-label="Mobile navigation">
-                {navigation.map(item => (<a
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="flex items-center justify-between border-b border-ink/10 py-3 text-base text-ink">
-                    {item.label}<ArrowRight className="h-4 w-4 text-primary" />
-                </a>))}
-                <div className="mt-4 grid gap-2.5">
-                    <a
-                        href={ORDER_PROTEIN11}
-                        onClick={() => setOpen(false)}
-                        className="header-cta header-cta--gold justify-center">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
-                    <a
-                        href={BOOK_CONSULT}
-                        onClick={() => setOpen(false)}
-                        className="header-cta header-cta--ghost justify-center">Book a free 30-min consult</a>
-                </div>
-            </nav>)}
-        </header>
-    );
-}
-
-// Phones only: the two calls to action stay one thumb away from the first screen,
-// and step aside when the closing section shows the same two.
-function MobileActionBar() {
-    const [visible, setVisible] = useState(false);
-
-    useEffect(() => {
-        const closing = document.getElementById("your-experiment");
-        if (!closing) {
-            setVisible(true);
-            return;
-        }
-        const observer = new IntersectionObserver(([entry]) => setVisible(!entry.isIntersecting));
-        observer.observe(closing);
-        return () => observer.disconnect();
-    }, []);
-
-    return (
-        <div
-            className={`mobile-action-bar ${visible ? "is-visible" : ""}`}
-            aria-hidden={!visible}>
-            <a
-                href={BOOK_CONSULT}
-                tabIndex={visible ? 0 : -1}
-                className="mobile-action-bar__ghost">Free consult</a>
-            <a
-                href={ORDER_PROTEIN11}
-                tabIndex={visible ? 0 : -1}
-                className="mobile-action-bar__gold">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
-        </div>
-    );
-}
-
 function ConsultationForm() {
     return (
         <div className="consult-cards grid gap-5">
             <a
-                href={BOOK_CONSULT}
+                href={BOOK_FIT_CALL}
                 className="consult-card group rounded-[1.5rem] border border-[#f8f2e5] bg-[#f8f2e5] p-6 transition hover:-translate-y-1">
                 <span
-                    className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#a33a2b]">Nutrition consult · 1:1</span>
+                    className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#a33a2b]">Precision Bio-Nutrition · 1:1</span>
                 <strong
                     className="mt-3 block max-w-lg font-serif text-3xl font-normal leading-tight text-ink sm:text-4xl">Looking for precise solutions to your nutritional goals?</strong>
-                <span className="mt-2 block text-sm text-ink/65">Free 30-min intro · then ₹1,499 per consult</span>
-                <span className="card-cta">Book your free 30-min consult <ArrowRight className="h-4 w-4" /></span>
+                <span className="mt-2 block text-sm text-ink/65">Free 20-min Fit Call · Starter ₹7,999</span>
+                <span className="card-cta">Book your free Fit Call <ArrowRight className="h-4 w-4" /></span>
             </a>
             <div
                 className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[#f8f2e5]/60">
@@ -385,15 +265,26 @@ const Index = () => {
                                 <h2 id="help-heading" className="section-head__title">Customized plans that <em>won’t ask you to “diet”</em></h2>
                             </div>
                             <div className="service-offer">
-                                <p className="service-offer__line">Work 1:1 with thefoodlab.in on a plan built around your biology, your taste and your actual needs.</p>
-                                <p className="service-offer__free">Your first 30 minutes are free.</p>
-                                <p className="service-offer__price">Full consults after that: ₹1,499 each.</p>
-                                <a href={BOOK_CONSULT} className="cta-btn cta-btn--gold service-offer__cta">Book your free consult <ArrowRight className="h-4 w-4" /></a>
+                                <p className="service-offer__line">Work 1:1 with The Food Lab on a food system built around your biology, your taste and your actual day.</p>
+                                <p className="service-offer__free">Start with a free 20-minute Fit Call.</p>
+                                <div className="service-offer__plans">
+                                    <p>
+                                        <strong>Precision Bio-Nutrition Starter <b>₹7,999</b></strong>
+                                        <span>Baseline Mapping + Interaction Blueprint + Adaptation Review 1</span>
+                                    </p>
+                                    <p>
+                                        <strong>Adaptation Continuation <b>₹3,999</b></strong>
+                                        <span>Adaptation Reviews 2–4 over the next 6–8 weeks, for clients who have completed the Starter</span>
+                                    </p>
+                                </div>
+                                <a href="/consults" className="service-offer__more">How it works, stage by stage <ArrowRight className="h-4 w-4" /></a>
+                                <a href={BOOK_FIT_CALL} className="cta-btn cta-btn--gold service-offer__cta">Book your free Fit Call <ArrowRight className="h-4 w-4" /></a>
                             </div>
                         </div>
                         <GapBoard />
-                        <div className="mt-10">
-                            <a href={BOOK_CONSULT} className="cta-btn cta-btn--gold">Book your free 30-min consult <ArrowRight className="h-4 w-4" /></a>
+                        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+                            <a href={BOOK_FIT_CALL} className="cta-btn cta-btn--gold">Book your free 20-min Fit Call <ArrowRight className="h-4 w-4" /></a>
+                            <a href="/consults" className="text-link text-[#f3c98b]">See the full journey and pricing <ArrowRight className="h-4 w-4" /></a>
                         </div>
                     </div>
                 </section>
@@ -464,22 +355,14 @@ const Index = () => {
                             </div>
                             <ConsultationForm />
                             <div className="closing-ctas">
-                                <a href={BOOK_CONSULT} className="cta-btn cta-btn--gold">Book your free 30-min consult <ArrowRight className="h-4 w-4" /></a>
+                                <a href={BOOK_FIT_CALL} className="cta-btn cta-btn--gold">Book your free Fit Call <ArrowRight className="h-4 w-4" /></a>
                                 <a href={ORDER_PROTEIN11} className="cta-btn closing-ctas__secondary">Order Protein 11 <ArrowRight className="h-4 w-4" /></a>
                             </div>
                         </div>
                     </div>
                 </section>
             </main>
-            <footer className="paper-sheet site-footer">
-                <div
-                    className="mx-auto flex h-[74px] max-w-[1400px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-12">
-                    <Brand />
-                    <p className="site-footer__tagline hidden font-serif text-lg italic md:block">We observe. We question. Then we build.</p>
-                    <div
-                        className="site-footer__contact text-right font-mono text-[11px] uppercase leading-relaxed tracking-[0.12em]">Bengaluru<br />harsha@thefoodlab.in</div>
-                </div>
-            </footer>
+            <SiteFooter />
             <MobileActionBar />
         </div>
     );

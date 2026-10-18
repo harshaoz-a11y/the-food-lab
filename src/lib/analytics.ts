@@ -10,7 +10,7 @@ declare global {
 /**
  * Every Order / Consult button is a mailto: link, which GA4 does not count as an
  * outbound click. One listener reports them as `order_protein11_click` or
- * `book_consult_click`, with the section they were clicked in.
+ * `book_consult_click` (the free Fit Call), with the section they were clicked in.
  */
 export function trackCallsToAction() {
     document.addEventListener("click", (event) => {
@@ -20,7 +20,7 @@ export function trackCallsToAction() {
         const href = link.getAttribute("href") ?? "";
         const name = href.includes("Order%20Protein%2011")
             ? "order_protein11_click"
-            : href.includes("consult")
+            : href.includes("Fit%20Call") || href.includes("consult")
               ? "book_consult_click"
               : "email_click";
         const where =

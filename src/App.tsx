@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import type { PropsWithChildren } from "react";
 import Index from "./pages/Index";
+import Consults from "./pages/Consults";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ export const AppProviders = ({ children }: PropsWithChildren) => (
 export const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<Index />} />
+    <Route path="/consults" element={<Consults />} />
     {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
     <Route path="*" element={<NotFound />} />
   </Routes>

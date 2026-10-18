@@ -1,0 +1,351 @@
+/* Precision Bio-Nutrition consults page: the site's notebook and green-stock styles, plus the journey */
+.cx-title {
+  max-width: 22ch;
+  margin-top: 0.9rem;
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: clamp(2.2rem, 4.6vw, 4rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+.cx-title em { color: var(--brick); }
+.cx-lede {
+  max-width: 44rem;
+  margin-top: 1.1rem;
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.45;
+  color: rgba(23, 59, 48, 0.78);
+}
+.cx-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; margin-top: 1.5rem; }
+.cx-h2 {
+  margin-top: 0.7rem;
+  font-family: var(--fl-font-serif, "Fraunces", Georgia, serif);
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+/* the journey: five stops in a row (a column on phones) */
+.cx-journey {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin: 2.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.cx-journey li { position: relative; }
+.cx-journey li + li::before {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  left: -0.55rem;
+  transform: translate(-50%, -50%);
+  color: rgba(23, 59, 48, 0.4);
+}
+.cx-journey a {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.85rem 0.9rem;
+  border-radius: 14px;
+  background: #fffdf8;
+  color: var(--ink);
+  box-shadow: 0 1px 2px rgba(23, 59, 48, 0.1), 0 8px 18px -12px rgba(23, 59, 48, 0.5);
+  transition: transform 0.18s ease;
+}
+.cx-journey a:hover { transform: translateY(-2px); }
+.cx-journey i {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #f8f2e5;
+  font: 700 12px var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  font-style: normal;
+}
+.cx-journey strong { font-family: var(--fl-font-serif, "Fraunces", Georgia, serif); font-size: 1.02rem; font-weight: 500; line-height: 1.15; }
+.cx-journey span { font: 700 11px var(--fl-font-mono, "Space Mono", ui-monospace, monospace); color: var(--brick); }
+.cx-journey .is-optional a { background: transparent; box-shadow: none; outline: 1.5px dashed rgba(23, 59, 48, 0.3); outline-offset: -1.5px; }
+
+/* the Starter offer */
+.cx-starter { display: grid; gap: 1.75rem; }
+@media (min-width: 900px) { .cx-starter { grid-template-columns: 1fr 1fr; align-items: center; gap: 3rem; } }
+.cx-starter__title { margin-top: 0.7rem; font-family: var(--fl-font-serif, "Fraunces", Georgia, serif); font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 400; line-height: 1.02; }
+.cx-starter__price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 0.8rem; margin-top: 0.9rem; font-family: var(--fl-font-serif, "Fraunces", Georgia, serif); font-size: 2.4rem; color: #f3c98b; }
+.cx-starter__price s { font-size: 0.95rem; color: rgba(248, 242, 229, 0.55); }
+.cx-starter__sub { margin-top: 0.4rem; color: rgba(248, 242, 229, 0.8); }
+.cx-starter__list { display: grid; gap: 0.6rem; margin: 0; padding: 1.25rem 1.4rem; list-style: none; border-radius: 16px; background: #f8f2e5; color: var(--ink); box-shadow: 0 18px 36px -18px rgba(0, 0, 0, 0.6); }
+.cx-starter__list li { display: grid; grid-template-columns: 20px 1fr; gap: 0.6rem; align-items: start; line-height: 1.35; }
+.cx-starter__list svg { width: 18px; height: 18px; margin-top: 2px; color: #2f7d52; stroke-width: 3; }
+.cx-after { display: grid; gap: 0.35rem; margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px dashed rgba(248, 242, 229, 0.25); }
+.cx-after strong { font-family: var(--fl-font-serif, "Fraunces", Georgia, serif); font-size: 1.2rem; font-weight: 400; color: #f3c98b; }
+.cx-after span { color: rgba(248, 242, 229, 0.78); }
+
+/* stage cards */
+.cx-stages { display: grid; gap: 1.25rem; margin-top: 1.75rem; }
+.cx-stage {
+  scroll-margin-top: 96px;
+  padding: 0;
+  border-radius: 18px;
+  background: #fffdf8;
+  box-shadow: 0 1px 2px rgba(23, 59, 48, 0.08), 0 14px 30px -18px rgba(23, 59, 48, 0.45);
+}
+.cx-stage__goal { margin-top: 0.9rem; font-family: var(--fl-font-serif, "Fraunces", Georgia, serif); font-size: 1.08rem; font-style: italic; line-height: 1.4; color: rgba(23, 59, 48, 0.85); }
+.cx-stage__cols { display: grid; gap: 1.25rem; margin-top: 1.1rem; }
+@media (min-width: 800px) { .cx-stage__cols { grid-template-columns: 1fr 1fr; gap: 2.5rem; } }
+.cx-stage h4 { margin: 0 0 0.5rem; font: 700 10px var(--fl-font-mono, "Space Mono", ui-monospace, monospace); letter-spacing: 0.14em; text-transform: uppercase; color: var(--brick); }
+.cx-stage h4 + ul + h4, .cx-stage ul + h4 { margin-top: 1.1rem; }
+.cx-stage ul { display: grid; gap: 0.4rem; margin: 0; padding: 0; list-style: none; font-size: 0.95rem; line-height: 1.4; }
+.cx-stage ul:not(.is-get):not(.is-not) li { position: relative; padding-left: 1rem; }
+.cx-stage ul:not(.is-get):not(.is-not) li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 5px; height: 5px; border-radius: 50%; background: rgba(23, 59, 48, 0.45); }
+.cx-stage .is-get li, .cx-stage .is-not li { display: grid; grid-template-columns: 18px 1fr; gap: 0.45rem; }
+.cx-stage .is-get svg { width: 16px; height: 16px; margin-top: 3px; color: #2f7d52; stroke-width: 3; }
+.cx-stage .is-not li { color: rgba(23, 59, 48, 0.65); }
+.cx-stage .is-not svg { width: 16px; height: 16px; margin-top: 3px; color: var(--brick); stroke-width: 3; }
+.cx-stage__note { margin-top: 1rem; padding-top: 0.75rem; border-top: 1px dashed rgba(23, 59, 48, 0.2); font: 700 11px var(--fl-font-mono, "Space Mono", ui-monospace, monospace); letter-spacing: 0.06em; text-transform: uppercase; color: rgba(23, 59, 48, 0.65); }
+
+/* price table */
+.cx-prices { width: 100%; margin-top: 1.5rem; border-collapse: collapse; }
+.cx-prices th, .cx-prices td { padding: 0.85rem 0.75rem; border-bottom: 1px solid rgba(248, 242, 229, 0.14); text-align: left; vertical-align: top; }
+.cx-prices thead th { font: 700 10px var(--fl-font-mono, "Space Mono", ui-monospace, monospace); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(248, 242, 229, 0.6); }
+.cx-prices tbody th { font-family: var(--fl-font-serif, "Fraunces", Georgia, serif); font-size: 1.05rem; font-weight: 400; }
+.cx-prices td { color: rgba(248, 242, 229, 0.8); }
+.cx-prices td:last-child { font-family: var(--fl-font-serif, "Fraunces", Georgia, serif); font-size: 1.1rem; color: #f8f2e5; white-space: nowrap; text-align: right; }
+.cx-prices .is-featured { background: rgba(243, 201, 139, 0.12); }
+.cx-prices .is-featured th, .cx-prices .is-featured td:last-child { color: #f3c98b; }
+
+/* FAQ */
+.cx-faq { display: grid; gap: 0.5rem; margin-top: 2rem; }
+.cx-faq details { padding: 0.9rem 1.1rem; border-radius: 12px; background: rgba(248, 242, 229, 0.06); }
+.cx-faq summary { cursor: pointer; font-family: var(--fl-font-serif, "Fraunces", Georgia, serif); font-size: 1.08rem; }
+.cx-faq p { margin-top: 0.5rem; color: rgba(248, 242, 229, 0.78); line-height: 1.5; }
+
+/* phones */
+@media (max-width: 767px) {
+  .cx-journey { grid-template-columns: 1fr; gap: 0.5rem; }
+  .cx-journey li + li::before { content: "↓"; top: -0.25rem; left: 1.35rem; transform: translate(-50%, -50%); font-size: 0.8rem; }
+  .cx-journey a { flex-direction: row; align-items: center; gap: 0.7rem; padding: 0.7rem 0.85rem; }
+  .cx-journey span { margin-left: auto; }
+  .cx-prices thead { display: none; }
+  .cx-prices tr { display: grid; grid-template-columns: 1fr auto; padding: 0.7rem 0; border-bottom: 1px solid rgba(248, 242, 229, 0.14); }
+  .cx-prices th, .cx-prices td { padding: 0 0.4rem; border: 0; }
+  .cx-prices td:first-of-type { grid-column: 1 / -1; grid-row: 2; margin-top: 0.2rem; font-size: 0.85rem; }
+  .cx-prices tbody th { grid-row: 1; }
+  .cx-prices td:last-child { grid-row: 1; grid-column: 2; }
+}
+
+/* ── layered reading: outcome lines, summaries and takeaways, folded detail ── */
+.cx-journey em { font: italic 400 0.85rem/1.25 var(--fl-font-serif, "Fraunces", Georgia, serif); color: rgba(23, 59, 48, 0.7); }
+.cx-journey a { cursor: pointer; }
+
+.cx-stage__keep { display: grid; gap: 0.25rem; font-family: var(--fl-font-serif, "Fraunces", Georgia, serif); font-size: 1.25rem; line-height: 1.25; }
+.cx-stage__keep span { font: 700 10px var(--fl-font-mono, "Space Mono", ui-monospace, monospace); letter-spacing: 0.14em; text-transform: uppercase; color: var(--brick); }
+
+
+/* folded price list */
+.cx-pricelist { margin-top: 1.5rem; }
+.cx-pricelist summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(248, 242, 229, 0.1);
+  list-style: none;
+  cursor: pointer;
+  font: 700 11px var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.cx-pricelist summary::-webkit-details-marker { display: none; }
+.cx-pricelist summary svg { width: 16px; height: 16px; transition: transform 0.2s ease; }
+.cx-pricelist[open] summary svg { transform: rotate(180deg); }
+
+@media (max-width: 767px) {
+  .cx-journey a { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "n name price" "n outcome price"; column-gap: 0.7rem; row-gap: 0; }
+  .cx-journey i { grid-area: n; }
+  .cx-journey strong { grid-area: name; }
+  .cx-journey em { grid-area: outcome; font-size: 0.8rem; }
+  .cx-journey span { grid-area: price; margin: 0; align-self: center; }
+  .cx-stage__keep { font-size: 1.1rem; }
+}
+@media (max-width: 767px) {
+  .cx-stage__goal { margin-top: 0.6rem; font-size: 0.98rem; }
+  .cx-stages { gap: 0.8rem; }
+  .cx-journey { margin-top: 1.5rem; }
+}
+
+/* each stage carries its own colour: number, price, journey stop */
+.cx-stage__num, .cx-journey i { background: var(--accent, var(--ink)); }
+.cx-stage__price, .cx-journey span { color: var(--accent, var(--brick)); }
+.cx-stage { border-top: 4px solid var(--accent, transparent); }
+
+/* ── stage accordion: a header you tap, one card open at a time ── */
+.cx-stages__hint { margin-top: 0.4rem; font: 400 1.2rem var(--fl-font-hand, "Caveat", cursive); color: rgba(23, 59, 48, 0.6); }
+.cx-stage { transition: box-shadow 0.2s ease, transform 0.2s ease; }
+.cx-stage:not(.is-open):hover { transform: translateY(-2px); box-shadow: 0 1px 2px rgba(23, 59, 48, 0.08), 0 18px 34px -18px rgba(23, 59, 48, 0.55); }
+.cx-stage__heading { margin: 0; }
+.cx-stage__head {
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  grid-template-areas: "num titles price chev";
+  align-items: center;
+  gap: 0.4rem 1rem;
+  padding: clamp(1rem, 2vw, 1.35rem) clamp(1.1rem, 2.5vw, 1.75rem);
+  border: 0;
+  border-radius: 18px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.cx-stage__head:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
+.cx-stage__num {
+  grid-area: num;
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  font: 700 14px var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+}
+.cx-stage__titles { grid-area: titles; display: grid; gap: 0.15rem; min-width: 0; }
+.cx-stage__name { font-family: var(--fl-font-serif, "Fraunces", Georgia, serif); font-size: clamp(1.35rem, 2.4vw, 1.75rem); font-weight: 400; line-height: 1.1; }
+.cx-stage__outcome { font: italic 400 0.98rem/1.3 var(--fl-font-serif, "Fraunces", Georgia, serif); color: rgba(23, 59, 48, 0.62); }
+.cx-stage__price { grid-area: price; font-family: var(--fl-font-serif, "Fraunces", Georgia, serif); font-size: 1.3rem; font-weight: 500; white-space: nowrap; }
+.cx-stage__chev {
+  grid-area: chev;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 12%, #fff);
+  color: var(--accent);
+  transition: transform 0.25s ease, background-color 0.2s ease;
+}
+.cx-stage__chev svg { width: 20px; height: 20px; stroke-width: 2.4; }
+.cx-stage.is-open .cx-stage__chev { transform: rotate(180deg); background: var(--accent); color: #fff; }
+
+.cx-stage__body { padding: 0 clamp(1.1rem, 2.5vw, 1.75rem) clamp(1.1rem, 2.5vw, 1.75rem); }
+.cx-stage__body:not([hidden]) { animation: cx-open 0.35s ease-out; }
+.cx-stage__body[hidden], .cx-stage__detail[hidden] { display: none; }
+.cx-stage__when { display: flex; flex-wrap: wrap; gap: 0.2rem 1rem; padding-left: 0; font: 700 11px var(--fl-font-mono, "Space Mono", ui-monospace, monospace); letter-spacing: 0.04em; color: rgba(23, 59, 48, 0.6); }
+.cx-stage__body .cx-stage__goal { margin-top: 0.8rem; }
+@keyframes cx-open { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+/* actions under the visual: the detail button (filled in the stage colour, pulsing until first used) and the next stage */
+.cx-stage__actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem 1.25rem; margin-top: 1.3rem; }
+.cx-stage__toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 46px;
+  padding: 0 1.25rem 0 1rem;
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font: 700 11.5px var(--fl-font-mono, "Space Mono", ui-monospace, monospace);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 8px 18px -8px color-mix(in srgb, var(--accent) 75%, transparent);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+.cx-stage__toggle:hover { transform: translateY(-1px); }
+.cx-stage__toggle svg { width: 17px; height: 17px; stroke-width: 2.6; transition: transform 0.25s ease; }
+.cx-stage__toggle[aria-expanded="true"] { background: #fff; color: var(--accent); box-shadow: none; }
+.cx-stage__toggle[aria-expanded="true"] svg { transform: rotate(45deg); }
+.cx-stage__toggle.is-pulsing::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--accent);
+  border-radius: inherit;
+  pointer-events: none;
+  animation: cx-ring 1.9s ease-out infinite;
+}
+@keyframes cx-ring { 0% { opacity: 0.75; transform: scale(1); } 100% { opacity: 0; transform: scale(1.12, 1.5); } }
+.cx-stage__next {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: 500 1.02rem var(--fl-font-serif, "Fraunces", Georgia, serif);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.cx-stage__next svg { width: 16px; height: 16px; }
+
+/* the full lists sit in a tinted panel of the stage colour */
+.cx-stage__detail {
+  margin-top: 1.1rem;
+  padding: 1.1rem 1.3rem 1.2rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--accent) 6%, #fff);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent);
+  animation: cx-open 0.3s ease-out;
+}
+.cx-stage__detail .cx-stage__cols { margin-top: 0; }
+.cx-stage h4 { color: var(--accent, var(--brick)); }
+
+@media (max-width: 767px) {
+  .cx-stage__head {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas: "num titles chev" "num price chev";
+    align-items: center;
+    column-gap: 0.75rem;
+    row-gap: 0.2rem;
+    padding: 0.95rem 1rem;
+  }
+  .cx-stage__num { align-self: start; width: 30px; height: 30px; font-size: 12px; }
+  .cx-stage__name { font-size: 1.2rem; }
+  .cx-stage__outcome { font-size: 0.88rem; }
+  .cx-stage__price { font-size: 1rem; }
+  .cx-stage__chev { width: 34px; height: 34px; }
+  .cx-stage__body { padding: 0 1rem 1rem; }
+  .cx-stage__when { padding-left: 0; }
+  .cx-stage__actions { flex-direction: column; align-items: stretch; gap: 0.8rem; }
+  .cx-stage__toggle { justify-content: center; }
+  .cx-stage__next { justify-content: center; }
+  .cx-stage__detail { padding: 0.95rem 1rem 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cx-stage__toggle.is-pulsing::after, .cx-stage__body:not([hidden]), .cx-stage__detail { animation: none; }
+  .cx-stage:not(.is-open):hover { transform: none; }
+}
+
+/* FAQ on notebook cream */
+.cx-faq details { background: #f8f2e5; color: var(--ink); box-shadow: 0 8px 18px -12px rgba(0, 0, 0, 0.5); }
+.cx-faq p { color: rgba(23, 59, 48, 0.8); }
+
+@media (max-width: 767px) {
+  /* phones: the journey strip and action bar already say this */
+  .cx-intro-hide { display: none; }
+  /* collapsed stages: one compact row — number, name, price, chevron */
+  .cx-stage__head { grid-template-columns: auto minmax(0, 1fr) auto auto; grid-template-areas: "num titles price chev"; padding: 0.7rem 0.85rem; column-gap: 0.6rem; }
+  .cx-stage__num { align-self: center; width: 26px; height: 26px; font-size: 11px; }
+  .cx-stage__name { font-size: 1.02rem; line-height: 1.15; }
+  .cx-stage__outcome { display: none; }
+  .cx-stage__price { font-size: 0.95rem; }
+  .cx-stage__chev { width: 30px; height: 30px; }
+  .cx-stage__chev svg { width: 17px; height: 17px; }
+}
+@media (max-width: 767px) { .cx-stage__name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 0.98rem; } }
