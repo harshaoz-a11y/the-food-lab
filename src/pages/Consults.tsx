@@ -284,7 +284,7 @@ const Consults = () => {
                                 <span className="section-head__kicker">Most clients start here</span>
                                 <h2 className="cx-starter__title">Precision Bio-Nutrition Starter</h2>
                                 <p className="cx-starter__price">₹7,999 <s>₹10,497 booked separately</s></p>
-                                <p className="cx-starter__sub">Baseline Mapping + Interaction Blueprint + Adaptation Review 1</p>
+                                <p className="cx-starter__sub hidden md:block">Baseline Mapping + Interaction Blueprint + Adaptation Review 1</p>
                             </div>
                             <ol className="cx-starter__list">
                                 <li><Check aria-hidden="true" />Free 20-minute Fit Call</li>
@@ -297,7 +297,7 @@ const Consults = () => {
                         </div>
                         <div className="cx-after">
                             <strong>Then, if you want to keep going: Adaptation Continuation, ₹3,999</strong>
-                            <span>Reviews 2–4 over the next 6–8 weeks, for clients who have completed the Starter. Three reviews would be ₹4,497 one by one. The full four-review journey comes to ₹11,998.</span>
+                            <span>Reviews 2–4 over the next 6–8 weeks, for clients who have completed the Starter.<span className="hidden md:inline"> Three reviews would be ₹4,497 one by one. The full four-review journey comes to ₹11,998.</span></span>
                         </div>
                     </div>
                 </section>
