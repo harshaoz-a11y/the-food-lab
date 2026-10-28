@@ -120,7 +120,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 (() => {
   const NUM = "919164204796", KEY = "baseline-form-v2";
   // Set MAIL_RELAY to the Apps Script web-app address (see send-to-harsha.gs). Empty: the answers go by WhatsApp only.
-  const MAIL_RELAY = "", RELAY_KEY = "foodlab-baseline";
+  const MAIL_RELAY = "https://script.google.com/macros/s/AKfycbzurBaITe9gf6s--TV6tjiXQASfm85nRvv7ednkM2KeM7x_t25mKNcTOFCuu9h0cFY5/exec", RELAY_KEY = "foodlab-baseline";
   // Answers kept on the phone are dropped after 14 days, so a half-filled form doesn't linger.
   try { const t = +localStorage.getItem(KEY + ":at") || 0; if (t && Date.now() - t > 14 * 864e5) { localStorage.removeItem(KEY); localStorage.removeItem(KEY + ":at"); } } catch (e) {}
   const $ = (s) => document.querySelector(s);
