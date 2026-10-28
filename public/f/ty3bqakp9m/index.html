@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Before your Baseline Mapping · The Food Lab</title>
+<meta name="description" content="A short form before your Baseline Mapping call. About 8 minutes, mostly taps.">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Food Lab">
+<meta property="og:title" content="Before your Baseline Mapping · The Food Lab">
+<meta property="og:description" content="About 8 minutes, mostly taps. Your answers go to Harsha on WhatsApp.">
+<meta property="og:url" content="https://thefoodlab.in/f/ty3bqakp9m/">
+<meta property="og:image" content="https://thefoodlab.in/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>html{-webkit-text-size-adjust:100%}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Source+Sans+3:wght@400;500;600&family=Caveat:wght@500&display=swap">
+<style>
+/* Layout: The Food Lab's paper-and-forest look. One column of short cards, mostly taps; a sticky send bar. Joy gets its own card. */
+:root {
+  --bg: #f1ebdf; --paper: #fbf8f2; --ink: #1f3a2f; --soft: #5b6b61; --line: #e2dacb; --forest: #234236; --forest-ink: #f5efe3; --mint: #dcebe0; --leaf: #2f6b4f; --heart: #a23b2c;
+  --f-display: "Fraunces", Georgia, serif; --f-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif; --f-hand: "Caveat", "Segoe Print", cursive;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #121a16; --paper: #18221d; --ink: #e8efe9; --soft: #9fb0a5; --line: #2a3830; --forest: #0f1f18; --forest-ink: #e8efe9; --mint: #20352a; --leaf: #8cc5a8; --heart: #e0796a; color-scheme: dark; } }
+:root[data-theme="dark"] { --bg: #121a16; --paper: #18221d; --ink: #e8efe9; --soft: #9fb0a5; --line: #2a3830; --forest: #0f1f18; --forest-ink: #e8efe9; --mint: #20352a; --leaf: #8cc5a8; --heart: #e0796a; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.5; margin: 0; padding-bottom: 32px; }
+.band { background: var(--forest); color: var(--forest-ink); padding-block: 18px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.band .in { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 2px; }
+.band b { font-family: var(--f-display); font-weight: 600; font-size: 24px; }
+.band span { font-size: 13px; opacity: .85; letter-spacing: .02em; }
+.wrap { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; padding-block: 22px 0; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2 { font-family: var(--f-display); font-weight: 600; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(26px, 6vw, 34px); line-height: 1.15; }
+h2 { font-size: 21px; }
+p { margin: 0; }
+.lead { color: var(--soft); max-width: 60ch; }
+.eyebrow { font-size: 12.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--leaf); }
+section { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+section.joy { background: var(--mint); border-color: transparent; }
+.q { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.q > .lab { font-weight: 600; font-size: 15px; }
+.q > .lab small { display: block; font-weight: 400; color: var(--soft); font-size: 13.5px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: inherit; font-size: 14.5px; border: 1.5px solid color-mix(in srgb, var(--leaf) 40%, var(--line)); background: var(--paper); color: var(--ink); border-radius: 999px; padding: 8px 14px; min-height: 40px; cursor: pointer; display: inline-flex; gap: 7px; align-items: center; box-shadow: 0 1px 2px rgba(31, 58, 47, .12); -webkit-tap-highlight-color: transparent; }
+.chip::before { content: "+"; font-weight: 600; color: var(--leaf); width: 1ch; text-align: center; }
+.chip[aria-pressed="true"]::before { content: "\2713"; color: inherit; }
+.chip:hover { border-color: var(--leaf); }
+.chip:active { transform: scale(.97); }
+.chip, .step button, .btn { touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+.chip * , .chip::before { pointer-events: none; }
+.chip[aria-pressed="true"] { background: var(--forest); color: var(--forest-ink); border-color: var(--forest); }
+.joy .chip { background: var(--paper); }
+.tag { font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--heart); margin-left: 6px; }
+.prefill { background: var(--mint); border-radius: 12px; padding: 10px 14px; font-size: 14px; }
+.joy .chip[aria-pressed="true"] { background: var(--leaf); border-color: var(--leaf); color: var(--paper); }
+.row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)); gap: 12px; }
+label.f { display: flex; flex-direction: column; gap: 5px; font-size: 14.5px; font-weight: 600; min-width: 0; }
+input, select, textarea { font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 9px 11px; width: 100%; font-weight: 400; }
+textarea { min-height: 4rem; resize: vertical; }
+.meal { border-top: 1px dashed var(--line); padding-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+.meal:first-of-type { border-top: 0; padding-top: 0; }
+.meal .mh { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.meal .mh b { font-size: 15px; }
+.meal .what { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 8px; }
+@media (max-width: 420px) { .meal .what { grid-template-columns: minmax(0, 1fr); } }
+.meal.off .what, .meal.off .where { display: none; }
+.step { display: inline-flex; align-items: center; gap: 4px; }
+.step button { font: inherit; border: 1.5px solid color-mix(in srgb, var(--leaf) 40%, var(--line)); background: var(--paper); color: var(--leaf); width: 42px; height: 42px; border-radius: 50%; cursor: pointer; font-size: 20px; font-weight: 600; box-shadow: 0 1px 2px rgba(31, 58, 47, .12); }
+.step button:active { transform: scale(.94); }
+.step output { min-width: 3.2em; text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
+.note { font-size: 13.5px; color: var(--soft); }
+.paper-note { border: 1px solid var(--line); background: var(--paper); padding: 16px 18px; border-radius: 4px; text-align: center; display: flex; flex-direction: column; gap: 6px; }
+.paper-note .eyebrow { color: var(--soft); letter-spacing: .2em; }
+.paper-note p { font-family: var(--f-hand); font-size: 23px; color: var(--heart); line-height: 1.25; }
+.heart { color: var(--heart); }
+/* The send row sits at the end of the page, not over it, so nothing it covers can swallow a tap. */
+.send { margin-top: 18px; background: var(--paper); border-top: 1px solid var(--line); padding: 16px max(16px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.send .in { max-width: 680px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.send .btn { padding: 9px 16px; }
+.btn { font: inherit; font-weight: 600; border-radius: 999px; padding: 10px 18px; border: 1px solid var(--forest); background: transparent; color: var(--ink); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; }
+.btn.primary { background: var(--forest); color: var(--forest-ink); }
+.msg { font-size: 12.5px; color: var(--soft); flex: 1 1 100%; min-width: 0; line-height: 1.3; }
+
+.msg.warn { color: var(--heart); }
+.bar { height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; flex: 1 1 100%; }
+.bar i { display: block; height: 100%; background: var(--leaf); width: 0; }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, a:focus-visible { outline: 2px solid var(--leaf); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) { .bar i { transition: width .25s; } }
+</style>
+
+<div class="band"><div class="in"><b>The Food Lab</b><span>Invisible diets. Visible results.</span></div></div>
+
+<div class="wrap">
+  <header style="display:flex;flex-direction:column;gap:10px">
+    <span class="eyebrow">Before your Baseline Mapping call</span>
+    <h1>Most of us keep changing the list. We study what happens around it.</h1>
+    <p class="lead">About 8 minutes, mostly taps. Answer for your real days, not your best ones. Nothing here is a test, and nothing you love is on trial. Your answers stay on this phone until you press send, and go only to Harsha. Nothing is saved on this website.</p>
+  </header>
+  <div id="form" style="display:flex;flex-direction:column;gap:18px"></div>
+  <div class="paper-note"><span class="eyebrow">Working note / not a verdict</span><p>The ultimate secret ingredient to diet consistency isn't a macro. It's safeguarding the sheer joy of eating.</p></div>
+</div>
+
+<div class="send"><div class="in">
+  <div class="bar" aria-hidden="true"><i id="prog"></i></div>
+  <a class="btn primary" id="wa" href="#" target="_blank" rel="noopener noreferrer">Send to Harsha</a>
+  <button class="btn" type="button" id="copy">Copy</button>
+  <a class="btn" id="mail" href="#">No WhatsApp? Email instead</a>
+  <button class="btn" type="button" id="clear" hidden>Clear my answers from this phone</button>
+  <span class="msg" id="msg"></span>
+</div></div>
+
+<script>
+(() => {
+  const NUM = "919164204796", KEY = "baseline-form-v2";
+  // Set MAIL_RELAY to the Apps Script web-app address (see send-to-harsha.gs). Empty: the answers go by WhatsApp only.
+  const MAIL_RELAY = "", RELAY_KEY = "foodlab-baseline";
+  // Answers kept on the phone are dropped after 14 days, so a half-filled form doesn't linger.
+  try { const t = +localStorage.getItem(KEY + ":at") || 0; if (t && Date.now() - t > 14 * 864e5) { localStorage.removeItem(KEY); localStorage.removeItem(KEY + ":at"); } } catch (e) {}
+  const $ = (s) => document.querySelector(s);
+  const el = (t, a, ...k) => { const e = document.createElement(t); for (const [x, v] of Object.entries(a || {})) { if (v === null || v === undefined || v === false) continue; if (x.startsWith("on")) e.addEventListener(x.slice(2), v); else if (x === "class") e.className = v; else e.setAttribute(x, v === true ? "" : v); } k.flat().forEach((c) => c != null && c !== false && e.append(c.nodeType ? c : document.createTextNode(String(c)))); return e; };
+  let S = {}; try { S = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); localStorage.setItem(KEY + ":at", String(Date.now())); } catch (e) {} update(); };
+
+  // Question builders. Every answer is stored under its id; the message is built from the same spec, in order.
+  const chips = (id, opts, multi, other) => {
+    const box = el("div", { class: "chips" });
+    const val = () => (multi ? S[id] || [] : S[id] || "");
+    const draw = () => box.replaceChildren(...opts.map((o) => el("button", { type: "button", class: "chip", "aria-pressed": multi ? String(val().includes(o)) : String(val() === o), onclick: () => {
+      if (multi) { const a = val().slice(), i = a.indexOf(o); i >= 0 ? a.splice(i, 1) : a.push(o); if (o === "None" && i < 0) a.splice(0, a.length, "None"); else { const n = a.indexOf("None"); if (n >= 0 && o !== "None") a.splice(n, 1); } S[id] = a; }
+      else S[id] = val() === o ? "" : o;
+      draw(); save();
+    } }, o)));
+    draw();
+    if (!other) return box;
+    const inp = el("input", { type: "text", id: id + "-x", placeholder: other, value: S[id + "-x"] || "" }); inp.addEventListener("input", () => { S[id + "-x"] = inp.value; save(); });
+    return el("div", { style: "display:flex;flex-direction:column;gap:8px" }, box, inp);
+  };
+  const stepper = (id, min, max, unit, start) => {
+    const out = el("output", {}, ""); const show = () => { out.textContent = S[id] === undefined ? "–" : S[id] + (unit ? " " + unit : ""); };
+    const set = (d) => { const v = S[id] === undefined ? start : Math.min(max, Math.max(min, S[id] + d)); S[id] = v; show(); save(); };
+    show();
+    return el("span", { class: "step" }, el("button", { type: "button", "aria-label": "Less", onclick: () => set(-1) }, "−"), out, el("button", { type: "button", "aria-label": "More", onclick: () => set(1) }, "+"));
+  };
+  const text = (id, ph, area) => { const n = el(area ? "textarea" : "input", area ? { id, placeholder: ph } : { type: "text", id, placeholder: ph }); n.value = S[id] || ""; n.addEventListener("input", () => { S[id] = n.value; save(); }); return n; };
+  const num = (id, label, ph) => { const n = el("input", { type: "number", inputmode: "decimal", id, placeholder: ph || "" }); n.value = S[id] || ""; n.addEventListener("input", () => { S[id] = n.value; save(); }); return el("label", { class: "f", for: id }, label, n); };
+  const q = (label, sub, ...kids) => el("div", { class: "q" }, el("div", { class: "lab" }, label, sub ? el("small", {}, sub) : null), ...kids);
+
+  const TIMES = ["Before 7", "7–8", "8–9", "9–10", "10–11", "11–12", "12–1", "1–2", "2–3", "3–4", "4–5", "5–6", "6–7", "7–8 pm", "8–9 pm", "9–10 pm", "After 10 pm"];
+  const WHERE = ["Home-cooked", "Office or canteen", "Ordered in", "Ate out", "Packed or ready-made"];
+  const MEALS = [
+    ["wake", "First thing after waking", "chai with 1 sugar, 4 almonds"],
+    ["bf", "Breakfast", "2 idlis, sambar, coconut chutney"],
+    ["mid", "Mid-morning", "1 banana, black coffee"],
+    ["lunch", "Lunch", "2 rotis, dal, bhindi, curd"],
+    ["eve", "Evening", "chai and 2 Marie biscuits"],
+    ["din", "Dinner", "rice, rasam, potato fry"],
+    ["late", "Late night", "nothing, or a piece of chocolate"],
+  ];
+  const meal = ([id, name, eg]) => {
+    const wrap = el("div", { class: "meal" + (S[id + "-skip"] ? " off" : "") });
+    const skip = el("button", { type: "button", class: "chip", "aria-pressed": String(!!S[id + "-skip"]), onclick: () => { S[id + "-skip"] = !S[id + "-skip"]; skip.setAttribute("aria-pressed", String(S[id + "-skip"])); wrap.classList.toggle("off", S[id + "-skip"]); save(); } }, "Skipped it");
+    const t = el("select", { id: id + "-t", "aria-label": name + " time" }, el("option", { value: "" }, "Time"), TIMES.map((x) => el("option", { selected: S[id + "-t"] === x }, x)));
+    t.addEventListener("change", () => { S[id + "-t"] = t.value; save(); });
+    wrap.append(el("div", { class: "mh" }, el("b", {}, name), skip), el("div", { class: "what" }, t, text(id, "e.g. " + eg)), el("div", { class: "where" }, chips(id + "-w", WHERE, false)));
+    return wrap;
+  };
+
+  // The form, card by card. Each answer that goes into the message: [id, label, kind].
+  const SPEC = [];
+  const add = (sec, id, label) => SPEC.push([sec, id, label]);
+  const card = (title, eyebrow, cls, ...kids) => el("section", { class: cls || "" }, el("div", {}, el("span", { class: "eyebrow" }, eyebrow), el("h2", {}, title)), ...kids);
+  const F = $("#form");
+  // What Harsha already knows arrives in the link (#...), so she doesn't type it again. Only fills what's still empty.
+  let pre = null;
+  try { const n = new URLSearchParams(location.search).get("n"); if (n) pre = { n: n.slice(0, 40) }; } catch (e) {}
+  try { const h = location.hash.slice(1); if (h && !pre) { const b = atob(h.replace(/-/g, "+").replace(/_/g, "/") + "===".slice((h.length + 3) % 4)); pre = JSON.parse(new TextDecoder().decode(Uint8Array.from(b, (c) => c.charCodeAt(0)))); } } catch (e) { pre = null; }
+  if (pre && typeof pre === "object") {
+    const put = (k, v) => { if (v !== undefined && v !== null && v !== "" && (S[k] === undefined || S[k] === "" || (Array.isArray(S[k]) && !S[k].length))) S[k] = v; };
+    if (Array.isArray(pre.k) && pre.k.length) put("cond", pre.k.slice(0, 8));
+    if (Array.isArray(pre.g) && pre.g.length) put("goal", pre.g.slice(0, 3));
+    put("name", pre.n); put("age", pre.a ? String(pre.a) : ""); put("ht", pre.h ? String(pre.h) : ""); put("wt", pre.w ? String(pre.w) : ""); put("diet", pre.d); put("city", pre.c);
+    if (pre.n) F.append(el("p", { class: "prefill" }, "Hi " + String(pre.n).split(" ")[0] + (Object.keys(pre).length > 1 ? ", we've filled in what Harsha already has. Change anything that's wrong." : ", thanks for taking a few minutes for this.")));
+  }
+
+  F.append(card("About you", "1 of 7", "",
+    el("label", { class: "f", for: "name" }, "Your name", text("name", "First and last name")),
+    el("div", { class: "row" }, num("age", "Age"), num("ht", "Height (cm)"), num("wt", "Weight (kg)")),
+    el("label", { class: "f", for: "city" }, "Area or city", text("city", "e.g. Hebbal, Bengaluru")),
+    q("How you eat", null, chips("diet", ["Vegetarian", "Eggetarian", "Non-vegetarian", "Vegan", "Jain"], false)),
+    q("What would make the next 3 months worth it?", "Pick up to three.", chips("goal", ["More energy through the day", "Lose some weight", "Better blood reports", "Calmer digestion", "Get stronger", "Eat at regular times", "Fewer cravings", "Feed my family better"], true, "Anything else, in a few words"))));
+  ["name", "age", "ht", "wt", "city", "diet", "goal"].forEach((k) => add("About you", k, { name: "Name", age: "Age", ht: "Height (cm)", wt: "Weight (kg)", city: "Area", diet: "Diet", goal: "Goals" }[k]));
+
+  F.append(card("Health, in taps", "2 of 7", "",
+    q("Has a doctor told you about any of these?", null, chips("cond", ["Pre-diabetes or diabetes", "Thyroid", "High cholesterol", "High BP", "PCOS", "Acidity or IBS", "Low iron or B12", "None"], true, "Anything else")),
+    q("Blood test in the last 6 months?", "You can send the report itself at the end of this form.", chips("blood", ["Yes, I have the report", "Yes, but no report handy", "Older than 6 months", "No"], false)),
+    q("Do you take regular medicines?", "Names help, but a count is fine.", chips("meds", ["None", "1", "2–3", "4 or more"], false, "Names, if you know them")),
+    q("Supplements", null, chips("supp", ["Vitamin D", "B12", "Iron", "Calcium", "Multivitamin", "Omega 3", "Protein powder", "None"], true)),
+    q("Allergies or foods that don't agree with you", null, chips("allergy", ["Milk or lactose", "Gluten", "Nuts", "Eggs", "Spicy food", "Raw onion or garlic", "None"], true, "Anything else"))));
+  [["cond", "Diagnosed"], ["blood", "Blood test"], ["meds", "Medicines"], ["supp", "Supplements"], ["allergy", "Allergies or intolerances"]].forEach(([k, l]) => add("Health", k, l));
+
+  F.append(card("Yesterday, meal by meal", "3 of 7", "",
+    el("p", { class: "note" }, "Think of yesterday, not a typical day. Yesterday is easier to remember and closer to the truth. Write what and roughly how much, the way you'd tell a friend."),
+    q("Was yesterday a normal day for you?", null, chips("normal", ["Normal day", "Busier than usual", "A weekend or holiday", "Travelling", "Unwell"], false)),
+    ...MEALS.map(meal)));
+  add("Yesterday", "normal", "Kind of day");
+  MEALS.forEach(([id, name]) => SPEC.push(["Yesterday", id, name, "meal"]));
+
+  F.append(card("Your week", "4 of 7", "",
+    el("div", { class: "row" },
+      el("label", { class: "f", for: "wake-at" }, "Usually wake at", (() => { const s = el("select", { id: "wake-at" }, el("option", { value: "" }, "Choose"), ["Before 5", "5–6", "6–7", "7–8", "8–9", "After 9"].map((x) => el("option", { selected: S["wake-at"] === x }, x))); s.addEventListener("change", () => { S["wake-at"] = s.value; save(); }); return s; })()),
+      el("label", { class: "f", for: "sleep-at" }, "Usually asleep by", (() => { const s = el("select", { id: "sleep-at" }, el("option", { value: "" }, "Choose"), ["Before 10", "10–11", "11–12", "12–1", "After 1"].map((x) => el("option", { selected: S["sleep-at"] === x }, x))); s.addEventListener("change", () => { S["sleep-at"] = s.value; save(); }); return s; })())),
+    q("How do you sleep?", null, chips("sleepq", ["Badly", "Light, I wake up", "Okay", "Well", "Very well"], false)),
+    q("How stressed are most days?", null, chips("stress", ["Calm", "A little", "Moderately", "Very", "Running on empty"], false)),
+    q("Movement", "Tap all you do in a normal week.", chips("move", ["Walk", "Gym", "Yoga", "Running", "Sport", "Home workout", "Mostly sitting"], true)),
+    q("Days a week you move for 30 minutes or more", null, stepper("movedays", 0, 7, "days", 3)),
+    q("Your work", null, chips("work", ["Office", "Work from home", "Hybrid", "Shifts", "Travel a lot", "At home with family", "Studying"], true)),
+    q("Meals eaten out or ordered in, per week", null, stepper("out", 0, 21, "meals", 2)),
+    q("Glasses of water a day", null, stepper("water", 0, 15, "glasses", 6))));
+  [["wake-at", "Wakes"], ["sleep-at", "Asleep by"], ["sleepq", "Sleep"], ["stress", "Stress"], ["move", "Movement"], ["movedays", "Active days a week"], ["work", "Work"], ["out", "Meals out per week"], ["water", "Water, glasses a day"]].forEach(([k, l]) => add("Week", k, l));
+
+  F.append(card("Your kitchen", "5 of 7", "",
+    q("Who cooks most meals?", null, chips("cook", ["Me", "Partner or family", "A cook", "Mostly ordered", "Office canteen"], true)),
+    q("Time you can give a meal on a busy day", null, chips("cooktime", ["Under 10 min", "10–20 min", "20–40 min", "More than 40 min"], false)),
+    q("Who you usually eat with", null, chips("eatwith", ["Alone", "Partner", "Kids", "Parents or in-laws", "Colleagues"], true)),
+    q("Anything hard to get or afford?", "Optional.", text("budget", "e.g. good fish, berries, time to shop"))));
+  [["cook", "Who cooks"], ["cooktime", "Time for a busy-day meal"], ["eatwith", "Eats with"], ["budget", "Hard to get or afford"]].forEach(([k, l]) => add("Kitchen", k, l));
+
+  const lift = (id, title, tag, sub, opts) => q(el("span", {}, title, el("span", { class: "tag" }, tag)), sub, chips(id, opts, true, "Anything else"));
+  F.append(card("What lifts you", "6 of 7 · the Happiness Macro", "joy",
+    el("p", { class: "note" }, el("span", { class: "heart" }, "\u2665 "), "Nutrition makes a plan work on paper. Enjoyment helps it survive real life. Food is only part of what lifts us, so tap anything true for you, food or not."),
+    lift("winlift", "Little wins you look forward to", "reward", null, ["Trying a new recipe", "Someone praising my cooking", "Likes on a food post", "Ticking off my to-do list", "A treat after a hard day", "Trying a new caf\u00e9", "Shopping for food", "Planning the week's meals"]),
+    lift("calmlift", "What makes you feel settled", "calm", null, ["My morning routine", "Chai or coffee in quiet", "A walk in the sun", "A clean kitchen", "The same breakfast every day", "Simple home food", "Prayer or pooja", "An early night"]),
+    lift("bondlift", "What makes you feel close to people", "connection", null, ["Cooking for family", "Making what my kids love", "Feeding guests", "Eating together at the table", "Being cooked for", "Sharing food at work", "Cooking my mother's recipes", "Family calls over a meal"]),
+    lift("uplift", "What lifts your mood fast", "lift", null, ["A workout", "Dancing", "Music while cooking", "Spicy food", "Laughing with friends", "A long walk", "Something sweet", "Time outdoors"]),
+    q("How do you feel about cooking?", null, chips("cookfeel", ["I love it", "It relaxes me", "Fine when I have time", "It's a chore", "I don't cook"], false)),
+    q("Food and your phone", "No judgement. It helps plan around real habits.", chips("screens", ["Eat while watching something", "Save recipe reels", "Post food photos", "Order after seeing an ad or reel", "Follow food creators", "None"], true)),
+    q("Foods you'd never give up", "Tap, then add your own.", chips("love", ["Chai", "Coffee", "Sweets or mithai", "Chocolate", "Biryani", "Dosa or idli", "Parathas", "Fried snacks", "Ice cream", "Bread or pav", "Rice", "Non-veg curries"], true, "Your own, e.g. Amma's rasam, Friday pizza")),
+    q("Rituals to keep", null, chips("ritual", ["Morning chai", "Evening chai and a snack", "Sunday family lunch", "Festival food", "Weekend eating out", "Late-night snack", "Sweet after dinner"], true, "Any other")),
+    q("One thing that made you happy last week", "Food or not. A sentence is plenty.", text("happy", "e.g. my daughter finished the dosa I made her"))));
+  [["winlift", "Little wins (reward)"], ["calmlift", "Feels settled by (calm)"], ["bondlift", "Feels close through (connection)"], ["uplift", "Quick mood lifts"], ["cookfeel", "About cooking"], ["screens", "Food and phone"], ["love", "Won't give up"], ["ritual", "Rituals to keep"], ["happy", "Made happy last week"]].forEach(([k, l]) => add("What lifts her", k, l));
+
+  F.append(card("What's got in the way before", "7 of 7", "",
+    q("What have you tried?", null, chips("tried", ["Diet chart from a dietitian", "Calorie counting app", "Intermittent fasting", "Keto or low-carb", "Gym trainer's plan", "Meal subscription", "Nothing yet"], true)),
+    q("Why did it stop?", null, chips("stopped", ["Too hungry", "Food got boring", "No time to cook", "Didn't fit family meals", "Travel or work trips", "Social events", "Cravings won", "Saw no change", "Felt like a punishment"], true, "Anything else")),
+    q("When does eating well get hardest?", null, chips("hard", ["Mornings", "Late afternoon", "Right after work", "Late at night", "Weekends", "At the office", "When stressed", "When tired"], true)),
+    q("Anything else Harsha should know?", "Optional. One or two lines.", text("else", "", true))));
+  [["tried", "Tried before"], ["stopped", "Why it stopped"], ["hard", "Hardest times"], ["else", "Anything else"]].forEach(([k, l]) => add("History", k, l));
+
+  const filesText = () => "Reports for my Baseline Mapping (" + ((S.name || "").trim() || "my name") + "):";
+  F.append(card("Reports and photos", "Optional, after you send", "",
+    el("p", { class: "note" }, "This page can't carry files, so they go straight to Harsha's WhatsApp. Send your answers first, then tap this and attach with the paperclip: blood reports, a prescription, photos of your supplements. Whatever you have is enough."),
+    el("div", {}, el("a", { class: "btn", id: "wa-files", href: "https://wa.me/" + NUM + "?text=" + encodeURIComponent(filesText()), target: "_blank", rel: "noopener noreferrer" }, "Open WhatsApp to send reports")),
+    el("span", { class: "note" }, "Harsha's WhatsApp: +91 91642 04796")));
+
+  // The message Harsha receives: short, structured, nothing vague left in.
+  const fmt = (k) => { const v = S[k], x = S[k + "-x"]; const a = Array.isArray(v) ? v.slice() : v === undefined || v === "" ? [] : [String(v)]; if (x && x.trim()) a.push(x.trim()); return a.join(", "); };
+  function answers() {
+    const out = ["BASELINE FORM · " + ((S.name || "").trim() || "(no name)") + " · " + new Date().toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })];
+    let sec = "";
+    SPEC.forEach(([s, id, label, kind]) => {
+      let line = "";
+      if (kind === "meal") { line = S[id + "-skip"] ? "skipped" : [S[id + "-t"], (S[id] || "").trim(), S[id + "-w"] ? "(" + S[id + "-w"].toLowerCase() + ")" : ""].filter(Boolean).join(" · "); }
+      else line = fmt(id);
+      if (!line) return;
+      if (s !== sec) { out.push("", "## " + s); sec = s; }
+      out.push(label + ": " + line);
+    });
+    return out.join("\n");
+  }
+  function update() {
+    const filled = SPEC.filter(([, id, , kind]) => kind === "meal" ? S[id + "-skip"] || (S[id] || "").trim() : fmt(id)).length;
+    $("#prog").style.width = Math.round(filled / SPEC.length * 100) + "%";
+    const named = !!(S.name || "").trim(), m = $("#msg");
+    $("#wa").href = "https://wa.me/" + NUM + "?text=" + encodeURIComponent(answers());
+    $("#mail").href = "mailto:harsha@thefoodlab.in?subject=" + encodeURIComponent("BASELINE FORM · " + ((S.name || "").trim() || "no name")) + "&body=" + encodeURIComponent(answers());
+    $("#wa-files").href = "https://wa.me/" + NUM + "?text=" + encodeURIComponent(filesText());
+    m.className = "msg" + (named ? "" : " warn");
+    m.textContent = !named ? "Add your name first, so Harsha knows it's you." : `${filled} of ${SPEC.length} answered. “Send to Harsha” opens WhatsApp with your answers filled in; press send there.`;
+  }
+  ["#wa", "#mail"].forEach((sel) => $(sel).addEventListener("click", (e) => { if (!(S.name || "").trim()) { e.preventDefault(); $("#name").focus(); update(); } }));
+  // "Send to Harsha" opens WhatsApp with the answers, and at the same moment emails them to harsha@thefoodlab.in through the relay.
+  let mailed = false;
+  $("#wa").addEventListener("click", () => {
+    if (!(S.name || "").trim()) return;
+    if (MAIL_RELAY && !mailed) {
+      mailed = true;
+      try { fetch(MAIL_RELAY, { method: "POST", mode: "no-cors", keepalive: true, headers: { "Content-Type": "text/plain" }, body: JSON.stringify({ k: RELAY_KEY, subject: "BASELINE FORM · " + S.name.trim(), body: answers() }) }).catch(() => { mailed = false; }); } catch (e) { mailed = false; }
+    }
+    $("#clear").hidden = false;
+    setTimeout(() => { $("#msg").className = "msg"; $("#msg").textContent = "Sent? Press send in WhatsApp if you haven't yet." + (MAIL_RELAY ? " A copy has gone to Harsha's email too." : "") + " When you're done, you can clear your answers from this phone."; }, 300);
+  });
+  $("#clear").addEventListener("click", () => { try { localStorage.removeItem(KEY); localStorage.removeItem(KEY + ":at"); } catch (e) {} S = {}; location.replace(location.pathname + location.search); });
+  $("#copy").addEventListener("click", async (e) => {
+    const b = e.currentTarget;
+    try { await navigator.clipboard.writeText(answers()); b.textContent = "Copied"; $("#msg").textContent = "Paste it into WhatsApp to +91 91642 04796."; }
+    catch (err) { b.textContent = "Copy didn't work"; $("#msg").textContent = "Use the WhatsApp button instead."; }
+    setTimeout(() => { b.textContent = "Copy"; }, 2000);
+  });
+  update();
+})();
+</script>
+</body>
+</html>
